@@ -8,7 +8,6 @@ file drop: keep the same path and size, regenerate the normal map, done.
 Usage:  python3 tools/gen_placeholders.py            (writes into assets/placeholder)
 Needs:  Pillow, numpy
 """
-import json
 import zlib
 import math
 import os
@@ -474,96 +473,390 @@ def portrait(char_id, display, expr, palette, w=640, h=960):
     img.save(os.path.join(path, f"{expr}.png"))
 
 
-def creature_battle_art(cid, display, body, eye, horns=False, w=900, h=700):
-    img = Image.new("RGBA", (w, h), (0, 0, 0, 0))
-    d = ImageDraw.Draw(img)
-    d.ellipse([90, 230, 700, 560], fill=body + (255,))
-    d.ellipse([560, 110, 860, 380], fill=tuple(min(255, c + 10) for c in body) + (255,))
-    if horns:
-        d.arc([560, -40, 760, 180], 180, 330, fill=(70, 50, 36, 255), width=22)
-        d.arc([680, -60, 900, 160], 200, 350, fill=(70, 50, 36, 255), width=22)
-    else:
-        d.polygon([(600, 140), (640, 40), (680, 150)], fill=tuple(c - 30 for c in body) + (255,))
-        d.polygon([(720, 140), (760, 40), (790, 160)], fill=tuple(c - 30 for c in body) + (255,))
-    for x in (160, 260, 520, 600):
-        d.rectangle([x, 520, x + 50, 690], fill=tuple(c - 25 for c in body) + (255,))
-    d.polygon([(760, 300), (860, 300), (820, 360)], fill=(240, 230, 220, 255))  # fangs suggestion
-    d.ellipse([760, 210, 800, 240], fill=eye + (255,))
-    img = img.filter(ImageFilter.GaussianBlur(1.2))
-    img = img.transpose(Image.FLIP_LEFT_RIGHT)  # enemies face left, toward Feyre (style guide)
-    d = ImageDraw.Draw(img)
-    d.text((30, h - 90), display.upper(), fill=(255, 240, 200, 235), font=font(FONT_CAPS, 40), stroke_width=2, stroke_fill=(0, 0, 0, 200))
-    d.text((30, h - 44), f"PLACEHOLDER  battle.{cid}", fill=(255, 255, 255, 220), font=font(FONT_SERIF, 28), stroke_width=2, stroke_fill=(0, 0, 0, 200))
-    os.makedirs(os.path.join(OUT, "battle"), exist_ok=True)
-    save_with_normal(img, f"battle/{cid}", strength=3, blur=3)
+# ------------------------------------------------------------- icons and fx
+SS = 4  # supersampling factor for anti-aliased icons
 
 
-def card_art(cid, title, hue_seed, motif):
-    w, h = 300, 200
-    rng = np.random.default_rng(hue_seed)
-    base = rng.integers(40, 140, 3)
-    n = value_noise(w, h, 3, 4, seed=hue_seed, tile=False)
-    col = base[None, None, :] * (0.6 + 0.8 * n[..., None])
-    img = Image.fromarray(col.clip(0, 255).astype(np.uint8), "RGB").convert("RGBA")
-    d = ImageDraw.Draw(img)
-    gold = (232, 196, 120, 255)
-    if motif == "arrow":
-        d.line([(40, 160), (250, 40)], fill=gold, width=6)
-        d.polygon([(250, 40), (226, 44), (240, 60)], fill=(200, 200, 210, 255))
-    elif motif == "ash":
-        d.line([(40, 160), (250, 40)], fill=(240, 236, 220, 255), width=8)
-        d.polygon([(250, 40), (222, 42), (238, 64)], fill=(60, 60, 70, 255))
-        for i in range(12):
-            x, y = rng.integers(40, 260), rng.integers(30, 170)
-            d.ellipse([x, y, x + 4, y + 4], fill=(255, 220, 150, 200))
-    elif motif == "knife":
-        d.polygon([(80, 150), (220, 50), (232, 62), (96, 164)], fill=(210, 214, 224, 255))
-        d.rectangle([60, 150, 100, 172], fill=(110, 76, 50, 255))
-    elif motif == "shield":
-        d.polygon([(150, 30), (230, 60), (210, 150), (150, 180), (90, 150), (70, 60)], fill=(110, 90, 70, 255), outline=gold)
-    elif motif == "move":
-        for i in range(3):
-            d.polygon([(60 + i * 60, 60), (110 + i * 60, 100), (60 + i * 60, 140)], fill=gold)
-    elif motif == "eye":
-        d.ellipse([80, 70, 220, 130], fill=(230, 230, 220, 255))
-        d.ellipse([130, 80, 170, 120], fill=(40, 40, 60, 255))
-    elif motif == "leaf":
-        d.ellipse([90, 50, 210, 150], fill=(90, 140, 80, 255))
-    else:
-        d.ellipse([110, 60, 190, 140], fill=gold)
-    d.text((10, 8), "PLACEHOLDER", fill=(255, 255, 255, 160), font=font(FONT_CAPS, 14))
-    os.makedirs(os.path.join(OUT, "cards"), exist_ok=True)
-    img.save(os.path.join(OUT, "cards", f"{cid}.png"))
+class Canvas:
+    """Draw at SS x size, then downsample: smooth edges without a vector lib."""
+
+    def __init__(self, w, h):
+        self.w, self.h = w, h
+        self.img = Image.new("RGBA", (w * SS, h * SS), (0, 0, 0, 0))
+        self.d = ImageDraw.Draw(self.img)
+
+    def P(self, pts):
+        return [(x * SS, y * SS) for x, y in pts]
+
+    def poly(self, pts, fill, outline=None, width=1):
+        self.d.polygon(self.P(pts), fill=fill, outline=outline, width=int(width * SS) if outline else 1)
+
+    def line(self, pts, fill, width):
+        self.d.line(self.P(pts), fill=fill, width=max(1, int(width * SS)), joint="curve")
+        for x, y in (pts[0], pts[-1]):  # round caps
+            r = width * SS / 2
+            self.d.ellipse([x * SS - r, y * SS - r, x * SS + r, y * SS + r], fill=fill)
+
+    def ellipse(self, box, fill, outline=None, width=1):
+        x0, y0, x1, y1 = box
+        self.d.ellipse([x0 * SS, y0 * SS, x1 * SS, y1 * SS], fill=fill, outline=outline,
+                       width=int(width * SS) if outline else 1)
+
+    def arc(self, box, a0, a1, fill, width):
+        x0, y0, x1, y1 = box
+        self.d.arc([x0 * SS, y0 * SS, x1 * SS, y1 * SS], a0, a1, fill=fill, width=max(1, int(width * SS)))
+
+    def rect(self, box, fill, radius=0):
+        x0, y0, x1, y1 = box
+        self.d.rounded_rectangle([x0 * SS, y0 * SS, x1 * SS, y1 * SS], radius * SS, fill=fill)
+
+    def done(self):
+        return self.img.resize((self.w, self.h), Image.LANCZOS)
 
 
-def relic_icon(rid, colors):
-    s = 128
-    img = Image.new("RGBA", (s, s), (0, 0, 0, 0))
-    d = ImageDraw.Draw(img)
-    d.ellipse([4, 4, s - 4, s - 4], fill=(40, 30, 40, 230), outline=(232, 196, 120, 255), width=4)
-    for i, c in enumerate(colors):
-        x = 26 + i * 28
-        d.rounded_rectangle([x, 44, x + 22, 84], 4, fill=tuple(c) + (255,), outline=(20, 20, 20, 255))
-    d.text((10, s - 24), "PH", fill=(255, 255, 255, 150), font=font(FONT_CAPS, 14))
-    os.makedirs(os.path.join(OUT, "relics"), exist_ok=True)
-    img.save(os.path.join(OUT, "relics", f"{rid}.png"))
+def _finish_icon(img, outline=(18, 12, 10), shadow=True):
+    """Dark ink outline and a soft drop shadow, so icons read on any slot."""
+    a = img.getchannel("A")
+    grow = a.filter(ImageFilter.MaxFilter(5))
+    ink = Image.new("RGBA", img.size, outline + (0,))
+    ink.putalpha(grow.point(lambda v: min(255, int(v * 0.95))))
+    base = Image.new("RGBA", img.size, (0, 0, 0, 0))
+    if shadow:
+        sh = Image.new("RGBA", img.size, (0, 0, 0, 0))
+        sa = grow.filter(ImageFilter.GaussianBlur(3)).point(lambda v: int(v * 0.45))
+        sh.putalpha(sa)
+        base.alpha_composite(sh, (2, 4))
+    base.alpha_composite(ink)
+    base.alpha_composite(img)
+    return base
 
 
-def item_icon(iid, color, shape="circle"):
-    s = 96
-    img = Image.new("RGBA", (s, s), (0, 0, 0, 0))
-    d = ImageDraw.Draw(img)
-    if shape == "nail":
-        d.polygon([(44, 10), (52, 10), (52, 76), (48, 90), (44, 76)], fill=color + (255,))
-        d.rectangle([34, 8, 62, 16], fill=color + (255,))
-    elif shape == "meat":
-        d.ellipse([14, 26, 82, 70], fill=color + (255,))
-        d.rectangle([70, 42, 92, 52], fill=(236, 230, 214, 255))
-    else:
-        d.ellipse([16, 16, 80, 80], fill=color + (255,))
+def _save_icon(iid, img):
     os.makedirs(os.path.join(OUT, "items"), exist_ok=True)
-    img.save(os.path.join(OUT, "items", f"{iid}.png"))
+    _finish_icon(img).save(os.path.join(OUT, "items", f"{iid}.png"))
 
+
+def _shaft(c, x0, y0, x1, y1, wood, head, fletch, width=4.5, glow=None):
+    """A diagonal arrow from (x0,y0) nock to (x1,y1) tip."""
+    ang = math.atan2(y1 - y0, x1 - x0)
+    ux, uy = math.cos(ang), math.sin(ang)
+    px, py = -uy, ux
+    if glow is not None:
+        for r, al in ((14, 40), (9, 70)):
+            c.line([(x0 + ux * 10, y0 + uy * 10), (x1 - ux * 6, y1 - uy * 6)], glow + (al,), r)
+    c.line([(x0, y0), (x1 - ux * 12, y1 - uy * 12)], wood, width)
+    hl = tuple(min(255, v + 45) for v in wood[:3]) + (255,)
+    c.line([(x0 + px * 1, y0 + py * 1), (x1 - ux * 14 + px * 1, y1 - uy * 14 + py * 1)], hl, width * 0.35)
+    # head
+    hx, hy = x1 - ux * 16, y1 - uy * 16
+    c.poly([(x1, y1), (hx + px * 7, hy + py * 7), (hx + ux * 3, hy + uy * 3), (hx - px * 7, hy - py * 7)], head)
+    c.poly([(x1, y1), (hx + px * 7, hy + py * 7), (hx + ux * 3, hy + uy * 3)], tuple(min(255, v + 50) for v in head[:3]) + (255,))
+    # fletching
+    for side in (1, -1):
+        fx0, fy0 = x0 + ux * 3, y0 + uy * 3
+        c.poly([(fx0, fy0), (fx0 + ux * 18, fy0 + uy * 18), (fx0 + ux * 14 + px * 8 * side, fy0 + uy * 14 + py * 8 * side),
+                (fx0 - ux * 2 + px * 9 * side, fy0 - uy * 2 + py * 9 * side)], fletch)
+
+
+def icon_knife():
+    c = Canvas(96, 96)
+    # blade: lower-left handle, tip to the upper right
+    c.poly([(40, 56), (82, 12), (86, 10), (84, 16), (50, 64)], (196, 204, 214, 255))
+    c.poly([(40, 56), (82, 12), (86, 10), (46, 52)], (236, 240, 246, 255))      # bright edge
+    c.line([(47, 58), (79, 20)], (150, 158, 172, 255), 1.6)                      # fuller
+    c.line([(34, 50), (52, 68)], (176, 136, 64, 255), 6)                          # guard
+    c.line([(14, 84), (40, 60)], (92, 58, 36, 255), 9)                            # handle
+    for t in range(4):                                                             # leather wraps
+        x, y = 18 + t * 6, 80 - t * 5.6
+        c.line([(x - 3, y - 3), (x + 3, y + 3)], (60, 36, 22, 255), 1.6)
+    c.ellipse([9, 80, 19, 90], (176, 136, 64, 255))                               # pommel
+    _save_icon("hunting_knife", c.done())
+
+
+def icon_bow():
+    # drawn upright on a larger canvas (belly to +x, string on the archer's side),
+    # then turned 45 degrees and cropped so it spans the icon's diagonal
+    c = Canvas(136, 136)
+    box = [-106, -34, 78, 170]
+    c.arc(box, 322, 38, (112, 74, 42, 255), 9)
+    c.arc(box, 326, 34, (170, 124, 76, 255), 3)
+    c.line([(58.5, 9), (58.5, 127)], (228, 222, 204, 255), 1.8)
+    c.line([(77, 58), (77, 78)], (66, 42, 28, 255), 11)
+    for y in (9, 127):
+        c.ellipse([53, y - 5, 64, y + 5], (90, 60, 36, 255))
+    img = c.done().rotate(45, resample=Image.BICUBIC, center=(68, 68)).crop((14, 14, 122, 122)).resize((96, 96), Image.LANCZOS)
+    _save_icon("bow", img)
+
+
+def icon_arrow():
+    c = Canvas(96, 96)
+    for off in (-9, 0, 9):
+        _shaft(c, 12 + off, 84 + off * 0.2, 84 + off * 0.2, 12 + off, (150, 106, 64, 255), (150, 156, 166, 255),
+               (214, 214, 206, 255), width=3.5)
+    _save_icon("arrow", c.done())
+
+
+def icon_ash_arrow():
+    c = Canvas(96, 96)
+    _shaft(c, 12, 84, 84, 12, (236, 226, 200, 255), (58, 58, 66, 255), (244, 240, 230, 255), width=5,
+           glow=(255, 214, 120))
+    rng = np.random.default_rng(77)
+    for _ in range(9):
+        t = rng.uniform(0.15, 0.85)
+        x, y = 12 + 72 * t + rng.uniform(-9, 9), 84 - 72 * t + rng.uniform(-9, 9)
+        r = rng.uniform(0.8, 1.8)
+        c.ellipse([x - r, y - r, x + r, y + r], (255, 232, 170, 230))
+    _save_icon("ash_arrow", c.done())
+
+
+def icon_rose_hips():
+    c = Canvas(96, 96)
+    c.line([(48, 18), (46, 40)], (70, 52, 36, 255), 3)
+    c.line([(47, 30), (30, 46)], (70, 52, 36, 255), 2.5)
+    c.line([(47, 30), (66, 44)], (70, 52, 36, 255), 2.5)
+    for (x, y, rx, ry) in ((30, 58, 13, 17), (64, 56, 13, 17), (47, 66, 14, 18)):
+        c.ellipse([x - rx, y - ry, x + rx, y + ry], (186, 44, 30, 255))
+        c.ellipse([x - rx * 0.55, y - ry * 0.7, x - rx * 0.05, y - ry * 0.1], (236, 118, 82, 255))
+        c.poly([(x - 4, y - ry + 1), (x, y - ry - 6), (x + 4, y - ry + 1)], (48, 30, 22, 255))
+    c.poly([(56, 18), (74, 12), (66, 24)], (88, 104, 64, 255))   # a last withered leaf
+    _save_icon("rose_hips", c.done())
+
+
+def icon_venison():
+    c = Canvas(96, 96)
+    c.poly([(14, 60), (30, 36), (58, 28), (84, 34), (80, 52), (56, 62), (30, 72)], (118, 40, 30, 255))
+    c.poly([(30, 40), (58, 32), (80, 38), (58, 46), (34, 54)], (152, 62, 46, 255))
+    for x0, y0, x1, y1 in ((26, 58, 44, 46), (44, 56, 66, 42), (60, 52, 78, 42)):
+        c.line([(x0, y0), (x1, y1)], (214, 170, 150, 200), 1.6)
+    _save_icon("venison_strip", c.done())
+
+
+def icon_bread():
+    c = Canvas(96, 96)
+    c.ellipse([10, 26, 86, 80], (150, 92, 44, 255))
+    c.ellipse([16, 30, 80, 70], (184, 120, 60, 255))
+    c.poly([(48, 22), (90, 50), (84, 82), (46, 84)], (0, 0, 0, 0))
+    c.ellipse([46, 34, 78, 78], (226, 196, 150, 255))   # cut face
+    c.ellipse([50, 38, 74, 74], (236, 212, 170, 255))
+    rng = np.random.default_rng(12)
+    for _ in range(14):
+        x, y = rng.uniform(53, 72), rng.uniform(42, 70)
+        c.ellipse([x - 1.2, y - 0.8, x + 1.2, y + 0.8], (196, 160, 110, 255))
+    for x in (24, 34):
+        c.line([(x, 34), (x + 8, 50)], (120, 70, 34, 255), 1.6)
+    _save_icon("bread", c.done())
+
+
+def icon_hare():
+    c = Canvas(96, 96)
+    c.ellipse([14, 46, 74, 80], (232, 232, 236, 255))            # body, lying
+    c.ellipse([58, 40, 86, 64], (238, 238, 242, 255))            # head
+    c.poly([(66, 44), (52, 14), (60, 12), (74, 42)], (226, 226, 230, 255))
+    c.poly([(74, 42), (70, 12), (78, 12), (82, 42)], (220, 220, 226, 255))
+    c.poly([(58, 18), (60, 16), (70, 40), (66, 42)], (214, 170, 170, 255))
+    c.ellipse([76, 48, 80, 52], (40, 30, 30, 255))
+    c.ellipse([10, 54, 22, 66], (246, 246, 248, 255))            # tail
+    c.ellipse([22, 70, 50, 80], (200, 200, 208, 255))            # belly shade
+    _save_icon("hare", c.done())
+
+
+def _pelt(c, base, dark, light, torn=False):
+    pts = [(10, 40), (22, 26), (40, 30), (56, 22), (74, 28), (88, 40), (84, 62), (70, 74), (48, 70), (26, 76), (12, 62)]
+    c.poly(pts, dark)
+    c.poly([(16, 42), (26, 30), (42, 34), (56, 27), (72, 32), (82, 42), (78, 60), (66, 68), (48, 64), (28, 70), (17, 60)], base)
+    rng = np.random.default_rng(31)
+    for _ in range(60):
+        x, y = rng.uniform(20, 78), rng.uniform(34, 64)
+        a = rng.uniform(-0.6, 0.6) + math.pi / 2
+        L = rng.uniform(3, 7)
+        c.line([(x, y), (x + math.cos(a) * L, y + math.sin(a) * L)], light, 1)
+    if torn:
+        c.poly([(44, 28), (52, 46), (46, 50), (40, 30)], (0, 0, 0, 0))
+        for (x, y) in ((44, 30), (50, 46), (62, 60), (30, 62)):
+            c.poly([(x, y), (x + 7, y + 4), (x + 2, y + 9)], (60, 30, 24, 255))
+
+
+def icon_wolf_pelt():
+    c = Canvas(96, 96)
+    _pelt(c, (128, 130, 138, 255), (70, 72, 80, 255), (176, 178, 186, 255))
+    c.ellipse([70, 34, 92, 52], (110, 112, 120, 255))     # the head end of the pelt
+    c.poly([(74, 36), (78, 24), (82, 36)], (90, 92, 100, 255))
+    c.poly([(82, 36), (88, 26), (90, 40)], (90, 92, 100, 255))
+    _save_icon("wolf_pelt", c.done())
+
+
+def icon_doe_hide(torn=False):
+    c = Canvas(96, 96)
+    _pelt(c, (172, 124, 80, 255), (110, 74, 46, 255), (206, 164, 120, 255), torn=torn)
+    if torn:
+        c.line([(20, 40), (70, 66)], (90, 30, 24, 220), 2)
+    _save_icon("doe_hide_torn" if torn else "doe_hide", c.done())
+
+
+def icon_snare_wire():
+    c = Canvas(96, 96)
+    for i in range(5):
+        r = 30 - i * 2.2
+        c.ellipse([48 - r, 50 - r * 0.8, 48 + r, 50 + r * 0.8], None, (178, 182, 192, 255), 2.2)
+    c.ellipse([48 - 30, 50 - 24, 48 + 30, 50 + 24], None, (222, 226, 234, 255), 1)
+    c.line([(70, 34), (86, 16)], (178, 182, 192, 255), 2.2)
+    c.ellipse([82, 10, 92, 20], None, (178, 182, 192, 255), 2)          # the running loop
+    _save_icon("snare_wire", c.done())
+
+
+def icon_paint_tins():
+    c = Canvas(96, 96)
+    for (x, y, col) in ((28, 60, (186, 46, 40)), (66, 62, (214, 176, 46)), (47, 40, (48, 78, 168))):
+        c.ellipse([x - 18, y - 6, x + 18, y + 20], (110, 110, 118, 255))
+        c.rect([x - 18, y - 2, x + 18, y + 12], (150, 150, 158, 255))
+        c.ellipse([x - 18, y - 10, x + 18, y + 6], (176, 176, 184, 255))
+        c.ellipse([x - 14, y - 7, x + 14, y + 4], col + (255,))
+        c.ellipse([x - 8, y - 5, x - 1, y - 1], tuple(min(255, v + 70) for v in col) + (255,))
+    _save_icon("paint_tins", c.done())
+
+
+def icon_iron_bracelet():
+    c = Canvas(96, 96)
+    c.ellipse([14, 26, 82, 74], None, (62, 62, 70, 255), 12)
+    c.ellipse([16, 28, 80, 72], None, (104, 104, 114, 255), 4)
+    c.arc([18, 30, 78, 70], 200, 300, (168, 168, 178, 255), 2.5)
+    for a in range(0, 360, 45):                                       # hammered rivets
+        x = 48 + math.cos(math.radians(a)) * 30
+        y = 50 + math.sin(math.radians(a)) * 21
+        c.ellipse([x - 2, y - 2, x + 2, y + 2], (140, 140, 150, 255))
+    _save_icon("iron_bracelet", c.done())
+
+
+def icon_coin():
+    c = Canvas(96, 96)
+    c.ellipse([14, 16, 82, 84], (126, 74, 40, 255))
+    c.ellipse([16, 14, 80, 78], (196, 128, 70, 255))
+    c.ellipse([22, 20, 74, 72], None, (150, 92, 50, 255), 2.5)
+    c.poly([(48, 30), (58, 46), (48, 62), (38, 46)], (226, 166, 104, 255))   # stamped mark
+    c.arc([20, 18, 60, 58], 200, 260, (250, 210, 160, 255), 3)
+    _save_icon("coin", c.done())
+
+
+def fx_sprites():
+    os.makedirs(os.path.join(OUT, "fx"), exist_ok=True)
+    # soft dot for sparks, blood and motes
+    s = 24
+    yy, xx = np.mgrid[0:s, 0:s]
+    r = np.sqrt((xx - s / 2 + 0.5) ** 2 + (yy - s / 2 + 0.5) ** 2) / (s / 2)
+    a = np.clip(1 - r, 0, 1) ** 1.3
+    Image.fromarray((np.stack([np.ones_like(a), np.ones_like(a), np.ones_like(a), a], -1) * 255).astype(np.uint8),
+                    "RGBA").save(os.path.join(OUT, "fx/dot.png"))
+    # ground shadow: white, tinted dark by the game
+    w, h = 96, 40
+    yy, xx = np.mgrid[0:h, 0:w]
+    r = np.sqrt(((xx - w / 2 + 0.5) / (w / 2)) ** 2 + ((yy - h / 2 + 0.5) / (h / 2)) ** 2)
+    a = np.clip(1 - r, 0, 1) ** 0.9
+    Image.fromarray((np.stack([np.ones_like(a), np.ones_like(a), np.ones_like(a), a], -1) * 255).astype(np.uint8),
+                    "RGBA").save(os.path.join(OUT, "fx/shadow.png"))
+    # knife slash: a crescent bulging toward +x, thick in the middle, fading at the tips
+    w, h = 128, 160
+    yy, xx = np.mgrid[0:h, 0:w].astype(np.float32)
+    cx, cy, R = -30.0, h / 2, 132.0
+    dist = np.sqrt((xx - cx) ** 2 + (yy - cy) ** 2)
+    ang = np.arctan2(yy - cy, xx - cx)
+    span = 0.62
+    along = np.clip(1 - np.abs(ang) / span, 0, 1)
+    thick = 3 + 15 * along ** 0.8
+    band = np.clip(1 - np.abs(dist - (R - thick * 0.5)) / (thick * 0.5 + 0.8), 0, 1)
+    edge = np.clip(1 - np.abs(dist - (R - 1.5)) / 2.5, 0, 1) * along
+    a = np.clip(band * along ** 0.6 * 0.75 + edge * 0.6, 0, 1)
+    Image.fromarray((np.stack([np.ones_like(a), np.ones_like(a), np.ones_like(a), a], -1) * 255).astype(np.uint8),
+                    "RGBA").save(os.path.join(OUT, "fx/slash.png"))
+    # arrows in flight, nocked and stuck: point to +x
+    for name, wood, head, fl in (("arrow", (150, 106, 64), (156, 162, 172), (214, 214, 206)),
+                                 ("ash_arrow", (238, 228, 204), (58, 58, 66), (246, 242, 232))):
+        c = Canvas(64, 12)
+        c.line([(6, 6), (50, 6)], wood + (255,), 2.2)
+        c.line([(8, 5.4), (48, 5.4)], tuple(min(255, v + 40) for v in wood) + (255,), 0.7)
+        c.poly([(63, 6), (49, 1.5), (52, 6), (49, 10.5)], head + (255,))
+        c.poly([(2, 1), (16, 4.6), (16, 6), (4, 6)], fl + (255,))
+        c.poly([(2, 11), (16, 7.4), (16, 6), (4, 6)], tuple(int(v * 0.85) for v in fl) + (255,))
+        img = c.done()
+        if name == "ash_arrow":
+            glow = img.getchannel("A").filter(ImageFilter.GaussianBlur(2))
+            g = Image.new("RGBA", img.size, (255, 220, 140, 0))
+            g.putalpha(glow.point(lambda v: int(v * 0.5)))
+            g.alpha_composite(img)
+            img = g
+        img.save(os.path.join(OUT, f"fx/{name}.png"))
+    # knife in hand: blade to +x, handle at the left
+    c = Canvas(44, 14)
+    c.line([(2, 7), (15, 7)], (92, 58, 36, 255), 5)
+    c.line([(15, 2), (15, 12)], (176, 136, 64, 255), 2.4)
+    c.poly([(16, 4.5), (36, 4.8), (43, 7), (36, 9.6), (16, 9.5)], (204, 210, 220, 255))
+    c.poly([(16, 4.5), (36, 4.8), (43, 7), (16, 7)], (240, 244, 248, 255))
+    c.done().save(os.path.join(OUT, "fx/knife.png"))
+    # bow in hand: belly bulging to +x, string straight on the archer's side
+    c = Canvas(26, 80)
+    c.arc([-36, 2, 22, 78], 290, 70, (122, 82, 48, 255), 3.6)
+    c.arc([-36, 2, 22, 78], 300, 60, (176, 130, 80, 255), 1.2)
+    c.line([(9, 6), (9, 74)], (232, 226, 206, 230), 0.9)
+    c.line([(20, 34), (21, 46)], (70, 44, 30, 255), 4.4)
+    c.done().save(os.path.join(OUT, "fx/bow.png"))
+
+
+def hare_sprite():
+    w, h = 64, 48
+    c = Canvas(w, h)
+    c.ellipse([6, 18, 46, 44], (232, 232, 238, 255))
+    c.ellipse([36, 12, 58, 32], (238, 238, 244, 255))
+    c.poly([(42, 16), (36, 0), (41, 0), (47, 15)], (226, 226, 232, 255))
+    c.poly([(47, 15), (46, 0), (51, 0), (52, 15)], (220, 220, 228, 255))
+    c.poly([(38.5, 2), (40, 2), (45, 15), (43.5, 15)], (214, 176, 176, 255))
+    c.ellipse([50, 19, 53, 22], (30, 24, 24, 255))
+    c.ellipse([2, 22, 12, 32], (246, 246, 250, 255))
+    c.ellipse([12, 38, 26, 46], (210, 210, 218, 255))
+    c.ellipse([34, 38, 46, 46], (210, 210, 218, 255))
+    c.ellipse([12, 34, 44, 44], (214, 214, 222, 255))
+    save_with_normal(c.done(), "actors/hare", strength=2, blur=1)
+
+
+def rose_bush(name, hips=True):
+    w, h = 130, 104
+    c = Canvas(w, h)
+    rng = np.random.default_rng(91)
+    canes = []
+    for _ in range(26):                                        # arching thorny canes from one crown
+        x0 = rng.uniform(52, 78)
+        a = rng.uniform(math.pi * 0.12, math.pi * 0.88)
+        L = rng.uniform(40, 70)
+        x1, y1 = x0 + math.cos(a) * L, h - 8 - math.sin(a) * L
+        mx, my = (x0 + x1) / 2 + rng.uniform(-6, 6), (h - 8 + y1) / 2 - rng.uniform(8, 16)
+        canes.append(((x0, h - 8), (mx, my), (x1, y1)))
+    for (p0, pm, p1) in canes:
+        c.line([p0, pm, p1], (78, 46, 42, 255), 2.6)
+        c.line([(p0[0] + 0.8, p0[1]), (pm[0] + 0.8, pm[1] - 0.6), (p1[0] + 0.6, p1[1] - 0.6)], (118, 74, 64, 255), 0.8)
+        for t in (0.3, 0.55, 0.8):
+            tx = pm[0] + (p1[0] - pm[0]) * t
+            ty = pm[1] + (p1[1] - pm[1]) * t
+            c.poly([(tx, ty), (tx + 3.5, ty - 3), (tx + 1, ty + 1.2)], (54, 30, 26, 255))
+    for (p0, pm, p1) in canes:                                 # snow lies along the top of each arch
+        for t in (0.0, 0.35, 0.7):
+            x = pm[0] + (p1[0] - pm[0]) * t
+            y = pm[1] + (p1[1] - pm[1]) * t - 2
+            rx = rng.uniform(4, 7)
+            c.ellipse([x - rx, y - 2.6, x + rx, y + 1.6], (232, 238, 248, 255))
+    if hips:
+        for (p0, pm, p1) in canes[::2]:
+            for t in (0.85, 1.0):
+                x = pm[0] + (p1[0] - pm[0]) * t + rng.uniform(-2, 2)
+                y = pm[1] + (p1[1] - pm[1]) * t + 4
+                c.ellipse([x - 2.8, y - 3.8, x + 2.8, y + 3.8], (190, 38, 28, 255))
+                c.ellipse([x - 1.8, y - 2.8, x - 0.3, y - 0.8], (246, 128, 90, 255))
+                c.poly([(x - 1.2, y - 3.6), (x, y - 5.6), (x + 1.2, y - 3.6)], (48, 30, 22, 255))
+    save_with_normal(c.done(), name, strength=3, blur=1.2)
+
+
+def items_and_fx():
+    icon_knife(); icon_bow(); icon_arrow(); icon_ash_arrow(); icon_rose_hips(); icon_venison(); icon_bread()
+    icon_hare(); icon_wolf_pelt(); icon_doe_hide(False); icon_doe_hide(True); icon_snare_wire(); icon_paint_tins()
+    icon_iron_bracelet(); icon_coin()
+    fx_sprites(); hare_sprite(); rose_bush("props/rose_bush", True); rose_bush("props/rose_bush_bare", False)
 
 def main():
     os.makedirs(OUT, exist_ok=True)
@@ -616,21 +909,7 @@ def main():
         for e in ex:
             portrait(cid, names[cid], e, pal[cid])
 
-    creature_battle_art("andras_wolf", "The Wolf", (118, 122, 132), (255, 210, 60))
-    creature_battle_art("beast", "The Beast", (196, 152, 70), (80, 220, 120), horns=True)
-
-    cards_path = os.path.join(ROOT, "data", "cards.json")
-    if os.path.exists(cards_path):
-        with open(cards_path) as f:
-            cards = json.load(f)["cards"]
-        for i, c in enumerate(cards):
-            card_art(c["id"], c["name"], 100 + i, c.get("art_motif", "orb"))
-    relic_icon("elains_paint_tins", [(190, 50, 50), (220, 190, 60), (50, 80, 180)])
-    relic_icon("snare_wire", [(170, 176, 190)])
-    relic_icon("iron_bracelet", [(110, 110, 120), (80, 80, 90)])
-    item_icon("venison_strip", (140, 60, 50), "meat")
-    item_icon("hot_water", (190, 200, 220))
-    item_icon("iron_nail", (110, 110, 120), "nail")
+    items_and_fx()
     print("placeholders written to", OUT)
 
 

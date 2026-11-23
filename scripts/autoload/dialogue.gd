@@ -1,12 +1,18 @@
 extends CanvasLayer
-## Dialogue pop-ups: painted portraits slide in over the world (or the battle),
-## typewriter text, choices, and story actions. Content comes from
-## data/book1/dialogue/*.json via DB.scenes.
+## Dialogue: painted portraits slide in over the world, typewriter text in a
+## box at the bottom, choices, and the story actions that scenes trigger.
+## Also "barks": a short line with a small portrait that plays over a fight
+## without stopping it. Content comes from data/book1/dialogue/*.json.
+##
+## Voice rules (so every scene reads the same way):
+##   n     Feyre's narration, first person, past tense. Shown in italics.
+##   s/t   a line spoken aloud by that character (e = portrait expression).
+##   hint  a game tip, shown on its own gold card, never in Feyre's voice.
 
 signal line_finished
 signal scene_finished(id: String)
 
-const TYPE_SPEED := 55.0  # characters per second
+const TYPE_SPEED := 52.0  # characters per second at "Normal"
 
 var active = false
 var _queue_after: Array[Callable] = []
@@ -15,16 +21,28 @@ var _advance = false
 var _choice_made = -1
 
 var root: Control
+var catcher: Control
 var box: PanelContainer
+var name_plate: PanelContainer
 var name_label: Label
 var text_label: RichTextLabel
 var more: Label
+var tip_plate: PanelContainer
 var choices_box: VBoxContainer
 var left_portrait: TextureRect
 var right_portrait: TextureRect
 var _left_char = ""
 var _right_char = ""
 var dim: ColorRect
+var _box_sb: StyleBoxFlat
+var _tip_sb: StyleBoxFlat
+
+var _bark_panel: PanelContainer
+var _bark_face: TextureRect
+var _bark_name: Label
+var _bark_text: Label
+var _barks: Array = []
+var _bark_busy = false
 
 
 func _ready() -> void:
@@ -44,21 +62,33 @@ func _ready() -> void:
 	left_portrait = _make_portrait(true)
 	right_portrait = _make_portrait(false)
 
+	# a click anywhere on screen advances, like the box itself
+	catcher = Control.new()
+	catcher.set_anchors_preset(Control.PRESET_FULL_RECT)
+	catcher.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	catcher.gui_input.connect(_on_box_input)
+	root.add_child(catcher)
+
 	box = PanelContainer.new()
-	var sb = Art.panel_style(Color(0.06, 0.05, 0.08, 0.93), Art.GOLD_DIM, 14, 2)
-	sb.content_margin_left = 40
-	sb.content_margin_right = 40
-	sb.content_margin_top = 34
-	sb.content_margin_bottom = 26
-	box.add_theme_stylebox_override("panel", sb)
+	_box_sb = Art.panel_style(Color(0.06, 0.05, 0.08, 0.94), Art.GOLD_DIM, 14, 2)
+	_box_sb.content_margin_left = 44
+	_box_sb.content_margin_right = 44
+	_box_sb.content_margin_top = 34
+	_box_sb.content_margin_bottom = 26
+	_tip_sb = Art.panel_style(Color(0.1, 0.08, 0.05, 0.95), Art.GOLD, 14, 2)
+	_tip_sb.content_margin_left = 44
+	_tip_sb.content_margin_right = 44
+	_tip_sb.content_margin_top = 34
+	_tip_sb.content_margin_bottom = 26
+	box.add_theme_stylebox_override("panel", _box_sb)
 	box.anchor_left = 0.5
 	box.anchor_right = 0.5
 	box.anchor_top = 1.0
 	box.anchor_bottom = 1.0
-	box.offset_left = -760
-	box.offset_right = 760
-	box.offset_top = -290
-	box.offset_bottom = -36
+	box.offset_left = -780
+	box.offset_right = 780
+	box.offset_top = -296
+	box.offset_bottom = -34
 	box.mouse_filter = Control.MOUSE_FILTER_STOP
 	box.gui_input.connect(_on_box_input)
 	root.add_child(box)
@@ -70,97 +100,94 @@ func _ready() -> void:
 	text_label.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	text_label.add_theme_font_override("normal_font", Art.font("serif"))
 	text_label.add_theme_font_override("italics_font", Art.font("italic"))
+	text_label.add_theme_font_override("bold_font", Art.font("caps"))
 	text_label.add_theme_font_size_override("normal_font_size", 36)
 	text_label.add_theme_font_size_override("italics_font_size", 36)
+	text_label.add_theme_font_size_override("bold_font_size", 28)
 	text_label.add_theme_color_override("default_color", Art.PARCHMENT)
 	box.add_child(text_label)
 
+	name_plate = _plate(Color(0.24, 0.07, 0.1, 0.97), Art.GOLD)
 	name_label = Art.label("", 30, Art.GOLD, "caps")
-	name_label.position = Vector2(box.offset_left + 36, box.offset_top - 26)
-	var name_bg = PanelContainer.new()
-	var nsb = Art.panel_style(Color(0.24, 0.07, 0.1, 0.97), Art.GOLD, 6, 2)
-	nsb.content_margin_top = 4
-	nsb.content_margin_bottom = 4
-	name_bg.add_theme_stylebox_override("panel", nsb)
-	name_bg.anchor_left = 0.5
-	name_bg.anchor_top = 1.0
-	name_bg.anchor_right = 0.5
-	name_bg.anchor_bottom = 1.0
-	name_bg.offset_left = -730
-	name_bg.offset_top = -318
-	name_bg.offset_right = -730
-	name_bg.offset_bottom = -272
-	name_bg.grow_horizontal = Control.GROW_DIRECTION_END
-	name_bg.name = "NamePlate"
-	name_bg.add_child(name_label)
-	name_label.position = Vector2.ZERO
-	root.add_child(name_bg)
+	name_plate.add_child(name_label)
+	root.add_child(name_plate)
+
+	tip_plate = _plate(Color(0.55, 0.42, 0.2, 0.97), Color(1.0, 0.9, 0.6))
+	tip_plate.add_child(Art.label("TIP", 26, Color(0.1, 0.07, 0.04), "caps"))
+	root.add_child(tip_plate)
 
 	more = Art.label("»", 34, Art.GOLD)
 	more.anchor_left = 0.5
 	more.anchor_top = 1.0
 	more.anchor_right = 0.5
 	more.anchor_bottom = 1.0
-	more.offset_left = 710
-	more.offset_top = -88
+	more.offset_left = 728
+	more.offset_top = -86
 	root.add_child(more)
 
 	choices_box = VBoxContainer.new()
-	choices_box.mouse_filter = Control.MOUSE_FILTER_IGNORE  # an empty box must not swallow clicks; the choice buttons still get them
+	choices_box.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	choices_box.anchor_left = 0.5
 	choices_box.anchor_right = 0.5
 	choices_box.anchor_top = 1.0
 	choices_box.anchor_bottom = 1.0
-	choices_box.offset_left = -560
-	choices_box.offset_right = 560
-	choices_box.offset_top = -620
-	choices_box.offset_bottom = -320
+	choices_box.offset_left = -580
+	choices_box.offset_right = 580
+	choices_box.offset_top = -640
+	choices_box.offset_bottom = -326
 	choices_box.alignment = BoxContainer.ALIGNMENT_END
 	choices_box.add_theme_constant_override("separation", 12)
 	root.add_child(choices_box)
 
-	_set_visible(false)
+	_build_bark()
+	box.visible = false
+	box.modulate.a = 0.0
+	name_plate.visible = false
+	tip_plate.visible = false
+	more.visible = false
+
+
+func _plate(bg: Color, border: Color) -> PanelContainer:
+	var p = PanelContainer.new()
+	var sb = Art.panel_style(bg, border, 6, 2)
+	sb.content_margin_top = 4
+	sb.content_margin_bottom = 4
+	p.add_theme_stylebox_override("panel", sb)
+	p.anchor_left = 0.5
+	p.anchor_top = 1.0
+	p.anchor_right = 0.5
+	p.anchor_bottom = 1.0
+	p.offset_left = -748
+	p.offset_top = -324
+	p.offset_right = -748
+	p.offset_bottom = -278
+	p.grow_horizontal = Control.GROW_DIRECTION_END
+	p.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	return p
 
 
 func _make_portrait(left: bool) -> TextureRect:
 	var t = TextureRect.new()
 	t.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
-	t.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT
-	t.size = Vector2(600, 900)
+	t.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 	t.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	t.anchor_top = 1.0
 	t.anchor_bottom = 1.0
 	if left:
 		t.anchor_left = 0.0
 		t.anchor_right = 0.0
-		t.offset_left = 40
-		t.offset_right = 640
+		t.offset_left = 30
+		t.offset_right = 670
 	else:
 		t.anchor_left = 1.0
 		t.anchor_right = 1.0
-		t.offset_left = -640
-		t.offset_right = -40
-		# no flip: final portraits are painted facing the right way (style guide),
-		# and flipping would mirror their lighting and any text
-	t.offset_top = -960
-	t.offset_bottom = -60
+		t.offset_left = -670
+		t.offset_right = -30
+	t.offset_top = -990
+	t.offset_bottom = -40
 	t.modulate.a = 0.0
 	root.add_child(t)
 	return t
-
-
-func _set_visible(v: bool) -> void:
-	box.visible = v
-	root.get_node("NamePlate").visible = v and name_label.text != ""
-	more.visible = false
-	if not v:
-		for c in choices_box.get_children():
-			c.queue_free()
-		_hide_portrait(left_portrait)
-		_hide_portrait(right_portrait)
-		_left_char = ""
-		_right_char = ""
-		create_tween().tween_property(dim, "color:a", 0.0, 0.25)
 
 
 # ------------------------------------------------------------------ public
@@ -171,69 +198,106 @@ func play(scene_id: String) -> void:
 	var was_active = active
 	active = true
 	if not was_active:
-		create_tween().tween_property(dim, "color:a", 0.25, 0.25)
-	var stop = await _run_scene(scene_id)
+		_open()
+	var _stop = await _run_scene(scene_id)
 	if not was_active:
+		await _close()
 		active = false
-		_set_visible(false)
 		scene_finished.emit(scene_id)
 		await get_tree().process_frame
 		var pending = _queue_after.duplicate()
 		_queue_after.clear()
 		for c in pending:
 			await c.call()
-	elif stop:
-		pass
+
+
+func _open() -> void:
+	catcher.mouse_filter = Control.MOUSE_FILTER_STOP
+	create_tween().tween_property(dim, "color:a", 0.28, 0.25)
+	UI.set_prompt("")
+
+
+func _close() -> void:
+	catcher.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	for c in choices_box.get_children():
+		c.queue_free()
+	_hide_portrait(left_portrait)
+	_hide_portrait(right_portrait)
+	_left_char = ""
+	_right_char = ""
+	name_plate.visible = false
+	tip_plate.visible = false
+	more.visible = false
+	var tw = create_tween().set_parallel(true)
+	tw.tween_property(dim, "color:a", 0.0, 0.25)
+	tw.tween_property(box, "modulate:a", 0.0, 0.18)
+	await tw.finished
+	box.visible = false
 
 
 ## Returns true if a terminal action ended the scene early.
 func _run_scene(scene_id: String) -> bool:
 	var lines: Array = DB.scenes[scene_id].get("lines", [])
 	for line in lines:
-		if not _cond_ok(line):
+		if not cond_ok(line):
 			continue
 		if line.has("do"):
 			for a in line.do:
 				if await _run_action(a):
 					return true
 		if line.has("n"):
-			await _show_line("", "", line.n)
+			await _show_line("", "", String(line.n))
+		elif line.has("hint"):
+			if Settings.get_v("show_hints"):
+				await _show_line("", "tip", String(line.hint))
 		elif line.has("t") and line.has("s"):
-			await _show_line(line.s, line.get("e", "neutral"), line.t)
+			await _show_line(String(line.s), String(line.get("e", "neutral")), String(line.t))
 		if line.has("choices"):
-			var opts: Array = line.choices.filter(func(c): return _cond_ok(c))
-			var picked: int = await _ask(opts)
-			var pick: Dictionary = opts[picked]
-			for a in pick.get("do", []):
-				if await _run_action(a):
-					return true
-			if pick.has("goto"):
-				return await _run_scene(pick.goto)
+			var opts: Array = line.choices.filter(func(c): return cond_ok(c))
+			if not opts.is_empty():
+				var picked: int = await _ask(opts)
+				var pick: Dictionary = opts[picked]
+				for a in pick.get("do", []):
+					if await _run_action(a):
+						return true
+				if pick.has("goto"):
+					return await _run_scene(pick.goto)
 		if line.has("goto"):
 			return await _run_scene(line.goto)
 	return false
 
 
-func _cond_ok(d: Dictionary) -> bool:
+func cond_ok(d: Dictionary) -> bool:
 	if d.has("if_flag") and not GameState.has_flag(d.if_flag):
 		return false
 	if d.has("if_not_flag") and GameState.has_flag(d.if_not_flag):
+		return false
+	if d.has("if_item") and not GameState.has_item(d.if_item):
+		return false
+	if d.has("if_not_item") and GameState.has_item(d.if_not_item):
+		return false
+	if d.has("if_chapter") and GameState.chapter != int(d.if_chapter):
 		return false
 	return true
 
 
 # ------------------------------------------------------------------- lines
 func _show_line(speaker: String, expr: String, text: String) -> void:
-	box.visible = true
-	var plate: Control = root.get_node("NamePlate")
+	if not box.visible:
+		box.visible = true
+		create_tween().tween_property(box, "modulate:a", 1.0, 0.18)
+	var tip = expr == "tip"
+	box.add_theme_stylebox_override("panel", _tip_sb if tip else _box_sb)
+	tip_plate.visible = tip
 	if speaker == "":
 		name_label.text = ""
-		plate.visible = false
-		text_label.text = "[i]" + text + "[/i]"
-		_focus(null)
+		name_plate.visible = false
+		text_label.text = text if tip else "[i]" + text + "[/i]"
+		if not tip:
+			_focus(null)
 	else:
 		name_label.text = DB.character_name(speaker).to_upper()
-		plate.visible = true
+		name_plate.visible = true
 		text_label.text = text
 		_set_portrait(speaker, expr)
 	text_label.visible_characters = 0
@@ -242,8 +306,9 @@ func _show_line(speaker: String, expr: String, text: String) -> void:
 	_advance = false
 	var total = text_label.get_total_character_count()
 	var shown = 0.0
+	var speed = TYPE_SPEED * float(Settings.get_v("text_speed"))
 	while shown < total and not _skip:
-		shown += TYPE_SPEED * get_process_delta_time() * (1.0 if not Input.is_action_pressed("sprint") else 4.0)
+		shown += speed * get_process_delta_time() * (1.0 if not Input.is_action_pressed("sprint") else 4.0)
 		text_label.visible_characters = int(shown)
 		await get_tree().process_frame
 	text_label.visible_characters = -1
@@ -252,6 +317,7 @@ func _show_line(speaker: String, expr: String, text: String) -> void:
 	while not _advance:
 		await get_tree().process_frame
 	more.visible = false
+	Audio.ui("dialogue_next", -14.0)
 	line_finished.emit()
 
 
@@ -261,27 +327,24 @@ func _set_portrait(speaker: String, expr: String) -> void:
 	var tex = Art.portrait(speaker, expr)
 	var current = _left_char if left else _right_char
 	tr.texture = tex
+	var base_l = 30.0 if left else -670.0
 	if current != speaker:
-		# slide in
-		var base_l = 40.0 if left else -640.0
 		var from = base_l - 160.0 if left else base_l + 160.0
 		tr.offset_left = from
-		tr.offset_right = from + 600
+		tr.offset_right = from + 640
 		tr.modulate.a = 0.0
 		var tw = create_tween().set_parallel(true).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
 		tw.tween_property(tr, "offset_left", base_l, 0.35)
-		tw.tween_property(tr, "offset_right", base_l + 600, 0.35)
+		tw.tween_property(tr, "offset_right", base_l + 640, 0.35)
 		tw.tween_property(tr, "modulate:a", 1.0, 0.3)
 		if left:
 			_left_char = speaker
 		else:
 			_right_char = speaker
 	else:
-		# small emphasis pop on expression change
 		var tw2 = create_tween()
-		tr.scale = Vector2(1.0, 1.0)
-		tw2.tween_property(tr, "offset_top", -975.0, 0.08)
-		tw2.tween_property(tr, "offset_top", -960.0, 0.12)
+		tw2.tween_property(tr, "offset_top", -1004.0, 0.08)
+		tw2.tween_property(tr, "offset_top", -990.0, 0.12)
 	_focus(tr)
 
 
@@ -304,12 +367,17 @@ func _ask(opts: Array) -> int:
 	for c in choices_box.get_children():
 		c.queue_free()
 	var i = 0
+	var focus_sb = Art.panel_style(Color(0.24, 0.12, 0.12, 0.97), Art.GOLD, 8)
 	for o in opts:
-		var b = Art.button(str(i + 1) + ".  " + o.t, 28)
+		var b = Art.button(str(i + 1) + ".  " + String(o.t), 28)
 		b.alignment = HORIZONTAL_ALIGNMENT_LEFT
+		b.add_theme_stylebox_override("focus", focus_sb)
+		b.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		var idx = i
 		b.pressed.connect(func(): _choice_made = idx)
+		b.modulate.a = 0.0
 		choices_box.add_child(b)
+		create_tween().tween_property(b, "modulate:a", 1.0, 0.15).set_delay(0.05 * i)
 		i += 1
 	if choices_box.get_child_count() > 0:
 		(choices_box.get_child(0) as Button).grab_focus.call_deferred()
@@ -317,19 +385,21 @@ func _ask(opts: Array) -> int:
 		await get_tree().process_frame
 	for c in choices_box.get_children():
 		c.queue_free()
+	Audio.ui("choice", -8.0)
 	return _choice_made
 
 
 # ------------------------------------------------------------------- input
 func _on_box_input(ev: InputEvent) -> void:
-	if ev is InputEventMouseButton and ev.pressed and ev.button_index == MOUSE_BUTTON_LEFT:
-		_press()
+	if ev is InputEventMouseButton and ev.pressed and ev.button_index == MOUSE_BUTTON_LEFT and active:
+		if choices_box.get_child_count() == 0:
+			_press()
 
 
 func _unhandled_input(ev: InputEvent) -> void:
 	if not active:
 		return
-	if ev.is_action_pressed("interact") or ev.is_action_pressed("advance"):
+	if ev.is_action_pressed("interact") or ev.is_action_pressed("advance") or ev.is_action_pressed("use_item"):
 		if choices_box.get_child_count() == 0:
 			_press()
 			get_viewport().set_input_as_handled()
@@ -354,84 +424,184 @@ func auto_advance() -> void:
 		_choice_made = 0
 
 
+# ------------------------------------------------------------------- barks
+func _build_bark() -> void:
+	_bark_panel = PanelContainer.new()
+	var sb = Art.panel_style(Color(0.06, 0.05, 0.08, 0.9), Art.GOLD_DIM, 12, 2)
+	sb.content_margin_left = 12
+	sb.content_margin_top = 10
+	sb.content_margin_bottom = 10
+	sb.content_margin_right = 24
+	_bark_panel.add_theme_stylebox_override("panel", sb)
+	_bark_panel.anchor_left = 0.5
+	_bark_panel.anchor_right = 0.5
+	_bark_panel.anchor_top = 1.0
+	_bark_panel.anchor_bottom = 1.0
+	_bark_panel.offset_left = -470
+	_bark_panel.offset_right = 470
+	_bark_panel.offset_top = -420
+	_bark_panel.offset_bottom = -290
+	_bark_panel.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_bark_panel.visible = false
+	root.add_child(_bark_panel)
+	var h = HBoxContainer.new()
+	h.add_theme_constant_override("separation", 16)
+	_bark_panel.add_child(h)
+	_bark_face = TextureRect.new()
+	_bark_face.custom_minimum_size = Vector2(104, 104)
+	_bark_face.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	_bark_face.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
+	h.add_child(_bark_face)
+	var v = VBoxContainer.new()
+	v.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	v.alignment = BoxContainer.ALIGNMENT_CENTER
+	h.add_child(v)
+	_bark_name = Art.label("", 22, Art.GOLD, "caps")
+	v.add_child(_bark_name)
+	_bark_text = Art.label("", 28, Art.PARCHMENT, "serif")
+	_bark_text.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	v.add_child(_bark_text)
+
+
+## A line over the action: the fight does not stop for it.
+func bark(speaker: String, expr: String, text: String) -> void:
+	_barks.append([speaker, expr, text])
+	if _bark_busy:
+		return
+	_bark_busy = true
+	while not _barks.is_empty():
+		var b: Array = _barks.pop_front()
+		_bark_name.text = DB.character_name(b[0]).to_upper()
+		_bark_text.text = String(b[2])
+		_bark_face.texture = _face(String(b[0]), String(b[1]))
+		_bark_panel.visible = true
+		_bark_panel.modulate.a = 0.0
+		var tw = create_tween()
+		tw.tween_property(_bark_panel, "modulate:a", 1.0, 0.2)
+		var hold = 2.4 + String(b[2]).length() * 0.045
+		var t = 0.0
+		while t < hold:
+			await get_tree().process_frame
+			if not active:     # a full scene hides the bark but keeps its time
+				t += get_process_delta_time()
+			_bark_panel.visible = not active
+		var tw2 = create_tween()
+		tw2.tween_property(_bark_panel, "modulate:a", 0.0, 0.3)
+		await tw2.finished
+	_bark_panel.visible = false
+	_bark_busy = false
+
+
+## The face from a portrait: the top of the painting, square.
+func _face(speaker: String, expr: String) -> Texture2D:
+	var tex = Art.portrait(speaker, expr)
+	if tex == null:
+		return null
+	var w = float(tex.get_width())
+	var at = AtlasTexture.new()
+	at.atlas = tex
+	at.region = Rect2(w * 0.18, w * 0.06, w * 0.64, w * 0.64)
+	return at
+
+
 # ----------------------------------------------------------------- actions
-## Returns true when the action ends the current scene (goto, battle...).
+## Returns true when the action ends the current scene (goto, game over...).
 func _run_action(a: Dictionary) -> bool:
-	match a.type:
+	match String(a.type):
 		"chapter_card":
 			GameState.chapter = int(a.n)
+			_set_box_hidden(true)
 			await UI.chapter_card(int(a.n))
+			_set_box_hidden(false)
 		"objective":
-			GameState.set_objective(a.text)
+			GameState.set_objective(String(a.text))
 		"journal":
-			GameState.unlock_lore(a.id)
+			GameState.unlock_lore(String(a.id))
+		"place":
+			GameState.discover_place(String(a.id))
 		"set_flag":
-			GameState.set_flag(a.flag, a.get("value", true))
+			GameState.set_flag(String(a.flag), a.get("value", true))
 		"item":
-			GameState.add_item(a.id, int(a.get("n", 1)), a.get("label", ""))
-		"relic":
-			GameState.add_relic(a.id)
-			await UI.relic_popup(a.id)
+			GameState.add_item(String(a.id), int(a.get("n", 1)))
+		"take_item":
+			var id: String = a.id
+			var want = a.get("n", 1)
+			var n = GameState.count(id) if typeof(want) == TYPE_STRING else min(int(want), GameState.count(id))
+			if n > 0:
+				GameState.remove_item(id, n)
+				if a.has("toast"):
+					UI.toast(String(a.toast))
 		"coins":
 			GameState.add_coins(int(a.n))
 		"heal":
-			GameState.hp = min(GameState.max_hp, GameState.hp + int(a.amount))
-			GameState.changed.emit()
+			GameState.heal(int(a.amount))
 		"heal_full":
-			GameState.hp = GameState.max_hp
-			GameState.changed.emit()
+			GameState.set_hp(GameState.max_hp)
 		"unlock_tier":
-			GameState.apply_tier(int(a.tier))
+			GameState.apply_tier(int(a.tier), false)
+			GameState.set_hp(GameState.max_hp)
+			_set_box_hidden(true)
 			await UI.tier_popup(int(a.tier))
-		"card_reward":
-			await UI.card_reward(a.get("pools", ["hunter_common"]))
-		"open_upgrade":
-			await UI.upgrade_picker()
-			if a.has("flag"):
-				GameState.set_flag(a.flag)
+			_set_box_hidden(false)
 		"open_shop":
 			_set_box_hidden(true)
-			await UI.open_shop(a.shop)
+			await UI.open_shop(String(a.shop))
 			_set_box_hidden(false)
 		"sell_hides":
-			var p: Dictionary = DB.hide_prices
-			var total = int(p.get("wolf_pelt", 0))
-			total += int(p.get("doe_hide", 0)) if GameState.has_flag("doe_saved") else int(p.get("doe_hide_damaged", 0))
-			GameState.add_coins(total)
-		"remove_card":
-			GameState.remove_card_id(a.id, bool(a.get("all", false)))
-			if a.has("toast"):
-				UI.toast(a.toast)
+			var total = 0
+			for id2 in DB.hide_prices:
+				var c = GameState.count(id2)
+				if c > 0:
+					GameState.remove_item(id2, c)
+					total += int(DB.hide_prices[id2]) * c
+			if total > 0:
+				GameState.add_coins(total)
+		"leave_coins":
+			# Chapter 4: she leaves what she has for her family
+			var left = GameState.coins
+			if left > 0:
+				GameState.coins = 0
+				GameState.changed.emit()
+				UI.toast("You leave %d coin on the dresser for them." % left)
 		"save_checkpoint":
 			SaveSystem.save_slot("auto")
-			UI.toast("Checkpoint saved.")
+			UI.toast("Saved.")
 		"time":
 			GameState.hour = float(a.hour)
 			GameState.changed.emit()
 		"shake":
 			UI.shake(float(a.get("strength", 10)))
+		"sfx":
+			Audio.sfx(String(a.name), float(a.get("db", 0.0)))
+		"music":
+			if String(a.name) == "":
+				Audio.music_stop(float(a.get("fade", 2.0)))
+			else:
+				Audio.music(String(a.name), float(a.get("fade", 2.0)))
+		"region_call":
+			var r = Router.current_region
+			if r and r.has_method(String(a.method)):
+				await r.call(String(a.method))
 		"door_burst":
 			if Router.current_region and Router.current_region.has_method("door_burst"):
 				Router.current_region.door_burst()
 		"fade_to_black":
 			_set_box_hidden(true)
-			await UI.fade_to_black_card(a.get("text", ""))
+			await UI.fade_to_black_card(String(a.get("text", "")))
 			_set_box_hidden(false)
-		"start_battle":
-			var e: String = a.enemy
-			var w: String = a.get("on_win", "")
-			var l: String = a.get("on_lose", "")
-			_queue_after.append(func(): await Router.start_battle(e, w, l))
+		"start_hunt":
+			_queue_after.append(func():
+				if Router.current_region and Router.current_region.has_method("start_hunt"):
+					Router.current_region.start_hunt())
 			return true
 		"goto":
 			if a.has("chapter"):
 				GameState.chapter = int(a.chapter)
 			if a.has("hour"):
 				GameState.hour = float(a.hour)
-			var r: String = a.region
-			var s: String = a.get("spawn", "")
-			var oe: String = a.get("on_enter", "")
-			_queue_after.append(func(): await Router.goto_region(r, s, oe))
+			var rg: String = a.region
+			var sp: String = a.get("spawn", "")
+			_queue_after.append(func(): await Router.goto_region(rg, sp))
 			return true
 		"game_over":
 			_queue_after.append(func(): await UI.game_over())
@@ -451,5 +621,8 @@ func _run_action(a: Dictionary) -> bool:
 
 
 func _set_box_hidden(h: bool) -> void:
-	box.visible = not h
-	root.get_node("NamePlate").visible = not h and name_label.text != ""
+	box.visible = not h and text_label.text != ""
+	name_plate.visible = not h and name_label.text != ""
+	if h:
+		tip_plate.visible = false
+		more.visible = false

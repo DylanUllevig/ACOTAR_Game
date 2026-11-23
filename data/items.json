@@ -1,9 +1,84 @@
 {
-  "schema": 1,
+  "schema": 2,
+  "notes": "Everything Feyre can carry. kind: weapon | ammo | food | material | keepsake. use: knife | bow | eat (what left-click does when the item is selected on the hotbar). A bow-type item fires the ammo named in 'ammo'. stack = most per slot. price = what a shop asks; sell = what a shop pays.",
+  "inventory_size": 30,
+  "hotbar_size": 10,
   "items": {
-    "venison_strip": {"name": "Venison Strip", "icon": "items/venison_strip.png", "battle": true, "text": "Heal 6 HP.", "effects": [{"type": "heal", "amount": 6}], "price": 4, "source": {"chapter": 2}},
-    "hot_water": {"name": "Cup of Hot Water", "icon": "items/hot_water.png", "battle": true, "text": "Gain 1 Energy. ('We couldn't even afford tea these days.')", "effects": [{"type": "energy", "amount": 1}], "price": 3, "source": {"chapter": 2}},
-    "iron_nail": {"name": "Iron Nail", "icon": "items/iron_nail.png", "battle": true, "text": "Deal 3 damage, or 9 to a Fae enemy.", "effects": [{"type": "damage", "amount": 3, "fae_amount": 9}], "price": 6, "source": {"chapter": 4, "note": "'A nail—I'd take a damned iron nail, if it were available.'"}}
+    "hunting_knife": {
+      "name": "Hunting Knife", "kind": "weapon", "use": "knife", "icon": "items/hunting_knife.png", "stack": 1,
+      "text": "Wooden hilt, old blade, kept sharp. Left-click to slash toward the cursor.",
+      "damage": 7, "reach": 82, "arc_deg": 130, "cooldown": 0.34, "knockback": 240
+    },
+    "bow": {
+      "name": "Hunting Bow", "kind": "weapon", "use": "bow", "ammo": "arrow", "icon": "items/bow.png", "stack": 1,
+      "text": "Hold left-click to draw, release to loose. A full draw flies faster and hits harder. Fires plain arrows.",
+      "draw_time": 0.8, "min_damage": 6, "max_damage": 18, "speed_min": 700, "speed_max": 1350, "range": 1000
+    },
+    "ash_arrow": {
+      "name": "Ash Arrow", "kind": "ammo", "use": "bow", "ammo": "ash_arrow", "icon": "items/ash_arrow.png", "stack": 1,
+      "text": "Long, heavy, mountain ash with an iron head. Select it to nock it on the bow. The stories say ash makes faerie healing falter.",
+      "bonus_damage": 8, "effect": "ash_struck"
+    },
+    "arrow": {
+      "name": "Arrow", "kind": "ammo", "use": "bow", "ammo": "arrow", "icon": "items/arrow.png", "stack": 30,
+      "text": "Plain fletching, iron tip. Shot arrows can be picked up again unless they break.",
+      "price": 2
+    },
+    "rose_hips": {
+      "name": "Rose Hips", "kind": "food", "use": "eat", "icon": "items/rose_hips.png", "stack": 20,
+      "text": "Wrinkled red hips from a wild rose, sweeter after the frost. Restores 5 HP.",
+      "heal": 5
+    },
+    "venison_strip": {
+      "name": "Venison Strip", "kind": "food", "use": "eat", "icon": "items/venison_strip.png", "stack": 10,
+      "text": "Dried, salted, chewy. Restores 12 HP.",
+      "heal": 12, "price": 4
+    },
+    "bread": {
+      "name": "Heel of Bread", "kind": "food", "use": "eat", "icon": "items/bread.png", "stack": 10,
+      "text": "Dark rye, a day old. Restores 8 HP.",
+      "heal": 8, "price": 3
+    },
+    "hare": {
+      "name": "Snow Hare", "kind": "material", "icon": "items/hare.png", "stack": 10,
+      "text": "Thin from the winter, but meat is meat. Worth a coin or two at market.",
+      "sell": 2
+    },
+    "wolf_pelt": {
+      "name": "Wolf Pelt", "kind": "material", "icon": "items/wolf_pelt.png", "stack": 1,
+      "text": "Charcoal, black and ivory, and far too large. It will fetch a good price, if anyone believes where it came from.",
+      "sell": 18, "key": true
+    },
+    "doe_hide": {
+      "name": "Doe Hide", "kind": "material", "icon": "items/doe_hide.png", "stack": 1,
+      "text": "Clean and whole. A fair price at market.",
+      "sell": 12, "key": true
+    },
+    "doe_hide_torn": {
+      "name": "Torn Doe Hide", "kind": "material", "icon": "items/doe_hide_torn.png", "stack": 1,
+      "text": "Ripped by the wolf's teeth. Worth very little now.",
+      "sell": 3, "key": true
+    },
+    "snare_wire": {
+      "name": "Snare Wire", "kind": "material", "icon": "items/snare_wire.png", "stack": 5,
+      "text": "Good wire, carefully coiled, left behind by a hunter who never came back for it.",
+      "sell": 3
+    },
+    "paint_tins": {
+      "name": "Elain's Paint Tins", "kind": "keepsake", "icon": "items/paint_tins.png", "stack": 1,
+      "text": "Three small tins, red, yellow and blue, almost empty. The only gift Elain ever gave her.",
+      "key": true
+    },
+    "iron_bracelet": {
+      "name": "Iron Bracelet", "kind": "keepsake", "icon": "items/iron_bracelet.png", "stack": 1,
+      "text": "Plain iron, cold on the wrist. Every sensible mortal wears one. Nesta would approve.",
+      "price": 12
+    }
   },
-  "item_slots": 3
+  "starting_inventory": [
+    {"slot": 0, "id": "hunting_knife", "n": 1},
+    {"slot": 1, "id": "bow", "n": 1},
+    {"slot": 2, "id": "ash_arrow", "n": 1},
+    {"slot": 10, "id": "arrow", "n": 2}
+  ]
 }

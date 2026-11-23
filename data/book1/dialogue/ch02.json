@@ -1,93 +1,398 @@
 {
-  "schema": 1,
-  "scenes": {
-    "ch02_arrive": {"lines": [
-      {"do": [{"type": "chapter_card", "n": 2}]},
-      {"n": "Heat and light blind her as she slips inside. The doe hits the table with a thud."},
-      {"s": "elain", "e": "neutral", "t": "Feyre! Where did you get that?"},
-      {"s": "feyre", "e": "cold", "t": "Where do you think I got it?"},
-      {"s": "father", "e": "neutral", "t": "What luck you had today, in bringing us such a feast."},
-      {"s": "nesta", "e": "smirk", "t": "You stink like a pig covered in its own filth. Can't you at least try to pretend you're not an ignorant peasant?"},
-      {"choices": [
-        {"t": "Swallow it. (Canon)", "do": [{"type": "set_flag", "flag": "ch02_swallowed"}], "goto": "ch02_arrive_b"},
-        {"t": "\"At least I bring home something worth eating.\"", "do": [{"type": "set_flag", "flag": "ch02_snapped"}], "goto": "ch02_arrive_snap"}
-      ]}
-    ]},
-    "ch02_arrive_snap": {"lines": [
-      {"s": "nesta", "e": "angry", "t": "Something worth eating, and the stink to go with it."},
-      {"goto": "ch02_arrive_b"}
-    ]},
-    "ch02_arrive_b": {"lines": [
-      {"s": "feyre", "e": "neutral", "t": "We eat half the meat this week and dry the rest. I'll sell the hides at market tomorrow."},
-      {"n": "No one confirms they heard her."},
-      {"do": [{"type": "objective", "text": "Speak with your family, then sit down to eat at the table."}]}
-    ]},
-    "ch02_father": {"lines": [
-      {"if_not_flag": "ch02_father_talked", "n": "Father braces a hand on the table and turns the wolf pelt over, tracing the bloody underside."},
-      {"if_not_flag": "ch02_father_talked", "s": "father", "e": "afraid", "t": "Feyre … where did you get this? The risk …"},
-      {"if_not_flag": "ch02_father_talked", "s": "feyre", "e": "cold", "t": "I had no other choice."},
-      {"if_not_flag": "ch02_father_talked", "n": "What she wants to say: were it not for me, we would starve. She doesn't."},
-      {"if_flag": "ch02_father_talked", "s": "father", "e": "sad", "t": "Sit by the fire a while. Your hands are blue."},
-      {"do": [{"type": "set_flag", "flag": "ch02_father_talked"}]}
-    ]},
-    "ch02_elain": {"lines": [
-      {"s": "elain", "e": "tender", "t": "I'd love a new cloak. Please, Feyre. I'll shiver to death in this old one."},
-      {"s": "nesta", "e": "angry", "t": "I need a new pair of boots."},
-      {"n": "Nesta's still-shiny boots sit by the door, beside Feyre's, which are held together by fraying laces."},
-      {"do": [{"type": "set_flag", "flag": "ch02_elain_talked"}]}
-    ]},
-    "ch02_nesta": {"lines": [
-      {"if_not_flag": "ch02_nesta_talked", "s": "nesta", "e": "smirk", "t": "Tomas Mandray is going to propose to me any day now. Clare Beddor said so."},
-      {"if_not_flag": "ch02_nesta_talked", "s": "feyre", "e": "angry", "t": "You can't chop wood for us, but you want to marry a woodcutter's son?"},
-      {"if_not_flag": "ch02_nesta_talked", "choices": [
-        {"t": "\"Love won't feed a hungry belly.\" (Canon)", "goto": "ch02_nesta_canon"},
-        {"t": "\"Then marry him. One less mouth.\"", "goto": "ch02_nesta_cold"}
-      ]},
-      {"if_flag": "ch02_nesta_talked", "s": "nesta", "e": "angry", "t": "Leave me be, Feyre."}
-    ]},
-    "ch02_nesta_canon": {"lines": [
-      {"s": "feyre", "e": "cold", "t": "Love won't feed a hungry belly."},
-      {"s": "nesta", "e": "angry", "t": "You're just a half-wild beast with the nerve to bark orders at all hours. Someday you'll have no one left to remember you."},
-      {"n": "She's heard it before. It still burns."},
-      {"do": [{"type": "set_flag", "flag": "ch02_nesta_talked"}]}
-    ]},
-    "ch02_nesta_cold": {"lines": [
-      {"s": "nesta", "e": "smirk", "t": "Finally, something we agree on."},
-      {"n": "It doesn't feel like winning."},
-      {"do": [{"type": "set_flag", "flag": "ch02_nesta_talked"}]}
-    ]},
-    "ch02_foxglove": {"lines": [
-      {"n": "The pillar of foxglove she painted along the table's edge: too dark, too blue, no white freckling inside the trumpets. Already chipped and fading."},
-      {"if_not_flag": "has_paint_tins", "n": "Tucked behind the curtain, the three little tins Elain bought her the one good summer. Red, yellow, blue. Almost empty."},
-      {"if_not_flag": "has_paint_tins", "s": "feyre", "e": "sad", "t": "The only gift she's ever given me. I'll keep them close."},
-      {"if_not_flag": "has_paint_tins", "do": [{"type": "set_flag", "flag": "has_paint_tins"}, {"type": "relic", "id": "elains_paint_tins"}, {"type": "journal", "id": "lore_paint_tins"}]}
-    ]},
-    "ch02_hearth": {"lines": [
-      {"if_not_flag": "ch02_upgraded", "n": "A whetstone by the hearthstones she painted with tiny curls of flame. Time to sharpen something."},
-      {"if_not_flag": "ch02_upgraded", "do": [{"type": "open_upgrade", "flag": "ch02_upgraded"}]},
-      {"if_flag": "ch02_upgraded", "n": "The fire is down to its last logs. Only five left on the pile."}
-    ]},
-    "ch02_woodpile": {"lines": [
-      {"n": "Five logs. Nesta was supposed to chop wood today."},
-      {"s": "nesta", "e": "smirk", "t": "I hate chopping wood. I always get splinters. You're so much better at it."}
-    ]},
-    "ch02_table_early": {"lines": [
-      {"s": "feyre", "e": "neutral", "t": "Talk to them first. Then we eat."}
-    ]},
-    "ch02_dinner": {"lines": [
-      {"n": "They dine on roasted venison that night. She lets each of them take a small second helping before she declares the meat off-limits."},
-      {"do": [{"type": "unlock_tier", "tier": 1}, {"type": "heal_full"}]},
-      {"s": "father", "e": "neutral", "t": "If it's love, Feyre, let her keep it. We need hope as much as we need bread and meat."},
-      {"s": "feyre", "e": "cold", "t": "There is no such thing."},
-      {"n": "Eleven years ago, at her mother's deathbed: Stay together, and look after them. In their world a promise is law."},
-      {"do": [{"type": "set_flag", "flag": "ch02_dinner_done"}, {"type": "journal", "id": "lore_vow"}, {"type": "objective", "text": "Rest in the ironwood bed."}]}
-    ]},
-    "ch02_bed_early": {"lines": [
-      {"s": "feyre", "e": "hungry", "t": "Not yet. Not on an empty stomach, for once."}
-    ]},
-    "ch02_bed": {"lines": [
-      {"n": "The ironwood bed: the last remnant of their wealth, the bed they were born in and their mother died in. The one thing she never painted."},
-      {"do": [{"type": "save_checkpoint"}, {"type": "goto", "region": "village", "spawn": "road", "hour": 9.0, "chapter": 3}]}
-    ]}
+ "schema": 2,
+ "notes": "Line forms: {n} Feyre's narration, first person past tense, shown in italics; {s,e,t} a line spoken aloud (speaker, portrait expression, text); {hint} a game tip on its own card; {choices:[{t,goto,do}]}; {do:[actions]}; {goto}. Any line or choice may carry if_flag, if_not_flag, if_item, if_not_item or if_chapter. Wording is written for the game; the few short book lines kept are listed in quotes.json.",
+ "scenes": {
+  "ch02_arrive": {
+   "lines": [
+    {
+     "do": [
+      {
+       "type": "chapter_card",
+       "n": 2
+      }
+     ]
+    },
+    {
+     "n": "Heat and light blinded me as I shouldered through the door. The doe hit the table with a thud."
+    },
+    {
+     "s": "elain",
+     "e": "neutral",
+     "t": "Feyre! Where did you find that?"
+    },
+    {
+     "s": "feyre",
+     "e": "cold",
+     "t": "Where do you think?"
+    },
+    {
+     "s": "father",
+     "e": "neutral",
+     "t": "Such luck you had today, bringing us a feast like this."
+    },
+    {
+     "s": "nesta",
+     "e": "smirk",
+     "t": "You reek of blood and wet dog. You might at least wash before you sit down with us."
+    },
+    {
+     "choices": [
+      {
+       "t": "Let it go.",
+       "goto": "ch02_arrive_b",
+       "do": [
+        {
+         "type": "set_flag",
+         "flag": "ch02_swallowed"
+        }
+       ]
+      },
+      {
+       "t": "\"At least I bring home something to eat.\"",
+       "goto": "ch02_arrive_snap",
+       "do": [
+        {
+         "type": "set_flag",
+         "flag": "ch02_snapped"
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  "ch02_arrive_snap": {
+   "lines": [
+    {
+     "s": "nesta",
+     "e": "angry",
+     "t": "Food, and the stink that comes with it."
+    },
+    {
+     "goto": "ch02_arrive_b"
+    }
+   ]
+  },
+  "ch02_arrive_b": {
+   "lines": [
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "We eat half the meat this week and dry the rest. I'll sell the hides at market tomorrow."
+    },
+    {
+     "n": "Nobody said they'd heard me. Nobody needed to."
+    },
+    {
+     "do": [
+      {
+       "type": "objective",
+       "text": "Talk to Father, Nesta and Elain, then sit down to eat at the table."
+      }
+     ]
+    }
+   ]
+  },
+  "ch02_father": {
+   "lines": [
+    {
+     "n": "Father turned the wolf pelt over in his hands and traced its bloody underside with a thumb.",
+     "if_not_flag": "ch02_father_talked"
+    },
+    {
+     "s": "father",
+     "e": "afraid",
+     "t": "Feyre... where did you get this? The risk you took.",
+     "if_not_flag": "ch02_father_talked"
+    },
+    {
+     "s": "feyre",
+     "e": "cold",
+     "t": "There wasn't another choice.",
+     "if_not_flag": "ch02_father_talked"
+    },
+    {
+     "n": "I didn't say the rest: that without me, we'd starve. He knew it.",
+     "if_not_flag": "ch02_father_talked"
+    },
+    {
+     "s": "father",
+     "e": "sad",
+     "t": "Sit by the fire a while. Your hands are blue.",
+     "if_flag": "ch02_father_talked"
+    },
+    {
+     "do": [
+      {
+       "type": "set_flag",
+       "flag": "ch02_father_talked"
+      }
+     ]
+    }
+   ]
+  },
+  "ch02_elain": {
+   "lines": [
+    {
+     "s": "elain",
+     "e": "tender",
+     "t": "When you sell the hides, could there be a little for a new cloak? This one's nearly through."
+    },
+    {
+     "s": "nesta",
+     "e": "angry",
+     "t": "And I need boots."
+    },
+    {
+     "n": "Nesta's boots by the door still shone. Mine were held together with string."
+    },
+    {
+     "do": [
+      {
+       "type": "set_flag",
+       "flag": "ch02_elain_talked"
+      }
+     ]
+    }
+   ]
+  },
+  "ch02_nesta": {
+   "lines": [
+    {
+     "s": "nesta",
+     "e": "smirk",
+     "t": "Tomas Mandray is going to ask for my hand any day now. Everyone says so.",
+     "if_not_flag": "ch02_nesta_talked"
+    },
+    {
+     "s": "feyre",
+     "e": "angry",
+     "t": "You won't chop our wood, but you'll marry a woodcutter's son?",
+     "if_not_flag": "ch02_nesta_talked"
+    },
+    {
+     "choices": [
+      {
+       "t": "\"Love doesn't fill a belly.\"",
+       "goto": "ch02_nesta_canon"
+      },
+      {
+       "t": "\"Then marry him. One less mouth to feed.\"",
+       "goto": "ch02_nesta_cold"
+      }
+     ],
+     "if_not_flag": "ch02_nesta_talked"
+    },
+    {
+     "s": "nesta",
+     "e": "angry",
+     "t": "Leave me be, Feyre.",
+     "if_flag": "ch02_nesta_talked"
+    }
+   ]
+  },
+  "ch02_nesta_canon": {
+   "lines": [
+    {
+     "s": "feyre",
+     "e": "cold",
+     "t": "Love doesn't fill a belly."
+    },
+    {
+     "s": "nesta",
+     "e": "angry",
+     "t": "You're a half-wild thing that barks orders at all hours. One day there'll be nobody left who remembers you."
+    },
+    {
+     "n": "I'd heard it before. It still stung."
+    },
+    {
+     "do": [
+      {
+       "type": "set_flag",
+       "flag": "ch02_nesta_talked"
+      }
+     ]
+    }
+   ]
+  },
+  "ch02_nesta_cold": {
+   "lines": [
+    {
+     "s": "nesta",
+     "e": "smirk",
+     "t": "At last, something we agree on."
+    },
+    {
+     "n": "It didn't feel like winning."
+    },
+    {
+     "do": [
+      {
+       "type": "set_flag",
+       "flag": "ch02_nesta_talked"
+      }
+     ]
+    }
+   ]
+  },
+  "ch02_foxglove": {
+   "lines": [
+    {
+     "n": "The foxglove I'd painted along the table's edge: too dark, too blue, and already flaking."
+    },
+    {
+     "n": "Behind the curtain sat the three little tins Elain bought me the one good summer. Red, yellow, blue. Nearly empty.",
+     "if_not_flag": "has_paint_tins"
+    },
+    {
+     "s": "feyre",
+     "e": "sad",
+     "t": "The only present she ever gave me. I'll keep them close.",
+     "if_not_flag": "has_paint_tins"
+    },
+    {
+     "do": [
+      {
+       "type": "item",
+       "id": "paint_tins",
+       "n": 1
+      },
+      {
+       "type": "journal",
+       "id": "lore_paint_tins"
+      },
+      {
+       "type": "set_flag",
+       "flag": "has_paint_tins"
+      }
+     ],
+     "if_not_flag": "has_paint_tins"
+    }
+   ]
+  },
+  "ch02_hearth": {
+   "lines": [
+    {
+     "n": "I sat on the hearthstones I'd painted with little curls of flame and let the heat soak back into my hands."
+    },
+    {
+     "do": [
+      {
+       "type": "heal_full"
+      }
+     ]
+    },
+    {
+     "hint": "Resting by a fire restores your health. So does food: rose hips, bread, venison.",
+     "if_not_flag": "hint_hearth"
+    },
+    {
+     "do": [
+      {
+       "type": "set_flag",
+       "flag": "hint_hearth"
+      }
+     ]
+    }
+   ]
+  },
+  "ch02_woodpile": {
+   "lines": [
+    {
+     "n": "Five logs. It was Nesta's turn to chop."
+    },
+    {
+     "s": "nesta",
+     "e": "smirk",
+     "t": "I hate chopping. I always get splinters. You're so much better at it."
+    }
+   ]
+  },
+  "ch02_table_early": {
+   "lines": [
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "Talk to them first. Then we eat."
+    }
+   ]
+  },
+  "ch02_dinner": {
+   "lines": [
+    {
+     "n": "We ate roasted venison that night. I let each of them take a second helping before I called the rest of the meat off-limits."
+    },
+    {
+     "do": [
+      {
+       "type": "unlock_tier",
+       "tier": 1
+      },
+      {
+       "type": "item",
+       "id": "venison_strip",
+       "n": 3
+      }
+     ]
+    },
+    {
+     "s": "father",
+     "e": "neutral",
+     "t": "If Nesta loves the boy, let her keep it. We need hope as much as we need bread and meat."
+    },
+    {
+     "s": "feyre",
+     "e": "cold",
+     "t": "There is no such thing."
+    },
+    {
+     "n": "Eleven years ago, at our mother's deathbed, I promised to look after them. Here, a promise is law."
+    },
+    {
+     "do": [
+      {
+       "type": "set_flag",
+       "flag": "ch02_dinner_done"
+      },
+      {
+       "type": "journal",
+       "id": "lore_vow"
+      },
+      {
+       "type": "objective",
+       "text": "Rest in the ironwood bed."
+      }
+     ]
+    }
+   ]
+  },
+  "ch02_bed_early": {
+   "lines": [
+    {
+     "s": "feyre",
+     "e": "hungry",
+     "t": "Not yet. Not on an empty stomach, for once."
+    }
+   ]
+  },
+  "ch02_bed": {
+   "lines": [
+    {
+     "n": "The ironwood bed: the last of our old wealth. We were born in it, and our mother died in it. The one thing in the house I'd never painted."
+    },
+    {
+     "do": [
+      {
+       "type": "goto",
+       "region": "village",
+       "spawn": "road",
+       "hour": 9.0,
+       "chapter": 3
+      }
+     ]
+    }
+   ]
   }
+ }
 }

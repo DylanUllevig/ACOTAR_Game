@@ -1,15 +1,19 @@
 {
-  "schema": 1,
+  "schema": 2,
+  "notes": "sells: what the keeper sells (price per unit; 'bundle' units per purchase). buys: item kinds or ids the keeper will buy at the item's 'sell' value. The hides go to the mercenary in the story, not to a shop.",
   "shops": {
     "charm_stall": {
       "name": "Charms and Iron",
       "keeper": "A charm-seller with ink-stained fingers",
-      "cards": [{"id": "painters_eye", "price": 10}, {"id": "hurl_the_knife", "price": 9}, {"id": "steady_breath", "price": 6}],
-      "items": [{"id": "iron_nail", "price": 6}, {"id": "hot_water", "price": 3}, {"id": "venison_strip", "price": 4}],
-      "relics": [{"id": "iron_bracelet", "price": 18}],
-      "remove_price": 8,
-      "remove_label": "Trade away a habit (remove a card)"
+      "greeting": "Iron for the wrist, bread for the belly, arrows for whatever's out there. Coin first.",
+      "sells": [
+        {"id": "arrow", "price": 6, "bundle": 3},
+        {"id": "bread", "price": 3, "bundle": 1},
+        {"id": "venison_strip", "price": 4, "bundle": 1},
+        {"id": "iron_bracelet", "price": 12, "bundle": 1, "limit": 1}
+      ],
+      "buys": ["hare", "snare_wire"]
     }
   },
-  "hide_prices": {"wolf_pelt": 18, "doe_hide": 12, "doe_hide_damaged": 3}
+  "hide_prices": {"wolf_pelt": 18, "doe_hide": 12, "doe_hide_torn": 3}
 }

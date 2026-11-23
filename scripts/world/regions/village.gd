@@ -5,10 +5,17 @@ const SQUARE := Vector2(1400, 900)
 
 
 func build() -> void:
+	surface = "mud"
+	combat_allowed = false
+	map_title = "The Village"
+	map_base = Color(0.74, 0.7, 0.66)
 	bounds = Rect2(0, 0, 2800, 1800)
 	spawns = {"road": Vector2(200, 960), "start": Vector2(200, 960)}
 	add_ground_tile("terrain/mud_snow.png", bounds)
 	add_ground_tile("terrain/cobbles.png", Rect2(SQUARE - Vector2(520, 360), Vector2(1040, 720)))
+	map_rect(Rect2(SQUARE - Vector2(520, 360), Vector2(1040, 720)), Color(0.6, 0.58, 0.56))
+	map_line(PackedVector2Array([Vector2(0, 960), Vector2(SQUARE.x - 520, 960)]), Color(0.55, 0.46, 0.38), 60.0)
+	map_line(PackedVector2Array([Vector2(SQUARE.x + 520, 900), Vector2(2800, 960)]), Color(0.55, 0.46, 0.38), 60.0)
 	enclose_bounds()
 	add_sun(-30.0, Color(0.9, 0.92, 1.0), 0.3)
 	_houses()
@@ -66,10 +73,10 @@ func _square() -> void:
 	add_prop("props/fountain_broken.png", SQUARE, 1.3, Vector2(90, 30), Vector2(240, 90))
 	var charm = add_prop("props/stall_red.png", SQUARE + Vector2(-380, -200), 1.3, Vector2(70, 18), Vector2(180, 50))
 	add_light(Vector2(0, -150), Color(1.0, 0.68, 0.35), 0.9, 1.0, true, charm)
-	add_interactable(SQUARE + Vector2(-380, -130), "Browse the charm stall", func(): await Dialogue.play("ch03_charms"), 120)
+	add_interactable(SQUARE + Vector2(-380, -130), "Browse the charm stall", func(): await Dialogue.play("ch03_charms"), 120, "Charm stall")
 	var cob = add_prop("props/stall_blue.png", SQUARE + Vector2(380, -220), 1.3, Vector2(70, 18), Vector2(180, 50))
 	add_light(Vector2(0, -150), Color(1.0, 0.68, 0.35), 0.7, 1.0, true, cob)
-	add_interactable(SQUARE + Vector2(380, -150), "The cobbler", func(): await Dialogue.play("ch03_cobbler"), 120)
+	add_interactable(SQUARE + Vector2(380, -150), "The cobbler", func(): await Dialogue.play("ch03_cobbler"), 120, "Cobbler")
 	# exit east
 	add_trigger(Rect2(Vector2(2660, 760), Vector2(140, 400)), func():
 		if GameState.has_flag("ch03_hides_sold"):
@@ -101,6 +108,14 @@ func _people() -> void:
 		var d = Vector2(rng.randf_range(-160, 160), rng.randf_range(-60, 60))
 		tw.tween_property(v, "position", p + d, rng.randf_range(4.0, 7.0)).set_trans(Tween.TRANS_SINE)
 		tw.tween_property(v, "position", p, rng.randf_range(4.0, 7.0)).set_trans(Tween.TRANS_SINE)
+
+
+func _ready() -> void:
+	super._ready()
+	map_exit(Vector2(2740, 960), "Road home")
+	map_poi(SQUARE, "Market square")
+	Audio.ambience("village")
+	Audio.music("village", 3.0)
 
 
 func on_enter() -> void:

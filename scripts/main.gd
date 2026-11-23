@@ -1,5 +1,5 @@
 extends Node
-## Boot + title screen. Router mounts regions and battles under this node.
+## Boot + title screen. Router mounts regions under this node.
 
 var title: Control
 
@@ -7,9 +7,11 @@ var title: Control
 func _ready() -> void:
 	Router.root = self
 	Router.current_region = null
-	Router.battle = null
+	Router.busy = false
 	Dialogue.active = false
 	UI.modal_open = false
+	get_tree().paused = false
+	Fx.reset_time()
 	if OS.is_debug_build():
 		var problems = DB.validate()
 		for p in problems:
@@ -21,6 +23,8 @@ func _ready() -> void:
 		add_child(t)
 		return
 	_show_title()
+	Audio.music("title", 1.5)
+	Audio.ambience("forest_wind", 2.0)
 	await UI.fade_in(0.8)
 
 
@@ -90,11 +94,14 @@ func _show_title() -> void:
 	b_cont.disabled = not SaveSystem.has_slot("auto")
 	b_cont.pressed.connect(_continue)
 	v.add_child(b_cont)
+	var b_opt = Art.button("Options", 34)
+	b_opt.pressed.connect(_options)
+	v.add_child(b_opt)
 	var b_quit = Art.button("Quit", 34)
 	b_quit.pressed.connect(func(): get_tree().quit())
 	v.add_child(b_quit)
 	b_new.grab_focus.call_deferred()
-	var ver = Art.label("Milestone 1 vertical slice  ·  v%s  ·  placeholder art" % ProjectSettings.get_setting("application/config/version"), 20, Color(1, 1, 1, 0.4), "caps")
+	var ver = Art.label("Milestone 1 vertical slice  ·  v%s" % ProjectSettings.get_setting("application/config/version"), 20, Color(1, 1, 1, 0.4), "caps")
 	ver.anchor_top = 1.0
 	ver.anchor_bottom = 1.0
 	ver.offset_left = 30
@@ -102,8 +109,24 @@ func _show_title() -> void:
 	title.add_child(ver)
 
 
+func _options() -> void:
+	var done = [false]
+	var m = UI._modal("Options", 1560, 860, func(): done[0] = true)
+	var ov = OptionsView.new()
+	ov.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	m[1].add_child(ov)
+	var b = Art.button("Back", 28)
+	b.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
+	b.custom_minimum_size = Vector2(260, 0)
+	b.pressed.connect(func(): done[0] = true)
+	m[1].add_child(b)
+	await UI._wait_until(done)
+	await UI._close_modal(m[0])
+
+
 func _new_game() -> void:
 	GameState.new_game()
+	Audio.music_stop(1.0)
 	await UI.fade_out(0.6)
 	title.get_parent().queue_free()  # the title CanvasLayer
 	await Router.goto_region("forest", "start")

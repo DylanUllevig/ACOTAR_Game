@@ -15,9 +15,15 @@ var doe_on_table: Node2D
 
 func build() -> void:
 	interior = true
+	surface = "wood"
+	combat_allowed = false
+	map_title = "The Archeron Cottage"
+	map_base = Color(0.42, 0.33, 0.26)
+	reveal_radius = 3000.0
 	bounds = Rect2(0, 0, 1500, 980)
 	spawns = {"door": DOOR + Vector2(0, -70), "hearth": HEARTH + Vector2(140, 200), "start": DOOR + Vector2(0, -70)}
 	add_ground_tile("terrain/planks.png", Rect2(60, 60, 1380, 860))
+	map_rect(Rect2(60, 60, 1380, 860), Color(0.62, 0.48, 0.34))
 	_walls()
 	enclose_bounds()
 	_hearth()
@@ -40,6 +46,7 @@ func _wall_rect(r: Rect2, col := Color(0.32, 0.28, 0.26)) -> void:
 	add_child(c)
 	add_wall(r)
 	add_occluder_rect(r)
+	map_rect(r, Color(0.25, 0.2, 0.17))
 
 
 func _walls() -> void:
@@ -80,7 +87,8 @@ func _hearth() -> void:
 	add_flicker(hearth_light, 0.22, 10.0)
 	var ember = add_light(HEARTH + Vector2(0, 20), Color(1.0, 0.4, 0.15), 0.8, 1.2, false)
 	add_flicker(ember, 0.4, 16.0)
-	add_interactable(HEARTH + Vector2(0, 90), "Sit by the hearth", func(): await Dialogue.play("ch02_hearth"), 110)
+	add_interactable(HEARTH + Vector2(0, 90), "Sit by the hearth", func(): await Dialogue.play("ch02_hearth"), 110, "Hearth")
+	map_marks.append(["furniture", HEARTH, Rect2(HEARTH - Vector2(130, 70), Vector2(260, 110))])
 	# woodpile: five logs
 	for i in 5:
 		var lg = Polygon2D.new()
@@ -88,7 +96,7 @@ func _hearth() -> void:
 		lg.color = Color(0.36, 0.24, 0.16)
 		lg.position = Vector2(700 + (i % 3) * 8, 140 + i * 14)
 		add_child(lg)
-	add_interactable(Vector2(730, 190), "The woodpile", func(): await Dialogue.play("ch02_woodpile"), 80)
+	add_interactable(Vector2(730, 190), "The woodpile", func(): await Dialogue.play("ch02_woodpile"), 80, "Woodpile")
 
 
 func _furniture() -> void:
@@ -106,7 +114,8 @@ func _furniture() -> void:
 	body.add_child(cs)
 	body.position = TABLE
 	add_child(body)
-	add_interactable(TABLE + Vector2(0, 100), "Sit down to eat", _table_action, 130)
+	map_marks.append(["furniture", TABLE, Rect2(TABLE - Vector2(170, 70), Vector2(340, 140))])
+	add_interactable(TABLE + Vector2(0, 100), "Sit down to eat", _table_action, 130, "Table")
 	add_interactable(TABLE + Vector2(-190, 0), "The painted foxglove", func(): await Dialogue.play("ch02_foxglove"), 90)
 	if GameState.chapter == 2 and not GameState.has_flag("ch02_dinner_done"):
 		doe_on_table = add_prop("actors/doe.png", TABLE + Vector2(0, 20), 1.0, Vector2.ZERO)
@@ -123,7 +132,8 @@ func _furniture() -> void:
 	quilt.position = Vector2(1240, 300)
 	quilt.z_index = -4
 	add_child(quilt)
-	add_interactable(Vector2(1240, 460), "The ironwood bed", _bed_action, 120)
+	add_interactable(Vector2(1240, 460), "The ironwood bed", _bed_action, 120, "Bed")
+	map_marks.append(["furniture", Vector2(1240, 300), Rect2(Vector2(1090, 190), Vector2(300, 220))])
 	# dresser with painted drawers
 	var dresser = Polygon2D.new()
 	dresser.polygon = PackedVector2Array([Vector2(0, 0), Vector2(160, 0), Vector2(160, 60), Vector2(0, 60)])
@@ -258,7 +268,16 @@ func door_burst() -> void:
 	player.facing = 0
 
 
+func _ready() -> void:
+	super._ready()
+	map_exit(DOOR, "Door")
+	Audio.ambience("hearth")
+	Audio.music("cottage", 3.0)
+
+
 func on_enter() -> void:
 	if GameState.chapter == 2 and not GameState.has_flag("ch02_arrived"):
 		GameState.set_flag("ch02_arrived")
 		await Dialogue.play("ch02_arrive")
+	elif GameState.chapter == 4 and not GameState.has_flag("ch04_done"):
+		await Dialogue.play("ch04_beast")

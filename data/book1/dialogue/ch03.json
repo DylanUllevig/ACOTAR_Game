@@ -1,91 +1,401 @@
 {
-  "schema": 1,
-  "scenes": {
-    "ch03_arrive": {"lines": [
-      {"do": [{"type": "chapter_card", "n": 3}]},
-      {"n": "The trampled snow on the road into the village is speckled brown and black. Elain and Nesta came the moment they saw the hides in her satchel."},
-      {"do": [{"type": "objective", "text": "Sell the hides in the market square. Then head home by the east road."}]}
-    ]},
-    "ch03_acolyte": {"lines": [
-      {"s": "acolyte", "e": "neutral", "t": "May the Immortal Light shine upon thee, sisters. Have you a moment to hear the Word of the Blessed?"},
-      {"s": "nesta", "e": "angry", "t": "No. We don't."},
-      {"n": "Nesta pushes back her sleeve to show the iron bracelet on her wrist. The acolyte gasps."},
-      {"s": "nesta", "e": "angry", "t": "This is what you should be wearing. Not some silver bells to attract those faerie monsters."},
-      {"s": "acolyte", "e": "angry", "t": "Prythian is a land of peace and plenty. Our benevolent masters would never harm us."},
-      {"choices": [
-        {"t": "\"You're fighting an uphill battle.\" (Canon)", "goto": "ch03_acolyte_canon"},
-        {"t": "Say nothing and walk on.", "goto": "ch03_acolyte_end"}
-      ]}
-    ]},
-    "ch03_acolyte_canon": {"lines": [
-      {"s": "feyre", "e": "cold", "t": "You're fighting an uphill battle."},
-      {"s": "acolyte", "e": "neutral", "t": "A worthy cause."},
-      {"s": "feyre", "e": "cold", "t": "No, it's not."},
-      {"goto": "ch03_acolyte_end"}
-    ]},
-    "ch03_acolyte_end": {"lines": [
-      {"do": [{"type": "set_flag", "flag": "ch03_acolyte_done"}, {"type": "journal", "id": "lore_children"}]}
-    ]},
-    "ch03_mercenary": {"lines": [
-      {"if_flag": "ch03_hides_sold", "s": "mercenary", "e": "neutral", "t": "Remember what I said, girl. Stay out of the deep woods."},
-      {"if_not_flag": "ch03_hides_sold", "s": "mercenary", "e": "neutral", "t": "I don't barter goods for my services. I only accept coin."},
-      {"if_not_flag": "ch03_hides_sold", "s": "feyre", "e": "determined", "t": "I have a wolf pelt and a doe hide for sale. I hunted them myself. I swear it."},
-      {"if_not_flag": "ch03_hides_sold", "s": "mercenary", "e": "amused", "t": "You weren't lying about the wolf's size. Doesn't seem like a faerie, though."},
-      {"if_not_flag": "ch03_hides_sold", "n": "She names her price. She is overpaying, by a lot."},
-      {"if_not_flag": "ch03_hides_sold", "s": "mercenary", "e": "neutral", "t": "Someone once did the same for me and mine. Figure it's time to repay what's due."},
-      {"if_not_flag": "ch03_hides_sold", "do": [{"type": "sell_hides"}, {"type": "set_flag", "flag": "ch03_hides_sold"}]},
-      {"if_not_flag": "ch03_warned", "s": "mercenary", "e": "neutral", "t": "A word of advice, from one hunter to another. Don't go far into the woods. More and more of those things are slipping through the wall."},
-      {"if_not_flag": "ch03_warned", "s": "mercenary", "e": "neutral", "t": "A nobleman I guarded heard a pack of martax crossed in the night. Body big as a bear's, head like a lion's, three rows of teeth. Half a village in ribbons."},
-      {"if_not_flag": "ch03_warned", "do": [{"type": "set_flag", "flag": "ch03_warned"}, {"type": "journal", "id": "lore_martax"}, {"type": "journal", "id": "lore_treaty"}, {"type": "objective", "text": "Spend your coin if you like (charm stall). Then take the east road home."}]}
-    ]},
-    "ch03_charms": {"lines": [
-      {"n": "A stall of charms, baubles, incantations and bits of iron, catering to the village's fears."},
-      {"do": [{"type": "open_shop", "shop": "charm_stall"}]}
-    ]},
-    "ch03_cobbler": {"lines": [
-      {"n": "The weathered cobbler pretends not to watch her satchel. His usual offers are an insult."}
-    ]},
-    "ch03_isaac": {"lines": [
-      {"if_flag": "ch03_isaac_done", "n": "Isaac is long gone down the road."},
-      {"if_not_flag": "ch03_isaac_done", "n": "Isaac Hale leans against a building across the square, arms crossed. He inclines his head in a familiar gesture, then ambles off toward the old barn outside town."},
-      {"if_not_flag": "ch03_isaac_done", "s": "nesta", "e": "smirk", "t": "I do hope you two are taking precautions."},
-      {"if_not_flag": "ch03_isaac_done", "choices": [
-        {"t": "Follow him to the barn.", "goto": "ch03_isaac_barn"},
-        {"t": "Not today.", "goto": "ch03_isaac_no"}
-      ]}
-    ]},
-    "ch03_isaac_barn": {"lines": [
-      {"n": "No love, never had been. Just a release, a reprieve, a bit of selfishness."},
-      {"do": [{"type": "fade_to_black", "text": "Later, the light outside the barn has turned long and gray."}, {"type": "set_flag", "flag": "ch03_isaac_done"}, {"type": "set_flag", "flag": "ch03_isaac_barn"}, {"type": "heal", "amount": 4}]}
-    ]},
-    "ch03_isaac_no": {"lines": [
-      {"s": "feyre", "e": "neutral", "t": "He's going to marry some Greenfield girl with a handsome dowry anyway."},
-      {"do": [{"type": "set_flag", "flag": "ch03_isaac_done"}]}
-    ]},
-    "ch03_elain_coin": {"lines": [
-      {"if_flag": "ch03_coin_given", "s": "elain", "e": "tender", "t": "I'll find something for Father. I promise."},
-      {"if_not_flag": "ch03_coin_given", "if_flag": "ch03_hides_sold", "s": "elain", "e": "tender", "t": "Feyre … the spice stall smells like the old house."},
-      {"if_not_flag": "ch03_coin_given", "if_flag": "ch03_hides_sold", "choices": [
-        {"t": "Press a twenty-mark copper into her palm. (Canon, -5 coin)", "do": [{"type": "coins", "n": -5}, {"type": "set_flag", "flag": "ch03_coin_given"}], "goto": "ch03_elain_thanks"},
-        {"t": "\"We need every coin.\"", "goto": "ch03_elain_refuse"}
-      ]},
-      {"if_not_flag": "ch03_hides_sold", "s": "elain", "e": "neutral", "t": "Are you going to sell them, Feyre? The mercenary keeps looking over."}
-    ]},
-    "ch03_elain_thanks": {"lines": [
-      {"s": "elain", "e": "tender", "t": "I'll see you at home."},
-      {"n": "That evening Elain brings back a new chisel for their father's carving. Nesta chops wood a second time without being asked."},
-      {"do": [{"type": "set_flag", "flag": "ch03_kindness"}]}
-    ]},
-    "ch03_elain_refuse": {"lines": [
-      {"s": "elain", "e": "sad", "t": "Of course. You're right."},
-      {"do": [{"type": "set_flag", "flag": "ch03_coin_given"}]}
-    ]},
-    "ch03_exit_locked": {"lines": [
-      {"s": "feyre", "e": "neutral", "t": "Not until the hides are sold."}
-    ]},
-    "ch03_exit": {"lines": [
-      {"n": "Later, after another dinner of venison, they gather around the fire for the quiet hour before bed. Father dozes, his cane across his knee."},
-      {"do": [{"type": "goto", "region": "cottage", "spawn": "hearth", "hour": 21.0, "chapter": 4, "on_enter": "ch04_beast"}]}
-    ]}
+ "schema": 2,
+ "notes": "Line forms: {n} Feyre's narration, first person past tense, shown in italics; {s,e,t} a line spoken aloud (speaker, portrait expression, text); {hint} a game tip on its own card; {choices:[{t,goto,do}]}; {do:[actions]}; {goto}. Any line or choice may carry if_flag, if_not_flag, if_item, if_not_item or if_chapter. Wording is written for the game; the few short book lines kept are listed in quotes.json.",
+ "scenes": {
+  "ch03_arrive": {
+   "lines": [
+    {
+     "do": [
+      {
+       "type": "chapter_card",
+       "n": 3
+      }
+     ]
+    },
+    {
+     "n": "The snow on the road into the village was trampled brown and black. Nesta and Elain had come along the moment they saw the hides in my satchel."
+    },
+    {
+     "do": [
+      {
+       "type": "objective",
+       "text": "Sell the hides. The mercenary in the square buys pelts. Then take the east road home."
+      }
+     ]
+    }
+   ]
+  },
+  "ch03_acolyte": {
+   "lines": [
+    {
+     "s": "acolyte",
+     "e": "neutral",
+     "t": "May the Immortal Light shine upon you, sisters. Have you a moment to hear of the Blessed?"
+    },
+    {
+     "s": "nesta",
+     "e": "angry",
+     "t": "We don't."
+    },
+    {
+     "n": "Nesta pushed back her sleeve to show the iron bracelet on her wrist. The acolyte flinched."
+    },
+    {
+     "s": "nesta",
+     "e": "angry",
+     "t": "This is what you ought to wear. Not little silver bells to call those monsters to you."
+    },
+    {
+     "s": "acolyte",
+     "e": "angry",
+     "t": "Prythian is a land of plenty, and our masters are kind."
+    },
+    {
+     "choices": [
+      {
+       "t": "\"You're fighting an uphill battle.\"",
+       "goto": "ch03_acolyte_canon"
+      },
+      {
+       "t": "Walk on.",
+       "goto": "ch03_acolyte_end"
+      }
+     ]
+    }
+   ]
+  },
+  "ch03_acolyte_canon": {
+   "lines": [
+    {
+     "s": "feyre",
+     "e": "cold",
+     "t": "You're fighting an uphill battle."
+    },
+    {
+     "s": "acolyte",
+     "e": "neutral",
+     "t": "A worthy one."
+    },
+    {
+     "s": "feyre",
+     "e": "cold",
+     "t": "No. It isn't."
+    },
+    {
+     "goto": "ch03_acolyte_end"
+    }
+   ]
+  },
+  "ch03_acolyte_end": {
+   "lines": [
+    {
+     "do": [
+      {
+       "type": "set_flag",
+       "flag": "ch03_acolyte_done"
+      },
+      {
+       "type": "journal",
+       "id": "lore_children"
+      }
+     ]
+    }
+   ]
+  },
+  "ch03_mercenary": {
+   "lines": [
+    {
+     "s": "mercenary",
+     "e": "neutral",
+     "t": "Remember what I told you. Stay out of the deep woods.",
+     "if_flag": "ch03_hides_sold"
+    },
+    {
+     "s": "mercenary",
+     "e": "neutral",
+     "t": "I don't trade goods for my work. Coin only.",
+     "if_not_flag": "ch03_hides_sold"
+    },
+    {
+     "s": "feyre",
+     "e": "determined",
+     "t": "I'm selling, not buying. A wolf pelt and a doe hide. I took them myself.",
+     "if_not_flag": "ch03_hides_sold",
+     "if_item": "wolf_pelt"
+    },
+    {
+     "s": "mercenary",
+     "e": "amused",
+     "t": "You weren't lying about the size. Doesn't look like a faerie, though.",
+     "if_not_flag": "ch03_hides_sold",
+     "if_item": "wolf_pelt"
+    },
+    {
+     "n": "She paid more than they were worth. A good deal more.",
+     "if_not_flag": "ch03_hides_sold",
+     "if_item": "wolf_pelt"
+    },
+    {
+     "s": "mercenary",
+     "e": "neutral",
+     "t": "Somebody did the same for me once. Call it paying it back.",
+     "if_not_flag": "ch03_hides_sold",
+     "if_item": "wolf_pelt"
+    },
+    {
+     "do": [
+      {
+       "type": "sell_hides"
+      },
+      {
+       "type": "set_flag",
+       "flag": "ch03_hides_sold"
+      }
+     ],
+     "if_not_flag": "ch03_hides_sold"
+    },
+    {
+     "s": "mercenary",
+     "e": "neutral",
+     "t": "One hunter to another: keep out of the deep woods. More of them slip through the Wall every year.",
+     "if_not_flag": "ch03_warned"
+    },
+    {
+     "s": "mercenary",
+     "e": "neutral",
+     "t": "A man I guarded swore a pack of martax crossed in the night. Bodies like bears, heads like lions, three rows of teeth. Half a village in ribbons.",
+     "if_not_flag": "ch03_warned"
+    },
+    {
+     "do": [
+      {
+       "type": "set_flag",
+       "flag": "ch03_warned"
+      },
+      {
+       "type": "journal",
+       "id": "lore_martax"
+      },
+      {
+       "type": "journal",
+       "id": "lore_treaty"
+      },
+      {
+       "type": "objective",
+       "text": "Spend a little coin at the charm stall if you like. Then take the east road home."
+      }
+     ],
+     "if_not_flag": "ch03_warned"
+    }
+   ]
+  },
+  "ch03_charms": {
+   "lines": [
+    {
+     "n": "A stall of charms and trinkets and little bits of iron, priced to the village's fears."
+    },
+    {
+     "do": [
+      {
+       "type": "open_shop",
+       "shop": "charm_stall"
+      }
+     ]
+    }
+   ]
+  },
+  "ch03_cobbler": {
+   "lines": [
+    {
+     "n": "The cobbler pretended not to look at my satchel. His usual offers were an insult, and today would be no different."
+    }
+   ]
+  },
+  "ch03_isaac": {
+   "lines": [
+    {
+     "n": "Isaac was long gone down the road.",
+     "if_flag": "ch03_isaac_done"
+    },
+    {
+     "n": "Isaac Hale leaned against a wall across the square, arms folded. He tipped his head the way he always did and wandered off toward the old barn.",
+     "if_not_flag": "ch03_isaac_done"
+    },
+    {
+     "s": "nesta",
+     "e": "smirk",
+     "t": "Do be careful, you two.",
+     "if_not_flag": "ch03_isaac_done"
+    },
+    {
+     "choices": [
+      {
+       "t": "Follow him to the barn.",
+       "goto": "ch03_isaac_barn"
+      },
+      {
+       "t": "Not today.",
+       "goto": "ch03_isaac_no"
+      }
+     ],
+     "if_not_flag": "ch03_isaac_done"
+    }
+   ]
+  },
+  "ch03_isaac_barn": {
+   "lines": [
+    {
+     "n": "It wasn't love. It never had been. Just an hour that belonged to nobody but us."
+    },
+    {
+     "do": [
+      {
+       "type": "fade_to_black",
+       "text": "Later, the light outside the barn had gone long and grey."
+      },
+      {
+       "type": "set_flag",
+       "flag": "ch03_isaac_done"
+      },
+      {
+       "type": "set_flag",
+       "flag": "ch03_isaac_barn"
+      },
+      {
+       "type": "heal",
+       "amount": 4
+      }
+     ]
+    }
+   ]
+  },
+  "ch03_isaac_no": {
+   "lines": [
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "He'll marry some farmer's daughter with a fat dowry soon enough."
+    },
+    {
+     "do": [
+      {
+       "type": "set_flag",
+       "flag": "ch03_isaac_done"
+      }
+     ]
+    }
+   ]
+  },
+  "ch03_elain_coin": {
+   "lines": [
+    {
+     "s": "elain",
+     "e": "tender",
+     "t": "I'll find something for Father. I promise.",
+     "if_flag": "ch03_coin_given"
+    },
+    {
+     "s": "elain",
+     "e": "tender",
+     "t": "Feyre... the spice stall smells like our old house.",
+     "if_not_flag": "ch03_coin_given",
+     "if_flag": "ch03_hides_sold"
+    },
+    {
+     "choices": [
+      {
+       "t": "Give her a little coin. (5 coin)",
+       "goto": "ch03_elain_thanks",
+       "do": [
+        {
+         "type": "coins",
+         "n": -5
+        },
+        {
+         "type": "set_flag",
+         "flag": "ch03_coin_given"
+        }
+       ]
+      },
+      {
+       "t": "\"We need every coin.\"",
+       "goto": "ch03_elain_refuse"
+      }
+     ],
+     "if_not_flag": "ch03_coin_given",
+     "if_flag": "ch03_hides_sold"
+    },
+    {
+     "s": "elain",
+     "e": "neutral",
+     "t": "Are you going to sell them? The mercenary keeps looking over.",
+     "if_not_flag": "ch03_hides_sold"
+    }
+   ]
+  },
+  "ch03_elain_thanks": {
+   "lines": [
+    {
+     "s": "elain",
+     "e": "tender",
+     "t": "See you at home."
+    },
+    {
+     "n": "That evening she came home with a new chisel for Father's carving. And Nesta chopped wood without being asked."
+    },
+    {
+     "do": [
+      {
+       "type": "set_flag",
+       "flag": "ch03_kindness"
+      }
+     ]
+    }
+   ]
+  },
+  "ch03_elain_refuse": {
+   "lines": [
+    {
+     "s": "elain",
+     "e": "sad",
+     "t": "Of course. You're right."
+    },
+    {
+     "do": [
+      {
+       "type": "set_flag",
+       "flag": "ch03_coin_given"
+      }
+     ]
+    }
+   ]
+  },
+  "ch03_exit_locked": {
+   "lines": [
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "Not until the hides are sold."
+    }
+   ]
+  },
+  "ch03_exit": {
+   "lines": [
+    {
+     "n": "After another supper of venison we sat around the fire for the quiet hour before bed. Father dozed with his cane across his knee."
+    },
+    {
+     "do": [
+      {
+       "type": "goto",
+       "region": "cottage",
+       "spawn": "hearth",
+       "hour": 21.0,
+       "chapter": 4
+      }
+     ]
+    }
+   ]
   }
+ }
 }

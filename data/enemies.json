@@ -1,181 +1,147 @@
 {
-  "schema": 1,
+  "schema": 2,
+  "notes": "Real-time creatures. Speeds in pixels per second, times in seconds, damage in HP. 'triggers' are mid-fight story beats: 'scene' plays a full dialogue (the fight freezes), 'bark' shows a line over the fight without stopping it. Each fires once per fight. The wolf has no drops: Feyre skins him afterwards (forest.gd).",
   "enemies": {
     "andras_wolf": {
       "name": "The Wolf",
       "true_name": "Andras",
       "fae": true,
-      "max_hp": 68,
-      "art": "battle/andras_wolf.png",
-      "arena": "winter_clearing",
-      "start_range": "far",
-      "start_statuses": {
-        "regen": 4
-      },
-      "gimmick": "stalker",
-      "gimmick_text": "THE HUNT. You start Hidden in the brambles. While the wolf has not found you, it stalks the doe instead of you, and your attacks from hiding deal double damage. Noise (shots, movement) draws its eye; at 3 Noise it finds you. If it reaches the doe first, the meat and hide are ruined. It heals 4 each turn until struck by ash.",
-      "gimmick_params": {
-        "noise_to_alert": 3,
-        "doe_threat_to_pounce": 2
-      },
-      "moves": {
-        "stalk": {
-          "intent": "stalk",
-          "label": "Stalking the doe",
-          "effects": [
-            {
-              "type": "doe_threat",
-              "amount": 1
-            }
-          ]
-        },
-        "pounce_doe": {
-          "intent": "special",
-          "label": "Pounce on the doe",
-          "effects": [
-            {
-              "type": "kill_doe"
-            }
-          ]
-        },
-        "lunge": {
-          "intent": "attack",
-          "label": "Lunge",
-          "effects": [
-            {
-              "type": "move",
-              "to": "near"
-            },
-            {
-              "type": "damage",
-              "amount": 13
-            }
-          ]
-        },
-        "maul": {
-          "intent": "attack",
-          "label": "Maul",
-          "requires_range": "near",
-          "effects": [
-            {
-              "type": "damage",
-              "amount": 6,
-              "hits": 2
-            }
-          ]
-        },
-        "circle": {
-          "intent": "defend",
-          "label": "Circle",
-          "effects": [
-            {
-              "type": "block",
-              "amount": 7
-            },
-            {
-              "type": "apply",
-              "target": "self",
-              "status": "strength",
-              "stacks": 2
-            }
-          ]
-        },
-        "desperate": {
-          "intent": "attack",
-          "label": "Desperate Fangs",
-          "effects": [
-            {
-              "type": "move",
-              "to": "near"
-            },
-            {
-              "type": "damage",
-              "amount": 16
-            }
-          ]
-        }
-      },
-      "ai": {
-        "stalking": [
-          "stalk",
-          "pounce_doe"
-        ],
-        "hunting": [
-          {
-            "move": "desperate",
-            "weight": 3,
-            "if_hp_below": 0.4
-          },
-          {
-            "move": "lunge",
-            "weight": 3,
-            "if_range": "far"
-          },
-          {
-            "move": "maul",
-            "weight": 4,
-            "if_range": "near"
-          },
-          {
-            "move": "circle",
-            "weight": 1,
-            "no_repeat": true
-          }
+      "boss": true,
+      "art": {
+        "sprite": "actors/wolf.png",
+        "scale": 1.45,
+        "eye": [
+          106,
+          -122
         ]
       },
-      "dialogue_triggers": [
+      "max_hp": 130,
+      "regen_per_sec": 2.5,
+      "regen_delay": 1.2,
+      "weight": 0.35,
+      "stalk_speed": 30,
+      "chase_speed": 250,
+      "desperate_chase_speed": 275,
+      "lunge": {
+        "range": 330,
+        "windup": 0.62,
+        "desperate_windup": 0.42,
+        "speed": 680,
+        "desperate_speed": 780,
+        "time": 0.42,
+        "damage": 10,
+        "knockback": 560,
+        "cooldown": 1.1,
+        "turn": 0.6,
+        "desperate_turn": 1.1
+      },
+      "bite": {
+        "range": 120,
+        "windup": 0.36,
+        "damage": 8,
+        "knockback": 300,
+        "recover": 0.7,
+        "max_in_row": 2,
+        "turn": 1.5,
+        "speed": 260
+      },
+      "recover_time": 0.8,
+      "circle_time": [
+        1.2,
+        2.4
+      ],
+      "circle_radius": 240,
+      "desperate_below": 0.35,
+      "stagger_damage": 12,
+      "stealth": {
+        "noise_to_alert": 3,
+        "sight_radius": 520,
+        "sprint_noise_per_sec": 0.8,
+        "ambush_mult": 2.0
+      },
+      "doe_reach": 90,
+      "eat_time": 2.2,
+      "drops": [],
+      "triggers": [
         {
-          "when": "battle_start",
-          "scene": "b_wolf_start"
-        },
-        {
-          "when": "status_applied",
-          "status": "ash_struck",
-          "scene": "b_wolf_ash"
+          "when": "start",
+          "bark": {
+            "s": "feyre",
+            "e": "determined",
+            "t": "Easy. Let him come to the doe. Wait for the shot."
+          }
         },
         {
           "when": "alerted",
-          "scene": "b_wolf_alerted"
+          "scene": "hunt_alerted"
         },
         {
           "when": "doe_killed",
-          "scene": "b_wolf_doe"
+          "scene": "hunt_doe"
+        },
+        {
+          "when": "ash_struck",
+          "scene": "hunt_ash"
+        },
+        {
+          "when": "regen_noticed",
+          "bark": {
+            "s": "feyre",
+            "e": "afraid",
+            "t": "His wounds are closing. No wolf heals like that."
+          }
         },
         {
           "when": "enemy_hp_below",
           "value": 0.5,
-          "scene": "b_wolf_half"
+          "bark": {
+            "s": "feyre",
+            "e": "determined",
+            "t": "He's slowing. Make him come to me."
+          }
         },
         {
           "when": "player_hp_below",
-          "value": 0.4,
-          "scene": "b_wolf_desperate"
+          "value": 0.35,
+          "bark": {
+            "s": "feyre",
+            "e": "wounded",
+            "t": "Not here. They're waiting on me at home."
+          }
         },
         {
-          "when": "turn",
-          "value": 4,
-          "scene": "b_wolf_turn4"
+          "when": "out_of_arrows",
+          "bark": {
+            "s": "feyre",
+            "e": "cold",
+            "t": "The quiver's empty. Get the arrows back, or use the knife."
+          }
         },
         {
           "when": "victory",
-          "scene": "b_wolf_victory"
+          "scene": "hunt_victory"
         }
-      ],
-      "rewards": {
-        "card_pool": [
-          "hunter_common",
-          "hunter_common",
-          "hunter_uncommon"
-        ],
-        "rare_chance": 0.15,
-        "items_if_doe_saved": {
-          "venison_strip": 2
-        },
-        "items_if_doe_lost": {
-          "venison_strip": 1
-        },
-        "lore": "lore_wolf"
-      }
+      ]
+    },
+    "snow_hare": {
+      "name": "Snow Hare",
+      "fae": false,
+      "boss": false,
+      "art": {
+        "sprite": "actors/hare.png",
+        "scale": 1.0
+      },
+      "max_hp": 3,
+      "wander_speed": 40,
+      "flee_speed": 330,
+      "flee_radius": 240,
+      "weight": 1.0,
+      "drops": [
+        {
+          "id": "hare",
+          "n": 1
+        }
+      ]
     }
   }
 }

@@ -8,6 +8,10 @@ var _cine_layer: CanvasLayer
 
 
 func build() -> void:
+	surface = "snow"
+	combat_allowed = false
+	map_title = "The Road North"
+	map_base = Color(0.78, 0.82, 0.9)
 	bounds = Rect2(0, 0, 1600, 4200)
 	spawns = {"start": Vector2(800, 3950)}
 	add_ground_tile("terrain/snow.png", bounds)
@@ -44,6 +48,16 @@ func _ready() -> void:
 	bi.setup("Speak to the beast", func(): await Dialogue.play("ch05_ask"), 260)
 	beast.add_child(bi)
 	add_light(Vector2(0, -40), Color(0.6, 0.7, 1.0), 0.3, 3.0, false, player)
+	map_line(PackedVector2Array([Vector2(800, 4200), Vector2(800, 0)]), Color(0.55, 0.5, 0.45), 80.0)
+	map_exit(Vector2(800, 120), "North")
+	Audio.ambience("night_wind")
+	Audio.music("night_ride", 3.0)
+
+
+func on_enter() -> void:
+	if not GameState.has_flag("ch05_ride_started"):
+		GameState.set_flag("ch05_ride_started")
+		await Dialogue.play("ch05_ride")
 
 
 ## Moonlight from behind the riders: long, faint shadows pointing north.

@@ -2,7 +2,9 @@ class_name Region
 extends Node2D
 ## Base for every overworld area. Subclasses override build() and on_enter().
 ## Provides: lit sprites with normal maps and shadow occluders, the player,
-## day/night grading, HDR glow, snow, fog, god rays and the post grade.
+## day/night grading, HDR glow, snow, fog, god rays and the post grade, the
+## world-space overlay for combat numbers, and what the map screen draws
+## (props, paths and points of interest, under the fog of war).
 
 const Player := preload("res://scripts/world/player.gd")
 const Interactable := preload("res://scripts/world/interactable.gd")
@@ -15,6 +17,7 @@ var canvas_mod: CanvasModulate
 var sun: DirectionalLight2D
 var env: WorldEnvironment
 var fx_layer: CanvasLayer
+var overlay: CanvasLayer         # world-space, above the colour grade: damage numbers, slashes
 var post: ColorRect
 var rays: ColorRect
 var spawns = {}
@@ -27,6 +30,16 @@ var time_scale = 1.0 / 180.0   # game hours per real second (1 hour per 3 minute
 var _triggers: Array = []
 var shadow_layer: Node2D
 var _casters: Array = []        # [Sprite2D, scale]
+var surface := "snow"           # footstep sound set: snow, mud, wood
+var combat_allowed := false     # weapons only come out where it makes sense
+var hunt: Node = null           # the running fight, if any
+## Map screen data. Marks: [kind, position, extra]. Shapes: {type, ...} in world space.
+var map_title := ""
+var map_base := Color(0.9, 0.9, 0.93)
+var map_marks: Array = []
+var map_shapes: Array = []
+var reveal_radius := 560.0
+var _reveal_t := 0.0
 
 
 func _ready() -> void:
@@ -64,6 +77,10 @@ func _ready() -> void:
 	fx_layer = CanvasLayer.new()
 	fx_layer.layer = 5
 	add_child(fx_layer)
+	overlay = CanvasLayer.new()
+	overlay.layer = 6
+	overlay.follow_viewport_enabled = true
+	add_child(overlay)
 	_build_post()
 	build()
 	_spawn_player()
@@ -111,6 +128,9 @@ func add_prop(rel: String, pos: Vector2, scl := 1.0, foot := Vector2(40, 14), so
 		s.offset = Vector2(0, -s.texture.get_height() / 2.0)
 	s.scale = Vector2(scl, scl)
 	holder.add_child(s)
+	var mk = _map_kind(rel)
+	if mk != "":
+		map_marks.append([mk, pos, scl])
 	if foot != Vector2.ZERO and s.texture:
 		_add_caster(rel, pos, scl, flip)
 	if foot != Vector2.ZERO:
@@ -134,6 +154,32 @@ func add_prop(rel: String, pos: Vector2, scl := 1.0, foot := Vector2(40, 14), so
 		holder.add_child(body)
 	world.add_child(holder)
 	return holder
+
+
+static func _map_kind(rel: String) -> String:
+	for pair in [["props/pine", "pine"], ["props/bare_tree", "tree"], ["props/rock", "rock"], ["props/bramble", "bramble"],
+			["props/rose_bush", "rose"], ["props/house", "house"], ["props/barn", "house"], ["props/cottage", "house"],
+			["props/stall", "stall"], ["props/fountain", "fountain"]]:
+		if rel.begins_with(pair[0]):
+			return pair[1]
+	return ""
+
+
+## A labelled point on the map screen (shown once the spot has been explored).
+func map_poi(pos: Vector2, label: String) -> void:
+	map_marks.append(["poi", pos, label])
+
+
+func map_exit(pos: Vector2, label: String) -> void:
+	map_marks.append(["exit", pos, label])
+
+
+func map_line(pts: PackedVector2Array, color: Color, width: float) -> void:
+	map_shapes.append({"type": "line", "pts": pts, "color": color, "width": width})
+
+
+func map_rect(r: Rect2, color: Color) -> void:
+	map_shapes.append({"type": "rect", "rect": r, "color": color})
 
 
 ## Projected silhouette shadow: the prop's own image flattened onto the ground
@@ -315,11 +361,13 @@ func set_post(params: Dictionary) -> void:
 		(post.material as ShaderMaterial).set_shader_parameter(k, params[k])
 
 
-func add_interactable(pos: Vector2, label: String, callback: Callable, radius := 90.0) -> Area2D:
+func add_interactable(pos: Vector2, label: String, callback: Callable, radius := 90.0, map_label := "") -> Area2D:
 	var a: Area2D = Interactable.new()
 	a.setup(label, callback, radius)
 	a.position = pos
 	world.add_child(a)
+	if map_label != "":
+		map_poi(pos, map_label)
 	return a
 
 
@@ -331,6 +379,7 @@ func add_trigger(rect: Rect2, callback: Callable, once := true) -> void:
 	cs.shape = rs
 	cs.position = rect.get_center()
 	a.add_child(cs)
+	a.collision_layer = 0   # arrows ray-cast against layer 1; triggers must not stop them
 	a.collision_mask = 2
 	a.monitoring = true
 	add_child(a)
@@ -392,6 +441,9 @@ func _spawn_player() -> void:
 	player = Player.new()
 	player.name = "Feyre"
 	var sp: Vector2 = spawns.get(GameState.spawn, spawns.get("start", bounds.get_center()))
+	if GameState.pos is Vector2 and bounds.grow(-20).has_point(GameState.pos):
+		sp = GameState.pos
+	GameState.pos = null
 	player.position = sp
 	world.add_child(player)
 	camera = Camera2D.new()
@@ -404,6 +456,7 @@ func _spawn_player() -> void:
 	camera.limit_bottom = int(bounds.end.y)
 	player.add_child(camera)
 	camera.make_current()
+	player.camera = camera
 	if _snow_near:
 		_snow_near.reparent(player, false)
 		_snow_far.reparent(player, false)
@@ -414,6 +467,10 @@ func _process(delta: float) -> void:
 		GameState.hour = fmod(GameState.hour + delta * time_scale, 24.0)
 	_apply_time()
 	_poll_triggers()
+	_reveal_t -= delta
+	if _reveal_t <= 0.0 and player != null:
+		_reveal_t = 0.2
+		GameState.reveal(GameState.region, bounds, player.global_position, reveal_radius)
 
 
 func _apply_time() -> void:
@@ -427,15 +484,11 @@ func _apply_time() -> void:
 		(rays.material as ShaderMaterial).set_shader_parameter("intensity", g.rays)
 
 
-func _unhandled_input(ev: InputEvent) -> void:
-	if Dialogue.active or UI.modal_open or Router.busy:
-		return
-	if ev.is_action_pressed("journal"):
-		get_viewport().set_input_as_handled()
-		UI.open_journal()
-	elif ev.is_action_pressed("deck"):
-		get_viewport().set_input_as_handled()
-		UI.open_deck()
+## Puts Feyre at a named spawn point (cutscenes use this behind a fade).
+func place_player(spawn_name: String) -> void:
+	if spawns.has(spawn_name) and player:
+		player.global_position = spawns[spawn_name]
+		player.velocity = Vector2.ZERO
 
 
 static func lerp_grade(keys: Array, h: float) -> Dictionary:
