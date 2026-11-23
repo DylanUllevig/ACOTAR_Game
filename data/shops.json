@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "shops": {
+    "charm_stall": {
+      "name": "Charms and Iron",
+      "keeper": "A charm-seller with ink-stained fingers",
+      "cards": [{"id": "painters_eye", "price": 10}, {"id": "hurl_the_knife", "price": 9}, {"id": "steady_breath", "price": 6}],
+      "items": [{"id": "iron_nail", "price": 6}, {"id": "hot_water", "price": 3}, {"id": "venison_strip", "price": 4}],
+      "relics": [{"id": "iron_bracelet", "price": 18}],
+      "remove_price": 8,
+      "remove_label": "Trade away a habit (remove a card)"
+    }
+  },
+  "hide_prices": {"wolf_pelt": 18, "doe_hide": 12, "doe_hide_damaged": 3}
+}

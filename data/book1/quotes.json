@@ -1,0 +1,24 @@
+{
+  "schema": 1,
+  "notes": "Short lines used by the game (journal, loading screens, mid-battle barks). Kept deliberately brief. Chapter = book chapter.",
+  "quotes": {
+    "q_labyrinth": {"chapter": 1, "speaker": "feyre", "text": "The forest had become a labyrinth of snow and ice."},
+    "q_ribs": {"chapter": 1, "speaker": "feyre", "text": "I'd turned gangly by this time of the year, and could count a good number of my ribs."},
+    "q_just_animal": {"chapter": 1, "speaker": "feyre", "text": "Animal, I reassured myself. Just an animal."},
+    "q_running": {"chapter": 1, "speaker": "feyre", "text": "If he was a faerie, I should already be running."},
+    "q_silent": {"chapter": 1, "speaker": "feyre", "text": "The forest went silent. The wind died. Even the snow paused."},
+    "q_shuddered": {"chapter": 1, "speaker": "feyre", "text": "The arrow found its mark in his side, and I could have sworn the ground itself shuddered."},
+    "q_winter": {"chapter": 1, "speaker": "feyre", "text": "But this was the forest, and it was winter."},
+    "q_hope": {"chapter": 2, "speaker": "father", "text": "We need hope as much as we need bread and meat."},
+    "q_no_such": {"chapter": 2, "speaker": "feyre", "text": "There is no such thing."},
+    "q_vow": {"chapter": 2, "speaker": "feyre", "text": "Stay together, and look after them."},
+    "q_love_belly": {"chapter": 2, "speaker": "feyre", "text": "Love won't feed a hungry belly."},
+    "q_immortal_light": {"chapter": 3, "speaker": "acolyte", "text": "May the Immortal Light shine upon thee, sisters."},
+    "q_woods": {"chapter": 3, "speaker": "mercenary", "text": "Don't go far into the woods."},
+    "q_murderers": {"chapter": 4, "speaker": "beast", "text": "MURDERERS!"},
+    "q_life_for_life": {"chapter": 4, "speaker": "beast", "text": "A life for a life."},
+    "q_i_did": {"chapter": 4, "speaker": "feyre", "text": "I did."},
+    "q_make_a_name": {"chapter": 4, "speaker": "father", "text": "You go somewhere new—and you make a name for yourself."},
+    "q_prison": {"chapter": 5, "speaker": "feyre", "text": "My prison or my salvation—I couldn't decide which."}
+  }
+}

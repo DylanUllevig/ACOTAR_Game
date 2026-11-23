@@ -1,0 +1,594 @@
+{
+ "schema": 1,
+ "book": "A Court of Thorns and Roses",
+ "book_id": "book1",
+ "source_note": "Beat summaries are written for this project (not book text). Chapter mapping verified by chapter headings and name mentions in the EPUB; later-chapter summaries are brief and should be re-checked before each milestone.",
+ "chapters": [
+  {
+   "n": 1,
+   "title": "The Winter Hunt",
+   "region": "mortal_forest",
+   "summary": "Starving, Feyre hunts deep in the snowbound forest. A giant wolf stalks the same doe; she kills it with her single ash arrow, then a second arrow through its eye, skins it and carries the doe home.",
+   "characters": [
+    "feyre"
+   ],
+   "gameplay": "Gimmick battle: the wolf (Andras). Optional caches in the forest.",
+   "in_milestone_1": true
+  },
+  {
+   "n": 2,
+   "title": "The Cottage",
+   "region": "archeron_cottage",
+   "summary": "Home at dusk. The family's poverty, Father's ruined leg, Nesta's contempt, Elain's gift of paint tins, the vow to their dying mother, Nesta's suitor Tomas Mandray.",
+   "characters": [
+    "feyre",
+    "nesta",
+    "elain",
+    "father"
+   ],
+   "gameplay": "Cottage hub. Dinner raises power to Tier 1. Relic: Elain's Paint Tins. Upgrade a card at the hearth.",
+   "in_milestone_1": true
+  },
+  {
+   "n": 3,
+   "title": "Market Day",
+   "region": "mortal_village",
+   "summary": "The village market. Nesta faces down the Children of the Blessed. A mercenary overpays for the hides and warns of faeries crossing the wall. Isaac Hale. That night, a beast bursts through the cottage door.",
+   "characters": [
+    "feyre",
+    "nesta",
+    "elain",
+    "mercenary",
+    "acolyte",
+    "isaac"
+   ],
+   "gameplay": "Village hub: sell hides, shop, optional talk with Isaac. Ends with the beast at the door.",
+   "in_milestone_1": true
+  },
+  {
+   "n": 4,
+   "title": "A Life for a Life",
+   "region": "archeron_cottage",
+   "summary": "The beast demands the wolf's killer under the Treaty. Feyre confesses and chooses to cross the wall rather than die. Father: 'You go somewhere new—and you make a name for yourself.'",
+   "characters": [
+    "feyre",
+    "beast",
+    "father",
+    "nesta",
+    "elain"
+   ],
+   "gameplay": "Dialogue confrontation with choices (outcome is canon-locked).",
+   "in_milestone_1": true
+  },
+  {
+   "n": 5,
+   "title": "The Crossing",
+   "region": "the_wall",
+   "summary": "Feyre rides north on a white mare behind the beast. He puts her to sleep with magic; she wakes two days later at a hedge-bordered gate in Prythian.",
+   "characters": [
+    "feyre",
+    "beast"
+   ],
+   "gameplay": "Night ride, then a cinematic crossing of the Wall. End of Milestone 1.",
+   "in_milestone_1": true
+  },
+  {
+   "n": 6,
+   "title": "The Estate",
+   "region": "spring_manor",
+   "summary": "Arrival at a rose-veiled estate. The beast becomes a golden-masked High Fae; Lucien and Alis. Andras is named.",
+   "characters": [
+    "feyre",
+    "tamlin",
+    "lucien",
+    "alis"
+   ],
+   "gameplay": "Spring Court hub opens.",
+   "in_milestone_1": false
+  },
+  {
+   "n": 7,
+   "title": "Terms of the Treaty",
+   "region": "spring_manor",
+   "summary": "Dinner and a cold welcome. The Treaty, the blight on Prythian's magic, and Feyre's plans to escape.",
+   "characters": [
+    "feyre",
+    "tamlin",
+    "lucien"
+   ],
+   "gameplay": "",
+   "in_milestone_1": false
+  },
+  {
+   "n": 8,
+   "title": "Gardens and Knives",
+   "region": "spring_manor",
+   "summary": "Feyre maps the gardens, steals a knife, and is given the run of the grounds.",
+   "characters": [
+    "feyre",
+    "tamlin",
+    "lucien"
+   ],
+   "gameplay": "Power Tier 2.",
+   "in_milestone_1": false
+  },
+  {
+   "n": 9,
+   "title": "Riding with Lucien",
+   "region": "spring_woods",
+   "summary": "Feyre learns of the Suriel. A ride with Lucien turns cold as something passes.",
+   "characters": [
+    "feyre",
+    "lucien",
+    "alis"
+   ],
+   "gameplay": "",
+   "in_milestone_1": false
+  },
+  {
+   "n": 10,
+   "title": "The Bogge",
+   "region": "spring_woods",
+   "summary": "The Bogge passes; Lucien warns her not to look. That night her father seems to wait at the hedges.",
+   "characters": [
+    "feyre",
+    "lucien"
+   ],
+   "gameplay": "Avoidance encounter: do not look.",
+   "in_milestone_1": false
+  },
+  {
+   "n": 11,
+   "title": "The Puca",
+   "region": "spring_woods",
+   "summary": "Feyre runs into the woods after her 'father': a puca luring her to be eaten. Tamlin saves her.",
+   "characters": [
+    "feyre",
+    "tamlin"
+   ],
+   "gameplay": "Possible side battle.",
+   "in_milestone_1": false
+  },
+  {
+   "n": 12,
+   "title": "The Study",
+   "region": "spring_manor",
+   "summary": "Nightmares and night wanderings; Tamlin shows her the study.",
+   "characters": [
+    "feyre",
+    "tamlin"
+   ],
+   "gameplay": "",
+   "in_milestone_1": false
+  },
+  {
+   "n": 13,
+   "title": "Lucien's Knife",
+   "region": "spring_manor",
+   "summary": "Talk of the courts and the blight. Feyre asks how to trap a Suriel.",
+   "characters": [
+    "feyre",
+    "tamlin",
+    "lucien"
+   ],
+   "gameplay": "",
+   "in_milestone_1": false
+  },
+  {
+   "n": 14,
+   "title": "The Snare",
+   "region": "spring_woods",
+   "summary": "Following Lucien's instructions (birch grove, slaughtered chicken, double-loop snare, running water), Feyre catches the Suriel. The naga arrive.",
+   "characters": [
+    "feyre",
+    "suriel"
+   ],
+   "gameplay": "",
+   "in_milestone_1": false
+  },
+  {
+   "n": 15,
+   "title": "The Naga",
+   "region": "spring_woods",
+   "summary": "Feyre fights the naga beside the Suriel's snare; Tamlin arrives and kills them.",
+   "characters": [
+    "feyre",
+    "tamlin",
+    "suriel"
+   ],
+   "gameplay": "Gimmick battle: the naga (the snared Suriel is in play). Power Tier 3.",
+   "in_milestone_1": false
+  },
+  {
+   "n": 16,
+   "title": "Molten Chocolate",
+   "region": "spring_manor",
+   "summary": "Recovery and a thaw between Feyre and Tamlin.",
+   "characters": [
+    "feyre",
+    "tamlin",
+    "alis"
+   ],
+   "gameplay": "",
+   "in_milestone_1": false
+  },
+  {
+   "n": 17,
+   "title": "The Wounded Faerie",
+   "region": "spring_manor",
+   "summary": "A mutilated faerie is brought to the manor; Tamlin carries the dead out into the fields.",
+   "characters": [
+    "feyre",
+    "tamlin"
+   ],
+   "gameplay": "",
+   "in_milestone_1": false
+  },
+  {
+   "n": 18,
+   "title": "Lucien's Gift",
+   "region": "spring_manor",
+   "summary": "Lucien returns her knife and admits he hesitated when she was in danger.",
+   "characters": [
+    "feyre",
+    "lucien"
+   ],
+   "gameplay": "",
+   "in_milestone_1": false
+  },
+  {
+   "n": 19,
+   "title": "The Gallery",
+   "region": "spring_manor",
+   "summary": "Paints arrive. The Attor slips through the garden and speaks of 'her'. Calanmai approaches.",
+   "characters": [
+    "feyre",
+    "tamlin",
+    "lucien",
+    "attor"
+   ],
+   "gameplay": "Stealth encounter.",
+   "in_milestone_1": false
+  },
+  {
+   "n": 20,
+   "title": "Fire Night",
+   "region": "spring_woods",
+   "summary": "On Calanmai Feyre leaves her room. Faeries harass her until a stranger intervenes.",
+   "characters": [
+    "feyre",
+    "rhysand"
+   ],
+   "gameplay": "",
+   "in_milestone_1": false
+  },
+  {
+   "n": 21,
+   "title": "The Stranger",
+   "region": "spring_woods",
+   "summary": "Rhysand, then Tamlin after the Rite, wild and dangerous.",
+   "characters": [
+    "feyre",
+    "rhysand",
+    "tamlin"
+   ],
+   "gameplay": "Power Tier 4. Fade to black is not needed here; tension only.",
+   "in_milestone_1": false
+  },
+  {
+   "n": 22,
+   "title": "Not Alone",
+   "region": "spring_manor",
+   "summary": "Feyre paints; Tamlin: 'That I'm not alone.'",
+   "characters": [
+    "feyre",
+    "tamlin"
+   ],
+   "gameplay": "",
+   "in_milestone_1": false
+  },
+  {
+   "n": 23,
+   "title": "Summer Afternoon",
+   "region": "spring_woods",
+   "summary": "A lazy afternoon in the woods; drowsy closeness.",
+   "characters": [
+    "feyre",
+    "tamlin"
+   ],
+   "gameplay": "",
+   "in_milestone_1": false
+  },
+  {
+   "n": 24,
+   "title": "Bark and Brass",
+   "region": "spring_manor",
+   "summary": "A bark-skinned servant at breakfast; the blight presses closer.",
+   "characters": [
+    "feyre",
+    "alis"
+   ],
+   "gameplay": "",
+   "in_milestone_1": false
+  },
+  {
+   "n": 25,
+   "title": "Dawn",
+   "region": "spring_manor",
+   "summary": "Tamlin is called to the borders; on his return, a kiss at dawn.",
+   "characters": [
+    "feyre",
+    "tamlin"
+   ],
+   "gameplay": "Romance beat. Fade to black where needed.",
+   "in_milestone_1": false
+  },
+  {
+   "n": 26,
+   "title": "Rhysand's Visit",
+   "region": "spring_manor",
+   "summary": "Rhysand visits; Amarantha is named; threats of Under the Mountain.",
+   "characters": [
+    "feyre",
+    "tamlin",
+    "lucien",
+    "rhysand"
+   ],
+   "gameplay": "",
+   "in_milestone_1": false
+  },
+  {
+   "n": 27,
+   "title": "Thorns and All",
+   "region": "spring_manor",
+   "summary": "Tamlin sends Feyre away; she half-hears 'I love you … thorns and all.'",
+   "characters": [
+    "feyre",
+    "tamlin"
+   ],
+   "gameplay": "Fade to black.",
+   "in_milestone_1": false
+  },
+  {
+   "n": 28,
+   "title": "Farewell",
+   "region": "mortal_lands",
+   "summary": "Feyre leaves Prythian. Her promise to her mother is fulfilled; her family is provided for.",
+   "characters": [
+    "feyre",
+    "alis"
+   ],
+   "gameplay": "",
+   "in_milestone_1": false
+  },
+  {
+   "n": 29,
+   "title": "The Manor",
+   "region": "mortal_lands",
+   "summary": "Her family is wealthy again; the cover story of Aunt Ripleigh.",
+   "characters": [
+    "feyre",
+    "nesta",
+    "elain",
+    "father"
+   ],
+   "gameplay": "",
+   "in_milestone_1": false
+  },
+  {
+   "n": 30,
+   "title": "The Village Again",
+   "region": "mortal_village",
+   "summary": "Isaac, Clare Beddor's fate, and what Nesta knew.",
+   "characters": [
+    "feyre",
+    "nesta",
+    "isaac"
+   ],
+   "gameplay": "",
+   "in_milestone_1": false
+  },
+  {
+   "n": 31,
+   "title": "The Ball",
+   "region": "mortal_lands",
+   "summary": "A ball, then Feyre returns to a wrecked, empty manor.",
+   "characters": [
+    "feyre",
+    "nesta",
+    "elain"
+   ],
+   "gameplay": "",
+   "in_milestone_1": false
+  },
+  {
+   "n": 32,
+   "title": "Alis's Tale",
+   "region": "spring_manor",
+   "summary": "Alis explains the curse and Amarantha. Feyre decides to go Under the Mountain.",
+   "characters": [
+    "feyre",
+    "alis"
+   ],
+   "gameplay": "",
+   "in_milestone_1": false
+  },
+  {
+   "n": 33,
+   "title": "To the Mountain",
+   "region": "under_the_mountain",
+   "summary": "The journey; the Attor finds her.",
+   "characters": [
+    "feyre",
+    "attor"
+   ],
+   "gameplay": "",
+   "in_milestone_1": false
+  },
+  {
+   "n": 34,
+   "title": "The Throne Room",
+   "region": "under_the_mountain",
+   "summary": "Amarantha's bargain: three trials or a riddle. Feyre is beaten.",
+   "characters": [
+    "feyre",
+    "amarantha",
+    "tamlin",
+    "rhysand",
+    "attor"
+   ],
+   "gameplay": "Power Tier 5 (a drop).",
+   "in_milestone_1": false
+  },
+  {
+   "n": 35,
+   "title": "The Cell",
+   "region": "under_the_mountain",
+   "summary": "Lucien visits; Jurian's eye.",
+   "characters": [
+    "feyre",
+    "lucien"
+   ],
+   "gameplay": "",
+   "in_milestone_1": false
+  },
+  {
+   "n": 36,
+   "title": "The First Trial",
+   "region": "under_the_mountain",
+   "summary": "The worm in the mud trenches.",
+   "characters": [
+    "feyre",
+    "middengard_worm"
+   ],
+   "gameplay": "Gimmick battle: Middengard worm (trench maze, lure and trap).",
+   "in_milestone_1": false
+  },
+  {
+   "n": 37,
+   "title": "The Bargain",
+   "region": "under_the_mountain",
+   "summary": "Rhysand heals her arm for one week a month; the tattoo.",
+   "characters": [
+    "feyre",
+    "rhysand"
+   ],
+   "gameplay": "",
+   "in_milestone_1": false
+  },
+  {
+   "n": 38,
+   "title": "Chores",
+   "region": "under_the_mountain",
+   "summary": "Impossible tasks; Rhysand's 'help'.",
+   "characters": [
+    "feyre",
+    "rhysand"
+   ],
+   "gameplay": "",
+   "in_milestone_1": false
+  },
+  {
+   "n": 39,
+   "title": "Faerie Wine",
+   "region": "under_the_mountain",
+   "summary": "Meals appear; Rhysand drugs her with faerie wine at the parties.",
+   "characters": [
+    "feyre",
+    "rhysand"
+   ],
+   "gameplay": "",
+   "in_milestone_1": false
+  },
+  {
+   "n": 40,
+   "title": "The Second Trial",
+   "region": "under_the_mountain",
+   "summary": "The riddle and the levers above a chained Lucien.",
+   "characters": [
+    "feyre",
+    "lucien",
+    "rhysand"
+   ],
+   "gameplay": "Gimmick battle: lowering ceiling puzzle. Power Tier 6.",
+   "in_milestone_1": false
+  },
+  {
+   "n": 41,
+   "title": "Darkness",
+   "region": "under_the_mountain",
+   "summary": "Bleak days before the final trial.",
+   "characters": [
+    "feyre",
+    "rhysand"
+   ],
+   "gameplay": "",
+   "in_milestone_1": false
+  },
+  {
+   "n": 42,
+   "title": "The Last Party",
+   "region": "under_the_mountain",
+   "summary": "A stolen moment with Tamlin; Rhysand.",
+   "characters": [
+    "feyre",
+    "tamlin",
+    "rhysand"
+   ],
+   "gameplay": "Fade to black where needed.",
+   "in_milestone_1": false
+  },
+  {
+   "n": 43,
+   "title": "The Third Trial",
+   "region": "under_the_mountain",
+   "summary": "Three kneeling figures, an ash dagger.",
+   "characters": [
+    "feyre",
+    "tamlin",
+    "amarantha"
+   ],
+   "gameplay": "Choice-driven trial.",
+   "in_milestone_1": false
+  },
+  {
+   "n": 44,
+   "title": "The Answer",
+   "region": "under_the_mountain",
+   "summary": "Amarantha breaks Feyre. The answer to the riddle is love.",
+   "characters": [
+    "feyre",
+    "amarantha",
+    "tamlin"
+   ],
+   "gameplay": "Final boss: Amarantha.",
+   "in_milestone_1": false
+  },
+  {
+   "n": 45,
+   "title": "Through Other Eyes",
+   "region": "under_the_mountain",
+   "summary": "Feyre sees through others' eyes as the High Lords act.",
+   "characters": [
+    "tamlin",
+    "rhysand",
+    "amarantha"
+   ],
+   "gameplay": "",
+   "in_milestone_1": false
+  },
+  {
+   "n": 46,
+   "title": "Made",
+   "region": "under_the_mountain",
+   "summary": "Feyre wakes immortal. 'Let's go home.'",
+   "characters": [
+    "feyre",
+    "tamlin",
+    "rhysand"
+   ],
+   "gameplay": "Power Tier 7: Made Fae. Save export for Book 2.",
+   "in_milestone_1": false
+  }
+ ]
+}

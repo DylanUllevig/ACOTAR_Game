@@ -1,0 +1,38 @@
+{
+  "schema": 1,
+  "relics": {
+    "elains_paint_tins": {
+      "name": "Elain's Paint Tins",
+      "rarity": "canon",
+      "icon": "relics/elains_paint_tins.png",
+      "text": "Once per battle, the first time you fall below half HP: heal 5 and draw 2.",
+      "trigger": "first_below_half_hp",
+      "effects": [{"type": "heal", "amount": 5}, {"type": "draw", "amount": 2}],
+      "flavor": "Three small tins, red, yellow and blue: the only gift Elain ever gave her.",
+      "source": {"chapter": 2},
+      "lore": "lore_paint_tins"
+    },
+    "snare_wire": {
+      "name": "Silverspring Snare Wire",
+      "rarity": "rare",
+      "icon": "relics/snare_wire.png",
+      "text": "At the start of each battle, gain 1 Evade.",
+      "trigger": "battle_start",
+      "effects": [{"type": "apply", "target": "self", "status": "evade", "stacks": 1}],
+      "flavor": "Good wire, carefully coiled. Rabbits make their warrens south of the big bend in Silverspring Creek.",
+      "source": {"chapter": 4, "note": "Silverspring Creek is named in Feyre's parting instructions to her father. The wire itself is a game invention."},
+      "lore": "lore_silverspring"
+    },
+    "iron_bracelet": {
+      "name": "Iron Bracelet",
+      "rarity": "uncommon",
+      "icon": "relics/iron_bracelet.png",
+      "text": "Take 1 less damage from each hit by a Fae enemy.",
+      "trigger": "passive",
+      "effects": [{"type": "fae_damage_reduction", "amount": 1}],
+      "flavor": "'This is what you should be wearing. Not some silver bells to attract those faerie monsters.' (Nesta)",
+      "source": {"chapter": 3},
+      "lore": "lore_iron"
+    }
+  }
+}

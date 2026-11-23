@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "statuses": {
+    "hidden": {"name": "Hidden", "good": true, "text": "Enemies that have not found you ignore you. Your next attack deals double damage, then Hidden ends."},
+    "evade": {"name": "Evade", "good": true, "text": "The next hit against you misses. Removes one stack."},
+    "strength": {"name": "Strength", "good": true, "text": "Attacks deal this much more damage per hit."},
+    "weak": {"name": "Weak", "good": false, "text": "Deal 25% less attack damage. Decreases each turn."},
+    "vulnerable": {"name": "Vulnerable", "good": false, "text": "Take 50% more attack damage. Decreases each turn."},
+    "bleed": {"name": "Bleed", "good": false, "text": "Lose this much HP at the start of the turn, then it decreases by 1."},
+    "regen": {"name": "Fae Vigor", "good": true, "text": "Heals this much at the start of its turn. Ash stops it."},
+    "ash_struck": {"name": "Ash-Struck", "good": false, "text": "Mountain ash: Fae healing falters. No regeneration, and takes 50% more damage."},
+    "rough_hands": {"name": "Rough Hands", "good": true, "text": "Gain this much Block whenever you play a Knife card."},
+    "vow": {"name": "The Vow", "good": true, "text": "Gain this much Block at the start of your turn."}
+  }
+}

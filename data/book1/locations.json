@@ -1,0 +1,35 @@
+{
+  "schema": 1,
+  "notes": "map_xy is normalized (0..1) position on the Prythian map image the user supplied (not committed). Regions marked playable_in_m1 are built in Milestone 1.",
+  "regions": {
+    "mortal_forest": {"name": "The Winter Forest", "realm": "mortal", "map_xy": [0.70, 0.80], "playable_in_m1": true,
+      "mood": "A labyrinth of snow and ice. Pale low winter light, bramble thickets, a frozen brook, wolves' territory to the north.",
+      "palette": ["#e2e8f4", "#aab8d2", "#3a4a5c", "#1e2a34", "#c9a46a"], "lighting": "Low cold sun from the south-west, long blue shadows, god rays through pines, drifting snow, dusk to deep blue."},
+    "archeron_cottage": {"name": "The Archeron Cottage", "realm": "mortal", "map_xy": [0.725, 0.823], "playable_in_m1": true,
+      "mood": "A dilapidated two-room stone cottage, faded ward-markings at the threshold, Feyre's chipped painted flowers on every surface.",
+      "palette": ["#3a2a20", "#7a5a40", "#ffb46e", "#c03c3c", "#d8bc40", "#3c50b4"], "lighting": "Hearth firelight, flickering, warm against the blue night outside the shutters."},
+    "mortal_village": {"name": "The Village", "realm": "mortal", "map_xy": [0.725, 0.83], "playable_in_m1": true,
+      "mood": "Ordinary, dull stone houses made grimmer by winter. Trampled brown snow. A tiny market square with a broken fountain.",
+      "palette": ["#8c8680", "#584a3c", "#c8ccd6", "#963232", "#3c5096"], "lighting": "Flat overcast morning; cold grey with warm stall lanterns."},
+    "the_wall": {"name": "The Wall", "realm": "border", "map_xy": [0.72, 0.795], "playable_in_m1": true,
+      "mood": "An invisible ward bisecting the world, raised by the Treaty five centuries ago. Holes in it let faeries through.",
+      "palette": ["#0c1424", "#24406a", "#8ab4ff", "#e6f0ff"], "lighting": "Moonlight and a shimmering seam of pale magic."},
+    "spring_manor": {"name": "The Spring Court Manor", "realm": "prythian", "court": "spring", "map_xy": [0.60, 0.74], "playable_in_m1": false,
+      "mood": "An estate veiled in roses and ivy, alabaster sides, patios and balconies. Eternal spring.",
+      "palette": ["#f6e7c1", "#e7a5b0", "#5c8a4a", "#f2c25b"], "lighting": "Golden, honeyed, warm haze."},
+    "spring_woods": {"name": "The Spring Woods", "realm": "prythian", "court": "spring", "map_xy": [0.62, 0.73], "playable_in_m1": false,
+      "mood": "Balmy woods, birch groves and clear streams; something cold moves through them.", "palette": ["#9cc46a", "#e8f0c8", "#4a6a3a"], "lighting": "Dappled sun, then sudden chills."},
+    "under_the_mountain": {"name": "Under the Mountain", "realm": "prythian", "map_xy": [0.77, 0.563], "playable_in_m1": false,
+      "mood": "Oppressive, torchlit, cold stone; a throne room of revels; mud trenches; cells dripping water.", "palette": ["#14100e", "#3a2a22", "#ff8a3a", "#7a1a1a"], "lighting": "Torches only. Heavy darkness, red accents."},
+    "mortal_lands": {"name": "The Mortal Lands", "realm": "mortal", "map_xy": [0.65, 0.86], "playable_in_m1": false, "mood": "Southern human territory.", "palette": [], "lighting": ""}
+  },
+  "flavor_courts": {
+    "night_court": {"name": "Night Court", "map_xy": [0.63, 0.35]},
+    "day_court": {"name": "Day Court", "map_xy": [0.71, 0.45]},
+    "dawn_court": {"name": "Dawn Court", "map_xy": [0.77, 0.51]},
+    "winter_court": {"name": "Winter Court", "map_xy": [0.72, 0.61]},
+    "summer_court": {"name": "Summer Court", "map_xy": [0.57, 0.68]},
+    "autumn_court": {"name": "Autumn Court", "map_xy": [0.80, 0.68]},
+    "hybern": {"name": "Hybern", "map_xy": [0.18, 0.62]}
+  }
+}

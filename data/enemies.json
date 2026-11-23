@@ -1,0 +1,181 @@
+{
+  "schema": 1,
+  "enemies": {
+    "andras_wolf": {
+      "name": "The Wolf",
+      "true_name": "Andras",
+      "fae": true,
+      "max_hp": 68,
+      "art": "battle/andras_wolf.png",
+      "arena": "winter_clearing",
+      "start_range": "far",
+      "start_statuses": {
+        "regen": 4
+      },
+      "gimmick": "stalker",
+      "gimmick_text": "THE HUNT. You start Hidden in the brambles. While the wolf has not found you, it stalks the doe instead of you, and your attacks from hiding deal double damage. Noise (shots, movement) draws its eye; at 3 Noise it finds you. If it reaches the doe first, the meat and hide are ruined. It heals 4 each turn until struck by ash.",
+      "gimmick_params": {
+        "noise_to_alert": 3,
+        "doe_threat_to_pounce": 2
+      },
+      "moves": {
+        "stalk": {
+          "intent": "stalk",
+          "label": "Stalking the doe",
+          "effects": [
+            {
+              "type": "doe_threat",
+              "amount": 1
+            }
+          ]
+        },
+        "pounce_doe": {
+          "intent": "special",
+          "label": "Pounce on the doe",
+          "effects": [
+            {
+              "type": "kill_doe"
+            }
+          ]
+        },
+        "lunge": {
+          "intent": "attack",
+          "label": "Lunge",
+          "effects": [
+            {
+              "type": "move",
+              "to": "near"
+            },
+            {
+              "type": "damage",
+              "amount": 13
+            }
+          ]
+        },
+        "maul": {
+          "intent": "attack",
+          "label": "Maul",
+          "requires_range": "near",
+          "effects": [
+            {
+              "type": "damage",
+              "amount": 6,
+              "hits": 2
+            }
+          ]
+        },
+        "circle": {
+          "intent": "defend",
+          "label": "Circle",
+          "effects": [
+            {
+              "type": "block",
+              "amount": 7
+            },
+            {
+              "type": "apply",
+              "target": "self",
+              "status": "strength",
+              "stacks": 2
+            }
+          ]
+        },
+        "desperate": {
+          "intent": "attack",
+          "label": "Desperate Fangs",
+          "effects": [
+            {
+              "type": "move",
+              "to": "near"
+            },
+            {
+              "type": "damage",
+              "amount": 16
+            }
+          ]
+        }
+      },
+      "ai": {
+        "stalking": [
+          "stalk",
+          "pounce_doe"
+        ],
+        "hunting": [
+          {
+            "move": "desperate",
+            "weight": 3,
+            "if_hp_below": 0.4
+          },
+          {
+            "move": "lunge",
+            "weight": 3,
+            "if_range": "far"
+          },
+          {
+            "move": "maul",
+            "weight": 4,
+            "if_range": "near"
+          },
+          {
+            "move": "circle",
+            "weight": 1,
+            "no_repeat": true
+          }
+        ]
+      },
+      "dialogue_triggers": [
+        {
+          "when": "battle_start",
+          "scene": "b_wolf_start"
+        },
+        {
+          "when": "status_applied",
+          "status": "ash_struck",
+          "scene": "b_wolf_ash"
+        },
+        {
+          "when": "alerted",
+          "scene": "b_wolf_alerted"
+        },
+        {
+          "when": "doe_killed",
+          "scene": "b_wolf_doe"
+        },
+        {
+          "when": "enemy_hp_below",
+          "value": 0.5,
+          "scene": "b_wolf_half"
+        },
+        {
+          "when": "player_hp_below",
+          "value": 0.4,
+          "scene": "b_wolf_desperate"
+        },
+        {
+          "when": "turn",
+          "value": 4,
+          "scene": "b_wolf_turn4"
+        },
+        {
+          "when": "victory",
+          "scene": "b_wolf_victory"
+        }
+      ],
+      "rewards": {
+        "card_pool": [
+          "hunter_common",
+          "hunter_common",
+          "hunter_uncommon"
+        ],
+        "rare_chance": 0.15,
+        "items_if_doe_saved": {
+          "venison_strip": 2
+        },
+        "items_if_doe_lost": {
+          "venison_strip": 1
+        },
+        "lore": "lore_wolf"
+      }
+    }
+  }
+}

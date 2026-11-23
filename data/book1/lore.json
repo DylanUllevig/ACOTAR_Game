@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "notes": "Journal entries. Unlocked by story actions. 'quote' refers to quotes.json.",
+  "entries": {
+    "lore_hunt": {"title": "The Hunt", "category": "Feyre", "chapter": 1, "quote": "q_labyrinth", "text": "Eight years of poverty; five years of hunting woods that seasoned hunters fear. The family's last loaf was eaten yesterday."},
+    "lore_wolf": {"title": "The Wolf", "category": "Bestiary", "chapter": 1, "quote": "q_winter", "text": "A wolf the size of a pony, too quiet for its size. Wolf or faerie, the ash arrow did its work. Its name, she will learn later, was Andras."},
+    "lore_ash": {"title": "Mountain Ash", "category": "Prythian", "chapter": 1, "quote": "q_shuddered", "text": "Faeries hate iron, but it is ash wood that makes their immortal healing falter long enough for a mortal to make a killing blow. The High Fae burned nearly every ash tree long ago."},
+    "lore_paint_tins": {"title": "Three Tins of Paint", "category": "Relics", "chapter": 2, "quote": "q_hope", "text": "Red, yellow and blue, bought by Elain the one summer the family had coin to spare. Vines along the windows, flames on the hearthstones, stars around Feyre's drawer."},
+    "lore_vow": {"title": "The Vow", "category": "Feyre", "chapter": 2, "quote": "q_vow", "text": "Eleven years ago, at her mother's deathbed. In the mortal world a promise is law, currency, bond."},
+    "lore_treaty": {"title": "The Treaty", "category": "Prythian", "chapter": 3, "quote": null, "text": "After the War, six mortal queens forged the Treaty. The North went to the High Fae and faeries; the South to mortals. A wall, invisible and warded, was raised between."},
+    "lore_children": {"title": "Children of the Blessed", "category": "Mortal Lands", "chapter": 3, "quote": "q_immortal_light", "text": "Zealots who worship the High Fae and send 'offerings' over the wall. None come back."},
+    "lore_martax": {"title": "Martax", "category": "Bestiary", "chapter": 3, "quote": "q_woods", "text": "Body like a bear's, head something like a lion's, three rows of teeth sharper than a shark's. A pack crossed the wall and tore half a village apart."},
+    "lore_iron": {"title": "Iron", "category": "Mortal Lands", "chapter": 3, "quote": null, "text": "Mortals wear iron against the Fae: bracelets, necklaces, cuffs. Whether it helps is another matter."},
+    "lore_silverspring": {"title": "Silverspring Creek", "category": "Mortal Lands", "chapter": 4, "quote": null, "text": "In spring the rabbits make their warrens in the grove south of the big bend."},
+    "lore_life_for_life": {"title": "A Life for a Life", "category": "Prythian", "chapter": 4, "quote": "q_life_for_life", "text": "Any unprovoked attack on faerie-kind by humans is to be paid by a human life. Most mortals have chosen to forget that part of the Treaty."},
+    "lore_wall": {"title": "The Wall", "category": "Prythian", "chapter": 5, "quote": "q_prison", "text": "Two days north of the village. She crosses it asleep, bound by magic she can taste like metal."}
+  }
+}

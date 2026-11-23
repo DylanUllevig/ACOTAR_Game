@@ -1,0 +1,62 @@
+{
+  "schema": 1,
+  "notes": "Line forms: {s,e,t} speaker+expression+text; {n} narration; {choices:[{t,goto,do,if_flag,if_not_flag}]}; {do:[actions]}; {goto}. Any line may carry if_flag / if_not_flag. Short quoted book lines are marked in quotes.json; everything else is paraphrase written for the game.",
+  "scenes": {
+    "ch01_intro": {"lines": [
+      {"do": [{"type": "chapter_card", "n": 1}]},
+      {"n": "The forest had become a labyrinth of snow and ice."},
+      {"s": "feyre", "e": "hungry", "t": "We finished the last of the bread yesterday. The dried meat the day before that."},
+      {"s": "feyre", "e": "cold", "t": "A few hours of light left. The town hunters say the giant wolves are out, and in numbers."},
+      {"s": "feyre", "e": "determined", "t": "Three arrows and a knife. That will have to be enough."},
+      {"do": [{"type": "objective", "text": "Find quarry before dark. (WASD to move, E to interact, J for journal, Tab for deck)"}, {"type": "journal", "id": "lore_hunt"}]}
+    ]},
+    "ch01_hare": {"lines": [
+      {"if_flag": "ch01_hare_taken", "n": "An empty snare, sprung and buried in fresh snow."},
+      {"if_not_flag": "ch01_hare_taken", "n": "One of her old snares, half buried. A snow hare, frozen stiff in the loop. Thin, but meat is meat."},
+      {"if_not_flag": "ch01_hare_taken", "do": [{"type": "set_flag", "flag": "ch01_hare_taken"}, {"type": "item", "id": "venison_strip", "n": 1, "label": "Frozen Hare (counts as a Venison Strip)"}, {"type": "card_reward", "pools": ["hunter_common", "hunter_common", "hunter_common"]}]}
+    ]},
+    "ch01_wire": {"lines": [
+      {"if_flag": "ch01_wire_taken", "n": "Only her own footprints, filling with snow."},
+      {"if_not_flag": "ch01_wire_taken", "n": "Under the lip of the frozen creek bank, something glints: a coil of good snare wire, abandoned by some other hunter who never came back for it."},
+      {"if_not_flag": "ch01_wire_taken", "s": "feyre", "e": "neutral", "t": "Whoever left this isn't coming back for it."},
+      {"if_not_flag": "ch01_wire_taken", "do": [{"type": "set_flag", "flag": "ch01_wire_taken"}, {"type": "relic", "id": "snare_wire"}, {"type": "journal", "id": "lore_silverspring"}]}
+    ]},
+    "ch01_ash_lore": {"lines": [
+      {"n": "She runs a thumb along the third arrow in her quiver: long, heavy, mountain ash, iron-headed. Three years unused."},
+      {"s": "feyre", "e": "cold", "t": "Overpriced bit of wood. Or a fake. I've never been able to decide."},
+      {"do": [{"type": "journal", "id": "lore_ash"}, {"type": "set_flag", "flag": "ch01_ash_seen"}]}
+    ]},
+    "ch01_tracks": {"lines": [
+      {"n": "No trees stripped of bark here. The deer haven't moved on yet. They'll stay until the bark runs out, then go north, past the wolves' territory."},
+      {"s": "feyre", "e": "neutral", "t": "Toward Prythian. Where no mortal goes unless they want to die."}
+    ]},
+    "ch01_brambles": {"lines": [
+      {"n": "She crouches in a cluster of snow-heavy brambles. Through the thorns: a clearing, and a small brook with holes in its ice."},
+      {"n": "Bushes rustle across the clearing. A small doe, desperate enough to wrench bark from a tree."},
+      {"s": "feyre", "e": "hungry", "t": "A deer like that could feed my family for a week or more."},
+      {"n": "But there is a pair of golden eyes shining from the brush beside hers."},
+      {"s": "feyre", "e": "afraid", "t": "He's enormous. The size of a pony. And no animal that big should be that quiet."},
+      {"do": [{"type": "save_checkpoint"}, {"type": "start_battle", "enemy": "andras_wolf", "on_win": "ch01_after_wolf", "on_lose": "ch01_lose"}]}
+    ]},
+    "ch01_after_wolf": {"lines": [
+      {"n": "She watches until that coat of charcoal and obsidian and ivory stops rising and falling."},
+      {"s": "feyre", "e": "cold", "t": "Wolf. Definitely just a wolf, despite his size."},
+      {"if_flag": "doe_saved", "s": "feyre", "e": "determined", "t": "The doe is whole. Meat for a week, a hide to sell. I can only carry one animal, but I'll take his pelt."},
+      {"if_not_flag": "doe_saved", "s": "feyre", "e": "sad", "t": "He tore her open before I could stop him. Less meat, a ruined hide. I'll take his pelt at least."},
+      {"n": "She skins the wolf, wraps the bloody side of the pelt around the doe's wound, and hoists the deer across her shoulders. His remaining golden eye stares up at the snow-heavy sky."},
+      {"n": "But this was the forest, and it was winter."},
+      {"do": [{"type": "set_flag", "flag": "wolf_killed"}, {"type": "set_flag", "flag": "has_wolf_pelt"}, {"type": "time", "hour": 16.6}, {"type": "objective", "text": "Carry the doe home before full dark. Follow the path south."}]}
+    ]},
+    "ch01_lose": {"lines": [
+      {"n": "The snow keeps falling. Somewhere, three people wait by a dying fire for a hunter who doesn't come home."},
+      {"do": [{"type": "game_over"}]}
+    ]},
+    "ch01_exit_locked": {"lines": [
+      {"s": "feyre", "e": "hungry", "t": "Not empty-handed. Not again."}
+    ]},
+    "ch01_exit": {"lines": [
+      {"n": "Miles of numb hands and shaking knees. The sun sets before she leaves the trees."},
+      {"do": [{"type": "goto", "region": "cottage", "spawn": "door", "hour": 17.4, "chapter": 2}]}
+    ]}
+  }
+}

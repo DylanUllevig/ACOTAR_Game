@@ -1,0 +1,9 @@
+{
+  "schema": 1,
+  "items": {
+    "venison_strip": {"name": "Venison Strip", "icon": "items/venison_strip.png", "battle": true, "text": "Heal 6 HP.", "effects": [{"type": "heal", "amount": 6}], "price": 4, "source": {"chapter": 2}},
+    "hot_water": {"name": "Cup of Hot Water", "icon": "items/hot_water.png", "battle": true, "text": "Gain 1 Energy. ('We couldn't even afford tea these days.')", "effects": [{"type": "energy", "amount": 1}], "price": 3, "source": {"chapter": 2}},
+    "iron_nail": {"name": "Iron Nail", "icon": "items/iron_nail.png", "battle": true, "text": "Deal 3 damage, or 9 to a Fae enemy.", "effects": [{"type": "damage", "amount": 3, "fae_amount": 9}], "price": 6, "source": {"chapter": 4, "note": "'A nail—I'd take a damned iron nail, if it were available.'"}}
+  },
+  "item_slots": 3
+}

@@ -1,0 +1,30 @@
+{
+  "schema": 1,
+  "scenes": {
+    "ch05_ride": {"lines": [
+      {"do": [{"type": "chapter_card", "n": 5}]},
+      {"n": "A white mare waits unbound at the tree line, coat like fresh snow in moonlight. She lowers her head, of all things, as the beast passes."},
+      {"s": "feyre", "e": "cold", "t": "North. Toward faerie territory. Live with him, not die. Live."},
+      {"do": [{"type": "objective", "text": "Ride north behind the beast. (Hold W. Press E near him to speak.)"}]}
+    ]},
+    "ch05_ask": {"lines": [
+      {"if_not_flag": "ch05_asked_1", "s": "feyre", "e": "cold", "t": "What manner of faerie are you?"},
+      {"if_not_flag": "ch05_asked_1", "n": "He doesn't bother to turn around. Fair enough. She killed his friend."},
+      {"if_not_flag": "ch05_asked_1", "do": [{"type": "set_flag", "flag": "ch05_asked_1"}]},
+      {"if_flag": "ch05_asked_1", "if_not_flag": "ch05_asked_2", "s": "feyre", "e": "cold", "t": "Do you have a name?"},
+      {"if_flag": "ch05_asked_1", "if_not_flag": "ch05_asked_2", "s": "beast", "e": "neutral", "t": "Does it even matter to you, human?"},
+      {"if_flag": "ch05_asked_1", "if_not_flag": "ch05_asked_2", "do": [{"type": "set_flag", "flag": "ch05_asked_2"}]}
+    ]},
+    "ch05_sleep": {"lines": [
+      {"n": "She opens her mouth to ask again. A growl of annoyance. A charged, metallic tang stings her nose."},
+      {"n": "Exhaustion slams down. Blackness swallows her whole."},
+      {"do": [{"type": "wall_cinematic"}]}
+    ]},
+    "ch05_wake": {"lines": [
+      {"n": "She wakes with a jolt atop the horse, held by invisible bonds. The sun is high. Birds flit past; a mild breeze kisses her face."},
+      {"n": "Ahead, a hedge-bordered metal gate."},
+      {"s": "feyre", "e": "cold", "t": "My prison or my salvation. I couldn't decide which."},
+      {"do": [{"type": "journal", "id": "lore_wall"}, {"type": "end_slice"}]}
+    ]}
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "schema": 1,
+  "notes": "Canon-tracking power curve for all of Book 1. Only tiers 0 and 1 are reachable in Milestone 1. Stats are absolute values for the tier, not deltas. 'unlocks' lists card types or mechanics that open at this tier.",
+  "tiers": [
+    {"tier": 0, "id": "starving_mortal", "name": "Starving Mortal", "chapter": 1, "max_hp": 30, "energy": 3, "hand_size": 5, "strength": 0,
+     "unlocks": ["attack", "skill", "move"], "grants_cards": [],
+     "canon": "Gangly with hunger, 'could count a good number of my ribs.' One bow, three arrows, one knife."},
+    {"tier": 1, "id": "fed_huntress", "name": "Fed Huntress", "chapter": 2, "max_hp": 36, "energy": 3, "hand_size": 5, "strength": 0,
+     "unlocks": ["power"], "grants_cards": ["survivors_resolve"],
+     "canon": "Venison on the table for the first time in weeks. A small mercy, but she is steadier for it."},
+    {"tier": 2, "id": "guest_of_spring", "name": "Guest of the Spring Court", "chapter": 8, "max_hp": 44, "energy": 3, "hand_size": 5, "strength": 0,
+     "unlocks": ["uncommon_shop"], "grants_cards": [],
+     "canon": "Fed, bathed and rested at the manor; given freedom of the grounds."},
+    {"tier": 3, "id": "suriel_hunter", "name": "Suriel Hunter", "chapter": 15, "max_hp": 50, "energy": 3, "hand_size": 6, "strength": 1,
+     "unlocks": ["snare_cards"], "grants_cards": [],
+     "canon": "Traps the Suriel and survives the naga, with Tamlin's help."},
+    {"tier": 4, "id": "fire_night", "name": "Fire Night", "chapter": 21, "max_hp": 52, "energy": 4, "hand_size": 6, "strength": 1,
+     "unlocks": ["passion_cards"], "grants_cards": [],
+     "canon": "Calanmai. Confidence, defiance, and the first encounter with Rhysand."},
+    {"tier": 5, "id": "prisoner", "name": "Prisoner Under the Mountain", "chapter": 35, "max_hp": 38, "energy": 3, "hand_size": 5, "strength": 1,
+     "unlocks": ["bargain_cards"], "grants_cards": [],
+     "canon": "Beaten, starved and caged. A deliberate dip: power drops when canon says it should."},
+    {"tier": 6, "id": "trial_survivor", "name": "Trial Survivor", "chapter": 40, "max_hp": 46, "energy": 4, "hand_size": 6, "strength": 2,
+     "unlocks": ["riddle_cards"], "grants_cards": [],
+     "canon": "Outwits the Middengard worm and survives the second trial, bound by Rhysand's bargain."},
+    {"tier": 7, "id": "made_fae", "name": "Made Fae", "chapter": 46, "max_hp": 90, "energy": 5, "hand_size": 7, "strength": 4,
+     "unlocks": ["fae_cards", "regen_self"], "grants_cards": [],
+     "canon": "Remade by the seven High Lords. Immortal strength, speed and senses. The gap from Tier 0 should be obvious."}
+  ]
+}
