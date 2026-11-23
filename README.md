@@ -45,6 +45,12 @@ Checks every data cross-reference, the battle rules, the wolf gimmick, balance
 (a greedy bot must win 60 to 97 percent, a random bot must do worse), the save
 round trip, schema migration and carry-over export.
 
+Mouse test (needs a display; clicks New Game, then clicks a card in the wolf fight):
+
+```
+godot --path . --script res://tests/title_click_test.gd
+```
+
 Screenshot tour (plays the slice automatically and saves a screenshot per beat):
 
 ```

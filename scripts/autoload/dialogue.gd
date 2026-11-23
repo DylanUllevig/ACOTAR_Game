@@ -106,6 +106,7 @@ func _ready() -> void:
 	root.add_child(more)
 
 	choices_box = VBoxContainer.new()
+	choices_box.mouse_filter = Control.MOUSE_FILTER_IGNORE  # an empty box must not swallow clicks; the choice buttons still get them
 	choices_box.anchor_left = 0.5
 	choices_box.anchor_right = 0.5
 	choices_box.anchor_top = 1.0
