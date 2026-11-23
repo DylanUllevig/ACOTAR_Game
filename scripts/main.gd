@@ -25,9 +25,11 @@ func _ready() -> void:
 
 
 func _show_title() -> void:
+	var layer = CanvasLayer.new()
+	add_child(layer)
 	title = Control.new()
 	title.set_anchors_preset(Control.PRESET_FULL_RECT)
-	add_child(title)
+	layer.add_child(title)
 	var bg = ColorRect.new()
 	bg.set_anchors_preset(Control.PRESET_FULL_RECT)
 	var m = ShaderMaterial.new()
@@ -56,9 +58,19 @@ func _show_title() -> void:
 	snow.scale_amount_max = 1.1
 	title.add_child(snow)
 	var v = VBoxContainer.new()
-	v.set_anchors_preset(Control.PRESET_CENTER)
-	v.position = Vector2(560, 250)
-	v.size = Vector2(800, 600)
+	# centre on screen whatever the window size: anchors at the middle, offsets
+	# around it, growing both ways. (Setting a preset and then a pixel position
+	# breaks once the parent is resized, which pushed the title off screen.)
+	v.anchor_left = 0.5
+	v.anchor_right = 0.5
+	v.anchor_top = 0.5
+	v.anchor_bottom = 0.5
+	v.offset_left = -500
+	v.offset_right = 500
+	v.offset_top = -300
+	v.offset_bottom = 300
+	v.grow_horizontal = Control.GROW_DIRECTION_BOTH
+	v.grow_vertical = Control.GROW_DIRECTION_BOTH
 	v.alignment = BoxContainer.ALIGNMENT_CENTER
 	v.add_theme_constant_override("separation", 18)
 	title.add_child(v)
@@ -83,14 +95,17 @@ func _show_title() -> void:
 	v.add_child(b_quit)
 	b_new.grab_focus.call_deferred()
 	var ver = Art.label("Milestone 1 vertical slice  ·  v%s  ·  placeholder art" % ProjectSettings.get_setting("application/config/version"), 20, Color(1, 1, 1, 0.4), "caps")
-	ver.position = Vector2(30, 1030)
+	ver.anchor_top = 1.0
+	ver.anchor_bottom = 1.0
+	ver.offset_left = 30
+	ver.offset_top = -50
 	title.add_child(ver)
 
 
 func _new_game() -> void:
 	GameState.new_game()
 	await UI.fade_out(0.6)
-	title.queue_free()
+	title.get_parent().queue_free()  # the title CanvasLayer
 	await Router.goto_region("forest", "start")
 
 
@@ -98,5 +113,5 @@ func _continue() -> void:
 	if not SaveSystem.load_slot("auto"):
 		return
 	await UI.fade_out(0.6)
-	title.queue_free()
+	title.get_parent().queue_free()  # the title CanvasLayer
 	await Router.continue_game()

@@ -266,6 +266,7 @@ func fade_to_black_card(text: String) -> void:
 func _modal(title: String, width := 1500, height := 860) -> Array:
 	## Returns [overlay, content VBox]. Caller frees overlay.
 	modal_open = true
+	_place_toasts(true)
 	var overlay = Control.new()
 	overlay.set_anchors_preset(Control.PRESET_FULL_RECT)
 	overlay.mouse_filter = Control.MOUSE_FILTER_STOP
@@ -302,6 +303,17 @@ func _close_modal(overlay: Control) -> void:
 	await tw.finished
 	overlay.queue_free()
 	modal_open = modal_layer.get_child_count() > 1
+	_place_toasts(modal_open)
+
+
+## Toasts sit under the HUD normally, and drop to the bottom edge while a modal
+## is open so they never cover the modal's title or its buttons.
+func _place_toasts(bottom: bool) -> void:
+	toasts.anchor_top = 1.0 if bottom else 0.0
+	toasts.anchor_bottom = toasts.anchor_top
+	toasts.offset_top = -100 if bottom else 150
+	toasts.offset_bottom = -40 if bottom else 150
+	toasts.grow_vertical = Control.GROW_DIRECTION_BEGIN if bottom else Control.GROW_DIRECTION_END
 
 
 func _card_row(cards: Array, descs: Array = []) -> Array:
