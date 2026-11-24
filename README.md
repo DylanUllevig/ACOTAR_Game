@@ -10,12 +10,13 @@ a chapter index, character descriptions and short quotes only.
 
 ## Status
 
-Milestone 1, the vertical slice: Chapters 1 to 5 (the winter hunt and the wolf,
-the cottage, the village, the Beast at the door, the ride to the Wall). Every
-image in the art manifest has final painted art (87 files in `assets/final/`);
-the labelled placeholders stay as fallbacks. Every sound is generated in code
-until final audio replaces it. See `docs/DESIGN.md` for scope, decisions and
-guesses.
+Milestone 2: Chapters 1 to 27 play through. Milestone 1 is the winter hunt and
+the wolf, the cottage, the village, the Beast at the door and the ride to the
+Wall (Chapters 1 to 5); Milestone 2 is the Spring Court, from waking at its gate
+to the night before Tamlin sends her home (Chapters 6 to 27). The world and its
+people are pixel art; dialogue portraits are painted. Every sound is generated
+in code until final audio replaces it. See `docs/DESIGN.md` for scope,
+decisions and guesses.
 
 ## Run it
 
@@ -50,18 +51,21 @@ preset exports to `build/web/` and uses the Compatibility renderer.
 
 ## Tests
 
-Headless suite (about 40 seconds):
+Headless suite (about 90 seconds):
 
 ```
 godot --headless --fixed-fps 60 --path . res://tests/test_runner.tscn
 godot --headless --fixed-fps 60 --path . res://tests/test_runner.tscn -- --only story
+godot --headless --fixed-fps 60 --path . res://tests/test_runner.tscn -- --only spring
 ```
 
 Unit tests cover compilation, every data cross-reference, the inventory,
 power tiers, the save round trip, schema migration from the card-battle saves,
 map discovery and the clock. Scenario tests play Chapter 1 with a bot (stealth,
 the ash arrow, the doe), defeat and retry, the whole slice from the forest to
-the Wall and the carry-over export, and a seeded balance run of 24 fights per
+the Wall and the carry-over export, all of Chapters 6 to 27 the way a player
+goes (through the doors, to the people and places the objectives name, past the
+Bogge, the puca, the naga and the Attor), and a seeded balance run of 24 fights per
 bot: a careful bot that reads 85% of the wolf's tells must win at least 85% of
 them with about half its health left, and a careless one that reads 25% must
 lose some and finish at least 5 HP worse. Every dialogue line must also show
@@ -75,9 +79,11 @@ Resume. Run it at more than one window size:
 godot --path . --resolution 1600x900 --script res://tests/title_click_test.gd
 ```
 
-Screenshot tour: plays the whole slice by itself and saves a screenshot per
-beat (about 6 minutes). `--autotest` instead of `--shots` plays it without
-saving images and exits non-zero if it does not reach the end.
+Screenshot tour: plays Chapters 1 to 6 by itself, then opens each Spring Court
+set piece at its point in the story through Chapter 27, and saves a screenshot
+per beat (about 25 minutes under software rendering). `--autotest` instead of
+`--shots` plays it without saving images and exits non-zero if it does not
+reach the end.
 
 ```
 godot --path . --resolution 1920x1080 -- --shots /some/folder
@@ -107,8 +113,15 @@ godot --path . --resolution 1920x1080 -- --scene-shot cottage --chapter 2 --hour
 - `data/assets/generated.json` lists every generated image by file name and
   Higgsfield job id; a job id can be reused as a reference image.
   `docs/STYLE_GUIDE.md` has the rules each kind of art follows.
+- Pixel art: `tools/pixel/build_assets.py` turns generated pixel-art sheets
+  into the walking sheets, creatures and props in `assets/pixel/`;
+  `tools/pixel/make_carpets.py` draws the manor's carpets.
+- Dialogue for Chapters 6 on is written in `tools/dialogue/src/*.txt` and
+  compiled with `python3 tools/dialogue/dlgc.py data/book1/dialogue
+  tools/dialogue/src/chNN.txt`; `python3 tools/dialogue/check.py` cross-checks
+  every scene against the game.
 - `tools/gen_audio.py` synthesises every sound effect, ambience bed and music
-  cue into `assets/audio/` (77 files; needs numpy, scipy and ffmpeg with
+  cue into `assets/audio/` (120 files; needs numpy, scipy and ffmpeg with
   libvorbis). A file with the same name under `assets/final/audio/<kind>/`
   replaces it.
 

@@ -511,7 +511,11 @@ func bark(speaker: String, expr: String, text: String) -> void:
 		_bark_name.text = DB.character_name(b[0]).to_upper()
 		_bark_text.text = String(b[2])
 		var ptex = Art.portrait(String(b[0]), String(b[1]))
-		_bark_face.set_face(ptex, Medallion.default_region(ptex))
+		# a voice with no face (the Bogge, someone in the crowd) gets no
+		# empty frame
+		_bark_face.visible = ptex != null
+		if ptex != null:
+			_bark_face.set_face(ptex, Medallion.default_region(ptex))
 		_bark_panel.visible = true
 		_bark_panel.modulate.a = 0.0
 		var tw = create_tween()

@@ -366,6 +366,11 @@ func _rug(pos: Vector2) -> void:
 	_flat_tex("interior/rug_manor.png", pos)
 
 
+## A large carpet (tools/pixel/make_carpets.py), centred on pos.
+func _carpet(name: String, pos: Vector2) -> void:
+	_flat_tex("interior/carpet_%s.png" % name, pos)
+
+
 # ------------------------------------------------------------------ rooms
 func _hall() -> void:
 	# the grand staircase rising into the back wall, roses either side
@@ -392,6 +397,8 @@ func _hall() -> void:
 	_piece("props/orange_tree.png", Vector2(1260, 620), Vector2(46, 18), true)
 	_candles(Vector2(560, 580))
 	_candles(Vector2(1000, 580))
+	_piece("props/bench_marble.png", Vector2(340, 238), Vector2(60, 16))
+	_piece("props/bench_marble.png", Vector2(1220, 238), Vector2(60, 16), true)
 	if GameState.chapter == 17 and not GameState.has_flag("ch17_done"):
 		# the foyer table, cleared for the faerie they carried in
 		_piece("props/stretcher.png", Vector2(780, 560), Vector2(110, 40))
@@ -403,6 +410,8 @@ func _dining() -> void:
 		_window(x)
 	_painting(5, 1000)
 	_piece("props/palm.png", Vector2(1150, 204), Vector2(40, 18), true)
+	_piece("props/dresser.png", Vector2(900, 198), Vector2(80, 20))
+	_carpet("dining", Vector2(630, 410))
 	# the long table: three lengths end to end, a carved chair at either end.
 	# From the dinner in Chapter 22 on, only the middle length is left: he
 	# sent the rest somewhere between, and they never brought it back.
@@ -471,11 +480,13 @@ func _study() -> void:
 	_candles(Vector2(764, 206))
 	# her writing desk, its chair behind it
 	_piece("props/armchair.png", Vector2(420, 400), Vector2(50, 16))
+	_carpet("desk", Vector2(420, 470))
 	_piece("props/desk.png", Vector2(420, 472), Vector2(104, 40), false, "desk")
 	add_interactable(Vector2(420, 500), "The writing desk", _desk, 64, "Writing desk")
 	spawns.desk = Vector2(420, 530)
 	# a reading corner
-	_rug(Vector2(940, 520))
+	_carpet("library", Vector2(950, 530))
+	_piece("props/bookcase.png", Vector2(96, 652), Vector2(84, 22))
 	_piece("props/chaise.png", Vector2(1000, 520), Vector2(100, 24))
 	_piece("props/armchair.png", Vector2(840, 506), Vector2(50, 16), true)
 	_piece("props/palm.png", Vector2(76, 236), Vector2(40, 18))
@@ -498,7 +509,10 @@ func _gallery() -> void:
 	_piece("props/palm.png", Vector2(1690, 536), Vector2(40, 18), true)
 	_candles(Vector2(400, 520))
 	_candles(Vector2(1380, 520))
-	_rug(Vector2(880, 400))
+	_carpet("gallery", Vector2(880, 380))
+	# clear of the doors, so no one coming in stands behind them
+	_piece("props/statue.png", Vector2(290, 545), Vector2(30, 14))
+	_piece("props/statue.png", Vector2(1470, 545), Vector2(30, 14), true)
 
 
 func _studio() -> void:
@@ -513,7 +527,10 @@ func _studio() -> void:
 		# more of her work leaning against the walls now
 		_piece("props/easel_canvas.png", Vector2(160, 280), Vector2(40, 16))
 		_piece("props/easel_canvas.png", Vector2(240, 290), Vector2(40, 16), true)
+	_carpet("studio", Vector2(470, 430))
 	_piece("props/stool.png", Vector2(440, 450), Vector2(22, 12))
+	_piece("props/shelf.png", Vector2(112, 198), Vector2(70, 18))
+	_piece("props/chest.png", Vector2(190, 508), Vector2(46, 20))
 	_candles(Vector2(820, 470))
 	add_interactable(Vector2(450, 430), "Paint", func(): await Dialogue.play("spring_paint"), 70, "Easel")
 	spawns.easel = Vector2(450, 470)
@@ -532,8 +549,8 @@ func _landing() -> void:
 	_door_face(1150.0)
 	add_interactable(Vector2(1150, WALL_H + 30), "Lucien's room", _lucien_door, 70, "Lucien's room")
 	spawns.lucien = Vector2(1150, WALL_H + 60)
-	_rug(Vector2(520, 300))
-	_rug(Vector2(1150, 300))
+	_carpet("landing", Vector2(720, 330))
+	_piece("props/bench_marble.png", Vector2(250, 214), Vector2(60, 16))
 
 
 func _door_face(at: float) -> void:
@@ -562,6 +579,8 @@ func _bedroom() -> void:
 	_piece("props/bathtub.png", Vector2(140, 560), Vector2(96, 40), false, "bath")
 	_piece("props/screen_painted.png", Vector2(290, 520), Vector2(110, 20))
 	spawns.bath = Vector2(170, 600)
+	_carpet("bedroom", Vector2(600, 420))
+	_piece("props/washstand.png", Vector2(72, 470), Vector2(40, 16))
 	_piece("props/chaise.png", Vector2(720, 560), Vector2(100, 24))
 	_candles(Vector2(860, 590))
 	_piece("props/palm.png", Vector2(1080, 600), Vector2(40, 18), true)

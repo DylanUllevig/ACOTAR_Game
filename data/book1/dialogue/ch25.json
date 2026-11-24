@@ -305,6 +305,10 @@
     {
      "do": [
       {
+       "type": "objective",
+       "text": ""
+      },
+      {
        "type": "region_call",
        "method": "to_meadow"
       }

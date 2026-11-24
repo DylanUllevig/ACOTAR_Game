@@ -2,7 +2,7 @@ extends Region
 ## The woods west of the manor, in eternal spring: oak and birch, bluebells
 ## and ferns, a clear brook running north to south with a footbridge where
 ## the trail crosses. Up the trail to the north-east, a glen with a pool and
-## an old willow; west, past a stream, a ring of young birches (where she
+## an old willow; west, past a stream, an arc of young birches (where she
 ## snares the Suriel); south-west, a hollow under the hills with a cave in
 ## its side, where the bonfires burn on Calanmai.
 ##
@@ -14,7 +14,7 @@ const Bogge := preload("res://scripts/world/regions/bogge_watch.gd")
 const EAST := Vector2(5060, 1700)          # where the trail comes in from the manor
 const TRAIL := Vector2(4200, 1660)         # the ride stops here when the cold comes
 const CROSSING := Vector2(2640, 1600)      # the footbridge
-const GROVE := Vector2(1150, 760)          # the ring of young birches
+const GROVE := Vector2(1150, 760)          # the clearing in the young birches
 const GLEN := Vector2(3800, 700)           # the pool under the willow
 const HOLLOW := Vector2(1400, 2700)        # Calanmai: the bonfire, the drums, the cave
 
@@ -174,10 +174,14 @@ func _glen() -> void:
 
 
 func _grove() -> void:
-	# young birches in a ring, tall and straight as pillars
-	for i in 9:
-		var a = TAU * i / 9.0 + 0.3
-		var p = GROVE + Vector2(cos(a) * 300, sin(a) * 200)
+	# young birches, tall and straight as pillars, in an arc round the back
+	# and sides of the clearing. It is open to the south, so no crown roofs
+	# over the snare or the fight with the naga.
+	for i in 8:
+		if i == 2:
+			continue   # the big oak stands there
+		var a = PI * 0.94 + PI * 1.12 * i / 7.0
+		var p = GROVE + Vector2(cos(a) * 380, sin(a) * 250)
 		add_prop("props/birch_s.png" if i % 3 == 1 else "props/birch.png", p, 1.0, Vector2(16, 7), Vector2(26, 14), i % 2 == 0)
 	# the big oak she waits in
 	add_prop("props/oak.png", GROVE + Vector2(-250, -180), 1.0, Vector2(22, 9), Vector2(38, 20))
@@ -241,7 +245,17 @@ func _trees() -> void:
 			rel = ["props/blossom_white.png", "props/blossom_pink_s.png", "props/blossom_white_s.png"][rng.randi_range(0, 2)]
 		else:
 			rel = ["props/oak.png", "props/oak_s.png", "props/oak.png"][rng.randi_range(0, 2)]
-		add_prop(rel, p, 1.0, Vector2(22, 9), Vector2(38, 20), rng.randf() < 0.5)
+		var flip = rng.randf() < 0.5
+		if _roofs_grove(p):
+			continue
+		add_prop(rel, p, 1.0, Vector2(22, 9), Vector2(38, 20), flip)
+
+
+## A crown standing south of the grove would roof over the clearing where the
+## Suriel is snared and the naga come out, and hide the fight. Those trees are
+## left out; their places still count, so the rest of the wood keeps its shape.
+func _roofs_grove(p: Vector2) -> bool:
+	return absf(p.x - GROVE.x) < 540.0 and p.y > GROVE.y - 160.0 and p.y < GROVE.y + 780.0
 
 
 func _undergrowth() -> void:

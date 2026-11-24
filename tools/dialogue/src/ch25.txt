@@ -71,6 +71,7 @@ N The music ended at last. I was gasping, damp with sweat, and the moon was near
 N He only laughed, and led me out of the dancing. I dug in my heels at the edge of the firelight. The musicians were starting up again.
 @tamlin/tender I want to show you something better.
 N I stopped arguing.
+> objective
 > region_call to_meadow
 N He led me off by moonlight, choosing only soft grass for my bare feet, until the music faded into the sighing of trees. At the edge of a wide meadow, he stopped, his hand on my shoulder.
 N The long grass moved like water under the last of the moon.

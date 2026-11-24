@@ -1577,6 +1577,54 @@
    "notes": "Spring Court cast, 2026-11-24. Generated with a transparent background at 2k; fitted with tools/fit_art.py. Expressions were made with the neutral portrait's job as an image reference."
   },
   {
+   "id": "portrait.alis_urisk.neutral",
+   "kind": "portrait",
+   "placeholder": "",
+   "final": "assets/final/portraits/alis_urisk/neutral.png",
+   "size": [
+    640,
+    960
+   ],
+   "aspect": "2:3",
+   "prompt": "Painted illustration in the style of a hand-painted fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, warm rim light, cinematic chiaroscuro, lush spring palette of rose, sage green and honey gold, no text, no watermark, no frame. Half-length character portrait from the waist up, three-quarter view, facing left. The same housekeeper as in the reference image: the same dark curls pinned up, the same small gold mask, the same green dress, white apron and ring of keys, the same framing and painting style. Only her skin changes: it is the warm walnut brown of tree bark, with a fine wood-grain texture and faint moss-green flecks, on her face, neck and hands. Her eyes are bright amber. Expression: calm, guarded neutral expression. Transparent background, the figure cut out cleanly.",
+   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
+   "status": "final",
+   "est_generations": 1,
+   "notes": "Chapter 24 on: the housekeeper as she looks without the glamour, 2026-11-24. Neutral made with the glamoured neutral portrait's job as an image reference; stern and kind with the new neutral's job. Transparent background at 2k; fitted with tools/fit_art.py."
+  },
+  {
+   "id": "portrait.alis_urisk.stern",
+   "kind": "portrait",
+   "placeholder": "",
+   "final": "assets/final/portraits/alis_urisk/stern.png",
+   "size": [
+    640,
+    960
+   ],
+   "aspect": "2:3",
+   "prompt": "Painted illustration in the style of a hand-painted fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, warm rim light, cinematic chiaroscuro, lush spring palette of rose, sage green and honey gold, no text, no watermark, no frame. Half-length character portrait from the waist up, three-quarter view, facing left. The same character as in the reference image: identical face, bark-brown skin, hair, mask, clothing and colours, the same framing and painting style; only the expression changes. Expression: stern and no-nonsense, brows drawn together, lips pressed thin, a look that brooks no argument. Transparent background, the figure cut out cleanly.",
+   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
+   "status": "final",
+   "est_generations": 1,
+   "notes": "Chapter 24 on: the housekeeper as she looks without the glamour, 2026-11-24. Neutral made with the glamoured neutral portrait's job as an image reference; stern and kind with the new neutral's job. Transparent background at 2k; fitted with tools/fit_art.py."
+  },
+  {
+   "id": "portrait.alis_urisk.kind",
+   "kind": "portrait",
+   "placeholder": "",
+   "final": "assets/final/portraits/alis_urisk/kind.png",
+   "size": [
+    640,
+    960
+   ],
+   "aspect": "2:3",
+   "prompt": "Painted illustration in the style of a hand-painted fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, warm rim light, cinematic chiaroscuro, lush spring palette of rose, sage green and honey gold, no text, no watermark, no frame. Half-length character portrait from the waist up, three-quarter view, facing left. The same character as in the reference image: identical face, bark-brown skin, hair, mask, clothing and colours, the same framing and painting style; only the expression changes. Expression: kind and motherly, a warm smile. Transparent background, the figure cut out cleanly.",
+   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
+   "status": "final",
+   "est_generations": 1,
+   "notes": "Chapter 24 on: the housekeeper as she looks without the glamour, 2026-11-24. Neutral made with the glamoured neutral portrait's job as an image reference; stern and kind with the new neutral's job. Transparent background at 2k; fitted with tools/fit_art.py."
+  },
+  {
    "id": "portrait.alis.stern",
    "kind": "portrait",
    "placeholder": "",

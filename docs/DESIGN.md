@@ -1,7 +1,69 @@
-# Design notes: Milestone 1
+# Design notes
 
-What the vertical slice contains, how the systems work, where the build differs
-from the original spec and why, and every guess made along the way.
+What each milestone contains, how the systems work, where the build differs
+from the original spec and why, and every guess made along the way. Milestone
+2 comes first; Milestone 1's notes follow it unchanged except where marked.
+
+## Milestone 2: the Spring Court (Chapters 6 to 27)
+
+Chapter 5 no longer ends the game: she wakes at the Spring Court's gate in
+Chapter 6 and plays on to the night before Tamlin sends her home, where the end
+window closes Milestone 2. Next is Chapter 28, home across the Wall.
+
+| Ch | Where | What happens |
+|---|---|---|
+| 6 to 8 | the gate, the hall, the dining room, her room, the grounds | the Beast at the gate, the feast, the bath and spring clothes, the first dinner, the rose garden; she maps the fountain, the pool, the stables and the gate, and steals a table knife (tier 2) |
+| 9 to 11 | the stables, the woods, the gate at night | the ride with Lucien and her bow back; the Bogge; the thing in her father's shape at the gate (the puca) |
+| 12 to 15 | the hall, the library, the birch grove | the wounded beast at night; learning to read, the mural of the courts; Lucien's knife and bait; the snare, the Suriel, the naga (tier 3) |
+| 16 to 19 | the house, the willow glen, the gallery, the painting room, the rose garden | faeries can lie; the faerie in the hall; the pool of starlight and a jeweled knife; she paints; the Attor |
+| 20 to 21 | the woods at night, the upper hall | Fire Night: the drums, the three faeries, the stranger; the bite in the hall (tier 4) |
+| 22 to 24 | the house, the glen, the heron fountain | "faerie pig", the gown, the table that shrinks, her paintings; faerie sight at the willow; the court without its glamour; the head on the heron |
+| 25 | the lawn, the meadow, the hill | Midsummer: the wine, the fiddler, the will-o'-the-wisps, the kiss, the dawn |
+| 26 to 27 | the dining room, her room | Rhysand at lunch; he sends her home; thorns and all (fades to black) |
+
+### How it is built
+
+| Part | Where | Notes |
+|---|---|---|
+| The grounds | `regions/spring_manor.gd` | Rose garden, reflecting pool, heron fountain among the irises, stables, gate, the rise behind the east wing, the meadow. Who is about and what waits there depends on the chapter, its flags and the hour. Midsummer adds the bonfire, the dancers, the musicians' corner and the food tables. |
+| The house | `regions/manor_in.gd` | One script for every room: hall, dining room, library, gallery, painting room, upper hall, her room. `BEATS` lists the scene waiting in each room per chapter: [room, chapter, flag needed, flag that marks it played, scene]. The scene sets that flag first, so it plays once. Interiors do not pass time. |
+| The woods | `regions/spring_woods.gd` | The trail from the manor, the footbridge, the birch grove, the willow glen and the Calanmai hollow. |
+| The Bogge | `regions/bogge_watch.gd` | Not a fight. Its voice drags her gaze one way; push the other way inside 1.2 seconds. Eight pulls; failing fills the dread, and full dread means she looked. |
+| The Attor | `regions/attor_watch.gd` | Not a fight. Seven seconds to get behind a hedge on the garden's north side, then keep still while it is near; stepping into the open is the end of her. |
+| The puca and the naga | `scripts/combat/encounter.gd` | Stand-up fights she cannot finish alone, as in the book. She holds on until Tamlin arrives (32 seconds for the puca, 58 for the naga), or wins outright. |
+| Dialogue | `tools/dialogue/` | Chapters 6 on are written in a compact script (`src/*.txt`) and compiled to `data/book1/dialogue` by `dlgc.py`; `check.py` cross-checks speakers, items, lore, regions, region methods, fights, scene links, room beats and portrait expressions. Chapters 1 to 5 stay hand-edited JSON. |
+| Clothes | `GameState.outfit` | Her walking sheet and portraits follow what she wears: her own clothes until the bath in Chapter 6, spring clothes after. From Chapter 24 Alis's portraits show her without the glamour. |
+| Weapons | `data/items.json` | Table knife (4 damage), Lucien's knife (9), the jeweled hunting knife (12). The bow comes back on the Chapter 9 ride. |
+
+### Guesses and pushback (Milestone 2)
+
+- The puca and naga fights end with Tamlin's rescue on a timer rather than on
+  her winning, because in the book she survives them only because he comes.
+  Beating them before he arrives also ends the fight.
+- The Bogge and the Attor are tests of nerve, not fights. In the book looking
+  at the Bogge or being found by the Attor is death, so they have no health
+  bars; failing ends with a Try again.
+- Choices change lines, not the story: she always gives Rhysand a false name,
+  and the Midsummer wine only changes how the night reads (the end window
+  records whether she drank it). The night in Chapter 27 can go further or
+  stay a held embrace; the further version fades to black.
+- She wakes at the gate without her bow and knife and gets the bow back for
+  the ride in Chapter 9. Her walking sprite still shows a bow on her back
+  until the bath, a known mismatch.
+- Rhysand's Fire Night scene uses his portrait under the name "The
+  Stranger", since she does not know him yet.
+- Trees are drawn about five times Feyre's height, so their crowns cover a
+  lot of ground. Where a scene needs to be seen, the trees stand back: the
+  birch grove is an arc open to the south rather than a closed ring (from
+  above, the southern birches roofed over the whole clearing and hid the
+  naga), and the grounds keep an open lawn south of the pool for Midsummer
+  and a wide meadow south of the rose garden for the will-o'-the-wisps.
+  The trees left out still count as placed, so the rest of the woods and
+  grounds keep the layout they had.
+- A tree or a house fades while anyone stands behind it, people included,
+  not only Feyre and creatures.
+
+## Milestone 1: the vertical slice (Chapters 1 to 5)
 
 ## Scope of the slice
 

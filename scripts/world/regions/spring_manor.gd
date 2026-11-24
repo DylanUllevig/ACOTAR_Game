@@ -20,6 +20,12 @@ const HERON := Vector2(2900, 2440)         # the heron fountain among the irises
 const STABLES := Vector2(3800, 1160)
 const WOODS_Y := 2000.0                     # where the path leaves for the woods (west edge)
 const HILL := Vector2(3100, 420)           # the rise behind the east wing, for the dawn
+## The open lawn south of the pool, where Midsummer is danced: no trees stand
+## on it, so no crown hides the ring, the maypole or the bonfire.
+const LAWN := Rect2(2580, 2190, 1670, 890)
+## The wide meadow south of the rose garden, where the will-o'-the-wisps come
+## out at Midsummer: long grass and wildflowers, no trees.
+const MEADOW := Rect2(480, 2420, 1400, 660)
 
 var npc := {}
 var cover: Array = []                       # Rect2s behind the north hedges, where she hides in Ch 19
@@ -40,7 +46,7 @@ func build() -> void:
 		"door": DOOR + Vector2(0, 80), "woods": Vector2(130, WOODS_Y),
 		"stables": STABLES + Vector2(-220, 140), "below_window": Vector2(1760, 1010),
 		"garden": RG + Vector2(0, 300), "pool": POOL + Vector2(0, 330), "heron": HERON + Vector2(0, 170),
-		"hill": HILL + Vector2(0, 60), "meadow": Vector2(4300, 2050),
+		"hill": HILL + Vector2(0, 60), "meadow": MEADOW.get_center() + Vector2(-60, 30),
 	}
 	_solstice = GameState.chapter == 25 and not GameState.has_flag("ch25_dawn")
 	pixel_ground(["lawn", "meadow", "forest_floor", "gravel", "terrace", "water"], 31)
@@ -344,7 +350,10 @@ func _trees() -> void:
 			rel = ["props/oak.png", "props/oak_s.png"][rng.randi_range(0, 1)]
 		else:
 			rel = ["props/birch.png", "props/birch_s.png"][rng.randi_range(0, 1)]
-		add_prop(rel, p, 1.0, Vector2(22, 9), Vector2(38, 20), rng.randf() < 0.5)
+		var flip = rng.randf() < 0.5
+		if LAWN.has_point(p) or MEADOW.has_point(p):
+			continue   # its place still counts, so the rest of the grounds keep their shape
+		add_prop(rel, p, 1.0, Vector2(22, 9), Vector2(38, 20), flip)
 	# the old willow on the rise behind the east wing, where the dawn comes up
 	add_prop("props/willow.png", HILL + Vector2(-260, -40), 1.0, Vector2(30, 12), Vector2(50, 24))
 
@@ -395,10 +404,11 @@ func _solstice_dressing() -> void:
 	var fl = add_light(fire + Vector2(0, -60), Color(1.0, 0.6, 0.3), 1.0, 3.6, false)
 	add_flicker(fl, 0.2, 8.0)
 	add_smoke(fire + Vector2(0, -150), null, 10)
-	# the musicians' corner, west of the ring, where he plays
-	for p in [Vector2(-600, 590), Vector2(-640, 700)]:
+	# the musicians' corner, south-west of the ring between the heron's
+	# tulips and the fire, where he plays
+	for p in [Vector2(-560, 930), Vector2(-500, 1030)]:
 		add_prop("props/drum.png", POOL + p, 1.0, Vector2(14, 6), Vector2(30, 16))
-	for p in [Vector2(-560, 560), Vector2(-420, 720)]:
+	for p in [Vector2(-470, 860), Vector2(-300, 990)]:
 		add_prop("props/stool.png", POOL + p, 1.0, Vector2.ZERO, Vector2(20, 10))
 	# the food tables, east, under lanterns
 	for p in [Vector2(640, 500), Vector2(800, 530)]:
@@ -486,7 +496,7 @@ func _story() -> void:
 		npc.sentry_b = add_npc("sentry", GATE + Vector2(190, -90), "Sentry", func(): await Dialogue.play("spring_sentry"), 0)
 	if ch >= 8 and Region.night_amount(GameState.hour) < 0.5 and not _solstice:
 		# from Chapter 24 she sees Alis as she is: bark-brown skin under the mask
-		npc.alis = add_npc("bark_servant" if ch >= 24 else "housekeeper", MANOR + Vector2(-420, 120), "Alis", _alis, 0)
+		npc.alis = add_npc("bark_servant" if ch >= 24 else "housekeeper", MANOR + Vector2(-200, 110), "Alis", _alis, 0)
 	if ch >= 24 and Region.night_amount(GameState.hour) < 0.5:
 		# the glamour is failing: the servants show what they are
 		add_npc("bark_servant", RG + Vector2(-330, 250), "", Callable(), 1)
@@ -696,27 +706,39 @@ func wisps(on: bool) -> void:
 	var rng = RandomNumberGenerator.new()
 	rng.seed = 2525
 	var c: Vector2 = spawns.meadow
-	for i in 24:
+	# they glow by their own light: added on top of the night, not lit by it
+	var glow = CanvasItemMaterial.new()
+	glow.blend_mode = CanvasItemMaterial.BLEND_MODE_ADD
+	glow.light_mode = CanvasItemMaterial.LIGHT_MODE_UNSHADED
+	for i in 26:
 		var w = Sprite2D.new()
 		w.texture = Art.soft_light_texture()
-		w.scale = Vector2(0.16, 0.3) * rng.randf_range(0.8, 1.3)
-		w.modulate = Color(0.86, 0.93, 1.0, 0.0)
-		var at = c + Vector2(rng.randf_range(-760, 380), rng.randf_range(-460, 460))
-		if at.distance_to(c) < 140.0:
-			at += (at - c).normalized() * 160.0
+		w.material = glow
+		w.scale = Vector2(0.24, 0.46) * rng.randf_range(0.8, 1.3)
+		w.modulate = Color(0.72, 0.86, 1.0, 0.0)
+		var at = c + Vector2(rng.randf_range(-640, 640), rng.randf_range(-300, 280))
+		if at.distance_to(c) < 170.0:
+			at += (at - c).normalized() * 190.0
 		w.position = at
 		w.z_index = 30
 		world.add_child(w)
 		_wisps.append(w)
-		var l = add_light(Vector2.ZERO, Color(0.74, 0.84, 1.0), 0.0, 0.7, false, w)
+		# a bright heart in the haze
+		var core = Sprite2D.new()
+		core.texture = w.texture
+		core.material = glow
+		core.scale = Vector2(0.3, 0.3)
+		core.modulate = Color(0.95, 0.98, 1.0, 0.9)
+		w.add_child(core)
+		var l = add_light(Vector2.ZERO, Color(0.74, 0.84, 1.0), 0.0, 0.9, false, w)
 		var d = Vector2(rng.randf_range(-140, 140), rng.randf_range(-50, 50))
 		var drift = w.create_tween().set_loops()
 		drift.tween_property(w, "position", at + d, rng.randf_range(2.2, 3.8)).set_trans(Tween.TRANS_SINE)
 		drift.tween_property(w, "position", at - d, rng.randf_range(2.2, 3.8)).set_trans(Tween.TRANS_SINE)
 		var show = w.create_tween()
 		show.tween_interval(rng.randf_range(0.0, 2.5))
-		show.tween_property(w, "modulate:a", 0.8, 1.6)
-		show.parallel().tween_property(l, "energy", 0.55, 1.6)
+		show.tween_property(w, "modulate:a", 0.95, 1.6)
+		show.parallel().tween_property(l, "energy", 0.8, 1.6)
 	await get_tree().create_timer(1.6, true, false, true).timeout
 
 
@@ -756,9 +778,9 @@ func _ch25_party() -> void:
 		tw.tween_property(r, "position", q, rng.randf_range(2.2, 3.4)).set_trans(Tween.TRANS_SINE)
 		tw.tween_property(r, "position", p, rng.randf_range(2.2, 3.4)).set_trans(Tween.TRANS_SINE)
 	# two more players beside him at the drums
-	add_npc("fae_reveler", POOL + Vector2(-600, 640), "", Callable(), 2)
-	add_npc("fae_reveler", POOL + Vector2(-640, 750), "", Callable(), 2)
-	npc.tamlin = add_npc("lord_gold", POOL + Vector2(-480, 640), "Tamlin", func(): await Dialogue.play("ch25_dance"), 2)
+	add_npc("fae_reveler", POOL + Vector2(-560, 980), "", Callable(), 2)
+	add_npc("fae_reveler", POOL + Vector2(-500, 1080), "", Callable(), 2)
+	npc.tamlin = add_npc("lord_gold", POOL + Vector2(-380, 900), "Tamlin", func(): await Dialogue.play("ch25_dance"), 2)
 	npc.lucien = add_npc("courtier_red", POOL + Vector2(700, 600), "Lucien", func(): await Dialogue.play("ch25_lucien"), 1)
 
 

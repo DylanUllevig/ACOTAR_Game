@@ -768,8 +768,8 @@ func add_smoke(pos: Vector2, parent: Node = null, amount := 10) -> CPUParticles2
 	return smoke
 
 
-## A tree or a building fades while Feyre or a creature stands behind it, so
-## nobody vanishes from sight in the woods or behind a house.
+## A tree or a building fades while Feyre, a creature or one of the people
+## stands behind it, so nobody vanishes from sight in the woods or behind a house.
 func _update_see_through(delta: float) -> void:
 	if _tall.is_empty():
 		return
@@ -781,6 +781,11 @@ func _update_see_through(delta: float) -> void:
 		if c is Node2D and (c as Node2D).visible and (c as Node2D).is_inside_tree():
 			var f = world.to_local((c as Node2D).global_position)
 			figures.append([f, f + Vector2(0, -30)])
+	for e in _npcs:
+		var h = e[0]
+		if is_instance_valid(h) and (h as Node2D).visible:
+			var f = world.to_local((h as Node2D).global_position)
+			figures.append([f, f + Vector2(0, -50)])
 	var step = delta * 3.0
 	for t in _tall:
 		var s = t[0]

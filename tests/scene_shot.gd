@@ -2,7 +2,8 @@ extends Node
 ## Opens one region and saves a screenshot, for checking art and lighting:
 ##   godot --path . --resolution 1920x1080 -- --scene-shot cottage --chapter 2
 ##         --hour 17.4 --spawn door --flags ch02_arrived --at 600,700 --wait 2 --out shot.png
-## --call <method> runs a region method first (--call door_burst). --wolf dx,dy[,face]
+## --call <method> runs a region method first (--call door_burst; arguments
+## after colons, --call wisps:true). --wolf dx,dy[,face]
 ## brings the forest wolf out of the brush and freezes him at that offset from her;
 ## --facing 0-3 turns her (down, left, right, up).
 ## Dialogue that starts on arrival is pressed through. main.gd starts this
@@ -53,10 +54,15 @@ func _ready() -> void:
 			rg.env.environment.glow_intensity = float(_arg(a, "--glow-intensity", "0.9"))
 		if a.has("--glow-threshold"):
 			rg.env.environment.glow_hdr_threshold = float(_arg(a, "--glow-threshold", "0.95"))
-	# a region method to run first, such as a cutscene beat: --call door_burst
-	var method = _arg(a, "--call", "")
+	# a region method to run first, such as a cutscene beat: --call door_burst,
+	# with arguments after colons: --call wisps:true
+	var call_parts = _arg(a, "--call", "").split(":")
+	var method = call_parts[0]
 	if method != "" and rg != null and rg.has_method(method):
-		rg.call(method)
+		var call_args: Array = []
+		for p in call_parts.slice(1):
+			call_args.append(true if p == "true" else (false if p == "false" else (float(p) if p.is_valid_float() else p)))
+		rg.callv(method, call_args)
 	var at = _arg(a, "--at", "")
 	if at != "" and Router.current_region != null:
 		var xy = at.split(",")

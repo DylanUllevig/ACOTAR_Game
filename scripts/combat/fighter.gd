@@ -42,6 +42,16 @@ func build_visual() -> void:
 	_strafe = 1.0 if rng.randf() < 0.5 else -1.0
 	_cool = rng.randf_range(0.4, 1.4)
 	px_play("walk", 0.0)
+	# by night a faint cold light clings to it, so a dark shape still reads
+	# against the dark ground
+	if Region.night_amount(GameState.hour) > 0.5:
+		var l = PointLight2D.new()
+		l.texture = Art.soft_light_texture()
+		l.position = hurt_offset
+		l.color = Color(0.74, 0.8, 1.0)
+		l.energy = 0.6
+		l.texture_scale = 1.2
+		body.add_child(l)
 
 
 ## Slides out of hiding (from under the trees) before it acts.
