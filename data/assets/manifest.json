@@ -1415,6 +1415,390 @@
    "status": "final",
    "est_generations": 3,
    "notes": "The Archeron cottage (cottage.gd). Walls, furniture collisions, people and lights are placed on this painting, so a new painting means re-measuring them. tools/fit_art.py."
+  },
+  {
+   "id": "portrait.tamlin.neutral",
+   "kind": "portrait",
+   "placeholder": "",
+   "final": "assets/final/portraits/tamlin/neutral.png",
+   "size": [
+    640,
+    960
+   ],
+   "aspect": "2:3",
+   "prompt": "Painted illustration in the style of a hand-painted fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, warm rim light, cinematic chiaroscuro, lush spring palette of rose, sage green and honey gold, no text, no watermark, no frame. Half-length character portrait from the waist up, three-quarter view, facing left. A golden-haired lord in a gilded mask of leaves, a green coat embroidered with leaves, a leather baldric. Expression: calm, guarded neutral expression. Transparent background, the figure cut out cleanly.",
+   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
+   "status": "final",
+   "est_generations": 1,
+   "notes": "Spring Court cast, 2026-11-24. Generated with a transparent background at 2k; fitted with tools/fit_art.py. Expressions were made with the neutral portrait's job as an image reference."
+  },
+  {
+   "id": "portrait.tamlin.angry",
+   "kind": "portrait",
+   "placeholder": "",
+   "final": "assets/final/portraits/tamlin/angry.png",
+   "size": [
+    640,
+    960
+   ],
+   "aspect": "2:3",
+   "prompt": "Painted illustration in the style of a hand-painted fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, warm rim light, cinematic chiaroscuro, lush spring palette of rose, sage green and honey gold, no text, no watermark, no frame. Half-length character portrait from the waist up, three-quarter view, facing left. The same character as in the reference image: identical face, hair, mask, clothing and colours, the same framing and painting style; only the expression changes. Expression: furious, jaw clenched, eyes blazing behind the mask, lips pulled back from his teeth. Transparent background, the figure cut out cleanly.",
+   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
+   "status": "final",
+   "est_generations": 1,
+   "notes": "Spring Court cast, 2026-11-24. Generated with a transparent background at 2k; fitted with tools/fit_art.py. Expressions were made with the neutral portrait's job as an image reference."
+  },
+  {
+   "id": "portrait.tamlin.tender",
+   "kind": "portrait",
+   "placeholder": "",
+   "final": "assets/final/portraits/tamlin/tender.png",
+   "size": [
+    640,
+    960
+   ],
+   "aspect": "2:3",
+   "prompt": "Painted illustration in the style of a hand-painted fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, warm rim light, cinematic chiaroscuro, lush spring palette of rose, sage green and honey gold, no text, no watermark, no frame. Half-length character portrait from the waist up, three-quarter view, facing left. The same character as in the reference image: identical face, hair, mask, clothing and colours, the same framing and painting style; only the expression changes. Expression: soft and warm, a small genuine smile, gentle eyes. Transparent background, the figure cut out cleanly.",
+   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
+   "status": "final",
+   "est_generations": 1,
+   "notes": "Spring Court cast, 2026-11-24. Generated with a transparent background at 2k; fitted with tools/fit_art.py. Expressions were made with the neutral portrait's job as an image reference."
+  },
+  {
+   "id": "portrait.tamlin.weary",
+   "kind": "portrait",
+   "placeholder": "",
+   "final": "assets/final/portraits/tamlin/weary.png",
+   "size": [
+    640,
+    960
+   ],
+   "aspect": "2:3",
+   "prompt": "Painted illustration in the style of a hand-painted fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, warm rim light, cinematic chiaroscuro, lush spring palette of rose, sage green and honey gold, no text, no watermark, no frame. Half-length character portrait from the waist up, three-quarter view, facing left. The same character as in the reference image: identical face, hair, mask, clothing and colours, the same framing and painting style; only the expression changes. Expression: exhausted and burdened, shoulders heavy, eyes cast down. Transparent background, the figure cut out cleanly.",
+   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
+   "status": "final",
+   "est_generations": 1,
+   "notes": "Spring Court cast, 2026-11-24. Generated with a transparent background at 2k; fitted with tools/fit_art.py. Expressions were made with the neutral portrait's job as an image reference."
+  },
+  {
+   "id": "portrait.lucien.neutral",
+   "kind": "portrait",
+   "placeholder": "",
+   "final": "assets/final/portraits/lucien/neutral.png",
+   "size": [
+    640,
+    960
+   ],
+   "aspect": "2:3",
+   "prompt": "Painted illustration in the style of a hand-painted fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, warm rim light, cinematic chiaroscuro, lush spring palette of rose, sage green and honey gold, no text, no watermark, no frame. Half-length character portrait from the waist up, three-quarter view, facing left. A red-haired courtier with a scarred face and a bronze half-mask, a crimson coat embroidered with roses. Expression: calm, guarded neutral expression. Transparent background, the figure cut out cleanly.",
+   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
+   "status": "final",
+   "est_generations": 1,
+   "notes": "Spring Court cast, 2026-11-24. Generated with a transparent background at 2k; fitted with tools/fit_art.py. Expressions were made with the neutral portrait's job as an image reference."
+  },
+  {
+   "id": "portrait.lucien.angry",
+   "kind": "portrait",
+   "placeholder": "",
+   "final": "assets/final/portraits/lucien/angry.png",
+   "size": [
+    640,
+    960
+   ],
+   "aspect": "2:3",
+   "prompt": "Painted illustration in the style of a hand-painted fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, warm rim light, cinematic chiaroscuro, lush spring palette of rose, sage green and honey gold, no text, no watermark, no frame. Half-length character portrait from the waist up, three-quarter view, facing left. The same character as in the reference image: identical face, hair, mask, clothing and colours, the same framing and painting style; only the expression changes. Expression: cold anger, lips thin, eyes narrowed. Transparent background, the figure cut out cleanly.",
+   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
+   "status": "final",
+   "est_generations": 1,
+   "notes": "Spring Court cast, 2026-11-24. Generated with a transparent background at 2k; fitted with tools/fit_art.py. Expressions were made with the neutral portrait's job as an image reference."
+  },
+  {
+   "id": "portrait.lucien.grim",
+   "kind": "portrait",
+   "placeholder": "",
+   "final": "assets/final/portraits/lucien/grim.png",
+   "size": [
+    640,
+    960
+   ],
+   "aspect": "2:3",
+   "prompt": "Painted illustration in the style of a hand-painted fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, warm rim light, cinematic chiaroscuro, lush spring palette of rose, sage green and honey gold, no text, no watermark, no frame. Half-length character portrait from the waist up, three-quarter view, facing left. The same character as in the reference image: identical face, hair, mask, clothing and colours, the same framing and painting style; only the expression changes. Expression: grim and serious, worried, all humour gone. Transparent background, the figure cut out cleanly.",
+   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
+   "status": "final",
+   "est_generations": 1,
+   "notes": "Spring Court cast, 2026-11-24. Generated with a transparent background at 2k; fitted with tools/fit_art.py. Expressions were made with the neutral portrait's job as an image reference."
+  },
+  {
+   "id": "portrait.lucien.smirk",
+   "kind": "portrait",
+   "placeholder": "",
+   "final": "assets/final/portraits/lucien/smirk.png",
+   "size": [
+    640,
+    960
+   ],
+   "aspect": "2:3",
+   "prompt": "Painted illustration in the style of a hand-painted fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, warm rim light, cinematic chiaroscuro, lush spring palette of rose, sage green and honey gold, no text, no watermark, no frame. Half-length character portrait from the waist up, three-quarter view, facing left. The same character as in the reference image: identical face, hair, mask, clothing and colours, the same framing and painting style; only the expression changes. Expression: a sly, mocking smirk, one brow raised. Transparent background, the figure cut out cleanly.",
+   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
+   "status": "final",
+   "est_generations": 1,
+   "notes": "Spring Court cast, 2026-11-24. Generated with a transparent background at 2k; fitted with tools/fit_art.py. Expressions were made with the neutral portrait's job as an image reference."
+  },
+  {
+   "id": "portrait.alis.neutral",
+   "kind": "portrait",
+   "placeholder": "",
+   "final": "assets/final/portraits/alis/neutral.png",
+   "size": [
+    640,
+    960
+   ],
+   "aspect": "2:3",
+   "prompt": "Painted illustration in the style of a hand-painted fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, warm rim light, cinematic chiaroscuro, lush spring palette of rose, sage green and honey gold, no text, no watermark, no frame. Half-length character portrait from the waist up, three-quarter view, facing left. A warm, sturdy housekeeper with dark curls pinned up and a small gold mask, a green dress, a white apron and a ring of keys. Expression: calm, guarded neutral expression. Transparent background, the figure cut out cleanly.",
+   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
+   "status": "final",
+   "est_generations": 1,
+   "notes": "Spring Court cast, 2026-11-24. Generated with a transparent background at 2k; fitted with tools/fit_art.py. Expressions were made with the neutral portrait's job as an image reference."
+  },
+  {
+   "id": "portrait.alis.kind",
+   "kind": "portrait",
+   "placeholder": "",
+   "final": "assets/final/portraits/alis/kind.png",
+   "size": [
+    640,
+    960
+   ],
+   "aspect": "2:3",
+   "prompt": "Painted illustration in the style of a hand-painted fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, warm rim light, cinematic chiaroscuro, lush spring palette of rose, sage green and honey gold, no text, no watermark, no frame. Half-length character portrait from the waist up, three-quarter view, facing left. The same character as in the reference image: identical face, hair, mask, clothing and colours, the same framing and painting style; only the expression changes. Expression: kind and motherly, a warm smile. Transparent background, the figure cut out cleanly.",
+   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
+   "status": "final",
+   "est_generations": 1,
+   "notes": "Spring Court cast, 2026-11-24. Generated with a transparent background at 2k; fitted with tools/fit_art.py. Expressions were made with the neutral portrait's job as an image reference."
+  },
+  {
+   "id": "portrait.alis.stern",
+   "kind": "portrait",
+   "placeholder": "",
+   "final": "assets/final/portraits/alis/stern.png",
+   "size": [
+    640,
+    960
+   ],
+   "aspect": "2:3",
+   "prompt": "Painted illustration in the style of a hand-painted fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, warm rim light, cinematic chiaroscuro, lush spring palette of rose, sage green and honey gold, no text, no watermark, no frame. Half-length character portrait from the waist up, three-quarter view, facing left. The same character as in the reference image: identical face, hair, mask, clothing and colours, the same framing and painting style; only the expression changes. Expression: stern and disapproving, lips pressed tight, one brow raised. Transparent background, the figure cut out cleanly.",
+   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
+   "status": "final",
+   "est_generations": 1,
+   "notes": "Spring Court cast, 2026-11-24. Generated with a transparent background at 2k; fitted with tools/fit_art.py. Expressions were made with the neutral portrait's job as an image reference."
+  },
+  {
+   "id": "portrait.rhysand.neutral",
+   "kind": "portrait",
+   "placeholder": "",
+   "final": "assets/final/portraits/rhysand/neutral.png",
+   "size": [
+    640,
+    960
+   ],
+   "aspect": "2:3",
+   "prompt": "Painted illustration in the style of a hand-painted fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, warm rim light, cinematic chiaroscuro, lush spring palette of rose, sage green and honey gold, no text, no watermark, no frame. Half-length character portrait from the waist up, three-quarter view, facing left. A pale, dark-haired lord in a night-blue coat stitched with silver stars, wisps of shadow curling about him. Expression: calm, guarded neutral expression. Transparent background, the figure cut out cleanly.",
+   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
+   "status": "final",
+   "est_generations": 1,
+   "notes": "Spring Court cast, 2026-11-24. Generated with a transparent background at 2k; fitted with tools/fit_art.py. Expressions were made with the neutral portrait's job as an image reference."
+  },
+  {
+   "id": "portrait.rhysand.cold",
+   "kind": "portrait",
+   "placeholder": "",
+   "final": "assets/final/portraits/rhysand/cold.png",
+   "size": [
+    640,
+    960
+   ],
+   "aspect": "2:3",
+   "prompt": "Painted illustration in the style of a hand-painted fairytale game, visible brush strokes and soft painterly edges, rich deep colours with silver accents, cool moonlit rim light, cinematic chiaroscuro, palette of midnight blue, black and silver, no text, no watermark, no frame. Half-length character portrait from the waist up, three-quarter view, facing left. The same character as in the reference image: identical face, hair, clothing and colours, the same framing and painting style; only the expression changes. Expression: cold, flat and menacing, no smile at all, eyes hard. Transparent background, the figure cut out cleanly.",
+   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
+   "status": "final",
+   "est_generations": 1,
+   "notes": "Spring Court cast, 2026-11-24. Generated with a transparent background at 2k; fitted with tools/fit_art.py. Expressions were made with the neutral portrait's job as an image reference."
+  },
+  {
+   "id": "portrait.rhysand.smirk",
+   "kind": "portrait",
+   "placeholder": "",
+   "final": "assets/final/portraits/rhysand/smirk.png",
+   "size": [
+    640,
+    960
+   ],
+   "aspect": "2:3",
+   "prompt": "Painted illustration in the style of a hand-painted fairytale game, visible brush strokes and soft painterly edges, rich deep colours with silver accents, cool moonlit rim light, cinematic chiaroscuro, palette of midnight blue, black and silver, no text, no watermark, no frame. Half-length character portrait from the waist up, three-quarter view, facing left. The same character as in the reference image: identical face, hair, clothing and colours, the same framing and painting style; only the expression changes. Expression: a slow, wicked smirk, amused and dangerous. Transparent background, the figure cut out cleanly.",
+   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
+   "status": "final",
+   "est_generations": 1,
+   "notes": "Spring Court cast, 2026-11-24. Generated with a transparent background at 2k; fitted with tools/fit_art.py. Expressions were made with the neutral portrait's job as an image reference."
+  },
+  {
+   "id": "portrait.suriel.neutral",
+   "kind": "portrait",
+   "placeholder": "",
+   "final": "assets/final/portraits/suriel/neutral.png",
+   "size": [
+    640,
+    960
+   ],
+   "aspect": "2:3",
+   "prompt": "Painted illustration in the style of a hand-painted fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, warm rim light, cinematic chiaroscuro, lush spring palette of rose, sage green and honey gold, no text, no watermark, no frame. Half-length character portrait from the waist up, three-quarter view, facing left. A gaunt, hooded, robed oracle with bone-thin fingers and torn gossamer wings. Expression: calm, guarded neutral expression. Transparent background, the figure cut out cleanly.",
+   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
+   "status": "final",
+   "est_generations": 1,
+   "notes": "Spring Court cast, 2026-11-24. Generated with a transparent background at 2k; fitted with tools/fit_art.py. Expressions were made with the neutral portrait's job as an image reference."
+  },
+  {
+   "id": "portrait.attor.neutral",
+   "kind": "portrait",
+   "placeholder": "",
+   "final": "assets/final/portraits/attor/neutral.png",
+   "size": [
+    640,
+    960
+   ],
+   "aspect": "2:3",
+   "prompt": "Painted illustration in the style of a hand-painted fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, warm rim light, cinematic chiaroscuro, lush spring palette of rose, sage green and honey gold, no text, no watermark, no frame. Half-length character portrait from the waist up, three-quarter view, facing left. A skeletal, bat-eared winged fiend with red eyes and leathery wings. Expression: calm, guarded neutral expression. Transparent background, the figure cut out cleanly.",
+   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
+   "status": "final",
+   "est_generations": 1,
+   "notes": "Spring Court cast, 2026-11-24. Generated with a transparent background at 2k; fitted with tools/fit_art.py. Expressions were made with the neutral portrait's job as an image reference."
+  },
+  {
+   "id": "portrait.naga.neutral",
+   "kind": "portrait",
+   "placeholder": "",
+   "final": "assets/final/portraits/naga/neutral.png",
+   "size": [
+    640,
+    960
+   ],
+   "aspect": "2:3",
+   "prompt": "Painted illustration in the style of a hand-painted fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, warm rim light, cinematic chiaroscuro, lush spring palette of rose, sage green and honey gold, no text, no watermark, no frame. Half-length character portrait from the waist up, three-quarter view, facing left. A serpent-headed hunter in a ragged red hood and a leather harness, black talons. Expression: calm, guarded neutral expression. Transparent background, the figure cut out cleanly.",
+   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
+   "status": "final",
+   "est_generations": 1,
+   "notes": "Spring Court cast, 2026-11-24. Generated with a transparent background at 2k; fitted with tools/fit_art.py. Expressions were made with the neutral portrait's job as an image reference."
+  },
+  {
+   "id": "portrait.feyre_spring.neutral",
+   "kind": "portrait",
+   "placeholder": "",
+   "final": "assets/final/portraits/feyre_spring/neutral.png",
+   "size": [
+    640,
+    960
+   ],
+   "aspect": "2:3",
+   "prompt": "Painted illustration in the style of a hand-painted fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, warm rim light, cinematic chiaroscuro, lush spring palette of rose, sage green and honey gold, no text, no watermark, no frame. Half-length character portrait from the waist up, three-quarter view, facing right. A young huntress with long gold-brown waves in a soft blue-grey tunic dress with a leather belt. Expression: calm, guarded neutral expression. Transparent background, the figure cut out cleanly.",
+   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
+   "status": "final",
+   "est_generations": 1,
+   "notes": "Spring Court cast, 2026-11-24. Generated with a transparent background at 2k; fitted with tools/fit_art.py. Expressions were made with the neutral portrait's job as an image reference."
+  },
+  {
+   "id": "portrait.feyre_spring.afraid",
+   "kind": "portrait",
+   "placeholder": "",
+   "final": "assets/final/portraits/feyre_spring/afraid.png",
+   "size": [
+    640,
+    960
+   ],
+   "aspect": "2:3",
+   "prompt": "Painted illustration in the style of a hand-painted fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, warm rim light, cinematic chiaroscuro, lush spring palette of rose, sage green and honey gold, no text, no watermark, no frame. Half-length character portrait from the waist up, three-quarter view, facing right. The same character as in the reference image: identical face, hair, clothing and colours, the same framing and painting style; only the expression changes. Expression: frightened, eyes wide, lips parted. Transparent background, the figure cut out cleanly.",
+   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
+   "status": "final",
+   "est_generations": 1,
+   "notes": "Spring Court cast, 2026-11-24. Generated with a transparent background at 2k; fitted with tools/fit_art.py. Expressions were made with the neutral portrait's job as an image reference."
+  },
+  {
+   "id": "portrait.feyre_spring.angry",
+   "kind": "portrait",
+   "placeholder": "",
+   "final": "assets/final/portraits/feyre_spring/angry.png",
+   "size": [
+    640,
+    960
+   ],
+   "aspect": "2:3",
+   "prompt": "Painted illustration in the style of a hand-painted fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, warm rim light, cinematic chiaroscuro, lush spring palette of rose, sage green and honey gold, no text, no watermark, no frame. Half-length character portrait from the waist up, three-quarter view, facing right. The same character as in the reference image: identical face, hair, clothing and colours, the same framing and painting style; only the expression changes. Expression: angry, glaring, jaw set. Transparent background, the figure cut out cleanly.",
+   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
+   "status": "final",
+   "est_generations": 1,
+   "notes": "Spring Court cast, 2026-11-24. Generated with a transparent background at 2k; fitted with tools/fit_art.py. Expressions were made with the neutral portrait's job as an image reference."
+  },
+  {
+   "id": "portrait.feyre_spring.determined",
+   "kind": "portrait",
+   "placeholder": "",
+   "final": "assets/final/portraits/feyre_spring/determined.png",
+   "size": [
+    640,
+    960
+   ],
+   "aspect": "2:3",
+   "prompt": "Painted illustration in the style of a hand-painted fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, warm rim light, cinematic chiaroscuro, lush spring palette of rose, sage green and honey gold, no text, no watermark, no frame. Half-length character portrait from the waist up, three-quarter view, facing right. The same character as in the reference image: identical face, hair, clothing and colours, the same framing and painting style; only the expression changes. Expression: determined and focused, chin raised. Transparent background, the figure cut out cleanly.",
+   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
+   "status": "final",
+   "est_generations": 1,
+   "notes": "Spring Court cast, 2026-11-24. Generated with a transparent background at 2k; fitted with tools/fit_art.py. Expressions were made with the neutral portrait's job as an image reference."
+  },
+  {
+   "id": "portrait.feyre_spring.sad",
+   "kind": "portrait",
+   "placeholder": "",
+   "final": "assets/final/portraits/feyre_spring/sad.png",
+   "size": [
+    640,
+    960
+   ],
+   "aspect": "2:3",
+   "prompt": "Painted illustration in the style of a hand-painted fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, warm rim light, cinematic chiaroscuro, lush spring palette of rose, sage green and honey gold, no text, no watermark, no frame. Half-length character portrait from the waist up, three-quarter view, facing right. The same character as in the reference image: identical face, hair, clothing and colours, the same framing and painting style; only the expression changes. Expression: sad, eyes glistening, mouth soft. Transparent background, the figure cut out cleanly.",
+   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
+   "status": "final",
+   "est_generations": 1,
+   "notes": "Spring Court cast, 2026-11-24. Generated with a transparent background at 2k; fitted with tools/fit_art.py. Expressions were made with the neutral portrait's job as an image reference."
+  },
+  {
+   "id": "portrait.feyre_spring.tender",
+   "kind": "portrait",
+   "placeholder": "",
+   "final": "assets/final/portraits/feyre_spring/tender.png",
+   "size": [
+    640,
+    960
+   ],
+   "aspect": "2:3",
+   "prompt": "Painted illustration in the style of a hand-painted fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, warm rim light, cinematic chiaroscuro, lush spring palette of rose, sage green and honey gold, no text, no watermark, no frame. Half-length character portrait from the waist up, three-quarter view, facing right. The same character as in the reference image: identical face, hair, clothing and colours, the same framing and painting style; only the expression changes. Expression: a shy, soft smile, warm eyes, a faint blush. Transparent background, the figure cut out cleanly.",
+   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
+   "status": "final",
+   "est_generations": 1,
+   "notes": "Spring Court cast, 2026-11-24. Generated with a transparent background at 2k; fitted with tools/fit_art.py. Expressions were made with the neutral portrait's job as an image reference."
+  },
+  {
+   "id": "portrait.feyre_spring.wounded",
+   "kind": "portrait",
+   "placeholder": "",
+   "final": "assets/final/portraits/feyre_spring/wounded.png",
+   "size": [
+    640,
+    960
+   ],
+   "aspect": "2:3",
+   "prompt": "Painted illustration in the style of a hand-painted fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, warm rim light, cinematic chiaroscuro, lush spring palette of rose, sage green and honey gold, no text, no watermark, no frame. Half-length character portrait from the waist up, three-quarter view, facing right. The same character as in the reference image: identical face, hair, clothing and colours, the same framing and painting style; only the expression changes. Expression: hurt and in pain, a shallow cut on her cheek, wincing, hair dishevelled. Transparent background, the figure cut out cleanly.",
+   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
+   "status": "final",
+   "est_generations": 1,
+   "notes": "Spring Court cast, 2026-11-24. Generated with a transparent background at 2k; fitted with tools/fit_art.py. Expressions were made with the neutral portrait's job as an image reference."
   }
  ]
 }

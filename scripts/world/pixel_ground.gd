@@ -185,6 +185,11 @@ func build() -> void:
 				layer.set_cell(Vector2i(i, j), 0, at_c)
 				any = true
 		if any:
+			if String(layers[r]) == "water":
+				var m = ShaderMaterial.new()
+				m.shader = load("res://shaders/water_shimmer.gdshader")
+				m.set_shader_parameter("px", step / float(tp))
+				layer.material = m
 			add_child(layer)
 		else:
 			layer.free()

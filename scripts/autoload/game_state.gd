@@ -37,6 +37,7 @@ var explored = {}                  # region id -> PackedByteArray, one byte per 
 var places = {}                    # location id -> true once visited or heard of
 var stats = {}
 var playtime = 0.0
+var outfit = "feyre"               # Feyre's walking sprite sheet (actors/<outfit>.png) and portrait set
 
 
 func _process(delta: float) -> void:
@@ -62,6 +63,7 @@ func new_game() -> void:
 	places = {"mortal_forest": true, "archeron_cottage": true, "mortal_village": true}
 	stats = _fresh_stats()
 	playtime = 0.0
+	outfit = "feyre"
 	hotbar_index = 0
 	apply_tier(0, false)
 	hp = max_hp
@@ -394,7 +396,7 @@ func progress_dict() -> Dictionary:
 	return {
 		"chapter": chapter, "region": region, "spawn": spawn, "pos": at, "hour": hour, "hp": hp,
 		"flags": flags.duplicate(), "objective": objective, "playtime": playtime,
-		"explored": ex, "hotbar_index": hotbar_index,
+		"explored": ex, "hotbar_index": hotbar_index, "outfit": outfit,
 	}
 
 
@@ -427,6 +429,7 @@ func load_from(carry: Dictionary, progress: Dictionary) -> void:
 	objective = String(progress.get("objective", ""))
 	playtime = float(progress.get("playtime", 0.0))
 	hotbar_index = clamp(int(progress.get("hotbar_index", 0)), 0, hotbar_size() - 1)
+	outfit = String(progress.get("outfit", "feyre_spring" if chapter >= 6 else "feyre"))
 	explored = {}
 	var ex: Dictionary = progress.get("explored", {})
 	for k in ex:

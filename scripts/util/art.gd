@@ -163,11 +163,26 @@ static func lit(rel: String) -> Texture2D:
 	return ct
 
 
+## Expressions painted for one set of clothes but not another, and the
+## nearest one the other set has.
+const PORTRAIT_ALIAS := {"cold": "determined", "hungry": "sad", "tender": "neutral", "weary": "sad"}
+
+
 static func portrait(character: String, expr: String) -> Texture2D:
-	for e in [expr, "neutral", "snarl"]:
-		var t = tex("portraits/%s/%s.png" % [character, e])
-		if t != null:
-			return t
+	# Feyre's portraits follow what she is wearing (her spring clothes from
+	# the manor on). An expression not painted for an outfit takes the nearest
+	# one that is, in the same clothes, so she never changes clothes mid-scene;
+	# only an outfit with no portraits at all falls back to her own clothes.
+	var sets = [character]
+	if character == "feyre" and String(GameState.outfit) != "feyre":
+		sets = [String(GameState.outfit), character]
+	for who in sets:
+		for e in [expr, String(PORTRAIT_ALIAS.get(expr, "")), "neutral", "snarl"]:
+			if e == "":
+				continue
+			var t = tex("portraits/%s/%s.png" % [who, e])
+			if t != null:
+				return t
 	return null
 
 

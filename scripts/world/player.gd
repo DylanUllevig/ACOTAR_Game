@@ -84,12 +84,10 @@ func _ready() -> void:
 	sh.z_index = -1
 	add_child(sh)
 	sprite = Sprite2D.new()
-	sprite.texture = Art.lit("actors/feyre.png")
 	sprite.hframes = 4
 	sprite.vframes = 4
-	sprite.scale = Art.sprite_scale("actors/feyre.png", 1.7)
-	sprite.offset = Vector2(0, -sprite.texture.get_height() / 8.0) if sprite.texture else Vector2(0, -32)
 	add_child(sprite)
+	_apply_sheet()
 	_build_ghost()
 	hand = Node2D.new()
 	hand.position = Vector2(0, HAND_Y)
@@ -108,6 +106,28 @@ func _ready() -> void:
 	if region != null and "combat_allowed" in region:
 		combat_allowed = region.combat_allowed
 	GameState.hotbar_changed.connect(_on_hotbar_changed)
+
+
+## The walking sheet for what Feyre is wearing now (GameState.outfit).
+func sheet_rel() -> String:
+	var rel = "actors/%s.png" % String(GameState.outfit)
+	return rel if Art.tex(rel) != null else "actors/feyre.png"
+
+
+func _apply_sheet() -> void:
+	var rel = sheet_rel()
+	sprite.texture = Art.lit(rel)
+	sprite.scale = Art.sprite_scale(rel, 1.7)
+	sprite.offset = Vector2(0, -sprite.texture.get_height() / 8.0) if sprite.texture else Vector2(0, -32)
+
+
+## A change of clothes in a scene: the sprite and its silhouette follow.
+func refresh_outfit() -> void:
+	_apply_sheet()
+	if _ghost != null:
+		_ghost.texture = Art.tex(sheet_rel())
+		_ghost.scale = sprite.scale
+		_ghost.offset = sprite.offset
 
 
 func can_act() -> bool:
@@ -504,7 +524,7 @@ func _update_held() -> void:
 func _build_ghost() -> void:
 	_ghost = Sprite2D.new()
 	_ghost.name = "Silhouette"
-	_ghost.texture = Art.tex("actors/feyre.png")
+	_ghost.texture = Art.tex(sheet_rel())
 	_ghost.hframes = sprite.hframes
 	_ghost.vframes = sprite.vframes
 	_ghost.scale = sprite.scale

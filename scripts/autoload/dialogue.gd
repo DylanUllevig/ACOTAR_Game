@@ -612,7 +612,18 @@ func _run_action(a: Dictionary) -> bool:
 		"region_call":
 			var r = Router.current_region
 			if r and r.has_method(String(a.method)):
-				await r.call(String(a.method))
+				await r.callv(String(a.method), a.get("args", []))
+		"outfit":
+			GameState.outfit = String(a.id)
+			var rp = Router.current_region
+			if rp and "player" in rp and rp.player != null and rp.player.has_method("refresh_outfit"):
+				rp.player.refresh_outfit()
+		"start_fight":
+			var fid: String = a.id
+			_queue_after.append(func():
+				if Router.current_region and Router.current_region.has_method("start_fight"):
+					Router.current_region.start_fight(fid))
+			return true
 		"door_burst":
 			if Router.current_region and Router.current_region.has_method("door_burst"):
 				Router.current_region.door_burst()

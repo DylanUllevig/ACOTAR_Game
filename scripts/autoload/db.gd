@@ -5,14 +5,17 @@ extends Node
 
 const DATA := "res://data/"
 const BOOK := "res://data/book1/"
-const DIALOGUE_FILES := ["ch01", "ch02", "ch03", "ch04", "ch05", "hunt"]
+const DIALOGUE_FILES := ["ch01", "ch02", "ch03", "ch04", "ch05", "hunt",
+	"ch06", "ch07", "ch08", "ch09", "ch10", "ch11", "ch12", "ch13", "ch14", "ch15", "ch16", "ch17", "ch18", "ch19",
+	"ch20", "ch21", "ch22", "ch23", "ch24", "ch25", "ch26", "ch27", "spring"]
 ## Every action a dialogue line may run (see Dialogue._run_action).
 const ACTIONS := ["chapter_card", "objective", "journal", "place", "set_flag", "item", "take_item", "coins",
 	"heal", "heal_full", "unlock_tier", "open_shop", "sell_hides", "leave_coins", "save_checkpoint", "time",
 	"shake", "sfx", "music", "region_call", "door_burst", "fade_to_black", "start_hunt", "goto", "game_over",
-	"wall_cinematic", "end_slice"]
+	"wall_cinematic", "end_slice", "outfit", "start_fight"]
 
 var enemies = {}
+var encounters = {}
 var items = {}
 var inventory_size = 30
 var hotbar_size = 10
@@ -48,7 +51,9 @@ func load_json(path: String) -> Variant:
 
 func load_all() -> void:
 	errors.clear()
-	enemies = load_json(DATA + "enemies.json").get("enemies", {})
+	var en: Dictionary = load_json(DATA + "enemies.json")
+	enemies = en.get("enemies", {})
+	encounters = en.get("encounters", {})
 	var it: Dictionary = load_json(DATA + "items.json")
 	items = it.get("items", {})
 	inventory_size = int(it.get("inventory_size", 30))
@@ -67,6 +72,8 @@ func load_all() -> void:
 	lore = load_json(BOOK + "lore.json").get("entries", {})
 	scenes.clear()
 	for f in DIALOGUE_FILES:
+		if not FileAccess.file_exists(BOOK + "dialogue/" + f + ".json"):
+			continue   # chapters not written yet; a scene that points at one fails validation
 		var d: Dictionary = load_json(BOOK + "dialogue/" + f + ".json")
 		for k in d.get("scenes", {}):
 			if scenes.has(k):
@@ -78,6 +85,10 @@ func load_all() -> void:
 
 func item(id: String) -> Dictionary:
 	return items.get(id, {})
+
+
+func encounter(id: String) -> Dictionary:
+	return encounters.get(id, {})
 
 
 func item_name(id: String) -> String:
@@ -134,6 +145,17 @@ func validate() -> Array[String]:
 		for dr in e.get("drops", []):
 			if not items.has(String(dr.id)):
 				problems.append("enemy %s drops unknown item %s" % [eid, dr.id])
+	for xid in encounters:
+		var x: Dictionary = encounters[xid]
+		for w in x.get("waves", []):
+			for e in w:
+				if not enemies.has(String(e)):
+					problems.append("encounter %s sends unknown enemy %s" % [xid, e])
+		for tr in x.get("triggers", []):
+			if tr.has("scene") and not scenes.has(tr.scene):
+				problems.append("encounter %s trigger references unknown scene %s" % [xid, tr.scene])
+			if tr.has("bark") and not characters.has(String(tr.bark.get("s", ""))):
+				problems.append("encounter %s bark uses unknown speaker" % xid)
 	for lid in lore:
 		var q = lore[lid].get("quote")
 		if q != null and not quotes.has(q):
@@ -179,6 +201,9 @@ func validate() -> Array[String]:
 					"region_call":
 						if String(a.get("method", "")) == "":
 							problems.append("scene %s region_call has no method" % sid)
+					"start_fight":
+						if not encounters.has(String(a.get("id", ""))):
+							problems.append("scene %s starts unknown fight %s" % [sid, a.get("id", "")])
 					"goto":
 						if not a.has("region"):
 							problems.append("scene %s goto has no region" % sid)

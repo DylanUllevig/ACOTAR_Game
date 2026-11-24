@@ -27,7 +27,8 @@ ROOT = os.path.join(os.path.dirname(__file__), "..", "..")
 OUT = os.path.join(ROOT, "assets", "pixel")
 
 PEOPLE = ["feyre", "nesta", "elain", "father", "isaac", "villager", "villager_woman", "acolyte", "mercenary",
-          "feyre_spring", "lord_gold", "courtier_red", "housekeeper", "sentry", "lord_night"]
+          "feyre_spring", "lord_gold", "courtier_red", "housekeeper", "sentry", "lord_night",
+          "fae_reveler", "bark_servant"]
 
 # creatures: source, grid of the source (cols x rows, reading order), frames
 # kept, animations (indices into the kept frames)
@@ -52,8 +53,9 @@ CREATURES = {
     "stag": {"src": "px.spring_critters.png", "row": 3, "h": 58, "grid": (4, 1), "anims": {"stand": [0], "walk": [1, 2], "graze": [3]}},
     # the woods' stranger things
     "suriel": {"src": "px.oracle.png", "h": 96, "grid": (2, 2), "anims": {"stand": [0], "speak": [1], "snared": [2], "walk": [3]}},
-    "naga": {"src": "px.serpentfolk.png", "h": 64, "grid": (4, 2), "anims": {"walk": [0, 1, 2, 3], "lunge": [4], "strike": [5], "hurt": [6], "dead": [7]}},
+    "naga": {"src": "px.serpentfolk.png", "h": 64, "grid": (4, 2), "anims": {"walk": [0, 1, 2, 3], "rear": [4], "lunge": [5], "hurt": [6], "dead": [7]}},
     "attor": {"src": "px.fiend.png", "h": 70, "grid": (4, 2), "anims": {"crawl": [0, 1, 2, 3], "crouch": [4], "snarl": [5], "fly": [6, 7]}},
+    "puca": {"src": "px.puca.png", "h": 84, "grid": (4, 2), "anims": {"walk": [0, 1, 2, 3], "rear": [4], "lunge": [5], "hurt": [6], "dead": [7]}},
 }
 
 # single props: name -> (source, which shape on the sheet in reading order)
@@ -126,6 +128,72 @@ PROPS = {
     "washstand": ("px.interior.png", 9, 1.0, 1),
     "rug": ("px.interior.png", 10, 1.0, 1),
     "easel": ("px.interior.png", 11, 1.0, 1),
+    # ---- the Spring Court ----
+    # the manor house (4 px blocks): drawn as the sheet has it, the front door
+    # about a head taller than Feyre
+    "manor": ("px.manor.png", 0, 1.0),
+    # garden pieces (3.2 px blocks)
+    "rose_red": ("px.garden_props.png", 0, 2.0),
+    "rose_pink": ("px.garden_props.png", 1, 2.0),
+    "rose_white": ("px.garden_props.png", 2, 2.0),
+    "topiary": ("px.garden_props.png", 3, 2.0),
+    "hedge": ("px.garden_props.png", 4, 1.4),
+    "fountain": ("px.garden_props.png", 5, 1.1),
+    "statue": ("px.garden_props.png", 6, 1.8),
+    "bench_marble": ("px.garden_props.png", 7, 2.8),
+    "rose_arch": ("px.garden_props.png", 8, 1.3),
+    "tulip_bed": ("px.garden_props.png", 9, 3.0),
+    "urn": ("px.garden_props.png", 10, 2.5),
+    "garden_lamp": ("px.garden_props.png", 11, 1.7),
+    # trees (4 and 5 px blocks), each in two sizes
+    "blossom_pink": ("px.trees_blossom.png", 0, 1.0),
+    "blossom_pink_s": ("px.trees_blossom.png", 0, 1.35),
+    "blossom_white": ("px.trees_blossom.png", 1, 1.0),
+    "blossom_white_s": ("px.trees_blossom.png", 1, 1.35),
+    "oak": ("px.trees_oak_birch.png", 0, 1.0),
+    "oak_s": ("px.trees_oak_birch.png", 0, 1.3),
+    "birch": ("px.trees_oak_birch.png", 1, 1.0),
+    "birch_s": ("px.trees_oak_birch.png", 1, 1.3),
+    # wild flowers and woodland odds and ends (4 px blocks), knee high
+    "poppies": ("px.spring_decor.png", 0, 3.6),
+    "bluebells": ("px.spring_decor.png", 1, 3.6),
+    "daisies": ("px.spring_decor.png", 2, 3.6),
+    "buttercups": ("px.spring_decor.png", 3, 3.6),
+    "mushroom_ring": ("px.spring_decor.png", 4, 3.0),
+    "toadstool": ("px.spring_decor.png", 5, 3.2),
+    "fern_spring": ("px.spring_decor.png", 6, 2.4),
+    "tall_grass": ("px.spring_decor.png", 7, 2.6),
+    "mossy_rock": ("px.spring_decor.png", 8, 2.2),
+    "flower_log": ("px.spring_decor.png", 9, 2.0),
+    "lily_pads": ("px.spring_decor.png", 10, 2.2),
+    "stepping_stones": ("px.spring_decor.png", 11, 2.2),
+    # the manor's rooms (3.2 px blocks), at the people's density
+    "bed_canopy": ("px.manor_furniture.png", 0, 1.26, 1),
+    "dining_table": ("px.manor_furniture.png", 1, 1.21, 1),
+    "chair_carved": ("px.manor_furniture.png", 2, 1.5, 1),
+    "armchair": ("px.manor_furniture.png", 3, 1.6, 1),
+    "fireplace": ("px.manor_furniture.png", 4, 1.15, 1),
+    "bookcase": ("px.manor_furniture.png", 5, 1.0, 1),
+    "desk": ("px.manor_furniture.png", 6, 1.12, 1),
+    "wardrobe": ("px.manor_furniture.png", 7, 1.0, 1),
+    "vanity": ("px.manor_furniture.png", 8, 1.27, 1),
+    "vase_roses": ("px.manor_furniture.png", 9, 1.48, 1),
+    "orange_tree": ("px.manor_furniture.png", 10, 1.28, 1),
+    "screen_painted": ("px.manor_furniture.png", 11, 1.12, 1),
+    # fire night and the woods' errands (3.3 px blocks; sparks on the sheet
+    # count as shapes 4, 5 and 14)
+    "bonfire": ("px.fire_night.png", 0, 2.3),
+    "maypole": ("px.fire_night.png", 1, 1.3),
+    "standing_stone": ("px.fire_night.png", 2, 1.5),
+    "drum": ("px.fire_night.png", 3, 2.85),
+    "cave_mouth": ("px.fire_night.png", 6, 1.0),
+    "gate_iron": ("px.fire_night.png", 7, 1.15),
+    "snare": ("px.fire_night.png", 8, 1.9),
+    "dead_chicken": ("px.fire_night.png", 9, 2.6),
+    "stretcher": ("px.fire_night.png", 10, 1.25, 1),
+    "easel_canvas": ("px.fire_night.png", 11, 1.45, 1),
+    "paint_table": ("px.fire_night.png", 12, 1.7, 1),
+    "campfire": ("px.fire_night.png", 13, 2.95),
 }
 
 
@@ -179,7 +247,8 @@ def eye_points(px, kind):
 # Standing height in art pixels for people whose sheets the block-size guess
 # gets wrong (it can lock onto twice or four times the real grid). Feyre is
 # 76; Fae lords stand a head taller.
-PEOPLE_HEIGHT = {"lord_gold": 86, "courtier_red": 84, "lord_night": 86, "housekeeper": 66, "sentry": 78, "feyre_spring": 76}
+PEOPLE_HEIGHT = {"lord_gold": 86, "courtier_red": 84, "lord_night": 86, "housekeeper": 66, "sentry": 78, "feyre_spring": 76,
+                 "fae_reveler": 76, "bark_servant": 72}
 
 
 def build_people(incoming, names, meta):
@@ -264,6 +333,30 @@ def blue_awning(px):
 
 POST = {"blue_awning": blue_awning}
 
+# props whose lit windows (or flames) get a light at night: the centre and
+# size of each warm-glass patch is recorded in the meta as "windows",
+# [x, y, size] in art pixels from the bottom middle
+GLOW = {"manor", "garden_lamp", "bonfire", "campfire"}
+
+
+def glow_points(px, min_area=6):
+    """Patches of warm, bright, yellow-orange pixels (lit window glass, a lamp
+    flame): [[x, y, size], ...] relative to the bottom middle of the sprite."""
+    from scipy import ndimage
+    rgb = px[:, :, :3].astype(int)
+    a = px[:, :, 3] > 0
+    r, g, b = rgb[:, :, 0], rgb[:, :, 1], rgb[:, :, 2]
+    m = a & (r > 200) & (g > 150) & (b < 140) & (r - b > 110)
+    lab, n = ndimage.label(m)
+    out = []
+    h, w = m.shape
+    for i in range(1, n + 1):
+        ys, xs = np.nonzero(lab == i)
+        if len(xs) < min_area:
+            continue
+        out.append([round(float(xs.mean()) - w / 2.0, 1), round(float(ys.mean()) - h, 1), int(len(xs))])
+    return out
+
 
 def build_props(incoming, names, meta):
     cache = {}
@@ -290,6 +383,10 @@ def build_props(incoming, names, meta):
         rel = "props/%s.png" % n
         Image.fromarray(px, "RGBA").save(os.path.join(OUT, rel))
         m = {"size": [int(px.shape[1]), int(px.shape[0])], "px": dens}
+        if n in GLOW:
+            m["windows"] = glow_points(px)
+        elif "windows" in meta.get(rel, {}):
+            m["windows"] = meta[rel]["windows"]   # set by hand before
         meta[rel] = m
         print("prop", n, px.shape[1], px.shape[0], "px", dens)
 

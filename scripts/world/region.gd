@@ -134,12 +134,20 @@ func surface_at(p: Vector2) -> String:
 	match terrain.at(p):
 		"snow", "trodden", "ice":
 			return "snow"
-		"dirt", "mud", "grass":
+		"dirt", "mud":
 			return "mud"
-		"planks":
+		"grass", "lawn", "meadow", "forest_floor":
+			return "grass"
+		"gravel":
+			return "gravel"
+		"terrace", "marble":
+			return "stone"
+		"planks", "parquet":
 			return "wood"
+		"water":
+			return "water"
 		"cobble", "flagstone":
-			return "mud" if surface == "mud" else surface
+			return "mud" if surface == "mud" else ("stone" if surface in ["grass", "gravel", "stone"] else surface)
 	return surface
 
 ## A ground texture repeated over rect. 'vary' hides the repeat over a large
@@ -278,6 +286,54 @@ static func _map_kind(rel: String) -> String:
 		if rel.begins_with(pair[0]):
 			return pair[1]
 	return ""
+
+
+## A pond: water painted on the pixel ground (an ellipse that wobbles a
+## little) and a solid edge just inside it, so Feyre walks round it.
+func add_pond(c: Vector2, radii: Vector2, wobble := 18.0) -> void:
+	terrain.paint_ellipse("water", c, radii, wobble)
+	var pts = PackedVector2Array()
+	for i in 24:
+		var a = TAU * i / 24.0
+		pts.append(c + Vector2(cos(a) * (radii.x - 34.0), sin(a) * (radii.y - 30.0)))
+	_solid_poly(pts)
+	map_shapes.append({"type": "poly", "pts": pts, "color": Color(0.45, 0.68, 0.8)})
+
+
+## A brook along pts: painted water 'width' across, solid except within
+## 'gap' of each crossing point (stepping stones, a ford).
+func add_brook(pts: PackedVector2Array, width: float, crossings: Array = [], gap := 70.0) -> void:
+	terrain.paint_path("water", pts, width, 14.0)
+	var curve = Region.smooth_curve(pts, 24.0)
+	for k in range(curve.size() - 1):
+		var a: Vector2 = curve[k]
+		var b: Vector2 = curve[k + 1]
+		var mid = (a + b) * 0.5
+		var near_crossing = false
+		for c in crossings:
+			if mid.distance_to(c) < gap:
+				near_crossing = true
+				break
+		if near_crossing:
+			continue
+		var body = StaticBody2D.new()
+		var cs = CollisionShape2D.new()
+		var rs = RectangleShape2D.new()
+		rs.size = Vector2(a.distance_to(b) + 6.0, maxf(8.0, width - 56.0))
+		cs.shape = rs
+		cs.position = mid
+		cs.rotation = (b - a).angle()
+		body.add_child(cs)
+		add_child(body)
+	map_line(curve, Color(0.45, 0.68, 0.8), width * 0.8)
+
+
+func _solid_poly(pts: PackedVector2Array) -> void:
+	var body = StaticBody2D.new()
+	var cp = CollisionPolygon2D.new()
+	cp.polygon = pts
+	body.add_child(cp)
+	add_child(body)
 
 
 ## A labelled point on the map screen (shown once the spot has been explored).
