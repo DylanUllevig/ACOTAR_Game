@@ -89,7 +89,7 @@ static func blood_decals(at: Node, pos: Vector2, dir: Vector2, count := 4) -> vo
 static func number(at: Node, pos: Vector2, value: int, color := Color(1, 0.9, 0.75), big := false) -> void:
 	if not Settings.get_v("damage_numbers"):
 		return
-	var l = Art.label(str(value), 34 if big else 26, color, "caps")
+	var l = Art.label_lit(str(value), 34 if big else 26, color, "caps")
 	l.add_theme_color_override("font_outline_color", Color(0.05, 0.02, 0.03, 0.9))
 	l.add_theme_constant_override("outline_size", 6)
 	l.position = pos + Vector2(randf_range(-14, 14) - 20, -40)

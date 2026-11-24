@@ -21,16 +21,25 @@ func setup(id: String) -> void:
 
 func _ready() -> void:
 	add_theme_constant_override("separation", 14)
-	var greet = Art.label("“%s”" % String(_def.get("greeting", "")), 28, Art.PARCHMENT, "italic")
+	var greet = Art.label("“%s”" % String(_def.get("greeting", "")), 29, Art.TEXT, "italic")
 	greet.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	greet.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	add_child(greet)
-	var keeper = Art.label(String(_def.get("keeper", "")), 22, Art.GOLD_DIM, "italic")
+	var keeper = Art.label(String(_def.get("keeper", "")), 22, Art.TEXT_SOFT, "italic")
 	keeper.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	add_child(keeper)
-	_coin_l = Art.label("", 30, Color(0.96, 0.84, 0.52), "caps")
-	_coin_l.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	add_child(_coin_l)
+	var purse = HBoxContainer.new()
+	purse.alignment = BoxContainer.ALIGNMENT_CENTER
+	purse.add_theme_constant_override("separation", 10)
+	add_child(purse)
+	var coin = TextureRect.new()
+	coin.texture = Art.tex("items/coin.png")
+	coin.custom_minimum_size = Vector2(34, 34)
+	coin.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	coin.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+	purse.add_child(coin)
+	_coin_l = Art.label("", 30, Art.HONEY_DEEP, "bold")
+	purse.add_child(_coin_l)
 	var cols = HBoxContainer.new()
 	cols.add_theme_constant_override("separation", 40)
 	cols.alignment = BoxContainer.ALIGNMENT_CENTER
@@ -38,7 +47,7 @@ func _ready() -> void:
 	add_child(cols)
 	cols.add_child(_column("For sale", true))
 	cols.add_child(_column("They'll buy", false))
-	_msg = Art.label("", 24, Art.GOLD, "italic")
+	_msg = Art.label("", 24, Art.ROSE, "italic")
 	_msg.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	add_child(_msg)
 	var leave = Art.button("Leave", 28)
@@ -53,12 +62,12 @@ func _ready() -> void:
 
 func _column(title: String, selling: bool) -> Control:
 	var p = PanelContainer.new()
-	p.add_theme_stylebox_override("panel", Art.panel_style(Color(0.09, 0.07, 0.08, 0.95), Art.GOLD_DIM, 12, 2))
+	p.add_theme_stylebox_override("panel", Art.inset_style(Vector4(26, 20, 26, 20)))
 	p.custom_minimum_size = Vector2(700, 470)
 	var v = VBoxContainer.new()
-	v.add_theme_constant_override("separation", 10)
+	v.add_theme_constant_override("separation", 12)
 	p.add_child(v)
-	v.add_child(Art.label(title, 26, Art.GOLD, "caps"))
+	v.add_child(Art.label(title, 18, Art.ROSE, "caps_wide"))
 	var list = VBoxContainer.new()
 	list.add_theme_constant_override("separation", 8)
 	v.add_child(list)
@@ -89,7 +98,7 @@ func _refresh() -> void:
 			any = true
 			_buy_list.add_child(_buy_row(String(id), n))
 	if not any:
-		var l = Art.label("Nothing in your satchel they want.", 24, Color(0.6, 0.58, 0.55), "italic")
+		var l = Art.label("Nothing in your satchel they want.", 24, Art.TEXT_SOFT, "italic")
 		_buy_list.add_child(l)
 
 

@@ -32,20 +32,31 @@ func _ready() -> void:
 	for row in [
 		["WASD or arrows", "Move"], ["Shift", "Hurry (louder)"], ["Left click or F", "Use the selected item"],
 		["Hold, then release", "Draw and loose the bow"], ["Right click", "Cancel a draw, or interact"],
-		["E or Space", "Interact, talk"], ["Wheel, 1 to 0", "Choose a hotbar slot"],
+		["E or Space", "Interact, talk"], ["Wheel or 1 to 0", "Choose a hotbar slot"],
 		["Tab or I", "Satchel"], ["M", "Map"], ["J", "Journal"], ["Esc", "Menu, back"],
 		["Enter or click", "Next line of dialogue"],
 	]:
 		var h = HBoxContainer.new()
-		var k = Art.label(row[0], 22, Art.GOLD, "caps")
-		k.custom_minimum_size = Vector2(280, 0)
-		h.add_child(k)
-		h.add_child(Art.label(row[1], 24))
+		h.add_theme_constant_override("separation", 8)
+		var keys = HBoxContainer.new()
+		keys.add_theme_constant_override("separation", 6)
+		keys.custom_minimum_size = Vector2(300, 0)
+		for part in String(row[0]).split(" or "):
+			if keys.get_child_count() > 0:
+				keys.add_child(Art.label("or", 19, Art.TEXT_SOFT, "italic"))
+			if part.begins_with("Hold"):
+				keys.add_child(Art.label(part, 21, Art.TEXT_SOFT, "italic"))
+			else:
+				keys.add_child(Art.keycap(part, 17))
+		h.add_child(keys)
+		var d = Art.label(row[1], 24)
+		d.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+		h.add_child(d)
 		right.add_child(h)
 
 
 func _head(t: String) -> Label:
-	return Art.label(t, 26, Art.GOLD, "caps")
+	return Art.label(t, 19, Art.ROSE, "caps_wide")
 
 
 func _slider(label: String, key: String) -> HBoxContainer:
@@ -61,9 +72,8 @@ func _slider(label: String, key: String) -> HBoxContainer:
 	s.custom_minimum_size = Vector2(340, 32)
 	s.size_flags_vertical = Control.SIZE_SHRINK_CENTER
 	s.value = float(Settings.get_v(key))
-	_style_slider(s)
 	h.add_child(s)
-	var pct = Art.label("%d%%" % int(round(s.value * 100)), 22, Art.PARCHMENT, "caps")
+	var pct = Art.label("%d%%" % int(round(s.value * 100)), 22, Art.TEXT, "bold")
 	pct.custom_minimum_size = Vector2(80, 0)
 	h.add_child(pct)
 	s.value_changed.connect(func(v):
@@ -74,22 +84,6 @@ func _slider(label: String, key: String) -> HBoxContainer:
 	return h
 
 
-func _style_slider(s: HSlider) -> void:
-	var track = StyleBoxFlat.new()
-	track.bg_color = Color(0.16, 0.12, 0.12)
-	track.set_corner_radius_all(4)
-	track.content_margin_top = 4
-	track.content_margin_bottom = 4
-	var fill = StyleBoxFlat.new()
-	fill.bg_color = Art.GOLD_DIM
-	fill.set_corner_radius_all(4)
-	fill.content_margin_top = 4
-	fill.content_margin_bottom = 4
-	s.add_theme_stylebox_override("slider", track)
-	s.add_theme_stylebox_override("grabber_area", fill)
-	s.add_theme_stylebox_override("grabber_area_highlight", fill)
-
-
 func _toggle(label: String, key: String) -> HBoxContainer:
 	var h = HBoxContainer.new()
 	h.add_theme_constant_override("separation", 18)
@@ -98,6 +92,7 @@ func _toggle(label: String, key: String) -> HBoxContainer:
 	h.add_child(l)
 	var b = Art.button("On" if Settings.get_v(key) else "Off", 22)
 	b.toggle_mode = true
+	b.focus_mode = Control.FOCUS_NONE
 	b.button_pressed = bool(Settings.get_v(key))
 	b.custom_minimum_size = Vector2(120, 0)
 	b.toggled.connect(func(on):
@@ -117,8 +112,9 @@ func _speed_row() -> HBoxContainer:
 	var group = ButtonGroup.new()
 	var cur = float(Settings.get_v("text_speed"))
 	for e in SPEEDS:
-		var b = Art.button(e[1], 20)
+		var b = Art.button(e[1], 21)
 		b.toggle_mode = true
+		b.focus_mode = Control.FOCUS_NONE
 		b.button_group = group
 		b.button_pressed = is_equal_approx(cur, e[0])
 		var v: float = e[0]

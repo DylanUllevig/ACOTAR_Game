@@ -65,46 +65,55 @@ func _gui_input(ev: InputEvent) -> void:
 			accept_event()
 
 
+func _box(bg: Color, rad: int, border := 0, bc := Color(0, 0, 0, 0)) -> StyleBoxFlat:
+	var b = StyleBoxFlat.new()
+	b.bg_color = bg
+	b.set_corner_radius_all(rad)
+	b.corner_detail = 10
+	b.anti_aliasing = true
+	if border > 0:
+		b.border_color = bc
+		b.set_border_width_all(border)
+	return b
+
+
 func _draw() -> void:
 	var r = Rect2(Vector2.ZERO, size)
-	var bg = StyleBoxFlat.new()
-	bg.bg_color = Color(0.11, 0.085, 0.09, 0.92) if not dimmed else Color(0.07, 0.06, 0.07, 0.8)
-	bg.set_corner_radius_all(8)
-	bg.border_color = Color(0.36, 0.28, 0.2, 0.95)
-	bg.set_border_width_all(2)
-	bg.shadow_color = Color(0, 0, 0, 0.35)
-	bg.shadow_size = 3
-	draw_style_box(bg, r)
-	# inner bevel for a little depth
-	draw_rect(Rect2(Vector2(4, 4), size - Vector2(8, 8)), Color(1, 1, 1, 0.025), true)
+	var rad = int(size.x * 0.17)
+	if selected:
+		# lifted and ringed in rose, with a soft glow
+		var glow = _box(Color(1.0, 0.98, 0.93), rad + 2, 3, Art.ROSE)
+		glow.shadow_color = Color(Art.ROSE, 0.45)
+		glow.shadow_size = 10
+		draw_style_box(glow, r.grow(2))
+	else:
+		var bg = Color("efe1c6") if not hovered else Color("f7ecd8")
+		draw_style_box(_box(bg, rad, 2, Color("cdb38a") if not hovered else Art.TEXT_SOFT), r)
+		# recessed: a shaded inner lip along the top
+		var lip = _box(Color(0, 0, 0, 0), rad - 2)
+		lip.border_width_top = 3
+		lip.border_color = Color(0.42, 0.27, 0.14, 0.13)
+		draw_style_box(lip, r.grow(-2))
 	if stack != null:
 		var d: Dictionary = DB.item(stack.id)
 		var tex: Texture2D = Art.tex(String(d.get("icon", "")))
 		if tex:
-			var pad = size.x * 0.12 - _pop * size.x * 0.06
+			var pad = size.x * 0.13 - _pop * size.x * 0.06
 			var ir = Rect2(Vector2(pad, pad), size - Vector2(pad, pad) * 2.0)
+			# a soft shadow under the icon so it sits on the paper
+			draw_texture_rect(tex, Rect2(ir.position + Vector2(0, 3), ir.size), false, Color(0.25, 0.12, 0.08, 0.22 if not dimmed else 0.1))
 			draw_texture_rect(tex, ir, false, Color(1, 1, 1, 0.45 if dimmed else 1.0))
 		if int(stack.n) > 1:
-			var f = Art.font("caps")
-			var fs = int(size.x * 0.27)
+			var f = Art.font("bold")
+			var fs = int(size.x * 0.28)
 			var txt = str(stack.n)
 			var w = f.get_string_size(txt, HORIZONTAL_ALIGNMENT_LEFT, -1, fs).x
-			var pos = Vector2(size.x - w - 7, size.y - 8)
-			draw_string_outline(f, pos, txt, HORIZONTAL_ALIGNMENT_LEFT, -1, fs, 6, Color(0.05, 0.03, 0.03, 0.95))
-			draw_string(f, pos, txt, HORIZONTAL_ALIGNMENT_LEFT, -1, fs, Art.PARCHMENT)
+			var pos = Vector2(size.x - w - 8, size.y - 8)
+			draw_string_outline(f, pos, txt, HORIZONTAL_ALIGNMENT_LEFT, -1, fs, 6, Color(Art.PAPER, 0.95))
+			draw_string(f, pos, txt, HORIZONTAL_ALIGNMENT_LEFT, -1, fs, Art.TEXT)
 	if key_label != "":
-		var f2 = Art.font("caps")
-		var ks = int(size.x * 0.2)
-		draw_string_outline(f2, Vector2(7, ks + 3), key_label, HORIZONTAL_ALIGNMENT_LEFT, -1, ks, 5, Color(0, 0, 0, 0.8))
-		draw_string(f2, Vector2(7, ks + 3), key_label, HORIZONTAL_ALIGNMENT_LEFT, -1, ks, Color(1, 1, 1, 0.55))
-	if hovered:
-		draw_rect(Rect2(Vector2(3, 3), size - Vector2(6, 6)), Color(1.0, 0.9, 0.7, 0.08), true)
-	if selected:
-		var sel = StyleBoxFlat.new()
-		sel.bg_color = Color(0, 0, 0, 0)
-		sel.border_color = Art.GOLD
-		sel.set_border_width_all(4)
-		sel.set_corner_radius_all(9)
-		sel.shadow_color = Color(1.0, 0.8, 0.4, 0.35)
-		sel.shadow_size = 8
-		draw_style_box(sel, r.grow(2))
+		var f2 = Art.font("bold")
+		var ks = int(size.x * 0.24)
+		var kc = Art.ROSE if selected else Color(Art.TEXT_SOFT, 0.8)
+		draw_string_outline(f2, Vector2(9, ks + 4), key_label, HORIZONTAL_ALIGNMENT_LEFT, -1, ks, 4, Color(Art.PAPER, 0.9))
+		draw_string(f2, Vector2(9, ks + 4), key_label, HORIZONTAL_ALIGNMENT_LEFT, -1, ks, kc)

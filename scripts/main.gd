@@ -39,6 +39,7 @@ func _show_title() -> void:
 	add_child(layer)
 	title = Control.new()
 	title.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	title.theme = Art.theme()
 	layer.add_child(title)
 	var bg = ColorRect.new()
 	bg.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
@@ -82,32 +83,42 @@ func _show_title() -> void:
 	v.grow_horizontal = Control.GROW_DIRECTION_BOTH
 	v.grow_vertical = Control.GROW_DIRECTION_BOTH
 	v.alignment = BoxContainer.ALIGNMENT_CENTER
-	v.add_theme_constant_override("separation", 18)
+	v.add_theme_constant_override("separation", 14)
 	title.add_child(v)
-	var t1 = Art.label("A COURT OF", 46, Art.GOLD_DIM, "caps")
-	var t2 = Art.label("THORNS AND ROSES", 92, Art.GOLD, "caps")
-	var t3 = Art.label("Book One  ·  a personal fan project, not for distribution", 28, Art.PARCHMENT, "italic")
-	for l in [t1, t2, t3]:
+	var t1 = Art.label_lit("A COURT OF", 40, Art.GOLD_DIM, "caps_wide")
+	var t2 = Art.label_lit("THORNS AND ROSES", 92, Art.GOLD, "caps")
+	var t3 = Art.label_lit("Book One  ·  a personal fan project, not for distribution", 28, Art.PARCHMENT, "italic")
+	for l in [t1, t2]:
 		l.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 		v.add_child(l)
+	v.add_child(Art.flourish(520))
+	t3.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	v.add_child(t3)
 	var spacer = Control.new()
-	spacer.custom_minimum_size = Vector2(0, 40)
+	spacer.custom_minimum_size = Vector2(0, 34)
 	v.add_child(spacer)
-	var b_new = Art.button("New Game", 34)
+	var col = VBoxContainer.new()
+	col.add_theme_constant_override("separation", 14)
+	col.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
+	col.custom_minimum_size = Vector2(420, 0)
+	v.add_child(col)
+	var b_new = Art.button("New Game", 32)
 	b_new.pressed.connect(_new_game)
-	v.add_child(b_new)
-	var b_cont = Art.button("Continue", 34)
+	col.add_child(b_new)
+	var b_cont = Art.button("Continue", 32)
 	b_cont.disabled = not SaveSystem.has_slot("auto")
 	b_cont.pressed.connect(_continue)
-	v.add_child(b_cont)
-	var b_opt = Art.button("Options", 34)
+	col.add_child(b_cont)
+	var b_opt = Art.button("Options", 32)
 	b_opt.pressed.connect(_options)
-	v.add_child(b_opt)
-	var b_quit = Art.button("Quit", 34)
+	col.add_child(b_opt)
+	var b_quit = Art.button("Quit", 32)
 	b_quit.pressed.connect(func(): Audio.quit_game())
-	v.add_child(b_quit)
+	col.add_child(b_quit)
+	for b in [b_new, b_cont, b_opt, b_quit]:
+		b.custom_minimum_size = Vector2(0, 60)
 	b_new.grab_focus.call_deferred()
-	var ver = Art.label("Milestone 1 vertical slice  ·  v%s" % ProjectSettings.get_setting("application/config/version"), 20, Color(1, 1, 1, 0.4), "caps")
+	var ver = Art.label_lit("Milestone 1 vertical slice  ·  v%s" % ProjectSettings.get_setting("application/config/version"), 18, Color(1, 1, 1, 0.45), "caps_wide")
 	ver.anchor_top = 1.0
 	ver.anchor_bottom = 1.0
 	ver.offset_left = 30

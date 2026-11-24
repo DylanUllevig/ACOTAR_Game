@@ -27,7 +27,7 @@ var box: PanelContainer
 var name_plate: PanelContainer
 var name_label: Label
 var text_label: RichTextLabel
-var more: Label
+var more: TextureRect
 var tip_plate: PanelContainer
 var choices_box: VBoxContainer
 var left_portrait: TextureRect
@@ -35,15 +35,16 @@ var right_portrait: TextureRect
 var _left_char = ""
 var _right_char = ""
 var dim: ColorRect
-var _box_sb: StyleBoxFlat
-var _tip_sb: StyleBoxFlat
+var _box_sb: StyleBox
+var _tip_sb: StyleBox
 
 var _bark_panel: PanelContainer
-var _bark_face: TextureRect
+var _bark_face: Medallion
 var _bark_name: Label
 var _bark_text: Label
 var _barks: Array = []
 var _bark_busy = false
+var _more_t := 0.0
 
 
 func _ready() -> void:
@@ -52,6 +53,7 @@ func _ready() -> void:
 	root = Control.new()
 	root.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	root.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	root.theme = Art.theme()
 	add_child(root)
 
 	dim = ColorRect.new()
@@ -71,24 +73,16 @@ func _ready() -> void:
 	root.add_child(catcher)
 
 	box = PanelContainer.new()
-	_box_sb = Art.panel_style(Color(0.06, 0.05, 0.08, 0.94), Art.GOLD_DIM, 14, 2)
-	_box_sb.content_margin_left = 44
-	_box_sb.content_margin_right = 44
-	_box_sb.content_margin_top = 34
-	_box_sb.content_margin_bottom = 26
-	_tip_sb = Art.panel_style(Color(0.1, 0.08, 0.05, 0.95), Art.GOLD, 14, 2)
-	_tip_sb.content_margin_left = 44
-	_tip_sb.content_margin_right = 44
-	_tip_sb.content_margin_top = 34
-	_tip_sb.content_margin_bottom = 26
+	_box_sb = Art.card_style("card", Vector4(52, 38, 56, 26))
+	_tip_sb = Art.card_style("card_tip", Vector4(52, 38, 56, 26))
 	box.add_theme_stylebox_override("panel", _box_sb)
 	box.anchor_left = 0.5
 	box.anchor_right = 0.5
 	box.anchor_top = 1.0
 	box.anchor_bottom = 1.0
-	box.offset_left = -780
-	box.offset_right = 780
-	box.offset_top = -296
+	box.offset_left = -770
+	box.offset_right = 770
+	box.offset_top = -250
 	box.offset_bottom = -34
 	box.mouse_filter = Control.MOUSE_FILTER_STOP
 	box.gui_input.connect(_on_box_input)
@@ -101,29 +95,35 @@ func _ready() -> void:
 	text_label.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	text_label.add_theme_font_override("normal_font", Art.font("serif"))
 	text_label.add_theme_font_override("italics_font", Art.font("italic"))
-	text_label.add_theme_font_override("bold_font", Art.font("caps"))
+	text_label.add_theme_font_override("bold_font", Art.font("bold"))
 	text_label.add_theme_font_size_override("normal_font_size", 36)
 	text_label.add_theme_font_size_override("italics_font_size", 36)
-	text_label.add_theme_font_size_override("bold_font_size", 28)
-	text_label.add_theme_color_override("default_color", Art.PARCHMENT)
+	text_label.add_theme_font_size_override("bold_font_size", 36)
+	text_label.add_theme_color_override("default_color", Art.TEXT)
+	text_label.add_theme_constant_override("line_separation", 4)
 	box.add_child(text_label)
 
-	name_plate = _plate(Color(0.24, 0.07, 0.1, 0.97), Art.GOLD)
-	name_label = Art.label("", 30, Art.GOLD, "caps")
+	name_plate = _plate(Art.ROSE_DEEP, Art.HONEY)
+	name_label = Art.label("", 24, Art.PAPER, "caps_wide")
 	name_plate.add_child(name_label)
 	root.add_child(name_plate)
 
-	tip_plate = _plate(Color(0.55, 0.42, 0.2, 0.97), Color(1.0, 0.9, 0.6))
-	tip_plate.add_child(Art.label("TIP", 26, Color(0.1, 0.07, 0.04), "caps"))
+	tip_plate = _plate(Art.HONEY, Art.HONEY_DEEP)
+	tip_plate.add_child(Art.label("TIP", 22, Art.PAPER, "caps_wide"))
 	root.add_child(tip_plate)
 
-	more = Art.label("»", 34, Art.GOLD)
+	# a rose chevron that bobs when the line is done
+	more = TextureRect.new()
+	more.texture = Art.tex_ui("chevron")
 	more.anchor_left = 0.5
 	more.anchor_top = 1.0
 	more.anchor_right = 0.5
 	more.anchor_bottom = 1.0
-	more.offset_left = 728
-	more.offset_top = -86
+	more.offset_left = 712
+	more.offset_right = 736
+	more.offset_top = -78
+	more.offset_bottom = -62
+	more.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	root.add_child(more)
 
 	choices_box = VBoxContainer.new()
@@ -132,10 +132,10 @@ func _ready() -> void:
 	choices_box.anchor_right = 0.5
 	choices_box.anchor_top = 1.0
 	choices_box.anchor_bottom = 1.0
-	choices_box.offset_left = -580
-	choices_box.offset_right = 580
+	choices_box.offset_left = -520
+	choices_box.offset_right = 520
 	choices_box.offset_top = -640
-	choices_box.offset_bottom = -326
+	choices_box.offset_bottom = -290
 	choices_box.alignment = BoxContainer.ALIGNMENT_END
 	choices_box.add_theme_constant_override("separation", 12)
 	root.add_child(choices_box)
@@ -148,20 +148,32 @@ func _ready() -> void:
 	more.visible = false
 
 
+func _process(delta: float) -> void:
+	if more.visible:
+		_more_t += delta
+		var y = -80.0 + sin(_more_t * 5.0) * 3.0
+		more.offset_top = y
+		more.offset_bottom = y + 16.0
+	else:
+		_more_t = 0.0
+
+
 func _plate(bg: Color, border: Color) -> PanelContainer:
 	var p = PanelContainer.new()
-	var sb = Art.panel_style(bg, border, 6, 2)
-	sb.content_margin_top = 4
-	sb.content_margin_bottom = 4
+	var sb = Art.pill_style(bg, border, 20, 2, 0.3)
+	sb.content_margin_left = 26
+	sb.content_margin_right = 26
+	sb.content_margin_top = 5
+	sb.content_margin_bottom = 6
 	p.add_theme_stylebox_override("panel", sb)
 	p.anchor_left = 0.5
 	p.anchor_top = 1.0
 	p.anchor_right = 0.5
 	p.anchor_bottom = 1.0
-	p.offset_left = -748
-	p.offset_top = -324
-	p.offset_right = -748
-	p.offset_bottom = -278
+	p.offset_left = -726
+	p.offset_top = -274
+	p.offset_right = -726
+	p.offset_bottom = -230
 	p.grow_horizontal = Control.GROW_DIRECTION_END
 	p.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	return p
@@ -308,7 +320,7 @@ func _show_line(speaker: String, expr: String, text: String) -> void:
 	if speaker == "":
 		name_label.text = ""
 		name_plate.visible = false
-		text_label.text = text if tip else "[i]" + text + "[/i]"
+		text_label.text = text if tip else "[i][color=#5a3f35]" + text + "[/color][/i]"
 		if not tip:
 			_focus(null)
 	else:
@@ -383,12 +395,21 @@ func _ask(opts: Array) -> int:
 	for c in choices_box.get_children():
 		c.queue_free()
 	var i = 0
-	var focus_sb = Art.panel_style(Color(0.24, 0.12, 0.12, 0.97), Art.GOLD, 8)
 	for o in opts:
 		var b = Art.button(str(i + 1) + ".  " + String(o.t), 28)
 		b.alignment = HORIZONTAL_ALIGNMENT_LEFT
-		b.add_theme_stylebox_override("focus", focus_sb)
 		b.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		# roomier pills; the choice the keys will take is rose, like the one
+		# under the mouse (styles come from the theme: the button has no
+		# parent yet to inherit them from)
+		for st in ["normal", "hover", "pressed", "disabled", "focus"]:
+			var sb: StyleBoxFlat = Art.theme().get_stylebox("hover" if st == "focus" else st, "Button").duplicate()
+			sb.content_margin_left = 30
+			sb.content_margin_right = 30
+			sb.content_margin_top = 10
+			sb.content_margin_bottom = 12
+			b.add_theme_stylebox_override(st, sb)
+		b.add_theme_color_override("font_focus_color", Art.PAPER)
 		var idx = i
 		b.pressed.connect(func(): _choice_made = idx)
 		b.modulate.a = 0.0
@@ -443,12 +464,7 @@ func auto_advance() -> void:
 # ------------------------------------------------------------------- barks
 func _build_bark() -> void:
 	_bark_panel = PanelContainer.new()
-	var sb = Art.panel_style(Color(0.06, 0.05, 0.08, 0.9), Art.GOLD_DIM, 12, 2)
-	sb.content_margin_left = 12
-	sb.content_margin_top = 10
-	sb.content_margin_bottom = 10
-	sb.content_margin_right = 24
-	_bark_panel.add_theme_stylebox_override("panel", sb)
+	_bark_panel.add_theme_stylebox_override("panel", Art.card_style("card", Vector4(16, 14, 30, 14)))
 	_bark_panel.anchor_left = 0.5
 	_bark_panel.anchor_right = 0.5
 	_bark_panel.anchor_top = 1.0
@@ -463,18 +479,16 @@ func _build_bark() -> void:
 	var h = HBoxContainer.new()
 	h.add_theme_constant_override("separation", 16)
 	_bark_panel.add_child(h)
-	_bark_face = TextureRect.new()
-	_bark_face.custom_minimum_size = Vector2(104, 104)
-	_bark_face.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
-	_bark_face.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
+	_bark_face = Medallion.new(100)
+	_bark_face.size_flags_vertical = Control.SIZE_SHRINK_CENTER
 	h.add_child(_bark_face)
 	var v = VBoxContainer.new()
 	v.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	v.alignment = BoxContainer.ALIGNMENT_CENTER
 	h.add_child(v)
-	_bark_name = Art.label("", 22, Art.GOLD, "caps")
+	_bark_name = Art.label("", 20, Art.ROSE_DEEP, "caps_wide")
 	v.add_child(_bark_name)
-	_bark_text = Art.label("", 28, Art.PARCHMENT, "serif")
+	_bark_text = Art.label("", 28, Art.TEXT, "serif")
 	_bark_text.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	v.add_child(_bark_text)
 
@@ -496,7 +510,8 @@ func bark(speaker: String, expr: String, text: String) -> void:
 		var b: Array = _barks.pop_front()
 		_bark_name.text = DB.character_name(b[0]).to_upper()
 		_bark_text.text = String(b[2])
-		_bark_face.texture = _face(String(b[0]), String(b[1]))
+		var ptex = Art.portrait(String(b[0]), String(b[1]))
+		_bark_face.set_face(ptex, Medallion.default_region(ptex))
 		_bark_panel.visible = true
 		_bark_panel.modulate.a = 0.0
 		var tw = create_tween()
@@ -516,18 +531,6 @@ func bark(speaker: String, expr: String, text: String) -> void:
 		await tw2.finished
 	_bark_panel.visible = false
 	_bark_busy = false
-
-
-## The face from a portrait: the top of the painting, square.
-func _face(speaker: String, expr: String) -> Texture2D:
-	var tex = Art.portrait(speaker, expr)
-	if tex == null:
-		return null
-	var w = float(tex.get_width())
-	var at = AtlasTexture.new()
-	at.atlas = tex
-	at.region = Rect2(w * 0.18, w * 0.06, w * 0.64, w * 0.64)
-	return at
 
 
 # ----------------------------------------------------------------- actions

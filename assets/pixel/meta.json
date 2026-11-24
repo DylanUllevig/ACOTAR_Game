@@ -11,6 +11,69 @@
   ],
   "height": 62
  },
+ "actors/attor.png": {
+  "anims": {
+   "crawl": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "crouch": [
+    4
+   ],
+   "fly": [
+    6,
+    7
+   ],
+   "snarl": [
+    5
+   ]
+  },
+  "block": 4.24,
+  "frame": [
+   82,
+   75
+  ],
+  "grid": [
+   4,
+   2
+  ],
+  "sizes": [
+   [
+    59,
+    51
+   ],
+   [
+    60,
+    47
+   ],
+   [
+    61,
+    47
+   ],
+   [
+    59,
+    50
+   ],
+   [
+    58,
+    38
+   ],
+   [
+    57,
+    56
+   ],
+   [
+    77,
+    73
+   ],
+   [
+    66,
+    72
+   ]
+  ]
+ },
  "actors/beast.png": {
   "anims": {
    "rear": [
@@ -53,6 +116,98 @@
     140
    ]
   ]
+ },
+ "actors/bluebird.png": {
+  "anims": {
+   "fly": [
+    2,
+    3
+   ],
+   "idle": [
+    0
+   ],
+   "peck": [
+    1
+   ]
+  },
+  "block": 11.99,
+  "frame": [
+   18,
+   15
+  ],
+  "grid": [
+   4,
+   1
+  ],
+  "sizes": [
+   [
+    11,
+    12
+   ],
+   [
+    12,
+    11
+   ],
+   [
+    13,
+    13
+   ],
+   [
+    13,
+    13
+   ]
+  ]
+ },
+ "actors/butterfly.png": {
+  "anims": {
+   "white": [
+    0,
+    1
+   ],
+   "yellow": [
+    2,
+    3
+   ]
+  },
+  "block": 13.71,
+  "frame": [
+   16,
+   12
+  ],
+  "grid": [
+   4,
+   1
+  ],
+  "sizes": [
+   [
+    11,
+    10
+   ],
+   [
+    6,
+    10
+   ],
+   [
+    12,
+    10
+   ],
+   [
+    8,
+    8
+   ]
+  ]
+ },
+ "actors/courtier_red.png": {
+  "block": 3.1,
+  "frame": [
+   46,
+   88
+  ],
+  "grid": [
+   4,
+   4
+  ],
+  "height": 83
  },
  "actors/crow.png": {
   "anims": {
@@ -218,6 +373,18 @@
   ],
   "height": 76
  },
+ "actors/feyre_spring.png": {
+  "block": 3.2,
+  "frame": [
+   40,
+   79
+  ],
+  "grid": [
+   4,
+   4
+  ],
+  "height": 76
+ },
  "actors/fox.png": {
   "anims": {
    "sit": [
@@ -346,6 +513,18 @@
    ]
   ]
  },
+ "actors/housekeeper.png": {
+  "block": 3.31,
+  "frame": [
+   38,
+   69
+  ],
+  "grid": [
+   4,
+   4
+  ],
+  "height": 62
+ },
  "actors/isaac.png": {
   "block": 3.6,
   "frame": [
@@ -357,6 +536,30 @@
    4
   ],
   "height": 68
+ },
+ "actors/lord_gold.png": {
+  "block": 3.05,
+  "frame": [
+   48,
+   90
+  ],
+  "grid": [
+   4,
+   4
+  ],
+  "height": 85
+ },
+ "actors/lord_night.png": {
+  "block": 3.11,
+  "frame": [
+   44,
+   91
+  ],
+  "grid": [
+   4,
+   4
+  ],
+  "height": 85
  },
  "actors/mare.png": {
   "anims": {
@@ -435,6 +638,71 @@
   ],
   "height": 61
  },
+ "actors/naga.png": {
+  "anims": {
+   "dead": [
+    7
+   ],
+   "hurt": [
+    6
+   ],
+   "lunge": [
+    4
+   ],
+   "strike": [
+    5
+   ],
+   "walk": [
+    0,
+    1,
+    2,
+    3
+   ]
+  },
+  "block": 4.02,
+  "frame": [
+   80,
+   65
+  ],
+  "grid": [
+   4,
+   2
+  ],
+  "sizes": [
+   [
+    59,
+    54
+   ],
+   [
+    56,
+    56
+   ],
+   [
+    57,
+    55
+   ],
+   [
+    60,
+    55
+   ],
+   [
+    54,
+    63
+   ],
+   [
+    76,
+    52
+   ],
+   [
+    55,
+    56
+   ],
+   [
+    74,
+    26
+   ]
+  ]
+ },
  "actors/nesta.png": {
   "block": 4.0,
   "frame": [
@@ -446,6 +714,50 @@
    4
   ],
   "height": 63
+ },
+ "actors/rabbit.png": {
+  "anims": {
+   "alert": [
+    2
+   ],
+   "eat": [
+    3
+   ],
+   "hop": [
+    0,
+    1
+   ],
+   "sit": [
+    0
+   ]
+  },
+  "block": 10.28,
+  "frame": [
+   22,
+   19
+  ],
+  "grid": [
+   4,
+   1
+  ],
+  "sizes": [
+   [
+    14,
+    16
+   ],
+   [
+    18,
+    17
+   ],
+   [
+    16,
+    15
+   ],
+   [
+    17,
+    12
+   ]
+  ]
  },
  "actors/robin.png": {
   "anims": {
@@ -488,6 +800,18 @@
    ]
   ]
  },
+ "actors/sentry.png": {
+  "block": 3.17,
+  "frame": [
+   44,
+   82
+  ],
+  "grid": [
+   4,
+   4
+  ],
+  "height": 78
+ },
  "actors/squirrel.png": {
   "anims": {
    "eat": [
@@ -526,6 +850,90 @@
    [
     19,
     17
+   ]
+  ]
+ },
+ "actors/stag.png": {
+  "anims": {
+   "graze": [
+    3
+   ],
+   "stand": [
+    0
+   ],
+   "walk": [
+    1,
+    2
+   ]
+  },
+  "block": 4.08,
+  "frame": [
+   60,
+   59
+  ],
+  "grid": [
+   4,
+   1
+  ],
+  "sizes": [
+   [
+    45,
+    55
+   ],
+   [
+    52,
+    57
+   ],
+   [
+    53,
+    57
+   ],
+   [
+    56,
+    42
+   ]
+  ]
+ },
+ "actors/suriel.png": {
+  "anims": {
+   "snared": [
+    2
+   ],
+   "speak": [
+    1
+   ],
+   "stand": [
+    0
+   ],
+   "walk": [
+    3
+   ]
+  },
+  "block": 5.34,
+  "frame": [
+   86,
+   104
+  ],
+  "grid": [
+   4,
+   1
+  ],
+  "sizes": [
+   [
+    44,
+    100
+   ],
+   [
+    50,
+    102
+   ],
+   [
+    81,
+    82
+   ],
+   [
+    56,
+    97
    ]
   ]
  },

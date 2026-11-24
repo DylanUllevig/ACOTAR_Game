@@ -26,10 +26,14 @@ func _ready() -> void:
 	add_child(head)
 	_btn_area = Art.button("This area", 24)
 	_btn_area.toggle_mode = true
+	_btn_area.focus_mode = Control.FOCUS_NONE
+	_btn_area.custom_minimum_size = Vector2(190, 46)
 	_btn_area.pressed.connect(func(): set_mode(0))
 	head.add_child(_btn_area)
 	_btn_world = Art.button("Prythian", 24)
 	_btn_world.toggle_mode = true
+	_btn_world.focus_mode = Control.FOCUS_NONE
+	_btn_world.custom_minimum_size = Vector2(190, 46)
 	_btn_world.pressed.connect(func(): set_mode(1))
 	head.add_child(_btn_world)
 	_canvas = Control.new()
@@ -67,7 +71,7 @@ func _draw_map() -> void:
 		_draw_area(r.grow(-30))
 	else:
 		_draw_world(r.grow(-30))
-	_canvas.draw_rect(r, Art.GOLD_DIM, false, 3.0)
+	_canvas.draw_rect(r, Art.ROSEWOOD, false, 3.0)
 
 
 # -------------------------------------------------------------- this area

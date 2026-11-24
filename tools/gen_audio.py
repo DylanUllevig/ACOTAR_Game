@@ -860,46 +860,57 @@ def chord_pad(song, bar, bars, notes, gain=0.12, cutoff=1300, a=1.4):
 
 
 def music_title():
-    s = Song("title", 66, 4, 16)
-    prog = [("Dm", [50, 53, 57, 62], 38), ("Bb", [46, 50, 53, 58], 34), ("F", [53, 57, 60, 65], 41), ("C", [48, 52, 55, 60], 36),
-            ("Dm", [50, 53, 57, 62], 38), ("Bb", [46, 50, 53, 58], 34), ("Gm", [43, 50, 55, 58], 31), ("A", [45, 49, 52, 57], 33)]
+    # F major, wistful rather than grim: harp arpeggios under a flute that
+    # rises, and a half cadence on C that leads back round to F
+    s = Song("title", 70, 4, 16)
+    prog = [("F", [53, 57, 60, 65], 41), ("C/E", [52, 55, 60, 64], 40), ("Dm", [50, 53, 57, 62], 38), ("Bb", [46, 50, 53, 58], 34),
+            ("F", [53, 57, 60, 65], 41), ("Gm", [50, 55, 58, 62], 43), ("Bb", [50, 53, 58, 62], 46), ("C", [48, 52, 55, 60], 48)]
     for i, (_, notes, bass) in enumerate(prog):
         bar = i * 2
-        chord_pad(s, bar, 2, notes, gain=0.075, cutoff=1100)
-        b = pad_note(midi(bass + 12), 2 * s.bar, s.r, cutoff=500, a=0.6, rel=1.2)
-        s.add(b, s.at(bar), 0.16)
+        chord_pad(s, bar, 2, notes, gain=0.07, cutoff=1300)
+        b = pad_note(midi(bass + 12), 2 * s.bar, s.r, cutoff=520, a=0.6, rel=1.2)
+        s.add(b, s.at(bar), 0.15)
         # harp: broken chord in eighths, rising then falling
         tones = sorted(set([n + 12 for n in notes] + [notes[0] + 24]))
         pattern = tones + tones[-2:0:-1]
         for k in range(16):
             m = pattern[k % len(pattern)]
-            x = ks(midi(m), 2.5, s.r, bright=0.45, decay=0.9965)
+            x = ks(midi(m), 2.5, s.r, bright=0.52, decay=0.9965)
             s.add(x, s.at(bar, k * 0.5), 0.10 * (1.0 if k % 4 == 0 else 0.75), p=(m - 66) / 20.0)
-    melody = [(4, 0, 69, 2), (4, 2, 72, 1), (4, 3, 74, 1), (5, 0, 76, 3), (5, 3, 74, 1), (6, 0, 72, 2), (6, 2, 69, 2), (7, 0, 67, 4),
-              (8, 0, 77, 2), (8, 2, 76, 1), (8, 3, 74, 1), (9, 0, 69, 4), (10, 0, 74, 2), (10, 2, 77, 2), (11, 0, 74, 3), (11, 3, 72, 1),
-              (12, 0, 70, 2), (12, 2, 74, 2), (13, 0, 79, 3), (13, 3, 77, 1), (14, 0, 76, 4), (15, 0, 73, 2), (15, 2, 76, 2)]
+        # a soft bell on each change of chord
+        s.add(bell(midi(notes[-1] + 12), 3.0, amps=(1.0, 0.3, 0.12, 0.05, 0.02)), s.at(bar), 0.035, p=0.4)
+    melody = [(4, 0, 69, 2), (4, 2, 72, 1), (4, 3, 74, 1), (5, 0, 72, 3), (5, 3, 69, 1),
+              (6, 0, 70, 2), (6, 2, 69, 1), (6, 3, 67, 1), (7, 0, 65, 4),
+              (8, 0, 72, 2), (8, 2, 77, 2), (9, 0, 76, 2), (9, 2, 72, 2),
+              (10, 0, 74, 3), (10, 3, 70, 1), (11, 0, 74, 2), (11, 2, 72, 2),
+              (12, 0, 70, 2), (12, 2, 74, 2), (13, 0, 77, 3), (13, 3, 76, 1),
+              (14, 0, 74, 2), (14, 2, 72, 2), (15, 0, 72, 4)]
     for bar, beat, m, d in melody:
         x = flute(midi(m), d * s.beat * 0.95, s.r)
         s.add(x, s.at(bar, beat), 0.085, p=0.1)
-    return s.finish(-21.0, wet=0.38, rev=3.2)
+    return s.finish(-21.0, wet=0.36, rev=3.0)
 
 
 def music_forest():
-    s = Song("forest", 60, 4, 15)
-    chord_pad(s, 0, 15, [38, 45], gain=0.09, cutoff=600, a=3.0)
-    chord_pad(s, 0, 8, [62, 69, 76], gain=0.03, cutoff=2200, a=3.5)
-    chord_pad(s, 8, 7, [60, 67, 74], gain=0.03, cutoff=2200, a=3.5)
-    scale = [62, 64, 67, 69, 72, 74, 76, 79]
-    tpos = 0.5
+    # D major pentatonic over an open fifth: a quiet, clear winter morning
+    # rather than a threat; the hunt has its own music for that
+    s = Song("forest", 64, 4, 16)
+    chord_pad(s, 0, 16, [38, 45], gain=0.075, cutoff=650, a=3.0)
+    chord_pad(s, 0, 8, [62, 66, 69], gain=0.028, cutoff=2400, a=3.5)
+    chord_pad(s, 8, 8, [59, 62, 67], gain=0.028, cutoff=2400, a=3.5)
+    scale = [62, 64, 66, 69, 71, 74, 76, 78]
+    tpos = 0.4
     while tpos < s.L - 0.5:
         m = scale[int(s.r.integers(0, len(scale)))]
-        x = ks(midi(m), 4.0, s.r, bright=0.35, decay=0.998)
-        s.add(x, tpos, 0.11 * s.r.uniform(0.6, 1.0), p=s.r.uniform(-0.6, 0.6))
-        if s.r.random() < 0.35:
-            m2 = scale[max(0, scale.index(m) - 2)]
-            s.add(ks(midi(m2), 4.0, s.r, bright=0.35, decay=0.998), tpos + 0.18, 0.07, p=s.r.uniform(-0.6, 0.6))
-        tpos += s.r.uniform(1.8, 4.2)
-    return s.finish(-23.0, wet=0.5, rev=4.0, damp=4000)
+        x = ks(midi(m), 4.0, s.r, bright=0.45, decay=0.998)
+        s.add(x, tpos, 0.11 * s.r.uniform(0.65, 1.0), p=s.r.uniform(-0.6, 0.6))
+        if s.r.random() < 0.4:
+            m2 = scale[min(len(scale) - 1, scale.index(m) + 2)]
+            s.add(ks(midi(m2), 4.0, s.r, bright=0.45, decay=0.998), tpos + 0.2, 0.07, p=s.r.uniform(-0.6, 0.6))
+        if s.r.random() < 0.12:
+            s.add(bell(midi(m + 12), 3.5, amps=(1.0, 0.3, 0.12, 0.05, 0.02)), tpos + 0.5, 0.03, p=s.r.uniform(-0.5, 0.5))
+        tpos += s.r.uniform(1.3, 3.2)
+    return s.finish(-22.5, wet=0.44, rev=3.6, damp=4800)
 
 
 def music_hunt():
@@ -980,7 +991,8 @@ def music_village():
 
 def music_night_ride():
     s = Song("night_ride", 180, 6, 28)  # 6/8 in eighths
-    prog = [[52, 55, 59], [48, 52, 55], [45, 48, 52], [47, 51, 54]]
+    # E minor, but climbing (i, VI, III, VII) rather than sinking to a dark V
+    prog = [[52, 55, 59], [48, 52, 55], [55, 59, 62], [50, 54, 57]]
     for i in range(14):
         notes = prog[i % 4]
         chord_pad(s, i * 2, 2, notes, gain=0.07, cutoff=1000, a=1.2)
@@ -989,7 +1001,7 @@ def music_night_ride():
             for k, g in ((0, 0.6), (1, 0.45), (2, 1.0)):
                 x = drum(90, 50, 0.25, s.r, noise_amt=0.6, tone_decay=0.06, noise_lp=500)
                 s.add(lp(x, 400), s.at(bar, beat + k * 0.55), 0.12 * g)
-    shimmer = [88, 83, 79, 78, 83, 76, 79, 81]
+    shimmer = [83, 84, 86, 78, 83, 79, 86, 81]
     for i in range(14):
         m = shimmer[i % len(shimmer)]
         s.add(bell(midi(m), 3.0, amps=(1.0, 0.25, 0.12, 0.05, 0.02)), s.at(i * 2, 1.5), 0.05, p=0.5 if i % 2 else -0.5)

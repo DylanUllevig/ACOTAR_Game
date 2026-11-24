@@ -23,6 +23,7 @@ func _ready() -> void:
 	root = Control.new()
 	root.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	root.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	root.theme = Art.theme()
 	add_child(root)
 	hud = Hud.new()
 	root.add_child(hud)
@@ -115,13 +116,15 @@ func fade_in(t := 0.5) -> void:
 
 func toast(text: String) -> void:
 	var p = PanelContainer.new()
-	var sb = Art.panel_style(Color(0.14, 0.06, 0.08, 0.93), Art.GOLD, 10, 2)
-	sb.content_margin_left = 26
-	sb.content_margin_right = 26
+	var sb = Art.pill_style(Art.PAPER, Art.ROSEWOOD, 24, 2, 0.32)
+	sb.content_margin_left = 30
+	sb.content_margin_right = 30
+	sb.content_margin_top = 8
+	sb.content_margin_bottom = 10
 	p.add_theme_stylebox_override("panel", sb)
 	p.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	p.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
-	var l = Art.label(text, 26)
+	var l = Art.label(text, 26, Art.TEXT, "bold")
 	l.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	l.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	l.custom_minimum_size = Vector2(min(900, 60 + text.length() * 13), 0)
@@ -144,18 +147,21 @@ func chapter_card(n: int) -> void:
 	c.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	c.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	var bg = ColorRect.new()
-	bg.color = Color(0.02, 0.02, 0.04, 0.78)
+	bg.color = Color(0.05, 0.025, 0.035, 0.8)
 	bg.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	c.add_child(bg)
-	var a = Art.label("CHAPTER %d" % n, 40, Art.GOLD_DIM, "caps")
-	var b = Art.label(ch.get("title", ""), 84, Art.PARCHMENT, "caps")
-	for l in [a, b]:
-		l.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-		l.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-		l.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
-		c.add_child(l)
-	a.offset_top = -120
-	a.offset_bottom = -120
+	var v = VBoxContainer.new()
+	v.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	v.alignment = BoxContainer.ALIGNMENT_CENTER
+	v.add_theme_constant_override("separation", 10)
+	c.add_child(v)
+	var a = Art.label_lit("CHAPTER %d" % n, 34, Art.GOLD, "caps_wide")
+	var b = Art.label_lit(ch.get("title", ""), 96, Art.PAPER, "bold")
+	a.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	b.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	v.add_child(a)
+	v.add_child(Art.flourish(420))
+	v.add_child(b)
 	c.modulate.a = 0.0
 	modal_layer.add_child(c)
 	Audio.ui("chapter", -2.0)
@@ -170,7 +176,7 @@ func chapter_card(n: int) -> void:
 
 func fade_to_black_card(text: String) -> void:
 	await fade_out(1.0)
-	var l = Art.label(text, 40, Art.PARCHMENT, "italic")
+	var l = Art.label_lit(text, 40, Art.PARCHMENT, "italic")
 	l.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	l.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	l.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
@@ -256,12 +262,9 @@ func _modal(title: String, width := 1500, height := 860, cancel := Callable()) -
 	var overlay = Control.new()
 	overlay.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	overlay.mouse_filter = Control.MOUSE_FILTER_STOP
-	var bg = ColorRect.new()
-	bg.color = Color(0.01, 0.01, 0.03, 0.74)
-	bg.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-	overlay.add_child(bg)
+	overlay.add_child(backdrop())
 	var p = PanelContainer.new()
-	p.add_theme_stylebox_override("panel", Art.panel_style(Color(0.07, 0.055, 0.08, 0.97), Art.GOLD, 16, 3))
+	p.add_theme_stylebox_override("panel", Art.card_style("card", Vector4(48, 34, 48, 36)))
 	p.anchor_left = 0.5
 	p.anchor_right = 0.5
 	p.anchor_top = 0.5
@@ -273,11 +276,11 @@ func _modal(title: String, width := 1500, height := 860, cancel := Callable()) -
 	overlay.add_child(p)
 	var v = VBoxContainer.new()
 	v.add_theme_constant_override("separation", 14)
+	# short popups sit in the middle of their card, not at its top
+	v.alignment = BoxContainer.ALIGNMENT_CENTER
 	p.add_child(v)
 	if title != "":
-		var t = Art.label(title, 44, Art.GOLD, "caps")
-		t.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-		v.add_child(t)
+		v.add_child(Art.heading(title, 46))
 	overlay.modulate.a = 0.0
 	modal_layer.add_child(overlay)
 	_modals.append([overlay, cancel])
@@ -295,6 +298,17 @@ func _close_modal(overlay: Control) -> void:
 	await tw.finished
 	overlay.queue_free()
 	_update_modal()
+
+
+## The game behind a window: blurred and washed warm-dark.
+func backdrop() -> ColorRect:
+	var bg = ColorRect.new()
+	bg.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	bg.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	var m = ShaderMaterial.new()
+	m.shader = load("res://shaders/backdrop.gdshader")
+	bg.material = m
+	return bg
 
 
 ## Toasts sit under the HUD normally. While a window is open they drop to
@@ -360,10 +374,10 @@ func tier_popup(n: int) -> void:
 	var t = DB.tier(n)
 	var m = _modal("Stronger", 1080, 560)
 	var v: VBoxContainer = m[1]
-	var name_l = Art.label("Tier %d  ·  %s" % [n, t.get("name", "")], 46, Art.PARCHMENT, "caps")
+	var name_l = Art.label("Tier %d  ·  %s" % [n, t.get("name", "")], 40, Art.TEXT, "bold")
 	name_l.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	v.add_child(name_l)
-	var c = Art.label(String(t.get("canon", "")), 28, Art.GOLD_DIM, "italic")
+	var c = Art.label(String(t.get("canon", "")), 28, Art.TEXT_SOFT, "italic")
 	c.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	c.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	v.add_child(c)
@@ -371,11 +385,11 @@ func tier_popup(n: int) -> void:
 	s.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	v.add_child(s)
 	var bar = Meter.new(800, 18)
-	bar.fill_color = Art.GOLD
+	bar.fill_color = Art.HONEY
 	bar.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
 	bar.set_values(0.0, 1.0, true)
 	v.add_child(bar)
-	var road = Art.label("Book 1 power curve: tier %d of %d. Made Fae waits at the end." % [n, DB.tiers.size() - 1], 22, Art.GOLD_DIM, "italic")
+	var road = Art.label("Book 1 power curve: tier %d of %d. Made Fae waits at the end." % [n, DB.tiers.size() - 1], 22, Art.TEXT_SOFT, "italic")
 	road.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	v.add_child(road)
 	bar.set_values(GameState.tier_progress(), 1.0)
@@ -388,10 +402,10 @@ func game_over() -> void:
 	var choice = [0]
 	var m = _modal("The snow keeps falling", 1000, 520)
 	var v: VBoxContainer = m[1]
-	var l = Art.label("Feyre does not come home.", 32, Art.PARCHMENT, "italic")
+	var l = Art.label("Feyre does not come home.", 32, Art.TEXT, "italic")
 	l.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	v.add_child(l)
-	var tip = Art.label("Stay hidden for the first shot. Watch for his eyes flaring before he lunges, and step aside.", 24, Art.GOLD_DIM, "italic")
+	var tip = Art.label("Stay hidden for the first shot. Watch for his eyes flaring before he lunges, and step aside.", 24, Art.TEXT_SOFT, "italic")
 	tip.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	tip.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	v.add_child(tip)
@@ -435,7 +449,7 @@ func end_slice() -> void:
 		var l = Art.label(s, 30)
 		l.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 		v.add_child(l)
-	var path_l = Art.label("", 22, Art.GOLD_DIM, "italic")
+	var path_l = Art.label("", 22, Art.TEXT_SOFT, "italic")
 	path_l.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	path_l.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	var exp_b = Art.button("Export carry-over save for Book 2", 26)

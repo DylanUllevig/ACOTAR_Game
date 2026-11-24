@@ -182,7 +182,7 @@ func wall_cinematic() -> void:
 	rider.scale = Vector2(1.6, 1.6) * Art.density(rider_art)
 	rider.modulate = Color(0.25, 0.3, 0.45)
 	_cine_layer.add_child(rider)
-	var text = Art.label("", 40, Art.PARCHMENT, "italic")
+	var text = Art.label_lit("", 40, Art.PARCHMENT, "italic")
 	text.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	text.anchor_right = 1.0
 	text.offset_left = 200
@@ -248,7 +248,7 @@ func wall_cinematic() -> void:
 			rose.position = Vector2(60 + i * 105, 380 + (i % 3) * 60)
 			_cine_layer.add_child(rose)
 			_cine_layer.move_child(rose, 3)
-		var ph = Art.label("PLACEHOLDER: the Spring Court manor (manifest: bg.spring_manor)", 24, Color(1, 1, 1, 0.7), "caps")
+		var ph = Art.label_lit("PLACEHOLDER: the Spring Court manor (manifest: bg.spring_manor)", 24, Color(1, 1, 1, 0.7), "caps")
 		ph.position = Vector2(40, 30)   # top left, clear of the end-of-slice window and its toasts
 		_cine_layer.add_child(ph)
 	set_post({"blackout": 0.0})

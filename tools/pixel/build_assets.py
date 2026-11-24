@@ -26,7 +26,8 @@ import pixelize as pz  # noqa: E402
 ROOT = os.path.join(os.path.dirname(__file__), "..", "..")
 OUT = os.path.join(ROOT, "assets", "pixel")
 
-PEOPLE = ["feyre", "nesta", "elain", "father", "isaac", "villager", "villager_woman", "acolyte", "mercenary"]
+PEOPLE = ["feyre", "nesta", "elain", "father", "isaac", "villager", "villager_woman", "acolyte", "mercenary",
+          "feyre_spring", "lord_gold", "courtier_red", "housekeeper", "sentry", "lord_night"]
 
 # creatures: source, grid of the source (cols x rows, reading order), frames
 # kept, animations (indices into the kept frames)
@@ -43,6 +44,16 @@ CREATURES = {
     "robin": {"src": "px.critters.png", "row": 1, "f": 1.6, "grid": (4, 1), "anims": {"idle": [0], "peck": [1], "fly": [2, 3]}},
     "squirrel": {"src": "px.critters.png", "row": 2, "f": 1.55, "grid": (4, 1), "anims": {"sit": [0], "run": [1, 2], "eat": [3]}},
     "fox": {"src": "px.critters.png", "row": 3, "f": 1.1, "grid": (4, 1), "anims": {"sit": [0], "trot": [1, 2], "sleep": [3]}},
+    # spring: 'h' = the height in art pixels of the tallest frame (the block
+    # size guess is unreliable on these sheets, so size them by height)
+    "butterfly": {"src": "px.spring_critters.png", "row": 0, "h": 9, "grid": (4, 1), "anims": {"white": [0, 1], "yellow": [2, 3]}},
+    "bluebird": {"src": "px.spring_critters.png", "row": 1, "h": 12, "grid": (4, 1), "anims": {"idle": [0], "peck": [1], "fly": [2, 3]}},
+    "rabbit": {"src": "px.spring_critters.png", "row": 2, "h": 15, "grid": (4, 1), "anims": {"sit": [0], "hop": [0, 1], "alert": [2], "eat": [3]}},
+    "stag": {"src": "px.spring_critters.png", "row": 3, "h": 58, "grid": (4, 1), "anims": {"stand": [0], "walk": [1, 2], "graze": [3]}},
+    # the woods' stranger things
+    "suriel": {"src": "px.oracle.png", "h": 96, "grid": (2, 2), "anims": {"stand": [0], "speak": [1], "snared": [2], "walk": [3]}},
+    "naga": {"src": "px.serpentfolk.png", "h": 64, "grid": (4, 2), "anims": {"walk": [0, 1, 2, 3], "lunge": [4], "strike": [5], "hurt": [6], "dead": [7]}},
+    "attor": {"src": "px.fiend.png", "h": 70, "grid": (4, 2), "anims": {"crawl": [0, 1, 2, 3], "crouch": [4], "snarl": [5], "fly": [6, 7]}},
 }
 
 # single props: name -> (source, which shape on the sheet in reading order)
@@ -118,13 +129,16 @@ PROPS = {
 }
 
 
-def shapes_of(path, colors=0, f=1.0, rows_wanted=None, drop_small=True):
+def shapes_of(path, colors=0, f=1.0, rows_wanted=None, drop_small=True, s_force=None):
     """Every shape on a sheet in reading order, pixelized at the sheet's block
-    size times f. Returns (frames, row lengths, block size). Shapes much
-    smaller than the others in their row (crumbs, sparks) are left out."""
+    size times f (or at s_force). Returns (frames, row lengths, block size).
+    Shapes much smaller than the others in their row (crumbs, sparks) are
+    left out."""
     arr = pz.load(path)
     boxes, lab, mask = pz.find_shapes(arr, 128, 5, 150)
     s, _ = pz.block_size(arr, mask)
+    if s_force is not None:
+        s, f = s_force, 1.0
     rows = pz.reading_order(boxes)
     if drop_small:
         kept = []
@@ -162,6 +176,12 @@ def eye_points(px, kind):
     return float(xs[order].mean()), float(ys[order].mean())
 
 
+# Standing height in art pixels for people whose sheets the block-size guess
+# gets wrong (it can lock onto twice or four times the real grid). Feyre is
+# 76; Fae lords stand a head taller.
+PEOPLE_HEIGHT = {"lord_gold": 86, "courtier_red": 84, "lord_night": 86, "housekeeper": 66, "sentry": 78, "feyre_spring": 76}
+
+
 def build_people(incoming, names, meta):
     for n in names:
         src = os.path.join(incoming, "px.%s.png" % n)
@@ -169,6 +189,9 @@ def build_people(incoming, names, meta):
             print("missing", src)
             continue
         frames, rows, s = shapes_of(src)
+        if n in PEOPLE_HEIGHT and len(frames) >= 4:
+            h0 = float(np.median([f.shape[0] for f in frames[:4]]))
+            frames, rows, s = shapes_of(src, s_force=s * h0 / PEOPLE_HEIGHT[n])
         if len(frames) != 16 or rows != [4, 4, 4, 4]:
             print("SKIP", n, "rows", rows)
             continue
@@ -187,7 +210,11 @@ def build_creatures(incoming, names, meta):
         if not os.path.exists(src):
             print("missing", src)
             continue
-        frames, rows, s = shapes_of(src, 0, spec.get("f", 1.0), [spec["row"]] if "row" in spec else None)
+        rows_wanted = [spec["row"]] if "row" in spec else None
+        frames, rows, s = shapes_of(src, 0, spec.get("f", 1.0), rows_wanted)
+        if "h" in spec and frames:
+            tallest = max(f.shape[0] for f in frames)
+            frames, rows, s = shapes_of(src, 0, 1.0, rows_wanted, s_force=s * tallest / spec["h"])
         cols, nrows = spec["grid"]
         if len(frames) != cols * nrows:
             print("SKIP", n, "found", len(frames), "rows", rows)

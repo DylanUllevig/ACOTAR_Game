@@ -24,6 +24,8 @@ var _stats_l: Label
 
 func _ready() -> void:
 	add_theme_constant_override("separation", 36)
+	# sit in the middle of the window's page rather than at its top
+	size_flags_vertical = Control.SIZE_SHRINK_CENTER
 	var left = VBoxContainer.new()
 	left.add_theme_constant_override("separation", 10)
 	add_child(left)
@@ -37,11 +39,11 @@ func _ready() -> void:
 	for r in bag_rows:
 		var start = GameState.hotbar_size() + r * 10
 		left.add_child(_row(start, min(10, GameState.inv_size() - start)))
-	var help = Art.label("Click to pick up, click a slot to place, swap or stack. Drag works too. Right click takes half.", 20, Art.GOLD_DIM, "italic")
+	var help = Art.label("Click to pick up, click a slot to place, swap or stack. Drag works too. Right click takes half.", 21, Art.TEXT_SOFT, "italic")
 	help.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	help.custom_minimum_size = Vector2(10 * SLOT_PX + 9 * GAP, 0)
 	left.add_child(help)
-	_stats_l = Art.label("", 22, Art.PARCHMENT, "caps")
+	_stats_l = Art.label("", 24, Art.TEXT, "bold")
 	left.add_child(_stats_l)
 	add_child(_build_detail())
 	_held_view = Control.new()
@@ -55,7 +57,7 @@ func _ready() -> void:
 
 
 func _caption(t: String) -> Label:
-	return Art.label(t, 20, Art.GOLD_DIM, "caps")
+	return Art.label(t, 16, Art.ROSE, "caps_wide")
 
 
 func _row(start: int, n: int) -> HBoxContainer:
@@ -75,7 +77,7 @@ func _row(start: int, n: int) -> HBoxContainer:
 
 func _build_detail() -> Control:
 	var p = PanelContainer.new()
-	p.add_theme_stylebox_override("panel", Art.panel_style(Color(0.09, 0.07, 0.08, 0.95), Art.GOLD_DIM, 12, 2))
+	p.add_theme_stylebox_override("panel", Art.inset_style(Vector4(24, 20, 24, 22)))
 	p.custom_minimum_size = Vector2(380, 520)
 	p.size_flags_vertical = Control.SIZE_SHRINK_BEGIN
 	var v = VBoxContainer.new()
@@ -86,10 +88,10 @@ func _build_detail() -> Control:
 	_detail_icon.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 	_detail_icon.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 	v.add_child(_detail_icon)
-	_detail_name = Art.label("", 32, Art.GOLD, "caps")
+	_detail_name = Art.label("", 34, Art.ROSE_DEEP, "bold")
 	_detail_name.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	v.add_child(_detail_name)
-	_detail_kind = Art.label("", 20, Art.GOLD_DIM, "caps")
+	_detail_kind = Art.label("", 15, Art.TEXT_SOFT, "caps_wide")
 	v.add_child(_detail_kind)
 	_detail_text = RichTextLabel.new()
 	_detail_text.bbcode_enabled = true
@@ -98,11 +100,11 @@ func _build_detail() -> Control:
 	_detail_text.custom_minimum_size = Vector2(340, 0)
 	_detail_text.add_theme_font_override("normal_font", Art.font("serif"))
 	_detail_text.add_theme_font_override("italics_font", Art.font("italic"))
-	_detail_text.add_theme_font_override("bold_font", Art.font("caps"))
+	_detail_text.add_theme_font_override("bold_font", Art.font("bold"))
 	_detail_text.add_theme_font_size_override("normal_font_size", 24)
 	_detail_text.add_theme_font_size_override("italics_font_size", 24)
-	_detail_text.add_theme_font_size_override("bold_font_size", 20)
-	_detail_text.add_theme_color_override("default_color", Art.PARCHMENT)
+	_detail_text.add_theme_font_size_override("bold_font_size", 24)
+	_detail_text.add_theme_color_override("default_color", Art.TEXT)
 	v.add_child(_detail_text)
 	_eat_btn = Art.button("Eat one", 24)
 	_eat_btn.visible = false
@@ -128,7 +130,7 @@ func _show_detail() -> void:
 		_detail_icon.texture = null
 		_detail_name.text = ""
 		_detail_kind.text = ""
-		_detail_text.text = "[i]Hover over an item to read about it.[/i]"
+		_detail_text.text = "[i][color=#7d5d50]Hover over an item to read about it.[/color][/i]"
 		_eat_btn.visible = false
 		return
 	var id = String(st.id)
@@ -311,7 +313,7 @@ func _draw_held() -> void:
 	if tex:
 		_held_view.draw_texture_rect(tex, Rect2(m - sz * 0.35, sz), false)
 	if int(held.n) > 1:
-		var f = Art.font("caps")
+		var f = Art.font("bold")
 		var p = m + Vector2(sz.x * 0.42, sz.y * 0.62)
-		_held_view.draw_string_outline(f, p, str(held.n), HORIZONTAL_ALIGNMENT_LEFT, -1, 26, 6, Color(0, 0, 0, 0.9))
-		_held_view.draw_string(f, p, str(held.n), HORIZONTAL_ALIGNMENT_LEFT, -1, 26, Art.PARCHMENT)
+		_held_view.draw_string_outline(f, p, str(held.n), HORIZONTAL_ALIGNMENT_LEFT, -1, 28, 6, Color(Art.PAPER, 0.95))
+		_held_view.draw_string(f, p, str(held.n), HORIZONTAL_ALIGNMENT_LEFT, -1, 28, Art.TEXT)

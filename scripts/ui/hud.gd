@@ -9,15 +9,27 @@ extends Control
 
 const SLOT_PX := 84
 const SLOT_GAP := 8
+const MARGIN := 24
+## Feyre's face in her painted portrait (portraits/feyre/neutral.png), for
+## the medallion.
+const FEYRE_FACE := Rect2(270, 62, 272, 272)
+const KEYS := [["WASD", "Move"], ["Click", "Use item"], ["E", "Interact"], ["Wheel", "Hotbar"], ["Tab", "Satchel"], ["M", "Map"], ["J", "Journal"], ["Esc", "Menu"]]
 
+var _left_card: PanelContainer
 var _hp: Meter
+var _hp_l: Label
+var _face: Medallion
 var _tier_l: Label
 var _coin_l: Label
 var _chapter_l: Label
 var _clock_l: Label
+var _sky_icon: TextureRect
 var _objective_l: Label
+var _objective_rule: ColorRect
 var _hotbar_panel: PanelContainer
 var _slots: Array[ItemSlot] = []
+var _item_row: HBoxContainer
+var _item_pill: PanelContainer
 var _item_name: Label
 var _item_name_t := 0.0
 var _prompt_box: HBoxContainer
@@ -25,7 +37,7 @@ var _prompt_key: Label
 var _prompt_l: Label
 var _notices: VBoxContainer
 var _notice_rows := {}           # item id -> [row, label, count, time_left]
-var _hint: Label
+var _hint: PanelContainer
 var _hint_t := 60.0
 var _bottom: Array[Control] = []
 var _vignette: ColorRect
@@ -33,7 +45,7 @@ var _vig_mat: ShaderMaterial
 var _hurt := 0.0
 var _reticle: Control
 
-var _boss: VBoxContainer
+var _boss: PanelContainer
 var _boss_name: Label
 var _boss_bar: Meter
 var _boss_status: Label
@@ -53,6 +65,7 @@ func _ready() -> void:
 	_build_right()
 	_build_boss()
 	_build_hotbar()
+	_build_hint()
 	_build_notices()
 	_reticle = Control.new()
 	_reticle.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
@@ -68,13 +81,20 @@ func _ready() -> void:
 
 
 # ------------------------------------------------------------------ build
-func _panel(bg := Color(0.06, 0.045, 0.06, 0.8)) -> PanelContainer:
+func _card(pad := Vector4(24, 16, 24, 16)) -> PanelContainer:
 	var p = PanelContainer.new()
-	var sb = Art.panel_style(bg, Art.GOLD_DIM, 12, 2)
-	sb.content_margin_left = 20
-	sb.content_margin_right = 20
-	sb.content_margin_top = 12
-	sb.content_margin_bottom = 14
+	p.add_theme_stylebox_override("panel", Art.card_style("card", pad))
+	p.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	return p
+
+
+func _pill(pad := Vector4(18, 4, 22, 6)) -> PanelContainer:
+	var p = PanelContainer.new()
+	var sb = Art.pill_style(Art.PAPER, Art.ROSEWOOD, 22)
+	sb.content_margin_left = pad.x
+	sb.content_margin_top = pad.y
+	sb.content_margin_right = pad.z
+	sb.content_margin_bottom = pad.w
 	p.add_theme_stylebox_override("panel", sb)
 	p.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	return p
@@ -91,120 +111,147 @@ func _build_vignette() -> void:
 
 
 func _build_left() -> void:
-	var p = _panel()
-	p.position = Vector2(28, 22)
+	# her medallion, name and standing, health and purse
+	var p = _card(Vector4(16, 14, 26, 14))
+	p.position = Vector2(MARGIN, MARGIN)
 	add_child(p)
+	_left_card = p
+	var h = HBoxContainer.new()
+	h.add_theme_constant_override("separation", 16)
+	p.add_child(h)
+	_face = Medallion.new(92)
+	_face.set_face(Art.portrait("feyre", "neutral"), FEYRE_FACE)
+	h.add_child(_face)
 	var v = VBoxContainer.new()
-	v.add_theme_constant_override("separation", 6)
-	p.add_child(v)
+	v.add_theme_constant_override("separation", 3)
+	v.alignment = BoxContainer.ALIGNMENT_CENTER
+	h.add_child(v)
 	var top = HBoxContainer.new()
-	top.add_theme_constant_override("separation", 14)
+	top.add_theme_constant_override("separation", 10)
 	v.add_child(top)
-	top.add_child(Art.label("FEYRE", 26, Art.GOLD, "caps"))
-	_tier_l = Art.label("", 20, Art.PARCHMENT, "italic")
-	_tier_l.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+	var nm = Art.label("Feyre", 30, Art.ROSE_DEEP, "bold")
+	top.add_child(nm)
+	_tier_l = Art.label("", 21, Art.TEXT_SOFT, "italic")
+	_tier_l.size_flags_vertical = Control.SIZE_SHRINK_END
 	top.add_child(_tier_l)
-	_hp = Meter.new(380, 22)
-	_hp.font_size = 17
-	v.add_child(_hp)
+	var hp_row = HBoxContainer.new()
+	hp_row.add_theme_constant_override("separation", 8)
+	v.add_child(hp_row)
+	hp_row.add_child(Art.icon("heart", 28))
+	_hp = Meter.new(214, 18)
+	_hp.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+	hp_row.add_child(_hp)
+	_hp_l = Art.label("", 21, Art.TEXT, "bold")
+	_hp_l.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+	hp_row.add_child(_hp_l)
 	var coin_row = HBoxContainer.new()
 	coin_row.add_theme_constant_override("separation", 8)
 	v.add_child(coin_row)
 	var coin = TextureRect.new()
 	coin.texture = Art.tex("items/coin.png")
-	coin.custom_minimum_size = Vector2(26, 26)
+	coin.custom_minimum_size = Vector2(28, 28)
 	coin.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 	coin.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 	coin_row.add_child(coin)
-	_coin_l = Art.label("", 22, Color(0.96, 0.84, 0.52), "caps")
+	_coin_l = Art.label("", 22, Art.HONEY_DEEP, "bold")
+	_coin_l.size_flags_vertical = Control.SIZE_SHRINK_CENTER
 	coin_row.add_child(_coin_l)
 
 
 func _build_right() -> void:
-	var p = _panel()
+	# the chapter and the hour, and what she means to do next
+	var p = _card(Vector4(26, 16, 26, 18))
 	p.anchor_left = 1.0
 	p.anchor_right = 1.0
-	p.offset_left = -600
-	p.offset_right = -28
-	p.offset_top = 22
+	p.offset_left = -560
+	p.offset_right = -MARGIN
+	p.offset_top = MARGIN
 	p.grow_horizontal = Control.GROW_DIRECTION_BEGIN
 	add_child(p)
 	var v = VBoxContainer.new()
-	v.add_theme_constant_override("separation", 4)
+	v.add_theme_constant_override("separation", 7)
 	p.add_child(v)
 	var row = HBoxContainer.new()
+	row.add_theme_constant_override("separation", 8)
 	v.add_child(row)
-	_chapter_l = Art.label("", 22, Art.GOLD, "caps")
+	_chapter_l = Art.label("", 18, Art.ROSE, "caps_wide")
 	_chapter_l.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	_chapter_l.size_flags_vertical = Control.SIZE_SHRINK_CENTER
 	_chapter_l.clip_text = true
 	row.add_child(_chapter_l)
-	_clock_l = Art.label("", 22, Art.PARCHMENT, "caps")
+	_sky_icon = Art.icon("sun", 26)
+	row.add_child(_sky_icon)
+	_clock_l = Art.label("", 22, Art.TEXT, "bold")
+	_clock_l.size_flags_vertical = Control.SIZE_SHRINK_CENTER
 	row.add_child(_clock_l)
-	_objective_l = Art.label("", 24)
+	_objective_rule = ColorRect.new()
+	_objective_rule.color = Color(Art.HONEY, 0.55)
+	_objective_rule.custom_minimum_size = Vector2(0, 2)
+	_objective_rule.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	v.add_child(_objective_rule)
+	_objective_l = Art.label("", 24, Art.TEXT)
 	_objective_l.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	_objective_l.custom_minimum_size = Vector2(530, 0)
+	_objective_l.custom_minimum_size = Vector2(486, 0)
 	v.add_child(_objective_l)
 
 
 func _build_boss() -> void:
-	_boss = VBoxContainer.new()
+	_boss = _card(Vector4(30, 14, 30, 16))
 	_boss.anchor_left = 0.5
 	_boss.anchor_right = 0.5
-	# 640 wide so it clears the side panels at the narrowest canvas (1920)
-	_boss.offset_left = -320
-	_boss.offset_right = 320
-	_boss.offset_top = 26
-	_boss.alignment = BoxContainer.ALIGNMENT_BEGIN
-	_boss.add_theme_constant_override("separation", 6)
-	_boss.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	# 680 wide so it clears the side cards at the narrowest canvas (1920)
+	_boss.offset_left = -340
+	_boss.offset_right = 340
+	_boss.offset_top = MARGIN
+	_boss.grow_horizontal = Control.GROW_DIRECTION_BOTH
 	_boss.visible = false
 	add_child(_boss)
-	_boss_name = Art.label("", 30, Art.PARCHMENT, "caps")
+	var bv = VBoxContainer.new()
+	bv.add_theme_constant_override("separation", 6)
+	_boss.add_child(bv)
+	_boss_name = Art.label("", 24, Art.ROSE_DEEP, "caps_wide")
 	_boss_name.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	_boss.add_child(_boss_name)
-	_boss_bar = Meter.new(640, 20)
-	_boss_bar.fill_color = Color(0.62, 0.1, 0.12)
-	_boss.add_child(_boss_bar)
-	_boss_status = Art.label("", 22, Art.GOLD, "italic")
+	bv.add_child(_boss_name)
+	_boss_bar = Meter.new(620, 18)
+	_boss_bar.fill_color = Color("9e1f2e")
+	_boss_bar.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
+	bv.add_child(_boss_bar)
+	_boss_status = Art.label("", 21, Art.TEXT_SOFT, "italic")
 	_boss_status.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	_boss.add_child(_boss_status)
+	bv.add_child(_boss_status)
 	_stealth = HBoxContainer.new()
 	_stealth.alignment = BoxContainer.ALIGNMENT_CENTER
 	_stealth.add_theme_constant_override("separation", 12)
 	_stealth.visible = false
-	_boss.add_child(_stealth)
+	bv.add_child(_stealth)
 	_eye = Control.new()
 	_eye.custom_minimum_size = Vector2(54, 30)
 	_eye.draw.connect(_draw_eye)
 	_stealth.add_child(_eye)
 	var sv = VBoxContainer.new()
-	sv.add_theme_constant_override("separation", 2)
+	sv.add_theme_constant_override("separation", 3)
 	_stealth.add_child(sv)
-	_stealth_l = Art.label("", 22, Art.PARCHMENT, "caps")
+	_stealth_l = Art.label("", 21, Art.TEXT, "bold")
 	sv.add_child(_stealth_l)
-	_noise = Meter.new(220, 8)
-	_noise.fill_color = Color(0.9, 0.75, 0.4)
+	_noise = Meter.new(220, 9)
+	_noise.fill_color = Art.HONEY
 	_noise.ghost_color = Color(0, 0, 0, 0)
 	sv.add_child(_noise)
 
 
 func _build_hotbar() -> void:
 	var n = GameState.hotbar_size()
-	var width = n * SLOT_PX + (n - 1) * SLOT_GAP + 28
-	_hotbar_panel = _panel(Color(0.06, 0.045, 0.06, 0.72))
+	var width = n * SLOT_PX + (n - 1) * SLOT_GAP + 32
+	var tray_h = SLOT_PX + 28
+	_hotbar_panel = _card(Vector4(16, 14, 16, 14))
 	_hotbar_panel.anchor_left = 0.5
 	_hotbar_panel.anchor_right = 0.5
 	_hotbar_panel.anchor_top = 1.0
 	_hotbar_panel.anchor_bottom = 1.0
 	_hotbar_panel.offset_left = -width / 2.0
 	_hotbar_panel.offset_right = width / 2.0
-	_hotbar_panel.offset_top = -24 - SLOT_PX - 26
-	_hotbar_panel.offset_bottom = -24
-	var sb: StyleBoxFlat = _hotbar_panel.get_theme_stylebox("panel")
-	sb.content_margin_left = 14
-	sb.content_margin_right = 14
-	sb.content_margin_top = 13
-	sb.content_margin_bottom = 13
+	_hotbar_panel.offset_top = -MARGIN - tray_h
+	_hotbar_panel.offset_bottom = -MARGIN
 	_hotbar_panel.mouse_filter = Control.MOUSE_FILTER_STOP
 	add_child(_hotbar_panel)
 	var row = HBoxContainer.new()
@@ -216,68 +263,90 @@ func _build_hotbar() -> void:
 		s.slot_pressed.connect(_on_slot_pressed)
 		row.add_child(s)
 		_slots.append(s)
-	_item_name = Art.label("", 28, Art.PARCHMENT, "caps")
-	_item_name.anchor_left = 0.5
-	_item_name.anchor_right = 0.5
-	_item_name.anchor_top = 1.0
-	_item_name.anchor_bottom = 1.0
-	_item_name.offset_left = -400
-	_item_name.offset_right = 400
-	_item_name.offset_top = -24 - SLOT_PX - 26 - 44
-	_item_name.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	_item_name.modulate.a = 0.0
-	add_child(_item_name)
-	_prompt_box = HBoxContainer.new()
-	_prompt_box.anchor_left = 0.5
-	_prompt_box.anchor_right = 0.5
-	_prompt_box.anchor_top = 1.0
-	_prompt_box.anchor_bottom = 1.0
-	_prompt_box.offset_left = -500
-	_prompt_box.offset_right = 500
-	_prompt_box.offset_top = -24 - SLOT_PX - 26 - 100
-	_prompt_box.offset_bottom = -24 - SLOT_PX - 26 - 52
-	_prompt_box.alignment = BoxContainer.ALIGNMENT_CENTER
-	_prompt_box.add_theme_constant_override("separation", 12)
-	_prompt_box.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	var above = -MARGIN - tray_h - 14
+	# the selected item's name, briefly, in a little pill over the tray
+	_item_row = _centered_row(above - 46, above)
+	_item_pill = _pill()
+	_item_name = Art.label("", 24, Art.TEXT, "bold")
+	_item_pill.add_child(_item_name)
+	_item_row.add_child(_item_pill)
+	_item_pill.modulate.a = 0.0
+	# what E does here
+	_prompt_box = _centered_row(above - 110, above - 58)
 	_prompt_box.visible = false
-	add_child(_prompt_box)
-	var cap = PanelContainer.new()
-	var csb = Art.panel_style(Color(0.9, 0.82, 0.62, 0.95), Color(0.3, 0.22, 0.14), 6, 2)
-	csb.content_margin_left = 10
-	csb.content_margin_right = 10
-	csb.content_margin_top = 0
-	csb.content_margin_bottom = 2
-	cap.add_theme_stylebox_override("panel", csb)
-	cap.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	_prompt_box.add_child(cap)
-	_prompt_key = Art.label("E", 24, Color(0.15, 0.1, 0.08), "caps")
-	_prompt_key.remove_theme_color_override("font_shadow_color")
-	cap.add_child(_prompt_key)
-	_prompt_l = Art.label("", 28, Art.PARCHMENT, "caps")
-	_prompt_box.add_child(_prompt_l)
-	_hint = Art.label("WASD move   ·   Left click use   ·   E or right click interact   ·   Wheel or 1-0 hotbar   ·   Tab bag   ·   M map   ·   Esc menu", 18, Color(1, 1, 1, 0.5), "caps")
+	var pp = _pill(Vector4(10, 6, 26, 8))
+	_prompt_box.add_child(pp)
+	var ph = HBoxContainer.new()
+	ph.add_theme_constant_override("separation", 12)
+	pp.add_child(ph)
+	var cap = Art.keycap("E", 22)
+	_prompt_key = cap.get_child(0)
+	ph.add_child(cap)
+	_prompt_l = Art.label("", 26, Art.TEXT, "bold")
+	_prompt_l.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+	ph.add_child(_prompt_l)
+	_bottom = [_hotbar_panel, _item_row, _prompt_box]
+
+
+func _centered_row(top: float, bottom: float) -> HBoxContainer:
+	var r = HBoxContainer.new()
+	r.anchor_left = 0.5
+	r.anchor_right = 0.5
+	r.anchor_top = 1.0
+	r.anchor_bottom = 1.0
+	r.offset_left = -560
+	r.offset_right = 560
+	r.offset_top = top
+	r.offset_bottom = bottom
+	r.alignment = BoxContainer.ALIGNMENT_CENTER
+	r.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	add_child(r)
+	return r
+
+
+func _build_hint() -> void:
+	# the keys, for the first minute of play, in the bottom-right corner
+	_hint = _card(Vector4(24, 14, 26, 16))
+	_hint.anchor_left = 1.0
+	_hint.anchor_right = 1.0
 	_hint.anchor_top = 1.0
 	_hint.anchor_bottom = 1.0
-	_hint.anchor_left = 0.5
-	_hint.anchor_right = 0.5
-	_hint.offset_left = -900
-	_hint.offset_right = 900
-	_hint.offset_top = -22
-	_hint.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	_hint.offset_right = -MARGIN
+	_hint.offset_bottom = -MARGIN
+	_hint.offset_left = -MARGIN
+	_hint.offset_top = -MARGIN
+	_hint.grow_horizontal = Control.GROW_DIRECTION_BEGIN
+	_hint.grow_vertical = Control.GROW_DIRECTION_BEGIN
 	add_child(_hint)
-	_bottom = [_hotbar_panel, _item_name, _prompt_box, _hint]
+	var v = VBoxContainer.new()
+	v.add_theme_constant_override("separation", 8)
+	_hint.add_child(v)
+	v.add_child(Art.label("Controls", 17, Art.ROSE, "caps_wide"))
+	var g = GridContainer.new()
+	g.columns = 4
+	g.add_theme_constant_override("h_separation", 10)
+	g.add_theme_constant_override("v_separation", 7)
+	v.add_child(g)
+	for k in KEYS:
+		var cap = Art.keycap(k[0], 17)
+		cap.size_flags_horizontal = Control.SIZE_SHRINK_END
+		g.add_child(cap)
+		var l = Art.label(k[1], 21, Art.TEXT)
+		l.custom_minimum_size = Vector2(92, 0)
+		g.add_child(l)
+	_hint.modulate.a = 0.0
 
 
 func _build_notices() -> void:
 	_notices = VBoxContainer.new()
 	_notices.anchor_top = 1.0
 	_notices.anchor_bottom = 1.0
-	_notices.offset_left = 30
-	_notices.offset_right = 520
-	_notices.offset_top = -420
-	_notices.offset_bottom = -60
+	_notices.offset_left = MARGIN + 6
+	_notices.offset_right = 480
+	_notices.offset_top = -440
+	_notices.offset_bottom = -MARGIN - 4
 	_notices.alignment = BoxContainer.ALIGNMENT_END
-	_notices.add_theme_constant_override("separation", 6)
+	_notices.add_theme_constant_override("separation", 8)
 	_notices.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(_notices)
 
@@ -285,14 +354,15 @@ func _build_notices() -> void:
 # ---------------------------------------------------------------- refresh
 func refresh() -> void:
 	_hp.set_values(GameState.hp, GameState.max_hp)
-	_hp.text = "%d / %d" % [GameState.hp, GameState.max_hp]
+	_hp_l.text = "%d / %d" % [GameState.hp, GameState.max_hp]
 	var t = DB.tier(GameState.tier)
 	_tier_l.text = String(t.get("name", ""))
 	_coin_l.text = str(GameState.coins)
 	var ch = DB.chapter(GameState.chapter)
-	_chapter_l.text = "Chapter %d  ·  %s" % [GameState.chapter, ch.get("title", "")]
+	_chapter_l.text = "Chapter %d · %s" % [GameState.chapter, ch.get("title", "")]
 	_objective_l.text = GameState.objective
 	_objective_l.visible = GameState.objective != ""
+	_objective_rule.visible = _objective_l.visible
 	_refresh_slots()
 
 
@@ -327,23 +397,33 @@ static func clock_text(h: float) -> String:
 func _process(delta: float) -> void:
 	_t += delta
 	_clock_l.text = clock_text(GameState.hour)
+	var day = GameState.hour >= 6.0 and GameState.hour < 18.5
+	var sky = Art.tex_ui("sun" if day else "moon")
+	if _sky_icon.texture != sky:
+		_sky_icon.texture = sky
 	# the HUD steps back while a window (satchel, shop, popup) is open, and
 	# the bottom row makes way for the dialogue box
 	modulate.a = move_toward(modulate.a, 0.0 if UI.modal_open else 1.0, delta * 8.0)
 	var talk = Dialogue.active
 	for c in _bottom:
 		c.modulate.a = move_toward(c.modulate.a, 0.0 if talk else 1.0, delta * 6.0)
+	# Feyre's portrait slides in on the left while she speaks: her card makes way
+	var her = talk and Dialogue.left_portrait.modulate.a > 0.05
+	_left_card.modulate.a = move_toward(_left_card.modulate.a, 0.0 if her else 1.0, delta * 6.0)
 	_hotbar_panel.mouse_filter = Control.MOUSE_FILTER_IGNORE if talk else Control.MOUSE_FILTER_STOP
 	if _item_name_t > 0.0:
 		_item_name_t -= delta
-		_item_name.self_modulate.a = clampf(_item_name_t / 0.4, 0.0, 1.0)
+		_item_pill.modulate.a = clampf(_item_name_t / 0.4, 0.0, 1.0) if _item_name.text != "" else 0.0
 	else:
-		_item_name.self_modulate.a = 0.0
+		_item_pill.modulate.a = 0.0
+	var hint_a = 0.0
 	if _hint_t > 0.0 and Settings.get_v("show_hints"):
-		_hint_t -= delta
-		_hint.self_modulate.a = clampf(_hint_t / 3.0, 0.0, 1.0)
-	else:
-		_hint.self_modulate.a = 0.0
+		# the minute counts only while she is out in the world
+		if is_visible_in_tree() and not talk and not UI.modal_open:
+			_hint_t -= delta
+		hint_a = clampf(_hint_t / 3.0, 0.0, 1.0) * clampf((60.0 - _hint_t) / 0.8, 0.0, 1.0)
+	_hint.modulate.a = hint_a * _hotbar_panel.modulate.a
+	_hint.visible = _hint.modulate.a > 0.01
 	# damage flash on top of a slow pulse when health is low
 	_hurt = max(0.0, _hurt - delta * 1.8)
 	var low = 0.0
@@ -387,13 +467,7 @@ func notice_item(id: String, n: int) -> void:
 		(e[0] as Control).modulate.a = 1.0
 		(e[1] as Label).text = _notice_text(id, int(e[2]))
 		return
-	var row = PanelContainer.new()
-	var sb = Art.panel_style(Color(0.08, 0.06, 0.07, 0.85), Art.GOLD_DIM, 8, 1)
-	sb.content_margin_top = 4
-	sb.content_margin_bottom = 4
-	sb.content_margin_left = 8
-	row.add_theme_stylebox_override("panel", sb)
-	row.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	var row = _pill(Vector4(8, 3, 22, 5))
 	row.size_flags_horizontal = Control.SIZE_SHRINK_BEGIN
 	var h = HBoxContainer.new()
 	h.add_theme_constant_override("separation", 10)
@@ -404,7 +478,7 @@ func notice_item(id: String, n: int) -> void:
 	icon.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 	icon.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 	h.add_child(icon)
-	var l = Art.label(_notice_text(id, n), 24)
+	var l = Art.label(_notice_text(id, n), 23, Art.TEXT, "bold")
 	l.size_flags_vertical = Control.SIZE_SHRINK_CENTER
 	h.add_child(l)
 	_notices.add_child(row)
@@ -434,10 +508,10 @@ func boss_update(hp: int, max_hp: int, ash_struck: bool, regenerating: bool) -> 
 		_boss_bar.set_values(hp, max_hp)
 	if ash_struck:
 		_boss_status.text = "Ash-struck: his wounds stay open"
-		_boss_status.add_theme_color_override("font_color", Color(1.0, 0.55, 0.45))
+		_boss_status.add_theme_color_override("font_color", Art.ROSE)
 	elif regenerating:
 		_boss_status.text = "Healing"
-		_boss_status.add_theme_color_override("font_color", Art.GOLD)
+		_boss_status.add_theme_color_override("font_color", Art.HONEY_DEEP)
 	else:
 		_boss_status.text = ""
 
@@ -460,14 +534,14 @@ func stealth_update(hidden: bool, noise_frac: float, alerted: bool) -> void:
 		_eye_state = st
 		_eye.queue_redraw()
 	_stealth_l.text = ["Hidden", "In the open", "He knows you're here"][st]
-	_stealth_l.add_theme_color_override("font_color", [Color(0.75, 0.85, 0.8), Art.PARCHMENT, Color(1.0, 0.5, 0.42)][st])
+	_stealth_l.add_theme_color_override("font_color", [Color("4b6b55"), Art.TEXT, Art.ROSE][st])
 	_noise.visible = not alerted
 	_noise.set_values(noise_frac, 1.0)
 
 
 func _draw_eye() -> void:
 	var c = _eye.size / 2.0
-	var col = [Color(0.65, 0.8, 0.75), Art.PARCHMENT, Color(1.0, 0.45, 0.38)][_eye_state]
+	var col = [Color("5d7a64"), Art.TEXT, Art.ROSE][_eye_state]
 	if _eye_state == 0:
 		# closed: a lid line with lashes
 		var pts = PackedVector2Array()
@@ -489,7 +563,7 @@ func _draw_eye() -> void:
 	_eye.draw_polyline(top, col, 3.0, true)
 	_eye.draw_polyline(bot, col, 3.0, true)
 	_eye.draw_circle(c, 7.5, col)
-	_eye.draw_circle(c, 3.0, Color(0.05, 0.03, 0.03))
+	_eye.draw_circle(c, 3.0, Art.PAPER)
 
 
 # --------------------------------------------------------------- effects
