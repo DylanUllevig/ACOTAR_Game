@@ -194,6 +194,35 @@ PROPS = {
     "easel_canvas": ("px.fire_night.png", 11, 1.45, 1),
     "paint_table": ("px.fire_night.png", 12, 1.7, 1),
     "campfire": ("px.fire_night.png", 13, 2.95),
+    # spring extras: the glen's willow, the stable, the heron fountain, a
+    # footbridge, the solstice pole, a swing, a well and a rose fence (f is
+    # small: these were painted fine, so they are cut at a finer block)
+    "willow": ("px.spring_extras.png", 0, 0.185),
+    "stable": ("px.spring_extras.png", 1, 0.246),
+    "heron_fountain": ("px.spring_extras.png", 2, 0.263),
+    "footbridge": ("px.spring_extras.png", 3, 0.277),
+    "ribbon_pole": ("px.spring_extras.png", 4, 0.345),
+    "swing": ("px.spring_extras.png", 5, 0.37),
+    "well_roses": ("px.spring_extras.png", 6, 0.383),
+    "rose_fence": ("px.spring_extras.png", 7, 0.45),
+    # more of the manor's furniture, on the people's scale (px 1)
+    "staircase": ("px.manor_furniture2.png", 0, 0.442, 1),
+    "harp": ("px.manor_furniture2.png", 1, 0.893, 1),
+    "grandfather_clock": ("px.manor_furniture2.png", 2, 0.823, 1),
+    "candelabra_table": ("px.manor_furniture2.png", 3, 1.07, 1),
+    "bathtub": ("px.manor_furniture2.png", 4, 0.586, 1),
+    "chaise": ("px.manor_furniture2.png", 5, 0.662, 1),
+    "palm": ("px.manor_furniture2.png", 6, 0.717, 1),
+    "tapestry": ("px.manor_furniture2.png", 7, 0.685, 1),
+}
+
+
+# where two pictures on a sheet touch (grass running into grass), a strip
+# cleared between them so they come out as two shapes: x0, y0, x1, y1 in
+# source pixels
+CUTS = {
+    "px.spring_extras.png": [(256, 60, 268, 470), (750, 60, 762, 470)],
+    "px.manor_furniture2.png": [(249, 580, 266, 930)],
 }
 
 
@@ -203,6 +232,8 @@ def shapes_of(path, colors=0, f=1.0, rows_wanted=None, drop_small=True, s_force=
     Shapes much smaller than the others in their row (crumbs, sparks) are
     left out."""
     arr = pz.load(path)
+    for x0, y0, x1, y1 in CUTS.get(os.path.basename(path), []):
+        arr[y0:y1, x0:x1, 3] = 0
     boxes, lab, mask = pz.find_shapes(arr, 128, 5, 150)
     s, _ = pz.block_size(arr, mask)
     if s_force is not None:
@@ -336,7 +367,7 @@ POST = {"blue_awning": blue_awning}
 # props whose lit windows (or flames) get a light at night: the centre and
 # size of each warm-glass patch is recorded in the meta as "windows",
 # [x, y, size] in art pixels from the bottom middle
-GLOW = {"manor", "garden_lamp", "bonfire", "campfire"}
+GLOW = {"manor", "garden_lamp", "bonfire", "campfire", "candelabra_table"}
 
 
 def glow_points(px, min_area=6):

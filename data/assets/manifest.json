@@ -1799,6 +1799,102 @@
    "status": "final",
    "est_generations": 1,
    "notes": "Spring Court cast, 2026-11-24. Generated with a transparent background at 2k; fitted with tools/fit_art.py. Expressions were made with the neutral portrait's job as an image reference."
+  },
+  {
+   "id": "item.table_knife",
+   "kind": "icon",
+   "placeholder": "",
+   "final": "assets/final/items/table_knife.png",
+   "size": [
+    96,
+    96
+   ],
+   "aspect": "1:1",
+   "prompt": "Painted illustration in the style of a hand-painted fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, warm rim light, no text, no watermark, no frame. Single object icon, centred, transparent background: a plain silver dinner knife with a rounded tip and a simple engraved handle, lying diagonally.",
+   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
+   "status": "final",
+   "est_generations": 1,
+   "notes": "Spring Court, 2026-11-24. Generated with a transparent background; fitted with tools/fit_art.py."
+  },
+  {
+   "id": "item.fae_knife",
+   "kind": "icon",
+   "placeholder": "",
+   "final": "assets/final/items/fae_knife.png",
+   "size": [
+    96,
+    96
+   ],
+   "aspect": "1:1",
+   "prompt": "Painted illustration in the style of a hand-painted fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, warm rim light, no text, no watermark, no frame. Single object icon, centred, transparent background: a fine hunting knife with a slim steel blade, a dark leather-wrapped grip and a small bronze fox-head pommel, lying diagonally.",
+   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
+   "status": "final",
+   "est_generations": 1,
+   "notes": "Spring Court, 2026-11-24. Generated with a transparent background; fitted with tools/fit_art.py."
+  },
+  {
+   "id": "item.jeweled_knife",
+   "kind": "icon",
+   "placeholder": "",
+   "final": "assets/final/items/jeweled_knife.png",
+   "size": [
+    96,
+    96
+   ],
+   "aspect": "1:1",
+   "prompt": "Painted illustration in the style of a hand-painted fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, warm rim light, no text, no watermark, no frame. Single object icon, centred, transparent background: an exquisite jeweled hunting knife, a perfectly balanced curved blade, a gold hilt set with small rubies and emeralds, lying diagonally.",
+   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
+   "status": "final",
+   "est_generations": 1,
+   "notes": "Spring Court, 2026-11-24. Generated with a transparent background; fitted with tools/fit_art.py."
+  },
+  {
+   "id": "item.chicken",
+   "kind": "icon",
+   "placeholder": "",
+   "final": "assets/final/items/chicken.png",
+   "size": [
+    96,
+    96
+   ],
+   "aspect": "1:1",
+   "prompt": "Painted illustration in the style of a hand-painted fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, warm rim light, no text, no watermark, no frame. Single object icon, centred, transparent background: a freshly killed brown hen tied at the feet with twine, lying on its side, used as bait.",
+   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
+   "status": "final",
+   "est_generations": 1,
+   "notes": "Spring Court, 2026-11-24. Generated with a transparent background; fitted with tools/fit_art.py."
+  },
+  {
+   "id": "item.honey_cake",
+   "kind": "icon",
+   "placeholder": "",
+   "final": "assets/final/items/honey_cake.png",
+   "size": [
+    96,
+    96
+   ],
+   "aspect": "1:1",
+   "prompt": "Painted illustration in the style of a hand-painted fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, warm rim light, no text, no watermark, no frame. Single object icon, centred, transparent background: a small round honey cake glazed with golden honey and topped with a candied rose petal.",
+   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
+   "status": "final",
+   "est_generations": 1,
+   "notes": "Spring Court, 2026-11-24. Generated with a transparent background; fitted with tools/fit_art.py."
+  },
+  {
+   "id": "item.chocolate",
+   "kind": "icon",
+   "placeholder": "",
+   "final": "assets/final/items/chocolate.png",
+   "size": [
+    96,
+    96
+   ],
+   "aspect": "1:1",
+   "prompt": "Painted illustration in the style of a hand-painted fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, warm rim light, no text, no watermark, no frame. Single object icon, centred, transparent background: a thick cream porcelain mug of steaming molten hot chocolate with a gold rim.",
+   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
+   "status": "final",
+   "est_generations": 1,
+   "notes": "Spring Court, 2026-11-24. Generated with a transparent background; fitted with tools/fit_art.py."
   }
  ]
 }

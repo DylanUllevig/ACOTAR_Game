@@ -1,0 +1,377 @@
+{
+ "schema": 2,
+ "notes": "Line forms: {n} Feyre's narration, first person past tense, shown in italics; {s,e,t} a line spoken aloud (speaker, portrait expression, text); {hint} a game tip on its own card; {choices:[{t,goto,do}]}; {do:[actions]}; {goto}. Any line or choice may carry if_flag, if_not_flag, if_item, if_not_item or if_chapter. Wording is written for the game; the few short book lines kept are listed in quotes.json.",
+ "scenes": {
+  "ch08_fountain": {
+   "lines": [
+    {
+     "n": "The rose garden: a fountain in a ring of gravel, hedges on the north and south sides, gaps where the paths ran through. Clipped trees down either side, thick enough to hide behind."
+    },
+    {
+     "n": "He had taken my weapons. There had to be an armory somewhere, with all those knives on his chest. And if not, I would steal something. Just in case."
+    }
+   ]
+  },
+  "ch08_pool": {
+   "lines": [
+    {
+     "n": "A long reflecting pool under blossom trees, lily pads drifting on it. Open lawn all around. Nowhere to hide here, and anyone at the windows could see me."
+    },
+    {
+     "n": "Last night I'd found there was no lock on my window, and wisteria thick as rope climbing the wall beneath it. Not that I meant to run. But it was good to know how I could."
+    }
+   ]
+  },
+  "ch08_stables": {
+   "lines": [
+    {
+     "n": "Stables, painted and pretty, the stable hands in horse masks. Not one of them looked at me. Maybe they blamed me for Andras. I didn't blame them."
+    },
+    {
+     "n": "Horses meant a way to cover ground. If I ever had to."
+    }
+   ]
+  },
+  "ch08_gate": {
+   "lines": [
+    {
+     "n": "The iron gate in the high hedge, where the mare had brought me in. Sentries stood at it now, masked and silent, and it stood open as if to say that no one here needed it shut."
+    },
+    {
+     "n": "South, beyond it, lay the wall. And my family. I made myself turn around."
+    }
+   ]
+  },
+  "ch08_not_yet": {
+   "lines": [
+    {
+     "n": "Not yet. I wanted the whole lay of the land first."
+    },
+    {
+     "n": "The rose garden, west of the house.",
+     "if_not_flag": "ch08_seen_fountain"
+    },
+    {
+     "n": "The long pool, east of the drive.",
+     "if_not_flag": "ch08_seen_pool"
+    },
+    {
+     "n": "The stables, past the east wing.",
+     "if_not_flag": "ch08_seen_stables"
+    },
+    {
+     "n": "The gate at the bottom of the drive.",
+     "if_not_flag": "ch08_seen_gate"
+    }
+   ]
+  },
+  "ch08_mapped": {
+   "lines": [
+    {
+     "do": [
+      {
+       "type": "set_flag",
+       "flag": "ch08_mapped"
+      }
+     ]
+    },
+    {
+     "n": "Gravel crunched behind me. Two pairs of light, quick feet. I turned. The path was empty."
+    },
+    {
+     "n": "A breeze shook loose a drift of white petals. Then a faint sniff, and a giggle, far too close behind me."
+    },
+    {
+     "n": "Silvery light flickered at the edge of my eye, splitting into two small shapes no taller than my waist. My hands curled into fists."
+    },
+    {
+     "choices": [
+      {
+       "t": "Turn and face them.",
+       "goto": "ch08_mapped_turn"
+      },
+      {
+       "t": "Stand still and listen.",
+       "goto": "ch08_mapped_still"
+      }
+     ]
+    }
+   ]
+  },
+  "ch08_mapped_turn": {
+   "lines": [
+    {
+     "n": "I spun round, fists raised, for all the good fists would do."
+    },
+    {
+     "goto": "ch08_mapped_2"
+    }
+   ]
+  },
+  "ch08_mapped_still": {
+   "lines": [
+    {
+     "n": "I stood still the way I would in the woods, listening for which way they'd move. They only giggled again, delighted. Curious. Wanting to play."
+    },
+    {
+     "goto": "ch08_mapped_2"
+    }
+   ]
+  },
+  "ch08_mapped_2": {
+   "lines": [
+    {
+     "s": "alis",
+     "e": "stern",
+     "t": "Feyre! Feyre, lunch!"
+    },
+    {
+     "n": "Alis's voice cut across the garden, and the shining things were simply gone. Nothing behind me but hedge and petals."
+    },
+    {
+     "s": "feyre",
+     "e": "afraid",
+     "t": "Alis said the house was safe. She never said a thing about the gardens."
+    },
+    {
+     "n": "I went in for lunch, and couldn't shake the feeling that something still watched me all the way to the door."
+    },
+    {
+     "do": [
+      {
+       "type": "time",
+       "hour": 19
+      },
+      {
+       "type": "objective",
+       "text": "Dinner, in the dining room. Behave. Be docile. Be unremarkable."
+      }
+     ]
+    }
+   ]
+  },
+  "ch08_dinner": {
+   "lines": [
+    {
+     "do": [
+      {
+       "type": "set_flag",
+       "flag": "ch08_dinner"
+      }
+     ]
+    },
+    {
+     "n": "Dinner was the only meal I was asked to, which suited me. An hour at their table, playing tame, was a price I could pay."
+    },
+    {
+     "n": "Lucien was ranting to Tamlin about his golden eye. It had seized up again, something to do with the blight. Neither of them was looking at me."
+    },
+    {
+     "choices": [
+      {
+       "t": "Slip your knife up your sleeve.",
+       "goto": "ch08_steal"
+      },
+      {
+       "t": "Leave the knife where it is.",
+       "goto": "ch08_leave"
+      }
+     ]
+    }
+   ]
+  },
+  "ch08_leave": {
+   "lines": [
+    {
+     "n": "I left it. Then thought of the shimmering things in the garden, and their giggling, and picked it up again."
+    },
+    {
+     "goto": "ch08_steal"
+    }
+   ]
+  },
+  "ch08_steal": {
+   "lines": [
+    {
+     "n": "I slid the knife into my sleeve. My heart beat so hard I was sure they'd hear it. Lucien kept talking. Tamlin's eyes stayed on him."
+    },
+    {
+     "do": [
+      {
+       "type": "item",
+       "id": "table_knife"
+      }
+     ]
+    },
+    {
+     "s": "lucien",
+     "e": "smirk",
+     "t": "Admiring my sword, Feyre? Or working out where to put it?"
+    },
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "Neither."
+    },
+    {
+     "n": "Tamlin's eyes glowed gold from the other end of the table. Had he heard the knife slide off the wood?"
+    },
+    {
+     "s": "tamlin",
+     "e": "neutral",
+     "t": "Feyre likes to hunt."
+    },
+    {
+     "s": "feyre",
+     "e": "determined",
+     "t": "I don't like it. I hunted because otherwise we starved. How did you know?"
+    },
+    {
+     "s": "tamlin",
+     "e": "neutral",
+     "t": "Why else would you be in the woods in that weather? There was a bow in your house, and one look at your father's hands told me he wasn't the one using it. Faeries are many things, but we aren't stupid."
+    },
+    {
+     "s": "lucien",
+     "e": "neutral",
+     "t": "How old are you, anyway?"
+    },
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "Nineteen."
+    },
+    {
+     "s": "lucien",
+     "e": "smirk",
+     "t": "So young, and so grave. And already an accomplished killer."
+    },
+    {
+     "n": "Docile. Tame. Win him over. I tried."
+    },
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "So is this what you do with your lives? Spare a human now and then, and eat fine dinners?"
+    },
+    {
+     "s": "lucien",
+     "e": "smirk",
+     "t": "Oh, we also dance with spirits under the full moon, and swap your babies for changelings, and-"
+    },
+    {
+     "s": "tamlin",
+     "e": "tender",
+     "t": "Didn't your mother ever tell you anything about us?"
+    },
+    {
+     "s": "feyre",
+     "e": "determined",
+     "t": "My mother didn't have time for stories."
+    },
+    {
+     "s": "tamlin",
+     "e": "tender",
+     "t": "How did she die? I saw no sign of an older woman in your house."
+    },
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "Typhus. When I was eight."
+    },
+    {
+     "n": "I stood to go. He said my name, and a muscle feathered in his cheek."
+    },
+    {
+     "s": "tamlin",
+     "e": "tender",
+     "t": "I'm sorry for your loss."
+    },
+    {
+     "n": "I didn't want his sympathy. Not for a woman I hadn't missed in years. I left before he could see it on my face."
+    },
+    {
+     "n": "But three good meals a day were doing what eight years of winter never had. My arms were stronger. My hands had stopped shaking."
+    },
+    {
+     "do": [
+      {
+       "type": "unlock_tier",
+       "tier": 2
+      },
+      {
+       "type": "goto",
+       "chapter": 8,
+       "region": "manor_bedroom",
+       "spawn": "landing"
+      }
+     ]
+    }
+   ]
+  },
+  "ch08_satchel": {
+   "lines": [
+    {
+     "do": [
+      {
+       "type": "set_flag",
+       "flag": "ch08_satchel"
+      }
+     ]
+    },
+    {
+     "n": "In the armoire I found a small satchel. A spare shirt, a pair of trousers, the stolen knife. A pitiful blade. Better than none."
+    },
+    {
+     "s": "feyre",
+     "e": "determined",
+     "t": "In case I'm ever allowed to go. In case I have to leave at a moment's notice."
+    },
+    {
+     "n": "Lucien, then. He wanted me gone more than anyone. Maybe he could be persuaded to plead my case to Tamlin."
+    },
+    {
+     "do": [
+      {
+       "type": "chapter_card",
+       "n": 9
+      },
+      {
+       "type": "time",
+       "hour": 8
+      }
+     ]
+    },
+    {
+     "n": "In the morning, while Alis and another servant drew my bath, I asked my question as idly as I could manage."
+    },
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "Is Lucien about today?"
+    },
+    {
+     "s": "alis",
+     "e": "neutral",
+     "t": "Border patrol. He'll be at the stables by now, getting ready to ride out. Why?"
+    },
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "No reason."
+    },
+    {
+     "n": "Alis's mouth said nothing at all. Her eyes said a great deal."
+    },
+    {
+     "do": [
+      {
+       "type": "objective",
+       "text": "Catch Lucien alone at the stables, east of the house, before he rides out."
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

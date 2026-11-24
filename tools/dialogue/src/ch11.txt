@@ -1,0 +1,83 @@
+# Chapter 11: the "father" at the gates (the puca), Tamlin's lesson, the vow, three days, the nightmare.
+
+== ch11_out
+N I dropped the last few feet from the wisteria and winced at the crunch of gravel. No lights in the windows but a few candles in the hall. Tamlin wasn't back.
+N My father was by the hedge, beckoning. Hurry, hurry, every movement of his hand seemed to say.
+@feyre/determined He must have horses hidden somewhere. A ship, maybe. Somewhere far away from all of this.
+> objective Go to your father.
+
+== ch11_not_inside
+N Not now. Not with him waiting.
+
+== ch11_puca
+N He reached the gates. They stood open, the dark wood beyond them. He turned and beckoned again, his face drawn and tight, his eyes clear for once.
+N A few more steps. To him, to freedom, to a whole new life.
+N And then he rippled, like a reflection in water. A pale bow and a quiver of pale arrows leaned against the gate. Mountain ash.
+N Another ripple. A pack, stuffed with food. Another. My sisters, huddled together, weeping.
+N Then my father again, hunched and beckoning. Perfect in every detail.
+@feyre/afraid What are you?
+N It smiled with my father's mouth. Then it stopped pretending, and came for me.
+H Watch for it to rear back before it lunges. Step aside, then strike while it recovers. Arrows will hurt it before it reaches you.
+
+== ch11_rescue
+> sfx beast_roar
+> shake 10
+N A snarl tore through the night behind me, so savage that the hedges shook. The thing at the gates flared with light and fled into the trees, quick as lightning.
+N A huge hand closed round my arm. Claws pricked through every layer I wore.
+@tamlin/angry Going somewhere?
+N Fangs, long and white in the moonlight. He was going to kill me, here, and then go after my family. No more loopholes, no more mercy.
+@feyre/afraid Please. My father-
+@tamlin/angry Your father? Look again. Weren't you told to keep your wits about you? That your own senses would lie to you here?
+
+== ch11_victory
+N It shrieked with my sisters' voices as it went down, and shriveled into something small and gray and many-legged, and then into nothing at all.
+N I stood over the place where it had been, shaking, the knife slick in my hand.
+N A huge hand closed round my arm. Claws pricked through every layer I wore.
+@tamlin/angry Going somewhere?
+N His fangs were out, long and white in the moonlight. He looked at the empty gravel, then at me.
+@tamlin/angry Not bad, for a human. It would still have taken its time eating you if it had won. Weren't you told your own senses would lie to you here?
+
+== ch11_walk
+@tamlin/angry Fool. If you're going to run, at least do it by daylight. There are worse things than the Bogge in these woods at night, and that thing at the gates isn't one of them.
+* Shout back at him. -> ch11_shout
+* Say nothing. -> ch11_mute
+
+== ch11_mute
+N I said nothing. He let go of my arm and turned for the house, and the silence was worse than his anger. I found my voice before we'd gone ten steps.
+-> ch11_shout
+
+== ch11_shout
+@feyre/angry Can you blame me? My crippled father turns up under my window, and you think I wouldn't run to him? Did you really think I'd happily stay here forever, for a Treaty that had nothing to do with me?
+@tamlin/angry What do you want, Feyre?
+@feyre/angry I want to go home!
+@tamlin/neutral Home to what, exactly? You'd choose that wretched life over this?
+@feyre/sad I made a promise. To my mother, when she was dying. That I'd look after them. Everything I've done, every day for years, has been for that promise. And because I hunted to keep them alive, I'm made to break it.
+@tamlin/tender You aren't breaking it. You're keeping it, and then some, by staying here. They're better looked after now than when you were with them.
+@feyre/sad I can't just give up on them. Whatever you say.
+@tamlin/tender You're not giving up on them. They're fed. They're comfortable.
+N He couldn't lie. Fed and comfortable. More than I'd ever dared hope for.
+N Then my vow was kept. My life belonged to the Treaty now, but maybe I'd been set free in some other way.
+N It should have felt like relief. Without that promise to carry, I was only hollow.
+@feyre/neutral What was that thing?
+@tamlin/neutral A puca. It wears whatever you want most, to lead you somewhere quiet. Then it eats you, slowly. It must have caught your scent in the woods and followed it here.
+@tamlin/weary These lands were well guarded once. The worst things kept to their own territories, or hid. Nothing like a puca would have dared come here. But the sickness has worn the wards thin. It isn't safe out at night. Least of all for a human.
+@feyre/neutral What else has changed?
+@tamlin/weary Everything.
+> journal lore_puca
+N For three days after that, I rode Andras's patrol with Lucien while Tamlin hunted the Bogge alone. Lucien did most of the talking. I did most of the brooding, about what one arrow had cost.
+N On the last morning I spotted a red doe in a glen and had an arrow nocked before I knew it. She was fat and healthy and content. I let the string go slack and watched her wander off.
+N At dinner on the third night, Tamlin was up and gone before I'd even sat down. Lucien stared after him.
+@feyre/neutral You worry about him.
+@lucien/grim Tam gets into... moods. Even once he's torn the Bogge to pieces, he'll brood over it for days. He won't take help. He'd shred anyone who disobeyed his order to stay away.
+@feyre/afraid He'd be that brutal?
+@lucien/grim You don't keep power by being everyone's friend. Among faeries, a hard hand is needed. We're too strong, and too bored with forever, to be held back by anything else.
+N A cold, lonely thing to be, especially when you'd never wanted it. I didn't know why that bothered me.
+> music ""
+N That night, I dreamed of the wolf.
+N Snow to my knees. My bow drawn until my arm shook. He stared at me across the clearing, waiting, daring me. I didn't want to loose. My fingers did it anyway.
+N One arrow, straight through the eye. But it wasn't a wolf that fell. It was a male, tall and well made, with pointed ears.
+N And then my hands were warm and sticky, and his body was red and skinless and steaming in the snow, and it was his skin I held.
+@feyre/afraid Not real. It's not real. Just a dream.
+N But it was shame on my tongue, and in my bones. I kicked back the sheets. I couldn't go back to sleep. Not after that.
+> chapter_card 12
+> goto manor_hall stairs chapter=12 hour=2

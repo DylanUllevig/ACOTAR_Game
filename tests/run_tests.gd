@@ -45,6 +45,8 @@ func _ready() -> void:
 		await test_defeat()
 	if only == "" or only == "story":
 		await test_story()
+	if only == "" or only == "spring":
+		await test_spring()
 	if only == "" or only == "balance":
 		await test_balance()
 	check(unreadable.is_empty(), "every dialogue line shows in a visible box (%d did not, first: %s)" % [unreadable.size(), "" if unreadable.is_empty() else unreadable[0]])
@@ -146,7 +148,9 @@ func test_data() -> void:
 	var missing_faces = {}
 	for sid in DB.scenes:
 		for line in DB.scenes[sid].get("lines", []):
-			if line.has("s") and Art.portrait(String(line.s), String(line.get("e", "neutral"))) == null:
+			if not line.has("s") or bool(DB.characters.get(String(line.s), {}).get("voice_only", false)):
+				continue
+			if Art.portrait(String(line.s), String(line.get("e", "neutral"))) == null:
 				missing_faces[String(line.s)] = true
 	check(missing_faces.is_empty(), "every speaker has a portrait (missing: %s)" % ", ".join(missing_faces.keys()))
 	# every region_call names a method some region has; every goto names a region
@@ -584,20 +588,273 @@ func test_story() -> void:
 	check(GameState.coins == 0, "she leaves her coin for the family")
 	check(await _interact_with("Speak to the beast"), "she can speak to the beast on the ride")
 	region().player.global_position = Vector2(800, 1300)
-	ok = await wait_until(func(): return SaveSystem.has_slot("slice_complete"), 60 * 90)
-	check(ok, "the ride ends at the Wall and the slice completes")
+	ok = await wait_until(func(): return region() != null and region().name == "Region_spring_manor" and GameState.chapter == 6 and idle(), 60 * 150)
+	check(ok, "the ride ends at the Wall, and she wakes at the Spring Court's gate in chapter 6")
 	check(GameState.journal.has("lore_wall") and GameState.places.has("spring_manor"), "the Wall's journal entry and the Spring Court on the map")
+	check(not GameState.has_item("bow") and not GameState.has_item("hunting_knife"), "her knife and bow are gone when she wakes")
 	var path = SaveSystem.export_carryover("user://test_carry.json")
 	var carry = SaveSystem.read_carryover("user://test_carry.json")
 	check(path != "" and int(carry.get("tier", -1)) == GameState.tier and Array(carry.get("inventory", [])).size() == GameState.inv_size(), "the carry-over export holds her tier and satchel")
 	var canon: Dictionary = carry.get("canon_choices", {})
 	check(bool(canon.get("doe_saved", false)) and bool(canon.get("has_paint_tins", false)) and bool(canon.get("ch03_acolyte_done", false)), "carry-over keeps her canon choices (%s)" % str(canon.keys()))
-	# close the end-of-slice window the way its button would, without the
-	# return to the title (that reloads the scene, which here is the test runner)
+
+
+# ================================================================ spring
+## Waits until she is in this region in this chapter with nothing playing,
+## then a little longer, in case a scene's jump to the next place is queued.
+func _in(rname: String, ch: int, frames_max := 60 * 240) -> bool:
+	var ok = await wait_until(func(): return region() != null and region().name == "Region_" + rname and GameState.chapter == ch and idle(), frames_max)
+	await _settle()
+	ok = ok and region() != null and region().name == "Region_" + rname and GameState.chapter == ch
+	if not ok:
+		printerr("  waited for %s in ch %d, but she is%s" % [rname, ch, _where()])
+	return ok
+
+
+func _settle() -> void:
+	for i in 3:
+		await frames(4)
+		await wait_until(idle, 60 * 240)
+
+
+## Through each door in turn (by its prompt), waiting for each room to load.
+func _through(labels: Array) -> bool:
+	for l in labels:
+		var before = region().get_instance_id() if region() != null else 0
+		if not await _approach(String(l)):
+			printerr("  no prompt: " + String(l) + " in " + String(region().name))
+			return false
+		_press_action("interact")
+		_release_action("interact")
+		var moved = await wait_until(func(): return region() != null and region().get_instance_id() != before and idle(), 60 * 120)
+		await _settle()
+		if not moved:
+			printerr("  the door did not open: " + String(l))
+			return false
+	return true
+
+
+## Where she is and what is running, for a failure message.
+func _where() -> String:
+	var r = region()
+	return " [in %s, ch %d at %.1fh, dialogue %s, busy %s, modal %s, objective '%s']" % [String(r.name) if r != null else "nowhere", GameState.chapter, GameState.hour, Dialogue.active, Router.busy, UI.modal_open, GameState.objective]
+
+
+## Puts her on a spot and lets the region's trigger there fire, then waits
+## for its scene to finish.
+func _step_on(p: Vector2) -> void:
+	region().player.global_position = p
+	region().player.velocity = Vector2.ZERO
+	await wait_until(func(): return Dialogue.active or not idle(), 240)
+	await _settle()
+
+
+## Chapters 6 to 27 the way a player goes: through the doors, to the people
+## and places the objectives name, choosing the first option every time. The
+## two fights end with their rescues, she fights off the Bogge's pulls the way
+## a player would, and she hides behind a hedge from the Attor.
+func test_spring() -> void:
+	DirAccess.remove_absolute(ProjectSettings.globalize_path(SaveSystem.slot_path("slice_complete")))
+	GameState.new_game()
+	choice = 0
+	GameState.chapter = 6
+	GameState.hour = 13.0
+	await Router.goto_region("spring_manor", "gate")
+	var ok = await _in("spring_manor", 6)
+	check(ok and GameState.has_flag("ch06_arrived") and not GameState.has_item("bow"), "ch 6: she wakes at the gate, unarmed")
+	if not ok:
+		return
+	# --- 6 and 7: the house, the feast, the bath; dinner, the morning, the garden
+	check(await _interact_with("Go inside"), "ch 6: the front doors")
+	ok = await _in("manor_hall", 6)
+	check(ok and GameState.has_flag("ch06_hall"), "ch 6: the hall")
+	check(await _through(["The dining room"]), "ch 6: to the dining room")
+	ok = await _in("manor_bedroom", 7)
+	check(ok and GameState.outfit == "feyre_spring" and GameState.has_flag("ch07_morning"), "ch 6-7: feast, bath, spring clothes, first dinner, the morning after")
+	if not ok:
+		return
+	check(await _through(["Out to the upper hall", "Down the stairs", "Out to the gardens"]), "ch 7: out to the grounds")
+	await _step_on(region().RG + Vector2(0, 300))
+	check(GameState.chapter == 8 and GameState.journal.has("lore_blight"), "ch 7: the garden, and what the sickness is")
+	# --- 8: map the grounds, dinner, the stolen knife
+	for l in ["The fountain", "The reflecting pool", "The stables", "The gate"]:
+		check(await _interact_with(l), "ch 8: " + l)
+	await _settle()
+	check(GameState.has_flag("ch08_mapped"), "ch 8: the grounds are mapped")
+	check(await _through(["Go inside", "The dining room"]), "ch 8: in to dinner")
+	ok = await _in("manor_bedroom", 9)
+	check(ok and GameState.has_item("table_knife") and GameState.tier == 2, "ch 8: the table knife, and tier 2 (tier %d)" % GameState.tier)
+	if not ok:
+		return
+	# --- 9 and 10: Lucien at the stables, the ride, the Bogge
+	check(await _through(["Out to the upper hall", "Down the stairs", "Out to the gardens"]), "ch 9: out to the grounds")
+	check(await _interact_with("Lucien"), "ch 9: Lucien at the stables")
+	ok = await wait_until(func(): return region() != null and region().name == "Region_spring_woods" and region()._bogge != null and idle(), 60 * 240)
+	check(ok and GameState.has_item("bow"), "ch 9: the ride, her bow back, and the cold in the brush")
+	if not ok:
+		return
+	var pushed = 0
+	while region() != null and region().name == "Region_spring_woods" and region()._bogge != null:
+		var bg = region()._bogge
+		_release_action("move_left")
+		_release_action("move_right")
+		if bg.side != 0 and bg.t > 0.3:
+			_press_action("move_right" if bg.side < 0 else "move_left")
+			pushed += 1
+		await frames(2)
+	_release_action("move_left")
+	_release_action("move_right")
+	ok = await _in("manor_bedroom", 10)
+	check(ok and GameState.has_flag("ch10_bogge_done") and GameState.journal.has("lore_bogge"), "ch 10: she fights off the Bogge's pulls and it leaves")
+	if not ok:
+		return
+	check(await _interact_with("The window"), "ch 10: watch from the window")
+	ok = await _in("spring_manor", 11)
+	check(ok, "ch 11: down the wisteria, into the night")
+	if not ok:
+		return
+	# --- 11: the thing at the gates
+	var f = region().npc.get("father")
+	await _step_on(Vector2(1800, 1100))
+	for i in 60 * 120:
+		if Dialogue.active or region().hunt != null:
+			break
+		if is_instance_valid(f):
+			region().player.global_position = f.position + Vector2(0, 90)
+		await frames(1)
+	ok = await wait_until(func(): return region().hunt != null and idle(), 60 * 60)
+	check(ok and GameState.has_flag("ch11_follow"), "ch 11: she follows him to the gates, and it shows what it is")
+	if ok:
+		region().hunt._rescue()
+	# the walk back ends in the hall at night (ch 12), which plays on arrival
+	# and carries on to the library in the morning (ch 13)
+	ok = await _in("manor_study", 13)
+	check(ok and GameState.has_flag("ch11_puca_done") and GameState.journal.has("lore_puca"), "ch 11: the rescue and the walk back")
+	check(ok and GameState.has_flag("ch12_night"), "ch 12: the night in the hall, then the library")
+	if not ok:
+		return
+	check(await _interact_with("The writing desk"), "ch 13: the desk")
+	check(await _interact_with("The mural"), "ch 13: the mural")
+	check(GameState.has_flag("ch13_mural") and GameState.journal.has("lore_courts"), "ch 13: the seven courts")
+	check(await _through(["The entrance hall", "Up the stairs"]), "ch 13: up to Lucien's wing")
+	check(await _interact_with("Lucien's room"), "ch 13: Lucien's door")
+	ok = await _in("spring_manor", 14)
+	check(ok and GameState.has_item("fae_knife") and GameState.has_item("chicken"), "ch 13: a faerie knife and bait")
+	if not ok:
+		return
+	# --- 14 and 15: the Suriel, the naga
+	await _step_on(Vector2(30, region().WOODS_Y))
+	ok = await _in("spring_woods", 14)
+	check(ok, "ch 14: into the woods")
+	if not ok:
+		return
+	check(await _interact_with("The birch grove"), "ch 14: the snare")
+	ok = await wait_until(func(): return region().hunt != null and idle(), 60 * 120)
+	check(ok and GameState.journal.has("lore_suriel") and GameState.journal.has("lore_hybern"), "ch 14: the Suriel talks, the naga come")
+	if ok:
+		region().hunt._rescue()
+	ok = await _in("manor_bedroom", 16)
+	check(ok and GameState.tier == 3 and GameState.journal.has("lore_naga"), "ch 15: the rescue, and tier 3 (tier %d)" % GameState.tier)
+	if not ok:
+		return
+	# --- 16 to 18: dinner and the truth; the screams; the glen
+	check(await _through(["Out to the upper hall", "Down the stairs", "The dining room"]), "ch 16: down to dinner")
+	ok = await _in("manor_bedroom", 17)
+	check(ok and GameState.has_flag("ch16_dinner") and GameState.journal.has("lore_lies"), "ch 16: faerie lies")
+	if not ok:
+		return
+	check(await _through(["Out to the upper hall", "Down the stairs"]), "ch 17: down to the hall")
+	ok = await _in("manor_bedroom", 18)
+	check(ok and GameState.has_flag("ch17_done"), "ch 17: the faerie in the hall")
+	if not ok:
+		return
+	check(await _through(["Out to the upper hall", "Down the stairs", "Out to the gardens"]), "ch 18: out to the pool")
+	check(await _interact_with("Tamlin"), "ch 18: Tamlin by the pool")
+	ok = await _in("manor_gallery", 19)
+	check(ok and GameState.has_item("jeweled_knife"), "ch 18: the glen, and a jeweled knife")
+	if not ok:
+		return
+	# --- 19: the painting room, the garden, the Attor
+	check(await _through(["Your painting room"]), "ch 19: the painting room")
+	check(GameState.has_flag("ch19_studio"), "ch 19: she paints")
+	check(await _through(["The gallery", "The entrance hall", "Out to the gardens"]), "ch 19: out to the rose garden")
+	region().player.global_position = region().RG + Vector2(0, 300)
+	ok = await wait_until(func(): return region()._attor != null and idle(), 60 * 120)
+	check(ok, "ch 19: the walk, the snare, the limericks, and then the voice")
+	if ok:
+		var hide: Rect2 = region().cover[0]
+		while region() != null and region()._attor != null:
+			region().player.global_position = hide.get_center()
+			region().player.velocity = Vector2.ZERO
+			await frames(2)
+	ok = await _in("manor_hall", 20)
+	check(ok and GameState.journal.has("lore_attor"), "ch 19: hidden behind the hedge, the Attor goes")
+	if not ok:
+		return
+	# --- 20 and 21: Calanmai
+	check(await _through(["Up the stairs", "Your room"]), "ch 20: to her room")
+	check(GameState.has_flag("ch20_sneak"), "ch 20: the drums")
+	check(await _through(["Out to the upper hall", "Down the stairs", "Out to the gardens"]), "ch 20: out at night")
+	await _step_on(Vector2(30, region().WOODS_Y))
+	ok = await _in("spring_woods", 20)
+	check(ok and region()._calanmai, "ch 20: Fire Night in the woods")
+	if not ok:
+		return
+	await _step_on(region().HOLLOW + Vector2(300, -200))
+	ok = await _in("manor_hall", 21)
+	check(ok and GameState.has_flag("ch20_bonfire"), "ch 20-21: the bonfire, the three, the stranger")
+	if not ok:
+		return
+	check(await _through(["Up the stairs", "Your room"]), "ch 21: to her room")
+	check(await _through(["Out to the upper hall"]), "ch 21: out for something to eat")
+	ok = await _in("manor_bedroom", 22)
+	check(ok and GameState.has_flag("ch21_bite") and GameState.tier == 4, "ch 21: the bite in the hall, and tier 4 (tier %d)" % GameState.tier)
+	if not ok:
+		return
+	# --- 22: the bruise, the gown, the table, the paintings
+	check(await _through(["Out to the upper hall", "Down the stairs", "The dining room"]), "ch 22: down to lunch")
+	ok = await _in("manor_bedroom", 22)
+	check(ok and GameState.has_flag("ch22_lunch"), "ch 22: faerie pig")
+	check(GameState.has_flag("ch22_gown"), "ch 22: Alis and the gown")
+	check(await _through(["Out to the upper hall", "Down the stairs", "The dining room"]), "ch 22: down to dinner")
+	# dinner, the painting room, the willow (ch 23) and the morning after all
+	# play on from here, each on arrival
+	ok = await _in("manor_bedroom", 24)
+	check(ok and GameState.has_flag("ch22_dinner") and GameState.has_flag("ch22_paintings"), "ch 22: the table, the painting room")
+	check(ok and GameState.has_flag("ch23_glen") and GameState.has_flag("ch24_wake"), "ch 23-24: faerie sight, then Alis as she is")
+	if not ok:
+		return
+	check(await _through(["Out to the upper hall", "Down the stairs", "The dining room"]), "ch 24: down to breakfast")
+	check(GameState.has_flag("ch24_morning"), "ch 24: the morning after")
+	check(await _through(["The entrance hall", "Out to the gardens"]), "ch 24: out with her paints")
+	var before = region().get_instance_id()
+	await _step_on(region().HERON + Vector2(0, 260))
+	ok = await wait_until(func(): return region() != null and region().get_instance_id() != before and region().name == "Region_spring_manor" and GameState.chapter == 25 and idle(), 60 * 240)
+	await _settle()
+	check(ok and GameState.journal.has("lore_night_court"), "ch 24: the Night Court's calling card" + ("" if ok else _where() + " head %s" % GameState.has_flag("ch24_head")))
+	if not ok:
+		return
+	# --- 25 to 27: Midsummer, Rhysand, thorns
+	check(await _interact_with("Lucien"), "ch 25: Lucien and the wine")
+	check(GameState.has_flag("ch25_wine"), "ch 25: she drinks it")
+	check(await _interact_with("Tamlin"), "ch 25: the fiddler")
+	# from the dance on, everything plays through: the dawn, lunch and
+	# Rhysand (ch 26), and the last night (ch 27), which ends the milestone
+	ok = await wait_until(func(): return region() != null and region().name == "Region_manor_dining" and GameState.chapter == 26, 60 * 240)
+	check(ok and GameState.has_flag("ch25_dawn") and region()._short_table(), "ch 25: dancing, the wisps, the dawn; lunch at the little table")
+	if not ok:
+		return
+	ok = await wait_until(func(): return SaveSystem.has_slot("slice_complete"), 60 * 300)
+	check(ok and GameState.has_flag("ch26_rhys") and GameState.journal.has("lore_rhysand") and GameState.journal.has("lore_amarantha"), "ch 26: Rhysand at lunch")
+	check(ok and GameState.chapter == 27 and GameState.has_flag("ch27_night"), "ch 27: thorns and all, and Milestone 2 is complete")
+	if not ok:
+		return
+	# close the end window the way its button would, without the return to
+	# the title (that reloads the scene, which here is the test runner)
 	await wait_until(func(): return UI.modal_open, 300)
 	for m in UI._modals.duplicate():
 		await UI._close_modal(m[0])
-	check(idle(), "the end-of-slice window closes")
+	check(idle(), "the end-of-milestone window closes")
 
 
 ## Puts Feyre beside the prompt with this label, close enough that it is the

@@ -73,6 +73,35 @@
       "name": "Iron Bracelet", "kind": "keepsake", "icon": "items/iron_bracelet.png", "stack": 1,
       "text": "Plain iron, cold on the wrist. Every sensible mortal wears one. Nesta would approve.",
       "price": 12
+    },
+    "table_knife": {
+      "name": "Dinner Knife", "kind": "weapon", "use": "knife", "icon": "items/table_knife.png", "stack": 1,
+      "text": "Pocketed from the High Lord's own table. Blunt-tipped and barely a weapon, but better than nothing. Left-click to slash.",
+      "damage": 4, "reach": 70, "arc_deg": 120, "cooldown": 0.32, "knockback": 160
+    },
+    "fae_knife": {
+      "name": "Emissary's Knife", "kind": "weapon", "use": "knife", "icon": "items/fae_knife.png", "stack": 1,
+      "text": "A slim Fae blade Lucien left on the table for you, as if by accident. Light and wicked sharp. Left-click to slash.",
+      "damage": 9, "reach": 84, "arc_deg": 130, "cooldown": 0.3, "knockback": 250
+    },
+    "jeweled_knife": {
+      "name": "Jeweled Hunting Knife", "kind": "weapon", "use": "knife", "icon": "items/jeweled_knife.png", "stack": 1,
+      "text": "Lucien's gift, for the moment he hesitated. Perfectly balanced, a gold hilt set with rubies and emeralds. Left-click to slash.",
+      "damage": 12, "reach": 88, "arc_deg": 135, "cooldown": 0.28, "knockback": 280
+    },
+    "chicken": {
+      "name": "Dead Hen", "kind": "material", "icon": "items/chicken.png", "stack": 1,
+      "text": "Freshly killed, courtesy of a baffled kitchen. Bait for a snare in the western woods."
+    },
+    "honey_cake": {
+      "name": "Honey Cake", "kind": "food", "use": "eat", "icon": "items/honey_cake.png", "stack": 10,
+      "text": "From the manor's kitchens, still warm, with a candied rose petal on top. Restores 10 HP.",
+      "heal": 10
+    },
+    "chocolate": {
+      "name": "Molten Chocolate", "kind": "food", "use": "eat", "icon": "items/chocolate.png", "stack": 5,
+      "text": "A thick mug of it, the best thing you have ever tasted. Restores 16 HP.",
+      "heal": 16
     }
   },
   "starting_inventory": [

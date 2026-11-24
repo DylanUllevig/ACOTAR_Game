@@ -76,8 +76,8 @@ func boss_hide() -> void:
 	hud.boss_hide()
 
 
-func stealth_show(v: bool) -> void:
-	hud.stealth_show(v)
+func stealth_show(v: bool, words: Array = []) -> void:
+	hud.stealth_show(v, words)
 
 
 func stealth_update(hidden: bool, noise_frac: float, alerted: bool) -> void:
@@ -397,15 +397,18 @@ func tier_popup(n: int) -> void:
 	await _ok_button(v, m[0])
 
 
-func game_over() -> void:
+## Feyre is dead (or caught, or she looked). "Try again" reloads the last
+## autosave, which every fight and trial writes just before it starts. The
+## defaults are the winter hunt's.
+func game_over(title := "", line := "", tip_text := "") -> void:
 	Fx.reset_time()
 	var choice = [0]
-	var m = _modal("The snow keeps falling", 1000, 520)
+	var m = _modal(title if title != "" else "The snow keeps falling", 1000, 520)
 	var v: VBoxContainer = m[1]
-	var l = Art.label("Feyre does not come home.", 32, Art.TEXT, "italic")
+	var l = Art.label(line if line != "" else "Feyre does not come home.", 32, Art.TEXT, "italic")
 	l.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	v.add_child(l)
-	var tip = Art.label("Stay hidden for the first shot. Watch for his eyes flaring before he lunges, and step aside.", 24, Art.TEXT_SOFT, "italic")
+	var tip = Art.label(tip_text if tip_text != "" else "Stay hidden for the first shot. Watch for his eyes flaring before he lunges, and step aside.", 24, Art.TEXT_SOFT, "italic")
 	tip.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	tip.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	v.add_child(tip)
@@ -435,15 +438,16 @@ func game_over() -> void:
 
 func end_slice() -> void:
 	SaveSystem.save_slot("slice_complete")
-	var m = _modal("End of Milestone 1", 1300, 680)
+	var m = _modal("End of Milestone 2", 1300, 720)
 	var v: VBoxContainer = m[1]
 	var t = DB.tier(GameState.tier)
 	var lines = [
-		"Feyre has crossed the Wall into Prythian.",
+		"Summer has come to the Spring Court, and Tamlin is sending her home.",
 		"Power: tier %d, %s  (power %d)" % [GameState.tier, t.get("name", ""), GameState.power_score()],
 		"Coin: %d   ·   Journal: %d of %d entries" % [GameState.coins, GameState.journal.size(), DB.lore.size()],
-		"The doe: %s" % ("carried home whole" if GameState.has_flag("doe_saved") else "torn by the wolf"),
-		"Next: Chapter 6, the Spring Court.",
+		"The doe: %s   ·   Midsummer wine: %s" % ["carried home whole" if GameState.has_flag("doe_saved") else "torn by the wolf",
+			"drunk to the dregs" if GameState.has_flag("ch25_wine") else "handed back"],
+		"Next: Chapter 28, home across the Wall.",
 	]
 	for s in lines:
 		var l = Art.label(s, 30)

@@ -1,0 +1,508 @@
+{
+ "schema": 2,
+ "notes": "Line forms: {n} Feyre's narration, first person past tense, shown in italics; {s,e,t} a line spoken aloud (speaker, portrait expression, text); {hint} a game tip on its own card; {choices:[{t,goto,do}]}; {do:[actions]}; {goto}. Any line or choice may carry if_flag, if_not_flag, if_item, if_not_item or if_chapter. Wording is written for the game; the few short book lines kept are listed in quotes.json.",
+ "scenes": {
+  "ch19_gallery": {
+   "lines": [
+    {
+     "do": [
+      {
+       "type": "set_flag",
+       "flag": "ch19_gallery"
+      }
+     ]
+    },
+    {
+     "n": "The floors had been scrubbed until they shone, and a rose-scented breeze came in through windows opened just for this. All of it, for me. As if I would have cared about dust."
+    },
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "Why do it? Why be so kind?"
+    },
+    {
+     "s": "tamlin",
+     "e": "tender",
+     "t": "It's been a long time since there was anyone here who cared about these things. I like seeing them used again."
+    },
+    {
+     "n": "And then I looked up at the paintings, and forgot to breathe."
+    },
+    {
+     "n": "So many, so different, and yet hung so that they flowed together. Pastorals, portraits, still lifes. Each one a voice, shouting or whispering or singing, crying out into the dark of time that someone had been here, had felt this."
+    },
+    {
+     "n": "Some were painted through eyes like mine. Others bent the world in ways no human eye could have, in colors I'd never imagined. And still I understood them, and felt them, and cared."
+    },
+    {
+     "s": "tamlin",
+     "e": "neutral",
+     "t": "I never knew humans could..."
+    },
+    {
+     "n": "He trailed off as I turned. My cheeks were wet. My heart was a fierce, grieving, humbled thing."
+    },
+    {
+     "s": "feyre",
+     "e": "tender",
+     "t": "Thank you."
+    },
+    {
+     "s": "tamlin",
+     "e": "tender",
+     "t": "Come here whenever you like."
+    },
+    {
+     "n": "He left me to it. I stayed for hours, until I was drunk on it, dizzy with hunger."
+    },
+    {
+     "n": "After lunch, Alis showed me to an empty room just past the gallery. Canvases of every size. Brushes. And paints, so many more than the four I'd hoped for."
+    },
+    {
+     "do": [
+      {
+       "type": "objective",
+       "text": "Your painting room is through the gallery's east door."
+      }
+     ]
+    }
+   ]
+  },
+  "ch19_studio": {
+   "lines": [
+    {
+     "do": [
+      {
+       "type": "set_flag",
+       "flag": "ch19_studio"
+      }
+     ]
+    },
+    {
+     "n": "The room was quiet, and full of clear light, and waiting, and utterly mine."
+    },
+    {
+     "n": "I began to paint."
+    },
+    {
+     "choices": [
+      {
+       "t": "Paint the pool of starlight.",
+       "goto": "ch19_paint"
+      },
+      {
+       "t": "Paint the glen.",
+       "goto": "ch19_paint"
+      },
+      {
+       "t": "Paint the High Lord.",
+       "goto": "ch19_paint_him"
+      }
+     ]
+    }
+   ]
+  },
+  "ch19_paint_him": {
+   "lines": [
+    {
+     "n": "I started on him and gave up three times before noon. The gold of his mask was easy. What was under it was not."
+    },
+    {
+     "goto": "ch19_paint"
+    }
+   ]
+  },
+  "ch19_paint": {
+   "lines": [
+    {
+     "n": "Weeks went by, and the days melted together. Most of what I painted was awful. I never let anyone see it, however much Tamlin prodded or Lucien smirked at the paint on my clothes."
+    },
+    {
+     "n": "Some days I rode out with Tamlin to see his lands and came home with ideas that had me out of bed at dawn. Other days he was called to the borders and came back in blood that wasn't his. He never told me about it, and I never asked. That he came back was enough."
+    },
+    {
+     "n": "I still dreamed of the deaths I'd seen, and caused, and of a pale woman tearing me apart, all of it watched by a shadow I could never quite see. But slowly, I stopped being afraid. Stay with the High Lord, the Suriel had said. So I did."
+    },
+    {
+     "n": "And then one morning, past the outer hedge, a warm wind blew up from the south. Spring was coming to the mortal lands."
+    },
+    {
+     "n": "My family, glamoured and cared for and safe, had no idea where I was. The world had gone on without me. I was as good as dead to them. And he had let me forget them."
+    },
+    {
+     "n": "I didn't paint that day. I sat in front of a blank canvas with no colors in me at all. Maybe the paints had only ever been a way to keep me quiet. To stop me asking. And I had stopped, like a good, obedient human."
+    },
+    {
+     "n": "I made it through a tense dinner, and when it was over I went out into the dusk and lost myself among the hedges."
+    },
+    {
+     "do": [
+      {
+       "type": "time",
+       "hour": 19
+      },
+      {
+       "type": "objective",
+       "text": "Walk it off in the rose garden."
+      }
+     ]
+    }
+   ]
+  },
+  "ch19_garden": {
+   "lines": [
+    {
+     "do": [
+      {
+       "type": "set_flag",
+       "flag": "ch19_garden"
+      },
+      {
+       "type": "region_call",
+       "method": "npc_visible",
+       "args": [
+        "lucien",
+        false
+       ]
+      },
+      {
+       "type": "region_call",
+       "method": "npc_visible",
+       "args": [
+        "tamlin",
+        false
+       ]
+      }
+     ]
+    },
+    {
+     "n": "The low sun stained the red roses nearly purple and laid a sheen on the white ones."
+    },
+    {
+     "s": "tamlin",
+     "e": "neutral",
+     "t": "My father planted this garden for my mother. A gift, when they were mated."
+    },
+    {
+     "do": [
+      {
+       "type": "region_call",
+       "method": "npc_beside",
+       "args": [
+        "tamlin"
+       ]
+      }
+     ]
+    },
+    {
+     "n": "I didn't turn. I dug my nails into my palms. The flowers I had painted on our table at home were probably flaking away by now. Nesta might have scraped them off."
+    },
+    {
+     "s": "tamlin",
+     "e": "tender",
+     "t": "You seem... upset."
+    },
+    {
+     "n": "I tore a rose off the nearest bush. The thorns ripped my fingers and I didn't care."
+    },
+    {
+     "s": "feyre",
+     "e": "sad",
+     "t": "I don't know why I'm so ashamed of leaving them. Why it feels so selfish, so wicked, to paint. I know I shouldn't feel it. I can't help it."
+    },
+    {
+     "s": "feyre",
+     "e": "sad",
+     "t": "All those years. And they didn't even try to stop you from taking me. I don't know why I believed the puca. I don't know why I still care."
+    },
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "Next to your borders, your magic, I suppose my self-pity is ridiculous."
+    },
+    {
+     "s": "tamlin",
+     "e": "tender",
+     "t": "If it grieves you, it isn't ridiculous at all."
+    },
+    {
+     "s": "feyre",
+     "e": "angry",
+     "t": "Why?"
+    },
+    {
+     "n": "I threw the rose into the bushes. He took my hands, gently, and lifted my bleeding palm to his mouth and kissed it. Then the other."
+    },
+    {
+     "n": "My knees nearly went. When he drew back, there was blood on his lips, and the cuts on my hands were gone."
+    },
+    {
+     "s": "tamlin",
+     "e": "tender",
+     "t": "Don't feel bad for a moment about doing what brings you joy."
+    },
+    {
+     "n": "He tucked the rose behind my ear. I hadn't seen him pick it up, and the thorns were gone."
+    },
+    {
+     "s": "feyre",
+     "e": "tender",
+     "t": "Why? Why do any of this?"
+    },
+    {
+     "s": "tamlin",
+     "e": "tender",
+     "t": "Because your human joy fascinates me. The way you feel things, in the little time you have, so wildly and deeply and all at once. I'm drawn to it, even when I know I shouldn't be. Even when I try not to be."
+    },
+    {
+     "n": "Slowly, giving me every chance to pull away, he brushed his lips against my cheek. Hardly more than a breath. I didn't move."
+    },
+    {
+     "s": "tamlin",
+     "e": "weary",
+     "t": "One day there'll be answers for everything. But not until the time is right. Until it's safe."
+    },
+    {
+     "do": [
+      {
+       "type": "region_call",
+       "method": "npc_visible",
+       "args": [
+        "tamlin",
+        false
+       ]
+      }
+     ]
+    },
+    {
+     "n": "He left me there, and I let out the breath I hadn't known I was holding. I hadn't known how much I wanted him near until he was gone."
+    },
+    {
+     "do": [
+      {
+       "type": "region_call",
+       "method": "pass_time",
+       "args": [
+        10.5,
+        "garden"
+       ]
+      }
+     ]
+    },
+    {
+     "n": "Mortified by everything I'd said, I slipped out to the woods after breakfast with my bow and Lucien's jeweled knife. Within the hour I felt someone following me, sending every bird for cover."
+    },
+    {
+     "n": "I smiled to myself. Twenty minutes later I was up an elm, waiting."
+    },
+    {
+     "n": "A snap, and a roar that scattered the birds. When I walked into the clearing, the High Lord of the Spring Court was hanging upside down by his ankles from my snare."
+    },
+    {
+     "s": "tamlin",
+     "e": "tender",
+     "t": "Cruel human."
+    },
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "That's what you get for stalking people."
+    },
+    {
+     "n": "I dared to run my fingers through his hair, hanging just above my face, all wheat and gold and brown. He leaned into my hand and purred. I felt it in my bones. I stepped back."
+    },
+    {
+     "n": "One claw through the vine, a flip, and he landed on his feet. Then he pulled three sheets of paper from his tunic."
+    },
+    {
+     "s": "tamlin",
+     "e": "neutral",
+     "t": "Before you bolt, or start shouting..."
+    },
+    {
+     "n": "Five short poems, full of words I didn't know. He read the first one over my shoulder, his breath on my ear: a lady most lovely, if a little unusual, with suitors lined up in a queue, and a refusal for every one of them."
+    },
+    {
+     "n": "The second was much less polite. By the third, my face was on fire."
+    },
+    {
+     "s": "tamlin",
+     "e": "neutral",
+     "t": "The last word of the second and fourth lines."
+    },
+    {
+     "n": "Unusual. Queue. Slaying. Conflagration. My list."
+    },
+    {
+     "s": "tamlin",
+     "e": "tender",
+     "t": "Your words were too interesting to waste, and useless for love poems. In my father's war-band we held contests for the filthiest rhymes. I don't like losing, so I got good at them."
+    },
+    {
+     "n": "He read the fifth, the foulest of all. And I threw back my head and laughed, and it was like sun breaking through ice that had been there for years."
+    },
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "You said your father planted the roses when they were mated. Not married?"
+    },
+    {
+     "s": "tamlin",
+     "e": "tender",
+     "t": "Most of us marry. But if we're blessed, we find our mate. Our equal, our match in every way. If you find your mate, the bond runs so deep that marriage hardly matters."
+    },
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "What happened to your parents?"
+    },
+    {
+     "n": "His claws gleamed at his knuckles."
+    },
+    {
+     "s": "tamlin",
+     "e": "angry",
+     "t": "My father was as bad as Lucien's. Worse. My brothers too. They kept slaves. I was young when the Treaty was made, but I remember what my brothers did. When I saw you, your house, I couldn't let myself be like them."
+    },
+    {
+     "s": "tamlin",
+     "e": "weary",
+     "t": "My mother loved him too much to say a word against him. I never wanted his title. My brothers would have killed me if they'd thought I did. So I joined the war-band and trained, and found that fighting was about the only thing I was good at."
+    },
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "I doubt that."
+    },
+    {
+     "s": "tamlin",
+     "e": "weary",
+     "t": "I play a mean fiddle. But High Lords' sons don't become wandering minstrels. My power kept growing, and I couldn't hide it. Then they were all killed by the High Lord of an enemy court. I mourned my mother. The rest of them wouldn't have tried to save me from a fate like yours."
+    },
+    {
+     "s": "tamlin",
+     "e": "weary",
+     "t": "Most High Lords are raised to it, manners and laws and court games. When it fell to me, half my father's court left rather than have a warrior beast snarling at them."
+    },
+    {
+     "s": "feyre",
+     "e": "angry",
+     "t": "Then they're idiots. You've kept these lands safe from the blight when others haven't."
+    },
+    {
+     "n": "A shadow passed behind his eyes, and his shoulders curled in, a little."
+    },
+    {
+     "n": "On the hills beyond the woods, masked faeries were stacking great unlit fires."
+    },
+    {
+     "s": "tamlin",
+     "e": "neutral",
+     "t": "Bonfires. For Calanmai, Fire Night. Two days from now. We light the fires, and the magic we make renews the land for the year. There's a ritual. It's... very faerie."
+    },
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "Am I invited?"
+    },
+    {
+     "s": "tamlin",
+     "e": "angry",
+     "t": "No. You're not."
+    },
+    {
+     "n": "My chest caved a little. We walked back in a silence we hadn't had in weeks."
+    },
+    {
+     "do": [
+      {
+       "type": "region_call",
+       "method": "watchers_ready"
+      }
+     ]
+    },
+    {
+     "n": "The moment we reached the gardens, he went rigid. Everything was quiet, with that terrible stillness that meant something foul was near."
+    },
+    {
+     "s": "tamlin",
+     "e": "angry",
+     "t": "Hide. Whatever you hear, don't come out."
+    },
+    {
+     "hint": "Get behind one of the hedges on the garden's north side before it comes, and keep still while it's near. Moving makes the gravel talk."
+    }
+   ]
+  },
+  "ch19_attor_after": {
+   "lines": [
+    {
+     "do": [
+      {
+       "type": "set_flag",
+       "flag": "ch19_attor_done"
+      }
+     ]
+    },
+    {
+     "n": "A boom of leathery wings, a foul wind across my face, and everything went silent. Then huge hands closed on my shoulders, and I yelped."
+    },
+    {
+     "s": "tamlin",
+     "e": "angry",
+     "t": "It's gone."
+    },
+    {
+     "s": "lucien",
+     "e": "angry",
+     "t": "What did you hear?"
+    },
+    {
+     "s": "feyre",
+     "e": "afraid",
+     "t": "Nothing I understood. What was that?"
+    },
+    {
+     "s": "tamlin",
+     "e": "angry",
+     "t": "There are faeries in Prythian who gave you humans your worst stories. Some, like that one, are the stories given flesh."
+    },
+    {
+     "n": "In that hissing voice I had heard screaming. Victims. Altars. And a court that wasn't his, and a she who commanded such a thing as her messenger."
+    },
+    {
+     "s": "lucien",
+     "e": "grim",
+     "t": "If the Attor saw her-"
+    },
+    {
+     "s": "tamlin",
+     "e": "angry",
+     "t": "It didn't. I'll see you at dinner, Feyre."
+    },
+    {
+     "n": "A dismissal. I went back to the house and locked my door, and the spring breeze whispered that I didn't want to know who she was."
+    },
+    {
+     "do": [
+      {
+       "type": "journal",
+       "id": "lore_attor"
+      },
+      {
+       "type": "chapter_card",
+       "n": 20
+      },
+      {
+       "type": "goto",
+       "chapter": 20,
+       "hour": 19,
+       "region": "manor_hall",
+       "spawn": "front"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

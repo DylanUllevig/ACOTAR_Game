@@ -1,0 +1,374 @@
+{
+ "schema": 2,
+ "notes": "Line forms: {n} Feyre's narration, first person past tense, shown in italics; {s,e,t} a line spoken aloud (speaker, portrait expression, text); {hint} a game tip on its own card; {choices:[{t,goto,do}]}; {do:[actions]}; {goto}. Any line or choice may carry if_flag, if_not_flag, if_item, if_not_item or if_chapter. Wording is written for the game; the few short book lines kept are listed in quotes.json.",
+ "scenes": {
+  "ch10_after": {
+   "lines": [
+    {
+     "n": "And then, just as I was sure I would give in, the cold slid off into the brush, leaving a trail of shrinking plants behind it. Lucien let out his breath. The horses shook their heads. Even the crocuses seemed to straighten."
+    },
+    {
+     "s": "feyre",
+     "e": "afraid",
+     "t": "What was that?"
+    },
+    {
+     "s": "lucien",
+     "e": "grim",
+     "t": "You don't want to know."
+    },
+    {
+     "s": "feyre",
+     "e": "afraid",
+     "t": "Please. Was it the Suriel?"
+    },
+    {
+     "s": "lucien",
+     "e": "grim",
+     "t": "No. It was a thing that shouldn't be in these lands at all. We call it the Bogge. You can't hunt it, and you can't kill it. Not even with your precious ash arrows."
+    },
+    {
+     "s": "feyre",
+     "e": "afraid",
+     "t": "Why couldn't I look?"
+    },
+    {
+     "s": "lucien",
+     "e": "grim",
+     "t": "Because once you look at it, once you admit it's there, it becomes real. And then it can kill you."
+    },
+    {
+     "s": "feyre",
+     "e": "afraid",
+     "t": "It spoke to me. In my head. It kept telling me to look."
+    },
+    {
+     "s": "lucien",
+     "e": "smirk",
+     "t": "Well, thank the Cauldron you didn't. Scraping you off the path would have ruined the rest of my day."
+    },
+    {
+     "do": [
+      {
+       "type": "journal",
+       "id": "lore_bogge"
+      }
+     ]
+    },
+    {
+     "n": "We rode for an hour without much talk. When I'd stopped shaking, I couldn't help myself."
+    },
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "You're old, you carry a sword and you ride patrol. Did you fight in the War?"
+    },
+    {
+     "s": "lucien",
+     "e": "angry",
+     "t": "Cauldron, Feyre, I'm not that old."
+    },
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "Are you a warrior, though?"
+    },
+    {
+     "s": "lucien",
+     "e": "smirk",
+     "t": "Not as good as Tam. But I know which end of a blade to hold. Shall I teach you, mighty mortal huntress? Or do you only need to know where to aim?"
+    },
+    {
+     "s": "feyre",
+     "e": "determined",
+     "t": "I don't know how to use a sword. I only know how to hunt."
+    },
+    {
+     "s": "lucien",
+     "e": "smirk",
+     "t": "Isn't that the same thing?"
+    },
+    {
+     "s": "feyre",
+     "e": "determined",
+     "t": "Not to me."
+    },
+    {
+     "s": "lucien",
+     "e": "angry",
+     "t": "I suppose you'd have wet yourself and curled up to die, if you'd known what Andras really was. Do you ever stop being so serious? So dull?"
+    },
+    {
+     "choices": [
+      {
+       "t": "Snap back at him.",
+       "goto": "ch10_snap"
+      },
+      {
+       "t": "Say nothing.",
+       "goto": "ch10_quiet"
+      }
+     ]
+    }
+   ]
+  },
+  "ch10_quiet": {
+   "lines": [
+    {
+     "n": "I bit my tongue. He sighed, bored, and needled me again about the squirrels, and the weather, and my seat on the horse, until I couldn't stand it."
+    },
+    {
+     "goto": "ch10_snap"
+    }
+   ]
+  },
+  "ch10_snap": {
+   "lines": [
+    {
+     "s": "feyre",
+     "e": "angry",
+     "t": "Do you ever stop being such a prick?"
+    },
+    {
+     "n": "I should have been dead for that. Truly, I should. But Lucien only grinned at me."
+    },
+    {
+     "s": "lucien",
+     "e": "smirk",
+     "t": "Much better."
+    },
+    {
+     "n": "Alis, it seemed, had not been wrong."
+    },
+    {
+     "do": [
+      {
+       "type": "goto",
+       "chapter": 10,
+       "hour": 19,
+       "region": "manor_dining",
+       "spawn": "hall"
+      }
+     ]
+    }
+   ]
+  },
+  "ch10_dinner": {
+   "lines": [
+    {
+     "do": [
+      {
+       "type": "set_flag",
+       "flag": "ch10_dinner"
+      }
+     ]
+    },
+    {
+     "n": "Tamlin was sprawled in his chair, one long claw circling the rim of his goblet. It stopped dead when I walked in. I'd turned down his ride this morning, saying I wanted to be alone."
+    },
+    {
+     "do": [
+      {
+       "type": "region_call",
+       "method": "walk_in",
+       "args": [
+        "courtier_red",
+        "lucien",
+        690,
+        306
+       ]
+      }
+     ]
+    },
+    {
+     "s": "lucien",
+     "e": "neutral",
+     "t": "We went hunting."
+    },
+    {
+     "s": "tamlin",
+     "e": "angry",
+     "t": "So I heard. Did you enjoy yourselves?"
+    },
+    {
+     "n": "Lucien left the answer to me. Coward."
+    },
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "More or less."
+    },
+    {
+     "s": "tamlin",
+     "e": "angry",
+     "t": "Catch anything?"
+    },
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "No."
+    },
+    {
+     "n": "He looked at me for a long moment, then turned to his food. Lucien cleared his throat."
+    },
+    {
+     "s": "lucien",
+     "e": "grim",
+     "t": "Tam. The Bogge was in the woods today."
+    },
+    {
+     "n": "The fork in Tamlin's hand folded in on itself."
+    },
+    {
+     "s": "tamlin",
+     "e": "angry",
+     "t": "You met it?"
+    },
+    {
+     "s": "lucien",
+     "e": "grim",
+     "t": "It passed us. Close. It must have slipped over the border."
+    },
+    {
+     "n": "Metal shrieked as his claws punched out and shredded what was left of the fork. He rose, and his teeth seemed longer than before."
+    },
+    {
+     "s": "tamlin",
+     "e": "angry",
+     "t": "Where?"
+    },
+    {
+     "n": "Lucien told him. Tamlin threw one look at me and stalked out, and shut the door behind him with terrible gentleness."
+    },
+    {
+     "do": [
+      {
+       "type": "region_call",
+       "method": "walk_out",
+       "args": [
+        "tamlin"
+       ]
+      }
+     ]
+    },
+    {
+     "s": "feyre",
+     "e": "afraid",
+     "t": "Where's he going?"
+    },
+    {
+     "s": "lucien",
+     "e": "grim",
+     "t": "To hunt the Bogge."
+    },
+    {
+     "s": "feyre",
+     "e": "afraid",
+     "t": "You said it couldn't be killed. That you couldn't even face it."
+    },
+    {
+     "s": "lucien",
+     "e": "grim",
+     "t": "Tam can."
+    },
+    {
+     "n": "The male who'd served me with his own hands that first night could kill a thing like that. I didn't know what to do with the thought. It wasn't my problem."
+    },
+    {
+     "n": "And just because Lucien had stopped eating didn't mean I had to. He never noticed the feast I put away."
+    },
+    {
+     "do": [
+      {
+       "type": "heal_full"
+      },
+      {
+       "type": "goto",
+       "chapter": 10,
+       "hour": 22,
+       "region": "manor_bedroom",
+       "spawn": "landing"
+      }
+     ]
+    }
+   ]
+  },
+  "ch10_room": {
+   "lines": [
+    {
+     "do": [
+      {
+       "type": "set_flag",
+       "flag": "ch10_room"
+      }
+     ]
+    },
+    {
+     "n": "With nothing else to do, I sharpened my stolen knife on a stone from the garden and kept an eye on the lawn below my window."
+    },
+    {
+     "n": "An hour went by. He didn't come back. I told myself I didn't care whether he survived it."
+    },
+    {
+     "do": [
+      {
+       "type": "objective",
+       "text": "Keep watch from the window."
+      }
+     ]
+    }
+   ]
+  },
+  "ch10_window": {
+   "lines": [
+    {
+     "do": [
+      {
+       "type": "set_flag",
+       "flag": "ch10_window"
+      }
+     ]
+    },
+    {
+     "n": "The moon came up, silvering the garden. Ridiculous, to be waiting up for him. I turned to go to bed."
+    },
+    {
+     "n": "Something moved below. Not Tamlin. Someone standing by the hedges, facing the house. Looking up at me."
+    },
+    {
+     "n": "A man, hunched over a cane. He limped two steps into the light from the house."
+    },
+    {
+     "s": "feyre",
+     "e": "afraid",
+     "t": "Father."
+    },
+    {
+     "do": [
+      {
+       "type": "chapter_card",
+       "n": 11
+      }
+     ]
+    },
+    {
+     "n": "My father had come. My broken, crippled father had come all this way to take me home."
+    },
+    {
+     "n": "I didn't let myself think. I pulled on tunic over tunic, bundled into a cloak, stuffed the stolen knife into my boot, and climbed out of the window onto the wisteria."
+    },
+    {
+     "do": [
+      {
+       "type": "goto",
+       "chapter": 11,
+       "hour": 23,
+       "region": "spring_manor",
+       "spawn": "below_window"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

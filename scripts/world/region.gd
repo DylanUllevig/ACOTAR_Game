@@ -395,7 +395,7 @@ func add_occluder_rect(rect: Rect2) -> void:
 	add_child(occ)
 
 
-func add_wall(rect: Rect2) -> void:
+func add_wall(rect: Rect2) -> StaticBody2D:
 	var body = StaticBody2D.new()
 	var cs = CollisionShape2D.new()
 	var rs = RectangleShape2D.new()
@@ -404,6 +404,7 @@ func add_wall(rect: Rect2) -> void:
 	cs.position = rect.get_center()
 	body.add_child(cs)
 	add_child(body)
+	return body
 
 
 func enclose_bounds() -> void:
@@ -626,7 +627,7 @@ func add_npc(sheet: String, pos: Vector2, label: String, callback: Callable, fac
 		_npcs.append([holder, s])
 		return holder
 	# idle breathing
-	var tw = create_tween().set_loops()
+	var tw = s.create_tween().set_loops()
 	tw.tween_property(s, "scale", Vector2(scl, scl * 1.02) * k, 1.2).set_trans(Tween.TRANS_SINE)
 	tw.tween_property(s, "scale", Vector2(scl, scl) * k, 1.2).set_trans(Tween.TRANS_SINE)
 	return holder
@@ -704,12 +705,13 @@ func _process(delta: float) -> void:
 func _update_npcs() -> void:
 	if _npcs.is_empty() or player == null:
 		return
+	for i in range(_npcs.size() - 1, -1, -1):
+		if not is_instance_valid(_npcs[i][0]) or not is_instance_valid(_npcs[i][1]):
+			_npcs.remove_at(i)
 	var p = player.global_position
 	var dt = get_process_delta_time()
 	for e in _npcs:
 		var h: Node2D = e[0]
-		if not is_instance_valid(h):
-			continue
 		var spr: Sprite2D = e[1]
 		# someone being moved (a tween, a scene) walks: face the way they go
 		# and step through the walk frames
@@ -796,6 +798,7 @@ func _update_see_through(delta: float) -> void:
 
 
 func _apply_time() -> void:
+	_update_night_lights()
 	var g = grade_for_hour(GameState.hour)
 	canvas_mod.color = g.mod
 	var ex: Color = g.get("exposure", Color.WHITE)
@@ -808,6 +811,86 @@ func _apply_time() -> void:
 	_update_casters()
 	if rays:
 		(rays.material as ShaderMaterial).set_shader_parameter("intensity", g.rays)
+
+
+## Lamps and lit windows that glow at night and fade by day: [light, energy].
+var night_lights: Array = []
+
+
+## How dark it is: 0 by day, 1 at night, easing through dawn and dusk.
+static func night_amount(h: float) -> float:
+	if h < 12.0:
+		return 1.0 - smoothstep(5.0, 7.5, h)
+	return smoothstep(18.0, 20.5, h)
+
+
+## A light that is only worth seeing in the dark: full strength at night, a
+## hint of it by day.
+func add_night_light(pos: Vector2, color: Color, energy: float, scl := 1.0, parent: Node = null, day := 0.12) -> PointLight2D:
+	var l = add_light(pos, color, energy, scl, false, parent)
+	night_lights.append([l, energy, day])
+	return l
+
+
+func _update_night_lights() -> void:
+	if night_lights.is_empty():
+		return
+	var n = night_amount(GameState.hour)
+	for e in night_lights:
+		var l: PointLight2D = e[0]
+		if is_instance_valid(l):
+			l.energy = float(e[1]) * lerpf(float(e[2]), 1.0, n)
+
+
+## Lights for the lit windows (or flames) of a prop, from the glow points
+## tools/pixel/build_assets.py records in its meta: the points are pooled
+## into cells 'cell' art pixels across, one light a cell, brighter for more
+## glass. Night lights: they fade by day.
+func add_glow_lights(rel: String, base: Vector2, color: Color, energy := 0.5, scl := 0.5, flip := false, cell := 40.0, parent: Node = null, day := 0.0) -> void:
+	var k = Art.PX * Art.pixel_mult(rel)
+	var cells := {}
+	for w in Art.pixel_meta(rel).get("windows", []):
+		var key = Vector2i(floori(float(w[0]) / cell), floori(float(w[1]) / cell))
+		var e: Array = cells.get(key, [Vector2.ZERO, 0.0])
+		var sz = float(w[2])
+		e[0] += Vector2(float(w[0]), float(w[1])) * sz
+		e[1] += sz
+		cells[key] = e
+	var fx = -1.0 if flip else 1.0
+	for key in cells:
+		var e: Array = cells[key]
+		if e[1] < 4.0:
+			continue
+		var c: Vector2 = e[0] / e[1]
+		var pos = Vector2(c.x * fx, c.y) * k
+		if parent == null:
+			pos += base
+		add_night_light(pos, color, energy * clampf(sqrt(e[1]) / 6.0, 0.4, 1.6), scl * clampf(sqrt(e[1]) / 6.0, 0.6, 1.8), parent, day)
+
+
+## Walks someone placed with add_npc to 'to' at 'speed' world units a second
+## (they turn and step as they go); returns when they get there.
+func walk_npc(h: Node2D, to: Vector2, speed := 120.0) -> void:
+	if h == null or not is_instance_valid(h):
+		return
+	var d = h.position.distance_to(to)
+	if d < 1.0:
+		return
+	var tw = create_tween()
+	tw.tween_property(h, "position", to, d / speed)
+	await tw.finished
+
+
+## Leads Feyre along pts: they walk ahead and stop to wait whenever she
+## falls more than 'wait' behind, and hold still while a scene is open.
+## Returns at the last point.
+func lead_npc(h: Node2D, pts: Array, speed := 110.0, wait := 340.0) -> void:
+	for p in pts:
+		while is_instance_valid(h) and h.position.distance_to(p) > 2.0:
+			var dt = get_process_delta_time()
+			if not (Dialogue.active or UI.modal_open or Router.busy) and player.global_position.distance_to(h.position) <= wait:
+				h.position = h.position.move_toward(p, speed * dt)
+			await get_tree().process_frame
 
 
 ## Puts Feyre at a named spawn point (cutscenes use this behind a fade).

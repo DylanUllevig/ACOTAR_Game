@@ -252,9 +252,13 @@ func _run() -> void:
 	region().player.global_position = Vector2(800, 1300)
 	if await wait_until(func(): return region()._cine_layer != null, 30.0, "the Wall"):
 		await shot("wall_cinematic", 4.5)
-	if not await wait_until(func(): return UI.modal_open and SaveSystem.has_slot("slice_complete"), 90.0, "the end of the slice"):
-		return fail("the slice never ended")
-	await shot("end_of_slice", 0.8)
+	# --- Chapter 6: she wakes at the Spring Court's gate
+	if not await wait_until(func(): return region() != null and region().name == "Region_spring_manor" and GameState.chapter == 6, 90.0, "the Spring Court"):
+		return fail("the ride never reached the Spring Court")
+	await hold_dialogue()
+	await shot("spring_court_arrival", 1.2)
+	auto_dialogue = true
+	await wait_until(idle, 60.0, "the arrival")
 	print("TOUR COMPLETE: %d shots; tier %d, coin %d, journal %d, doe_saved %s" % [shots, GameState.tier, GameState.coins, GameState.journal.size(), GameState.has_flag("doe_saved")])
 	for f in DirAccess.get_files_at("user://tour_saves/"):
 		DirAccess.remove_absolute(ProjectSettings.globalize_path("user://tour_saves/" + f))

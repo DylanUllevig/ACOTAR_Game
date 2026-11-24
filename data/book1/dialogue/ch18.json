@@ -1,0 +1,459 @@
+{
+ "schema": 2,
+ "notes": "Line forms: {n} Feyre's narration, first person past tense, shown in italics; {s,e,t} a line spoken aloud (speaker, portrait expression, text); {hint} a game tip on its own card; {choices:[{t,goto,do}]}; {do:[actions]}; {goto}. Any line or choice may carry if_flag, if_not_flag, if_item, if_not_item or if_chapter. Wording is written for the game; the few short book lines kept are listed in quotes.json.",
+ "scenes": {
+  "ch18_morning": {
+   "lines": [
+    {
+     "do": [
+      {
+       "type": "set_flag",
+       "flag": "ch18_morning"
+      }
+     ]
+    },
+    {
+     "n": "By the time I'd eaten and washed and dressed, it was nearly noon. The blood in the hall would be gone by now. I went to the window anyway, to be sure."
+    },
+    {
+     "n": "I meant to find Tamlin and tell him properly how sorry I was about Andras. If I was to stay here, stay with him, I could at least try to mend what I had broken."
+    },
+    {
+     "n": "From the window I could see clear to the reflecting pool, so still it held every cloud. Two figures stood by it, and horses, already saddled."
+    },
+    {
+     "do": [
+      {
+       "type": "objective",
+       "text": "Tamlin and Lucien are waiting by the reflecting pool."
+      }
+     ]
+    }
+   ]
+  },
+  "ch18_pool": {
+   "lines": [
+    {
+     "s": "tamlin",
+     "e": "neutral",
+     "t": "Your paints won't come until tomorrow, the gallery's still being cleaned, and my... meeting was put off."
+    },
+    {
+     "n": "Was he rambling? The High Lord of the Spring Court?"
+    },
+    {
+     "s": "tamlin",
+     "e": "tender",
+     "t": "So I thought we'd ride. No killing. No naga."
+    },
+    {
+     "n": "There was sorrow in his eyes even as he smiled. I wondered where he had buried the faerie. A High Lord digging a stranger's grave."
+    },
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "Where to?"
+    },
+    {
+     "n": "He only smiled."
+    },
+    {
+     "do": [
+      {
+       "type": "goto",
+       "chapter": 18,
+       "hour": 14,
+       "region": "spring_woods",
+       "spawn": "glen"
+      }
+     ]
+    }
+   ]
+  },
+  "ch18_glen": {
+   "lines": [
+    {
+     "do": [
+      {
+       "type": "set_flag",
+       "flag": "ch18_glen"
+      }
+     ]
+    },
+    {
+     "n": "I couldn't find words for it. I knew that even if I could paint it, I'd never do it justice. Oaks wide and high as the pillars of some ancient castle. Dandelion fluff drifting through light thick as honey. Crocuses and snowdrops and bluebells nodding over the ground. And somewhere, I could have sworn, singing."
+    },
+    {
+     "n": "It wasn't only the most beautiful place I'd ever been. It felt right. After last night, it was exactly where I needed to be."
+    },
+    {
+     "s": "tamlin",
+     "e": "neutral",
+     "t": "We brought a blanket."
+    },
+    {
+     "n": "I shook my head and ran my fingers through the grass instead. Soft as feathers. I wasn't going to waste that on a blanket."
+    },
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "What is this place?"
+    },
+    {
+     "s": "tamlin",
+     "e": "neutral",
+     "t": "Just a glen."
+    },
+    {
+     "n": "Lucien snorted behind us."
+    },
+    {
+     "s": "tamlin",
+     "e": "tender",
+     "t": "Do you like it?"
+    },
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "Yes."
+    },
+    {
+     "s": "tamlin",
+     "e": "tender",
+     "t": "That's all? Yes?"
+    },
+    {
+     "choices": [
+      {
+       "t": "Tease him.",
+       "goto": "ch18_tease"
+      },
+      {
+       "t": "Tell him how beautiful it is.",
+       "goto": "ch18_honest"
+      }
+     ]
+    }
+   ]
+  },
+  "ch18_honest": {
+   "lines": [
+    {
+     "s": "feyre",
+     "e": "tender",
+     "t": "It's the most beautiful place I've ever seen."
+    },
+    {
+     "n": "He looked as if I'd handed him something precious. I couldn't bear it, so I said something else before I could stop myself."
+    },
+    {
+     "goto": "ch18_tease"
+    }
+   ]
+  },
+  "ch18_tease": {
+   "lines": [
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "Would you like me to grovel with gratitude, High Lord?"
+    },
+    {
+     "s": "tamlin",
+     "e": "neutral",
+     "t": "Ah. So the Suriel told you nothing important."
+    },
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "It also said you like to be brushed. And that if I'm clever, I might train you with treats."
+    },
+    {
+     "n": "He threw back his head and roared with laughter. And I laughed too, softly, before I could stop it."
+    },
+    {
+     "s": "lucien",
+     "e": "smirk",
+     "t": "I may die of shock. You made a joke, Feyre."
+    },
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "You don't want to know what the Suriel said about you."
+    },
+    {
+     "s": "tamlin",
+     "e": "tender",
+     "t": "I'd pay good money to hear it."
+    },
+    {
+     "n": "A cork popped. Lucien drank deep from the bottle and muttered \"brushed\" to himself, and went on chuckling."
+    },
+    {
+     "s": "tamlin",
+     "e": "tender",
+     "t": "Come on. I want to show you something."
+    },
+    {
+     "n": "He led me over little brooks and up steep knolls to a clearing ringed with tall trees. In it lay a pool that wasn't water. Silver, glittering, shot through with blue and red and pink and gold."
+    },
+    {
+     "n": "He crouched at the edge, scooped up a handful and let it trickle back. Ripples of light danced across the surface."
+    },
+    {
+     "s": "feyre",
+     "e": "tender",
+     "t": "That looks like starlight."
+    },
+    {
+     "s": "tamlin",
+     "e": "tender",
+     "t": "It is starlight."
+    },
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "That's impossible."
+    },
+    {
+     "s": "tamlin",
+     "e": "tender",
+     "t": "This is Prythian. According to your legends, nothing is impossible."
+    },
+    {
+     "n": "Then he began unbuttoning his tunic."
+    },
+    {
+     "s": "tamlin",
+     "e": "tender",
+     "t": "Jump in."
+    },
+    {
+     "n": "I shook my head and stepped back. His fingers stopped on the second button."
+    },
+    {
+     "s": "tamlin",
+     "e": "tender",
+     "t": "This was my favorite place when I was a boy."
+    },
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "When was that?"
+    },
+    {
+     "s": "tamlin",
+     "e": "weary",
+     "t": "A very long time ago."
+    },
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "Is Lucien all right? After last night?"
+    },
+    {
+     "s": "tamlin",
+     "e": "weary",
+     "t": "Lucien has been through things that make nights like that one hard. Not only the scar and the eye."
+    },
+    {
+     "s": "tamlin",
+     "e": "weary",
+     "t": "He's the youngest son of the High Lord of the Autumn Court. The youngest of seven brothers. Autumn is beautiful, and cutthroat. The strongest son inherits, not the eldest, so the brothers only ever see each other as rivals."
+    },
+    {
+     "s": "tamlin",
+     "e": "weary",
+     "t": "Lucien never cared about any of it. He fell in love with a faerie his father thought far beneath their blood, and swore he'd marry her and leave the court to his brothers. His father had her executed. In front of him, while two of his brothers held him and made him watch."
+    },
+    {
+     "n": "My stomach turned. I pressed a hand to my chest."
+    },
+    {
+     "s": "tamlin",
+     "e": "neutral",
+     "t": "He cursed his father and walked out. Without his title to protect him, his brothers went after him. Three went out to kill him. One came back. Lucien killed one. I killed the other. They'd crossed into my lands, and I was High Lord by then."
+    },
+    {
+     "s": "tamlin",
+     "e": "neutral",
+     "t": "I made him my emissary. He's good with people, and I... am not. He's been here ever since. He hasn't forgotten any of it, whatever he pretends."
+    },
+    {
+     "n": "It didn't excuse everything he'd said to me. But I understood the walls he'd built. I needed to talk about something else."
+    },
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "What would happen if I drank the water?"
+    },
+    {
+     "s": "tamlin",
+     "e": "tender",
+     "t": "The legends say you'd be happy until your last breath. Maybe we both need a glass."
+    },
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "I doubt the whole pool would be enough for me."
+    },
+    {
+     "s": "tamlin",
+     "e": "tender",
+     "t": "Two jokes in one day. A miracle. And what would be enough to make you happy? The ringing of bluebells? A ribbon of sunlight? A garland of moonlight?"
+    },
+    {
+     "n": "He was teasing me. He knew I'd squirm and say no. I was tired of being that girl, locked up in ice."
+    },
+    {
+     "choices": [
+      {
+       "t": "Take the dare.",
+       "goto": "ch18_swim"
+      },
+      {
+       "t": "Laugh it off.",
+       "goto": "ch18_laugh"
+      }
+     ]
+    }
+   ]
+  },
+  "ch18_laugh": {
+   "lines": [
+    {
+     "n": "I laughed and shook my head, and he grinned as though he'd won something. And that, more than anything, made me change my mind."
+    },
+    {
+     "goto": "ch18_swim"
+    }
+   ]
+  },
+  "ch18_swim": {
+   "lines": [
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "A swim sounds delightful."
+    },
+    {
+     "n": "I didn't let myself think twice. My boots, my tunic, my trousers, onto the grass, and I looked straight at him in my plain ivory underthings while his eyes moved over every inch of me."
+    },
+    {
+     "n": "Then he undressed too, button by button, with a lazy smile and a gleam in his eye that turned hungry. I walked straight into the pool rather than keep looking."
+    },
+    {
+     "n": "It was warm. Thicker than water and lighter than oil, like being wrapped in silk. Every ache in my body drained away."
+    },
+    {
+     "s": "tamlin",
+     "e": "tender",
+     "t": "Who taught you to swim?"
+    },
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "No one. I watched the village children in a pond when I was twelve, and worked it out. I swallowed half the pond doing it."
+    },
+    {
+     "s": "tamlin",
+     "e": "neutral",
+     "t": "How did your father lose his fortune? Born peasants don't talk the way you do."
+    },
+    {
+     "s": "feyre",
+     "e": "sad",
+     "t": "They called him the Prince of Merchants. The title was a lie. Three generations of debt under a good name. Eight years ago he put everything we had on three ships bound straight for Bharat, the short way, because the creditors couldn't wait."
+    },
+    {
+     "s": "feyre",
+     "e": "sad",
+     "t": "The ships sank. The creditors tore him apart. I was eleven. He just stopped trying after that. The money lasted three years, and then I started hunting."
+    },
+    {
+     "s": "tamlin",
+     "e": "tender",
+     "t": "And here you are. What else did you teach yourself?"
+    },
+    {
+     "n": "Maybe it was the pool. Maybe it was that he truly wanted to know. I smiled, and told him about my years in the woods."
+    },
+    {
+     "do": [
+      {
+       "type": "heal_full"
+      }
+     ]
+    },
+    {
+     "n": "Riding home that afternoon across a meadow of new grass, I caught myself looking at Lucien for the tenth time. He dropped back to ride beside me."
+    },
+    {
+     "s": "lucien",
+     "e": "neutral",
+     "t": "Yes?"
+    },
+    {
+     "n": "I wouldn't speak of his past. I'd hate pity too. I waited until Tamlin had ridden well ahead."
+    },
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "I never thanked you for your advice about the Suriel. If you still want me dead, you'll have to try harder."
+    },
+    {
+     "s": "lucien",
+     "e": "grim",
+     "t": "That isn't what I meant to happen. I wouldn't have wept. But-"
+    },
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "I'm joking. Part of me would love to wallop you. But I understand. I'm the human who killed your friend, and now you're stuck with me."
+    },
+    {
+     "s": "lucien",
+     "e": "grim",
+     "t": "Tam told me your first shot was to save the Suriel. Not yourself."
+    },
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "It seemed like the right thing to do."
+    },
+    {
+     "s": "lucien",
+     "e": "neutral",
+     "t": "I know far too many of my kind who wouldn't have seen it that way. Or bothered."
+    },
+    {
+     "n": "He tossed me something. I nearly fell out of the saddle catching it. A hunting knife, its hilt set with jewels, balanced as perfectly as anything I had ever held."
+    },
+    {
+     "s": "lucien",
+     "e": "grim",
+     "t": "I heard you scream. And I hesitated. Only for a moment, but I did, and I broke my word in it. It's yours. Please don't bury it in my back."
+    },
+    {
+     "do": [
+      {
+       "type": "item",
+       "id": "jeweled_knife"
+      },
+      {
+       "type": "chapter_card",
+       "n": 19
+      },
+      {
+       "type": "goto",
+       "chapter": 19,
+       "hour": 10,
+       "region": "manor_gallery",
+       "spawn": "hall"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

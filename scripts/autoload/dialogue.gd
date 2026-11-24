@@ -646,7 +646,10 @@ func _run_action(a: Dictionary) -> bool:
 			_queue_after.append(func(): await Router.goto_region(rg, sp))
 			return true
 		"game_over":
-			_queue_after.append(func(): await UI.game_over())
+			var go_t = String(a.get("title", ""))
+			var go_l = String(a.get("line", ""))
+			var go_tip = String(a.get("tip", ""))
+			_queue_after.append(func(): await UI.game_over(go_t, go_l, go_tip))
 			return true
 		"wall_cinematic":
 			_queue_after.append(func():

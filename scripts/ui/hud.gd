@@ -524,8 +524,15 @@ func boss_hide() -> void:
 	tw.tween_callback(func(): _boss.visible = false)
 
 
-func stealth_show(v: bool) -> void:
+## The three states' words: hidden, in the open, found. The wolf hunt's by
+## default; the spring's trials (the Bogge, the Attor) bring their own.
+const STEALTH_WORDS := ["Hidden", "In the open", "He knows you're here"]
+var _stealth_words: Array = STEALTH_WORDS
+
+
+func stealth_show(v: bool, words: Array = []) -> void:
 	_stealth.visible = v
+	_stealth_words = words if words.size() == 3 else STEALTH_WORDS
 
 
 func stealth_update(hidden: bool, noise_frac: float, alerted: bool) -> void:
@@ -533,7 +540,7 @@ func stealth_update(hidden: bool, noise_frac: float, alerted: bool) -> void:
 	if st != _eye_state:
 		_eye_state = st
 		_eye.queue_redraw()
-	_stealth_l.text = ["Hidden", "In the open", "He knows you're here"][st]
+	_stealth_l.text = String(_stealth_words[st])
 	_stealth_l.add_theme_color_override("font_color", [Color("4b6b55"), Art.TEXT, Art.ROSE][st])
 	_noise.visible = not alerted
 	_noise.set_values(noise_frac, 1.0)

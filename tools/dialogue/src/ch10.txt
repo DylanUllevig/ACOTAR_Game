@@ -1,0 +1,80 @@
+# Chapter 10: after the Bogge; dinner, Tamlin goes hunting; the window.
+
+== ch10_after
+N And then, just as I was sure I would give in, the cold slid off into the brush, leaving a trail of shrinking plants behind it. Lucien let out his breath. The horses shook their heads. Even the crocuses seemed to straighten.
+@feyre/afraid What was that?
+@lucien/grim You don't want to know.
+@feyre/afraid Please. Was it the Suriel?
+@lucien/grim No. It was a thing that shouldn't be in these lands at all. We call it the Bogge. You can't hunt it, and you can't kill it. Not even with your precious ash arrows.
+@feyre/afraid Why couldn't I look?
+@lucien/grim Because once you look at it, once you admit it's there, it becomes real. And then it can kill you.
+@feyre/afraid It spoke to me. In my head. It kept telling me to look.
+@lucien/smirk Well, thank the Cauldron you didn't. Scraping you off the path would have ruined the rest of my day.
+> journal lore_bogge
+N We rode for an hour without much talk. When I'd stopped shaking, I couldn't help myself.
+@feyre/neutral You're old, you carry a sword and you ride patrol. Did you fight in the War?
+@lucien/angry Cauldron, Feyre, I'm not that old.
+@feyre/neutral Are you a warrior, though?
+@lucien/smirk Not as good as Tam. But I know which end of a blade to hold. Shall I teach you, mighty mortal huntress? Or do you only need to know where to aim?
+@feyre/determined I don't know how to use a sword. I only know how to hunt.
+@lucien/smirk Isn't that the same thing?
+@feyre/determined Not to me.
+@lucien/angry I suppose you'd have wet yourself and curled up to die, if you'd known what Andras really was. Do you ever stop being so serious? So dull?
+* Snap back at him. -> ch10_snap
+* Say nothing. -> ch10_quiet
+
+== ch10_quiet
+N I bit my tongue. He sighed, bored, and needled me again about the squirrels, and the weather, and my seat on the horse, until I couldn't stand it.
+-> ch10_snap
+
+== ch10_snap
+@feyre/angry Do you ever stop being such a prick?
+N I should have been dead for that. Truly, I should. But Lucien only grinned at me.
+@lucien/smirk Much better.
+N Alis, it seemed, had not been wrong.
+> goto manor_dining hall chapter=10 hour=19
+
+== ch10_dinner
+> set_flag ch10_dinner
+N Tamlin was sprawled in his chair, one long claw circling the rim of his goblet. It stopped dead when I walked in. I'd turned down his ride this morning, saying I wanted to be alone.
+> region_call walk_in courtier_red lucien 690 306
+@lucien/neutral We went hunting.
+@tamlin/angry So I heard. Did you enjoy yourselves?
+N Lucien left the answer to me. Coward.
+@feyre/neutral More or less.
+@tamlin/angry Catch anything?
+@feyre/neutral No.
+N He looked at me for a long moment, then turned to his food. Lucien cleared his throat.
+@lucien/grim Tam. The Bogge was in the woods today.
+N The fork in Tamlin's hand folded in on itself.
+@tamlin/angry You met it?
+@lucien/grim It passed us. Close. It must have slipped over the border.
+N Metal shrieked as his claws punched out and shredded what was left of the fork. He rose, and his teeth seemed longer than before.
+@tamlin/angry Where?
+N Lucien told him. Tamlin threw one look at me and stalked out, and shut the door behind him with terrible gentleness.
+> region_call walk_out tamlin
+@feyre/afraid Where's he going?
+@lucien/grim To hunt the Bogge.
+@feyre/afraid You said it couldn't be killed. That you couldn't even face it.
+@lucien/grim Tam can.
+N The male who'd served me with his own hands that first night could kill a thing like that. I didn't know what to do with the thought. It wasn't my problem.
+N And just because Lucien had stopped eating didn't mean I had to. He never noticed the feast I put away.
+> heal_full
+> goto manor_bedroom landing chapter=10 hour=22
+
+== ch10_room
+> set_flag ch10_room
+N With nothing else to do, I sharpened my stolen knife on a stone from the garden and kept an eye on the lawn below my window.
+N An hour went by. He didn't come back. I told myself I didn't care whether he survived it.
+> objective Keep watch from the window.
+
+== ch10_window
+> set_flag ch10_window
+N The moon came up, silvering the garden. Ridiculous, to be waiting up for him. I turned to go to bed.
+N Something moved below. Not Tamlin. Someone standing by the hedges, facing the house. Looking up at me.
+N A man, hunched over a cane. He limped two steps into the light from the house.
+@feyre/afraid Father.
+> chapter_card 11
+N My father had come. My broken, crippled father had come all this way to take me home.
+N I didn't let myself think. I pulled on tunic over tunic, bundled into a cloak, stuffed the stolen knife into my boot, and climbed out of the window onto the wisteria.
+> goto spring_manor below_window chapter=11 hour=23

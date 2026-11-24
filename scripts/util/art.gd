@@ -173,9 +173,19 @@ static func portrait(character: String, expr: String) -> Texture2D:
 	# the manor on). An expression not painted for an outfit takes the nearest
 	# one that is, in the same clothes, so she never changes clothes mid-scene;
 	# only an outfit with no portraits at all falls back to her own clothes.
+	# a speaker with no face of its own (a voice in the crowd, the Bogge), or
+	# one who borrows another's (the stranger on Fire Night is Rhysand)
+	var info: Dictionary = DB.characters.get(character, {})
+	if bool(info.get("voice_only", false)):
+		return null
+	if info.has("portrait_as"):
+		character = String(info.portrait_as)
 	var sets = [character]
 	if character == "feyre" and String(GameState.outfit) != "feyre":
 		sets = [String(GameState.outfit), character]
+	# from Chapter 24 she sees the household without its glamour
+	if character == "alis" and GameState.chapter >= 24:
+		sets = ["alis_urisk", character]
 	for who in sets:
 		for e in [expr, String(PORTRAIT_ALIAS.get(expr, "")), "neutral", "snarl"]:
 			if e == "":

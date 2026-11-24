@@ -1,0 +1,715 @@
+{
+ "schema": 2,
+ "notes": "Line forms: {n} Feyre's narration, first person past tense, shown in italics; {s,e,t} a line spoken aloud (speaker, portrait expression, text); {hint} a game tip on its own card; {choices:[{t,goto,do}]}; {do:[actions]}; {goto}. Any line or choice may carry if_flag, if_not_flag, if_item, if_not_item or if_chapter. Wording is written for the game; the few short book lines kept are listed in quotes.json.",
+ "scenes": {
+  "ch26_lunch": {
+   "lines": [
+    {
+     "do": [
+      {
+       "type": "set_flag",
+       "flag": "ch26_rhys"
+      },
+      {
+       "type": "music",
+       "name": "spring_manor"
+      }
+     ]
+    },
+    {
+     "n": "Lucien joined us for lunch the next day, which was breakfast for all of us, at the little table we'd kept ever since I'd complained about the big one. He kept rubbing his temples, and was unusually quiet."
+    },
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "And where were you last night?"
+    },
+    {
+     "s": "lucien",
+     "e": "angry",
+     "t": "While you two were off dancing with spirits, I was stuck on border patrol."
+    },
+    {
+     "n": "Tamlin coughed, pointedly."
+    },
+    {
+     "s": "lucien",
+     "e": "smirk",
+     "t": "With some company. And rumor has it the pair of you didn't come home until after dawn."
+    },
+    {
+     "n": "I'd practically floated into my room that morning. But Tamlin was searching my face now, as if for some trace of regret, or fear. Ridiculous."
+    },
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "You bit my neck on Fire Night. If I can face you after that, a few kisses are nothing."
+    },
+    {
+     "s": "tamlin",
+     "e": "tender",
+     "t": "Nothing?"
+    },
+    {
+     "n": "He leaned his forearms on the table, closer, and his eyes went to my mouth."
+    },
+    {
+     "s": "feyre",
+     "e": "tender",
+     "t": "Nothing."
+    },
+    {
+     "s": "tamlin",
+     "e": "tender",
+     "t": "Are you sure?"
+    },
+    {
+     "n": "He said it low, and hungry, and I was very glad to be sitting down."
+    },
+    {
+     "s": "lucien",
+     "e": "angry",
+     "t": "I am trying to eat."
+    },
+    {
+     "n": "I blinked. The air went out of me."
+    },
+    {
+     "s": "lucien",
+     "e": "grim",
+     "t": "But now that I have your attention, Tamlin. I hate to bring truly bad news, but my contact in the Winter Court got a letter through. The sickness took two dozen of their younglings. Two dozen. All gone."
+    },
+    {
+     "s": "lucien",
+     "e": "grim",
+     "t": "It burned through their magic, then broke their minds. No one could stop it once it turned on them. The other courts are being hit hard too, though the Night Court, of course, stays untouched. And it's coming this way. Further south with every attack."
+    },
+    {
+     "n": "All the warmth drained out of me."
+    },
+    {
+     "s": "feyre",
+     "e": "afraid",
+     "t": "It can kill? Children?"
+    },
+    {
+     "n": "If children were as rare among them as Alis had said, losing so many was a grief past imagining."
+    },
+    {
+     "s": "tamlin",
+     "e": "weary",
+     "t": "The sickness can hurt us in ways that you-"
+    },
+    {
+     "do": [
+      {
+       "type": "music",
+       "name": ""
+      },
+      {
+       "type": "shake",
+       "strength": 3
+      }
+     ]
+    },
+    {
+     "n": "He was on his feet so fast his chair went over, claws out, fangs bared at the open doors."
+    },
+    {
+     "n": "The house, always full of rustling skirts and servants' chatter, had gone silent. Not the hush of Fire Night. A trembling quiet that made me want to crawl under the table. Lucien swore and drew his sword."
+    },
+    {
+     "s": "tamlin",
+     "e": "angry",
+     "t": "Get Feyre to the window. By the curtains."
+    },
+    {
+     "do": [
+      {
+       "type": "region_call",
+       "method": "put_feyre",
+       "args": [
+        780,
+        196,
+        0
+       ]
+      },
+      {
+       "type": "region_call",
+       "method": "put_npc",
+       "args": [
+        "lucien",
+        780,
+        236,
+        0
+       ]
+      }
+     ]
+    },
+    {
+     "n": "Lucien dragged me out of my chair. I snatched a knife off the table as he went, and he pushed me against the velvet drapes and pressed his back into me, pinning me to the wall."
+    },
+    {
+     "n": "Magic stung my nose. A glamour, to hide me inside his shape and his scent. Over his shoulder I watched Tamlin take a long breath, put away his claws and fangs, and set his chair upright. A baldric of knives appeared across his chest out of nothing. He didn't touch them. He only sat, and picked at his nails, as if nothing at all were happening."
+    },
+    {
+     "n": "Someone was coming. Someone awful enough to frighten them both. Someone who would want to hurt me, if they knew I was here."
+    },
+    {
+     "n": "Footsteps in the hall. Even. Unhurried. Boots on marble."
+    },
+    {
+     "do": [
+      {
+       "type": "region_call",
+       "method": "walk_in",
+       "args": [
+        "lord_night",
+        "rhys",
+        700,
+        420
+       ]
+      }
+     ]
+    },
+    {
+     "n": "No mask. He belonged to something else, like the Attor. And worse, I knew him. He'd saved me from those three faeries on Fire Night."
+    },
+    {
+     "n": "He moved too gracefully, like a cat, and stopped a few yards from the High Lord. Black and gold and silver, wreathed in tendrils of night. I'd never dared to paint him. I knew now that I never would."
+    },
+    {
+     "s": "rhysand",
+     "e": "smirk",
+     "t": "High Lord."
+    },
+    {
+     "n": "He inclined his head. It wasn't a bow."
+    },
+    {
+     "s": "tamlin",
+     "e": "angry",
+     "t": "What do you want, Rhysand?"
+    },
+    {
+     "s": "rhysand",
+     "e": "smirk",
+     "t": "Rhysand? Come now. Forty-nine years without a visit, and it's Rhysand? Only my prisoners and my enemies call me that."
+    },
+    {
+     "n": "His grin widened, and something in it turned deadly, worse than anything I'd ever seen in Tamlin. He turned and ran an eye over Lucien. I didn't breathe."
+    },
+    {
+     "s": "rhysand",
+     "e": "smirk",
+     "t": "A fox mask. How fitting, Lucien."
+    },
+    {
+     "s": "lucien",
+     "e": "angry",
+     "t": "Go to hell, Rhys."
+    },
+    {
+     "s": "rhysand",
+     "e": "neutral",
+     "t": "I only wanted to see how you were faring, Tamlin. Whether my little present arrived."
+    },
+    {
+     "s": "tamlin",
+     "e": "angry",
+     "t": "Your present was unnecessary."
+    },
+    {
+     "s": "rhysand",
+     "e": "smirk",
+     "t": "But such a fond reminder of the old days. Nearly half a century shut away in a country house, and not one attempt to save yourself or your lands. Even now, when things are getting interesting again."
+    },
+    {
+     "s": "tamlin",
+     "e": "weary",
+     "t": "There's nothing to be done."
+    },
+    {
+     "s": "rhysand",
+     "e": "cold",
+     "t": "What a pity. You were always stubborn, but this is pathetic. How far the High Lord has fallen from the war-band leader he was."
+    },
+    {
+     "s": "lucien",
+     "e": "angry",
+     "t": "What would you know about anything? You're nothing but Amarantha's whore."
+    },
+    {
+     "s": "rhysand",
+     "e": "cold",
+     "t": "Her whore I may be. Not without my reasons. At least I haven't spent my days hiding among the hedges while the world went to hell."
+    },
+    {
+     "s": "rhysand",
+     "e": "smirk",
+     "t": "Little Lucien. You gave them all so much to talk about when you switched to Spring. Your poor mother is still in mourning."
+    },
+    {
+     "s": "lucien",
+     "e": "angry",
+     "t": "Watch your filthy mouth."
+    },
+    {
+     "s": "rhysand",
+     "e": "smirk",
+     "t": "Is that any way to speak to a High Lord of Prythian?"
+    },
+    {
+     "n": "My heart stopped. That was why the three faeries had run, on Fire Night. And the darkness that rippled off him, the violet eyes burning like stars..."
+    },
+    {
+     "s": "rhysand",
+     "e": "smirk",
+     "t": "Shouldn't you discipline your lackey, Tamlin?"
+    },
+    {
+     "s": "tamlin",
+     "e": "neutral",
+     "t": "I don't enforce rank in my court."
+    },
+    {
+     "s": "lucien",
+     "e": "angry",
+     "t": "This isn't the Night Court. You have no power here. So clear out. Amarantha's bed is getting cold."
+    },
+    {
+     "do": [
+      {
+       "type": "region_call",
+       "method": "npc_walk",
+       "args": [
+        "rhys",
+        780,
+        300
+       ]
+      },
+      {
+       "type": "shake",
+       "strength": 4
+      }
+     ]
+    },
+    {
+     "n": "Then he was in Lucien's face, too fast for my eyes to follow, snarling, and Lucien crushed me so hard against the wall that I had to swallow a cry."
+    },
+    {
+     "s": "rhysand",
+     "e": "cold",
+     "t": "I was slaughtering on battlefields before you were born."
+    },
+    {
+     "do": [
+      {
+       "type": "region_call",
+       "method": "npc_walk",
+       "args": [
+        "rhys",
+        700,
+        420
+       ]
+      }
+     ]
+    },
+    {
+     "n": "And just as fast he was easy and careless again, hands in his pockets."
+    },
+    {
+     "s": "rhysand",
+     "e": "smirk",
+     "t": "Besides, who do you think taught your beloved Tamlin the finer points of swords and females? You can't believe he learned it all in his father's little war-camps."
+    },
+    {
+     "s": "tamlin",
+     "e": "weary",
+     "t": "Save it, Rhys. You'll see me soon enough."
+    },
+    {
+     "s": "rhysand",
+     "e": "smirk",
+     "t": "She's already getting ready for you. I think I can safely tell her you're broken, and that you'll reconsider her offer."
+    },
+    {
+     "do": [
+      {
+       "type": "region_call",
+       "method": "npc_walk",
+       "args": [
+        "rhys",
+        760,
+        470
+       ]
+      }
+     ]
+    },
+    {
+     "n": "He trailed a finger along the back of my chair as he passed. Then he stopped, and looked at the table. Still laid for three. My half-eaten plate right in front of him."
+    },
+    {
+     "s": "rhysand",
+     "e": "neutral",
+     "t": "Where's your guest?"
+    },
+    {
+     "n": "He lifted my goblet, sniffed it, set it down."
+    },
+    {
+     "s": "tamlin",
+     "e": "neutral",
+     "t": "I sent them away when I sensed you coming."
+    },
+    {
+     "n": "A lie, cool and easy. For a moment Rhysand's face was perfectly blank. Then something flickered across it, almost like excitement, and his head snapped round to Lucien. Magic seared my nose, and his face twisted with fury."
+    },
+    {
+     "s": "rhysand",
+     "e": "cold",
+     "t": "You dare glamour me?"
+    },
+    {
+     "n": "His violet eyes bored straight into mine."
+    },
+    {
+     "s": "rhysand",
+     "e": "smirk",
+     "t": "I remember you. It seems you ignored my advice to stay out of trouble. Who, pray tell, is your guest?"
+    },
+    {
+     "s": "lucien",
+     "e": "angry",
+     "t": "My betrothed."
+    },
+    {
+     "s": "rhysand",
+     "e": "smirk",
+     "t": "Is she? And here I thought you still mourned your common-born lover after all these centuries."
+    },
+    {
+     "do": [
+      {
+       "type": "region_call",
+       "method": "npc_walk",
+       "args": [
+        "rhys",
+        780,
+        300
+       ]
+      }
+     ]
+    },
+    {
+     "n": "Lucien spat at his feet and thrust his sword between us."
+    },
+    {
+     "s": "rhysand",
+     "e": "cold",
+     "t": "Draw blood from me, Lucien, and you'll learn how fast Amarantha's whore can make the whole Autumn Court bleed. Its darling Lady first of all."
+    },
+    {
+     "n": "The color left Lucien's face, but he held his ground."
+    },
+    {
+     "s": "tamlin",
+     "e": "angry",
+     "t": "Put your sword down, Lucien."
+    },
+    {
+     "s": "rhysand",
+     "e": "cold",
+     "t": "I knew you liked your lovers lowly, Lucien. I never thought you'd stoop to mortal trash. If I were you, I'd keep your new pet far away from your father."
+    },
+    {
+     "s": "tamlin",
+     "e": "angry",
+     "t": "Leave, Rhys."
+    },
+    {
+     "n": "But he made no move to attack. Perhaps a fight between two High Lords would tear the house down to its foundations. Perhaps whoever this Amarantha was would make him pay too dearly for it. Rhysand brushed Lucien aside like a curtain."
+    },
+    {
+     "do": [
+      {
+       "type": "region_call",
+       "method": "put_npc",
+       "args": [
+        "lucien",
+        880,
+        262,
+        1
+       ]
+      },
+      {
+       "type": "region_call",
+       "method": "npc_walk",
+       "args": [
+        "rhys",
+        780,
+        236
+       ]
+      }
+     ]
+    },
+    {
+     "n": "Nothing stood between us now. Neither of them moved as he pried the knife out of my hand, gently, horribly gently, and sent it skittering across the floor."
+    },
+    {
+     "do": [
+      {
+       "type": "sfx",
+       "name": "clatter"
+      }
+     ]
+    },
+    {
+     "s": "rhysand",
+     "e": "neutral",
+     "t": "That won't do you any good. If you were wise, you'd be screaming and running from this place, and these people. It's a wonder you're still here."
+    },
+    {
+     "n": "I must have looked lost, because he laughed out loud."
+    },
+    {
+     "s": "rhysand",
+     "e": "smirk",
+     "t": "Oh. She doesn't know, does she?"
+    },
+    {
+     "s": "tamlin",
+     "e": "angry",
+     "t": "You have seconds, Rhys. Seconds to get out."
+    },
+    {
+     "s": "rhysand",
+     "e": "cold",
+     "t": "I wouldn't speak to me like that, if I were you."
+    },
+    {
+     "do": [
+      {
+       "type": "shake",
+       "strength": 6
+      }
+     ]
+    },
+    {
+     "n": "My body went rigid against my will. Every muscle locked, every bone straining. Something deeper than magic had seized everything inside me. Even my blood moved where he willed it."
+    },
+    {
+     "n": "An invisible, taloned hand scraped across my mind. One push, one swipe of those claws, and whoever I was would simply stop."
+    },
+    {
+     "s": "tamlin",
+     "e": "angry",
+     "t": "Let her go. Enough."
+    },
+    {
+     "s": "rhysand",
+     "e": "smirk",
+     "t": "I'd forgotten how easily human minds shatter. Like eggshells. Look at her, trying so hard not to scream. It would be quick, I promise."
+    },
+    {
+     "s": "rhysand",
+     "e": "smirk",
+     "t": "She has the most delicious thoughts about you, Tamlin."
+    },
+    {
+     "n": "And he told him. All of it. Every private thing I had ever imagined Tamlin's hands and mouth doing, said aloud in that lover's purr, while I burned with outrage and shame and still couldn't move a finger."
+    },
+    {
+     "s": "tamlin",
+     "e": "angry",
+     "t": "Let. Her. Go."
+    },
+    {
+     "s": "rhysand",
+     "e": "neutral",
+     "t": "If it's any comfort, she would have been the one for you. You might even have got away with it. A little late, though. She's more stubborn than you are."
+    },
+    {
+     "n": "The claws stroked my mind once more, lazily. Then they were gone, and I folded to the floor, gathering up everything I was, fighting not to sob, or scream, or be sick."
+    },
+    {
+     "s": "rhysand",
+     "e": "cold",
+     "t": "Amarantha will enjoy breaking her. Almost as much as she'll enjoy you watching her do it."
+    },
+    {
+     "n": "Tamlin stood frozen, his claws hanging at his sides. I had never seen him look like that."
+    },
+    {
+     "s": "tamlin",
+     "e": "weary",
+     "t": "Please."
+    },
+    {
+     "s": "rhysand",
+     "e": "neutral",
+     "t": "Please what?"
+    },
+    {
+     "s": "tamlin",
+     "e": "weary",
+     "t": "Don't tell Amarantha about her."
+    },
+    {
+     "s": "rhysand",
+     "e": "smirk",
+     "t": "And why not? As her whore, I really ought to tell her everything."
+    },
+    {
+     "s": "tamlin",
+     "e": "weary",
+     "t": "Please."
+    },
+    {
+     "s": "rhysand",
+     "e": "cold",
+     "t": "Beg, and I'll consider it."
+    },
+    {
+     "n": "Tamlin dropped to his knees and bowed his head."
+    },
+    {
+     "s": "rhysand",
+     "e": "cold",
+     "t": "Lower."
+    },
+    {
+     "n": "He pressed his forehead to the floor, his hands sliding out toward Rhysand's boots. I could have wept with rage, watching my High Lord brought so low."
+    },
+    {
+     "s": "rhysand",
+     "e": "smirk",
+     "t": "You too, fox-boy."
+    },
+    {
+     "n": "Lucien's face was black as thunder, but he knelt, and touched his head to the floor. I'd have given anything for that knife back. For anything at all to kill him with."
+    },
+    {
+     "s": "rhysand",
+     "e": "neutral",
+     "t": "Is this for your sake, or hers? You're far too desperate, Tamlin. It's off-putting. Becoming High Lord made you so boring."
+    },
+    {
+     "s": "tamlin",
+     "e": "angry",
+     "t": "Are you going to tell her?"
+    },
+    {
+     "s": "rhysand",
+     "e": "smirk",
+     "t": "Perhaps I will. Perhaps I won't."
+    },
+    {
+     "do": [
+      {
+       "type": "shake",
+       "strength": 4
+      }
+     ]
+    },
+    {
+     "n": "Tamlin was on his feet in a flash, fangs a hair from Rhysand's face. Rhysand only clicked his tongue, and pushed him away with one hand."
+    },
+    {
+     "s": "rhysand",
+     "e": "smirk",
+     "t": "None of that. Not in front of a lady. What's your name, love?"
+    },
+    {
+     "n": "My name, my family's name, would only bring them pain. He might drag them into Prythian to torment, for his own amusement. But if I took too long, he'd simply pluck it out of my head."
+    },
+    {
+     "choices": [
+      {
+       "t": "Give him the first name that comes to mind.",
+       "goto": "ch26_clare"
+      },
+      {
+       "t": "Tell him the truth.",
+       "goto": "ch26_truth"
+      }
+     ]
+    }
+   ]
+  },
+  "ch26_truth": {
+   "lines": [
+    {
+     "n": "Feyre Archeron. It was halfway up my throat when I thought of Elain in her garden, of Nesta at the window, of my father carving by the fire. I swallowed it, emptied my mind, and grabbed the first name I could find: a girl from the village I'd never spoken to."
+    },
+    {
+     "goto": "ch26_clare"
+    }
+   ]
+  },
+  "ch26_clare": {
+   "lines": [
+    {
+     "s": "feyre",
+     "e": "afraid",
+     "t": "Clare Beddor."
+    },
+    {
+     "n": "My voice was barely a breath."
+    },
+    {
+     "s": "rhysand",
+     "e": "smirk",
+     "t": "Well. That was entertaining. The most fun I've had in ages. I look forward to seeing the three of you Under the Mountain. I'll give Amarantha your regards."
+    },
+    {
+     "do": [
+      {
+       "type": "region_call",
+       "method": "vanish",
+       "args": [
+        "rhys"
+       ]
+      }
+     ]
+    },
+    {
+     "n": "And he was gone, as if he'd stepped through a tear in the world, leaving the three of us in a horrible, trembling silence."
+    },
+    {
+     "do": [
+      {
+       "type": "journal",
+       "id": "lore_rhysand"
+      },
+      {
+       "type": "journal",
+       "id": "lore_amarantha"
+      },
+      {
+       "type": "chapter_card",
+       "n": 27
+      }
+     ]
+    },
+    {
+     "n": "Tamlin ordered Lucien and me out, and shut the doors of the dining room behind us. I ran to my room like the coward I was. Alis was there, waiting with a cup of molten chocolate."
+    },
+    {
+     "n": "I tried not to hear the roaring that shook the chandeliers, or the furniture splintering below. I didn't go down to dinner. I didn't want to know if there was still a dining room to eat in. And I couldn't bring myself to paint."
+    },
+    {
+     "do": [
+      {
+       "type": "goto",
+       "chapter": 27,
+       "hour": 23,
+       "region": "manor_bedroom",
+       "spawn": "bed"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

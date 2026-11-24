@@ -124,7 +124,11 @@
        "id": "spring_manor"
       },
       {
-       "type": "end_slice"
+       "type": "goto",
+       "region": "spring_manor",
+       "spawn": "gate",
+       "chapter": 6,
+       "hour": 13
       }
      ]
     }

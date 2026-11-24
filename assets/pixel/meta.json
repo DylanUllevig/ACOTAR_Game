@@ -1178,6 +1178,13 @@
    41
   ]
  },
+ "props/bathtub.png": {
+  "px": 1,
+  "size": [
+   71,
+   97
+  ]
+ },
  "props/bed_canopy.png": {
   "px": 1,
   "size": [
@@ -1362,6 +1369,35 @@
    ]
   ]
  },
+ "props/candelabra_table.png": {
+  "px": 1,
+  "size": [
+   28,
+   59
+  ],
+  "windows": [
+   [
+    -0.9,
+    -57.7,
+    9
+   ],
+   [
+    -6.1,
+    -53.6,
+    7
+   ],
+   [
+    6.0,
+    -52.4,
+    12
+   ],
+   [
+    9.3,
+    -49.1,
+    9
+   ]
+  ]
+ },
  "props/cart.png": {
   "px": 2,
   "size": [
@@ -1380,6 +1416,13 @@
   "px": 1,
   "size": [
    31,
+   59
+  ]
+ },
+ "props/chaise.png": {
+  "px": 1,
+  "size": [
+   80,
    59
   ]
  },
@@ -1502,6 +1545,13 @@
    27
   ]
  },
+ "props/footbridge.png": {
+  "px": 2,
+  "size": [
+   90,
+   84
+  ]
+ },
  "props/fountain.png": {
   "px": 2,
   "size": [
@@ -1547,11 +1597,25 @@
    72
   ]
  },
+ "props/grandfather_clock.png": {
+  "px": 1,
+  "size": [
+   29,
+   87
+  ]
+ },
  "props/grass_tuft.png": {
   "px": 2,
   "size": [
    26,
    24
+  ]
+ },
+ "props/harp.png": {
+  "px": 1,
+  "size": [
+   38,
+   73
   ]
  },
  "props/hay_bales.png": {
@@ -1573,6 +1637,13 @@
   "size": [
    71,
    38
+  ]
+ },
+ "props/heron_fountain.png": {
+  "px": 2,
+  "size": [
+   75,
+   113
   ]
  },
  "props/holly.png": {
@@ -2227,6 +2298,13 @@
    48
   ]
  },
+ "props/palm.png": {
+  "px": 1,
+  "size": [
+   55,
+   85
+  ]
+ },
  "props/pine_0.png": {
   "px": 2,
   "size": [
@@ -2290,6 +2368,13 @@
    49
   ]
  },
+ "props/ribbon_pole.png": {
+  "px": 2,
+  "size": [
+   59,
+   105
+  ]
+ },
  "props/rock_0.png": {
   "px": 2,
   "size": [
@@ -2330,6 +2415,13 @@
   "size": [
    42,
    44
+  ]
+ },
+ "props/rose_fence.png": {
+  "px": 2,
+  "size": [
+   59,
+   49
   ]
  },
  "props/rose_pink.png": {
@@ -2409,6 +2501,20 @@
    39
   ]
  },
+ "props/stable.png": {
+  "px": 2,
+  "size": [
+   102,
+   117
+  ]
+ },
+ "props/staircase.png": {
+  "px": 1,
+  "size": [
+   139,
+   153
+  ]
+ },
  "props/stall_blue.png": {
   "px": 2,
   "size": [
@@ -2472,6 +2578,13 @@
    47
   ]
  },
+ "props/swing.png": {
+  "px": 2,
+  "size": [
+   73,
+   81
+  ]
+ },
  "props/table.png": {
   "px": 1,
   "size": [
@@ -2484,6 +2597,13 @@
   "size": [
    26,
    27
+  ]
+ },
+ "props/tapestry.png": {
+  "px": 1,
+  "size": [
+   73,
+   86
   ]
  },
  "props/toadstool.png": {
@@ -2556,11 +2676,25 @@
    55
   ]
  },
+ "props/well_roses.png": {
+  "px": 2,
+  "size": [
+   60,
+   89
+  ]
+ },
  "props/wheelbarrow.png": {
   "px": 2,
   "size": [
    36,
    34
+  ]
+ },
+ "props/willow.png": {
+  "px": 2,
+  "size": [
+   126,
+   170
   ]
  },
  "props/woodshed.png": {

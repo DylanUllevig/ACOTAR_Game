@@ -1,0 +1,161 @@
+# Chapter 7: the first dinner, the tripwire, the still life, the blight.
+
+== ch07_dinner
+> set_flag ch07_dined
+N They were still at the table when Alis brought me back, lounging over golden goblets. Real gold. I thought of our chipped, mismatched spoons.
+@tamlin/neutral Before you ask again: the food is safe. Sit.
+@lucien/smirk Told you so, Tamlin. You've grown rusty with females these last few decades.
+N Tamlin. So the beast had a name. And decades. He looked hardly older than I was, but his kind didn't die. He could be centuries old.
+@lucien/smirk Well, you look less like something the cat dragged in. A pity about the trousers, though. A dress would be prettier.
+@feyre/determined I'd rather not wear one.
+@tamlin/neutral Because it's easier to kill us in trousers.
+N I didn't answer that. He rose, walked the length of the table with a predator's ease and heaped a plate for me himself: meat, sauce, bread, a glass of pale sparkling wine.
+@tamlin/neutral It's an honor, for a mortal to be served by one of us.
+N I sat on my hands rather than fall on the food like a dog. They watched me. Tamlin cleared his throat.
+@tamlin/weary You look... better. Than before. And your hair is... clean.
+N Lucien gave him what might have been an encouraging nod. It was the worst compliment I had ever been paid.
+@feyre/determined What do you mean to do with me? Am I to be your slave?
+@tamlin/angry I don't keep slaves.
+@feyre/determined Then what am I supposed to do here? Work? Earn my keep?
+@tamlin/neutral What you do with your days is your own affair. Don't you have any... interests?
+@feyre/determined No.
+@lucien/smirk How very human.
+@tamlin/neutral Spend your time however you like. Just stay out of trouble.
+* Beg him to let you go home. -> ch07_beg
+* Ask if there's another way to pay the debt. -> ch07_beg
+
+== ch07_beg
+@feyre/sad My family is starving. Please. There has to be some other way out of the Treaty. Some other way to make it right.
+@lucien/angry Make it right? Have you even said you're sorry?
+N I looked him straight in his one russet eye.
+@feyre/determined I'm sorry.
+@lucien/angry How did you do it? A fair fight, or cold murder?
+* Tell him the truth. -> ch07_truth
+* Tell him it's none of his business. -> ch07_refuse
+
+== ch07_refuse
+@feyre/angry That's between me and the wolf.
+@lucien/angry The wolf had a name.
+@tamlin/angry Lucien.
+N Lucien's jaw worked. I gave him the truth anyway, if only to be done with it.
+-> ch07_truth
+
+== ch07_truth
+@feyre/determined An ash arrow. Then an ordinary one, through the eye. He didn't fight. After the first one, he only looked at me.
+@lucien/angry And still you killed him. And then you skinned him.
+@tamlin/angry Enough. I don't want to hear it.
+@feyre/angry My family won't last a month without me. Do you know what it's like to be hungry? Not to know where the next meal is coming from?
+@tamlin/angry Your family is alive and well fed. Do you think I'd take away the one who kept them and leave them nothing?
+@feyre/determined Swear it.
+@tamlin/neutral On everything I am, and everything I own.
+N Faeries can't lie. I knew that. It didn't stop me from shooting to my feet. Invisible hands clapped onto my arms and shoved me back into the chair.
+@tamlin/angry Whatever you were thinking of doing, don't. I'll warn you once, human. Live wherever you like in Prythian. But cross the wall, run home, and your family will no longer be looked after.
+N A stone to the skull. If I ran, I might doom them. And if I reached them, where would I take them? We had nowhere to go.
+@tamlin/angry The food isn't drugged. If you faint, it'll be your own fault. So you'll sit here and eat, Feyre. And Lucien will try to be polite.
+N The bonds on my arms loosened. The ones round my legs did not.
+> journal lore_cross_wall
+N I sniffed the plate. No metal tang of magic. I ate. I hadn't tasted anything so good in eight years. Even the meals before our ruin were ashes next to it.
+> heal_full
+N I reached for a second slice of chocolate torte, and every dish on the table simply vanished.
+@tamlin/neutral One more bite and you'll bring it all back up.
+N The last of the bonds slid away. Permission to leave.
+@feyre/neutral Thank you for the meal.
+@lucien/smirk Leaving so soon? A mortal woman, and you'd rather swallow hot coals than sit with us a moment longer. Ignore the eye, and we're not so hard to look at. Unless there's a line of suitors at your door back home.
+* Mention Isaac. -> ch07_isaac
+* Say there's no one. -> ch07_noone
+
+== ch07_isaac
+@feyre/determined There was a man in my village.
+N Tamlin and Lucien traded a look I couldn't read.
+@tamlin/neutral Do you love him?
+@feyre/neutral No.
+@tamlin/angry And is there anyone else you love?
+N A laugh burst out of me, thin and wild. Immortal killers, and this was what they wanted to know.
+-> ch07_why
+
+== ch07_noone
+@feyre/determined There's no one.
+N It was true, near enough. Isaac had never been mine, nor I his. And the fewer people back home these creatures knew about, the better.
+@tamlin/neutral No one at all? No one you love?
+N A laugh burst out of me, thin and wild. Immortal killers, and this was what they wanted to know.
+-> ch07_why
+
+== ch07_why
+@tamlin/weary We wanted to know something about you, since you'll be here a good long while. Lucien's pride gets in the way of his manners. Go and rest. We're both busy most days. If you need anything, ask the servants.
+@feyre/determined Why be so generous? I killed your friend.
+@tamlin/weary I kill often enough as it is. And you're too small a thing to trouble this house. Unless you start killing us.
+N Insignificant. As small and faded as the patterns I had painted round our cottage walls.
+N I backed out of the room without turning, the way you'd back away from a wolf. Lucien's laugh barked down the hall behind me, cut short by a growl.
+N I slept badly. The lock on my door felt like a joke, so I made a better one: a length of rope braided from the curtain trimmings, strung where anyone opening the door would catch it in the face.
+> goto manor_bedroom bed chapter=7 hour=6.5
+
+== ch07_morning
+> set_flag ch07_morning
+> sfx door_thud
+N The lock clicked. A screech, a thud, and Alis was in a heap on the floor with my rope swinging over her head.
+@feyre/afraid I'm sorry! I meant to take it down before anyone came in.
+@alis/stern A bit of rope in the face, to stop me breaking your bones? You think that will do a thing against one of us?
+@feyre/determined It wasn't a trap. It was a warning bell. Time enough to run.
+@alis/stern You can't outrun us either, girl.
+@feyre/determined I know. But at least I wouldn't meet my death asleep.
+N Alis barked a laugh.
+@alis/kind My master gave his word you'd live here. Live, not die. We obey him. But did you have to wreck those lovely curtains?
+N She threw them open on a sky still periwinkle with dawn. Another servant brought a tray: porridge, eggs, bacon, and tea richer than any I had ever tasted.
+@feyre/neutral What is this place? Where is it?
+@alis/neutral It's safe, and that's all you need to know. The house is, at least. If you go poking about the grounds, keep your wits about you.
+@feyre/neutral Which of you should I look out for?
+@alis/stern All of them. My master's protection only reaches so far. Plenty would hunt you just for being human, never mind what you did to Andras.
+@feyre/neutral And what am I meant to do? With the whole rest of my life?
+@alis/kind Take a walk in the gardens.
+N I nearly laughed. But a walk would let me learn the lay of the land. And whether there was anyone here who might plead my case.
+> objective Take a walk in the gardens.
+
+== ch07_painting
+> set_flag ch07_painting
+N A flash of color among the shadowed frames stopped me.
+N Only a still life. A green glass vase, flowers spilling over its lip: roses, tulips, peonies, morning glory. But the blossoms seemed to glow with their own light, defying the dark gathered round them, and the glass held that light and bent it through the water inside as if the vase truly had weight.
+N I had never seen anything like it. I could have stood there for hours.
+@feyre/sad Elain would have loved the flowers. I loved the light.
+N Gardens. Plans. I made myself walk on.
+
+== ch07_garden
+> set_flag ch07_garden
+@tamlin/neutral You.
+N Tamlin, coming down the path behind me in his fighting clothes, three long knives sheathed along his baldric now. You. I wondered if he even remembered my name.
+@feyre/determined Good morning. You said my days were my own. I didn't know I was under house arrest.
+@tamlin/angry Of course you're not. Do you want a tour?
+@feyre/neutral No, thank you.
+@tamlin/neutral I've been stuck inside all morning. I could use the air.
+@feyre/neutral You've been generous enough already.
+@tamlin/angry Do you have some sort of problem with me?
+@feyre/neutral No.
+@tamlin/angry I'm not going to kill you, Feyre. I don't break my promises.
+@feyre/determined Not kill me. Is harm another matter? Is that a loophole Lucien gets to use?
+@tamlin/angry They're under orders not to touch you.
+@feyre/determined And still I'm stuck in your lands, for breaking a rule I'd never heard of. Why was your friend across the wall at all? I thought the Treaty kept you out.
+@tamlin/neutral The Treaty doesn't keep us from anything but enslaving you. The wall is an inconvenience. If we cared to, we could break it and march through.
+@feyre/afraid And do you care to?
+@tamlin/neutral I've no interest in the mortal lands. I can't speak for the rest of my kind.
+@feyre/determined Then what was Andras doing there?
+N He went very still.
+@tamlin/weary There's a sickness in these lands. All over Prythian. It started almost fifty years ago. It's why this house is so empty. Most have left.
+@tamlin/weary It isn't a plague. It feeds on magic, and makes it act strangely. My own power is less than it was. These masks came of a surge of it, at a masquerade, forty-nine years ago. We still can't take them off.
+N Fifty years in a mask. I would have clawed my own face off.
+@tamlin/neutral I sent Andras across the wall to look for a cure.
+@feyre/afraid Can it hurt humans? Will it cross the wall?
+@tamlin/weary There's a chance. More than that, I don't know. It's been quiet for decades. You're safe, for now.
+@feyre/determined A mercenary told me she thought your kind might be planning to attack.
+@tamlin/neutral Do you often talk to mercenaries?
+@feyre/determined I talk to anyone who tells me something useful.
+@tamlin/neutral Was that tripwire in your room meant for me?
+@feyre/determined Can you blame me if it was?
+@tamlin/angry I may wear a beast's shape now and then, Feyre, but I'm civilized.
+N I looked pointedly at his hands, at the curved tips of claws pushing through his golden skin. He put them behind his back.
+@tamlin/neutral I'll see you at dinner.
+N It wasn't a request. A blight on their magic, that might one day spread to us, who had no magic at all to fight it. I wondered whether any of the High Fae would bother to warn us.
+N I didn't have to wonder long.
+> journal lore_blight
+> chapter_card 8
+@feyre/determined If I'm going to run one day, I need to know this place. Every path, every door, every way out.
+> objective Map the grounds: the rose garden fountain, the reflecting pool, the stables and the gate.
+H The four places are marked as you find them. Press M for the map.

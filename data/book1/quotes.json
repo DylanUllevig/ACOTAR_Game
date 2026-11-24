@@ -19,6 +19,11 @@
     "q_life_for_life": {"chapter": 4, "speaker": "beast", "text": "A life for a life."},
     "q_i_did": {"chapter": 4, "speaker": "feyre", "text": "I did."},
     "q_make_a_name": {"chapter": 4, "speaker": "father", "text": "You go somewhere new—and you make a name for yourself."},
-    "q_prison": {"chapter": 5, "speaker": "feyre", "text": "My prison or my salvation—I couldn't decide which."}
+    "q_prison": {"chapter": 5, "speaker": "feyre", "text": "My prison or my salvation—I couldn't decide which."},
+    "q_stay": {"chapter": 14, "speaker": "suriel", "text": "Stay with the High Lord, human."},
+    "q_faerie_pig": {"chapter": 22, "speaker": "feyre", "text": "Faerie pig!"},
+    "q_not_alone": {"chapter": 22, "speaker": "tamlin", "text": "That I'm not alone."},
+    "q_happiest": {"chapter": 25, "speaker": "feyre", "text": "It was the happiest moment of my life."},
+    "q_thorns": {"chapter": 27, "speaker": "tamlin", "text": "Thorns and all."}
   }
 }

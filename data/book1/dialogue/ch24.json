@@ -1,0 +1,611 @@
+{
+ "schema": 2,
+ "notes": "Line forms: {n} Feyre's narration, first person past tense, shown in italics; {s,e,t} a line spoken aloud (speaker, portrait expression, text); {hint} a game tip on its own card; {choices:[{t,goto,do}]}; {do:[actions]}; {goto}. Any line or choice may carry if_flag, if_not_flag, if_item, if_not_item or if_chapter. Wording is written for the game; the few short book lines kept are listed in quotes.json.",
+ "scenes": {
+  "ch24_wake": {
+   "lines": [
+    {
+     "do": [
+      {
+       "type": "set_flag",
+       "flag": "ch24_wake"
+      }
+     ]
+    },
+    {
+     "n": "It wasn't the dawn that woke me, but a buzzing. A squat female with skin like tree bark was fussing over my breakfast things."
+    },
+    {
+     "s": "feyre",
+     "e": "afraid",
+     "t": "Where's Alis?"
+    },
+    {
+     "n": "He must have carried me home. All the way home, asleep."
+    },
+    {
+     "s": "alis",
+     "e": "stern",
+     "t": "What?"
+    },
+    {
+     "n": "She turned. I knew the bird mask. But I'd have remembered a faerie who looked like that. I'd have painted her already."
+    },
+    {
+     "s": "feyre",
+     "e": "afraid",
+     "t": "Is Alis unwell?"
+    },
+    {
+     "s": "alis",
+     "e": "stern",
+     "t": "Have you lost your wits? I am Alis."
+    },
+    {
+     "n": "She clucked her tongue, shook her head, and marched off to run my bath."
+    },
+    {
+     "n": "It wasn't possible. The Alis I knew was fair and plump and looked as High Fae as anyone. Unless... A glamour. The sight he'd given me had stripped away every glamour I'd been seeing."
+    },
+    {
+     "n": "But why glamour a whole household? Because I'd been a cowering human, that's why. Because he knew I'd have locked myself in this room and never come out, if I'd seen them all as they truly were."
+    },
+    {
+     "do": [
+      {
+       "type": "objective",
+       "text": "Find Tamlin. He'll be at breakfast in the dining room."
+      }
+     ]
+    }
+   ]
+  },
+  "ch24_dining": {
+   "lines": [
+    {
+     "do": [
+      {
+       "type": "set_flag",
+       "flag": "ch24_dining"
+      }
+     ]
+    },
+    {
+     "n": "The way down was worse. The halls were full of masked faeries I'd never laid eyes on. Some were tall and fair, High Fae like Tamlin. Others were... not. I tried not to stare at those. They seemed the most startled to be noticed."
+    },
+    {
+     "n": "From my window I'd seen the gardeners, too: insect masks, buzzing wings like oil on water, green-brown skin and limbs far too long."
+    },
+    {
+     "n": "Lucien, thank the Cauldron, still looked like Lucien."
+    },
+    {
+     "s": "tamlin",
+     "e": "neutral",
+     "t": "What's wrong?"
+    },
+    {
+     "s": "feyre",
+     "e": "afraid",
+     "t": "There are... a great many people. Faeries. Everywhere. When did they all arrive?"
+    },
+    {
+     "n": "He bit his lip to keep from smiling."
+    },
+    {
+     "s": "tamlin",
+     "e": "tender",
+     "t": "They've been here all along."
+    },
+    {
+     "s": "feyre",
+     "e": "afraid",
+     "t": "But I never heard a thing."
+    },
+    {
+     "s": "lucien",
+     "e": "smirk",
+     "t": "Of course you didn't. We made sure you couldn't see or hear anyone who wasn't strictly necessary."
+    },
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "So the night I ran after the puca..."
+    },
+    {
+     "s": "lucien",
+     "e": "smirk",
+     "t": "You had an audience."
+    },
+    {
+     "n": "And there I'd been, thinking myself so stealthy. Tiptoeing past faeries who must have laughed themselves sick at the blind human chasing an illusion."
+    },
+    {
+     "s": "tamlin",
+     "e": "tender",
+     "t": "It was a valiant effort."
+    },
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "But I saw the naga. And the puca, and the Suriel. And the faerie with her wings torn off. Why didn't the glamour hide them?"
+    },
+    {
+     "s": "tamlin",
+     "e": "angry",
+     "t": "They aren't of my court, so my glamour couldn't hold them. The puca belongs to the wind and the weather and everything that changes. The naga belong to someone else."
+    },
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "I see."
+    },
+    {
+     "n": "I didn't see at all. Lucien knew it, and chuckled, and I glared at him."
+    },
+    {
+     "s": "feyre",
+     "e": "angry",
+     "t": "You've been noticeably absent again."
+    },
+    {
+     "s": "lucien",
+     "e": "smirk",
+     "t": "I've been busy. So have you, I hear. If I offer you the moon on a string, do I get a kiss too?"
+    },
+    {
+     "s": "tamlin",
+     "e": "angry",
+     "t": "Don't be an ass."
+    },
+    {
+     "n": "Lucien was still laughing when he left the room."
+    },
+    {
+     "do": [
+      {
+       "type": "region_call",
+       "method": "walk_out",
+       "args": [
+        "lucien"
+       ]
+      }
+     ]
+    },
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "If I met the Attor again, would I actually see it?"
+    },
+    {
+     "s": "tamlin",
+     "e": "neutral",
+     "t": "Yes. And it wouldn't be pleasant."
+    },
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "You said it didn't see me in the garden. It's certainly not one of yours. So why not?"
+    },
+    {
+     "s": "tamlin",
+     "e": "neutral",
+     "t": "Because I threw a glamour over you as we walked in. It couldn't see you, or hear you, or smell you."
+    },
+    {
+     "n": "He looked past me to the window and dragged a hand through his hair."
+    },
+    {
+     "s": "tamlin",
+     "e": "weary",
+     "t": "I've done all I can to keep you hidden from things like the Attor. And worse. The sickness is stirring again, and more of them are slipping their leashes."
+    },
+    {
+     "s": "tamlin",
+     "e": "neutral",
+     "t": "If you see one, even if it looks harmless, if it makes you uneasy, pretend you don't. Don't speak to it. If it hurt you... what came after would be ugly. For it, and for me. You remember the naga."
+    },
+    {
+     "n": "This was for my safety, not his amusement. He didn't want me hurt, and he didn't want to have to punish anyone for it. Had it hurt him, killing the naga?"
+    },
+    {
+     "s": "feyre",
+     "e": "afraid",
+     "t": "The sickness is growing again?"
+    },
+    {
+     "s": "tamlin",
+     "e": "neutral",
+     "t": "Only in other lands, so far. You're safe here."
+    },
+    {
+     "s": "feyre",
+     "e": "sad",
+     "t": "It isn't my safety I'm worried about."
+    },
+    {
+     "s": "tamlin",
+     "e": "tender",
+     "t": "It will be fine."
+    },
+    {
+     "n": "His eyes softened, but his mouth went thin. I didn't offer to help. I knew he'd never let me."
+    },
+    {
+     "n": "But I thought of the painting I'd given him, and what he'd said about it. And I wished he'd let me in anyway."
+    },
+    {
+     "n": "I slept badly. In the morning I gathered up my paints and easel, meaning to give the whole day to the irises round the heron fountain."
+    },
+    {
+     "do": [
+      {
+       "type": "set_flag",
+       "flag": "ch24_morning"
+      },
+      {
+       "type": "time",
+       "hour": 9
+      },
+      {
+       "type": "objective",
+       "text": "Take your paints out to the irises by the heron fountain."
+      }
+     ]
+    }
+   ]
+  },
+  "ch24_out": {
+   "lines": [
+    {
+     "n": "A bright, still morning. Past the reflecting pool, the irises round the heron fountain would be at their best."
+    }
+   ]
+  },
+  "ch24_head": {
+   "lines": [
+    {
+     "do": [
+      {
+       "type": "set_flag",
+       "flag": "ch24_head"
+      },
+      {
+       "type": "music",
+       "name": ""
+      },
+      {
+       "type": "sfx",
+       "name": "clatter"
+      }
+     ]
+    },
+    {
+     "n": "My tins and brushes clattered onto the gravel."
+    },
+    {
+     "n": "A head. A male, High Fae, spiked on the stone heron's upraised bill. The statue was soaked with so much blood it must have been fresh when they drove it on."
+    },
+    {
+     "n": "Brown eyes bulging. Teeth broken and bloody. The mouth still open on a scream. No mask, so not of the Spring Court. Beyond that, I couldn't tell anything."
+    },
+    {
+     "n": "I stepped back, and walked straight into something warm and solid."
+    },
+    {
+     "do": [
+      {
+       "type": "region_call",
+       "method": "npc_beside",
+       "args": [
+        "tamlin"
+       ]
+      },
+      {
+       "type": "region_call",
+       "method": "npc_visible",
+       "args": [
+        "lucien",
+        true
+       ]
+      }
+     ]
+    },
+    {
+     "s": "tamlin",
+     "e": "neutral",
+     "t": "It's me."
+    },
+    {
+     "n": "Lucien stood beside him, pale and grim."
+    },
+    {
+     "s": "lucien",
+     "e": "grim",
+     "t": "Not Autumn Court. I don't know him at all."
+    },
+    {
+     "s": "tamlin",
+     "e": "angry",
+     "t": "Nor do I."
+    },
+    {
+     "n": "His hands closed on my shoulders. A soft, vicious growl ran under his words, but no claws touched me. Lucien waded into the red water of the basin and peered up at that face."
+    },
+    {
+     "s": "lucien",
+     "e": "angry",
+     "t": "They branded him behind the ear. A mountain, with three stars."
+    },
+    {
+     "s": "tamlin",
+     "e": "angry",
+     "t": "The Night Court."
+    },
+    {
+     "n": "The northernmost part of Prythian, if I remembered the mural's map. A land of darkness and starlight."
+    },
+    {
+     "s": "feyre",
+     "e": "afraid",
+     "t": "Why would they do this?"
+    },
+    {
+     "s": "tamlin",
+     "e": "angry",
+     "t": "The Night Court does as it pleases. They live by their own codes. Their own rotten morals."
+    },
+    {
+     "s": "lucien",
+     "e": "angry",
+     "t": "Sadistic killers, every one of them. They delight in every kind of torture, and they'd find a stunt like this hilarious."
+    },
+    {
+     "s": "feyre",
+     "e": "afraid",
+     "t": "Hilarious. But not a message?"
+    },
+    {
+     "s": "lucien",
+     "e": "grim",
+     "t": "Oh, it's a message. To get through our defenses and out again, with the blood this fresh... It's exactly what the High Lord of the Night Court would find amusing. The bastard."
+    },
+    {
+     "n": "There was a thick, wet sound of flesh and bone scraping stone as he pulled it free. I'd skinned more animals than I could count. This was nothing like that. Tamlin's other hand settled on my shoulder."
+    },
+    {
+     "n": "Sixty, seventy feet from the house. That was how close they'd come."
+    },
+    {
+     "s": "tamlin",
+     "e": "neutral",
+     "t": "You're still safe here. It was only their idea of a prank."
+    },
+    {
+     "s": "feyre",
+     "e": "afraid",
+     "t": "It has nothing to do with the sickness?"
+    },
+    {
+     "s": "tamlin",
+     "e": "neutral",
+     "t": "Only in that they know it's waking again, and want us to know they're circling like vultures, in case our wards fall any further. I won't let that happen."
+    },
+    {
+     "n": "The masks made it plain enough that nothing could be done against the sickness. I didn't have the heart to say so."
+    },
+    {
+     "s": "lucien",
+     "e": "angry",
+     "t": "They'll get what's coming to them soon enough. With any luck, the sickness will wreck them too."
+    },
+    {
+     "n": "Tamlin growled at him to see to the head, and the gravel crunched as he went."
+    },
+    {
+     "do": [
+      {
+       "type": "region_call",
+       "method": "npc_leave",
+       "args": [
+        "lucien"
+       ]
+      }
+     ]
+    },
+    {
+     "n": "I crouched for my paints, hands shaking. Tamlin knelt beside me and closed his hands around mine."
+    },
+    {
+     "s": "tamlin",
+     "e": "tender",
+     "t": "You're still safe."
+    },
+    {
+     "n": "The Suriel's words came back to me. Stay with the High Lord, and you will be safe. I nodded."
+    },
+    {
+     "s": "tamlin",
+     "e": "neutral",
+     "t": "It's posturing. The Night Court is deadly, but this was only their lord's notion of a joke. Attacking anyone here, attacking you, would cost him more than it's worth. And if the sickness breaks our borders and they come with it, we'll be ready."
+    },
+    {
+     "do": [
+      {
+       "type": "journal",
+       "id": "lore_night_court"
+      }
+     ]
+    },
+    {
+     "choices": [
+      {
+       "t": "\"Their jokes must have been worse, when we were your slaves.\"",
+       "goto": "ch24_slaves"
+      },
+      {
+       "t": "Say nothing, and gather your brushes.",
+       "goto": "ch24_quiet"
+      }
+     ]
+    }
+   ]
+  },
+  "ch24_slaves": {
+   "lines": [
+    {
+     "s": "feyre",
+     "e": "sad",
+     "t": "Their jokes must have been even worse when my people were your slaves."
+    },
+    {
+     "n": "A shadow moved behind his eyes."
+    },
+    {
+     "s": "tamlin",
+     "e": "weary",
+     "t": "Some days I'm very glad I was still a child when my father sent his slaves south of the wall. What I saw then was bad enough."
+    },
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "Do you remember if they were glad to go?"
+    },
+    {
+     "s": "tamlin",
+     "e": "weary",
+     "t": "Yes. They'd never known freedom, or the seasons as you know them. They didn't know what to do with themselves out in the mortal world. But most of them were very, very happy to go. I was happy to see them go. Even if my father wasn't."
+    },
+    {
+     "n": "His claws had slid out above his knuckles, though he hadn't moved at all. No wonder he hadn't known what to do with me, when I first came."
+    },
+    {
+     "s": "feyre",
+     "e": "tender",
+     "t": "You're not your father, Tamlin. Or your brothers. You never once made me feel like a prisoner. Or like a piece of property."
+    },
+    {
+     "n": "He nodded his thanks, and the shadows told me there was more. About his family, about the life he'd had before they were killed and the title was forced on him. I wouldn't ask. Not with all this pressing down on him. Not until he was ready. He'd given me space and respect. I could give him no less."
+    },
+    {
+     "goto": "ch24_after"
+    }
+   ]
+  },
+  "ch24_quiet": {
+   "lines": [
+    {
+     "n": "I said nothing. I picked up my brushes one by one, and he helped, and neither of us looked at the fountain again."
+    },
+    {
+     "goto": "ch24_after"
+    }
+   ]
+  },
+  "ch24_after": {
+   "lines": [
+    {
+     "n": "I couldn't bring myself to paint that day."
+    },
+    {
+     "do": [
+      {
+       "type": "chapter_card",
+       "n": 25
+      }
+     ]
+    },
+    {
+     "n": "Within hours he was called away to one of the borders. Where, and why, he wouldn't say. I could read enough in what he didn't say: the sickness was crawling out of the other courts, straight toward ours."
+    },
+    {
+     "n": "He stayed away all night, the first night he ever had, and sent Lucien to tell me he was alive. Lucien leaned on that last word so hard that I hardly slept."
+    },
+    {
+     "n": "I knew where this path ended. My mortal heart, in pieces. And still I couldn't stop. I hadn't been able to since the day of the naga."
+    },
+    {
+     "do": [
+      {
+       "type": "music",
+       "name": "solstice"
+      }
+     ]
+    },
+    {
+     "n": "Yet I woke the next morning to merry fiddling. The garden was hung with ribbons and streamers, and out on the hills they were building bonfires and raising maypoles."
+    },
+    {
+     "s": "alis",
+     "e": "kind",
+     "t": "Midsummer. The great revel used to be at the Summer Court, but things are different now, so we keep our own. You're going."
+    },
+    {
+     "n": "Alis's people, I'd learned, were called the urisk."
+    },
+    {
+     "n": "Summer. In all those weeks of painting and dining and wandering the estate at his side, summer had come. At home there'd be a little gathering in the square: shared food, donated ale, a line dance or two. This would be something else entirely."
+    },
+    {
+     "n": "Tamlin was gone nearly all day. It was late afternoon before I heard his voice, and Lucien's braying laugh, echoing down the halls. I ran to find them, and Alis caught me on the stairs and hauled me back up."
+    },
+    {
+     "n": "Off came my paint-spattered clothes. On went flowing cornflower-blue chiffon, my hair loose, a garland of pink and white and blue wildflowers round my head. I might have felt like a child in it. But my sharp bones had filled out over the months. A woman's body. I'd never thought I would feel anything but muscle and bone."
+    },
+    {
+     "s": "lucien",
+     "e": "smirk",
+     "t": "Cauldron boil me. She looks positively Fae."
+    },
+    {
+     "n": "I was too busy checking Tamlin over for blood, for wounds, for any mark the sickness might have left, to thank him. But Tamlin was clean, almost glowing, and unarmed. And smiling at me."
+    },
+    {
+     "s": "tamlin",
+     "e": "tender",
+     "t": "You look lovely."
+    },
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "I'm surprised I'm even allowed out tonight."
+    },
+    {
+     "s": "lucien",
+     "e": "smirk",
+     "t": "Unluckily for you and your neck, tonight is only a party."
+    },
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "Do you lie awake at night thinking up tomorrow's clever remarks?"
+    },
+    {
+     "s": "tamlin",
+     "e": "tender",
+     "t": "He's right, though. Midsummer is a time of truce, when everyone lets their hair down and simply gets to be a faerie. Not High Fae, not lesser. Just us."
+    },
+    {
+     "s": "lucien",
+     "e": "smirk",
+     "t": "Which means singing, dancing, shocking amounts of drinking. And dallying."
+    },
+    {
+     "do": [
+      {
+       "type": "objective",
+       "text": "Midsummer on the lawn. Find something to eat, then follow the music."
+      },
+      {
+       "type": "goto",
+       "chapter": 25,
+       "hour": 19,
+       "region": "spring_manor",
+       "spawn": "pool"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

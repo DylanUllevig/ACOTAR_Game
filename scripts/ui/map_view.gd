@@ -8,7 +8,10 @@ extends VBoxContainer
 
 const PARCHMENT := Color(0.86, 0.8, 0.67)
 const INK := Color(0.2, 0.15, 0.11)
-const REGION_FOR := {"forest": "mortal_forest", "cottage": "archeron_cottage", "village": "mortal_village", "wall_ride": "the_wall"}
+const REGION_FOR := {"forest": "mortal_forest", "cottage": "archeron_cottage", "village": "mortal_village", "wall_ride": "the_wall",
+	"spring_manor": "spring_manor", "spring_woods": "spring_woods", "manor_hall": "spring_manor", "manor_dining": "spring_manor",
+	"manor_study": "spring_manor", "manor_gallery": "spring_manor", "manor_studio": "spring_manor", "manor_landing": "spring_manor",
+	"manor_bedroom": "spring_manor"}
 
 var mode := 0                 # 0 this area, 1 Prythian
 var _canvas: Control

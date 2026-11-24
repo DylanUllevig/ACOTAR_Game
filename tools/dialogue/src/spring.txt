@@ -1,0 +1,125 @@
+# The Spring Court, between story beats: Alis, the sentries, the landmarks, the rooms of the manor, the woods.
+# Chapter variants use [c:N] for one chapter, or [f:a !f:b] for "after a, before b".
+
+== spring_alis_cake
+[!f:ch15_naga_done] @alis/stern Still thin as a rake. Here. Eat it before Lucien sees, or there'll be none left.
+[f:ch15_naga_done !f:ch24_wake] @alis/kind You're looking better fed every week. Have one more all the same.
+[f:ch24_wake] @alis/kind Stop staring at my bark and eat your cake, girl.
+> item honey_cake 1
+
+== spring_alis
+[c:8] @alis/neutral If you're set on wandering, see the place properly. The fountain in the rose garden, the reflecting pool, the stables, the gate. And be back for dinner.
+[c:9] @alis/neutral Lucien's down at the stables, if it's him you're after. He'll not wait all day.
+[c:10] @alis/stern Eat something. You look as if you'd seen the Bogge. Oh. You did. Then eat two somethings.
+[c:11] @alis/stern Bed. Now. And stay in it, whatever you hear.
+[c:12] @alis/stern Bed. Now. And stay in it, whatever you hear.
+[c:13] @alis/neutral The library's off the hall, on the east side. Lucien's rooms are at the far end of the upper hall, if you need him. Knock loudly.
+[c:14] @alis/stern Whatever you mean to do with that chicken, I don't want to know about it.
+[c:15] @alis/stern Whatever you mean to do with that chicken, I don't want to know about it.
+[c:16] @alis/kind A hot bath and a hot meal. That's what you need after the day you've had.
+[c:17] @alis/stern Not today. Leave me be.
+[c:18] @alis/neutral They're waiting for you by the reflecting pool. Go on. Don't keep a High Lord standing about.
+[c:19] @alis/kind Your painting room's through the gallery, east door. And yes, I'll find you a key.
+[c:20] @alis/stern Tonight of all nights, you stay in your room. Whatever you hear. Do you understand me?
+[c:21] @alis/stern Tonight of all nights, you stay in your room. Whatever you hear. Do you understand me?
+[c:22] @alis/kind I put your roses in water. White ones, from his mother's garden. Make of that what you will.
+[c:23] @alis/kind Off out again? Take a shawl. Not that you ever do.
+[c:24] @alis/stern Stop gawking. We're the same as we always were. You simply couldn't see it.
+[c:25] @alis/kind It's Midsummer. Go and dance until your feet ache, and don't touch the wine.
+[c:26] @alis/stern Keep to your room today. I'll bring you something hot.
+[c:27] @alis/stern Keep to your room today. I'll bring you something hot.
+
+== spring_sentry
+[!f:ch24_wake] N The sentry didn't so much as glance at me. Masked and armored, as still as the gateposts.
+[f:ch24_wake] N Without the glamour, the sentry's mask sat over a face with a great many teeth. He nodded to me, quite politely.
+[!f:ch10_bogge_done] N I wondered what, exactly, they were guarding the gate against. I found out soon enough.
+[f:ch10_bogge_done !f:ch19_attor_done] N After the Bogge, I was glad of every one of them.
+[f:ch19_attor_done] N They hadn't seen the Attor come. Nobody had.
+
+== spring_fountain
+[!f:ch19_garden] N The fountain at the heart of the rose garden, its water bright with sun. Roses climbed every arch and wall around it, red and pink and white, heavy enough to bow the stems.
+[f:ch19_garden !f:ch24_wake] N The hedges on the north side, where I'd lain flat in the dirt and listened to it whisper. I didn't linger.
+[f:ch24_wake] N Gardeners in insect masks buzzed between the roses, deadheading and tying back. One waved a long green hand at me. I waved back.
+
+== spring_pool
+[!f:ch25_dawn] N The reflecting pool lay perfectly still under the blossom trees, holding the whole sky in it.
+[f:ch25_dawn] N The reflecting pool, where Tamlin had once thrown Lucien for feeding me witchberries. The water still looked innocent.
+
+== spring_stables
+[!f:ch09_ride] N Horses, glossy and well fed, and a stable yard cleaner than our cottage had ever been.
+[f:ch09_ride] N The white mare put her nose over the door and blew at me. I'd brought her nothing. She forgave me anyway.
+
+== spring_gate
+[!f:ch11_puca_done] N The iron gate stood open. The road ran south from it, toward the wall and home. I wasn't going anywhere, and the gate seemed to know it.
+[f:ch11_puca_done !f:ch27_night] N The place where the thing in my father's shape had beckoned to me. Even by daylight, I didn't like to stand here long.
+
+== spring_heron
+[!f:ch24_head] N A great stone heron spreading its wings over the water, irises crowded thick around its feet. I meant to paint them one of these days.
+[f:ch24_head] N They'd scrubbed the stone clean. I still couldn't look at the heron's bill.
+
+== spring_woods_closed
+[!f:ch10_bogge_done] N The woods. Lucien had been very clear that they were no place for a human to wander on her own.
+[f:ch10_bogge_done !f:ch11_follow] N I thought of the cold in the brush, and the voice that wanted me to look. Not today.
+[c:20] N Tamlin had told me to keep to my room tonight. The woods could wait until I'd decided whether to listen.
+
+== spring_painting
+[!f:ch19_studio] N The still life in the hall: a bowl of flowers so alive I could almost smell them. I could look at it for hours. Sometimes I did.
+[f:ch19_studio] N I knew now how hard it was, to make a bowl of flowers look that alive. I liked the painting more for it, not less.
+
+== spring_table
+N I'd already eaten my fill. There'd be more at the next meal. There was always more, here.
+
+== spring_desk
+[!f:ch13_read] N A writing desk, polished like glass. Paper and ink, and a quill I had no use for. Yet.
+[f:ch13_read] N My primer was where I'd left it. Day by day, the letters were starting to behave.
+
+== spring_mural
+[!f:ch13_mural] N A great painted map of Prythian, covering the whole wall. Courts, rivers, mountains. I couldn't read a word of it.
+[f:ch13_mural !f:ch24_head] N The map of Prythian: the seven courts, and Hybern beyond the sea. I traced the Spring Court with one finger, small and green in the south.
+[f:ch24_head] N My eyes went north, to the Night Court. A land of darkness and starlight. A mountain with three stars.
+
+== spring_lucien_door
+[!f:ch13_lucien] N Lucien's door. I wasn't about to knock on it.
+[f:ch13_lucien !f:ch26_rhys] N Through the door, someone was either snoring or singing. Possibly both.
+[f:ch26_rhys] N Silence behind Lucien's door. I raised my hand to knock, and let it fall.
+
+== spring_window
+[!f:ch24_wake] N The gardens rolled away below, bright and perfect and empty. No one ever seemed to be out there, however long I looked.
+[f:ch24_wake] N Faeries everywhere in the gardens below, masked and winged and long-limbed. They had been there all along, and I had never seen them.
+
+== spring_window_night
+[!f:ch11_puca_done] N Moonlight on the gardens. Somewhere past the hedges, something cried out once, and was quiet.
+[f:ch11_puca_done !f:ch25_dawn] N Moonlight on the gravel by the gate. Nothing there. Nothing I would let myself believe in, anyway.
+[f:ch25_dawn] N Moonlight on the gardens, and on the hill beyond, where we had watched the sun come up.
+
+== spring_bed
+N A bed big enough for four of me, and soft enough to drown in.
+* Lie down for a while. -> spring_bed_rest
+* Not now.
+
+== spring_bed_rest
+> region_call rest
+
+== spring_gallery
+[!f:ch19_studio] N Room after room of paintings. Some of them stopped my breath. I didn't have words for half of what they made me feel.
+[f:ch19_studio] N I came back to the same few paintings again and again, trying to steal how they'd done the light.
+
+== spring_paint
+[!f:ch22_paintings] N My easel, my brushes, the canvas I wasn't letting anyone see yet.
+[f:ch22_paintings !f:ch26_rhys] N The snowy woods were gone from the wall. He'd hung them in his study, Alis said. I started on something new.
+[f:ch26_rhys] N I picked up a brush, and put it down again. Not today.
+* Paint for a while. -> spring_paint_go
+* Leave it for now.
+
+== spring_paint_go
+> heal_full
+N I lost an hour, and then another, in color and light. When I came up for air, I felt more like myself than I had in days.
+
+== spring_grove
+[!f:ch14_snare] N A ring of young birches, tall and straight as pillars. It was very quiet in the middle of them.
+[f:ch14_snare] N The ring of birches. The ground was still scuffed where the snare had been, and where the naga had come.
+
+== spring_pool_glen
+[!f:ch18_glen] N A clear pool under an old willow. Ordinary, I'd have said. But then, I'd have said that about most things here once.
+[f:ch18_glen !f:ch23_glen] N The pool where the starlight had swum around us. By day it was only water, but I knew better now.
+[f:ch23_glen] N The willow was singing. I could hear it now, thin and sad and sweet, all the time.

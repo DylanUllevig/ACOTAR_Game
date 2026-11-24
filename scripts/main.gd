@@ -118,7 +118,7 @@ func _show_title() -> void:
 	for b in [b_new, b_cont, b_opt, b_quit]:
 		b.custom_minimum_size = Vector2(0, 60)
 	b_new.grab_focus.call_deferred()
-	var ver = Art.label_lit("Milestone 1 vertical slice  ·  v%s" % ProjectSettings.get_setting("application/config/version"), 18, Color(1, 1, 1, 0.45), "caps_wide")
+	var ver = Art.label_lit("Milestone 2: the Spring Court  ·  v%s" % ProjectSettings.get_setting("application/config/version"), 18, Color(1, 1, 1, 0.45), "caps_wide")
 	ver.anchor_top = 1.0
 	ver.anchor_bottom = 1.0
 	ver.offset_left = 30

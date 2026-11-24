@@ -10,6 +10,15 @@ const REGIONS := {
 	"cottage": "res://scripts/world/regions/cottage.gd",
 	"village": "res://scripts/world/regions/village.gd",
 	"wall_ride": "res://scripts/world/regions/wall_ride.gd",
+	"spring_manor": "res://scripts/world/regions/spring_manor.gd",
+	"spring_woods": "res://scripts/world/regions/spring_woods.gd",
+	"manor_hall": "res://scripts/world/regions/manor_in.gd",
+	"manor_dining": "res://scripts/world/regions/manor_in.gd",
+	"manor_study": "res://scripts/world/regions/manor_in.gd",
+	"manor_gallery": "res://scripts/world/regions/manor_in.gd",
+	"manor_studio": "res://scripts/world/regions/manor_in.gd",
+	"manor_landing": "res://scripts/world/regions/manor_in.gd",
+	"manor_bedroom": "res://scripts/world/regions/manor_in.gd",
 }
 
 var root: Node = null          # set by main.gd
@@ -24,6 +33,9 @@ func goto_region(id: String, spawn := "", autosave := true) -> void:
 	busy = true
 	await UI.fade_out(0.45)
 	if current_region:
+		# it lingers until the end of the frame: rename it, so that a reload of
+		# the same region can take the name rather than an engine-made one
+		current_region.name = "Leaving_%d" % current_region.get_instance_id()
 		current_region.queue_free()
 		current_region = null
 	if GameState.region != id:

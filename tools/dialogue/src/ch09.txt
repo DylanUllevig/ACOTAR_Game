@@ -1,0 +1,121 @@
+# Chapter 9: Tamlin's offer, the ride with Lucien, the Suriel mentioned, the cold.
+
+== ch09_morning
+H The stables are east of the house, along the gravel walk past the terrace.
+
+== ch09_not_inside
+N Lucien would be gone if I dawdled. The stables first.
+
+== ch09_tamlin
+> set_flag ch09_tamlin
+@tamlin/neutral No tripwires today?
+N How had he crept up on gravel without a sound? Faerie stealth. His knives were off this morning, his sleeves rolled to the elbow.
+@feyre/neutral You told me I was safe here. So I listened.
+@tamlin/neutral My morning's work was put off. If you'd like a ride round the grounds, I could take you. See where you're living now.
+N He was trying, and every word seemed to cost him. I needed Lucien alone.
+* Turn him down politely. -> ch09_tamlin_no
+* Turn him down flat. -> ch09_tamlin_flat
+
+== ch09_tamlin_no
+@feyre/neutral I'd rather spend today alone, I think. But thank you.
+@tamlin/neutral What about-
+@feyre/neutral No. Thank you.
+-> ch09_tamlin_2
+
+== ch09_tamlin_flat
+@feyre/determined No.
+N His eyes narrowed. I added a thank you, a little late.
+-> ch09_tamlin_2
+
+== ch09_tamlin_2
+N His hands curled into fists, as if he were holding his claws in. But he didn't scold me. He only turned and went back into the house without another word.
+@feyre/neutral Soon, if I'm lucky, he won't be my problem anymore.
+
+== ch09_lucien_early
+N No sign of Tamlin. Good.
+-> ch09_lucien
+
+== ch09_lucien
+@lucien/smirk Morning, Feyre. Out for a ride? Or come to thank Tam for the lovely accommodation?
+N So much for the speech I'd rehearsed. He laughed, not kindly.
+@lucien/smirk I'm patrolling the southern woods today. And I'll admit I'm curious how a human brought down my friend. It's been a long while since I met a mortal, never mind one who kills Fae. Come hunting with me.
+N A stable hand brought him a quiver. Another led out a white mare and handed me a bow, longer than mine at home, the arrows heavier.
+@lucien/smirk No ash arrows today, I'm afraid.
+@feyre/neutral Well. I'm already dressed for it.
+> item bow
+> item arrow 12
+> set_flag ch09_ride
+> goto spring_woods trail chapter=9 hour=10
+
+== ch09_ride
+N We rode out under trees shot through with sunlight, crocuses purple against the brown leaves. I made myself notice only what mattered. The shape of the path. Which trees could be climbed. The sound of water.
+@lucien/smirk You've got the quiet part of hunting down, at least. We've passed a dozen squirrels. None good enough for you?
+@feyre/neutral There's always food left over on your table. I don't need to add to it.
+@feyre/neutral Do emissaries usually ride patrol?
+@lucien/grim Not usually. This was Andras's shift. Someone has to take it. It's an honor.
+N Andras had friends here. A place. He hadn't been just some nameless faerie in the snow.
+@feyre/sad I'm sorry. I didn't know what he was to you.
+@lucien/smirk So Tam said. I expect that's why he brought you here. Or you looked so pitiful in those rags that he felt sorry for you.
+@feyre/angry If I'd known you'd spend the ride insulting me, I'd have stayed home.
+@lucien/neutral Apologies, Feyre.
+N He couldn't lie. So the apology was real. I didn't know what to make of that.
+@lucien/smirk So. When do you start trying to talk me into begging Tam to let you out of the Treaty? That's why you were at the stables right as I was leaving, isn't it? I'm flattered you think I have the sway.
+@lucien/neutral Let me save you the breath. One: if I had my way, you'd be gone already. Two: I can't have my way. There is no other loophole. You're stuck with us.
+N No. There had to be something. Someone.
+@lucien/smirk A valiant effort, though.
+-> ch09_ask
+
+== ch09_ask
+* [!f:ch09_q_court] Ask where the rest of his court went. -> ch09_q_court
+* [!f:ch09_q_shift] Ask whether he can change shape like Tamlin. -> ch09_q_shift
+* [!f:ch09_q_scar] Ask how he got the scar. -> ch09_q_scar
+* Ride on in silence. -> ch09_cold
+
+== ch09_q_court
+> set_flag ch09_q_court
+@feyre/neutral Where is the rest of Tamlin's court? Did they all run from the blight?
+@lucien/angry Who told you about the court?
+@feyre/neutral Do ordinary houses have emissaries? And servants talk. Is that why you made them wear bird masks to your party?
+@lucien/grim We each chose a mask that night to honor Tam's gift for changing shape. The servants too. Now we'd tear them off with our bare hands if we could.
+@feyre/neutral What happened to the magic, to make it do that?
+@lucien/angry Something was sent up from the pits of Hell, that's what. Cauldron, I shouldn't have said that. If it got back to her-
+@feyre/afraid Her? Who?
+@lucien/grim Never mind. The less you know, the better.
+N A her who frightened him, even out here, enough to make him glance at the shadows between the trees.
+[f:ch09_asked_one] -> ch09_cold
+> set_flag ch09_asked_one
+-> ch09_ask
+
+== ch09_q_shift
+> set_flag ch09_q_shift
+@feyre/neutral Can you change shape, like Tamlin?
+@lucien/smirk Looking for my weak spots? No. Only Tam can. He can change others too, when he needs to. His sentries. Andras was High Fae like us. Tam made him a wolf to cross the wall unseen. Though his size might have given him away.
+N A shudder went through me. I didn't dare ask whether Tamlin could change me.
+@lucien/neutral And the High Fae don't come with gifts the way the lesser faeries do. I don't scrub floors by magic or drown mortals in ponds. We just exist. To rule.
+[f:ch09_asked_one] -> ch09_cold
+> set_flag ch09_asked_one
+-> ch09_ask
+
+== ch09_q_scar
+> set_flag ch09_q_scar
+@feyre/neutral How did you get the scar?
+@lucien/grim I didn't keep my mouth shut when I should have. I was punished for it.
+@feyre/afraid Tamlin did that?
+@lucien/grim Cauldron, no. He wasn't there. He found me the eye afterward.
+[f:ch09_asked_one] -> ch09_cold
+> set_flag ch09_asked_one
+-> ch09_ask
+
+== ch09_cold
+@feyre/neutral Are there faeries who'll answer any question you ask, if you trap them? I heard a story like that once.
+@lucien/grim There are. The Suriel. They're old, and wicked, and not worth the danger of hunting one down. Keep looking so interested and I'll tell Tam to lock you in your room.
+N They had to live nearby, then, if he was so worried. I tucked the name away.
+N Lucien's head snapped to the right. His golden eye whirred, listening. The hair rose on my neck, and my bow was up and drawn before I'd thought about it.
+@lucien/grim Put the bow down. Put it down, human, and look straight ahead.
+@lucien/grim Whatever you feel, whatever you see, don't react. Don't look at it. Eyes ahead.
+N The horses' ears went flat. And then I felt it.
+> chapter_card 10
+N A creeping, leeching cold slid past us through the brush. My mare went rigid. Even the spring woods seemed to shrink from it.
+N Something whispered in the back of my mind, old and hollow. Look at me.
+H Keep your eyes ahead. When it drags your gaze to one side, press the other way (A or D) before you turn to look.
+> region_call start_bogge

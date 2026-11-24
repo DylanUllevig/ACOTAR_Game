@@ -201,7 +201,7 @@ func _people() -> void:
 		var p = Vector2(rng.randf_range(850, 2150), rng.randf_range(680, 1200))
 		var who = "villager" if i % 2 == 0 else "villager_woman"
 		var v = add_npc(who, p, "", Callable(), rng.randi_range(0, 3))
-		var tw = create_tween().set_loops()
+		var tw = v.create_tween().set_loops()
 		var d = Vector2(rng.randf_range(-260, 260), rng.randf_range(-90, 90))
 		var t = d.length() / 55.0
 		tw.tween_interval(rng.randf_range(1.0, 4.0))

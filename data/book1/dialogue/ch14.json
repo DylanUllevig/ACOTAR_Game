@@ -1,0 +1,365 @@
+{
+ "schema": 2,
+ "notes": "Line forms: {n} Feyre's narration, first person past tense, shown in italics; {s,e,t} a line spoken aloud (speaker, portrait expression, text); {hint} a game tip on its own card; {choices:[{t,goto,do}]}; {do:[actions]}; {goto}. Any line or choice may carry if_flag, if_not_flag, if_item, if_not_item or if_chapter. Wording is written for the game; the few short book lines kept are listed in quotes.json.",
+ "scenes": {
+  "ch14_not_inside": {
+   "lines": [
+    {
+     "n": "Not until I'd done what I came out to do."
+    }
+   ]
+  },
+  "ch14_no_bait": {
+   "lines": [
+    {
+     "n": "No bait. Lucien had said a freshly killed hen, and I'd come without one."
+    },
+    {
+     "n": "I trudged all the way back to the kitchens. They gave me a second hen, with the same baffled looks as the first."
+    },
+    {
+     "do": [
+      {
+       "type": "item",
+       "id": "chicken"
+      }
+     ]
+    },
+    {
+     "hint": "If your satchel is full, make room in it (I) and try the grove again."
+    }
+   ]
+  },
+  "ch14_snare": {
+   "lines": [
+    {
+     "do": [
+      {
+       "type": "set_flag",
+       "flag": "ch14_snare"
+      }
+     ]
+    },
+    {
+     "n": "No path, no tameness here. Oak and elm and beech woven so thick they nearly strangled the light. The moss swallowed every sound I made. An old forest, and alive in a way I could feel in my bones."
+    },
+    {
+     "n": "I walked circles round the birches until I found the brook, then walked every way to it twice, and twice again, until I knew every root and stone between."
+    },
+    {
+     "n": "Then I laid the snare, and arranged the hen as if it had wandered in and snapped its own neck on a fallen branch."
+    },
+    {
+     "do": [
+      {
+       "type": "take_item",
+       "id": "chicken",
+       "n": 1
+      },
+      {
+       "type": "region_call",
+       "method": "snare_and_wait"
+      }
+     ]
+    },
+    {
+     "n": "I waited up in an oak for hours. Cheese from the kitchens. Water. The sun crept over the canopy."
+    },
+    {
+     "n": "Then a hush came toward me through the trees. Thrushes, squirrels, moths, all holding their breath while something went by. The branches seemed to lock tighter overhead, a living cage."
+    },
+    {
+     "n": "A sound like cloth dragged over roots. Hungry, wheezing sniffs. A snap, a whoosh, and a hollow, wicked scream that locked every muscle I had."
+    },
+    {
+     "n": "The snares groaned. And held. And held."
+    },
+    {
+     "n": "I climbed down to meet the Suriel."
+    },
+    {
+     "do": [
+      {
+       "type": "region_call",
+       "method": "suriel_speaks"
+      }
+     ]
+    },
+    {
+     "n": "Tall and thin and veiled, in tattered dark robes. The knobs of its spine pushed through the cloth. Long gray fingers with cracked yellow nails clawed at the snare."
+    },
+    {
+     "n": "Run, said every mortal thing in me. Run and never look back. I kept my arrow nocked."
+    },
+    {
+     "s": "feyre",
+     "e": "afraid",
+     "t": "Are you one of the Suriel?"
+    },
+    {
+     "n": "It went rigid. Sniffed. Then it turned, and I saw its face."
+    },
+    {
+     "n": "Dried bone, the skin forgotten or thrown away. No lips. Teeth too long in blackened gums. Slits for a nose. And eyes of swirling milky white, the white of sickness and of clean-picked bones."
+    },
+    {
+     "s": "suriel",
+     "e": "neutral",
+     "t": "Human. Did you set this clever, wicked trap for me?"
+    },
+    {
+     "s": "feyre",
+     "e": "afraid",
+     "t": "Are you one of the Suriel?"
+    },
+    {
+     "s": "suriel",
+     "e": "neutral",
+     "t": "Indeed I am."
+    },
+    {
+     "n": "Its fingers clicked together, one click for every word."
+    },
+    {
+     "s": "suriel",
+     "e": "neutral",
+     "t": "It has been an age since I looked upon a human woman. Come closer, so I might look upon my captor."
+    },
+    {
+     "choices": [
+      {
+       "t": "Step closer.",
+       "goto": "ch14_closer"
+      },
+      {
+       "t": "Stay where you are.",
+       "goto": "ch14_stay"
+      }
+     ]
+    }
+   ]
+  },
+  "ch14_closer": {
+   "lines": [
+    {
+     "n": "I took one step, and its fingers clicked faster, and the smell of it reached me, dust and old graves. I took two steps back."
+    },
+    {
+     "goto": "ch14_ask"
+    }
+   ]
+  },
+  "ch14_stay": {
+   "lines": [
+    {
+     "n": "I did no such thing."
+    },
+    {
+     "goto": "ch14_ask"
+    }
+   ]
+  },
+  "ch14_ask": {
+   "lines": [
+    {
+     "s": "suriel",
+     "e": "neutral",
+     "t": "And which of my kin sold my secrets to you?"
+    },
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "None of them. My mother told me stories about you."
+    },
+    {
+     "s": "suriel",
+     "e": "neutral",
+     "t": "Lies. I smell them on your breath. Ask your questions, human. Then free me."
+    },
+    {
+     "s": "feyre",
+     "e": "sad",
+     "t": "Is there truly no way for me to go home?"
+    },
+    {
+     "s": "suriel",
+     "e": "neutral",
+     "t": "Not unless you wish to be killed, and your family with you. You must stay here."
+    },
+    {
+     "n": "Whatever shred of hope I'd been keeping shriveled up and died. Fine. Then I would learn what I could."
+    },
+    {
+     "s": "feyre",
+     "e": "determined",
+     "t": "What do you know about Tamlin?"
+    },
+    {
+     "s": "suriel",
+     "e": "neutral",
+     "t": "Be specific, human. I know a great many things about the High Lord of the Spring Court."
+    },
+    {
+     "n": "The ground tilted under me."
+    },
+    {
+     "s": "feyre",
+     "e": "afraid",
+     "t": "Tamlin is a High Lord?"
+    },
+    {
+     "s": "suriel",
+     "e": "neutral",
+     "t": "You did not know. How interesting. Spring, Summer, Autumn, Winter, Dawn, Day and Night: the seven Courts, each ruled by a High Lord, each deadly in its own way. They are not merely powerful. They are Power."
+    },
+    {
+     "n": "That was how he'd faced the Bogge and lived. High Lord."
+    },
+    {
+     "s": "feyre",
+     "e": "determined",
+     "t": "This blight on your magic. Where did it come from? What can be done?"
+    },
+    {
+     "s": "suriel",
+     "e": "neutral",
+     "t": "Stay with the High Lord, human. That is all you can do. Do not meddle. Do not come seeking answers after today, or the shadow over Prythian will devour you. Stay close to him, and all will be put right."
+    },
+    {
+     "s": "feyre",
+     "e": "determined",
+     "t": "Where did it come from?"
+    },
+    {
+     "s": "suriel",
+     "e": "neutral",
+     "t": "He does not know you came, does he? His human woman, out trapping a Suriel because he cannot give her the answers she wants. But it is late, human. For the High Lord, for you, perhaps for your realm too."
+    },
+    {
+     "n": "His human woman. It made my teeth clench."
+    },
+    {
+     "s": "suriel",
+     "e": "neutral",
+     "t": "Across the violent western sea lies another faerie kingdom. Hybern. Its king rules alone, with no courts beneath him. No humans live there now, though his throne is made of their bones."
+    },
+    {
+     "s": "suriel",
+     "e": "neutral",
+     "t": "He has always hated the Treaty, hated being made to free his mortal slaves and keep to his damp green island. So a hundred years ago he sent out his deadliest commanders, as spies and courtiers and lovers, into every court in the world. And nearly fifty years ago, one of them disobeyed him. The Deceiver. And-"
+    },
+    {
+     "n": "It straightened."
+    },
+    {
+     "s": "suriel",
+     "e": "neutral",
+     "t": "We are not alone."
+    },
+    {
+     "do": [
+      {
+       "type": "journal",
+       "id": "lore_suriel"
+      },
+      {
+       "type": "journal",
+       "id": "lore_hybern"
+      }
+     ]
+    },
+    {
+     "goto": "ch14_naga"
+    }
+   ]
+  },
+  "ch14_naga": {
+   "lines": [
+    {
+     "n": "Everything had already gone quiet. I drew my bow back farther and scanned the trees."
+    },
+    {
+     "s": "suriel",
+     "e": "neutral",
+     "t": "The naga. Made of shadow and hate and rot. They heard me scream, and they smell you. Free me, human, and run for the High Lord's house. Remember what I told you. Stay with him."
+    },
+    {
+     "n": "Four shapes slid out between the birches, so dark they might have been cut from a starless night. Scales, and men's bodies, and polished black talons. Here were the creatures of the bloody old stories, the ones that slipped through the wall to torment us."
+    },
+    {
+     "s": "naga",
+     "e": "neutral",
+     "t": "The Dark Mother has sent us a gift today, brothers. And a meal."
+    },
+    {
+     "s": "naga",
+     "e": "neutral",
+     "t": "Not much meat on it."
+    },
+    {
+     "choices": [
+      {
+       "t": "Scream for Lucien, and shoot the Suriel's tether.",
+       "goto": "ch14_free"
+      },
+      {
+       "t": "Back away toward the brook.",
+       "goto": "ch14_back"
+      }
+     ]
+    }
+   ]
+  },
+  "ch14_back": {
+   "lines": [
+    {
+     "n": "I backed away a step. They crept after me, savoring it, as if they already knew how I would taste."
+    },
+    {
+     "s": "suriel",
+     "e": "neutral",
+     "t": "Human."
+    },
+    {
+     "n": "Three heartbeats. That was all I had."
+    },
+    {
+     "goto": "ch14_free"
+    }
+   ]
+  },
+  "ch14_free": {
+   "lines": [
+    {
+     "n": "I screamed, loud and sharp, with every bit of breath I had. And with every eye in the clearing on me, I shot through the tether."
+    },
+    {
+     "do": [
+      {
+       "type": "region_call",
+       "method": "suriel_flees"
+      }
+     ]
+    },
+    {
+     "n": "The snare burst. The Suriel was gone like a shadow on the wind, in a blast of dark that sent the naga staggering."
+    },
+    {
+     "n": "They stopped staggering, and turned to me."
+    },
+    {
+     "do": [
+      {
+       "type": "chapter_card",
+       "n": 15
+      },
+      {
+       "type": "start_fight",
+       "id": "naga_snare"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

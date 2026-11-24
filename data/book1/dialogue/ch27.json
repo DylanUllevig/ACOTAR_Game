@@ -1,0 +1,390 @@
+{
+ "schema": 2,
+ "notes": "Line forms: {n} Feyre's narration, first person past tense, shown in italics; {s,e,t} a line spoken aloud (speaker, portrait expression, text); {hint} a game tip on its own card; {choices:[{t,goto,do}]}; {do:[actions]}; {goto}. Any line or choice may carry if_flag, if_not_flag, if_item, if_not_item or if_chapter. Wording is written for the game; the few short book lines kept are listed in quotes.json.",
+ "scenes": {
+  "ch27_night": {
+   "lines": [
+    {
+     "do": [
+      {
+       "type": "set_flag",
+       "flag": "ch27_night"
+      }
+     ]
+    },
+    {
+     "n": "I lay in bed, watching the moonlight shift across the floor. The house had been quiet for hours now, but his rage was still in it, in the wood and the stone and the glass."
+    },
+    {
+     "n": "I didn't want to think about what Rhysand had said. Or the sickness, or Under the Mountain, wherever that was, and why I might be dragged there. Or Amarantha. A name, at last, for the shadow of a female that stalked their lives. Deadly enough to command the High Lords of Prythian. To hold Rhysand's leash, and make Tamlin beg."
+    },
+    {
+     "do": [
+      {
+       "type": "sfx",
+       "name": "door_thud",
+       "db": -10
+      }
+     ]
+    },
+    {
+     "n": "The door creaked, and I jerked upright. Moonlight on gold. My heart didn't settle as he shut the door and crossed to the bed, his steps slow and heavy."
+    },
+    {
+     "do": [
+      {
+       "type": "region_call",
+       "method": "npc_walk",
+       "args": [
+        "tamlin",
+        856,
+        400
+       ]
+      },
+      {
+       "type": "region_call",
+       "method": "put_feyre",
+       "args": [
+        930,
+        384,
+        1
+       ]
+      }
+     ]
+    },
+    {
+     "n": "He sat on the edge of the mattress, and for a long moment said nothing at all."
+    },
+    {
+     "s": "tamlin",
+     "e": "weary",
+     "t": "I'm sorry."
+    },
+    {
+     "s": "feyre",
+     "e": "sad",
+     "t": "It's fine."
+    },
+    {
+     "n": "A lie. If I let myself, I could still feel those claws of power raking across my mind."
+    },
+    {
+     "s": "tamlin",
+     "e": "angry",
+     "t": "It isn't fine."
+    },
+    {
+     "n": "He pulled one of my hands free of the sheets and held it, and hung his head."
+    },
+    {
+     "s": "tamlin",
+     "e": "weary",
+     "t": "Feyre... I wish..."
+    },
+    {
+     "n": "He shook his head and cleared his throat."
+    },
+    {
+     "s": "tamlin",
+     "e": "weary",
+     "t": "I'm sending you home."
+    },
+    {
+     "n": "Something inside me splintered."
+    },
+    {
+     "s": "feyre",
+     "e": "afraid",
+     "t": "What?"
+    },
+    {
+     "s": "tamlin",
+     "e": "weary",
+     "t": "I'm sending you home."
+    },
+    {
+     "s": "feyre",
+     "e": "afraid",
+     "t": "But the Treaty..."
+    },
+    {
+     "s": "tamlin",
+     "e": "neutral",
+     "t": "I've taken on your debt. If anyone comes asking about the broken law, I'll answer for Andras's death myself."
+    },
+    {
+     "s": "feyre",
+     "e": "afraid",
+     "t": "You said there was no other way out. The Suriel said..."
+    },
+    {
+     "s": "tamlin",
+     "e": "angry",
+     "t": "If they have a problem with it, they can take it up with me."
+    },
+    {
+     "n": "And end up in ribbons."
+    },
+    {
+     "s": "feyre",
+     "e": "sad",
+     "t": "Did I do something wrong?"
+    },
+    {
+     "n": "He pressed my hand to his cheek, so warm, and turned his face to kiss my palm."
+    },
+    {
+     "s": "tamlin",
+     "e": "tender",
+     "t": "You did nothing wrong. You were perfect."
+    },
+    {
+     "s": "feyre",
+     "e": "angry",
+     "t": "Then why do I have to go?"
+    },
+    {
+     "s": "tamlin",
+     "e": "weary",
+     "t": "Because there are people who would hurt you for what you are to me. I thought I could shield you from it. After today, I know I can't. So you have to go home, far away from here. You'll be safe there."
+    },
+    {
+     "s": "feyre",
+     "e": "determined",
+     "t": "I can hold my own."
+    },
+    {
+     "s": "tamlin",
+     "e": "weary",
+     "t": "You can't. Because I can't. I can't even protect myself from them, from what's happening in Prythian. Even if we stood against the sickness, they would hunt you down. She'd find a way to kill you."
+    },
+    {
+     "s": "feyre",
+     "e": "afraid",
+     "t": "Amarantha."
+    },
+    {
+     "n": "He bristled at the name, but nodded."
+    },
+    {
+     "s": "tamlin",
+     "e": "neutral",
+     "t": "When you get home, don't tell anyone where you really were. Let them go on believing the glamour. Don't tell them who I am, or where you stayed. Her spies will be looking for you."
+    },
+    {
+     "s": "feyre",
+     "e": "sad",
+     "t": "I want to stay with you. Treaty or no Treaty. Sickness or no sickness."
+    },
+    {
+     "s": "tamlin",
+     "e": "weary",
+     "t": "I know."
+    },
+    {
+     "s": "feyre",
+     "e": "angry",
+     "t": "Then let me-"
+    },
+    {
+     "s": "tamlin",
+     "e": "angry",
+     "t": "There's no debate! Rhys was only the start of it. Do you want to be here when the Attor comes back? Do you want to know what it answers to? Things like the Bogge. And worse."
+    },
+    {
+     "s": "feyre",
+     "e": "angry",
+     "t": "So you're sending me away because I'm useless in a fight?"
+    },
+    {
+     "s": "tamlin",
+     "e": "angry",
+     "t": "I'm sending you away because it makes me sick to think of you in their hands!"
+    },
+    {
+     "n": "Silence, and his ragged breathing. He sank down onto the bed and pressed the heels of his hands into his eyes, and my anger melted away to nothing."
+    },
+    {
+     "s": "feyre",
+     "e": "sad",
+     "t": "How long? A week? A month?"
+    },
+    {
+     "n": "He shook his head, slowly."
+    },
+    {
+     "s": "feyre",
+     "e": "sad",
+     "t": "A year?"
+    },
+    {
+     "s": "tamlin",
+     "e": "weary",
+     "t": "I don't know."
+    },
+    {
+     "s": "feyre",
+     "e": "sad",
+     "t": "But not forever."
+    },
+    {
+     "n": "Even if the sickness came here, even if it tore me apart, I would come back."
+    },
+    {
+     "s": "feyre",
+     "e": "cold",
+     "t": "I suppose it'll be easier with me gone. Who wants someone around who's so covered in thorns?"
+    },
+    {
+     "s": "tamlin",
+     "e": "neutral",
+     "t": "Thorns?"
+    },
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "Thorny. Prickly. Sour. Contrary."
+    },
+    {
+     "n": "He leaned in and kissed me, lightly."
+    },
+    {
+     "s": "tamlin",
+     "e": "tender",
+     "t": "Not forever."
+    },
+    {
+     "n": "I knew it was a lie. I put my arms round his neck and kissed him anyway."
+    },
+    {
+     "choices": [
+      {
+       "t": "Pull him down to you.",
+       "goto": "ch27_stay"
+      },
+      {
+       "t": "Hold him, and only hold him.",
+       "goto": "ch27_hold"
+      }
+     ]
+    }
+   ]
+  },
+  "ch27_stay": {
+   "lines": [
+    {
+     "n": "Rhysand's touch still clawed at the edges of my mind. I pushed it away, and pushed him down onto the bed, as if holding him there could stop the night from ending."
+    },
+    {
+     "do": [
+      {
+       "type": "fade_to_black",
+       "text": "The rest of that night belonged to the two of them."
+      }
+     ]
+    },
+    {
+     "n": "Afterward we lay tangled in the moonlight, and I breathed him in. Earth, and something crisp. I would never be able to paint the feel of him, however many colors I tried."
+    },
+    {
+     "s": "tamlin",
+     "e": "tender",
+     "t": "We should sleep. You have a long journey tomorrow."
+    },
+    {
+     "s": "feyre",
+     "e": "afraid",
+     "t": "Tomorrow?"
+    },
+    {
+     "s": "tamlin",
+     "e": "weary",
+     "t": "At dawn. Please, Feyre."
+    },
+    {
+     "n": "Please. He had knelt to Rhysand for my sake."
+    },
+    {
+     "goto": "ch27_sleep"
+    }
+   ]
+  },
+  "ch27_hold": {
+   "lines": [
+    {
+     "n": "I didn't want anything but this. I lay with my head on his chest, his heart under my ear, and held on as if I could stop the night from ending."
+    },
+    {
+     "s": "tamlin",
+     "e": "tender",
+     "t": "You should sleep. You have a long journey tomorrow."
+    },
+    {
+     "s": "feyre",
+     "e": "afraid",
+     "t": "Tomorrow?"
+    },
+    {
+     "s": "tamlin",
+     "e": "weary",
+     "t": "At dawn. Please, Feyre."
+    },
+    {
+     "n": "Please. He had knelt to Rhysand for my sake."
+    },
+    {
+     "goto": "ch27_sleep"
+    }
+   ]
+  },
+  "ch27_sleep": {
+   "lines": [
+    {
+     "n": "He shifted toward the edge of the bed."
+    },
+    {
+     "s": "feyre",
+     "e": "sad",
+     "t": "Where are you going?"
+    },
+    {
+     "s": "tamlin",
+     "e": "tender",
+     "t": "If I stay, you won't get any sleep."
+    },
+    {
+     "s": "feyre",
+     "e": "tender",
+     "t": "Stay. I promise to keep my hands to myself."
+    },
+    {
+     "n": "A lie. An outright lie. His half smile said he knew it, but he lay down and pulled me into his arms and stroked my hair."
+    },
+    {
+     "n": "I didn't want to sleep. I didn't want to lose a single minute with him. But exhaustion was dragging me under."
+    },
+    {
+     "n": "I was leaving. Just when this place had become more than a sanctuary, and he far, far more than a savior or a friend. It might be years before I smelled his roses again, or saw those gold-flecked eyes. Home. This was home."
+    },
+    {
+     "n": "As I slipped away at last, I thought I heard him speak, his mouth close to my ear."
+    },
+    {
+     "s": "tamlin",
+     "e": "tender",
+     "t": "I love you. Thorns and all."
+    },
+    {
+     "n": "He was gone when I woke. And I was certain I had dreamed it."
+    },
+    {
+     "do": [
+      {
+       "type": "end_slice"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

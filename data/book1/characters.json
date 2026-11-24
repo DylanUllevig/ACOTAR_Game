@@ -53,6 +53,9 @@
     "middengard_worm": {"name": "The Middengard Worm", "role": "First trial beast Under the Mountain.", "first_chapter": 36,
       "look": "A giant pinkish-brown worm whose front end is an enormous mouth of ring after ring of razor teeth; lives in mud trenches.", "quotes": [], "expressions": []},
     "naga": {"name": "Naga", "pronounce": "Nah-gah", "role": "Shadowy faeries that attack Feyre at the Suriel's snare.", "first_chapter": 14,
-      "look": "Dark scales, serpentine features on male humanoid bodies, polished black talons, amber almond eyes, razor teeth, a silvery forked tongue.", "quotes": [], "expressions": []}
+      "look": "Dark scales, serpentine features on male humanoid bodies, polished black talons, amber almond eyes, razor teeth, a silvery forked tongue.", "quotes": [], "expressions": []},
+    "faerie": {"name": "Faerie", "role": "A voice from the crowd: lesser faeries at the manor and in the woods, never named.", "first_chapter": 17, "voice_only": true, "look": "", "quotes": [], "expressions": []},
+    "stranger": {"name": "The Stranger", "role": "A High Fae male who steps out of the dark on Fire Night. He gives no name.", "first_chapter": 20, "portrait_as": "rhysand", "look": "", "quotes": [], "expressions": []},
+    "bogge": {"name": "The Bogge", "role": "The thing in the brush that wants to be looked at.", "first_chapter": 10, "voice_only": true, "look": "", "quotes": [], "expressions": []}
   }
 }

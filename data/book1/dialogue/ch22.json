@@ -1,0 +1,765 @@
+{
+ "schema": 2,
+ "notes": "Line forms: {n} Feyre's narration, first person past tense, shown in italics; {s,e,t} a line spoken aloud (speaker, portrait expression, text); {hint} a game tip on its own card; {choices:[{t,goto,do}]}; {do:[actions]}; {goto}. Any line or choice may carry if_flag, if_not_flag, if_item, if_not_item or if_chapter. Wording is written for the game; the few short book lines kept are listed in quotes.json.",
+ "scenes": {
+  "ch22_wake": {
+   "lines": [
+    {
+     "do": [
+      {
+       "type": "set_flag",
+       "flag": "ch22_wake"
+      }
+     ]
+    },
+    {
+     "n": "I woke with the sun already high, after a night of tossing and turning. The servants were sleeping off the celebrations, so I drew my own bath and soaked until the water went cold."
+    },
+    {
+     "n": "No amount of soaking would wash off the memory of his mouth on my neck. Or the mark it had left there, purple and plain above my collar."
+    },
+    {
+     "choices": [
+      {
+       "t": "Leave the bruise bare for him to see.",
+       "goto": "ch22_bare"
+      },
+      {
+       "t": "Hunt through the drawers for a scarf.",
+       "goto": "ch22_scarf"
+      }
+     ]
+    }
+   ]
+  },
+  "ch22_scarf": {
+   "lines": [
+    {
+     "n": "I'd turned out half the vanity before I caught my own eye in the mirror, and stopped."
+    },
+    {
+     "n": "He'd behaved like a brute. If he'd come back to his senses by now, the sight of what he'd done was the very least he deserved."
+    },
+    {
+     "goto": "ch22_bare"
+    }
+   ]
+  },
+  "ch22_bare": {
+   "lines": [
+    {
+     "n": "I opened my collar wider and tucked my hair behind my ears, so there'd be no hiding it. I was finished with cowering."
+    },
+    {
+     "do": [
+      {
+       "type": "objective",
+       "text": "Lunch is being served in the dining room. Go and enjoy it."
+      }
+     ]
+    }
+   ]
+  },
+  "ch22_lunch": {
+   "lines": [
+    {
+     "do": [
+      {
+       "type": "set_flag",
+       "flag": "ch22_lunch"
+      }
+     ]
+    },
+    {
+     "n": "The pair of them were sprawled in their chairs like the dead. I could have sworn Lucien was asleep sitting up, fork still in hand."
+    },
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "Good afternoon!"
+    },
+    {
+     "n": "I gave the High Lord my sweetest smile and took the seat across from Lucien instead of my own. Then I ate, slowly, enjoying every mouthful of the silence."
+    },
+    {
+     "s": "lucien",
+     "e": "smirk",
+     "t": "You look... refreshed. Sleep well?"
+    },
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "Like a babe."
+    },
+    {
+     "n": "His eye drifted down to my neck, and stayed there."
+    },
+    {
+     "s": "lucien",
+     "e": "neutral",
+     "t": "What is that?"
+    },
+    {
+     "s": "feyre",
+     "e": "angry",
+     "t": "Ask him. It's his work."
+    },
+    {
+     "s": "lucien",
+     "e": "smirk",
+     "t": "And why, pray tell, does Feyre have a bruise on her neck from you?"
+    },
+    {
+     "s": "tamlin",
+     "e": "neutral",
+     "t": "I bit her. We ran into each other in the hall after the Rite."
+    },
+    {
+     "n": "He didn't even look up from his steak. The claws stayed in, but they were pressing at the skin over his knuckles. He was furious, and keeping it on the shortest of leashes."
+    },
+    {
+     "s": "tamlin",
+     "e": "neutral",
+     "t": "She seems determined to get herself killed. If Feyre can't be bothered to follow orders, I can't be blamed for what happens."
+    },
+    {
+     "s": "feyre",
+     "e": "angry",
+     "t": "Blamed? You cornered me in that hall like a wolf with a rabbit!"
+    },
+    {
+     "s": "tamlin",
+     "e": "neutral",
+     "t": "I wasn't myself, perhaps. But Lucien and I both told you to stay in your room."
+    },
+    {
+     "n": "He said it so reasonably that I wanted to tear out my hair. Lucien had a hand clamped over his mouth, his russet eye shining."
+    },
+    {
+     "choices": [
+      {
+       "t": "Tell him exactly what he is.",
+       "goto": "ch22_pig"
+      },
+      {
+       "t": "Get up and leave without a word.",
+       "goto": "ch22_storm"
+      }
+     ]
+    }
+   ]
+  },
+  "ch22_storm": {
+   "lines": [
+    {
+     "n": "I stood so fast my chair screeched on the floor. My temper caught up with me before I reached the door."
+    },
+    {
+     "goto": "ch22_pig"
+    }
+   ]
+  },
+  "ch22_pig": {
+   "lines": [
+    {
+     "s": "feyre",
+     "e": "angry",
+     "t": "Faerie pig!"
+    },
+    {
+     "n": "Lucien howled, and very nearly went over backward in his chair. And Tamlin began to smile. I left before it could get any wider."
+    },
+    {
+     "n": "It took me a good two hours to stop painting little portraits of the pair of them with snouts. I called the last one, privately, Two Faerie Pigs Wallowing in Their Own Filth."
+    },
+    {
+     "n": "But I was smiling into the bright light of my painting room when I finished. The Tamlin I knew had come back. And that made me... happy."
+    },
+    {
+     "n": "We apologized to each other at dinner. He brought me a bouquet of white roses from his parents' garden, and though I waved them off as nothing, I made very sure Alis put them in water in my painting room."
+    },
+    {
+     "n": "That night I slept soundly, for the first time in a long, long while."
+    },
+    {
+     "do": [
+      {
+       "type": "goto",
+       "chapter": 22,
+       "hour": 18.5,
+       "region": "manor_bedroom",
+       "spawn": "bed"
+      }
+     ]
+    }
+   ]
+  },
+  "ch22_gown": {
+   "lines": [
+    {
+     "do": [
+      {
+       "type": "set_flag",
+       "flag": "ch22_gown"
+      }
+     ]
+    },
+    {
+     "n": "The next evening, Alis slid a golden underdress over my raised arms, lace as fine as cobweb clinging to me before it fell loose to the rug. Over it went a gown of sheer turquoise, so light it seemed to drift on a current of its own."
+    },
+    {
+     "s": "alis",
+     "e": "stern",
+     "t": "I can't decide if I should be pleased or worried."
+    },
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "It's only a dress."
+    },
+    {
+     "s": "alis",
+     "e": "neutral",
+     "t": "Gowns from now on, is it?"
+    },
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "No! I'll wear my usual clothes in the day. I just thought it might be nice to... try it. For tonight."
+    },
+    {
+     "s": "alis",
+     "e": "kind",
+     "t": "Good to see you've not lost all your common sense, then."
+    },
+    {
+     "n": "She sat me at the vanity and set to work on my hair. I couldn't bring myself to look in the mirror while she fussed."
+    },
+    {
+     "choices": [
+      {
+       "t": "Ask who taught her to do hair like this.",
+       "goto": "ch22_alis"
+      },
+      {
+       "t": "Sit quietly and let her work.",
+       "goto": "ch22_mirror"
+      }
+     ]
+    }
+   ]
+  },
+  "ch22_alis": {
+   "lines": [
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "Who taught you to do this?"
+    },
+    {
+     "s": "alis",
+     "e": "neutral",
+     "t": "My mother taught my sister and me, as her mother taught her."
+    },
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "Have you always been at the Spring Court?"
+    },
+    {
+     "s": "alis",
+     "e": "neutral",
+     "t": "No. My people are from the Summer Court. My kin live there still."
+    },
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "Then how did you end up here?"
+    },
+    {
+     "n": "Her mouth went tight in the mirror."
+    },
+    {
+     "s": "alis",
+     "e": "stern",
+     "t": "I chose to come. My kin thought me mad for it. But my sister and her mate had been killed, and her boys... I came to do what I could."
+    },
+    {
+     "n": "She coughed, as if the words had stuck in her throat, and patted my shoulder."
+    },
+    {
+     "goto": "ch22_mirror"
+    }
+   ]
+  },
+  "ch22_mirror": {
+   "lines": [
+    {
+     "s": "alis",
+     "e": "kind",
+     "t": "There. Have a look."
+    },
+    {
+     "n": "I risked a glance at my reflection. Then I fled the room before I could lose my nerve."
+    },
+    {
+     "do": [
+      {
+       "type": "objective",
+       "text": "Go down to dinner."
+      }
+     ]
+    }
+   ]
+  },
+  "ch22_dinner": {
+   "lines": [
+    {
+     "do": [
+      {
+       "type": "set_flag",
+       "flag": "ch22_dinner"
+      }
+     ]
+    },
+    {
+     "n": "My palms were sweating. I wanted to bolt upstairs and change into a tunic. But they'd already heard me, or smelled me, and running would only make it worse."
+    },
+    {
+     "n": "Whatever they'd been talking about stopped dead. I tried not to see their faces as I walked to my place at the end of the table."
+    },
+    {
+     "s": "lucien",
+     "e": "smirk",
+     "t": "Well! I'm late for something incredibly important."
+    },
+    {
+     "do": [
+      {
+       "type": "region_call",
+       "method": "vanish",
+       "args": [
+        "lucien"
+       ]
+      }
+     ]
+    },
+    {
+     "n": "A bald-faced lie. Before I could call him on it, or beg him to stay, he was gone."
+    },
+    {
+     "n": "I could feel the full weight of Tamlin's attention on me, on every breath I took. I studied the candles on the mantel. Nothing I could think of to say sounded anything but ridiculous, so of course my mouth started moving anyway."
+    },
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "You're so far away. It's as if you're in another room."
+    },
+    {
+     "do": [
+      {
+       "type": "region_call",
+       "method": "table_shrinks"
+      }
+     ]
+    },
+    {
+     "n": "The ends of the table were simply gone. He sat not two feet from me across a small, much friendlier table, and I nearly toppled out of my chair."
+    },
+    {
+     "s": "tamlin",
+     "e": "tender",
+     "t": "Better?"
+    },
+    {
+     "s": "feyre",
+     "e": "afraid",
+     "t": "How did you do that? Where did it all go?"
+    },
+    {
+     "s": "tamlin",
+     "e": "neutral",
+     "t": "Between. Think of it as a closet tucked between the pockets of the world."
+    },
+    {
+     "n": "He flexed his hands and rolled his neck, as if shaking off an ache. There was sweat at his throat."
+    },
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "Does it cost you?"
+    },
+    {
+     "s": "tamlin",
+     "e": "weary",
+     "t": "Once, it was as easy as breathing. Now it takes concentration."
+    },
+    {
+     "n": "Because of the sickness, and what it had taken from him."
+    },
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "You could just have moved to a closer chair."
+    },
+    {
+     "s": "tamlin",
+     "e": "tender",
+     "t": "And miss the chance to show off to a beautiful woman? Never."
+    },
+    {
+     "n": "I smiled down at my plate."
+    },
+    {
+     "s": "tamlin",
+     "e": "tender",
+     "t": "You do look beautiful. I mean it. Didn't you look in the mirror?"
+    },
+    {
+     "n": "I had. The bruise was still on my neck, but I had looked pretty. Not a beauty, I wouldn't go so far, but I hadn't cringed. The sharp, starved angles of my face had softened, and there was a light in my eyes. My own eyes. Not my mother's, not Nesta's. Mine."
+    },
+    {
+     "s": "feyre",
+     "e": "tender",
+     "t": "Thank you."
+    },
+    {
+     "n": "When I was full to bursting, I let myself really look at him. He was lounging in his chair, but his shoulders were tight. He'd been spared the borders for days now. And still I thought of the Summer Court faerie with the ruined wings, and how he'd grieved for her. How many others had he grieved for, alone?"
+    },
+    {
+     "s": "feyre",
+     "e": "determined",
+     "t": "Come with me. I have something for you."
+    },
+    {
+     "s": "tamlin",
+     "e": "neutral",
+     "t": "For me?"
+    },
+    {
+     "n": "He rose. When I tried to let go of his hand, he wouldn't let me. I led him out, down hall after hall, walking fast, as though I could outrun my own heartbeat."
+    },
+    {
+     "do": [
+      {
+       "type": "goto",
+       "chapter": 22,
+       "hour": 21,
+       "region": "manor_studio",
+       "spawn": "gallery"
+      }
+     ]
+    }
+   ]
+  },
+  "ch22_paintings": {
+   "lines": [
+    {
+     "do": [
+      {
+       "type": "set_flag",
+       "flag": "ch22_paintings"
+      }
+     ]
+    },
+    {
+     "s": "tamlin",
+     "e": "neutral",
+     "t": "I knew you'd asked Alis for a key. I didn't think you actually locked it."
+    },
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "Everyone snoops in this house. I didn't want either of you in here until I was ready."
+    },
+    {
+     "n": "I cleared my throat, a hint for him to light the candles. It took him longer than I'd ever seen. Shrinking the table must have cost him more than he'd let on. If this was all a High Lord could manage, something was truly, deeply wrong."
+    },
+    {
+     "n": "I pushed the worry away and pointed to the easel, and the painting I'd set there."
+    },
+    {
+     "s": "feyre",
+     "e": "afraid",
+     "t": "I know they're strange. And nothing like as good as the ones in your gallery. But this one is for you. A gift. For everything you've done."
+    },
+    {
+     "n": "A smear of green and gold and silver and blue. An impression, not a likeness."
+    },
+    {
+     "s": "feyre",
+     "e": "afraid",
+     "t": "It's the glen. The pool of starlight."
+    },
+    {
+     "s": "tamlin",
+     "e": "tender",
+     "t": "I know what it is."
+    },
+    {
+     "n": "He looked at it for a miserable eternity. Then his eyes moved on, to the canvases I'd left leaning against the walls. My stomach dropped."
+    },
+    {
+     "s": "tamlin",
+     "e": "neutral",
+     "t": "That was your forest. Where you hunted. This was your life."
+    },
+    {
+     "n": "Snow, bare trees, and nothing else. It looked like nothing at all, to anyone but me. He moved to the next before I could find my voice."
+    },
+    {
+     "s": "tamlin",
+     "e": "neutral",
+     "t": "Your cottage, at night."
+    },
+    {
+     "n": "Then the one with a man's tanned hand fisted in the hay, among strands of gold-brown hair. Mine. A low growl slipped out of him."
+    },
+    {
+     "s": "tamlin",
+     "e": "angry",
+     "t": "The man from your village. While you were together. It's the only one with any brightness in it."
+    },
+    {
+     "choices": [
+      {
+       "t": "\"It was the only escape I had.\"",
+       "goto": "ch22_isaac"
+      },
+      {
+       "t": "Turn the canvas to the wall.",
+       "goto": "ch22_turn"
+      }
+     ]
+    }
+   ]
+  },
+  "ch22_turn": {
+   "lines": [
+    {
+     "n": "I reached for it. He'd already seen it, though, and I let my hand fall."
+    },
+    {
+     "s": "feyre",
+     "e": "cold",
+     "t": "It was the only escape I had."
+    },
+    {
+     "goto": "ch22_isaac_2"
+    }
+   ]
+  },
+  "ch22_isaac": {
+   "lines": [
+    {
+     "s": "feyre",
+     "e": "cold",
+     "t": "It was the only escape I had."
+    },
+    {
+     "goto": "ch22_isaac_2"
+    }
+   ]
+  },
+  "ch22_isaac_2": {
+   "lines": [
+    {
+     "n": "The truth. I wouldn't apologize for Isaac. Not to someone who had just come back from the Great Rite. I didn't hold that against him. But if he meant to be jealous..."
+    },
+    {
+     "n": "He seemed to realize it too. He let out a long, slow breath and moved on, to tall shadows of men with red dripping from their fists and clubs, and the curled shape on the floor between them, one leg bent the wrong way."
+    },
+    {
+     "s": "tamlin",
+     "e": "angry",
+     "t": "You were there. When they broke your father's leg."
+    },
+    {
+     "s": "feyre",
+     "e": "sad",
+     "t": "Someone had to beg them to stop."
+    },
+    {
+     "n": "There they all were. Every wound I'd been quietly bleeding out onto canvas these past months. Months. Did my family still believe I was off with some dying aunt?"
+    },
+    {
+     "n": "At last he looked back to the glen, and nodded. Then he pointed at the snowy woods."
+    },
+    {
+     "s": "tamlin",
+     "e": "tender",
+     "t": "That one. I want that one."
+    },
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "It's cold and sad. It doesn't belong here at all."
+    },
+    {
+     "s": "tamlin",
+     "e": "tender",
+     "t": "I want it anyway."
+    },
+    {
+     "n": "The smile he gave me was lovelier than any enchanted meadow. I had never wanted anything so much as to take off his mask and see the face beneath."
+    },
+    {
+     "choices": [
+      {
+       "t": "Beg him to tell you how to help.",
+       "goto": "ch22_help"
+      },
+      {
+       "t": "Ask what he sees in it.",
+       "goto": "ch22_why"
+      }
+     ]
+    }
+   ]
+  },
+  "ch22_help": {
+   "lines": [
+    {
+     "s": "feyre",
+     "e": "determined",
+     "t": "Tell me there's some way to help you. With the masks, with whatever has taken so much of your power. Just tell me what I can do."
+    },
+    {
+     "s": "tamlin",
+     "e": "neutral",
+     "t": "A human wants to help a faerie?"
+    },
+    {
+     "s": "feyre",
+     "e": "sad",
+     "t": "Don't tease me. Please. Just tell me."
+    },
+    {
+     "s": "tamlin",
+     "e": "weary",
+     "t": "There's nothing I want you to do, and nothing you could. Nothing anyone could. It's mine to carry."
+    },
+    {
+     "s": "feyre",
+     "e": "determined",
+     "t": "You don't have to-"
+    },
+    {
+     "s": "tamlin",
+     "e": "weary",
+     "t": "I do. What I have to face, Feyre... you would not survive it."
+    },
+    {
+     "s": "feyre",
+     "e": "angry",
+     "t": "So I'm to live here forever and know nothing? If I'm only in the way, would you rather I lived somewhere else? Where I'm not a distraction?"
+    },
+    {
+     "s": "tamlin",
+     "e": "neutral",
+     "t": "Didn't Calanmai teach you anything?"
+    },
+    {
+     "s": "feyre",
+     "e": "angry",
+     "t": "Only that magic turns you into a brute."
+    },
+    {
+     "n": "He laughed, though there wasn't much amusement in it. When I said nothing, he sighed."
+    },
+    {
+     "goto": "ch22_stay"
+    }
+   ]
+  },
+  "ch22_why": {
+   "lines": [
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "Why that one? Of all of them?"
+    },
+    {
+     "n": "He didn't answer at first. He only looked at it, then at me, as if deciding how much to say."
+    },
+    {
+     "goto": "ch22_stay"
+    }
+   ]
+  },
+  "ch22_stay": {
+   "lines": [
+    {
+     "s": "tamlin",
+     "e": "tender",
+     "t": "I don't want you anywhere else. I want you here, where I can look after you. Where I can come home and know you're here, painting, and safe."
+    },
+    {
+     "s": "tamlin",
+     "e": "neutral",
+     "t": "I thought about sending you away, at the start. Part of me still thinks I should have. Maybe I was selfish. Even when you made it so clear you only wanted out of the Treaty, I couldn't bring myself to let you go."
+    },
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "Why?"
+    },
+    {
+     "n": "He picked up the little painting of the frozen forest."
+    },
+    {
+     "s": "tamlin",
+     "e": "neutral",
+     "t": "I've had many lovers. Noblewomen, warriors, princesses."
+    },
+    {
+     "n": "Rage hit me low in the gut, at their titles, their certain beauty, their nearness to him."
+    },
+    {
+     "s": "tamlin",
+     "e": "weary",
+     "t": "But none of them understood what it is to care for my people, my lands. What scars are still there. What the bad days feel like."
+    },
+    {
+     "n": "The jealousy burned off like dew as he smiled at my painting."
+    },
+    {
+     "s": "tamlin",
+     "e": "tender",
+     "t": "This reminds me of it."
+    },
+    {
+     "s": "feyre",
+     "e": "tender",
+     "t": "Of what?"
+    },
+    {
+     "n": "He lowered the painting and looked right at me. Right into me."
+    },
+    {
+     "s": "tamlin",
+     "e": "tender",
+     "t": "That I'm not alone."
+    },
+    {
+     "n": "I didn't lock my bedroom door that night."
+    },
+    {
+     "do": [
+      {
+       "type": "chapter_card",
+       "n": 23
+      },
+      {
+       "type": "goto",
+       "chapter": 23,
+       "hour": 15,
+       "region": "spring_woods",
+       "spawn": "glen"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

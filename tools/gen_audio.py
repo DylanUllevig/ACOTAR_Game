@@ -1012,6 +1012,501 @@ def music_night_ride():
     return s.finish(-22.0, wet=0.45, rev=3.6, damp=4500)
 
 
+# ============================================================ SPRING COURT
+# Milestone 2: the manor's gardens and halls, the woods in eternal spring,
+# Fire Night, Midsummer. Brighter and warmer than the mortal winter.
+
+def saw_var(f):
+    """Band-limited sawtooth whose frequency can change every sample."""
+    dt = np.clip(f / SR, 1e-6, 0.45)
+    ph = np.cumsum(dt) % 1.0
+    y = 2.0 * ph - 1.0
+    m1 = ph < dt
+    x = ph[m1] / dt[m1]
+    y[m1] -= x + x - x * x - 1.0
+    m2 = ph > 1.0 - dt
+    x = (ph[m2] - 1.0) / dt[m2]
+    y[m2] -= x * x + x + x + 1.0
+    return y
+
+
+def fiddle(freq, dur, r, vib=0.006, a=0.05, rel=0.14, bright=3400.0, slide=0.0):
+    """A bowed string: a vibrato sawtooth through a violin-ish body, with bow hiss.
+    slide > 0 scoops up into the note from that many semitones below."""
+    n = secs(dur + rel)
+    t = np.arange(n) / SR
+    vib_amt = np.clip((t - 0.14) / 0.25, 0, 1) * vib
+    f = freq * (1 + vib_amt * np.sin(2 * np.pi * 5.7 * t + r.uniform(0, 6)))
+    if slide > 0:
+        f = f * 2 ** (-slide * np.exp(-t / 0.04) / 12.0)
+    src = saw_var(f)
+    body = (reson(src, 290, 3) * 1.0 + reson(src, 470, 4) * 0.7 + reson(src, 1050, 5) * 0.55
+            + reson(src, 2700, 6) * 0.3 + lp(src, bright) * 0.35)
+    bow = bp(white(n, r), 2200, 7000) * 0.025
+    e = env_adsr(n, a, 0.12, 0.82, rel)
+    return lp(body * 0.4 + bow, bright * 1.4) * e
+
+
+def strum(song, start, notes, gain, spread=0.016, bright=0.55, dur=1.6, p=0.0):
+    for i, m in enumerate(sorted(notes)):
+        song.add(ks(midi(m), dur, song.r, bright=bright, decay=0.9955), start + i * spread, gain * (0.8 + 0.2 * (i == 0)), p=p - 0.2 + i * 0.12)
+
+
+def bodhran(r, hit="open"):
+    if hit == "open":
+        return drum(190, 72, 0.32, r, noise_amt=0.45, tone_decay=0.09, noise_lp=1200)
+    return drum(320, 160, 0.12, r, noise_amt=0.6, tone_decay=0.03, noise_lp=2600)
+
+
+# ----------------------------------------------------------------- sfx
+def step_spring(surface, k):
+    r = rng_for("step_" + surface, k)
+    d = 0.18
+    n = secs(d)
+    t = np.arange(n) / SR
+    if surface == "grass":
+        # a soft brush of blades and a muffled press into turf
+        swish = bp(white(n, r), r.uniform(1800, 2400), r.uniform(6000, 8000)) * env_ad(n, 0.012, 0.05, 3.0) * 0.5
+        press = lp(white(n, r), 260) * np.exp(-t / 0.03) * 0.8
+        y = swish + press
+    elif surface == "gravel":
+        # many small stones shifting: a crisp scatter of clicks over a low press
+        press = lp(white(n, r), 420) * np.exp(-t / 0.035) * 0.8
+        grit = np.zeros(n)
+        for _ in range(int(r.integers(26, 42))):
+            at = int(r.uniform(0.002, 0.11) * SR)
+            L = int(r.uniform(0.0015, 0.004) * SR)
+            g = r.uniform(0.25, 1.0) ** 1.5
+            c = reson(np.pad(white(L, r), (0, secs(0.006))), r.uniform(2500, 5200), 6) * g
+            mix_at(grit, c * np.exp(-np.arange(len(c)) / (L * 0.8)), at)
+        y = press + hp(grit, 1500) * 0.9 * np.clip(1.15 - t / d, 0, 1)
+    elif surface == "stone":
+        # a heel on marble: a hard click, a short bright ring, a little room
+        imp = np.zeros(n)
+        imp[0] = 1.0
+        imp[1:secs(0.002)] = white(secs(0.002) - 1, r) * 0.5
+        ring = reson(imp, r.uniform(2300, 2900), 14) * 0.6 + reson(imp, r.uniform(4200, 5200), 20) * 0.3
+        thud = np.sin(2 * np.pi * r.uniform(90, 120) * t) * np.exp(-t / 0.018) * 0.6
+        y = (ring + hp(white(n, r), 3000) * np.exp(-t / 0.004) * 0.4) * np.exp(-t / 0.03) + thud
+    else:
+        # shallow water: a slap, then a few bubbles rising in pitch
+        slap = bp(white(n, r), 600, 4000) * np.exp(-t / 0.03) * 0.7
+        y = slap
+        for _ in range(int(r.integers(2, 5))):
+            at = r.uniform(0.01, 0.09)
+            L = secs(r.uniform(0.02, 0.04))
+            tb = np.arange(L) / SR
+            fb = r.uniform(500, 900) * (1 + 3.0 * tb / (L / SR))
+            b = np.sin(2 * np.pi * np.cumsum(fb) / SR) * np.exp(-tb / 0.012) * r.uniform(0.15, 0.35)
+            mix_at(y, b, secs(at))
+    return y
+
+
+def hiss():
+    r = rng_for("hiss")
+    n = secs(0.8)
+    t = np.arange(n) / SR
+    e = np.clip(t / 0.25, 0, 1) ** 1.5 * np.exp(-np.clip(t - 0.45, 0, None) / 0.12)
+    sib = bp(white(n, r), 4200, 9500, 4) * e
+    tongue = sweep_filter(white(n, r), 3100 + 400 * np.sin(2 * np.pi * 9 * t), "band", order=4) * e * 0.25
+    return sib + tongue
+
+
+def hiss_hurt():
+    r = rng_for("hiss_hurt")
+    n = secs(0.55)
+    t = np.arange(n) / SR
+    f = 1150 * np.exp(-t / 0.5) + 520
+    shriek = saw_var(f * (1 + 0.03 * np.sin(2 * np.pi * 31 * t)))
+    shriek = (reson(shriek, 1400, 4) + reson(shriek, 2600, 6) * 0.6) * env_ad(n, 0.01, 0.25, 3.0) * 0.5
+    sib = bp(white(n, r), 3800, 9000, 4) * env_ad(n, 0.005, 0.3, 3.0) * 0.7
+    return np.tanh((shriek + sib) * 2.0)
+
+
+def puca_growl():
+    gc = lambda tt_: np.clip(tt_ / 0.3, 0, 1) * np.exp(-np.clip(tt_ - 0.7, 0, None) / 0.25)
+    a = growl("puca_growl", 0, 1.2, 78, ((320, 4, 1.0), (760, 6, 0.7), (1500, 8, 0.3)), rough=34, gain_curve=gc)
+    b = growl("puca_growl", 1, 1.2, 117, ((540, 5, 0.6), (1900, 7, 0.4)), rough=41, gain_curve=gc) * 0.4
+    return a + b
+
+
+def puca_hurt():
+    r = rng_for("puca_hurt")
+    n = secs(0.5)
+    t = np.arange(n) / SR
+    f = 520 * np.exp(-t / 0.18) + 210
+    v = saw_var(f * (1 + 0.04 * np.sin(2 * np.pi * 27 * t)))
+    y = reson(v, 900, 4) + reson(v, 1800, 5) * 0.6 + reson(v, 3200, 7) * 0.3
+    return np.tanh(y * env_ad(n, 0.008, 0.22, 3.0) * 2.5) + bp(white(n, r), 2000, 6000) * env_ad(n, 0.004, 0.06) * 0.2
+
+
+def bogge_whisper(k=0):
+    r = rng_for("bogge_whisper", k)
+    n = secs(2.2)
+    t = np.arange(n) / SR
+    y = np.zeros(n)
+    at = 0.05
+    while at < 1.8:
+        L = secs(r.uniform(0.12, 0.26))
+        f1, f2 = r.uniform(400, 900), r.uniform(1100, 2400)
+        syl = breath(L, r, f1, f2, env_adsr(L, 0.03, 0.05, 0.7, 0.06)) * r.uniform(0.5, 1.0)
+        if r.random() < 0.35:
+            # a sibilant: the 's' of 'look'... 'see'... 'me'
+            syl = syl + bp(white(L, r), 4500, 9000) * env_ad(L, 0.02, 0.1) * 0.5
+        mix_at(y, syl, secs(at))
+        at += L / SR + r.uniform(0.01, 0.08)
+    y = hp(y, 250)
+    st = reverb(np.vstack([y, np.roll(y, secs(0.012))]), wet=0.55, seconds=3.2, damp=3500)[:, :n]
+    return st.mean(axis=0) * np.clip(1.4 - t / 2.2, 0, 1)
+
+
+def suriel_scream():
+    r = rng_for("suriel_scream")
+    d = 2.0
+    n = secs(d)
+    t = np.arange(n) / SR
+    e = np.clip(t / 0.06, 0, 1) * np.exp(-np.clip(t - 0.9, 0, None) / 0.35)
+    y = np.zeros(n)
+    for k, (f0, g) in enumerate(((980, 1.0), (1237, 0.7), (1486, 0.5), (734, 0.5))):
+        f = f0 * (1 + 0.025 * np.sin(2 * np.pi * (6.5 + k) * t + k)) * (1 - 0.12 * t / d)
+        y += saw_var(f) * g
+    y = reson(y, 1800, 3) + reson(y, 3100, 4) * 0.7 + bp(white(n, r), 1500, 6000) * 0.25
+    y = np.tanh(y * 1.5) * e
+    st = reverb(np.vstack([y, np.roll(y, secs(0.02))]), wet=0.4, seconds=3.0)[:, :n]
+    return st.mean(axis=0)
+
+
+def door_thud():
+    r = rng_for("door_thud")
+    n = secs(0.9)
+    t = np.arange(n) / SR
+    boom = np.sin(2 * np.pi * (72 - 18 * t) * t) * np.exp(-t / 0.12)
+    wood = (reson(np.pad(white(secs(0.01), r), (0, n - secs(0.01))), 180, 6) * 0.6
+            + reson(np.pad(white(secs(0.01), r), (0, n - secs(0.01))), 430, 9) * 0.35) * np.exp(-t / 0.08)
+    latch = np.zeros(n)
+    lt = secs(0.16)
+    L = secs(0.03)
+    latch[lt:lt + L] = reson(white(L, r), 3200, 12) * np.exp(-np.arange(L) / (L * 0.2)) * 0.4
+    st = reverb(np.vstack([boom + wood + latch, boom + wood + latch]), wet=0.25, seconds=1.6)[:, :n]
+    return st.mean(axis=0)
+
+
+def big_drum():
+    r = rng_for("big_drum")
+    x = drum(120, 44, 1.6, r, noise_amt=0.35, tone_decay=0.45, noise_lp=900)
+    st = reverb(np.vstack([x, x]), wet=0.35, seconds=2.6, damp=3000)[:, :len(x)]
+    return st.mean(axis=0)
+
+
+def clatter():
+    # tins and brushes, or a knife, hitting the ground and bouncing
+    r = rng_for("clatter")
+    n = secs(1.1)
+    y = np.zeros(n)
+    at, g = 0.0, 1.0
+    for k in range(9):
+        f = r.uniform(1800, 3600)
+        b = bell(f, 0.25, ratios=(1.0, 1.47, 2.09, 2.56), decays=(1.0, 0.7, 0.5, 0.4), amps=(1.0, 0.6, 0.4, 0.25))
+        b = b + bp(white(len(b), r), 2000, 8000) * np.exp(-np.arange(len(b)) / secs(0.005)) * 0.5
+        mix_at(y, b * g, secs(at))
+        at += r.uniform(0.04, 0.16) * (0.8 ** k) + 0.02
+        g *= r.uniform(0.6, 0.85)
+    thump = lp(white(n, r), 400) * np.exp(-np.arange(n) / secs(0.03)) * 0.5
+    return y + thump
+
+
+# ------------------------------------------------------------ ambience
+def bird_call(r, kind):
+    if kind == "chirp":
+        out = np.zeros(secs(0.5))
+        at = 0.0
+        f0 = r.uniform(2800, 4200)
+        for _ in range(int(r.integers(2, 6))):
+            L = secs(r.uniform(0.035, 0.07))
+            tb = np.arange(L) / SR
+            f = f0 * (1 + r.uniform(0.25, 0.5) * tb / (L / SR))
+            c = np.sin(2 * np.pi * np.cumsum(f) / SR) * np.sin(np.pi * tb / (L / SR)) ** 2
+            c += 0.2 * np.sin(4 * np.pi * np.cumsum(f) / SR) * np.sin(np.pi * tb / (L / SR)) ** 2
+            mix_at(out, c, secs(at))
+            at += L / SR + r.uniform(0.03, 0.08)
+        return out
+    if kind == "warble":
+        L = secs(r.uniform(0.6, 1.1))
+        tb = np.arange(L) / SR
+        f = r.uniform(2400, 3400) * (1 + 0.18 * np.sin(2 * np.pi * r.uniform(14, 22) * tb)) * (1 + 0.1 * np.sin(2 * np.pi * 2.2 * tb))
+        return np.sin(2 * np.pi * np.cumsum(f) / SR) * env_adsr(L, 0.04, 0.1, 0.8, 0.15)
+    # a soft two-note dove-ish call, low and round
+    out = np.zeros(secs(1.4))
+    for k, (f, d) in enumerate(((560, 0.35), (470, 0.55))):
+        L = secs(d)
+        tb = np.arange(L) / SR
+        c = np.sin(2 * np.pi * f * (1 - 0.04 * tb) * tb) * np.sin(np.pi * tb / d) ** 1.5
+        mix_at(out, c + 0.15 * np.sin(4 * np.pi * f * tb) * np.sin(np.pi * tb / d), secs(0.05 + k * 0.45))
+    return out
+
+
+def amb_spring_day(L=40.0):
+    r = rng_for("spring_day")
+    n = secs(L + 2.0)
+    t = np.arange(n) / SR
+    per = lambda k, ph=0.0: np.sin(2 * np.pi * k * t / L + ph)
+    breeze = sweep_filter(pink(n, r), 500 + 200 * per(3, 0.7), "band") * (0.45 + 0.2 * per(5, 1.1)) * 0.5
+    leaves = hp(pink(n, r), 3000) * (0.5 + 0.5 * per(7, 2.3)) ** 2 * 0.08
+    st = np.vstack([breeze + leaves, np.roll(breeze, secs(0.35)) + np.roll(leaves, secs(0.6))])
+    at = 0.3
+    while at < L + 1.5:
+        kind = ["chirp", "chirp", "warble", "dove"][int(r.integers(0, 4))]
+        c = bird_call(r, kind) * (0.12 if kind != "dove" else 0.08) * r.uniform(0.4, 1.0)
+        c = hp(c, 300)
+        cs = pan(c, r.uniform(-0.85, 0.85))
+        s = secs(at)
+        e = min(n, s + cs.shape[1])
+        st[:, s:e] += cs[:, : e - s]
+        at += r.exponential(1.1) + 0.15
+    st = reverb(st, wet=0.18, seconds=1.8, damp=6000)[:, :n]
+    st = loop_crossfade(st, L)
+    return norm_rms(st, -27.0)
+
+
+def amb_spring_night(L=40.0):
+    r = rng_for("spring_night")
+    n = secs(L + 2.0)
+    t = np.arange(n) / SR
+    per = lambda k, ph=0.0: np.sin(2 * np.pi * k * t / L + ph)
+    breeze = sweep_filter(pink(n, r), 380 + 120 * per(2, 0.4), "band") * 0.3
+    st = np.vstack([breeze, np.roll(breeze, secs(0.4))])
+    # crickets: each a tiny pulse train repeated at its own rate
+    for c in range(7):
+        f = r.uniform(3900, 5200)
+        rate = r.uniform(1.6, 3.2)
+        pulses = int(r.integers(2, 5))
+        p = r.uniform(-0.9, 0.9)
+        g = r.uniform(0.02, 0.06)
+        k = r.uniform(0, 1.0 / rate)
+        Lp = secs(0.012)
+        tp = np.arange(Lp) / SR
+        blip = np.sin(2 * np.pi * f * tp) * np.sin(np.pi * tp / (Lp / SR)) ** 2
+        while k < L + 1.9:
+            for j in range(pulses):
+                s = secs(k + j * 0.022)
+                if s + Lp < n:
+                    st[0, s:s + Lp] += blip * g * (1 - p) * 0.7
+                    st[1, s:s + Lp] += blip * g * (1 + p) * 0.7
+            k += 1.0 / rate * r.uniform(0.9, 1.1)
+    # now and then, an owl
+    at = r.uniform(3, 8)
+    while at < L - 2:
+        for j, (f, d) in enumerate(((370, 0.28), (330, 0.5))):
+            Lh = secs(d)
+            th = np.arange(Lh) / SR
+            h = (np.sin(2 * np.pi * f * th) + 0.2 * np.sin(4 * np.pi * f * th)) * np.sin(np.pi * th / d) ** 2
+            h = h + breath(Lh, r, f * 1.5, f * 3, np.sin(np.pi * th / d) ** 2) * 0.1
+            hs = pan(h * 0.05, -0.5)
+            s = secs(at + j * 0.4)
+            st[:, s:s + hs.shape[1]] += hs[:, : min(hs.shape[1], n - s)]
+        at += r.uniform(9, 16)
+    st = reverb(st, wet=0.25, seconds=2.4, damp=5000)[:, :n]
+    st = loop_crossfade(st, L)
+    return norm_rms(st, -28.0)
+
+
+def amb_bogge(L=30.0):
+    r = rng_for("bogge_amb")
+    n = secs(L + 2.0)
+    t = np.arange(n) / SR
+    per = lambda k, ph=0.0: np.sin(2 * np.pi * k * t / L + ph)
+    drone = lp(brown(n, r), 110) * 0.9 + np.sin(2 * np.pi * 41.2 * t) * 0.12 * (0.6 + 0.4 * per(3))
+    cold = sweep_filter(white(n, r), 1000 + 400 * per(4, 1.0) + 150 * per(11, 0.2), "band", order=4) * np.clip(per(3, 2.0), 0, 1) ** 2 * 0.35
+    left = drone + cold
+    right = drone + np.roll(cold, secs(1.3))
+    st = np.vstack([left, right])
+    at = 2.0
+    k = 1
+    while at < L - 2:
+        w = bogge_whisper(k)[: secs(1.6)] * 0.12
+        k += 1
+        ws = pan(w, r.uniform(-0.9, 0.9))
+        s = secs(at)
+        st[:, s:s + ws.shape[1]] += ws[:, : min(ws.shape[1], n - s)]
+        at += r.uniform(5.0, 9.0)
+    st = loop_crossfade(st, L)
+    return norm_rms(st, -25.0)
+
+
+# --------------------------------------------------------------- music
+SPRING_CH = {
+    "D": (50, [62, 66, 69]), "A": (45, [61, 64, 69]), "Bm": (47, [62, 66, 71]), "F#m": (42, [61, 66, 69]),
+    "G": (43, [62, 67, 71]), "Em": (40, [64, 67, 71]), "A7": (45, [61, 67, 69]),
+}
+
+
+def music_spring_manor():
+    # D major waltz for the gardens in eternal spring: harp, pizzicato,
+    # a flute tune, and a fiddle answering it in the middle
+    s = Song("spring_manor", 96, 3, 32)
+    prog = ["D", "A", "Bm", "F#m", "G", "D", "Em", "A",
+            "D", "A", "Bm", "F#m", "G", "D", "A7", "D",
+            "G", "D", "Em", "A", "Bm", "F#m", "G", "A",
+            "D", "A", "Bm", "G", "D", "Em", "A", "D"]
+    for bar, name in enumerate(prog):
+        bass, notes = SPRING_CH[name]
+        s.add(ks(midi(bass), 1.8, s.r, bright=0.35, decay=0.994), s.at(bar), 0.16, p=-0.1)
+        s.add(ks(midi(bass + 7), 1.2, s.r, bright=0.35, decay=0.993), s.at(bar, 2), 0.08, p=-0.1)
+        arp = [bass + 12, notes[0], notes[1], notes[2], notes[1], notes[0]]
+        for k, m in enumerate(arp):
+            s.add(ks(midi(m + 12), 2.0, s.r, bright=0.55, decay=0.9965), s.at(bar, k * 0.5), 0.075 * (1.0 if k == 0 else 0.7), p=(m - 62) / 22.0)
+        if bar % 2 == 0:
+            chord_pad(s, bar, 2, notes, gain=0.032, cutoff=1500, a=1.0)
+        if bar % 4 == 0:
+            s.add(bell(midi(notes[-1] + 24), 3.0, amps=(1.0, 0.3, 0.12, 0.05, 0.02)), s.at(bar), 0.025, p=0.5)
+    tune = [(8, 0, 78, 2), (8, 2, 76, 1), (9, 0, 76, 2), (9, 2, 73, 1), (10, 0, 74, 1), (10, 1, 73, 1), (10, 2, 71, 1),
+            (11, 0, 73, 3), (12, 0, 71, 2), (12, 2, 74, 1), (13, 0, 78, 2), (13, 2, 81, 1), (14, 0, 79, 1), (14, 1, 78, 1),
+            (14, 2, 76, 1), (15, 0, 74, 3),
+            (24, 0, 81, 2), (24, 2, 78, 1), (25, 0, 76, 2), (25, 2, 73, 1), (26, 0, 74, 1), (26, 1, 76, 1), (26, 2, 78, 1),
+            (27, 0, 79, 3), (28, 0, 78, 2), (28, 2, 74, 1), (29, 0, 76, 1), (29, 1, 74, 1), (29, 2, 71, 1), (30, 0, 73, 2),
+            (30, 2, 76, 1), (31, 0, 74, 3)]
+    for bar, beat, m, d in tune:
+        s.add(flute(midi(m), d * s.beat * 0.95, s.r, vib=0.0035), s.at(bar, beat), 0.075, p=0.12)
+    answer = [(16, 0, 71, 3), (17, 0, 69, 3), (18, 0, 67, 2), (18, 2, 71, 1), (19, 0, 73, 3),
+              (20, 0, 74, 3), (21, 0, 73, 3), (22, 0, 71, 3), (23, 0, 69, 2), (23, 2, 73, 1)]
+    for bar, beat, m, d in answer:
+        s.add(fiddle(midi(m), d * s.beat * 0.98, s.r, vib=0.005, a=0.12, rel=0.3), s.at(bar, beat), 0.05, p=-0.25)
+    return s.finish(-21.5, wet=0.3, rev=2.4)
+
+
+def music_spring_night():
+    # a nocturne: slow harp under a music-box tune, warm and unhurried
+    s = Song("spring_night", 58, 4, 16)
+    prog = [(41, [57, 60, 64, 65]), (40, [55, 59, 62, 64]), (38, [57, 60, 62, 65]), (36, [55, 59, 60, 64]),
+            (41, [57, 60, 64, 65]), (43, [55, 59, 62, 67]), (45, [55, 60, 64, 67]), (43, [55, 60, 62, 67])] * 2
+    for bar, (bass, notes) in enumerate(prog):
+        s.add(pad_note(midi(bass + 12), s.bar, s.r, cutoff=480, a=1.0, rel=1.6), s.at(bar), 0.1)
+        chord_pad(s, bar, 1, notes, gain=0.03, cutoff=1100, a=1.4)
+        figure = [notes[0], notes[2], notes[3], notes[1] + 12]
+        for k, m in enumerate(figure):
+            s.add(ks(midi(m + 12), 3.0, s.r, bright=0.45, decay=0.9975), s.at(bar, k), 0.07 * (1.0 if k == 0 else 0.75), p=(m - 60) / 20.0)
+    box = [(8, 0, 76), (8, 2, 77), (9, 0, 74), (9, 3, 72), (10, 0, 77), (10, 2, 76), (11, 0, 71), (11, 2, 72),
+           (12, 0, 76), (12, 2, 81), (13, 0, 79), (13, 2, 74), (14, 0, 76), (14, 2, 72), (15, 0, 74)]
+    for bar, beat, m in box:
+        s.add(bell(midi(m + 12), 3.2, amps=(1.0, 0.22, 0.1, 0.04, 0.02)), s.at(bar, beat), 0.045, p=0.3)
+    for bar, m in ((1, 72), (3, 71), (5, 74), (7, 72)):
+        s.add(flute(midi(m), 3.6 * s.beat, s.r, vib=0.003), s.at(bar), 0.035, p=-0.2)
+    return s.finish(-23.0, wet=0.42, rev=3.4, damp=4500)
+
+
+def music_spring_woods():
+    # E major, light and dappled: a harp figure that never quite repeats,
+    # a flute that calls like a bird, and pentatonic sparkles
+    s = Song("spring_woods", 76, 4, 16)
+    prog = [(40, [56, 59, 64]), (37, [56, 61, 64]), (45, [57, 61, 64]), (47, [59, 63, 66])] * 4
+    for bar, (bass, notes) in enumerate(prog):
+        s.add(pad_note(midi(bass + 12), s.bar, s.r, cutoff=520, a=0.8, rel=1.4), s.at(bar), 0.09)
+        figure = [notes[0] + 12, notes[1] + 12, notes[2] + 12, notes[1] + 12, notes[0] + 24, notes[2] + 12, notes[1] + 12, notes[2] + 12]
+        for k, m in enumerate(figure):
+            s.add(ks(midi(m), 2.4, s.r, bright=0.5, decay=0.997), s.at(bar, k * 0.5), 0.065 * (1.0 if k % 4 == 0 else 0.7), p=(m - 70) / 18.0)
+        if bar % 4 == 0:
+            chord_pad(s, bar, 4, notes, gain=0.025, cutoff=1700, a=2.0)
+    penta = [76, 78, 80, 83, 85, 88]
+    tpos = 1.0
+    while tpos < s.L - 1.0:
+        m = penta[int(s.r.integers(0, len(penta)))]
+        s.add(bell(midi(m + 12), 2.0, amps=(1.0, 0.2, 0.08, 0.03, 0.01)), tpos, 0.022, p=s.r.uniform(-0.7, 0.7))
+        tpos += s.r.uniform(1.4, 3.4)
+    calls = [(4, 0, 83, 0.5), (4, 0.5, 80, 1.0), (6, 2, 85, 0.5), (6, 2.5, 83, 1.5),
+             (12, 0, 83, 0.5), (12, 0.5, 80, 1.0), (13, 2, 88, 0.5), (13, 2.5, 85, 0.5), (13, 3, 83, 1.0)]
+    for bar, beat, m, d in calls:
+        s.add(flute(midi(m), d * s.beat, s.r, vib=0.002), s.at(bar, beat), 0.05, p=0.35)
+    return s.finish(-22.5, wet=0.4, rev=3.2, damp=5200)
+
+
+def music_solstice():
+    # Midsummer: a jig in D, fiddle on the tune, a flute doubling it on the
+    # repeats, strummed strings and a frame drum
+    s = Song("solstice", 270, 6, 32)  # 6/8 counted in eighths
+    A = [[(74, 1), (78, 1), (81, 1), (81, 1), (78, 1), (74, 1)], [(79, 1), (83, 1), (79, 1), (78, 1), (76, 1), (74, 1)],
+         [(78, 1), (81, 1), (78, 1), (74, 1), (78, 1), (81, 1)], [(76, 2), (73, 1), (69, 2), (73, 1)],
+         [(74, 1), (78, 1), (81, 1), (83, 1), (81, 1), (78, 1)], [(79, 2), (83, 1), (81, 1), (79, 1), (78, 1)],
+         [(76, 1), (78, 1), (79, 1), (78, 1), (76, 1), (73, 1)], [(74, 3), (74, 2), (None, 1)]]
+    B = [[(83, 1), (86, 1), (83, 1), (81, 1), (83, 1), (79, 1)], [(81, 2), (78, 1), (74, 2), (78, 1)],
+         [(79, 1), (83, 1), (86, 1), (83, 1), (81, 1), (79, 1)], [(81, 2), (76, 1), (73, 2), (76, 1)],
+         [(78, 1), (83, 1), (78, 1), (74, 1), (78, 1), (83, 1)], [(79, 2), (74, 1), (71, 2), (74, 1)],
+         [(76, 1), (78, 1), (79, 1), (81, 1), (79, 1), (76, 1)], [(74, 3), (74, 3)]]
+    chA = ["D", "G", "D", "A", "D", "G", "A", "D"]
+    chB = ["G", "D", "G", "A", "Bm", "G", "A", "D"]
+    bars = [(A, chA, 0), (A, chA, 1), (B, chB, 0), (B, chB, 1)]
+    bar = 0
+    for part, chords, rep in bars:
+        for i in range(8):
+            bass, notes = SPRING_CH[chords[i]]
+            strum(s, s.at(bar, 0), [n for n in notes], 0.07, bright=0.6, dur=1.2, p=-0.3)
+            strum(s, s.at(bar, 3), [n for n in notes], 0.05, bright=0.6, dur=1.0, p=-0.3)
+            s.add(ks(midi(bass), 1.2, s.r, bright=0.35, decay=0.993), s.at(bar, 0), 0.14)
+            s.add(ks(midi(bass + 7), 1.0, s.r, bright=0.35, decay=0.993), s.at(bar, 3), 0.09)
+            s.add(bodhran(s.r, "open"), s.at(bar, 0), 0.3, p=0.1)
+            s.add(bodhran(s.r, "open"), s.at(bar, 3), 0.2, p=0.1)
+            for b in (1, 2, 4, 5):
+                s.add(bodhran(s.r, "tip"), s.at(bar, b), 0.07 + 0.03 * (b in (2, 5)), p=0.15)
+            beat = 0
+            for m, d in part[i]:
+                if m is not None:
+                    s.add(fiddle(midi(m), d * s.beat * 0.92, s.r, vib=0.004, a=0.012, rel=0.06), s.at(bar, beat), 0.085, p=0.15)
+                    if rep == 1:
+                        s.add(flute(midi(m + 12), d * s.beat * 0.85, s.r, vib=0.002), s.at(bar, beat), 0.03, p=-0.2)
+                beat += d
+            bar += 1
+    return s.finish(-20.5, wet=0.22, rev=1.8)
+
+
+def music_battle_spring():
+    # a fight in the Spring Court: urgent rather than grim, D dorian, driving
+    # string ostinato, toms, and a fiddle line that climbs
+    s = Song("battle_spring", 132, 4, 16)
+    CH = {"Dm": (38, [62, 65, 69]), "C": (36, [60, 64, 67]), "Bb": (34, [58, 62, 65]), "A": (33, [61, 64, 69]),
+          "F": (41, [60, 65, 69]), "Gm": (43, [58, 62, 67])}
+    prog = ["Dm", "C", "Bb", "C", "Dm", "C", "Bb", "A", "Dm", "C", "Bb", "C", "Dm", "F", "Gm", "A"]
+    for bar, name in enumerate(prog):
+        bass, notes = CH[name]
+        root = bass + 12
+        pattern = [root, root, root + 7, root, root + 12, root, root + 7, root]
+        for e, m in enumerate(pattern):
+            acc = e in (0, 3, 6)
+            s.add(fiddle(midi(m), s.beat * 0.4, s.r, vib=0.0, a=0.006, rel=0.04, bright=2600), s.at(bar, e * 0.5), 0.07 if acc else 0.045, p=-0.25)
+        s.add(drum(150, 55, 0.5, s.r, noise_amt=0.35, tone_decay=0.18), s.at(bar, 0), 0.45)
+        s.add(drum(150, 55, 0.5, s.r, noise_amt=0.35, tone_decay=0.18), s.at(bar, 1.5), 0.3)
+        s.add(drum(220, 110, 0.3, s.r, noise_amt=0.5, tone_decay=0.08, noise_lp=2500), s.at(bar, 2), 0.3, p=0.2)
+        s.add(drum(150, 55, 0.5, s.r, noise_amt=0.35, tone_decay=0.18), s.at(bar, 3), 0.3)
+        if bar % 2 == 0:
+            chord_pad(s, bar, 2, notes, gain=0.05, cutoff=1200, a=0.4)
+        s.add(pad_note(midi(bass), s.bar, s.r, cutoff=300, a=0.05, rel=0.3, voices=2), s.at(bar), 0.12)
+    line = [(8, 0, 74, 2), (8, 2, 77, 2), (9, 0, 76, 3), (9, 3, 72, 1), (10, 0, 74, 2), (10, 2, 70, 2), (11, 0, 72, 4),
+            (12, 0, 77, 2), (12, 2, 81, 2), (13, 0, 81, 3), (13, 3, 77, 1), (14, 0, 79, 2), (14, 2, 74, 2), (15, 0, 76, 2), (15, 2, 73, 2)]
+    for bar, beat, m, d in line:
+        s.add(fiddle(midi(m), d * s.beat * 0.95, s.r, vib=0.006, a=0.04, rel=0.12), s.at(bar, beat), 0.085, p=0.2)
+    return s.finish(-19.5, wet=0.2, rev=1.8)
+
+
+def music_calanmai():
+    # Fire Night: drums under the hill, a drone, and a low flute in D phrygian
+    s = Song("calanmai", 100, 4, 16)
+    chord_pad(s, 0, 16, [38, 45], gain=0.09, cutoff=420, a=3.0)
+    chord_pad(s, 4, 12, [50, 57], gain=0.03, cutoff=900, a=4.0)
+    for bar in range(16):
+        for step in range(16):
+            b = step * 0.25
+            if step in (0, 6, 8, 11):
+                s.add(drum(95, 40, 0.6, s.r, noise_amt=0.25, tone_decay=0.22, noise_lp=600), s.at(bar, b), 0.42 if step == 0 else 0.3)
+            if bar >= 2 and step in (4, 12):
+                s.add(drum(170, 90, 0.35, s.r, noise_amt=0.45, tone_decay=0.1, noise_lp=1600), s.at(bar, b), 0.26, p=-0.2)
+            if bar >= 4 and step in (2, 3, 7, 10, 14, 15):
+                tick = hp(white(secs(0.06), s.r), 3500) * np.exp(-np.arange(secs(0.06)) / secs(0.012))
+                s.add(tick, s.at(bar, b), 0.045, p=0.35)
+    line = [(8, 0, 74, 3), (8, 3, 75, 1), (9, 0, 74, 2), (9, 2, 72, 2), (10, 0, 70, 4),
+            (12, 0, 74, 2), (12, 2, 77, 2), (13, 0, 75, 3), (13, 3, 74, 1), (14, 0, 72, 2), (14, 2, 70, 2), (15, 0, 74, 4)]
+    for bar, beat, m, d in line:
+        s.add(flute(midi(m - 12), d * s.beat * 0.95, s.r, vib=0.005), s.at(bar, beat), 0.08, p=0.1)
+    return s.finish(-20.5, wet=0.3, rev=2.8, damp=3800)
+
+
 # ================================================================= catalogue
 def sfx_all():
     out = {}
@@ -1043,6 +1538,18 @@ def sfx_all():
     out[("sfx", "wolf_yelp")] = (wolf_yelp, -4.0)
     out[("sfx", "ash_strike")] = (ash_strike, -1.0)
     out[("sfx", "beast_roar")] = (beast_roar, -1.0)
+    for surf in ("grass", "gravel", "stone", "water"):
+        for k in range(6):
+            out[("sfx", "step_%s_%d" % (surf, k))] = (lambda s=surf, k=k: step_spring(s, k), -9.0 if surf != "stone" else -8.0)
+    out[("sfx", "hiss")] = (hiss, -4.0)
+    out[("sfx", "hiss_hurt")] = (hiss_hurt, -3.0)
+    out[("sfx", "puca_growl")] = (puca_growl, -3.0)
+    out[("sfx", "puca_hurt")] = (puca_hurt, -3.0)
+    out[("sfx", "bogge_whisper")] = (bogge_whisper, -4.0)
+    out[("sfx", "suriel_scream")] = (suriel_scream, -2.0)
+    out[("sfx", "door_thud")] = (door_thud, -3.0)
+    out[("sfx", "drum")] = (big_drum, -2.0)
+    out[("sfx", "clatter")] = (clatter, -5.0)
     out[("ui", "hotbar")] = (lambda: ui_tap("hotbar", 1700, 0.025), -12.0)
     out[("ui", "pick")] = (lambda: ui_tap("pick", 1300, 0.035, 0.4), -10.0)
     out[("ui", "place")] = (lambda: ui_tap("place", 820, 0.045, 0.5), -10.0)
@@ -1059,9 +1566,12 @@ def sfx_all():
     return out
 
 
-AMBIENCE = {"forest_wind": amb_forest_wind, "night_wind": amb_night_wind, "hearth": amb_hearth, "village": amb_village}
+AMBIENCE = {"forest_wind": amb_forest_wind, "night_wind": amb_night_wind, "hearth": amb_hearth, "village": amb_village,
+            "spring_day": amb_spring_day, "spring_night": amb_spring_night, "bogge": amb_bogge}
 MUSIC = {"title": music_title, "forest": music_forest, "hunt": music_hunt, "cottage": music_cottage,
-         "village": music_village, "night_ride": music_night_ride}
+         "village": music_village, "night_ride": music_night_ride,
+         "spring_manor": music_spring_manor, "spring_night": music_spring_night, "spring_woods": music_spring_woods,
+         "solstice": music_solstice, "battle_spring": music_battle_spring, "calanmai": music_calanmai}
 
 
 def main(argv):

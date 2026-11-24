@@ -1,0 +1,132 @@
+# Chapter 25: Midsummer on the lawn. Faerie wine (or not), the fiddler, the dance, the will-o'-the-wisps, the first kiss, the dawn.
+
+== ch25_lucien
+[f:ch25_lucien] -> ch25_lucien_again
+> set_flag ch25_lucien
+N I'd lost Tamlin in the crush, and eaten my fill of strawberry shortcake and blueberry pie alone under a sycamore hung with silk lanterns. The faeries gawked at me, and I did my best not to gawk back. One low growl from Tamlin earlier had sent most of them about their business.
+N I was pouring myself a goblet of golden, fizzing wine when Lucien appeared at my shoulder.
+@lucien/neutral I wouldn't drink that, if I were you.
+@feyre/neutral Oh?
+@lucien/grim Faerie wine. At Midsummer.
+N I sniffed it. It didn't reek of drink at all. It smelled of summers spent lying in the grass, of swimming in cool pools.
+@lucien/angry I'm serious. Remember the last time you ignored my warning?
+N He poked me in the neck. I batted his hand away.
+@feyre/neutral I also remember you swearing that witchberries were harmless, right before I spent an afternoon falling over my own feet and seeing things.
+N He'd laughed himself sick. Tamlin had thrown him into the reflecting pool for it.
+@lucien/grim Well, this time I mean it. Tam would gut me if he caught you drinking that.
+* "Always looking out for your own hide." Drink it down. -> ch25_drink
+* Put the goblet in his hand. -> ch25_sober
+
+== ch25_drink
+> set_flag ch25_wine
+@feyre/neutral Always looking out for your own hide.
+N I drained the glass.
+N It was like a thousand fireworks going off inside me, filling my veins with starlight. I laughed out loud, and Lucien groaned.
+@lucien/angry Human fool.
+N But his glamour had been torn away. His hair burned like hot metal, and his russet eye smoldered like a forge. That was what I'd paint next.
+@feyre/tender I'm going to paint you.
+N I giggled. I actually giggled. Before he could stop me, I'd downed a second glass.
+@lucien/grim Cauldron boil and fry me.
+N The music was a siren song now, and I was helpless against it. I'd lost my shoes somewhere. The grass was cool and damp under my bare feet.
+> objective Follow the music to the dancing.
+
+== ch25_sober
+N I held it a moment longer, breathing in that summer smell. Then I put it in his hand.
+@lucien/smirk Well. Miracles do happen.
+@feyre/neutral Don't get used to it.
+N He drank it himself, grinned, and melted into the crowd. The music had found its way into my feet regardless.
+> objective Follow the music to the dancing.
+
+== ch25_lucien_again
+[f:ch25_wine] @lucien/angry Go and dance, you menace. And if you must fall on a rock, pick a soft one.
+[!f:ch25_wine] @lucien/smirk Go on. He's with the musicians. He has been half the night.
+
+== ch25_dance_later
+N He was with the musicians, a fiddle tucked under his chin, lost in the music. He hadn't seen me yet.
+N I'd hardly eaten all day. I went to find the food tables first, and something to drink.
+
+== ch25_dance
+[!f:ch25_lucien] -> ch25_dance_later
+[f:ch25_wine] N The sky was a whirlpool of molten amethyst and sapphire and ruby, draining away into black. I wanted to swim in it, to feel the stars between my fingers.
+[f:ch25_wine] N I skipped between the dancers, twirling my skirts. No chains, no limits. Only me and the music. I wasn't faerie, but I was part of this earth, and it was part of me.
+[!f:ch25_wine] N This was nothing like the stiff line dances at home. The faeries circled the bonfire as loose as the music, free, and I loved them for it.
+N Then one of the musicians looked up from his fiddle, and I stopped.
+N His sleeves were rolled to the elbow, sweat gleaming at his throat, his chin resting on the dark wood. He'd told me once he might have been a wandering minstrel, if not a warrior or a High Lord. He could have made a fortune.
+[f:ch25_wine] @lucien/grim I'm sorry, Tam. I left her for a moment at the food, and when I caught up she was drinking the wine, and...
+[f:ch25_wine] @tamlin/tender I'll look after her. Go and enjoy yourself.
+[f:ch25_wine] N Lucien fled.
+[f:ch25_wine] @feyre/angry I don't need a keeper!
+[f:ch25_wine] @tamlin/tender No. You don't.
+@tamlin/tender Dance, Feyre.
+N So I did.
+N I danced before him, my faerie lord, my protector and my friend, and he grinned at me, and rose from his seat and knelt in the grass, and played a solo on his fiddle just for me. A gift.
+N Then someone caught me round the waist and whirled me back into the ring. I laughed until I thought I'd burst. When I opened my eyes, it was Tamlin, spinning me round and round.
+N The world was a blur of light and sound, and he was the only fixed thing in it, holding me to the earth. I was full of sunshine. As if I'd never known summer before, never known who was waiting to come out of that forest of snow and ice.
+> region_call pass_time 3.3
+N The music ended at last. I was gasping, damp with sweat, and the moon was nearly down.
+[f:ch25_wine] @tamlin/tender Time runs faster when you're drunk on faerie wine.
+[f:ch25_wine] @feyre/neutral I am not drunk.
+[!f:ch25_wine] @tamlin/tender The night goes quickly at Midsummer.
+[!f:ch25_wine] @feyre/neutral It can't be so late already.
+N He only laughed, and led me out of the dancing. I dug in my heels at the edge of the firelight. The musicians were starting up again.
+@tamlin/tender I want to show you something better.
+N I stopped arguing.
+> region_call to_meadow
+N He led me off by moonlight, choosing only soft grass for my bare feet, until the music faded into the sighing of trees. At the edge of a wide meadow, he stopped, his hand on my shoulder.
+N The long grass moved like water under the last of the moon.
+@feyre/neutral What is it?
+N He only put a finger to his lips. For a few minutes, nothing. Then shapes came floating out over the grass from the far side, no more than mirages of moonlight. And the singing began.
+> region_call wisps true
+N Many voices, male and female, two halves of one song, calling and answering each other. Ghostly, slender slants of moonlight, waltzing across the field.
+@feyre/tender What are they?
+@tamlin/tender Will-o'-the-wisps. Spirits of air and light, come out for the solstice.
+@feyre/tender They're beautiful.
+@tamlin/tender Dance with me, Feyre.
+@feyre/neutral Really?
+@tamlin/tender Really.
+N He swept me up as though I weighed nothing. I barely remembered the steps I'd learned as a child, but he caught every stumble before I made it, and we danced across the field among the spirits. I was a puff of dandelion fluff, and he was the wind.
+N We slowed, and then we only stood there, swaying, his chin on my head, his fingers in my hair.
+@tamlin/tender Feyre.
+N Not a question. As if he simply liked the sound of it.
+> region_call wisps false
+N As suddenly as they'd come, the spirits were gone, and their music with them. The stars were fading. The sky had gone a grayish violet.
+@tamlin/tender It's nearly dawn.
+N I reached up and touched his mask. It was cold, though the skin beyond it was flushed and hot. My hand shook as it grazed his jaw.
+N He drew me in until we were touching. His mouth was caught somewhere between a smile and a wince.
+@feyre/afraid What?
+@tamlin/tender I'm thinking I might kiss you.
+* "Then do it." -> ch25_kiss
+* Kiss him first. -> ch25_kiss_first
+
+== ch25_kiss
+@feyre/determined Then do it.
+N I blushed at my own boldness. He only gave that soft laugh, and leaned in. His lips brushed mine, testing, warm. Then again, harder, and nothing like the way he'd kissed my neck. Then he drew back to watch me.
+-> ch25_kiss_2
+
+== ch25_kiss_first
+N I didn't give him time to think about it any longer. I rose up on my toes, and he laughed softly against my mouth and kissed me back. Gently. Much too gently. Then he drew back to watch me.
+-> ch25_kiss_2
+
+== ch25_kiss_2
+@feyre/neutral That's it?
+N He laughed, and kissed me fiercely. My arms went round his neck. His hands were in my hair, at my back, at my waist, as if he couldn't touch enough of me at once.
+@tamlin/tender Come. We'll miss it if we don't go now.
+@feyre/tender Better than will-o'-the-wisps?
+N He kissed my cheeks, my neck, my mouth, and led me into the trees, through the low mists, and up a bare hill slick with dew.
+> region_call solstice_dawn
+-> ch25_dawn
+
+== ch25_dawn
+> region_call sunrise
+N We sat at the top, his arm round my shoulders, my head against his chest, while he played with the flowers in my garland. Neither of us spoke.
+N The sky turned periwinkle. The clouds filled with pink. Then the sun slipped over the edge of the world and lined everything with gold. It was like watching the world being born, with only the two of us there to see it.
+N He kissed the top of my head. I pulled back to look at him.
+@tamlin/tender What?
+@feyre/tender My father told me once that I should let my sisters imagine a better life. A better world. And I told him there was no such thing.
+N I ran my thumb along his mouth.
+@feyre/tender I never understood. I couldn't believe it was even possible. Until now.
+N His throat moved. And when he kissed me that time, it was deep, and slow, and sure.
+N I let the dawn in. Tears pricked behind my closed eyes.
+N It was the happiest moment of my life.
+> chapter_card 26
+> goto manor_dining hall chapter=26 hour=12

@@ -1,0 +1,340 @@
+{
+ "schema": 2,
+ "notes": "Line forms: {n} Feyre's narration, first person past tense, shown in italics; {s,e,t} a line spoken aloud (speaker, portrait expression, text); {hint} a game tip on its own card; {choices:[{t,goto,do}]}; {do:[actions]}; {goto}. Any line or choice may carry if_flag, if_not_flag, if_item, if_not_item or if_chapter. Wording is written for the game; the few short book lines kept are listed in quotes.json.",
+ "scenes": {
+  "ch23_glen": {
+   "lines": [
+    {
+     "do": [
+      {
+       "type": "set_flag",
+       "flag": "ch23_glen"
+      }
+     ]
+    },
+    {
+     "n": "The next afternoon I lay on my back in the grass, letting the sun come down through the leaves onto my face, and working out how I'd paint it. Lucien had pleaded miserable emissary business and left the two of us to ourselves."
+    },
+    {
+     "n": "There was no magic in this place. No starlit water, no rainbows. Only a glen, a clear brook, and an old weeping willow watching over it. Tamlin dozed beside me, his hair and mask bright against the green."
+    },
+    {
+     "s": "tamlin",
+     "e": "tender",
+     "t": "That willow's singing always puts me to sleep."
+    },
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "The what does what?"
+    },
+    {
+     "s": "tamlin",
+     "e": "neutral",
+     "t": "It sings."
+    },
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "War-camp limericks, I suppose?"
+    },
+    {
+     "s": "tamlin",
+     "e": "tender",
+     "t": "You're human. Your senses are still sealed off from all of it."
+    },
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "One more of my many shortcomings."
+    },
+    {
+     "n": "Somewhere along the way, that word had stopped stinging."
+    },
+    {
+     "n": "He picked a blade of grass out of my hair. His fingers brushed my cheek, and lingered at the end of my braid."
+    },
+    {
+     "s": "tamlin",
+     "e": "tender",
+     "t": "I could let you see it. My world. Hear it, smell it. Taste it."
+    },
+    {
+     "n": "His eyes went to the fading bruise on my neck."
+    },
+    {
+     "s": "feyre",
+     "e": "afraid",
+     "t": "How?"
+    },
+    {
+     "s": "tamlin",
+     "e": "neutral",
+     "t": "Every gift has a price. A kiss."
+    },
+    {
+     "choices": [
+      {
+       "t": "\"Absolutely not!\"",
+       "goto": "ch23_no"
+      },
+      {
+       "t": "\"Fine.\"",
+       "goto": "ch23_fine"
+      }
+     ]
+    }
+   ]
+  },
+  "ch23_no": {
+   "lines": [
+    {
+     "s": "feyre",
+     "e": "angry",
+     "t": "Absolutely not!"
+    },
+    {
+     "n": "My blood was racing all the same. I dug my fingers into the grass to keep them off him."
+    },
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "Doesn't it put me at a disadvantage, not being able to see any of this?"
+    },
+    {
+     "s": "tamlin",
+     "e": "neutral",
+     "t": "I'm High Fae. We never give anything away without getting something back."
+    },
+    {
+     "n": "To my own surprise, I heard myself agree."
+    },
+    {
+     "goto": "ch23_fine"
+    }
+   ]
+  },
+  "ch23_fine": {
+   "lines": [
+    {
+     "s": "feyre",
+     "e": "determined",
+     "t": "Fine."
+    },
+    {
+     "n": "He blinked. He'd expected more of a fight. I hid my smile and knelt up to face him, our knees touching in the grass, my heart going like a hummingbird's."
+    },
+    {
+     "s": "tamlin",
+     "e": "tender",
+     "t": "Close your eyes."
+    },
+    {
+     "n": "I did. The grass crunched as he rose up on his knees. His mouth brushed one eyelid, then the other. Then he drew back, and the kisses stayed on my skin."
+    },
+    {
+     "do": [
+      {
+       "type": "region_call",
+       "method": "faerie_sight"
+      }
+     ]
+    },
+    {
+     "n": "The birdsong became an orchestra. Gossip and mirth, theme and variation, more layers of music than I had ever heard in my life. And beneath it all, a woman's voice, weary and sad. The willow."
+    },
+    {
+     "n": "I opened my eyes. Everything was richer, clearer. The brook ran like a rainbow over stones smooth as silk. The trees wore a faint shimmer that danced out to the edge of every leaf. Magic didn't stink of metal anymore. It smelled of jasmine, and lilac, and roses."
+    },
+    {
+     "n": "I would never be able to paint it. Pieces of it, maybe. Never the whole. It broke my heart."
+    },
+    {
+     "n": "Then I looked at Tamlin, and my heart broke the rest of the way."
+    },
+    {
+     "n": "His skin had a golden sheen, and a circlet of sunlight glowed about his head. His eyes weren't simply green and gold, but every shade a forest could hold. This was a High Lord of Prythian. Devastating. Powerful beyond belief."
+    },
+    {
+     "choices": [
+      {
+       "t": "Reach for his mask.",
+       "goto": "ch23_mask"
+      },
+      {
+       "t": "Just look at him.",
+       "goto": "ch23_look"
+      }
+     ]
+    }
+   ]
+  },
+  "ch23_look": {
+   "lines": [
+    {
+     "n": "I don't know how long I looked. Long enough that my hands began to move on their own."
+    },
+    {
+     "goto": "ch23_mask"
+    }
+   ]
+  },
+  "ch23_mask": {
+   "lines": [
+    {
+     "n": "I touched the cool metal and the emeralds set in it, took the mask in both hands, and pulled. Gently."
+    },
+    {
+     "n": "It wouldn't move. He began to smile as I tried again, and I let go. In a blink the shining lord was gone, and the Tamlin I knew was back. The willow still sang, though, and the birds."
+    },
+    {
+     "do": [
+      {
+       "type": "region_call",
+       "method": "glamour_back"
+      }
+     ]
+    },
+    {
+     "s": "feyre",
+     "e": "sad",
+     "t": "Why can't I see you anymore?"
+    },
+    {
+     "s": "tamlin",
+     "e": "neutral",
+     "t": "Because I put my glamour back."
+    },
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "A glamour for what?"
+    },
+    {
+     "s": "tamlin",
+     "e": "weary",
+     "t": "To look ordinary. As ordinary as I can with this damned thing on. Being a High Lord marks you, even one with... limited powers. It's why I could never hide what I was becoming. It's easier to blend in."
+    },
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "But are you sure no one can undo what that night did to the masks? No one in any of the other courts?"
+    },
+    {
+     "s": "tamlin",
+     "e": "neutral",
+     "t": "I'm sorry to disappoint you."
+    },
+    {
+     "s": "feyre",
+     "e": "sad",
+     "t": "I only want to know what you look like."
+    },
+    {
+     "s": "tamlin",
+     "e": "tender",
+     "t": "What do you think I look like?"
+    },
+    {
+     "s": "feyre",
+     "e": "tender",
+     "t": "A strong, straight nose. High cheekbones, to bring out your eyes. Brows with a little arch to them."
+    },
+    {
+     "n": "He was grinning so widely I could nearly count his teeth, the fangs nowhere in sight. I was hunting for an excuse for my boldness when a yawn crept out of me, and a sudden weight pressed down on my eyes."
+    },
+    {
+     "s": "tamlin",
+     "e": "tender",
+     "t": "And your half of the bargain? Where's my kiss?"
+    },
+    {
+     "choices": [
+      {
+       "t": "Plant a kiss on the back of his hand.",
+       "goto": "ch23_hand"
+      },
+      {
+       "t": "Tell him he'll have to wait for it.",
+       "goto": "ch23_wait"
+      }
+     ]
+    }
+   ]
+  },
+  "ch23_wait": {
+   "lines": [
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "You'll get your kiss when I'm good and ready."
+    },
+    {
+     "s": "tamlin",
+     "e": "tender",
+     "t": "Then I'll wait."
+    },
+    {
+     "n": "He said it so meekly that I didn't believe a word. I grabbed his hand before he could argue."
+    },
+    {
+     "goto": "ch23_hand"
+    }
+   ]
+  },
+  "ch23_hand": {
+   "lines": [
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "Here."
+    },
+    {
+     "n": "I pressed my mouth to the back of his hand, hard."
+    },
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "There's your kiss."
+    },
+    {
+     "n": "He roared with laughter. But the glen was blurring, and the willow was calling me to lie down, so I lay down. From somewhere far off, I heard him swear, and say my name."
+    },
+    {
+     "n": "Sleep. There was no better place in all the world to sleep than here, with the willow and the birds and the brook. I curled on my side, my arm for a pillow."
+    },
+    {
+     "s": "tamlin",
+     "e": "tender",
+     "t": "I should take you home."
+    },
+    {
+     "n": "But he didn't move. The earth thudded softly as he lay down beside me, smelling of spring rain and new grass, and stroked my hair."
+    },
+    {
+     "n": "Such a lovely dream. So warm. So calm. From the edge of sleep I heard him once more, his breath against my ear."
+    },
+    {
+     "s": "tamlin",
+     "e": "tender",
+     "t": "You're exactly as I dreamed you'd be, too."
+    },
+    {
+     "do": [
+      {
+       "type": "chapter_card",
+       "n": 24
+      },
+      {
+       "type": "goto",
+       "chapter": 24,
+       "hour": 8,
+       "region": "manor_bedroom",
+       "spawn": "bed"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

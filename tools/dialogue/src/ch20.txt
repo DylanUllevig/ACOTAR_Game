@@ -1,0 +1,91 @@
+# Chapter 20: Fire Night. Tamlin goes to the Rite; she follows the drums; the three faeries; the stranger.
+
+== ch20_tamlin
+> set_flag ch20_tamlin
+N Tamlin hardly spoke at dinner. That night I lit every candle in my room to keep the shadows back.
+N I didn't go outside the next day. When I sat down to paint, what came out was a tall, skeletal gray thing with bat's ears and great membranous wings, its jaws open on row after row of fangs. I could almost smell carrion on its breath. I turned it to face the wall and went to beg Alis for work in the kitchens. Anything to keep out of the garden.
+> time 18.6
+> music ""
+> sfx drum
+N Fire Night dawned, and I didn't see Tamlin or Lucien all day. By dusk the kitchens were empty, the servants gone, and the food they had spent two days making gone with them. And from far beyond the gardens came the drums.
+N One deep beat, and two answering. Calling. On the hills toward the woods, fires flickered against a ruby sky, and the tang of magic was stronger than I had ever smelled it. Something tugged at my gut, pulling me toward those hills.
+> region_call walk_in lord_gold tamlin 860 470
+N Tamlin came down the hall, shirtless but for his baldric, a sword at his hip and a bow in his hand, the arrows in his quiver fletched with red. The warrior, whole.
+@feyre/afraid Where are you going?
+@tamlin/neutral It's Calanmai. I have to go.
+@feyre/afraid To do what?
+@tamlin/weary As High Lord, I take part in the Great Rite.
+@feyre/neutral What's the Great-
+@tamlin/angry Go to your room. Lock the doors. Set a snare, do whatever you like. Don't come out until morning.
+N His canines were lengthening. The cords of his neck trembled, as if standing still hurt him.
+@feyre/afraid Are you going into battle?
+N He laughed under his breath. He lifted a hand toward my arm, and lowered it again.
+@tamlin/tender Stay in your room, Feyre. Please.
+> region_call walk_out tamlin
+N And he was gone, bounding into the garden like a stag.
+> objective Go to your room, and stay there until morning.
+
+== ch20_room
+> set_flag ch20_sneak
+> time 22
+N I locked myself in, and realized too late that I'd had no dinner. The drums went on and on, and more fires sprang up along the hills.
+N Stay in your room. But a wild voice wove in and out of the drumming, and it said otherwise. Go. Go and see.
+N By ten o'clock, I couldn't stand it anymore.
+* Follow the drums. -> ch20_go
+* Stay where you are. -> ch20_stay
+
+== ch20_stay
+N I sat on the bed with my hands clamped between my knees. I lasted until the clock struck the quarter hour.
+-> ch20_go
+
+== ch20_go
+N I pulled my hood up, checked both knives at my sides, and slipped out.
+> objective Follow the drums into the western woods.
+
+== ch20_not_inside
+N The drums were calling. I wasn't going back in. Not yet.
+
+== ch20_out
+N The stables were empty. Every servant, every guard, gone to the fires. The drums came from the west, beyond the birches, where the woods began.
+H The woods are past the rose garden, on the west edge of the grounds.
+
+== ch20_woods
+N Smoke and magic hung thick under the trees. Hundreds of High Fae milled about in masks, and whenever I tried to look straight at one, the face slid into a blur of color. Only from the corner of my eye were they solid. A glamour, laid over me, the way my family had been glamoured.
+N I should have been furious. But the drums were in my bones now.
+@feyre/determined Whatever this Great Rite is, I want to see it.
+> objective Follow the drums to the bonfire in the hollow, south-west through the woods.
+
+== ch20_bonfire
+> set_flag ch20_bonfire
+N In the hollow, a cave mouth opened into the hillside, hung with flowers and branches, its floor spread with furs. Firelight danced inside where the passage bent out of sight. Faeries lined the path to it on either side, swaying to the drums, waiting for something.
+N I'd been banned from this? I was about to ask a bird-masked servant what was going to happen when someone caught my arm and spun me round.
+> region_call faeries_close_in
+N Three of them, without masks. Like High Fae, but taller and leaner, and something crueler in their eyes, black and bottomless. The fire didn't reflect in them at all.
+@faerie/neutral A human woman. We haven't seen one of you in an age.
+@feyre/determined What do you want?
+@faerie/neutral Only a little Fire Night fun.
+N One reached out a long, pale hand and brushed back my hair. Another seized my other arm just as I went for my knife.
+* Wrench free and go for your knives. -> ch20_knife
+* Shout for help. -> ch20_shout
+
+== ch20_knife
+N I yanked with everything I had. Their grip only tightened until it hurt, and they kept my hands well away from my blades.
+-> ch20_bonfire_2
+
+== ch20_shout
+@feyre/angry Get your hands off me!
+N Loud enough for anyone to hear. No one looked. No one cared.
+-> ch20_bonfire_2
+
+== ch20_bonfire_2
+@faerie/neutral Brave words from a human, on Calanmai. Once the Rite is done, we'll have our fun. What a treat.
+N Bony fingers dug along my ribs, my hips. They were herding me toward the dark of the trees. One shoved me, and I stumbled out of their grip, and the ground came up at me.
+> region_call stranger_arrives
+N Strong hands caught me under the shoulders and set me on my feet. Warm and broad. Nothing like theirs. The three of them went very still.
+@stranger/smirk There you are. I've been looking for you.
+N He slipped a careless arm round my shoulders. The three faeries paled.
+@stranger/cold Thank you for finding her for me. Enjoy the Rite.
+N There was enough bite under those last words that they scuttled back to the fires without a word. I stepped out from under his arm and turned to thank him.
+N He was the most beautiful man I had ever seen.
+> chapter_card 21
+-> ch21_rhys

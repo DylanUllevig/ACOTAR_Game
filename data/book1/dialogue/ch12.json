@@ -1,0 +1,319 @@
+{
+ "schema": 2,
+ "notes": "Line forms: {n} Feyre's narration, first person past tense, shown in italics; {s,e,t} a line spoken aloud (speaker, portrait expression, text); {hint} a game tip on its own card; {choices:[{t,goto,do}]}; {do:[actions]}; {goto}. Any line or choice may carry if_flag, if_not_flag, if_item, if_not_item or if_chapter. Wording is written for the game; the few short book lines kept are listed in quotes.json.",
+ "scenes": {
+  "ch12_night": {
+   "lines": [
+    {
+     "do": [
+      {
+       "type": "set_flag",
+       "flag": "ch12_night"
+      },
+      {
+       "type": "music",
+       "name": ""
+      }
+     ]
+    },
+    {
+     "n": "Paper in one hand and a pen in the other, I crept through the sleeping house, marking doors and windows and stairs with crosses and circles. I couldn't write more than my letters. My map would mean nothing to anyone else."
+    },
+    {
+     "n": "If I was going to live here, I would learn this house so well I could find my way out of it blind."
+    },
+    {
+     "n": "A breeze stirred the moonlight in the hall. The garden doors opened, and he came in."
+    },
+    {
+     "do": [
+      {
+       "type": "region_call",
+       "method": "beast_arrives",
+       "args": [
+        900,
+        470
+       ]
+      }
+     ]
+    },
+    {
+     "n": "I'd forgotten how huge he was like this. Curled horns, a wolf's face, a bear's bulk moving like a cat. He was limping. Dark, shining stains followed him across the marble."
+    },
+    {
+     "do": [
+      {
+       "type": "region_call",
+       "method": "beast_shifts"
+      }
+     ]
+    },
+    {
+     "n": "A blinding flash, and he stood before me. His clothes hung in long, vicious slashes, though the skin beneath was smooth. But his hand dripped blood onto the floor. That wound wasn't closing."
+    },
+    {
+     "s": "feyre",
+     "e": "afraid",
+     "t": "Did you kill it? The Bogge?"
+    },
+    {
+     "s": "tamlin",
+     "e": "weary",
+     "t": "Yes."
+    },
+    {
+     "n": "Flat. Empty. As if he'd had to go somewhere very deep inside himself to do it, and hadn't come all the way back."
+    },
+    {
+     "s": "feyre",
+     "e": "afraid",
+     "t": "You're hurt."
+    },
+    {
+     "n": "He looked down at his hand as if he'd forgotten he had one. Then at the paper on the table."
+    },
+    {
+     "s": "tamlin",
+     "e": "weary",
+     "t": "What's that?"
+    },
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "I thought I should learn my way around."
+    },
+    {
+     "s": "tamlin",
+     "e": "weary",
+     "t": "You can't write, can you."
+    },
+    {
+     "n": "I didn't answer. Drip. Drip."
+    },
+    {
+     "s": "tamlin",
+     "e": "weary",
+     "t": "No wonder you got so good at other things."
+    },
+    {
+     "choices": [
+      {
+       "t": "Offer to see to his hand.",
+       "goto": "ch12_bind"
+      },
+      {
+       "t": "Leave him to it.",
+       "goto": "ch12_go"
+      }
+     ]
+    }
+   ]
+  },
+  "ch12_go": {
+   "lines": [
+    {
+     "n": "I picked up my map and made it as far as the stairs. Drip. Drip. I turned back."
+    },
+    {
+     "goto": "ch12_bind"
+    }
+   ]
+  },
+  "ch12_bind": {
+   "lines": [
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "Where can we clean that hand?"
+    },
+    {
+     "s": "tamlin",
+     "e": "weary",
+     "t": "There's a small infirmary."
+    },
+    {
+     "n": "It was more cupboard than sickroom. Immortals didn't need much more. His skin burned against my cold fingers. I braced for the claws to come out the whole time I cleaned and bound the cuts. They never did."
+    },
+    {
+     "s": "tamlin",
+     "e": "neutral",
+     "t": "You can't write. And yet you taught yourself to hunt, to survive. How?"
+    },
+    {
+     "s": "feyre",
+     "e": "determined",
+     "t": "That's what happens when other lives depend on yours. You do what you have to."
+    },
+    {
+     "s": "tamlin",
+     "e": "tender",
+     "t": "You aren't what I expected. For a human."
+    },
+    {
+     "n": "He didn't say good night. Neither did I."
+    },
+    {
+     "do": [
+      {
+       "type": "time",
+       "hour": 9
+      },
+      {
+       "type": "music",
+       "name": "spring_manor"
+      }
+     ]
+    },
+    {
+     "n": "By morning the marble had been washed clean. I meant to spend the quiet hour looking at the paintings at last, but voices came from the dining room, low and tense. I slid into the shadow behind the door."
+    },
+    {
+     "s": "lucien",
+     "e": "angry",
+     "t": "I just want to know what you think you're doing. There isn't much time, Tam, and you're sulking. You're not even pretending anymore."
+    },
+    {
+     "s": "tamlin",
+     "e": "angry",
+     "t": "It was a mistake from the start. I can't stomach it. Not after what my father did to their kind. I won't walk in his footsteps."
+    },
+    {
+     "s": "lucien",
+     "e": "angry",
+     "t": "While you seal our fates? I stayed with you out of hope, not to watch you stumble. For someone with a heart of stone, yours has gone soft. The Bogge was on our lands, Tam! The borders between the courts are gone, and our own woods are crawling with vermin like the puca."
+    },
+    {
+     "s": "tamlin",
+     "e": "angry",
+     "t": "Mind your mouth. You think I don't know what's happening on my own lands? What I stand to lose? What's already lost?"
+    },
+    {
+     "n": "The air throbbed, and the metal tang of magic filled my nose. I leaned closer. My finger knocked softly against the door."
+    },
+    {
+     "n": "A human wouldn't have heard it. Both of them whirled."
+    },
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "Morning. Going for a ride, Lucien?"
+    },
+    {
+     "s": "lucien",
+     "e": "smirk",
+     "t": "Not today. Tam will go with you."
+    },
+    {
+     "n": "He patted my shoulder on his way out, looking far too pleased with himself."
+    },
+    {
+     "s": "lucien",
+     "e": "smirk",
+     "t": "Another time, human."
+    },
+    {
+     "s": "tamlin",
+     "e": "neutral",
+     "t": "Whenever you want to go, say so."
+    },
+    {
+     "s": "feyre",
+     "e": "determined",
+     "t": "I don't want to go hunting. I hate hunting."
+    },
+    {
+     "s": "tamlin",
+     "e": "neutral",
+     "t": "Then what do you want to do?"
+    },
+    {
+     "n": "He walked me through the sunlit halls. The roses outside the open windows scented everything."
+    },
+    {
+     "s": "tamlin",
+     "e": "neutral",
+     "t": "You've been riding out to hunt, and you don't even like it. No wonder the two of you never catch anything."
+    },
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "How's your hand?"
+    },
+    {
+     "s": "tamlin",
+     "e": "tender",
+     "t": "I never thanked you. The Bogge's bite was made to slow our healing long enough to kill us. You have my gratitude. And I can still use the hand."
+    },
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "I had to be able to draw a bowstring the next day. You learn."
+    },
+    {
+     "s": "tamlin",
+     "e": "tender",
+     "t": "Has anyone ever looked after you?"
+    },
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "No."
+    },
+    {
+     "n": "I'd stopped feeling sorry for myself about that a long time ago."
+    },
+    {
+     "s": "tamlin",
+     "e": "neutral",
+     "t": "I'm curious. Are you ever going to use that knife you stole from my table?"
+    },
+    {
+     "s": "feyre",
+     "e": "afraid",
+     "t": "How did you know?"
+    },
+    {
+     "s": "tamlin",
+     "e": "neutral",
+     "t": "I was trained to notice. But mostly I could smell the fear on you. If you want to stand a chance of escaping my kind, you'll need better ideas than dinner knives. Though with your gift for listening at doors, you may learn something useful yet."
+    },
+    {
+     "n": "My ears burned. But there was no point pretending."
+    },
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "Lucien said there wasn't much time. Time for what? Will more things like the Bogge come here?"
+    },
+    {
+     "s": "tamlin",
+     "e": "neutral",
+     "t": "I'm immortal, Feyre. Time is all I have. Whatever's plaguing our lands will pass someday, if the Cauldron's kind. But yes. Now that the Bogge got in, I'd expect others to follow."
+    },
+    {
+     "n": "He opened a pair of double doors at the end of the hall."
+    },
+    {
+     "s": "tamlin",
+     "e": "neutral",
+     "t": "As requested. The library."
+    },
+    {
+     "do": [
+      {
+       "type": "chapter_card",
+       "n": 13
+      },
+      {
+       "type": "goto",
+       "chapter": 13,
+       "hour": 10,
+       "region": "manor_study",
+       "spawn": "hall"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

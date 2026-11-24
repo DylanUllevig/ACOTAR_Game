@@ -1,0 +1,112 @@
+# Chapter 16: Alis by the fire, faeries can lie, the list, paint, the gallery.
+
+== ch16_bath
+> set_flag ch16_bath
+N An hour in the bath, and then a low chair before a roaring fire while Alis brushed out my hair. She had a mug of molten chocolate sent up and wouldn't lift the brush until I'd drunk some.
+N It was the best thing I had ever tasted.
+> heal_full
+> item chocolate
+N When the other maids had gone down to help with dinner, I set the mug in my lap.
+@feyre/neutral If more of those things keep crossing the borders, will there be a war?
+@alis/stern Don't ask such questions. You'll call down bad luck.
+@feyre/determined Why don't the other High Lords keep their creatures in line? Someone started to tell me about a king in Hybern-
+@alis/stern It's none of your concern.
+@feyre/angry I think it is. If this spills over the wall, if the blight poisons our lands-
+@alis/stern The less you know, the better. Leave it to Lord Tamlin. He's the only one who can deal with it.
+@alis/stern And don't think no one told me what you asked the kitchens for today, or guessed what you went to trap. Foolish girl. If the Suriel hadn't been feeling kind, you'd have earned the death it gave you. I can't decide which was stupider, this or the puca.
+@feyre/angry Would you have done any different? If you had a family-
+@alis/stern I do have a family.
+N I glanced at her hand. No ring.
+@alis/neutral My sister and her mate were murdered, near fifty years ago. They left two little ones behind. Everything I do, everything I work for, is for those boys. So don't you look at me like that and ask what I'd do, girl.
+@feyre/sad Where are they? Do they live here?
+@alis/stern No. They're somewhere else. Far away.
+@feyre/neutral Boys? After fifty years?
+@alis/neutral Some kinds of faerie breed like rabbits and grow like you. Mine, and the High Fae, hardly ever have young at all, and the ones who come grow slow. The eldest won't be grown for another twenty-odd years. Our children are rare, all of them. More precious than gold.
+N Her jaw set. That was all I would get.
+@feyre/sad I didn't mean to doubt you. I know what it is. To do everything for them.
+@alis/kind Next time that fool Lucien tells you how to catch a Suriel, you come to me. Dead chickens, my sagging backside. Offer it a new robe, and it would have groveled at your feet.
+> objective Go down to dinner.
+
+== ch16_dinner
+> set_flag ch16_dinner
+@feyre/neutral Good evening.
+N Lucien cocked his head at me, a silent question. I gave him the smallest nod. His secret was safe, though he deserved a good walloping for sending me out so unprepared.
+@lucien/grim I hear you two had a lively afternoon. I wish I'd been there to help.
+N As apologies went, it was half-hearted. I nodded anyway.
+@lucien/smirk Well. You still look lovely, despite it all.
+@feyre/neutral I thought faeries couldn't lie.
+N Tamlin choked on his wine. Lucien's grin stretched his scar.
+@lucien/smirk Who told you that? Of course we can lie. We think of it as an art. We lied when we told your ancestors we couldn't. How else would we get them to trust us?
+@feyre/afraid Iron?
+@lucien/smirk Does us no harm at all. Only ash, as you know better than anyone.
+N My face burned. I had taken every word they said as truth. Maybe the Suriel had lied to me today as well.
+@tamlin/neutral Whatever Lucien's just given away, we've never used what you believed against you. We have never knowingly lied to you.
+> journal lore_lies
+N Lucien excused himself before dessert, and I was left alone with the most dangerous creature I had ever met.
+> region_call walk_out lucien
+@tamlin/tender Are you feeling... better?
+@feyre/neutral If I never meet another naga, I'll count myself lucky.
+@tamlin/neutral What were you doing in the western woods?
+* Tell him the truth. -> ch16_truth
+* Make something up. -> ch16_lie
+
+== ch16_lie
+@feyre/neutral Walking. I lost track of how far I'd gone.
+@tamlin/neutral You're a bad liar, Feyre. For a human.
+N I gave up.
+-> ch16_truth
+
+== ch16_truth
+@feyre/neutral I heard a story once, about a creature that answers your questions if you can catch it.
+N His claws shot out so fast they cut his own face. The wounds closed as soon as they opened. He wiped away the blood with his sleeve.
+@tamlin/angry You went to catch the Suriel.
+@feyre/determined I caught the Suriel.
+@tamlin/neutral And did it tell you what you wanted to know?
+@feyre/neutral The naga interrupted before it told me anything worth hearing.
+@tamlin/weary I'd start shouting, but I think today was punishment enough. A human girl, snaring the Suriel.
+@feyre/neutral Is it supposed to be hard?
+N He laughed. Then he took something out of his pocket. My crumpled list.
+@tamlin/neutral Unusual. Queue. Slaying. Conflagration. Is this a poem about murdering me and burning the body?
+N I wanted to curl up and die. I said good night and made it almost to the door.
+@tamlin/tender You love them very much, don't you? I wonder if they know it. That none of it was for the promise, or for yourself. All of it was for them.
+@tamlin/tender I know it came out badly before. But I could help you write-
+@feyre/angry Leave me alone.
+N I walked straight into him. I'd forgotten how fast he was.
+@tamlin/tender I'm not insulting you. A human who brought down a faerie in a wolf's skin, who snared the Suriel and killed naga on her own... They're fools, not to see it.
+N He gave me the list. I shoved it in my pocket. He caught my arm, gently, and lifted his other hand as if to touch my cheek, and didn't.
+@tamlin/tender You gave up so much for them. Do you even know how to laugh?
+@feyre/angry I don't want your pity.
+@tamlin/tender What about a friend?
+@feyre/neutral Can faeries be friends with mortals?
+@tamlin/neutral Five hundred years ago, enough of us were friends with mortals that we went to war for them. How do you think your armies lasted as long as they did? There were faeries who fought and died beside humans for their freedom, and grieved when the only answer was to part our peoples.
+@feyre/neutral Were you one of them?
+@tamlin/neutral I was a child. Too young to be told what was happening. But if I'd been old enough, I would have. Against slavery, against tyranny, I'd go gladly to my death, whoever's freedom it was.
+N I wasn't sure I would. I'd have chosen whichever side kept my family safest. I had never thought of that as a weakness before.
+@tamlin/neutral For what it's worth, your family knows you're safe. They don't remember a beast in their cottage. They believe a long-lost, very rich aunt called you to her deathbed. And they know there are rumors of a threat in Prythian, and they're ready to run if the wall ever starts to fail.
+@feyre/angry You changed their memories?
+@tamlin/neutral Glamoured them. A veil over what happened. I was afraid your father would come after you, or talk men from the village into crossing the wall with him.
+@feyre/sad You don't know him. My father would never have bothered.
+@tamlin/tender Yes. He would have.
+N He wouldn't. Not with that knee to hide behind. I'd known it the moment the puca's lie was torn away.
+N But fed, and comfortable, and safe. Warned, even. He had done more for them than I ever could have. My vow was kept, my task was done. What was left for me?
+N The firelight played across his mask, warming the gold, setting the emeralds glinting. Colors I didn't have names for. Colors I had no reason, now, not to learn.
+* Ask for paint. -> ch16_paint
+* Say good night. -> ch16_night
+
+== ch16_night
+N I opened my mouth to say good night, and something else came out.
+-> ch16_paint
+
+== ch16_paint
+@feyre/neutral Paint. If it isn't too much to ask, I'd like some paint. And brushes.
+@tamlin/neutral You like to paint?
+@feyre/neutral I'm not any good. But if it's no trouble, I'll paint outside, so I don't make a mess-
+@tamlin/tender Outside, inside, on the roof. Paint wherever you like. You'll want paper too, and canvas. It may take a few days to find them, but the paint, the brushes, the canvas and the room are yours. This house is too clean anyway.
+@feyre/tender Thank you. I mean it. Thank you.
+@tamlin/neutral Have you seen the gallery?
+@feyre/neutral There's a gallery in this house?
+@tamlin/tender I had it shut up when I inherited the place. Keeping it clean seemed a waste of the servants' time. I'm busy tomorrow, and it needs airing, but the day after... Let me show it to you then. Please. It would be my pleasure.
+N He smiled at me then, broadly, without holding anything back. Isaac had never smiled at me like that. Isaac had never made my breath catch.
+N I walked out before he could see the answering smile tugging at my mouth.
+> chapter_card 17
+> goto manor_bedroom bed chapter=17 hour=2

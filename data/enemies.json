@@ -1,6 +1,6 @@
 {
   "schema": 2,
-  "notes": "Real-time creatures. Speeds in pixels per second, times in seconds, damage in HP. 'triggers' are mid-fight story beats: 'scene' plays a full dialogue (the fight freezes), 'bark' shows a line over the fight without stopping it. Each fires once per fight. The wolf has no drops: Feyre skins him afterwards (forest.gd).",
+  "notes": "Real-time creatures. Speeds in pixels per second, times in seconds, damage in HP. 'triggers' are mid-fight story beats: 'scene' plays a full dialogue (the fight freezes), 'bark' shows a line over the fight without stopping it. Each fires once per fight. The wolf has no drops: Feyre skins him afterwards (forest.gd). 'encounters' are stand-up fights with Fighters (scripts/combat/encounter.gd): 'waves' come one after another, at most 'max_attackers' rear or lunge at once, and after 'rescue_after' seconds the rescue scene ends the fight.",
   "enemies": {
     "andras_wolf": {
       "name": "The Wolf",
@@ -140,6 +140,193 @@
         {
           "id": "hare",
           "n": 1
+        }
+      ]
+    },
+    "naga": {
+      "name": "Naga",
+      "fae": true,
+      "boss": false,
+      "art": {
+        "sprite": "actors/naga.png",
+        "hurt_radius": 26,
+        "hurt_offset": [
+          0,
+          -44
+        ],
+        "feet_radius": 15,
+        "shadow": 1.0
+      },
+      "max_hp": 34,
+      "weight": 0.8,
+      "speed": 165,
+      "attack": {
+        "range": 150,
+        "windup": 0.5,
+        "turn": 1.4,
+        "time": 0.28,
+        "speed": 560,
+        "recover": 0.75,
+        "cooldown": 1.0,
+        "reach": 72,
+        "damage": 7,
+        "knockback": 340
+      },
+      "stagger_damage": 10,
+      "stagger_time": 0.45,
+      "windup_sfx": "hiss",
+      "strike_sfx": "knife_swing",
+      "hurt_sfx": "hiss_hurt",
+      "death_sfx": "hiss_hurt",
+      "drops": []
+    },
+    "puca": {
+      "name": "Puca",
+      "fae": true,
+      "boss": false,
+      "art": {
+        "sprite": "actors/puca.png",
+        "hurt_radius": 30,
+        "hurt_offset": [
+          0,
+          -58
+        ],
+        "feet_radius": 16,
+        "shadow": 1.1
+      },
+      "max_hp": 70,
+      "weight": 0.6,
+      "speed": 150,
+      "attack": {
+        "range": 165,
+        "windup": 0.62,
+        "turn": 1.1,
+        "time": 0.32,
+        "speed": 540,
+        "recover": 0.85,
+        "cooldown": 1.1,
+        "reach": 78,
+        "damage": 8,
+        "knockback": 380
+      },
+      "stagger_damage": 12,
+      "stagger_time": 0.5,
+      "windup_sfx": "puca_growl",
+      "strike_sfx": "knife_swing",
+      "hurt_sfx": "puca_hurt",
+      "death_sfx": "puca_hurt",
+      "drops": []
+    }
+  },
+  "encounters": {
+    "puca": {
+      "name": "The Puca",
+      "max_attackers": 1,
+      "music": "battle_spring",
+      "rescue_after": 32,
+      "waves": [
+        [
+          "puca"
+        ]
+      ],
+      "triggers": [
+        {
+          "when": "start",
+          "bark": {
+            "s": "feyre",
+            "e": "afraid",
+            "t": "That isn't my father. It never was."
+          }
+        },
+        {
+          "when": "first_blood",
+          "bark": {
+            "s": "feyre",
+            "e": "determined",
+            "t": "It bleeds. Then it can die."
+          }
+        },
+        {
+          "when": "player_low",
+          "bark": {
+            "s": "feyre",
+            "e": "wounded",
+            "t": "Not here. Not for something wearing his face."
+          }
+        },
+        {
+          "when": "rescue",
+          "scene": "ch11_rescue"
+        },
+        {
+          "when": "victory",
+          "scene": "ch11_victory"
+        }
+      ]
+    },
+    "naga_snare": {
+      "name": "The Naga",
+      "max_attackers": 1,
+      "music": "battle_spring",
+      "rescue_after": 58,
+      "waves": [
+        [
+          "naga",
+          "naga"
+        ],
+        [
+          "naga",
+          "naga"
+        ]
+      ],
+      "triggers": [
+        {
+          "when": "start",
+          "bark": {
+            "s": "feyre",
+            "e": "determined",
+            "t": "Four of them. Keep them in front of you."
+          }
+        },
+        {
+          "when": "first_blood",
+          "bark": {
+            "s": "feyre",
+            "e": "determined",
+            "t": "Scales, not stone. They cut."
+          }
+        },
+        {
+          "when": "wave_1",
+          "bark": {
+            "s": "feyre",
+            "e": "afraid",
+            "t": "The other two. Out of the birches."
+          }
+        },
+        {
+          "when": "half",
+          "bark": {
+            "s": "feyre",
+            "e": "determined",
+            "t": "Watch them rear back. Then step aside."
+          }
+        },
+        {
+          "when": "player_low",
+          "bark": {
+            "s": "feyre",
+            "e": "wounded",
+            "t": "Get up. Get up, or they'll eat you here."
+          }
+        },
+        {
+          "when": "rescue",
+          "scene": "ch15_rescue"
+        },
+        {
+          "when": "victory",
+          "scene": "ch15_victory"
         }
       ]
     }

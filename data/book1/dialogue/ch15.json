@@ -1,0 +1,198 @@
+{
+ "schema": 2,
+ "notes": "Line forms: {n} Feyre's narration, first person past tense, shown in italics; {s,e,t} a line spoken aloud (speaker, portrait expression, text); {hint} a game tip on its own card; {choices:[{t,goto,do}]}; {do:[actions]}; {goto}. Any line or choice may carry if_flag, if_not_flag, if_item, if_not_item or if_chapter. Wording is written for the game; the few short book lines kept are listed in quotes.json.",
+ "scenes": {
+  "ch15_rescue": {
+   "lines": [
+    {
+     "do": [
+      {
+       "type": "sfx",
+       "name": "beast_roar"
+      },
+      {
+       "type": "shake",
+       "strength": 12
+      }
+     ]
+    },
+    {
+     "n": "A roar shook the clearing, and it hadn't come from any naga's throat."
+    },
+    {
+     "n": "The one over me went flying into a tree so hard the trunk cracked. Gold mask, gold hair, long black claws. Tamlin tore into it."
+    },
+    {
+     "n": "The others shrieked. One ran. He caught it before it had gone three strides, pinned it, and opened it from throat to belly in one long stroke."
+    },
+    {
+     "n": "I stayed where I was, face half in the moss, knife still in my fist. I was shaking too hard to get up."
+    },
+    {
+     "goto": "ch15_found"
+    }
+   ]
+  },
+  "ch15_victory": {
+   "lines": [
+    {
+     "n": "The last of them went down and didn't get up. I stood among the bodies, gasping, blood in my mouth that wasn't mine."
+    },
+    {
+     "do": [
+      {
+       "type": "sfx",
+       "name": "beast_roar"
+      }
+     ]
+    },
+    {
+     "n": "A roar shook the clearing behind me, and Tamlin burst through the birches, claws out, fangs bared. He stopped short and looked at what was left of them. Then at me."
+    },
+    {
+     "goto": "ch15_found"
+    }
+   ]
+  },
+  "ch15_found": {
+   "lines": [
+    {
+     "s": "tamlin",
+     "e": "angry",
+     "t": "Feyre."
+    },
+    {
+     "n": "The rage drained out of his eyes. The claws slid back into his hands, though the roar still rang in my ears. There had been nothing in that sound but fury."
+    },
+    {
+     "s": "feyre",
+     "e": "wounded",
+     "t": "How?"
+    },
+    {
+     "s": "tamlin",
+     "e": "neutral",
+     "t": "I was tracking a pack of them. Those four broke away. They must have followed your scent. I heard you scream."
+    },
+    {
+     "n": "So he didn't know about the Suriel. And he had come."
+    },
+    {
+     "n": "He ran his fingers down my cheek, and the throbbing in my face and arm faded, then vanished. The metal tang of magic, and then only the breeze."
+    },
+    {
+     "s": "tamlin",
+     "e": "neutral",
+     "t": "I found one dead half a mile back with one of my arrows in its throat. I followed the tracks from there."
+    },
+    {
+     "n": "He pulled off his tunic and gave it to me. Mine was torn to ribbons by their talons. High Lord. I should have guessed. Maybe I hadn't wanted to."
+    },
+    {
+     "s": "tamlin",
+     "e": "neutral",
+     "t": "Do I want to know what you were doing out here?"
+    },
+    {
+     "choices": [
+      {
+       "t": "Tell him the truth.",
+       "goto": "ch15_lie_not"
+      },
+      {
+       "t": "Say you didn't realize how far you'd come.",
+       "goto": "ch15_far"
+      }
+     ]
+    }
+   ]
+  },
+  "ch15_lie_not": {
+   "lines": [
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "I..."
+    },
+    {
+     "n": "He'd warned me. Over and over. And the Suriel had told me not to go looking for more answers. The words died in my throat."
+    },
+    {
+     "goto": "ch15_far"
+    }
+   ]
+  },
+  "ch15_far": {
+   "lines": [
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "I thought I wasn't confined to the house. I didn't realize I'd come so far."
+    },
+    {
+     "s": "tamlin",
+     "e": "weary",
+     "t": "On the days I'm called away to deal with trouble, stay close to the house."
+    },
+    {
+     "s": "feyre",
+     "e": "sad",
+     "t": "Thank you. Not only for this. For saving my life."
+    },
+    {
+     "s": "tamlin",
+     "e": "weary",
+     "t": "It was the least I could do. They should never have got this far onto my lands."
+    },
+    {
+     "n": "There was no triumph in him at all. Only a deep, endless kind of shame."
+    },
+    {
+     "s": "tamlin",
+     "e": "tender",
+     "t": "Let's go home."
+    },
+    {
+     "n": "I didn't tell him it wasn't my home. That I might not have one anymore."
+    }
+   ]
+  },
+  "ch15_after": {
+   "lines": [
+    {
+     "n": "We walked back in silence, both of us soaked in blood and pale as ghosts."
+    },
+    {
+     "n": "Stay with the High Lord, the Suriel had said. Easy enough. As for wicked kings and their commanders, and what they had to do with the male walking beside me, I didn't know enough to warn anyone. My family would have to make do with what little I had."
+    },
+    {
+     "do": [
+      {
+       "type": "journal",
+       "id": "lore_naga"
+      },
+      {
+       "type": "journal",
+       "id": "lore_high_lords"
+      },
+      {
+       "type": "unlock_tier",
+       "tier": 3
+      },
+      {
+       "type": "chapter_card",
+       "n": 16
+      },
+      {
+       "type": "goto",
+       "chapter": 16,
+       "hour": 18,
+       "region": "manor_bedroom",
+       "spawn": "bath"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}
