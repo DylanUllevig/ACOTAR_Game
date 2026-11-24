@@ -16,6 +16,7 @@ const NIGHT := Color(0.08, 0.1, 0.17)
 
 static var _cache = {}
 static var _font_cache = {}
+static var _density = null
 
 
 static func resolve(rel: String) -> String:
@@ -34,6 +35,23 @@ static func tex(rel: String) -> Texture2D:
 	return t
 
 
+## Final sprites are painted at a higher resolution than the size the game lays
+## them out for. tools/fit_art.py records the ratio (layout size / pixel size)
+## in assets/final/density.json; multiply a sprite's scale by it to keep its
+## size on screen. Placeholders are 1.0.
+static func density(rel: String) -> float:
+	if _density == null:
+		_density = {}
+		var path = FINAL + "density.json"
+		if FileAccess.file_exists(path):
+			var d = JSON.parse_string(FileAccess.get_file_as_string(path))
+			if d is Dictionary:
+				_density = d
+	if not resolve(rel).begins_with(FINAL):
+		return 1.0
+	return float(_density.get(rel, 1.0))
+
+
 ## Diffuse + normal map as a CanvasTexture so 2D lights shade it.
 static func lit(rel: String) -> Texture2D:
 	var key = "lit:" + rel
@@ -48,7 +66,7 @@ static func lit(rel: String) -> Texture2D:
 	var np = resolve(nrel)
 	if ResourceLoader.exists(np):
 		ct.normal_texture = load(np)
-	ct.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR
+	ct.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR_WITH_MIPMAPS
 	_cache[key] = ct
 	return ct
 

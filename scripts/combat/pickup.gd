@@ -30,16 +30,20 @@ func _ready() -> void:
 	add_to_group("pickups")
 	sprite = Sprite2D.new()
 	if item_id == "arrow" or item_id == "ash_arrow":
-		sprite.texture = Art.tex("fx/ash_arrow.png" if item_id == "ash_arrow" else "fx/arrow.png")
+		var rel = "fx/ash_arrow.png" if item_id == "ash_arrow" else "fx/arrow.png"
+		var k = Art.density(rel)
+		sprite.texture = Art.tex(rel)
+		sprite.scale = Vector2(k, k)
 		var ang: float = get_meta("angle", 0.0)
 		# lying arrows rest at their flight angle; stuck ones lean into the trunk
 		sprite.rotation = ang
 		if not stuck:
-			sprite.scale = Vector2(0.9, 0.9)
+			sprite.scale = Vector2(0.9, 0.9) * k
 			sprite.position = Vector2(0, -4)
 	else:
-		sprite.texture = Art.tex(String(DB.item(item_id).get("icon", "items/arrow.png")))
-		sprite.scale = Vector2(0.5, 0.5)
+		var icon = String(DB.item(item_id).get("icon", "items/arrow.png"))
+		sprite.texture = Art.tex(icon)
+		sprite.scale = Vector2(0.5, 0.5) * Art.density(icon)
 		sprite.position = Vector2(0, -22)
 	add_child(sprite)
 	# a faint glint so things on the snow are findable at dusk

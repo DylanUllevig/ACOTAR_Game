@@ -18,6 +18,8 @@ const EXIT := Vector2(760, 2630)
 const APPROACH := Rect2(CLEARING - Vector2(700, 500), Vector2(1400, 1000))
 const HARES := [Vector2(1320, 2180), Vector2(1960, 1820), Vector2(560, 1480), Vector2(2900, 2060), Vector2(3640, 1720)]
 const ROSES := [Vector2(1010, 2040), Vector2(1720, 1690), Vector2(2280, 1430), Vector2(1330, 1330), Vector2(3420, 1530)]
+# places to search: deer sign, the old snare, the fallen log, the creek bank
+const POIS := [Vector2(1180, 1880), Vector2(1560, 1600), Vector2(2060, 1530), Vector2(3900, 1180)]
 
 var wolf: Node2D = null
 var doe: Node2D = null
@@ -36,7 +38,7 @@ func build() -> void:
 	combat_allowed = true
 	map_title = "The Winter Forest"
 	map_base = Color(0.92, 0.93, 0.96)
-	add_ground_tile("terrain/snow.png", bounds)
+	add_ground_tile("terrain/snow.png", bounds, Color.WHITE, true, true)
 	enclose_bounds()
 	add_sun(-37.0, Color(1, 0.92, 0.8), 0.55)
 	_build_path()
@@ -90,9 +92,26 @@ func _path_points() -> Array:
 	return [Vector2(760, 2700), Vector2(760, 2300), Vector2(1100, 1900), Vector2(1500, 1600), Vector2(2000, 1500), Vector2(2400, 1300), BRAMBLES + Vector2(-60, 60), CLEARING + Vector2(-120, 60)]
 
 
+## The brook's course, west to east, from where it comes out from under the
+## snow to the edge of the map.
+func _brook_points() -> PackedVector2Array:
+	var pts = PackedVector2Array()
+	for i in 30:
+		var t = i / 29.0
+		pts.append(Vector2(2300 + t * 1900, 400 + t * 900 + sin(t * 9.0) * 70))
+	return pts
+
+
 func _build_path() -> void:
-	# a trodden line through the snow, a shade bluer and flatter than the drifts
 	var pts = PackedVector2Array(_path_points())
+	if Art.tex("terrain/path_snow.png") != null:
+		# the trodden way home, painted; it runs on past the south edge so it
+		# does not fade out where she leaves
+		map_line(Region.smooth_curve(pts, 20.0), Color(0.66, 0.56, 0.44, 0.75), 30.0)
+		pts.insert(0, Vector2(760, 2950))
+		add_strip("terrain/path_snow.png", pts, 190.0, -9, 220.0)
+		return
+	# a trodden line through the snow, a shade bluer and flatter than the drifts
 	var curve = Curve2D.new()
 	for p in pts:
 		curve.add_point(p)
@@ -114,16 +133,22 @@ func _build_path() -> void:
 
 
 func _build_brook() -> void:
+	var pts = _brook_points()
+	if Art.tex("terrain/brook.png") != null:
+		# painted ice, banks and holes; it runs on past the east edge, and its
+		# west end fades under the snow
+		map_line(pts, Color(0.45, 0.6, 0.8, 0.9), 60.0)
+		var run = PackedVector2Array(pts)
+		var last = pts[pts.size() - 1]
+		run.append(last + (last - pts[pts.size() - 2]).normalized() * 320.0)
+		add_strip("terrain/brook.png", run, 224.0, -8, 260.0)
+		return
 	var line = Line2D.new()
 	line.width = 70
 	line.default_color = Color(0.72, 0.84, 0.98, 0.85)
 	line.joint_mode = Line2D.LINE_JOINT_ROUND
 	line.begin_cap_mode = Line2D.LINE_CAP_ROUND
 	line.end_cap_mode = Line2D.LINE_CAP_ROUND
-	var pts = PackedVector2Array()
-	for i in 30:
-		var t = i / 29.0
-		pts.append(Vector2(2300 + t * 1900, 400 + t * 900 + sin(t * 9.0) * 70))
 	line.points = pts
 	line.z_index = -8
 	add_child(line)
@@ -152,6 +177,7 @@ func _scatter_trees() -> void:
 	var rng = RandomNumberGenerator.new()
 	rng.seed = 1600
 	var placed: Array[Vector2] = []
+	var brook = _brook_points()
 	var tries = 0
 	while placed.size() < 150 and tries < 4000:
 		tries += 1
@@ -160,11 +186,20 @@ func _scatter_trees() -> void:
 			continue
 		if p.distance_to(BRAMBLES) < 240:
 			continue
-		if _near_path(p, 150):
+		# nor just south of the thicket, where its crown would stand in front
+		# of where she hides
+		if absf(p.x - BRAMBLES.x) < 360.0 and p.y > BRAMBLES.y and p.y - BRAMBLES.y < 480.0:
+			continue
+		if _near_path(p, 150) or _near_line(brook, p, 170):
 			continue
 		var near_spot = false
 		for q in HARES + ROSES:
 			if p.distance_to(q) < 110:
+				near_spot = true
+		# nor just in front of a rose bush or a place to search, where its
+		# crown would hide it (a pine stands up to 460 px tall and 300 wide)
+		for q in ROSES + POIS:
+			if absf(q.x - p.x) < 120.0 and p.y > q.y and p.y - q.y < 420.0:
 				near_spot = true
 		if near_spot:
 			continue
@@ -186,7 +221,10 @@ func _scatter_trees() -> void:
 
 
 func _near_path(p: Vector2, d: float) -> bool:
-	var pts = _path_points()
+	return _near_line(PackedVector2Array(_path_points()), p, d)
+
+
+static func _near_line(pts: PackedVector2Array, p: Vector2, d: float) -> bool:
 	for i in range(pts.size() - 1):
 		var c = Geometry2D.get_closest_point_to_segment(p, pts[i], pts[i + 1])
 		if c.distance_to(p) < d:
@@ -226,11 +264,11 @@ func _spawn_creatures() -> void:
 
 
 func _build_points_of_interest() -> void:
-	add_interactable(Vector2(1180, 1880), "Read the signs", func(): await Dialogue.play("ch01_tracks"), 90.0, "Deer sign")
-	add_prop("props/rock_1.png", Vector2(1560, 1560), 0.9, Vector2(40, 14), Vector2(80, 30))
-	add_interactable(Vector2(1560, 1600), "Check the old snare", func(): await Dialogue.play("ch01_snare"), 90.0, "Old snare")
-	add_interactable(Vector2(2060, 1530), "Rest a moment", func(): await Dialogue.play("ch01_ash_lore"), 90.0, "Fallen log")
-	add_interactable(Vector2(3900, 1180), "Search the creek bank", func(): await Dialogue.play("ch01_wire"), 110.0, "Creek bank")
+	add_interactable(POIS[0], "Read the signs", func(): await Dialogue.play("ch01_tracks"), 90.0, "Deer sign")
+	add_prop("props/rock_1.png", POIS[1] + Vector2(0, -40), 0.9, Vector2(40, 14), Vector2(80, 30))
+	add_interactable(POIS[1], "Check the old snare", func(): await Dialogue.play("ch01_snare"), 90.0, "Old snare")
+	add_interactable(POIS[2], "Rest a moment", func(): await Dialogue.play("ch01_ash_lore"), 90.0, "Fallen log")
+	add_interactable(POIS[3], "Search the creek bank", func(): await Dialogue.play("ch01_wire"), 110.0, "Creek bank")
 	map_exit(EXIT, "Home")
 	# the approach: at the clearing's edge she sees the doe, and the eyes. Kept
 	# clear of the rose bushes, the fallen log and the creek bank, so those can
@@ -261,7 +299,9 @@ func _pick_roses(i: int) -> void:
 	GameState.bump("rose_hips_picked", 3)
 	Audio.sfx("forage", -4.0, 0.08)
 	var spr: Sprite2D = (_rose_props[i] as Node2D).get_child(0)
+	spr.scale *= Art.density("props/rose_bush_bare.png") / Art.density("props/rose_bush.png")
 	spr.texture = Art.lit("props/rose_bush_bare.png")
+	spr.offset = Vector2(0, -spr.texture.get_height() / 2.0)
 	(_rose_spots[i] as Area2D).enabled = false
 	if not GameState.has_flag("hint_rose_hips"):
 		GameState.set_flag("hint_rose_hips")
@@ -335,12 +375,28 @@ func _build_aftermath(live: bool) -> void:
 	_aftermath_done = true
 	var at: Vector2 = wolf.global_position if live and wolf != null else CLEARING + Vector2(-160, -60)
 	if not live:
-		var body = add_prop("actors/wolf.png", at, 1.45, Vector2(50, 14))
-		var spr: Sprite2D = body.get_child(0)
-		spr.scale.y *= 0.62
-		spr.modulate = Color(0.62, 0.6, 0.66)
+		if Art.tex("actors/wolf_dead.png") != null:
+			# lying on his side: a shadow under his whole length, not a cast
+			# silhouette, which would stand him up again
+			var carcass = add_prop("actors/wolf_dead.png", at, 1.45, Vector2.ZERO)
+			var spr: Sprite2D = carcass.get_child(0)
+			spr.modulate = Color(0.86, 0.84, 0.88)
+			var fit = Creature.lying_shadow(spr)
+			var sh = Sprite2D.new()
+			sh.texture = Art.tex("fx/shadow.png")
+			sh.modulate = Color(0.05, 0.06, 0.12, 0.75)
+			sh.z_index = -1
+			sh.scale = fit[0]
+			sh.position = fit[1]
+			carcass.add_child(sh)
+		else:
+			var body = add_prop("actors/wolf.png", at, 1.45, Vector2(50, 14))
+			var spr: Sprite2D = body.get_child(0)
+			spr.scale.y *= 0.62
+			spr.modulate = Color(0.62, 0.6, 0.66)
+		# the blood pools under his body, not below his paws
 		for i in 7:
-			Fx.blood_decals(self, at + Vector2(randf_range(-80, 80), randf_range(-10, 30)), Vector2.ZERO, 1)
+			Fx.blood_decals(self, at + Vector2(randf_range(-90, 90), randf_range(-60, -10)), Vector2.ZERO, 1)
 	if not GameState.has_flag("wolf_skinned"):
 		_skin_spot = add_interactable(at + Vector2(0, 20), "Skin the wolf", _skin_wolf, 130.0)
 	var doe_at = DOE_POS

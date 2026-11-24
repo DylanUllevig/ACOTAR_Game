@@ -36,7 +36,9 @@ func setup(from: Vector2, dir: Vector2, speed: float, dmg: int, ammo: String, fx
 func _ready() -> void:
 	z_index = 40
 	sprite = Sprite2D.new()
-	sprite.texture = Art.tex("fx/ash_arrow.png" if ammo_id == "ash_arrow" else "fx/arrow.png")
+	var rel = "fx/ash_arrow.png" if ammo_id == "ash_arrow" else "fx/arrow.png"
+	sprite.texture = Art.tex(rel)
+	sprite.scale = Vector2.ONE * Art.density(rel)
 	add_child(sprite)
 	trail = Line2D.new()
 	trail.width = 3.0

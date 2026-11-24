@@ -6,9 +6,9 @@ to every prompt; change it there, not per asset.
 
 ## The look in one line
 
-Painted dark fairytale. Hand-painted portraits and battle art with visible brush
-strokes, set against a stylised top-down world that is mostly lit, not drawn:
-the light and colour grading carry the mood.
+Painted dark fairytale. Hand-painted portraits and world art with visible brush
+strokes, seen from above at a slant, and lit in the game: the light and colour
+grading carry the mood.
 
 ## Palette by region
 
@@ -38,31 +38,61 @@ Feyre crosses into Prythian, so do not let mortal-side art get lush.
   bow and knife; the sisters' iron bracelets; the father's cane and ruined knee;
   the Beast's horns, golden fur and green eyes.
 
-## Battle art
+## Size and sharpness
 
-- 4:3, enemy faces left toward Feyre. Transparent background; the arena is
-  drawn by the game (sky, treeline, snow, fog, lights).
-- Silhouette first: it must read at a glance against a pale snow field.
+Final art has more pixels than the size the game lays it out at, so it stays
+sharp when the camera comes close. `assets/final/density.json` records layout
+size over pixel size for every file, and the game multiplies sprite scales by it
+(`Art.density`). After importing, `python3 tools/final_mipmaps.py` turns on
+mipmaps for those files, or fine detail shimmers when it is drawn smaller. The
+project's default canvas filter is linear with mipmaps, so a sprite given a plain
+texture (an arrow, a pickup) uses them too, not only the lit ones.
 
-## Card art
-
-- 3:2 landscape, one bold subject, readable at 250 px wide.
-- No text in the image. The frame, cost and name are drawn by the game.
-
-## World sprites (props, terrain)
+## World sprites (props, creatures, effects)
 
 - High three-quarter top-down view, light from the upper left.
-- Props: base of the object at the bottom centre of the image, transparent
-  background. The game places the sprite by its base and casts a projected
-  shadow from the silhouette, so do not paint a ground shadow.
-- Terrain: seamless 512 px tiles, no painted shadows, even light.
-- Every lit sprite needs a `_n.png` normal map: `python3 tools/make_normals.py --all`.
+- Props and creatures: base of the object at the bottom centre of the image,
+  transparent background. The game places the sprite by its base and casts a
+  projected shadow from the silhouette, so do not paint a ground shadow.
+- Effects and weapons (arrows, bow, knife, the slash): one sheet of separate
+  objects on a clear background, cut apart with `tools/cut_sheet.py`. Arrows
+  and the knife point right; the bow stands upright, string on the left.
+- Fit everything with `tools/fit_art.py`. Every lit sprite needs a `_n.png`
+  normal map (`tools/make_normals.py`); the fitting tools make them.
+
+## Ground
+
+- Tiles (snow, trodden mud, cobbles): square, even light, no painted shadows.
+  `fit_art.py --seam cut` makes them wrap by stitching the edges along the
+  cheapest seam (`tools/seams.py`) rather than blending, which would double
+  every cobble.
+- A patch of one ground on another (the cobbled square in the mud) frays at
+  its edges in a shader (`Region.add_ground_patch`), so do not paint edges.
+- Paths, the brook and roads: a 21:9 image running left to right across the
+  middle, fading to plain ground at the top and bottom. `tools/make_strip.py`
+  makes it wrap and fades its edges, and the game lays it along a curve
+  (`Region.add_strip`).
+
+## Painted rooms
+
+An interior is one painting (`rooms/cottage.png`), 3:2, seen from above at a
+slant with the front wall folded down so the room is open to the camera. Paint
+it in even, fairly bright light; the game adds the firelight. Walls, furniture
+and doors are measured on a 1500 x 1000 grid of the painting, and the region
+script lays collisions, lights and people on those numbers. Furniture someone
+can stand behind (the table, the benches, the dresser, the door posts) is cut
+out of the painting along its outline and sorted with the people, so it hides
+their legs. People are scaled so a standing figure is about 0.6 of the bed's
+length; the camera comes in closer indoors.
 
 ## Characters walking in the world
 
-48 x 64 frames, 4 directions x 4 frames. Image models cannot keep a walk cycle
-consistent, so these stay placeholders until they are hand-drawn or made with a
-sprite tool.
+4 x 4 sheets: rows face down, left, right and up; columns are a walk (stand,
+step, stand, step). Each character is generated as a turnaround (front, side,
+back) with their portrait as the reference, and Feyre also as three walk
+strips; `tools/make_sheet.py` sets every figure on the same scale with its feet
+on the bottom of the frame. Left is the right view mirrored. Frames are 192 x
+256 pixels for a 48 x 64 layout, sharp at the interior camera.
 
 ## Typography
 

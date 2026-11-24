@@ -110,7 +110,7 @@ static func slash(at: Node, pos: Vector2, angle: float, flip: bool, reach: float
 	s.material = m
 	s.position = pos
 	s.rotation = angle
-	var k = reach / 90.0
+	var k = reach / 90.0 * Art.density("fx/slash.png")
 	s.scale = Vector2(0.7 * k, (-0.7 if flip else 0.7) * k)
 	s.modulate = Color(1.0, 0.95, 0.85, 0.9)
 	s.z_index = 50

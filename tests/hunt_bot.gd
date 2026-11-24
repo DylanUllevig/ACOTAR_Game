@@ -34,6 +34,7 @@ func stop() -> void:
 	_release_all()
 	if region and is_instance_valid(region) and region.player:
 		region.player.bot_aim = null
+		region.player.god = false
 	queue_free()
 
 
@@ -41,8 +42,7 @@ func _physics_process(delta: float) -> void:
 	if region == null or not is_instance_valid(region) or region.player == null:
 		return
 	var p = region.player
-	if god:
-		p.invuln = 0.2
+	p.god = god
 	if _last_hp >= 0 and GameState.hp < _last_hp:
 		hits_taken += 1
 	_last_hp = GameState.hp

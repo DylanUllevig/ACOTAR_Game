@@ -199,11 +199,14 @@ func stick_arrow(ammo_id: String, at: Vector2, angle: float, break_chance: float
 		spawn_pickup(ammo_id, 1, global_position + Vector2(rng.randf_range(-40, 40), rng.randf_range(0, 30)))
 		return
 	var s = Sprite2D.new()
-	s.texture = Art.tex("fx/ash_arrow.png" if ammo_id == "ash_arrow" else "fx/arrow.png")
+	var rel = "fx/ash_arrow.png" if ammo_id == "ash_arrow" else "fx/arrow.png"
+	var k = Art.density(rel)
+	s.texture = Art.tex(rel)
+	s.scale = Vector2(k, k)
 	s.position = body.to_local(at)
 	# body may be mirrored; keep the shaft pointing back along its flight
 	s.rotation = angle if not facing_left else PI - angle
-	s.offset = Vector2(-18, 0)
+	s.offset = Vector2(-18, 0) / k
 	s.z_index = 1
 	body.add_child(s)
 	# ordinary arrows work loose after a few seconds; ash stays in until the end
@@ -234,3 +237,14 @@ func drop_arrows() -> void:
 		s.queue_free()
 		spawn_pickup(String(e[1]), 1, global_position + Vector2(rng.randf_range(-60, 60), rng.randf_range(5, 45)))
 	stuck_arrows.clear()
+
+
+## A body lying on its side touches the snow along its whole length, so its
+## shadow runs under all of it; with only a shadow at the feet a painted carcass
+## reads as leaping, not lying. Returns [scale, position] for fx/shadow.png
+## under 'spr', whose origin is the bottom middle of the picture.
+static func lying_shadow(spr: Sprite2D) -> Array:
+	var w = spr.texture.get_width() * absf(spr.scale.x)
+	var h = spr.texture.get_height() * absf(spr.scale.y)
+	var sh: Texture2D = Art.tex("fx/shadow.png")
+	return [Vector2(w * 0.95 / sh.get_width(), h * 0.8 / sh.get_height()), spr.position + Vector2(0, -h * 0.36)]

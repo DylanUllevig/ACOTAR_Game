@@ -11,8 +11,8 @@
         "sprite": "actors/wolf.png",
         "scale": 1.45,
         "eye": [
-          106,
-          -122
+          117,
+          -72
         ]
       },
       "max_hp": 130,

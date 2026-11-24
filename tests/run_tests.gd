@@ -352,6 +352,33 @@ func test_chapter_one() -> void:
 	await frames(6)
 	r._pick_roses(0)
 	check(GameState.count("rose_hips") == 3 and GameState.has_flag("rose_0"), "rose hips can be picked")
+	# a tree she walks behind fades so she never vanishes, and comes back after
+	var tree = r._tall[0]
+	r.player.global_position = Vector2(tree[1].get_center().x, tree[2] - 40.0)
+	await frames(30)
+	check(tree[0].modulate.a < 0.5, "a tree she stands behind fades (alpha %.2f)" % tree[0].modulate.a)
+	r.player.global_position = Vector2(tree[1].get_center().x, tree[2] + 60.0)
+	await frames(30)
+	check(tree[0].modulate.a > 0.99, "it comes back when she steps out in front (alpha %.2f)" % tree[0].modulate.a)
+	# the wolf is far bigger than she is: where he stands in front of her, her
+	# outline shows through him; never while he hides in the brush, or behind her
+	var w = r.wolf
+	var w_home = w.global_position
+	w.process_mode = Node.PROCESS_MODE_DISABLED
+	var spot: Vector2 = r.spawns["start"]
+	r.player.global_position = spot
+	w.global_position = spot + Vector2(0, 30)
+	await frames(20)
+	check(r.player.silhouette_strength() == 0.0, "no silhouette through the wolf while he is hidden in the brush")
+	w.sprite.modulate.a = 1.0
+	await frames(20)
+	check(r.player.silhouette_strength() > 0.9, "her outline shows through the wolf in front of her (%.2f)" % r.player.silhouette_strength())
+	w.global_position = r.player.global_position + Vector2(0, -30)
+	await frames(20)
+	check(r.player.silhouette_strength() == 0.0, "and not while he stands behind her (%.2f)" % r.player.silhouette_strength())
+	w.sprite.modulate.a = 0.0
+	w.global_position = w_home
+	w.process_mode = Node.PROCESS_MODE_INHERIT
 	# walk into the approach: the brambles scene, then the hunt
 	r.player.global_position = Forest.BRAMBLES + Vector2(0, -14)
 	var started = await wait_until(func(): return r.hunt != null and idle(), 1800)

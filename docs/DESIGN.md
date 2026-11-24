@@ -52,8 +52,11 @@ bark plays over it, and a scene that starts while a bark is showing ends it.
 Losing offers Try again, which restarts the hunt at full health, hidden again.
 
 Balance, enforced by the test suite over 24 seeded fights per bot: a careful
-bot that reads 85% of his tells won 24 of 24 with 19.0 of 30 HP left on
-average; a careless bot that reads 25% won 18 of 24 with 6.6 left.
+bot that reads 85% of his tells won 22 of 24 with 17.5 of 30 HP left on
+average; a careless bot that reads 25% won 18 of 24 with 7.0 left. Over 60
+seeded runs the careful bot wins about 90% with about 17 HP left. (Trees are
+obstacles, so moving them in the art pass, off the brook and out from in
+front of the rose bushes and the thicket, changed these by a fight or two.)
 
 ### Weapons and food
 
@@ -106,9 +109,28 @@ and ignores `progress`.
 - The vertical lines you saw: the fog and snow noise used a float hash that
   keeps only a few bits when a driver evaluates it at reduced precision, which
   turns it into vertical streaks. It is now an integer hash
-  (`shaders/noise.gdshaderinc`) that gives the same value on every GPU. The
-  lines never appeared in the renderers available here, so whether they are
-  gone on your machine is unconfirmed until you run the build.
+  (`shaders/noise.gdshaderinc`) that gives the same value on every GPU. You
+  confirmed on 2026-11-24 that the lines are gone on your machine.
+- The cottage is one painting. Collisions, lights and people are placed on
+  measurements of it, and the table, benches, dresser and door posts are cut
+  out of it and sorted with the people, so Feyre can stand behind the table
+  with her legs hidden. The firelight is a real light: the partition between
+  the rooms blocks it, so the bedroom gets only what comes through the doorway.
+- Rooms smaller than the screen sit in its middle on a dark ground, and the
+  camera comes in closer indoors (2x, against 1.15x outside), so the painting
+  and the people are shown large. Character sheets are painted at four times
+  their layout size so they stay sharp there.
+- The painted pines stand up to four times Feyre's height, so trees and
+  buildings fade to about 40% while she or a creature stands behind one, and
+  the forest keeps trees from standing just in front of the bramble thicket, a
+  rose bush or a place to search.
+- The wolf is drawn taller than Feyre and about eight times her width, so in a
+  close fight he can hide her completely. Where a creature in front of her covers her, her outline shows
+  through him (`shaders/ghost.gdshader`): a copy of her sprite above the world,
+  masked by his painting, so it marks exactly the covered part of her and
+  nothing else. It is a faint fill with a pale rim, not a glow, and it does not
+  appear while he is hidden in the brush or standing behind her. Fading the
+  wolf instead would hide his tells, which the fight is built on.
 
 ### Sound
 
@@ -145,16 +167,22 @@ cues. Real recordings or generated audio replace any of them by name.
    migrate.
 5. AI art and lighting pull against each other. World lighting needs normal
    maps and a consistent top-down angle; image models give neither reliably.
-   `tools/make_normals.py` derives approximate normals and the style guide pins
-   the angle, but expect rerolls and some hand cleanup on props.
-6. Walk cycles. The manifest has prompts for 4 x 4 walk sheets, but frames
-   drift between generations, so each sheet will need its frames aligned by
-   hand. Single-image creatures (the wolf, the Beast, the doe) are easier.
+   `tools/make_normals.py` derives approximate normals from the paint and the
+   style guide pins the angle. In practice 6 of the 74 generated targets needed
+   a reroll; the cottage took two paintings and three edit passes, and its
+   bedroom doorway was patched by hand.
+6. Walk cycles. Image models do not keep a walk cycle consistent, so each
+   character is a turnaround (front, side, back) generated from their portrait,
+   and Feyre alone has walk strips; `tools/make_sheet.py` puts every figure on
+   one scale with its feet on the frame bottom. Her walk is two steps per
+   direction, which reads well at game size; everyone else stands still.
 7. No grind in a canon-locked story. The loop comes from the hunt, foraging,
    the hotbar and satchel, the shop, map discovery and the journal. Optional
    fights fit best in the Spring Court woods from Ch 7.
-8. Art budget. The manifest lists 82 images: about 239 generations with
-   rerolls, about 179 credits at 0.75 each. The real cost is the cleanup.
+8. Art budget. The manifest lists 87 images. The estimate said about 0.75
+   credits an image; the real price was 1.25 at 1k, 2 at 2k and 3.25 at 4k.
+   The whole set took 80 generations and 150 credits, leaving 1,058 of the
+   1,210. The real cost was the cleanup.
 
 ## Guesses I made
 
@@ -173,16 +201,20 @@ Each of these is my call, not canon or spec. All are data or one-line changes.
 - Healing values for rose hips, bread and venison are mine.
 - Time of day runs only outdoors (1 game hour per 3 real minutes), and story beats set the hour.
 - The Prythian map is a schematic drawn from coordinates taken from your map image. The image itself is not in the repo.
-- Region layouts (forest paths, village square, cottage rooms) are invented; the book gives mood, not floor plans.
+- Region layouts (forest paths, village square) are invented; the book gives mood, not floor plans. The cottage follows its painting: a main room with the hearth, table and settle, and a bedroom through a doorway in the partition.
 - Dialogue lines are short canon quotes where they exist, otherwise written to match the voice, and kept short.
 - Content: violence shown, sex scenes fade to black (none in the slice).
 
 ## Known gaps
 
-- All art is labelled placeholder. Lighting, layout and feel can be judged; looks cannot.
-- Higgsfield art and audio are blocked from this build's environment until the
-  project uses the `acotar_game` environment (Project settings); the hand-off
-  folder and its instructions are ready.
+- Animation is light: Feyre walks in four directions; everyone else breathes
+  in place and does not walk. Creatures move as whole sprites.
+- The night ride and the Wall are lit and graded but have no painted
+  background beyond the snow, the pines and the riders.
+- This build's network can generate on Higgsfield but cannot reach its upload
+  and download hosts, so files move through a helper thread on the
+  `acotar_game` environment (the `art_pipeline` folder in the project files).
+  Running this project on that environment (Project settings) removes the step.
 - Sound is synthesised; there is no voice acting.
 - No key rebinding.
 - The web export is configured but not yet tested in a browser.

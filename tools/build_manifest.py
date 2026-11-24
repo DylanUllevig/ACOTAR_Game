@@ -25,11 +25,11 @@ import os
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PH = os.path.join(ROOT, "assets", "placeholder")
 
-# Credits per image for Higgsfield's default image model (gpt_image_2_6), as
-# quoted by the estimate tool on 2026-11-23. Re-check before a batch.
-CREDITS_PER_IMAGE = 0.75
+# Credits per image for Higgsfield's default image model (gpt_image_2_6) at high
+# quality and 2k, as charged on 2026-11-24 (4k costs 3.25). Re-check before a batch.
+CREDITS_PER_IMAGE = 2.0
 # Expected generations per kept image (rerolls, consistency passes).
-REROLL = {"portrait": 3, "actor": 4, "icon": 2, "fx": 2, "prop": 3, "terrain": 3, "background": 3}
+REROLL = {"portrait": 3, "actor": 4, "icon": 2, "fx": 2, "prop": 3, "terrain": 3, "background": 3, "strip": 2, "room": 3}
 
 # Reference images the user supplied, uploaded to Higgsfield through the art
 # pipeline folder (see /mnt/project-files/art_pipeline/README.md).
@@ -123,12 +123,62 @@ BACKGROUND = {
                      "lush spring palette, not winter", "End of the Wall cinematic (wall_ride.gd)."),
 }
 
+# Floor planks are no longer listed: the cottage is one painted room (ROOM).
 TERRAIN = {
     "snow": "seamless tileable texture of untouched deep snow, subtle wind ripples, top-down",
-    "mud_snow": "seamless tileable texture of trampled snow and frozen mud on a village road, top-down",
-    "planks": "seamless tileable texture of worn dark wooden floor planks, top-down",
-    "cobbles": "seamless tileable texture of frosty uneven cobblestones, top-down",
+    "mud_snow": "seamless tileable texture of the trampled snow and half-frozen mud of a poor village street, "
+                "grey slush, soft patches of dark mud, faint cart ruts, scattered straw, low contrast, no strong "
+                "directional streaks, top-down",
+    "cobbles": "seamless tileable texture of old uneven cobblestones of a village square, rounded grey and brown "
+               "stones, about sixteen across, frost and a dusting of snow in the joints, top-down",
 }
+
+# Painted strips laid along a curve by Region.add_strip: the texture runs left
+# to right and its height spans the strip. tools/make_strip.py makes the ends
+# join and fades the top and bottom. The number is the strip's width in the
+# game, in layout pixels.
+STRIP = {
+    "path_snow": ("a narrow trodden footpath through deep snow, packed grey-blue snow with boot prints and a few "
+                  "deer tracks, soft raised drifts along both sides", 200, "The forest path (forest.gd)."),
+    "brook": ("a narrow half-frozen woodland brook, cracked pale grey-blue ice with a few dark holes of open water, "
+              "frosted reeds, stones and twigs along snowy banks", 224, "The brook by the clearing (forest.gd)."),
+    "road_mud": ("a muddy village road, churned dark mud and grey slush with cart-wheel ruts, hoof and boot prints "
+                 "and a little straw, ragged edges of trampled dirty snow", 220, "The village roads (village.gd)."),
+}
+
+# Whole rooms painted as one image, lit by the game's lights. Size is the
+# room's size in the game, in layout pixels.
+ROOM = {
+    "cottage": ("the inside of a poor two-room peasant cottage, seen from a high three-quarter overhead angle like "
+                "the interior of a cozy farming RPG: a back wall of plaster and dark timber with a stone hearth and "
+                "a low fire, firewood, a shelf of clay crocks and dried herbs; a long rickety table with a bench on "
+                "each side; a settle bench with a blanket; a front wall with a plank door and two shuttered windows; "
+                "a partition with an open doorway to a small bedroom with one wide old ironwood bed under a patched "
+                "quilt and a painted chest of drawers; worn dark floor planks, a rag rug; faded painted vines, "
+                "flames, roses and stars everywhere, a too-blue foxglove on a table leg; no people", [750, 500],
+                "The Archeron cottage (cottage.gd). Walls, furniture collisions, people and lights are placed "
+                "on this painting, so a new painting means re-measuring them."),
+}
+
+# Sprites the placeholder set has no file for, or whose painting differs from
+# the placeholder's pose: (prompt, layout size, reference ids).
+SPRITE = {
+    "beast": ("the Beast from its portrait: rich golden fur and mane, a wolfish head, great curled elk-like horns, "
+              "green eyes flecked with amber; as large as a horse with a somewhat feline body. Seen from a high "
+              "three-quarter top-down angle from behind, about to step away from the viewer toward the top of the "
+              "image, head raised and turned a little to the left so the horns, one ear and a glowing green eye "
+              "show. Whole body in frame, transparent background, light from the upper left", [150, 220],
+              ["portrait.beast.neutral"]),
+    "mare_ride": ("Feyre riding the white mare away from the viewer toward the top of the image, seen from a high "
+                  "three-quarter top-down angle from behind: her back, hair, cloak, quiver and bow, the mare's white "
+                  "haunches, long tail and hind legs in a walking stride, its neck and ears ahead of her. Whole "
+                  "horse and rider in frame, transparent background, light from the upper left", [80, 180],
+                  ["actor.feyre", "actor.mare"]),
+}
+
+# Placeholders kept for the code's fallbacks but never painted: the cottage is
+# entered straight from the forest, so its outside is never shown.
+SKIP_PROPS = {"cottage"}
 
 # Animals and the Beast are single images the game moves and squashes in code.
 # People are 4 x 4 walk sheets: rows face down, left, right, up; columns are
@@ -137,7 +187,15 @@ CREATURE = {
     "wolf": "andras", "beast": "beast",
     "doe": "a lean winter doe, tawny coat",
     "hare": "a thin white snow hare",
-    "mare": "an old swaybacked farm mare, shaggy winter coat",
+    "mare": "a beautiful white mare, unbridled, pale as new snow, long silver-white mane and tail",
+}
+
+# Sprites with no placeholder: the game uses them when they exist and otherwise
+# turns or squashes the live sprite. Each is generated from its live sprite as
+# the reference image, and its size keeps the animal at its live scale.
+CARCASS = {
+    "wolf_dead": ("wolf", [202, 102]),
+    "doe_dead": ("doe", [96, 52]),
 }
 
 
@@ -158,7 +216,8 @@ def entry(kind, mid, rel, prompt, aspect, notes="", ref=None):
     e = {
         "id": mid, "kind": kind, "placeholder": "assets/placeholder/" + rel,
         "final": "assets/final/" + rel, "size": size, "aspect": aspect,
-        "prompt": prompt, "negative": NEG, "status": "placeholder",
+        "prompt": prompt, "negative": NEG,
+        "status": "final" if os.path.exists(os.path.join(ROOT, "assets", "final", rel)) else "placeholder",
         "est_generations": REROLL[kind],
     }
     if ref:
@@ -185,7 +244,7 @@ def main():
         for e in exprs:
             is_beast = cid == "beast"
             subject = c["look"] + (" " + BEAUTY[cid] if cid in BEAUTY else "")
-            frame = ("full body creature portrait, side three-quarter view" if is_beast
+            frame = ("creature portrait of the head, shoulders and forelegs, three-quarter view, facing left" if is_beast
                      else "half-length character portrait from the waist up, three-quarter view, facing " + ("right" if cid == "feyre" else "left"))
             p = f"{STYLE}. {frame}. {c['name']}: {subject} Expression: {EXPR.get(e, e)}. Plain flat mid-grey background for cutout."
             ref = USER_REF.get(cid) if e == base else f"portrait.{cid}.{base}"
@@ -198,6 +257,8 @@ def main():
         if not f.endswith(".png") or f.endswith("_n.png"):
             continue
         name = f[:-4]
+        if name in SPRITE:
+            continue
         if name in CREATURE:
             who = CREATURE[name]
             look = chars[who]["look"] + " " + BEAUTY.get(who, "") if who in chars else who
@@ -216,6 +277,26 @@ def main():
             out.append(entry("actor", f"actor.{name}", f"actors/{f}", p, "3:4", ref=USER_REF.get(name),
                              notes="Walk sheet: 4 x 4 frames of 48 x 64 px. Frames drift between generations, so expect to align them by hand "
                                    "on the grid (feet on one baseline) before resizing. Run make_normals.py after."))
+    for name, (live, size) in CARCASS.items():
+        who = CREATURE[live]
+        look = chars[who]["look"] if who in chars else who
+        p = (f"{STYLE}. The same animal as the reference image, same coat and lighting, now lying dead on its side: "
+             f"{look[0].lower() + look[1:]} Legs limp and stretched out, head resting on the ground, eyes closed. "
+             "Seen from a high three-quarter top-down angle, head to the right, whole body in frame, isolated on a "
+             "transparent background, light from the upper left.")
+        e = entry("actor", f"actor.{name}", f"actors/{name}.png", p, "3:2", ref=f"actor.{live}",
+                  notes="Optional: without it the game tips or squashes the live sprite.")
+        e["size"] = size
+        e["placeholder"] = None
+        out.append(e)
+    for name, (desc, size, refs) in SPRITE.items():
+        p = f"{STYLE}. Game sprite of {desc}."
+        e = entry("actor", f"actor.{name}", f"actors/{name}.png", p, "2:3", ref=", ".join(refs),
+                  notes="Single image. Remove background, crop to the body, resize to the listed size. Run make_normals.py after.")
+        e["size"] = size
+        if not os.path.exists(os.path.join(PH, "actors", name + ".png")):
+            e["placeholder"] = None
+        out.append(e)
     for name, desc in FX.items():
         if not os.path.exists(os.path.join(PH, "fx", name + ".png")):
             continue
@@ -236,6 +317,8 @@ def main():
         if not f.endswith(".png") or f.endswith("_n.png"):
             continue
         name = f[:-4]
+        if name in SKIP_PROPS:
+            continue
         key = max((k for k in PROP if name.startswith(k)), key=len, default=None)
         p = f"{STYLE}. Game prop sprite, isolated on a plain background, light from the upper left: {PROP.get(key, name)}."
         out.append(entry("prop", f"prop.{name}", f"props/{f}", p, "1:1",
@@ -250,13 +333,32 @@ def main():
     for name, desc in TERRAIN.items():
         p = f"{STYLE}. {desc}, even lighting, no shadows, no objects."
         out.append(entry("terrain", f"terrain.{name}", f"terrain/{name}.png", p, "1:1",
-                         notes="Must tile. Check seams by tiling 2x2; fix with offset + heal if needed. Run make_normals.py --wrap."))
+                         notes="Must tile. tools/fit_art.py --seam cut joins the edges without ghosting. Run make_normals.py --wrap."))
+    for name, (desc, width, where) in STRIP.items():
+        p = (f"{STYLE}. Top-down orthographic texture for a 2D game map, viewed straight down: {desc}, running "
+             "straight and level from the left edge to the right edge across the middle of the image and fading "
+             "into plain snow at the top and bottom edges; the left and right edges match; soft even light, no cast shadows.")
+        e = entry("strip", f"strip.{name}", f"terrain/{name}.png", p, "21:9",
+                  notes=where + " Width follows the source image; only the height is used. tools/make_strip.py.")
+        e["size"] = [width * 2, width]
+        e["placeholder"] = None
+        out.append(e)
+    for name, (desc, size, where) in ROOM.items():
+        p = f"{STYLE}. Hand-painted top-down game map of {desc}; soft, even, fairly bright light."
+        e = entry("room", f"room.{name}", f"rooms/{name}.png", p, "3:2", notes=where + " tools/fit_art.py.")
+        e["size"] = size
+        e["placeholder"] = None
+        out.append(e)
 
     total_imgs = sum(e["est_generations"] for e in out)
+    left = [e for e in out if e["status"] != "final"]
+    left_imgs = sum(e["est_generations"] for e in left)
     summary = {
         "credits_per_image": CREDITS_PER_IMAGE, "model": "gpt_image_2_6",
         "kept_images": len(out),
         "est_generations": total_imgs, "est_credits": round(total_imgs * CREDITS_PER_IMAGE, 1),
+        "final": len(out) - len(left), "still_placeholder": len(left),
+        "est_credits_left": round(left_imgs * CREDITS_PER_IMAGE, 1),
     }
     os.makedirs(os.path.join(ROOT, "data", "assets"), exist_ok=True)
     with open(os.path.join(ROOT, "data", "assets", "manifest.json"), "w") as f:
@@ -270,15 +372,19 @@ def main():
           f"Estimate: {summary['kept_images']} images to keep, about {summary['est_generations']} generations with rerolls, "
           f"about {summary['est_credits']} credits at {CREDITS_PER_IMAGE} credits per image ({summary['model']}). "
           "Walk sheets need hand alignment after generation (see their notes).", "",
-          "| Kind | Count | Generations | Credits |", "|---|---|---|---|"]
+          f"Done: {summary['final']} have final art; {summary['still_placeholder']} are still placeholders "
+          f"(about {summary['est_credits_left']} credits left to make them).", "",
+          "| Kind | Count | Final | Generations | Credits |", "|---|---|---|---|---|"]
     for k, v in by.items():
         g = sum(e["est_generations"] for e in v)
-        md.append(f"| {k} | {len(v)} | {g} | {round(g * CREDITS_PER_IMAGE, 1)} |")
+        done = sum(1 for e in v if e["status"] == "final")
+        md.append(f"| {k} | {len(v)} | {done} | {g} | {round(g * CREDITS_PER_IMAGE, 1)} |")
     md += ["", "Shared style block prepended to every prompt:", "", "> " + STYLE, "", "Negative: " + NEG, ""]
     for k, v in by.items():
         md += [f"## {k}", ""]
         for e in v:
-            md.append(f"- `{e['id']}` -> `{e['final']}`" + (f" (reference: `{e['reference']}`)" if e.get("reference") else ""))
+            md.append(f"- `{e['id']}` -> `{e['final']}`" + (" (final)" if e["status"] == "final" else "")
+                      + (f" (reference: `{e['reference']}`)" if e.get("reference") else ""))
             if e.get("notes"):
                 md.append(f"  - {e['notes']}")
         md.append("")

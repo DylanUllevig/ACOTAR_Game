@@ -5,6 +5,9 @@ extends Region
 var beast: Node2D
 var mare: Sprite2D
 var _cine_layer: CanvasLayer
+var _ride_t := 0.0
+
+const RIDE_ART := "actors/mare_ride.png"
 
 
 func build() -> void:
@@ -14,7 +17,7 @@ func build() -> void:
 	map_base = Color(0.78, 0.82, 0.9)
 	bounds = Rect2(0, 0, 1600, 4200)
 	spawns = {"start": Vector2(800, 3950)}
-	add_ground_tile("terrain/snow.png", bounds)
+	add_ground_tile("terrain/snow.png", bounds, Color.WHITE, true, true)
 	enclose_bounds()
 	var rng = RandomNumberGenerator.new()
 	rng.seed = 55
@@ -25,9 +28,16 @@ func build() -> void:
 		add_prop("props/pine_%d.png" % rng.randi_range(0, 2), p, rng.randf_range(1.0, 1.4), Vector2(16, 7), Vector2(28, 18))
 	# moonlight
 	add_sun(-160.0, Color(0.55, 0.65, 1.0), 0.45)
-	beast = add_prop("actors/beast.png", Vector2(800, 3650), 1.5, Vector2(60, 20))
-	var eye = add_light(Vector2(80, -130), Color(0.4, 1.0, 0.6), 0.6, 0.35, false, beast)
-	add_flicker(eye, 0.2, 2.0)
+	# the painted beast is seen from behind, padding north ahead of her, its head
+	# turned so one green eye shows; the placeholder stands side-on
+	if Art.resolve("actors/beast.png").begins_with(Art.FINAL):
+		beast = add_prop("actors/beast.png", Vector2(800, 3650), 1.2, Vector2(45, 18))
+		var eye = add_light(Vector2(-29, -183) * 1.2, Color(0.4, 1.0, 0.6), 0.6, 0.35, false, beast)
+		add_flicker(eye, 0.2, 2.0)
+	else:
+		beast = add_prop("actors/beast.png", Vector2(800, 3650), 1.5, Vector2(60, 20))
+		var eye = add_light(Vector2(80, -130), Color(0.4, 1.0, 0.6), 0.6, 0.35, false, beast)
+		add_flicker(eye, 0.2, 2.0)
 	add_snow(160, Vector2(-20, 0))
 	add_fog(bounds.grow(400), Color(0.45, 0.55, 0.8), 0.25, 50, 0.002)
 	set_post({"vignette": 0.85, "lift": Vector3(0.0, 0.02, 0.08), "gain": Vector3(0.9, 0.95, 1.1), "saturation": 0.7, "grain": 0.03})
@@ -36,14 +46,23 @@ func build() -> void:
 
 func _ready() -> void:
 	super._ready()
-	# Feyre rides the white mare
+	# Feyre rides the white mare: painted from behind, riding north, when there
+	# is art for it; otherwise her standing sprite sits on the side-on mare
 	mare = Sprite2D.new()
-	mare.texture = Art.lit("actors/mare.png")
-	mare.scale = Vector2(1.2, 1.2)
-	mare.offset = Vector2(0, -40)
+	if Art.tex(RIDE_ART) != null:
+		mare.texture = Art.lit(RIDE_ART)
+		mare.scale = Vector2.ONE * Art.density(RIDE_ART)
+		mare.offset = Vector2(0, -mare.texture.get_height() / 2.0)
+		player.sprite.visible = false
+		player.footprints = false
+	else:
+		mare.texture = Art.lit("actors/mare.png")
+		mare.scale = Vector2(1.2, 1.2) * Art.density("actors/mare.png")
+		mare.offset = Vector2(0, -40) / Art.density("actors/mare.png")
+		# sit her up on the mare's back (30 layout pixels above her usual feet)
+		player.sprite.offset = Vector2(0, -player.sprite.texture.get_height() / 8.0 - 30.0 / Art.density("actors/feyre.png"))
 	player.add_child(mare)
 	player.move_child(mare, 0)
-	player.sprite.offset = Vector2(0, -62)
 	var bi = Interactable.new()
 	bi.setup("Speak to the beast", func(): await Dialogue.play("ch05_ask"), 260)
 	beast.add_child(bi)
@@ -77,6 +96,12 @@ func _physics_process(delta: float) -> void:
 	if beast.position.y > target_y:
 		beast.position.y = move_toward(beast.position.y, target_y, 200.0 * delta)
 	player.position.x = move_toward(player.position.x, 800.0, 40.0 * delta)
+	# a slow walking sway while the mare moves
+	if player.sprite.visible == false and mare != null:
+		var spd = player.velocity.length()
+		_ride_t += delta * clampf(spd / 120.0, 0.0, 1.5) * 5.0
+		mare.position.y = -absf(sin(_ride_t)) * 3.0 * clampf(spd / 60.0, 0.0, 1.0)
+		mare.rotation = sin(_ride_t * 0.5) * 0.015 * clampf(spd / 60.0, 0.0, 1.0)
 
 
 func wall_cinematic() -> void:
@@ -101,9 +126,10 @@ func wall_cinematic() -> void:
 	_cine_layer.add_child(seam)
 	seam.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	var rider = Sprite2D.new()
-	rider.texture = Art.tex("actors/mare.png")
+	var rider_art = RIDE_ART if Art.tex(RIDE_ART) != null else "actors/mare.png"
+	rider.texture = Art.tex(rider_art)
 	rider.position = Vector2(960, 1000)
-	rider.scale = Vector2(1.6, 1.6)
+	rider.scale = Vector2(1.6, 1.6) * Art.density(rider_art)
 	rider.modulate = Color(0.25, 0.3, 0.45)
 	_cine_layer.add_child(rider)
 	var text = Art.label("", 40, Art.PARCHMENT, "italic")

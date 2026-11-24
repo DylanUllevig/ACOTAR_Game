@@ -13,8 +13,11 @@ const ACCEL := 1600.0
 const FRICTION := 1800.0
 const SPEED := 230.0
 const SPRINT := 330.0
+const WALK_FPS := 2.0 / 0.3      # walk sheet frames per second at SPEED: two per step
 const ARROW := preload("res://scripts/combat/arrow.gd")
+const GHOST := preload("res://shaders/ghost.gdshader")
 const HAND_Y := -34.0
+const GHOST_ALPHA := 1.0          # how strongly her silhouette shows through a creature in front of her
 
 var sprite: Sprite2D
 var hand: Node2D
@@ -30,6 +33,7 @@ var combat_allowed = true
 var camera: Camera2D
 var terrain_mult := 1.0      # set by the region: brambles and deep snow slow her
 var bot_aim: Variant = null   # automated tests aim at this world point instead of the mouse
+var god := false             # automated story tests: hits do nothing (no blink, so screenshots show her as she is)
 
 var aim := Vector2.RIGHT
 var drawing := false
@@ -52,11 +56,15 @@ var _heal_left := 0           # whole HP still to restore from food
 var _heal_rate := 0.0
 var _kb_aim := false
 var _look := Vector2.ZERO
+var _held_k := 1.0              # density of the held weapon's art
 var _shake := 0.0
 
 var _near: Node = null
-var _foot_timer = 0.0
 var _left_foot = false
+
+var _ghost: Sprite2D            # her silhouette over a creature that hides her (the wolf is twice her size)
+var _ghost_mat: ShaderMaterial
+var _ghost_a := 0.0
 
 
 func _ready() -> void:
@@ -79,9 +87,10 @@ func _ready() -> void:
 	sprite.texture = Art.lit("actors/feyre.png")
 	sprite.hframes = 4
 	sprite.vframes = 4
-	sprite.scale = Vector2(1.7, 1.7)
-	sprite.offset = Vector2(0, -32)
+	sprite.scale = Vector2(1.7, 1.7) * Art.density("actors/feyre.png")
+	sprite.offset = Vector2(0, -sprite.texture.get_height() / 8.0) if sprite.texture else Vector2(0, -32)
 	add_child(sprite)
+	_build_ghost()
 	hand = Node2D.new()
 	hand.position = Vector2(0, HAND_Y)
 	add_child(hand)
@@ -89,7 +98,7 @@ func _ready() -> void:
 	held.visible = false
 	hand.add_child(held)
 	nocked = Sprite2D.new()
-	nocked.texture = Art.tex("fx/arrow.png")
+	_set_nocked("fx/arrow.png")
 	nocked.visible = false
 	hand.add_child(nocked)
 	var region = get_parent().get_parent()
@@ -175,6 +184,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	knock = knock.move_toward(Vector2.ZERO, 2600.0 * delta)
 	_animate(delta)
+	_update_ghost(delta)
 	_update_held()
 	_update_camera(delta)
 	_update_prompt()
@@ -216,11 +226,13 @@ func _animate(delta: float) -> void:
 		return
 	var spd = velocity.length()
 	if spd > 10:
-		anim_t += delta * (spd / 60.0)
-		sprite.frame = facing * 4 + int(anim_t) % 4
-		_foot_timer -= delta
-		if _foot_timer <= 0:
-			_foot_timer = 0.3 * SPEED / max(spd, 1.0)
+		# columns 1 and 3 of the walk sheet are the strides: a foot lands on
+		# each, with its sound and footprint (a step every 0.3 s at walking pace)
+		var was = int(anim_t) % 4
+		anim_t += delta * (spd / SPEED) * WALK_FPS
+		var f = int(anim_t) % 4
+		sprite.frame = facing * 4 + f
+		if f != was and f % 2 == 1:
 			_left_foot = not _left_foot
 			Audio.sfx("step_" + surface, -14.0 if spd < SPEED * 1.1 else -10.0, 0.12)
 			if footprints:
@@ -322,7 +334,7 @@ func _slash(d: Dictionary) -> void:
 	_slash_flip = not _slash_flip
 	_slash_def = d
 	_slash_pending = 0.05
-	held.texture = Art.tex("fx/knife.png")
+	_set_held("fx/knife.png")
 	Audio.sfx("knife_swing", -4.0, 0.1)
 	var origin = global_position + Vector2(0, HAND_Y)
 	Fx.slash(self, origin + aim * 34.0, aim.angle(), _slash_flip, float(d.get("reach", 80)))
@@ -372,8 +384,8 @@ func _begin_draw(id: String, d: Dictionary) -> void:
 	draw_item = id
 	draw_ammo = ammo
 	_draw_full_played = false
-	held.texture = Art.tex("fx/bow.png")
-	nocked.texture = Art.tex("fx/ash_arrow.png" if ammo == "ash_arrow" else "fx/arrow.png")
+	_set_held("fx/bow.png")
+	_set_nocked("fx/ash_arrow.png" if ammo == "ash_arrow" else "fx/arrow.png")
 	Audio.sfx("bow_draw", -6.0, 0.05)
 
 
@@ -439,6 +451,17 @@ func _eat(id: String, d: Dictionary) -> void:
 
 
 # ------------------------------------------------------------ held weapon
+## Final weapon art is painted at twice its layout size; density scales it back.
+func _set_held(rel: String) -> void:
+	held.texture = Art.tex(rel)
+	_held_k = Art.density(rel)
+
+
+func _set_nocked(rel: String) -> void:
+	nocked.texture = Art.tex(rel)
+	nocked.scale = Vector2.ONE * Art.density(rel)
+
+
 func _update_held() -> void:
 	var show = drawing or _show_held > 0.0
 	held.visible = show
@@ -456,10 +479,10 @@ func _update_held() -> void:
 		nocked.visible = true
 		nocked.position = Vector2(24 - 22.0 * f, 0)
 		nocked.flip_v = vflip
-		held.scale = Vector2(1.0 - 0.06 * f, 1.0 + 0.04 * f)
+		held.scale = Vector2(1.0 - 0.06 * f, 1.0 + 0.04 * f) * _held_k
 	else:
 		nocked.visible = false
-		held.scale = Vector2.ONE
+		held.scale = Vector2.ONE * _held_k
 		if action == "slash":
 			# sweep the blade through the arc
 			var k = 1.0 - clampf(action_t / 0.24, 0.0, 1.0)
@@ -471,9 +494,107 @@ func _update_held() -> void:
 			held.rotation = 0.0
 
 
+# ------------------------------------------------------------- silhouette
+## A creature standing in front of her (lower on the screen) is drawn over
+## her, and the wolf is big enough to hide her whole. A copy of her sprite
+## above the world shows her outline there, masked by that creature's
+## painting so it appears only on the part of her that is covered.
+func _build_ghost() -> void:
+	_ghost = Sprite2D.new()
+	_ghost.name = "Silhouette"
+	_ghost.texture = Art.tex("actors/feyre.png")
+	_ghost.hframes = sprite.hframes
+	_ghost.vframes = sprite.vframes
+	_ghost.scale = sprite.scale
+	_ghost.offset = sprite.offset
+	_ghost.z_index = 25           # over creatures and props, under arrows, effects and falling snow
+	_ghost.light_mask = 0
+	_ghost_mat = ShaderMaterial.new()
+	_ghost_mat.shader = GHOST
+	_ghost.material = _ghost_mat
+	_ghost.visible = false
+	add_child(_ghost)
+
+
+## The creature in front of her that overlaps her figure most, or null.
+func hiding_creature() -> Node:
+	if dead or not sprite.visible or sprite.texture == null:
+		return null
+	var me: Rect2 = sprite.get_global_transform() * sprite.get_rect()
+	me = me.grow_individual(-me.size.x * 0.25, -me.size.y * 0.08, -me.size.x * 0.25, 0.0)
+	var best: Node = null
+	var best_area = 0.0
+	for c in get_tree().get_nodes_in_group("creatures"):
+		if c.dead or not c.is_visible_in_tree() or c.sprite == null or c.sprite.texture == null:
+			continue
+		if _opacity(c) < 0.05:
+			continue   # the wolf lurking in the brush is drawn fully transparent
+		if c.global_position.y <= global_position.y + 1.0:
+			continue   # behind her: she is drawn over it
+		var r: Rect2 = c.sprite.get_global_transform() * c.sprite.get_rect()
+		if r.size.y < me.size.y * 0.5:
+			continue   # a hare can hide her feet at most
+		var area = r.intersection(me).get_area()
+		if area > best_area:
+			best_area = area
+			best = c
+	return best
+
+
+## How opaque a creature is drawn, so the silhouette fades in with him.
+func _opacity(c: Node) -> float:
+	var a: float = c.modulate.a * c.sprite.modulate.a * c.sprite.self_modulate.a
+	var p = c.sprite.get_parent()
+	if p != c and p is CanvasItem:
+		a *= (p as CanvasItem).modulate.a
+	return a
+
+
+func silhouette_strength() -> float:
+	return _ghost_a
+
+
+func _update_ghost(delta: float) -> void:
+	var c = hiding_creature()
+	var want = GHOST_ALPHA * _opacity(c) if c != null else 0.0
+	_ghost_a = move_toward(_ghost_a, want, delta * 5.0)
+	_ghost.visible = _ghost_a > 0.0
+	if not _ghost.visible:
+		return
+	_ghost.frame = sprite.frame
+	_ghost.flip_h = sprite.flip_h
+	_ghost.position = sprite.position
+	_ghost.rotation = sprite.rotation
+	_ghost.modulate.a = sprite.modulate.a
+	_ghost_mat.set_shader_parameter("strength", _ghost_a)
+	if c == null:
+		return   # fading out: keep the last mask
+	var spr: Sprite2D = c.sprite
+	var tex: Texture2D = spr.texture
+	if tex is CanvasTexture:
+		tex = (tex as CanvasTexture).diffuse_texture
+	var inv: Transform2D = spr.get_global_transform().affine_inverse()
+	var rect: Rect2 = spr.get_rect()
+	var uv := Rect2(0, 0, 1, 1)
+	if spr.region_enabled and tex != null:
+		var ts = tex.get_size()
+		uv = Rect2(spr.region_rect.position / ts, spr.region_rect.size / ts)
+	elif spr.hframes > 1 or spr.vframes > 1:
+		var fw = 1.0 / spr.hframes
+		var fh = 1.0 / spr.vframes
+		uv = Rect2((spr.frame % spr.hframes) * fw, floorf(float(spr.frame) / float(spr.hframes)) * fh, fw, fh)
+	_ghost_mat.set_shader_parameter("mask_tex", tex)
+	_ghost_mat.set_shader_parameter("inv_x", inv.x)
+	_ghost_mat.set_shader_parameter("inv_y", inv.y)
+	_ghost_mat.set_shader_parameter("inv_o", inv.origin)
+	_ghost_mat.set_shader_parameter("mask_rect", Vector4(rect.position.x, rect.position.y, rect.size.x, rect.size.y))
+	_ghost_mat.set_shader_parameter("mask_uv", Vector4(uv.position.x, uv.position.y, uv.size.x, uv.size.y))
+	_ghost_mat.set_shader_parameter("mask_flip", Vector2(1.0 if spr.flip_h else 0.0, 1.0 if spr.flip_v else 0.0))
+
+
 # --------------------------------------------------------------- damage
 func take_damage(amount: int, from: Vector2, push: Vector2, _source: Node = null) -> void:
-	if dead or invuln > 0.0 or locked:
+	if dead or invuln > 0.0 or locked or god:
 		return
 	GameState.set_hp(GameState.hp - amount)
 	invuln = 0.9

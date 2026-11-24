@@ -23,7 +23,7 @@ func build_visual() -> void:
 	if sprite.texture:
 		sprite.offset = Vector2(0, -sprite.texture.get_height() / 2.0)
 	var sc = float(art.get("scale", 1.0))
-	sprite.scale = Vector2(sc, sc)
+	sprite.scale = Vector2(sc, sc) * Art.density(String(art.get("sprite", "actors/hare.png")))
 	shadow.scale = Vector2(0.6, 0.35)
 	_home = global_position
 	_target = global_position

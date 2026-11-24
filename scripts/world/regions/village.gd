@@ -11,11 +11,17 @@ func build() -> void:
 	map_base = Color(0.74, 0.7, 0.66)
 	bounds = Rect2(0, 0, 2800, 1800)
 	spawns = {"road": Vector2(200, 960), "start": Vector2(200, 960)}
-	add_ground_tile("terrain/mud_snow.png", bounds)
-	add_ground_tile("terrain/cobbles.png", Rect2(SQUARE - Vector2(520, 360), Vector2(1040, 720)))
+	add_ground_tile("terrain/mud_snow.png", bounds, Color.WHITE, true, true)
+	# the cobbled square, its edges lost under trodden snow
+	add_ground_patch("terrain/cobbles.png", Rect2(SQUARE - Vector2(560, 400), Vector2(1120, 800)), 120.0, 70.0)
 	map_rect(Rect2(SQUARE - Vector2(520, 360), Vector2(1040, 720)), Color(0.6, 0.58, 0.56))
 	map_line(PackedVector2Array([Vector2(0, 960), Vector2(SQUARE.x - 520, 960)]), Color(0.55, 0.46, 0.38), 60.0)
 	map_line(PackedVector2Array([Vector2(SQUARE.x + 520, 900), Vector2(2800, 960)]), Color(0.55, 0.46, 0.38), 60.0)
+	if Art.tex("terrain/road_mud.png") != null:
+		# the roads in, churned to mud; they run on past the edges of the map and
+		# fade out on the square's cobbles
+		add_strip("terrain/road_mud.png", PackedVector2Array([Vector2(-300, 962), Vector2(420, 966), Vector2(SQUARE.x - 430, 952)]), 220.0, -9, 220.0)
+		add_strip("terrain/road_mud.png", PackedVector2Array([Vector2(SQUARE.x + 430, 905), Vector2(2300, 944), Vector2(3100, 962)]), 220.0, -9, 220.0)
 	enclose_bounds()
 	add_sun(-30.0, Color(0.9, 0.92, 1.0), 0.3)
 	_houses()
@@ -42,6 +48,13 @@ func grade_for_hour(h: float) -> Dictionary:
 	], h)
 
 
+## Chimney top and lit window of each painted house, from its base at scale 1.4.
+const HOUSE_DETAIL := {
+	"props/house_a.png": [Vector2(80, -273), Vector2(-72, -84)],
+	"props/house_b.png": [Vector2(74, -254), Vector2(-60, -66)],
+}
+
+
 func _houses() -> void:
 	var spots = [
 		[Vector2(500, 420), "props/house_a.png"], [Vector2(850, 380), "props/house_b.png"], [Vector2(1250, 360), "props/house_a.png"],
@@ -51,10 +64,13 @@ func _houses() -> void:
 	]
 	for s in spots:
 		var h = add_prop(s[1], s[0], 1.4, Vector2(110, 26), Vector2(220, 70))
-		# warm window glow and chimney smoke
-		add_light(s[0] + Vector2(-60, -150), Color(1.0, 0.7, 0.4), 0.45, 0.8, false)
+		# warm window glow and chimney smoke, where the painting has them
+		var detail = HOUSE_DETAIL.get(s[1]) if Art.resolve(s[1]).begins_with(Art.FINAL) else [Vector2(60, -300), Vector2(-60, -150)]
+		if detail == null:
+			continue    # the barn: no hearth, no lit window
+		add_light(s[0] + detail[1], Color(1.0, 0.7, 0.4), 0.45, 0.8, false)
 		var smoke = CPUParticles2D.new()
-		smoke.position = Vector2(60, -300)
+		smoke.position = detail[0]
 		smoke.amount = 14
 		smoke.lifetime = 5.0
 		smoke.preprocess = 5.0
@@ -69,13 +85,19 @@ func _houses() -> void:
 		h.add_child(smoke)
 
 
+## Where a stall's lantern hangs, from its base at scale 1.3: in the painting,
+## or over the middle of the placeholder.
+func _lantern(rel: String, painted: Vector2) -> Vector2:
+	return painted if Art.resolve(rel).begins_with(Art.FINAL) else Vector2(0, -150)
+
+
 func _square() -> void:
 	add_prop("props/fountain_broken.png", SQUARE, 1.3, Vector2(90, 30), Vector2(240, 90))
 	var charm = add_prop("props/stall_red.png", SQUARE + Vector2(-380, -200), 1.3, Vector2(70, 18), Vector2(180, 50))
-	add_light(Vector2(0, -150), Color(1.0, 0.68, 0.35), 0.9, 1.0, true, charm)
+	add_light(_lantern("props/stall_red.png", Vector2(-67, -96)), Color(1.0, 0.68, 0.35), 0.9, 1.0, true, charm)
 	add_interactable(SQUARE + Vector2(-380, -130), "Browse the charm stall", func(): await Dialogue.play("ch03_charms"), 120, "Charm stall")
 	var cob = add_prop("props/stall_blue.png", SQUARE + Vector2(380, -220), 1.3, Vector2(70, 18), Vector2(180, 50))
-	add_light(Vector2(0, -150), Color(1.0, 0.68, 0.35), 0.7, 1.0, true, cob)
+	add_light(_lantern("props/stall_blue.png", Vector2(-38, -83)), Color(1.0, 0.68, 0.35), 0.7, 1.0, true, cob)
 	add_interactable(SQUARE + Vector2(380, -150), "The cobbler", func(): await Dialogue.play("ch03_cobbler"), 120, "Cobbler")
 	# exit east
 	add_trigger(Rect2(Vector2(2660, 760), Vector2(140, 400)), func():
@@ -87,7 +109,8 @@ func _square() -> void:
 
 
 func _people() -> void:
-	var merc = add_npc("mercenary", SQUARE + Vector2(130, 70), "Speak with the mercenary", func(): await Dialogue.play("ch03_mercenary"), 1)
+	# "a mountain of a woman": drawn a head taller than the villagers
+	var merc = add_npc("mercenary", SQUARE + Vector2(130, 70), "Speak with the mercenary", func(): await Dialogue.play("ch03_mercenary"), 1, 1.95)
 	add_light(Vector2(0, -40), Color(0.9, 0.85, 0.8), 0.25, 0.6, false, merc)  # glint off her weapons
 	add_npc("isaac", Vector2(1950, 640), "Isaac Hale", func(): await Dialogue.play("ch03_isaac"), 1)
 	add_npc("elain", SQUARE + Vector2(-300, 120), "Talk to Elain", func(): await Dialogue.play("ch03_elain_coin"), 2)

@@ -37,6 +37,7 @@ var _regen_fx: CPUParticles2D
 var _growl_cd := 0.0
 
 var eye_pos := Vector2(106, -122)   # where the eyes sit on the art (facing right); from data
+var art_scale := 1.45
 
 
 func _init() -> void:
@@ -50,7 +51,8 @@ func build_visual() -> void:
 	sprite.texture = Art.lit(String(art.get("sprite", "actors/wolf.png")))
 	sprite.offset = Vector2(0, -sprite.texture.get_height() / 2.0) if sprite.texture else Vector2.ZERO
 	var sc = float(art.get("scale", 1.45))
-	sprite.scale = Vector2(sc, sc)
+	art_scale = sc
+	sprite.scale = Vector2(sc, sc) * Art.density(String(art.get("sprite", "actors/wolf.png")))
 	var ep: Array = art.get("eye", [106, -122])
 	eye_pos = Vector2(float(ep[0]), float(ep[1]))
 	shadow.scale = Vector2(2.2, 1.0)
@@ -349,6 +351,29 @@ func on_death(_hit: Dictionary) -> void:
 	Fx.slowmo(self, 0.9, 0.3)
 	var tw = create_tween().set_parallel(true)
 	tw.tween_property(body, "rotation", 0.0, 0.3)
+	var dead_rel = String(def.get("art", {}).get("dead_sprite", "actors/wolf_dead.png"))
+	var carcass_tex = Art.lit(dead_rel)
+	if carcass_tex != null:
+		# painted art: he drops onto his side, eyes closed
+		var carcass = Sprite2D.new()
+		carcass.texture = carcass_tex
+		carcass.offset = Vector2(0, -carcass_tex.get_height() / 2.0)
+		carcass.scale = Vector2(art_scale, art_scale) * Art.density(dead_rel)
+		carcass.modulate = Color(0.86, 0.84, 0.88, 0.0)
+		body.add_child(carcass)
+		body.move_child(carcass, sprite.get_index() + 1)
+		tw.tween_property(body, "scale", Vector2(-1.0 if facing_left else 1.0, 1.0), 0.2)
+		tw.tween_property(body, "position", Vector2.ZERO, 0.2)
+		tw.tween_property(sprite, "scale:y", sprite.scale.y * 0.7, 0.22).set_ease(Tween.EASE_IN)
+		tw.tween_property(sprite, "modulate:a", 0.0, 0.22)
+		tw.tween_property(carcass, "modulate:a", 1.0, 0.18).set_delay(0.08)
+		tw.tween_property(eyes, "modulate:a", 0.0, 0.25)
+		tw.tween_property(eye_light, "energy", 0.0, 0.6)
+		var fit = lying_shadow(carcass)
+		tw.tween_property(shadow, "scale", fit[0], 0.25)
+		tw.tween_property(shadow, "position", fit[1], 0.25)
+		tw.tween_property(shadow, "modulate:a", 0.75, 0.25)
+		return
 	tw.tween_property(body, "scale:y", 0.62, 0.7).set_trans(Tween.TRANS_BOUNCE).set_ease(Tween.EASE_OUT)
 	tw.tween_property(sprite, "modulate", Color(0.62, 0.6, 0.66), 1.2)
 	tw.tween_property(eyes, "modulate:a", 0.0, 2.5)

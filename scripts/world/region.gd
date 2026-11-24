@@ -42,6 +42,11 @@ var map_marks: Array = []
 var map_shapes: Array = []
 var reveal_radius := 560.0
 var _reveal_t := 0.0
+var camera_zoom := 0.0          # 0: the usual zoom for an interior or the outdoors
+var _tall: Array = []           # [sprite, crown rect, base y] for props that can hide someone
+
+const SEE_THROUGH_MIN_H := 190.0   # props at least this tall (trees, houses) fade
+const SEE_THROUGH_ALPHA := 0.42
 
 
 func _ready() -> void:
@@ -106,17 +111,86 @@ func grade_for_hour(_h: float) -> Dictionary:
 
 
 # ----------------------------------------------------------------- helpers
-func add_ground_tile(rel: String, rect: Rect2, tint := Color(1, 1, 1), lit := true) -> Sprite2D:
+## A ground texture repeated over rect. 'vary' hides the repeat over a large
+## area (shaders/ground_vary.gdshader).
+func add_ground_tile(rel: String, rect: Rect2, tint := Color(1, 1, 1), lit := true, vary := false) -> Sprite2D:
 	var s = Sprite2D.new()
 	s.texture = Art.lit(rel) if lit else Art.tex(rel)
 	s.centered = false
 	s.region_enabled = true
-	s.region_rect = Rect2(Vector2.ZERO, rect.size)
+	# finer textures (density below 1) repeat over more pixels, drawn smaller
+	var k = Art.density(rel)
+	s.region_rect = Rect2(Vector2.ZERO, rect.size / k)
+	s.scale = Vector2(k, k)
 	s.texture_repeat = CanvasItem.TEXTURE_REPEAT_ENABLED
 	s.position = rect.position
 	s.modulate = tint
+	if vary:
+		var m = ShaderMaterial.new()
+		m.shader = load("res://shaders/ground_vary.gdshader")
+		m.set_shader_parameter("seed", Vector2(float(rel.length()) * 3.7, rect.size.x * 0.001))
+		s.material = m
 	ground.add_child(s)
 	return s
+
+
+## A tiled ground patch whose edges fray into the ground beneath it (a cobbled
+## square in trodden snow) rather than ending on a straight line.
+func add_ground_patch(rel: String, rect: Rect2, feather := 90.0, ragged := 50.0) -> Sprite2D:
+	var s = add_ground_tile(rel, rect)
+	var k = Art.density(rel)   # the shader works in texture pixels
+	var m = ShaderMaterial.new()
+	m.shader = load("res://shaders/ground_patch.gdshader")
+	m.set_shader_parameter("patch_size", rect.size / k)
+	m.set_shader_parameter("feather", feather / k)
+	m.set_shader_parameter("ragged", ragged / k)
+	m.set_shader_parameter("noise_scale", 0.011 * k)
+	m.set_shader_parameter("seed", rect.position / k)
+	s.material = m
+	return s
+
+
+## A painted strip (a trodden path, a frozen brook, a muddy road) laid along a
+## smooth curve through pts. The texture repeats along the curve and its height
+## spans the strip's width; its top and bottom rows fade out in the art itself,
+## and the two ends fade over 'fade' pixels.
+func add_strip(rel: String, pts: PackedVector2Array, width: float, z := -9, fade := 120.0) -> Line2D:
+	var line = Line2D.new()
+	line.points = smooth_curve(pts, 20.0)
+	line.width = width
+	line.texture = Art.lit(rel)
+	line.texture_mode = Line2D.LINE_TEXTURE_TILE
+	line.texture_repeat = CanvasItem.TEXTURE_REPEAT_ENABLED
+	line.joint_mode = Line2D.LINE_JOINT_ROUND
+	var length := 0.0
+	for i in range(line.points.size() - 1):
+		length += line.points[i].distance_to(line.points[i + 1])
+	var f = clampf(fade / maxf(length, 1.0), 0.0, 0.45)
+	var g = Gradient.new()
+	g.offsets = PackedFloat32Array([0.0, f, 1.0 - f, 1.0])
+	g.colors = PackedColorArray([Color(1, 1, 1, 0), Color.WHITE, Color.WHITE, Color(1, 1, 1, 0)])
+	line.gradient = g
+	line.z_index = z
+	add_child(line)
+	return line
+
+
+## Catmull-Rom curve through pts, sampled about every 'step' pixels.
+static func smooth_curve(pts: PackedVector2Array, step := 20.0) -> PackedVector2Array:
+	if pts.size() < 3:
+		return pts
+	var out = PackedVector2Array()
+	var last = pts.size() - 1
+	for i in last:
+		var a: Vector2 = pts[maxi(i - 1, 0)]
+		var b: Vector2 = pts[i]
+		var c: Vector2 = pts[i + 1]
+		var d: Vector2 = pts[mini(i + 2, last)]
+		var n = maxi(1, ceili(b.distance_to(c) / step))
+		for k in n:
+			out.append(b.cubic_interpolate(c, a, d, float(k) / n))
+	out.append(pts[last])
+	return out
 
 
 ## A lit prop with a shadow-casting footprint. 'foot' is the occluder ellipse
@@ -130,13 +204,19 @@ func add_prop(rel: String, pos: Vector2, scl := 1.0, foot := Vector2(40, 14), so
 	s.flip_h = flip
 	if s.texture:
 		s.offset = Vector2(0, -s.texture.get_height() / 2.0)
-	s.scale = Vector2(scl, scl)
+	var k = Art.density(rel)
+	s.scale = Vector2(scl, scl) * k
 	holder.add_child(s)
+	if rel.begins_with("props/") and s.texture and s.texture.get_height() * s.scale.y >= SEE_THROUGH_MIN_H:
+		# the opaque middle of the picture: crowns and roofs taper, so leave the edges
+		var w = s.texture.get_width() * s.scale.x
+		var h = s.texture.get_height() * s.scale.y
+		_tall.append([s, Rect2(pos.x - w * 0.3, pos.y - h * 0.96, w * 0.6, h * 0.96), pos.y])
 	var mk = _map_kind(rel)
 	if mk != "":
 		map_marks.append([mk, pos, scl])
 	if foot != Vector2.ZERO and s.texture:
-		_add_caster(rel, pos, scl, flip)
+		_add_caster(rel, pos, scl * k, flip)
 	if foot != Vector2.ZERO:
 		var occ = LightOccluder2D.new()
 		var poly = OccluderPolygon2D.new()
@@ -429,8 +509,10 @@ func add_npc(sheet: String, pos: Vector2, label: String, callback: Callable, fac
 	s.hframes = 4
 	s.vframes = 4
 	s.frame = facing * 4
-	s.scale = Vector2(scl, scl)
-	s.offset = Vector2(0, -32)
+	# 4 x 4 sheet: the feet sit on the bottom of each frame
+	var k = Art.density("actors/%s.png" % sheet)
+	s.scale = Vector2(scl, scl) * k
+	s.offset = Vector2(0, -s.texture.get_height() / 8.0) if s.texture else Vector2(0, -32)
 	holder.add_child(s)
 	var body = StaticBody2D.new()
 	var cs = CollisionShape2D.new()
@@ -446,8 +528,8 @@ func add_npc(sheet: String, pos: Vector2, label: String, callback: Callable, fac
 		holder.add_child(a)
 	# idle breathing
 	var tw = create_tween().set_loops()
-	tw.tween_property(s, "scale", Vector2(scl, scl * 1.02), 1.2).set_trans(Tween.TRANS_SINE)
-	tw.tween_property(s, "scale", Vector2(scl, scl), 1.2).set_trans(Tween.TRANS_SINE)
+	tw.tween_property(s, "scale", Vector2(scl, scl * 1.02) * k, 1.2).set_trans(Tween.TRANS_SINE)
+	tw.tween_property(s, "scale", Vector2(scl, scl) * k, 1.2).set_trans(Tween.TRANS_SINE)
 	return holder
 
 
@@ -461,19 +543,41 @@ func _spawn_player() -> void:
 	player.position = sp
 	world.add_child(player)
 	camera = Camera2D.new()
-	camera.zoom = Vector2(1.15, 1.15) if not interior else Vector2(1.45, 1.45)
+	var z = camera_zoom if camera_zoom > 0.0 else (1.45 if interior else 1.15)
+	camera.zoom = Vector2(z, z)
 	camera.position_smoothing_enabled = true
 	camera.position_smoothing_speed = 6.0
-	camera.limit_left = int(bounds.position.x)
-	camera.limit_top = int(bounds.position.y)
-	camera.limit_right = int(bounds.end.x)
-	camera.limit_bottom = int(bounds.end.y)
 	player.add_child(camera)
 	camera.make_current()
 	player.camera = camera
+	_fit_camera_limits()
+	get_viewport().size_changed.connect(_fit_camera_limits)
 	if _snow_near:
 		_snow_near.reparent(player, false)
 		_snow_far.reparent(player, false)
+
+
+## The camera stops at the region's edges. Where the region is narrower or
+## shorter than the view (a small room), the limits are set a view's width or
+## height apart around its centre instead, which holds the camera there: the
+## room sits in the middle of the screen rather than against one edge.
+func _fit_camera_limits() -> void:
+	if camera == null:
+		return
+	var view = get_viewport().get_visible_rect().size / camera.zoom
+	var c = bounds.get_center()
+	if bounds.size.x < view.x:
+		camera.limit_left = floori(c.x - view.x / 2.0)
+		camera.limit_right = ceili(c.x + view.x / 2.0)
+	else:
+		camera.limit_left = int(bounds.position.x)
+		camera.limit_right = int(bounds.end.x)
+	if bounds.size.y < view.y:
+		camera.limit_top = floori(c.y - view.y / 2.0)
+		camera.limit_bottom = ceili(c.y + view.y / 2.0)
+	else:
+		camera.limit_top = int(bounds.position.y)
+		camera.limit_bottom = int(bounds.end.y)
 
 
 func _process(delta: float) -> void:
@@ -485,6 +589,36 @@ func _process(delta: float) -> void:
 	if _reveal_t <= 0.0 and player != null:
 		_reveal_t = 0.2
 		GameState.reveal(GameState.region, bounds, player.global_position, reveal_radius)
+	_update_see_through(delta)
+
+
+## A tree or a building fades while Feyre or a creature stands behind it, so
+## nobody vanishes from sight in the woods or behind a house.
+func _update_see_through(delta: float) -> void:
+	if _tall.is_empty():
+		return
+	var figures: Array = []   # [feet, middle of the figure], in the world layer's space
+	if player != null and is_instance_valid(player):
+		var f = world.to_local(player.global_position)
+		figures.append([f, f + Vector2(0, -50)])
+	for c in get_tree().get_nodes_in_group("creatures"):
+		if c is Node2D and (c as Node2D).visible and (c as Node2D).is_inside_tree():
+			var f = world.to_local((c as Node2D).global_position)
+			figures.append([f, f + Vector2(0, -30)])
+	var step = delta * 3.0
+	for t in _tall:
+		var s = t[0]
+		if not is_instance_valid(s):
+			continue
+		var crown: Rect2 = t[1]
+		var behind = false
+		for fig in figures:
+			if fig[0].y < t[2] - 6.0 and (crown.has_point(fig[1]) or crown.has_point(fig[0])):
+				behind = true
+				break
+		var a = SEE_THROUGH_ALPHA if behind else 1.0
+		if s.modulate.a != a:
+			s.modulate.a = move_toward(s.modulate.a, a, step)
 
 
 func _apply_time() -> void:
