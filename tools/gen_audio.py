@@ -503,6 +503,27 @@ def forage():
     return rustle * 0.7 + twig * 0.5
 
 
+def wings():
+    """A bird bursting up: four or five quick, papery wingbeats, slowing and
+    fading as it climbs away."""
+    r = rng_for("wings")
+    d = 0.7
+    n = secs(d)
+    y = np.zeros(n)
+    at = 0.0
+    gap = 0.07
+    g = 1.0
+    for k in range(5):
+        L = secs(0.05)
+        tt = np.arange(L) / SR
+        beat = bp(white(L, r), 500, 3200) * np.exp(-tt / 0.018) * np.sin(np.pi * np.clip(tt / 0.05, 0, 1)) ** 0.5
+        mix_at(y, beat * g, secs(at))
+        at += gap
+        gap *= 1.12
+        g *= 0.78
+    return lp(y, 4200)
+
+
 def breath(n, r, f1, f2, dur_env):
     """Breathy vocal noise through two formants (no words, no pitch)."""
     x = white(n, r)
@@ -1001,6 +1022,7 @@ def sfx_all():
     out[("sfx", "pickup")] = (pickup, -8.0)
     out[("sfx", "eat")] = (eat, -6.0)
     out[("sfx", "forage")] = (forage, -6.0)
+    out[("sfx", "wings")] = (wings, -8.0)
     out[("sfx", "player_hurt")] = (player_hurt, -2.0)
     out[("sfx", "player_down")] = (player_down, -2.0)
     out[("sfx", "wolf_snarl")] = (wolf_snarl, -2.0)

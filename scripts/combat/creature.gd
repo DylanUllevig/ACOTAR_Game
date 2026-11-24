@@ -38,6 +38,9 @@ var ash_struck := false
 ## plays out, and a test can seed this to replay a fight exactly.
 var rng := RandomNumberGenerator.new()
 var _flash_mat: ShaderMaterial
+var px_meta := {}            # layout of the pixel-art sheet, when the art is pixel art
+var _px_anim := ""
+var _px_t := 0.0
 
 
 func setup(id: String) -> void:
@@ -85,6 +88,45 @@ func _ready() -> void:
 	hurtbox.add_child(hs)
 	add_child(hurtbox)
 	build_visual()
+
+
+# ------------------------------------------------------------ pixel sheets
+## Sets the sprite up to show a pixel-art sheet (frames facing right, feet on
+## the bottom of each frame). Returns false for painted art.
+func use_pixel_sheet(rel: String) -> bool:
+	if not Art.is_pixel(rel):
+		return false
+	px_meta = Art.pixel_meta(rel)
+	sprite.texture = Art.lit(rel)
+	var g: Array = px_meta.get("grid", [1, 1])
+	sprite.hframes = int(g[0])
+	sprite.vframes = int(g[1])
+	sprite.scale = Art.sprite_scale(rel)
+	sprite.offset = Vector2(0, -sprite.texture.get_height() / (2.0 * sprite.vframes))
+	return true
+
+
+func pixel() -> bool:
+	return not px_meta.is_empty()
+
+
+## Shows the named animation, advancing 'fps' frames a second (a one-frame
+## animation just holds its frame).
+func px_play(anim: String, delta: float, fps := 8.0) -> void:
+	var a: Array = px_meta.get("anims", {}).get(anim, [])
+	if a.is_empty():
+		return
+	if anim != _px_anim:
+		_px_anim = anim
+		_px_t = 0.0
+	_px_t += delta * fps
+	sprite.frame = int(a[int(_px_t) % a.size()])
+
+
+## Size of one frame of the sprite in world units.
+static func frame_size(spr: Sprite2D) -> Vector2:
+	var sz = spr.texture.get_size() / Vector2(spr.hframes, spr.vframes)
+	return sz * spr.scale.abs()
 
 
 # -------------------------------------------------------------- overridables
@@ -244,7 +286,8 @@ func drop_arrows() -> void:
 ## reads as leaping, not lying. Returns [scale, position] for fx/shadow.png
 ## under 'spr', whose origin is the bottom middle of the picture.
 static func lying_shadow(spr: Sprite2D) -> Array:
-	var w = spr.texture.get_width() * absf(spr.scale.x)
-	var h = spr.texture.get_height() * absf(spr.scale.y)
+	var fs = frame_size(spr)
+	var w = fs.x
+	var h = fs.y
 	var sh: Texture2D = Art.tex("fx/shadow.png")
 	return [Vector2(w * 0.95 / sh.get_width(), h * 0.8 / sh.get_height()), spr.position + Vector2(0, -h * 0.36)]

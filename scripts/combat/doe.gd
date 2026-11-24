@@ -9,14 +9,23 @@ var frightened := false
 var sprite: Sprite2D
 var shadow: Sprite2D
 var _t := randf() * 10.0
+var _px := {}                # pixel sheet layout, when the art is pixel art
 
 
 func _ready() -> void:
 	sprite = Sprite2D.new()
 	sprite.texture = Art.lit("actors/doe.png")
-	if sprite.texture:
-		sprite.offset = Vector2(0, -sprite.texture.get_height() / 2.0)
-	sprite.scale = Vector2(1.3, 1.3) * Art.density("actors/doe.png")
+	if Art.is_pixel("actors/doe.png"):
+		_px = Art.pixel_meta("actors/doe.png")
+		sprite.hframes = int(_px.grid[0])
+		sprite.vframes = int(_px.grid[1])
+		sprite.scale = Art.sprite_scale("actors/doe.png")
+		sprite.offset = Vector2(0, -sprite.texture.get_height() / (2.0 * sprite.vframes))
+		_frame("graze")
+	else:
+		if sprite.texture:
+			sprite.offset = Vector2(0, -sprite.texture.get_height() / 2.0)
+		sprite.scale = Vector2(1.3, 1.3) * Art.density("actors/doe.png")
 	add_child(sprite)
 	shadow = Sprite2D.new()
 	shadow.texture = Art.tex("fx/shadow.png")
@@ -26,10 +35,25 @@ func _ready() -> void:
 	add_child(shadow)
 
 
+func _frame(anim: String, k := 0) -> void:
+	var a: Array = _px.get("anims", {}).get(anim, [])
+	if not a.is_empty():
+		sprite.frame = int(a[k % a.size()])
+
+
 func _process(delta: float) -> void:
 	if not alive:
 		return
 	_t += delta
+	if not _px.is_empty():
+		if frightened:
+			_frame("alert")
+			sprite.position.x = float(int(_t * 30.0) % 2) * Art.PX
+		else:
+			# head down to the bark, up to listen, a glance back now and then
+			var c = fmod(_t, 6.0)
+			_frame("graze" if c < 4.5 else ("look" if fmod(_t, 18.0) > 12.0 else "alert"))
+		return
 	if frightened:
 		sprite.position.x = sin(_t * 47.0) * 0.8
 		sprite.rotation = 0.0
@@ -72,6 +96,16 @@ func kill(from: Vector2) -> void:
 ## lies on her side instead of the live sprite being tipped over. Returns
 ## false when there is no such art.
 func _show_carcass(instant: bool) -> bool:
+	if not _px.is_empty():
+		# the sheet's own frame: lying on her side
+		_frame("dead")
+		sprite.position = Vector2.ZERO
+		sprite.modulate = Color(0.92, 0.88, 0.86)
+		var pfit = Creature.lying_shadow(sprite)
+		shadow.scale = pfit[0]
+		shadow.position = pfit[1] + Vector2(0, Creature.frame_size(sprite).y * 0.25)
+		shadow.modulate.a = 0.6
+		return true
 	var tex = Art.lit(DEAD_ART)
 	if tex == null:
 		return false

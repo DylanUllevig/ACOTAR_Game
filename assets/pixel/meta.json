@@ -1,0 +1,1081 @@
+{
+ "actors/acolyte.png": {
+  "block": 3.9,
+  "frame": [
+   40,
+   65
+  ],
+  "grid": [
+   4,
+   4
+  ],
+  "height": 62
+ },
+ "actors/beast.png": {
+  "anims": {
+   "rear": [
+    0
+   ],
+   "side": [
+    1
+   ],
+   "sit": [
+    3
+   ],
+   "snarl": [
+    2
+   ]
+  },
+  "block": 3.28,
+  "frame": [
+   170,
+   154
+  ],
+  "grid": [
+   4,
+   1
+  ],
+  "sizes": [
+   [
+    63,
+    152
+   ],
+   [
+    165,
+    135
+   ],
+   [
+    157,
+    113
+   ],
+   [
+    114,
+    140
+   ]
+  ]
+ },
+ "actors/crow.png": {
+  "anims": {
+   "fly": [
+    2,
+    3
+   ],
+   "idle": [
+    0
+   ],
+   "peck": [
+    1
+   ]
+  },
+  "block": 9.32,
+  "frame": [
+   30,
+   25
+  ],
+  "grid": [
+   4,
+   1
+  ],
+  "sizes": [
+   [
+    19,
+    14
+   ],
+   [
+    25,
+    14
+   ],
+   [
+    23,
+    23
+   ],
+   [
+    25,
+    17
+   ]
+  ]
+ },
+ "actors/doe.png": {
+  "anims": {
+   "alert": [
+    9
+   ],
+   "dead": [
+    11
+   ],
+   "graze": [
+    8
+   ],
+   "look": [
+    10
+   ],
+   "run": [
+    4,
+    5,
+    6,
+    7
+   ],
+   "walk": [
+    0,
+    1,
+    2,
+    3
+   ]
+  },
+  "block": 4.66,
+  "frame": [
+   58,
+   47
+  ],
+  "grid": [
+   4,
+   3
+  ],
+  "sizes": [
+   [
+    42,
+    43
+   ],
+   [
+    41,
+    41
+   ],
+   [
+    43,
+    42
+   ],
+   [
+    42,
+    41
+   ],
+   [
+    40,
+    37
+   ],
+   [
+    46,
+    36
+   ],
+   [
+    51,
+    37
+   ],
+   [
+    41,
+    37
+   ],
+   [
+    40,
+    33
+   ],
+   [
+    40,
+    45
+   ],
+   [
+    34,
+    38
+   ],
+   [
+    53,
+    20
+   ]
+  ]
+ },
+ "actors/elain.png": {
+  "block": 3.46,
+  "frame": [
+   40,
+   77
+  ],
+  "grid": [
+   4,
+   4
+  ],
+  "height": 73
+ },
+ "actors/father.png": {
+  "block": 3.88,
+  "frame": [
+   38,
+   71
+  ],
+  "grid": [
+   4,
+   4
+  ],
+  "height": 67
+ },
+ "actors/feyre.png": {
+  "block": 3.2,
+  "frame": [
+   42,
+   78
+  ],
+  "grid": [
+   4,
+   4
+  ],
+  "height": 76
+ },
+ "actors/fox.png": {
+  "anims": {
+   "sit": [
+    0
+   ],
+   "sleep": [
+    3
+   ],
+   "trot": [
+    1,
+    2
+   ]
+  },
+  "block": 7.59,
+  "frame": [
+   44,
+   26
+  ],
+  "grid": [
+   4,
+   1
+  ],
+  "sizes": [
+   [
+    28,
+    24
+   ],
+   [
+    34,
+    20
+   ],
+   [
+    39,
+    23
+   ],
+   [
+    28,
+    18
+   ]
+  ]
+ },
+ "actors/hare.png": {
+  "anims": {
+   "alert": [
+    9
+   ],
+   "crouch": [
+    10
+   ],
+   "dead": [
+    11
+   ],
+   "hop": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "run": [
+    4,
+    5,
+    6,
+    7
+   ],
+   "sit": [
+    8
+   ]
+  },
+  "block": 8.02,
+  "frame": [
+   32,
+   25
+  ],
+  "grid": [
+   4,
+   3
+  ],
+  "sizes": [
+   [
+    21,
+    17
+   ],
+   [
+    19,
+    20
+   ],
+   [
+    23,
+    18
+   ],
+   [
+    22,
+    20
+   ],
+   [
+    20,
+    19
+   ],
+   [
+    24,
+    18
+   ],
+   [
+    26,
+    17
+   ],
+   [
+    23,
+    19
+   ],
+   [
+    20,
+    21
+   ],
+   [
+    17,
+    23
+   ],
+   [
+    23,
+    13
+   ],
+   [
+    27,
+    10
+   ]
+  ]
+ },
+ "actors/isaac.png": {
+  "block": 3.6,
+  "frame": [
+   38,
+   74
+  ],
+  "grid": [
+   4,
+   4
+  ],
+  "height": 68
+ },
+ "actors/mare.png": {
+  "anims": {
+   "rear": [
+    5
+   ],
+   "ride_rear": [
+    7
+   ],
+   "ride_side": [
+    6
+   ],
+   "stand": [
+    4
+   ],
+   "walk": [
+    0,
+    1,
+    2,
+    3
+   ]
+  },
+  "block": 4.0,
+  "frame": [
+   180,
+   153
+  ],
+  "grid": [
+   4,
+   2
+  ],
+  "sizes": [
+   [
+    170,
+    117
+   ],
+   [
+    172,
+    116
+   ],
+   [
+    175,
+    116
+   ],
+   [
+    175,
+    114
+   ],
+   [
+    160,
+    119
+   ],
+   [
+    57,
+    115
+   ],
+   [
+    173,
+    151
+   ],
+   [
+    71,
+    151
+   ]
+  ]
+ },
+ "actors/mercenary.png": {
+  "block": 4.1,
+  "frame": [
+   44,
+   65
+  ],
+  "grid": [
+   4,
+   4
+  ],
+  "height": 61
+ },
+ "actors/nesta.png": {
+  "block": 4.0,
+  "frame": [
+   34,
+   73
+  ],
+  "grid": [
+   4,
+   4
+  ],
+  "height": 63
+ },
+ "actors/robin.png": {
+  "anims": {
+   "fly": [
+    2,
+    3
+   ],
+   "idle": [
+    0
+   ],
+   "peck": [
+    1
+   ]
+  },
+  "block": 11.04,
+  "frame": [
+   22,
+   17
+  ],
+  "grid": [
+   4,
+   1
+  ],
+  "sizes": [
+   [
+    15,
+    11
+   ],
+   [
+    14,
+    11
+   ],
+   [
+    16,
+    15
+   ],
+   [
+    17,
+    13
+   ]
+  ]
+ },
+ "actors/squirrel.png": {
+  "anims": {
+   "eat": [
+    3
+   ],
+   "run": [
+    1,
+    2
+   ],
+   "sit": [
+    0
+   ]
+  },
+  "block": 10.7,
+  "frame": [
+   30,
+   19
+  ],
+  "grid": [
+   4,
+   1
+  ],
+  "sizes": [
+   [
+    18,
+    17
+   ],
+   [
+    23,
+    15
+   ],
+   [
+    26,
+    15
+   ],
+   [
+    19,
+    17
+   ]
+  ]
+ },
+ "actors/villager.png": {
+  "block": 3.98,
+  "frame": [
+   44,
+   70
+  ],
+  "grid": [
+   4,
+   4
+  ],
+  "height": 67
+ },
+ "actors/villager_woman.png": {
+  "block": 4.0,
+  "frame": [
+   48,
+   60
+  ],
+  "grid": [
+   4,
+   4
+  ],
+  "height": 55
+ },
+ "actors/wolf.png": {
+  "anims": {
+   "crouch": [
+    6
+   ],
+   "dead": [
+    7
+   ],
+   "leap": [
+    4
+   ],
+   "snarl": [
+    5
+   ],
+   "walk": [
+    0,
+    1,
+    2,
+    3
+   ]
+  },
+  "block": 3.9,
+  "eyes": [
+   null,
+   [
+    49.0,
+    -34.5
+   ],
+   [
+    52.0,
+    -32.0
+   ],
+   [
+    51.0,
+    -32.0
+   ],
+   [
+    49.5,
+    -43.5
+   ],
+   [
+    47.5,
+    -22.0
+   ],
+   [
+    47.5,
+    -14.0
+   ],
+   null
+  ],
+  "frame": [
+   136,
+   61
+  ],
+  "grid": [
+   4,
+   2
+  ],
+  "sizes": [
+   [
+    125,
+    59
+   ],
+   [
+    125,
+    59
+   ],
+   [
+    128,
+    58
+   ],
+   [
+    129,
+    57
+   ],
+   [
+    131,
+    59
+   ],
+   [
+    121,
+    56
+   ],
+   [
+    120,
+    46
+   ],
+   [
+    124,
+    45
+   ]
+  ]
+ },
+ "props/bare_tree_0.png": {
+  "px": 2,
+  "size": [
+   89,
+   95
+  ]
+ },
+ "props/bare_tree_1.png": {
+  "px": 2,
+  "size": [
+   89,
+   95
+  ]
+ },
+ "props/barn.png": {
+  "px": 2,
+  "size": [
+   166,
+   173
+  ]
+ },
+ "props/barrels.png": {
+  "px": 2,
+  "size": [
+   44,
+   41
+  ]
+ },
+ "props/bed_patch.png": {
+  "px": 1,
+  "size": [
+   47,
+   80
+  ]
+ },
+ "props/bed_rose.png": {
+  "px": 1,
+  "size": [
+   49,
+   79
+  ]
+ },
+ "props/bench.png": {
+  "px": 2,
+  "size": [
+   38,
+   30
+  ]
+ },
+ "props/bench_in.png": {
+  "px": 1,
+  "size": [
+   70,
+   30
+  ]
+ },
+ "props/bramble.png": {
+  "px": 2,
+  "size": [
+   102,
+   58
+  ]
+ },
+ "props/branch.png": {
+  "px": 2,
+  "size": [
+   38,
+   22
+  ]
+ },
+ "props/buckets.png": {
+  "px": 2,
+  "size": [
+   24,
+   25
+  ]
+ },
+ "props/cart.png": {
+  "px": 2,
+  "size": [
+   71,
+   54
+  ]
+ },
+ "props/chest.png": {
+  "px": 1,
+  "size": [
+   46,
+   40
+  ]
+ },
+ "props/cottage_family.png": {
+  "px": 2,
+  "size": [
+   153,
+   154
+  ]
+ },
+ "props/cottage_small.png": {
+  "px": 2,
+  "size": [
+   73,
+   91
+  ]
+ },
+ "props/crates.png": {
+  "px": 2,
+  "size": [
+   53,
+   42
+  ]
+ },
+ "props/dresser.png": {
+  "px": 1,
+  "size": [
+   63,
+   84
+  ]
+ },
+ "props/easel.png": {
+  "px": 1,
+  "size": [
+   72,
+   72
+  ]
+ },
+ "props/fence.png": {
+  "px": 2,
+  "size": [
+   58,
+   39
+  ]
+ },
+ "props/fern.png": {
+  "px": 2,
+  "size": [
+   36,
+   28
+  ]
+ },
+ "props/fountain_broken.png": {
+  "px": 2,
+  "size": [
+   73,
+   65
+  ]
+ },
+ "props/grass_tuft.png": {
+  "px": 2,
+  "size": [
+   26,
+   24
+  ]
+ },
+ "props/hay_bales.png": {
+  "px": 2,
+  "size": [
+   42,
+   44
+  ]
+ },
+ "props/hearth.png": {
+  "px": 1,
+  "size": [
+   76,
+   88
+  ]
+ },
+ "props/holly.png": {
+  "px": 2,
+  "size": [
+   69,
+   56
+  ]
+ },
+ "props/house_a.png": {
+  "px": 2,
+  "size": [
+   160,
+   169
+  ]
+ },
+ "props/house_b.png": {
+  "px": 2,
+  "size": [
+   163,
+   162
+  ]
+ },
+ "props/lamp_post.png": {
+  "px": 2,
+  "size": [
+   28,
+   61
+  ],
+  "windows": [
+   [
+    5.9,
+    -36.4,
+    14
+   ],
+   [
+    9.5,
+    -36.5,
+    6
+   ]
+  ]
+ },
+ "props/log.png": {
+  "px": 2,
+  "size": [
+   96,
+   43
+  ]
+ },
+ "props/pine_0.png": {
+  "px": 2,
+  "size": [
+   86,
+   163
+  ]
+ },
+ "props/pine_1.png": {
+  "px": 2,
+  "size": [
+   62,
+   109
+  ]
+ },
+ "props/pine_2.png": {
+  "px": 2,
+  "size": [
+   72,
+   108
+  ]
+ },
+ "props/pine_3.png": {
+  "px": 2,
+  "size": [
+   46,
+   80
+  ]
+ },
+ "props/pine_4.png": {
+  "px": 2,
+  "size": [
+   36,
+   55
+  ]
+ },
+ "props/pinecones.png": {
+  "px": 2,
+  "size": [
+   16,
+   12
+  ]
+ },
+ "props/rail_fence.png": {
+  "px": 2,
+  "size": [
+   38,
+   34
+  ]
+ },
+ "props/reeds.png": {
+  "px": 2,
+  "size": [
+   47,
+   49
+  ]
+ },
+ "props/rock_0.png": {
+  "px": 2,
+  "size": [
+   74,
+   49
+  ]
+ },
+ "props/rock_1.png": {
+  "px": 2,
+  "size": [
+   44,
+   31
+  ]
+ },
+ "props/root_stump.png": {
+  "px": 2,
+  "size": [
+   52,
+   42
+  ]
+ },
+ "props/rose_bush.png": {
+  "px": 2,
+  "size": [
+   42,
+   44
+  ]
+ },
+ "props/rose_bush_bare.png": {
+  "px": 2,
+  "size": [
+   42,
+   44
+  ]
+ },
+ "props/rug.png": {
+  "px": 1,
+  "size": [
+   73,
+   51
+  ]
+ },
+ "props/shed.png": {
+  "px": 2,
+  "size": [
+   84,
+   83
+  ]
+ },
+ "props/shelf.png": {
+  "px": 1,
+  "size": [
+   71,
+   80
+  ]
+ },
+ "props/signpost.png": {
+  "px": 2,
+  "size": [
+   34,
+   49
+  ]
+ },
+ "props/snow_mound.png": {
+  "px": 2,
+  "size": [
+   34,
+   26
+  ]
+ },
+ "props/snowman.png": {
+  "px": 2,
+  "size": [
+   31,
+   39
+  ]
+ },
+ "props/stall_blue.png": {
+  "px": 2,
+  "size": [
+   54,
+   58
+  ]
+ },
+ "props/stall_red.png": {
+  "px": 2,
+  "size": [
+   54,
+   58
+  ]
+ },
+ "props/stone_wall.png": {
+  "px": 2,
+  "size": [
+   44,
+   35
+  ]
+ },
+ "props/stool.png": {
+  "px": 1,
+  "size": [
+   25,
+   36
+  ]
+ },
+ "props/stump.png": {
+  "px": 2,
+  "size": [
+   65,
+   47
+  ]
+ },
+ "props/table.png": {
+  "px": 1,
+  "size": [
+   61,
+   48
+  ]
+ },
+ "props/trough.png": {
+  "px": 2,
+  "size": [
+   41,
+   29
+  ]
+ },
+ "props/washstand.png": {
+  "px": 1,
+  "size": [
+   56,
+   68
+  ]
+ },
+ "props/well.png": {
+  "px": 2,
+  "size": [
+   46,
+   55
+  ]
+ },
+ "props/wheelbarrow.png": {
+  "px": 2,
+  "size": [
+   36,
+   34
+  ]
+ },
+ "props/woodshed.png": {
+  "px": 2,
+  "size": [
+   52,
+   51
+  ]
+ },
+ "props/wreath_post.png": {
+  "px": 2,
+  "size": [
+   29,
+   43
+  ]
+ }
+}

@@ -6,6 +6,19 @@ extends RefCounted
 
 const PH := "res://assets/placeholder/"
 const FINAL := "res://assets/final/"
+const PIXEL := "res://assets/pixel/"
+
+## The walkable world is pixel art. People and animals are drawn at one art
+## pixel per PX world units; scenery (props, buildings, ground) is drawn twice
+## as chunky, two of their pixels to one of the scenery's. The camera zoom keeps
+## every art pixel a whole number of screen pixels (see pixel_zoom). Ground
+## tiles are TILE_WORLD world units square.
+const PX := 1.5
+const SCENERY_PX := 2
+const TILE_WORLD := 48.0
+## Screen pixels per art pixel at 1920 x 1080, outdoors and indoors.
+const PX_SCREEN_OUT := 2
+const PX_SCREEN_IN := 3
 
 const GOLD := Color(0.91, 0.77, 0.47)
 const GOLD_DIM := Color(0.62, 0.5, 0.3)
@@ -20,10 +33,69 @@ static var _density = null
 
 
 static func resolve(rel: String) -> String:
-	## rel like "props/pine_0.png". Final art wins over placeholder.
+	## rel like "props/pine_0.png". Pixel art wins over painted final art,
+	## which wins over placeholder.
+	if ResourceLoader.exists(PIXEL + rel):
+		return PIXEL + rel
 	if ResourceLoader.exists(FINAL + rel):
 		return FINAL + rel
 	return PH + rel
+
+
+static func is_pixel(rel: String) -> bool:
+	return resolve(rel).begins_with(PIXEL)
+
+
+## Scale for a sprite showing 'rel': pixel art is always PX per art pixel (so
+## its pixels stay square and whole); painted art keeps the layout scale.
+static func sprite_scale(rel: String, scl := 1.0) -> Vector2:
+	if is_pixel(rel):
+		return Vector2.ONE * PX * pixel_mult(rel)
+	var k = scl * density(rel)
+	return Vector2(k, k)
+
+
+static var _pixel_meta = null
+
+
+## How many character art pixels one art pixel of this sprite covers: scenery
+## is chunkier than people (meta "px", else by folder).
+static func pixel_mult(rel: String) -> int:
+	var m = pixel_meta(rel)
+	if m.has("px"):
+		return int(m.px)
+	return SCENERY_PX if rel.begins_with("props/") or rel.begins_with("terrain/") else 1
+
+## Frame layout and animations of a pixel sheet (assets/pixel/meta.json):
+## {"grid": [cols, rows], "frame": [w, h], "anims": {name: [frames]}, ...}
+static func pixel_meta(rel: String) -> Dictionary:
+	if _pixel_meta == null:
+		_pixel_meta = {}
+		var path = PIXEL + "meta.json"
+		if FileAccess.file_exists(path):
+			var d = JSON.parse_string(FileAccess.get_file_as_string(path))
+			if d is Dictionary:
+				_pixel_meta = d
+	if not is_pixel(rel):
+		return {}
+	return _pixel_meta.get(rel, {})
+
+
+## Camera zoom at which one art pixel covers a whole number of screen pixels
+## in this window: 'per_px' screen pixels at 1920 x 1080, the nearest whole
+## number at other sizes (never below 2 on an ordinary screen).
+static func pixel_zoom(vp: Viewport, per_px: int) -> float:
+	var vis: Vector2 = vp.get_visible_rect().size
+	var win := Vector2(DisplayServer.window_get_size())
+	if DisplayServer.get_name() == "headless" or win.x <= 0.0:
+		win = vis
+	# canvas_items stretch with 'expand': the canvas is scaled by the smaller ratio
+	var s = minf(win.x / 1920.0, win.y / 1080.0)
+	var d = maxi(1, roundi(per_px * s))
+	if s >= 0.55:
+		d = maxi(d, 2)
+	var base = minf(win.x / vis.x, win.y / vis.y)
+	return float(d) / (PX * base)
 
 
 static func tex(rel: String) -> Texture2D:
@@ -66,7 +138,7 @@ static func lit(rel: String) -> Texture2D:
 	var np = resolve(nrel)
 	if ResourceLoader.exists(np):
 		ct.normal_texture = load(np)
-	ct.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR_WITH_MIPMAPS
+	ct.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST if is_pixel(rel) else CanvasItem.TEXTURE_FILTER_LINEAR_WITH_MIPMAPS
 	_cache[key] = ct
 	return ct
 

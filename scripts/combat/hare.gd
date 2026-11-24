@@ -19,11 +19,13 @@ func _init() -> void:
 
 func build_visual() -> void:
 	var art: Dictionary = def.get("art", {})
-	sprite.texture = Art.lit(String(art.get("sprite", "actors/hare.png")))
-	if sprite.texture:
-		sprite.offset = Vector2(0, -sprite.texture.get_height() / 2.0)
-	var sc = float(art.get("scale", 1.0))
-	sprite.scale = Vector2(sc, sc) * Art.density(String(art.get("sprite", "actors/hare.png")))
+	var rel = String(art.get("sprite", "actors/hare.png"))
+	if not use_pixel_sheet(rel):
+		sprite.texture = Art.lit(rel)
+		if sprite.texture:
+			sprite.offset = Vector2(0, -sprite.texture.get_height() / 2.0)
+		var sc = float(art.get("scale", 1.0))
+		sprite.scale = Vector2(sc, sc) * Art.density(rel)
 	shadow.scale = Vector2(0.6, 0.35)
 	_home = global_position
 	_target = global_position
@@ -72,6 +74,13 @@ func animate(delta: float) -> void:
 	if dead:
 		return
 	var moving = velocity.length() > 10.0
+	if pixel():
+		if moving:
+			px_play("run" if _flee > 0.0 else "hop", delta, 14.0 if _flee > 0.0 else 9.0)
+		else:
+			# sit and nibble; now and then sit up and listen
+			px_play("alert" if fmod(Time.get_ticks_msec() * 0.001 + float(get_instance_id() % 7), 5.0) < 1.2 else "sit", delta)
+		return
 	if moving:
 		_hop += delta * (16.0 if _flee > 0.0 else 9.0)
 		body.position.y = -absf(sin(_hop)) * (10.0 if _flee > 0.0 else 6.0)
@@ -86,6 +95,12 @@ func on_hit(_dmg: int, _hit: Dictionary) -> void:
 
 func on_death(_hit: Dictionary) -> void:
 	GameState.bump("hares_hunted")
+	if pixel():
+		px_play("dead", 0.0)
+		var ptw = create_tween()
+		ptw.tween_property(body, "modulate:a", 0.0, 0.5).set_delay(0.6)
+		ptw.tween_callback(queue_free)
+		return
 	var tw = create_tween().set_parallel(true)
 	tw.tween_property(body, "rotation", PI / 2.0, 0.25)
 	tw.tween_property(body, "modulate:a", 0.0, 0.5).set_delay(0.4)

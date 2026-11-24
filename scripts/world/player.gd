@@ -87,7 +87,7 @@ func _ready() -> void:
 	sprite.texture = Art.lit("actors/feyre.png")
 	sprite.hframes = 4
 	sprite.vframes = 4
-	sprite.scale = Vector2(1.7, 1.7) * Art.density("actors/feyre.png")
+	sprite.scale = Art.sprite_scale("actors/feyre.png", 1.7)
 	sprite.offset = Vector2(0, -sprite.texture.get_height() / 8.0) if sprite.texture else Vector2(0, -32)
 	add_child(sprite)
 	_build_ghost()
@@ -234,8 +234,10 @@ func _animate(delta: float) -> void:
 		sprite.frame = facing * 4 + f
 		if f != was and f % 2 == 1:
 			_left_foot = not _left_foot
-			Audio.sfx("step_" + surface, -14.0 if spd < SPEED * 1.1 else -10.0, 0.12)
-			if footprints:
+			var region = get_parent().get_parent()
+			var surf = region.surface_at(global_position) if region != null and region.has_method("surface_at") else surface
+			Audio.sfx("step_" + surf, -14.0 if spd < SPEED * 1.1 else -10.0, 0.12)
+			if footprints and surf == "snow":
 				_drop_footprint()
 	else:
 		sprite.frame = facing * 4
@@ -454,12 +456,12 @@ func _eat(id: String, d: Dictionary) -> void:
 ## Final weapon art is painted at twice its layout size; density scales it back.
 func _set_held(rel: String) -> void:
 	held.texture = Art.tex(rel)
-	_held_k = Art.density(rel)
+	_held_k = Art.sprite_scale(rel).x
 
 
 func _set_nocked(rel: String) -> void:
 	nocked.texture = Art.tex(rel)
-	nocked.scale = Vector2.ONE * Art.density(rel)
+	nocked.scale = Art.sprite_scale(rel)
 
 
 func _update_held() -> void:
@@ -640,12 +642,24 @@ func _update_camera(delta: float) -> void:
 func _drop_footprint() -> void:
 	var f = Sprite2D.new()
 	f.texture = Art.tex("fx/footprint.png")
-	var side = Vector2(-6 if _left_foot else 6, 0).rotated(velocity.angle() + PI / 2)
+	var region = get_parent().get_parent()
+	var px = Art.is_pixel("fx/footprint.png")
+	# pixel prints turn in quarter turns only, so their pixels stay square
+	var ang = velocity.angle() + PI / 2
+	if px:
+		ang = snappedf(ang, PI / 2)
+		f.scale = Art.sprite_scale("fx/footprint.png")
+	var side = Vector2(-6 if _left_foot else 6, 0).rotated(ang)
 	f.global_position = global_position + side
-	f.rotation = velocity.angle() + PI / 2
+	f.rotation = ang
 	f.z_index = -5
 	f.modulate.a = 0.8
-	get_parent().get_parent().add_child(f)
+	if px and region != null and "ground" in region and region.ground != null:
+		f.z_index = 2
+		region.ground.add_child(f)
+		f.global_position = global_position + side
+	else:
+		region.add_child(f)
 	var tw = f.create_tween()
 	tw.tween_interval(10.0)
 	tw.tween_property(f, "modulate:a", 0.0, 6.0)

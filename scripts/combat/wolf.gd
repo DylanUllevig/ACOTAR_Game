@@ -48,13 +48,19 @@ func _init() -> void:
 
 func build_visual() -> void:
 	var art: Dictionary = def.get("art", {})
-	sprite.texture = Art.lit(String(art.get("sprite", "actors/wolf.png")))
-	sprite.offset = Vector2(0, -sprite.texture.get_height() / 2.0) if sprite.texture else Vector2.ZERO
-	var sc = float(art.get("scale", 1.45))
-	art_scale = sc
-	sprite.scale = Vector2(sc, sc) * Art.density(String(art.get("sprite", "actors/wolf.png")))
-	var ep: Array = art.get("eye", [106, -122])
-	eye_pos = Vector2(float(ep[0]), float(ep[1]))
+	var rel = String(art.get("sprite", "actors/wolf.png"))
+	if use_pixel_sheet(rel):
+		art_scale = 1.0
+		sprite.frame = int(px_meta.anims.walk[0])
+		eye_pos = _px_eye(sprite.frame)
+	else:
+		sprite.texture = Art.lit(rel)
+		sprite.offset = Vector2(0, -sprite.texture.get_height() / 2.0) if sprite.texture else Vector2.ZERO
+		var sc = float(art.get("scale", 1.45))
+		art_scale = sc
+		sprite.scale = Vector2(sc, sc) * Art.density(rel)
+		var ep: Array = art.get("eye", [106, -122])
+		eye_pos = Vector2(float(ep[0]), float(ep[1]))
 	shadow.scale = Vector2(2.2, 1.0)
 	shadow.position = Vector2(0, -2)
 	eyes = Sprite2D.new()
@@ -94,6 +100,19 @@ func build_visual() -> void:
 	_regen_fx.material = pm
 	_regen_fx.emitting = false
 	add_child(_regen_fx)
+
+
+## Where his eyes are on pixel frame f (from the sheet's metadata; a frame
+## where they are shut or turned away uses the nearest frame that has them).
+func _px_eye(f: int) -> Vector2:
+	var eyes_at: Array = px_meta.get("eyes", [])
+	if eyes_at.is_empty():
+		return eye_pos
+	for k in eyes_at.size():
+		for cand in [f - k, f + k]:
+			if cand >= 0 and cand < eyes_at.size() and eyes_at[cand] != null:
+				return Vector2(float(eyes_at[cand][0]), float(eyes_at[cand][1])) * sprite.scale.abs()
+	return eye_pos
 
 
 func _go(st: S) -> void:
@@ -351,6 +370,19 @@ func on_death(_hit: Dictionary) -> void:
 	Fx.slowmo(self, 0.9, 0.3)
 	var tw = create_tween().set_parallel(true)
 	tw.tween_property(body, "rotation", 0.0, 0.3)
+	if pixel():
+		# the sheet's own last frame: on his side, eyes shut
+		px_play("dead", 0.0)
+		body.scale = Vector2(-1.0 if facing_left else 1.0, 1.0)
+		body.position = Vector2.ZERO
+		tw.tween_property(sprite, "modulate", Color(0.9, 0.88, 0.92), 0.3)
+		tw.tween_property(eyes, "modulate:a", 0.0, 0.25)
+		tw.tween_property(eye_light, "energy", 0.0, 0.6)
+		var pfit = lying_shadow(sprite)
+		tw.tween_property(shadow, "scale", pfit[0], 0.25)
+		tw.tween_property(shadow, "position", pfit[1] + Vector2(0, Creature.frame_size(sprite).y * 0.25), 0.25)
+		tw.tween_property(shadow, "modulate:a", 0.6, 0.25)
+		return
 	var dead_rel = String(def.get("art", {}).get("dead_sprite", "actors/wolf_dead.png"))
 	var carcass_tex = Art.lit(dead_rel)
 	if carcass_tex != null:
@@ -381,8 +413,52 @@ func on_death(_hit: Dictionary) -> void:
 
 
 # ---------------------------------------------------------------- looking
+## Pixel art: whole frames for each state (no squash or tilt, which would
+## smear the pixels), a nudge of whole pixels for the tremble.
+func _animate_pixel(delta: float) -> void:
+	var spd = velocity.length()
+	match s:
+		S.STALK:
+			if spd > 8.0:
+				px_play("walk", delta, clampf(spd / 22.0, 3.0, 9.0))
+			else:
+				px_play("crouch", delta)
+		S.EAT:
+			px_play("crouch", delta)
+		S.ALERT, S.BITE_WINDUP, S.RECOVER:
+			px_play("snarl", delta)
+		S.CHASE, S.CIRCLE:
+			px_play("walk", delta, clampf(spd / 26.0, 6.0, 14.0))
+		S.WINDUP:
+			px_play("crouch", delta)
+		S.LUNGE, S.BITE:
+			px_play("leap", delta)
+		S.STAGGER:
+			px_play("snarl", delta)
+		S.DEAD:
+			px_play("dead", delta)
+			return
+	var shake = 0.0
+	if s == S.WINDUP:
+		shake = float(randi_range(-1, 1)) * Art.PX
+	elif s == S.STAGGER:
+		shake = float(randi_range(-2, 2)) * Art.PX
+	body.position = Vector2(shake, 0.0)
+	body.rotation = 0.0
+	body.scale = Vector2(-1.0 if facing_left else 1.0, 1.0)
+	eye_pos = _px_eye(sprite.frame)
+	eyes.position = eye_pos
+	eye_light.position = eye_pos
+	var hot = 2.2 if s == S.WINDUP or s == S.BITE_WINDUP else 1.0
+	eye_light.energy = lerpf(eye_light.energy, 0.6 * hot, 0.25)
+	eyes.scale = Vector2(0.05, 0.03) * (1.0 + (hot - 1.0) * 0.4)
+
+
 func animate(delta: float) -> void:
 	_anim += delta
+	if pixel():
+		_animate_pixel(delta)
+		return
 	var sx = 1.0
 	var sy = 1.0
 	var y = 0.0

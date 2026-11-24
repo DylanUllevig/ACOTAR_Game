@@ -43,7 +43,10 @@ var map_shapes: Array = []
 var reveal_radius := 560.0
 var _reveal_t := 0.0
 var camera_zoom := 0.0          # 0: the usual zoom for an interior or the outdoors
+var pixel_scale := 0            # screen pixels per art pixel at 1080p; 0: the usual for an interior or the outdoors
+var terrain: PixelGround = null # pixel-art ground, when the region paints one
 var _tall: Array = []           # [sprite, crown rect, base y] for props that can hide someone
+var _npcs: Array = []           # [holder, sprite] of pixel people, who face Feyre when she is near
 
 const SEE_THROUGH_MIN_H := 190.0   # props at least this tall (trees, houses) fade
 const SEE_THROUGH_ALPHA := 0.42
@@ -54,14 +57,17 @@ func _ready() -> void:
 	ground = Node2D.new()
 	ground.name = "Ground"
 	ground.z_index = -10
+	ground.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 	add_child(ground)
 	shadow_layer = Node2D.new()
 	shadow_layer.name = "CastShadows"
 	shadow_layer.z_index = -9
+	shadow_layer.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 	add_child(shadow_layer)
 	world = Node2D.new()
 	world.name = "World"
 	world.y_sort_enabled = true
+	world.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 	add_child(world)
 	canvas_mod = CanvasModulate.new()
 	add_child(canvas_mod)
@@ -111,6 +117,31 @@ func grade_for_hour(_h: float) -> Dictionary:
 
 
 # ----------------------------------------------------------------- helpers
+## Starts the pixel-art ground: 'layers' are terrain names, the base first.
+## Paint with terrain.paint_*() and the region's build() ends by drawing it.
+func pixel_ground(layers: Array, seed := 7, tile_world := 0.0) -> PixelGround:
+	terrain = PixelGround.new()
+	terrain.name = "PixelGround"
+	terrain.setup(bounds.grow(200), layers, seed, tile_world)
+	ground.add_child(terrain)
+	return terrain
+
+
+## The footstep surface under a world position, from the pixel ground.
+func surface_at(p: Vector2) -> String:
+	if terrain == null:
+		return surface
+	match terrain.at(p):
+		"snow", "trodden", "ice":
+			return "snow"
+		"dirt", "mud", "grass":
+			return "mud"
+		"planks":
+			return "wood"
+		"cobble", "flagstone":
+			return "mud" if surface == "mud" else surface
+	return surface
+
 ## A ground texture repeated over rect. 'vary' hides the repeat over a large
 ## area (shaders/ground_vary.gdshader).
 func add_ground_tile(rel: String, rect: Rect2, tint := Color(1, 1, 1), lit := true, vary := false) -> Sprite2D:
@@ -204,8 +235,8 @@ func add_prop(rel: String, pos: Vector2, scl := 1.0, foot := Vector2(40, 14), so
 	s.flip_h = flip
 	if s.texture:
 		s.offset = Vector2(0, -s.texture.get_height() / 2.0)
-	var k = Art.density(rel)
-	s.scale = Vector2(scl, scl) * k
+	s.scale = Art.sprite_scale(rel, scl)
+	var k = s.scale.x / scl
 	holder.add_child(s)
 	if rel.begins_with("props/") and s.texture and s.texture.get_height() * s.scale.y >= SEE_THROUGH_MIN_H:
 		# the opaque middle of the picture: crowns and roofs taper, so leave the edges
@@ -398,6 +429,11 @@ func _make_snow(amount: int, size_scale: float, fall: float, wind: Vector2) -> C
 	p.lifetime = 9.0
 	p.preprocess = 9.0
 	p.texture = Art.tex("fx/snowflake.png")
+	if Art.is_pixel("fx/snowflake.png"):
+		# square flakes a whole number of pixels across, like the rest of the world
+		var k = Art.PX * (2.0 if size_scale < 1.0 else 3.0) / float(p.texture.get_width())
+		p.scale_amount_min = k
+		p.scale_amount_max = k
 	p.emission_shape = CPUParticles2D.EMISSION_SHAPE_RECTANGLE
 	p.emission_rect_extents = Vector2(1400, 40)
 	p.direction = Vector2(0.2, 1)
@@ -405,8 +441,9 @@ func _make_snow(amount: int, size_scale: float, fall: float, wind: Vector2) -> C
 	p.gravity = Vector2(wind.x * 0.3, fall * 0.3)
 	p.initial_velocity_min = fall * 0.6
 	p.initial_velocity_max = fall * 1.2
-	p.scale_amount_min = 0.25 * size_scale
-	p.scale_amount_max = 0.7 * size_scale
+	if not Art.is_pixel("fx/snowflake.png"):
+		p.scale_amount_min = 0.25 * size_scale
+		p.scale_amount_max = 0.7 * size_scale
 	p.color = Color(1.0, 1.0, 1.0, 0.85)
 	p.position = Vector2(0, -760)
 	p.local_coords = false
@@ -510,8 +547,9 @@ func add_npc(sheet: String, pos: Vector2, label: String, callback: Callable, fac
 	s.vframes = 4
 	s.frame = facing * 4
 	# 4 x 4 sheet: the feet sit on the bottom of each frame
-	var k = Art.density("actors/%s.png" % sheet)
-	s.scale = Vector2(scl, scl) * k
+	var rel = "actors/%s.png" % sheet
+	s.scale = Art.sprite_scale(rel, scl)
+	var k = s.scale.x / scl
 	s.offset = Vector2(0, -s.texture.get_height() / 8.0) if s.texture else Vector2(0, -32)
 	holder.add_child(s)
 	var body = StaticBody2D.new()
@@ -526,6 +564,11 @@ func add_npc(sheet: String, pos: Vector2, label: String, callback: Callable, fac
 		var a: Area2D = Interactable.new()
 		a.setup(label, callback, 110.0)
 		holder.add_child(a)
+	if Art.is_pixel(rel):
+		# pixel people turn to look at Feyre when she comes near
+		holder.set_meta("facing", facing)
+		_npcs.append([holder, s])
+		return holder
 	# idle breathing
 	var tw = create_tween().set_loops()
 	tw.tween_property(s, "scale", Vector2(scl, scl * 1.02) * k, 1.2).set_trans(Tween.TRANS_SINE)
@@ -543,8 +586,7 @@ func _spawn_player() -> void:
 	player.position = sp
 	world.add_child(player)
 	camera = Camera2D.new()
-	var z = camera_zoom if camera_zoom > 0.0 else (1.45 if interior else 1.15)
-	camera.zoom = Vector2(z, z)
+	camera.zoom = Vector2.ONE * _zoom_for_view()
 	camera.position_smoothing_enabled = true
 	camera.position_smoothing_speed = 6.0
 	player.add_child(camera)
@@ -561,9 +603,19 @@ func _spawn_player() -> void:
 ## shorter than the view (a small room), the limits are set a view's width or
 ## height apart around its centre instead, which holds the camera there: the
 ## room sits in the middle of the screen rather than against one edge.
+## Pixel regions: the zoom that keeps art pixels whole on this screen.
+## Painted regions (none left by default) keep their old fixed zoom.
+func _zoom_for_view() -> float:
+	if camera_zoom > 0.0 and pixel_scale == 0 and terrain == null:
+		return camera_zoom
+	var per = pixel_scale if pixel_scale > 0 else (Art.PX_SCREEN_IN if interior else Art.PX_SCREEN_OUT)
+	return Art.pixel_zoom(get_viewport(), per)
+
+
 func _fit_camera_limits() -> void:
 	if camera == null:
 		return
+	camera.zoom = Vector2.ONE * _zoom_for_view()
 	var view = get_viewport().get_visible_rect().size / camera.zoom
 	var c = bounds.get_center()
 	if bounds.size.x < view.x:
@@ -590,6 +642,72 @@ func _process(delta: float) -> void:
 		_reveal_t = 0.2
 		GameState.reveal(GameState.region, bounds, player.global_position, reveal_radius)
 	_update_see_through(delta)
+	_update_npcs()
+
+
+func _update_npcs() -> void:
+	if _npcs.is_empty() or player == null:
+		return
+	var p = player.global_position
+	var dt = get_process_delta_time()
+	for e in _npcs:
+		var h: Node2D = e[0]
+		if not is_instance_valid(h):
+			continue
+		var spr: Sprite2D = e[1]
+		# someone being moved (a tween, a scene) walks: face the way they go
+		# and step through the walk frames
+		var last: Vector2 = h.get_meta("last_pos", h.global_position)
+		var mv = h.global_position - last
+		h.set_meta("last_pos", h.global_position)
+		if mv.length() > 0.2:
+			var wf = 2 if mv.x > 0 else 1
+			if absf(mv.y) > absf(mv.x):
+				wf = 0 if mv.y > 0 else 3
+			var wt = float(h.get_meta("walk_t", 0.0)) + dt * clampf(mv.length() / maxf(dt, 0.001) / 14.0, 3.0, 9.0)
+			h.set_meta("walk_t", wt)
+			spr.frame = wf * 4 + int(wt) % 4
+			continue
+		var d = p - h.global_position
+		var f = int(h.get_meta("facing", 0))
+		if d.length() < 220.0:
+			f = 2 if d.x > 0 else 1
+			if absf(d.y) > absf(d.x):
+				f = 0 if d.y > 0 else 3
+		spr.frame = f * 4
+
+
+## A bird, squirrel, fox or other small animal living around pos (see Critter).
+func add_critter(kind: String, pos: Vector2, seed_value := 0) -> Critter:
+	var c = Critter.new()
+	world.add_child(c)
+	c.setup(kind, pos, seed_value if seed_value != 0 else int(pos.x * 31 + pos.y * 17), self)
+	return c
+
+
+## Pixel chimney smoke rising from pos (world), drifting with the wind.
+func add_smoke(pos: Vector2, parent: Node = null, amount := 10) -> CPUParticles2D:
+	var smoke = CPUParticles2D.new()
+	smoke.position = pos
+	smoke.amount = amount
+	smoke.lifetime = 4.5
+	smoke.preprocess = 4.5
+	smoke.texture = Art.tex("fx/smoke.png")
+	smoke.direction = Vector2(0.25, -1)
+	smoke.spread = 8
+	smoke.gravity = Vector2(12, -6)
+	smoke.initial_velocity_min = 22
+	smoke.initial_velocity_max = 34
+	smoke.scale_amount_min = Art.PX * 2.0
+	smoke.scale_amount_max = Art.PX * 2.0
+	var ramp = Gradient.new()
+	ramp.set_color(0, Color(0.92, 0.92, 0.96, 0.55))
+	ramp.set_color(1, Color(0.85, 0.86, 0.92, 0.0))
+	smoke.color_ramp = ramp
+	smoke.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+	smoke.z_index = 45
+	(parent if parent != null else self).add_child(smoke)
+	return smoke
 
 
 ## A tree or a building fades while Feyre or a creature stands behind it, so

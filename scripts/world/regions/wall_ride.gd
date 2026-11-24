@@ -17,20 +17,53 @@ func build() -> void:
 	map_base = Color(0.78, 0.82, 0.9)
 	bounds = Rect2(0, 0, 1600, 4200)
 	spawns = {"start": Vector2(800, 3950)}
-	add_ground_tile("terrain/snow.png", bounds, Color.WHITE, true, true)
+	pixel_ground(["snow", "trodden", "dirt"], 5)
+	# the old road north, a pale trodden band with frozen ruts down its middle
+	var road = PackedVector2Array()
+	for i in 24:
+		var y = 4500.0 - i * 210.0
+		road.append(Vector2(800.0 + sin(i * 0.9) * 26.0, y))
+	terrain.paint_path("trodden", road, 230.0, 34.0)
+	terrain.paint_path("dirt", road, 60.0, 10.0)
 	enclose_bounds()
 	var rng = RandomNumberGenerator.new()
 	rng.seed = 55
-	for i in 110:
+	for i in 130:
 		var p = Vector2(rng.randf_range(40, 1560), rng.randf_range(100, 4150))
-		if abs(p.x - 800) < 260:
+		if abs(p.x - 800) < 280:
 			continue
-		add_prop("props/pine_%d.png" % rng.randi_range(0, 2), p, rng.randf_range(1.0, 1.4), Vector2(16, 7), Vector2(28, 18))
+		var r = rng.randf()
+		if r < 0.8:
+			add_prop("props/pine_%d.png" % [0, 0, 1, 2, 3][rng.randi_range(0, 4)], p, 1.0, Vector2(16, 7), Vector2(28, 18), rng.randf() < 0.5)
+		elif r < 0.9:
+			add_prop("props/bare_tree_0.png", p, 1.0, Vector2(12, 6), Vector2(22, 16), rng.randf() < 0.5)
+		else:
+			add_prop("props/rock_0.png", p, 1.0, Vector2(46, 18), Vector2(90, 40), rng.randf() < 0.5)
+	for i in 50:
+		var p = Vector2(rng.randf_range(80, 1520), rng.randf_range(120, 4150))
+		if abs(p.x - 800) < 170:
+			continue
+		add_prop(["props/snow_mound.png", "props/grass_tuft.png", "props/branch.png", "props/stump.png"][rng.randi_range(0, 3)], p, 1.0, Vector2.ZERO, Vector2.ZERO, rng.randf() < 0.5)
 	# moonlight
-	add_sun(-160.0, Color(0.55, 0.65, 1.0), 0.45)
-	# the painted beast is seen from behind, padding north ahead of her, its head
-	# turned so one green eye shows; the placeholder stands side-on
-	if Art.resolve("actors/beast.png").begins_with(Art.FINAL):
+	add_sun(-160.0, Color(0.6, 0.7, 1.0), 0.5)
+	# the beast pads north ahead of her, seen from behind
+	if Art.is_pixel("actors/beast.png"):
+		beast = Node2D.new()
+		beast.position = Vector2(800, 3650)
+		var bs = Sprite2D.new()
+		var m = Art.pixel_meta("actors/beast.png")
+		var g: Array = m.get("grid", [1, 1])
+		bs.texture = Art.lit("actors/beast.png")
+		bs.hframes = int(g[0])
+		bs.vframes = int(g[1])
+		bs.frame = int(m.get("anims", {}).get("rear", [0])[0])
+		bs.scale = Art.sprite_scale("actors/beast.png")
+		bs.offset = Vector2(0, -bs.texture.get_height() / (2.0 * bs.vframes))
+		beast.add_child(bs)
+		world.add_child(beast)
+		# his golden coat holds a little of the moon
+		add_light(Vector2(0, -110), Color(1.0, 0.85, 0.6), 0.3, 1.0, false, beast)
+	elif Art.resolve("actors/beast.png").begins_with(Art.FINAL):
 		beast = add_prop("actors/beast.png", Vector2(800, 3650), 1.2, Vector2(45, 18))
 		var eye = add_light(Vector2(-29, -183) * 1.2, Color(0.4, 1.0, 0.6), 0.6, 0.35, false, beast)
 		add_flicker(eye, 0.2, 2.0)
@@ -38,9 +71,10 @@ func build() -> void:
 		beast = add_prop("actors/beast.png", Vector2(800, 3650), 1.5, Vector2(60, 20))
 		var eye = add_light(Vector2(80, -130), Color(0.4, 1.0, 0.6), 0.6, 0.35, false, beast)
 		add_flicker(eye, 0.2, 2.0)
+	terrain.build()
 	add_snow(160, Vector2(-20, 0))
-	add_fog(bounds.grow(400), Color(0.45, 0.55, 0.8), 0.25, 50, 0.002)
-	set_post({"vignette": 0.85, "lift": Vector3(0.0, 0.02, 0.08), "gain": Vector3(0.9, 0.95, 1.1), "saturation": 0.7, "grain": 0.03})
+	add_fog(bounds.grow(400), Color(0.5, 0.6, 0.85), 0.18, 50, 0.002)
+	set_post({"vignette": 0.5, "lift": Vector3(0.01, 0.02, 0.06), "gain": Vector3(0.95, 0.98, 1.08), "saturation": 0.92, "grain": 0.0})
 	add_trigger(Rect2(Vector2(0, 0), Vector2(1600, 1400)), func(): await Dialogue.play("ch05_sleep"))
 
 
@@ -49,7 +83,19 @@ func _ready() -> void:
 	# Feyre rides the white mare: painted from behind, riding north, when there
 	# is art for it; otherwise her standing sprite sits on the side-on mare
 	mare = Sprite2D.new()
-	if Art.tex(RIDE_ART) != null:
+	if Art.is_pixel("actors/mare.png"):
+		# the pixel mare seen from behind, Feyre on her back
+		var m = Art.pixel_meta("actors/mare.png")
+		var g: Array = m.get("grid", [1, 1])
+		mare.texture = Art.lit("actors/mare.png")
+		mare.hframes = int(g[0])
+		mare.vframes = int(g[1])
+		mare.frame = int(m.get("anims", {}).get("ride_rear", [0])[0])
+		mare.scale = Art.sprite_scale("actors/mare.png")
+		mare.offset = Vector2(0, -mare.texture.get_height() / (2.0 * mare.vframes))
+		player.sprite.visible = false
+		player.footprints = false
+	elif Art.tex(RIDE_ART) != null:
 		mare.texture = Art.lit(RIDE_ART)
 		mare.scale = Vector2.ONE * Art.density(RIDE_ART)
 		mare.offset = Vector2(0, -mare.texture.get_height() / 2.0)
@@ -85,7 +131,7 @@ func sun_shadow(_h: float) -> Vector4:
 
 
 func grade_for_hour(_h: float) -> Dictionary:
-	return {"mod": Color(0.2, 0.24, 0.42), "sun": Color(0.55, 0.65, 1.0), "sun_energy": 0.45, "rays": 0.0}
+	return {"mod": Color(0.3, 0.34, 0.55), "sun": Color(0.6, 0.7, 1.0), "sun_energy": 0.5, "rays": 0.0, "exposure": Color(1.0, 1.0, 1.04)}
 
 
 func _physics_process(delta: float) -> void:
@@ -100,8 +146,12 @@ func _physics_process(delta: float) -> void:
 	if player.sprite.visible == false and mare != null:
 		var spd = player.velocity.length()
 		_ride_t += delta * clampf(spd / 120.0, 0.0, 1.5) * 5.0
-		mare.position.y = -absf(sin(_ride_t)) * 3.0 * clampf(spd / 60.0, 0.0, 1.0)
-		mare.rotation = sin(_ride_t * 0.5) * 0.015 * clampf(spd / 60.0, 0.0, 1.0)
+		var bob = absf(sin(_ride_t)) * 3.0 * clampf(spd / 60.0, 0.0, 1.0)
+		if mare.hframes > 1:
+			mare.position.y = -roundf(bob / Art.PX) * Art.PX
+		else:
+			mare.position.y = -bob
+			mare.rotation = sin(_ride_t * 0.5) * 0.015 * clampf(spd / 60.0, 0.0, 1.0)
 
 
 func wall_cinematic() -> void:
