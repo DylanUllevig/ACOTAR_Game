@@ -150,8 +150,9 @@ func _build_boss() -> void:
 	_boss = VBoxContainer.new()
 	_boss.anchor_left = 0.5
 	_boss.anchor_right = 0.5
-	_boss.offset_left = -400
-	_boss.offset_right = 400
+	# 640 wide so it clears the side panels at the narrowest canvas (1920)
+	_boss.offset_left = -320
+	_boss.offset_right = 320
 	_boss.offset_top = 26
 	_boss.alignment = BoxContainer.ALIGNMENT_BEGIN
 	_boss.add_theme_constant_override("separation", 6)
@@ -161,7 +162,7 @@ func _build_boss() -> void:
 	_boss_name = Art.label("", 30, Art.PARCHMENT, "caps")
 	_boss_name.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	_boss.add_child(_boss_name)
-	_boss_bar = Meter.new(800, 20)
+	_boss_bar = Meter.new(640, 20)
 	_boss_bar.fill_color = Color(0.62, 0.1, 0.12)
 	_boss.add_child(_boss_bar)
 	_boss_status = Art.label("", 22, Art.GOLD, "italic")
@@ -326,7 +327,9 @@ static func clock_text(h: float) -> String:
 func _process(delta: float) -> void:
 	_t += delta
 	_clock_l.text = clock_text(GameState.hour)
-	# bottom HUD makes way for the dialogue box
+	# the HUD steps back while a window (satchel, shop, popup) is open, and
+	# the bottom row makes way for the dialogue box
+	modulate.a = move_toward(modulate.a, 0.0 if UI.modal_open else 1.0, delta * 8.0)
 	var talk = Dialogue.active
 	for c in _bottom:
 		c.modulate.a = move_toward(c.modulate.a, 0.0 if talk else 1.0, delta * 6.0)

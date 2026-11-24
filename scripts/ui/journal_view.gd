@@ -120,7 +120,7 @@ func _record_page() -> Control:
 		["Arrows loosed", s.get("arrows_shot", 0)], ["Arrows recovered", s.get("arrows_recovered", 0)],
 		["Damage dealt", s.get("damage_dealt", 0)], ["Food eaten", s.get("food_eaten", 0)],
 		["Rose hips picked", s.get("rose_hips_picked", 0)],
-		["Time on the road", _time(GameState.playtime)],
+		["Time played", _time(GameState.playtime)],
 	]
 	for r in rows:
 		var h = HBoxContainer.new()

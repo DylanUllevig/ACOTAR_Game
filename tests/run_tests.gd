@@ -13,7 +13,9 @@ var failures = 0
 var passes = 0
 var auto_dialogue := true
 var choice := 0
+var unreadable: Array[String] = []   # lines shown while the dialogue box was invisible
 var _frame := 0
+var _box_wait := 0
 
 
 func check(cond: bool, what: String) -> void:
@@ -45,6 +47,7 @@ func _ready() -> void:
 		await test_story()
 	if only == "" or only == "balance":
 		await test_balance()
+	check(unreadable.is_empty(), "every dialogue line shows in a visible box (%d did not, first: %s)" % [unreadable.size(), "" if unreadable.is_empty() else unreadable[0]])
 	_wipe_scratch()
 	print("\n%d passed, %d failed" % [passes, failures])
 	Audio.quit_game(1 if failures > 0 else 0)
@@ -52,12 +55,21 @@ func _ready() -> void:
 
 func _process(_d: float) -> void:
 	_frame += 1
-	if not auto_dialogue or not Dialogue.active or _frame % 2 != 0:
+	if not auto_dialogue or not Dialogue.active:
 		return
 	if Dialogue.choices_box.get_child_count() > 0:
 		if Dialogue._choice_made < 0:
 			Dialogue._choice_made = min(choice, Dialogue.choices_box.get_child_count() - 1)
-	else:
+		return
+	# Every line has to be readable: wait for the box to fade in before
+	# pressing on, and count a line whose box never shows as a failure.
+	if Dialogue.more.visible and (not Dialogue.box.visible or Dialogue.box.modulate.a < 0.99):
+		_box_wait += 1
+		if _box_wait < 40:
+			return
+		unreadable.append(Dialogue.text_label.get_parsed_text().left(48))
+	_box_wait = 0
+	if _frame % 2 == 0:
 		Dialogue._press()
 
 

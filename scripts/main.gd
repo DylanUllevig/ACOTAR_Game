@@ -17,9 +17,15 @@ func _ready() -> void:
 		for p in problems:
 			push_error("DATA: " + p)
 	var args = OS.get_cmdline_user_args()
-	if "--autotest" in args or "--shots" in args:
+	var tool_script = ""
+	if "--scene-shot" in args:
+		tool_script = "res://tests/scene_shot.gd"
+	elif "--autotest" in args or "--shots" in args:
+		tool_script = "res://tests/screenshot_tour.gd"
+	# tests/ is left out of exported builds, so these only run from the project
+	if tool_script != "" and ResourceLoader.exists(tool_script):
 		var t = Node.new()
-		t.set_script(load("res://tests/screenshot_tour.gd"))
+		t.set_script(load(tool_script))
 		add_child(t)
 		return
 	_show_title()

@@ -161,7 +161,11 @@ func _game_page() -> Control:
 	var title = Art.label("Chapter %d  ·  %s" % [GameState.chapter, ch.get("title", "")], 34, Art.GOLD, "caps")
 	title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	v.add_child(title)
-	var sub = Art.label("%s   ·   %s on the road" % [GameState.objective if GameState.objective != "" else "", JournalView._time(GameState.playtime)], 24, Art.PARCHMENT, "italic")
+	var parts := PackedStringArray()
+	if GameState.objective != "":
+		parts.append(GameState.objective)
+	parts.append("%s played" % JournalView._time(GameState.playtime))
+	var sub = Art.label("   ·   ".join(parts), 24, Art.PARCHMENT, "italic")
 	sub.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	sub.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	v.add_child(sub)

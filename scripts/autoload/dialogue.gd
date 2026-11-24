@@ -16,6 +16,7 @@ const TYPE_SPEED := 52.0  # characters per second at "Normal"
 
 var active = false
 var _queue_after: Array[Callable] = []
+var _box_tw: Tween
 var _skip = false
 var _advance = false
 var _choice_made = -1
@@ -228,11 +229,26 @@ func _close() -> void:
 	name_plate.visible = false
 	tip_plate.visible = false
 	more.visible = false
-	var tw = create_tween().set_parallel(true)
+	var tw = create_tween()
 	tw.tween_property(dim, "color:a", 0.0, 0.25)
-	tw.tween_property(box, "modulate:a", 0.0, 0.18)
+	_fade_box(0.0, 0.18)
 	await tw.finished
-	box.visible = false
+	if box.modulate.a < 0.01:
+		# A closed box holds no text, so the next scene's opening actions (a
+		# chapter card, say) cannot bring back this scene's last line, or show
+		# the box before its first line has faded it in.
+		box.visible = false
+		text_label.text = ""
+		name_label.text = ""
+
+
+## Fades the dialogue box. A newer fade replaces an older one, so a line that
+## starts while the box is fading out brings it back.
+func _fade_box(to: float, t: float) -> void:
+	if _box_tw != null and _box_tw.is_valid():
+		_box_tw.kill()
+	_box_tw = create_tween()
+	_box_tw.tween_property(box, "modulate:a", to, t)
 
 
 ## Returns true if a terminal action ended the scene early.
@@ -283,9 +299,9 @@ func cond_ok(d: Dictionary) -> bool:
 
 # ------------------------------------------------------------------- lines
 func _show_line(speaker: String, expr: String, text: String) -> void:
-	if not box.visible:
+	if not box.visible or box.modulate.a < 1.0:
 		box.visible = true
-		create_tween().tween_property(box, "modulate:a", 1.0, 0.18)
+		_fade_box(1.0, 0.18)
 	var tip = expr == "tip"
 	box.add_theme_stylebox_override("panel", _tip_sb if tip else _box_sb)
 	tip_plate.visible = tip
@@ -463,13 +479,20 @@ func _build_bark() -> void:
 	v.add_child(_bark_text)
 
 
-## A line over the action: the fight does not stop for it.
+## A line over the action: the fight does not stop for it. Barks wait for a
+## full scene to finish. A scene that starts while one is showing ends it,
+## along with any queued before the scene, since the moment they spoke to has
+## passed.
 func bark(speaker: String, expr: String, text: String) -> void:
 	_barks.append([speaker, expr, text])
 	if _bark_busy:
 		return
 	_bark_busy = true
 	while not _barks.is_empty():
+		while active:
+			await get_tree().process_frame
+		if _barks.is_empty():
+			break
 		var b: Array = _barks.pop_front()
 		_bark_name.text = DB.character_name(b[0]).to_upper()
 		_bark_text.text = String(b[2])
@@ -480,11 +503,14 @@ func bark(speaker: String, expr: String, text: String) -> void:
 		tw.tween_property(_bark_panel, "modulate:a", 1.0, 0.2)
 		var hold = 2.4 + String(b[2]).length() * 0.045
 		var t = 0.0
-		while t < hold:
+		while t < hold and not active:
 			await get_tree().process_frame
-			if not active:     # a full scene hides the bark but keeps its time
-				t += get_process_delta_time()
-			_bark_panel.visible = not active
+			t += get_process_delta_time()
+		if active:
+			tw.kill()
+			_bark_panel.visible = false
+			_barks.clear()
+			continue
 		var tw2 = create_tween()
 		tw2.tween_property(_bark_panel, "modulate:a", 0.0, 0.3)
 		await tw2.finished
@@ -510,6 +536,8 @@ func _run_action(a: Dictionary) -> bool:
 	match String(a.type):
 		"chapter_card":
 			GameState.chapter = int(a.n)
+			# the last chapter's task is done; the scene sets the next one
+			GameState.set_objective("")
 			_set_box_hidden(true)
 			await UI.chapter_card(int(a.n))
 			_set_box_hidden(false)
@@ -622,6 +650,8 @@ func _run_action(a: Dictionary) -> bool:
 
 func _set_box_hidden(h: bool) -> void:
 	box.visible = not h and text_label.text != ""
+	if box.visible and box.modulate.a < 1.0:
+		_fade_box(1.0, 0.12)
 	name_plate.visible = not h and name_label.text != ""
 	if h:
 		tip_plate.visible = false

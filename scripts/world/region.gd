@@ -19,6 +19,8 @@ var env: WorldEnvironment
 var fx_layer: CanvasLayer
 var overlay: CanvasLayer         # world-space, above the colour grade: damage numbers, slashes
 var post: ColorRect
+var _post_gain := Vector3.ONE    # set_post's gain
+var _exposure := Color.WHITE     # grade_for_hour's optional per-channel exposure
 var rays: ColorRect
 var spawns = {}
 var bounds = Rect2(0, 0, 3000, 2000)
@@ -61,7 +63,9 @@ func _ready() -> void:
 	env = WorldEnvironment.new()
 	var e = Environment.new()
 	e.background_mode = Environment.BG_CANVAS
-	e.glow_enabled = true
+	# No glow: without HDR 2D it blooms the brightest snow into a grey haze, and
+	# the Compatibility renderer (browser build) has none, so the two would differ.
+	e.glow_enabled = false
 	e.glow_intensity = 0.9
 	e.glow_strength = 1.05
 	e.glow_bloom = 0.08
@@ -358,7 +362,17 @@ func _build_post() -> void:
 
 func set_post(params: Dictionary) -> void:
 	for k in params:
-		(post.material as ShaderMaterial).set_shader_parameter(k, params[k])
+		if k == "gain":
+			_post_gain = params[k]
+			_apply_gain()
+		else:
+			(post.material as ShaderMaterial).set_shader_parameter(k, params[k])
+
+
+## The region's own colour gain, times the time-of-day exposure from its grade.
+func _apply_gain() -> void:
+	var e: Color = _exposure
+	(post.material as ShaderMaterial).set_shader_parameter("gain", _post_gain * Vector3(e.r, e.g, e.b))
 
 
 func add_interactable(pos: Vector2, label: String, callback: Callable, radius := 90.0, map_label := "") -> Area2D:
@@ -476,6 +490,10 @@ func _process(delta: float) -> void:
 func _apply_time() -> void:
 	var g = grade_for_hour(GameState.hour)
 	canvas_mod.color = g.mod
+	var ex: Color = g.get("exposure", Color.WHITE)
+	if ex != _exposure:
+		_exposure = ex
+		_apply_gain()
 	if sun:
 		sun.color = g.sun
 		sun.energy = g.sun_energy
@@ -492,7 +510,7 @@ func place_player(spawn_name: String) -> void:
 
 
 static func lerp_grade(keys: Array, h: float) -> Dictionary:
-	## keys: [[hour, {mod, sun, sun_energy, rays}], ...] sorted by hour.
+	## keys: [[hour, {mod, sun, sun_energy, rays, exposure?}], ...] sorted by hour.
 	if h <= keys[0][0]:
 		return keys[0][1]
 	for i in range(keys.size() - 1):
@@ -505,5 +523,6 @@ static func lerp_grade(keys: Array, h: float) -> Dictionary:
 				"sun": (a[1].sun as Color).lerp(b[1].sun, t),
 				"sun_energy": lerpf(a[1].sun_energy, b[1].sun_energy, t),
 				"rays": lerpf(a[1].rays, b[1].rays, t),
+				"exposure": (a[1].get("exposure", Color.WHITE) as Color).lerp(b[1].get("exposure", Color.WHITE), t),
 			}
 	return keys[keys.size() - 1][1]

@@ -70,15 +70,18 @@ func sun_shadow(h: float) -> Vector4:
 	return Vector4(sin(a), -cos(a), length, alpha)
 
 
+## 'exposure' keeps the cold, blue-violet winter light of the first build, which
+## came from rendering in HDR; measured from those frames at 13:00, 15:30 and
+## 17:10 and applied as a per-channel gain so every renderer matches.
 func grade_for_hour(h: float) -> Dictionary:
 	return Region.lerp_grade([
-		[6.0, {"mod": Color(0.12, 0.14, 0.26), "sun": Color(0.4, 0.45, 0.7), "sun_energy": 0.0, "rays": 0.0}],
-		[8.0, {"mod": Color(0.42, 0.44, 0.58), "sun": Color(1.0, 0.75, 0.6), "sun_energy": 0.5, "rays": 0.12}],
-		[13.0, {"mod": Color(0.6, 0.65, 0.8), "sun": Color(1.0, 0.95, 0.86), "sun_energy": 0.7, "rays": 0.16}],
-		[15.5, {"mod": Color(0.55, 0.55, 0.7), "sun": Color(1.0, 0.82, 0.62), "sun_energy": 0.78, "rays": 0.22}],
-		[16.6, {"mod": Color(0.42, 0.38, 0.54), "sun": Color(1.0, 0.58, 0.36), "sun_energy": 0.75, "rays": 0.3}],
-		[17.4, {"mod": Color(0.22, 0.24, 0.4), "sun": Color(0.6, 0.55, 0.85), "sun_energy": 0.15, "rays": 0.04}],
-		[19.0, {"mod": Color(0.12, 0.14, 0.26), "sun": Color(0.4, 0.45, 0.7), "sun_energy": 0.0, "rays": 0.0}],
+		[6.0, {"mod": Color(0.12, 0.14, 0.26), "sun": Color(0.4, 0.45, 0.7), "sun_energy": 0.0, "rays": 0.0, "exposure": Color(0.5, 0.52, 0.62)}],
+		[8.0, {"mod": Color(0.42, 0.44, 0.58), "sun": Color(1.0, 0.75, 0.6), "sun_energy": 0.5, "rays": 0.12, "exposure": Color(0.62, 0.66, 0.78)}],
+		[13.0, {"mod": Color(0.6, 0.65, 0.8), "sun": Color(1.0, 0.95, 0.86), "sun_energy": 0.7, "rays": 0.16, "exposure": Color(0.65, 0.69, 0.82)}],
+		[15.5, {"mod": Color(0.55, 0.55, 0.7), "sun": Color(1.0, 0.82, 0.62), "sun_energy": 0.78, "rays": 0.22, "exposure": Color(0.62, 0.66, 0.75)}],
+		[16.6, {"mod": Color(0.42, 0.38, 0.54), "sun": Color(1.0, 0.58, 0.36), "sun_energy": 0.75, "rays": 0.3, "exposure": Color(0.56, 0.59, 0.68)}],
+		[17.4, {"mod": Color(0.22, 0.24, 0.4), "sun": Color(0.6, 0.55, 0.85), "sun_energy": 0.15, "rays": 0.04, "exposure": Color(0.52, 0.53, 0.62)}],
+		[19.0, {"mod": Color(0.12, 0.14, 0.26), "sun": Color(0.4, 0.45, 0.7), "sun_energy": 0.0, "rays": 0.0, "exposure": Color(0.5, 0.52, 0.62)}],
 	], h)
 
 
@@ -262,7 +265,17 @@ func _pick_roses(i: int) -> void:
 	(_rose_spots[i] as Area2D).enabled = false
 	if not GameState.has_flag("hint_rose_hips"):
 		GameState.set_flag("hint_rose_hips")
-		UI.toast("Rose hips heal a little. Put them on the hotbar and click to eat.")
+		# they land in the first free slot, which is usually on the hotbar
+		var at := -1
+		for s in GameState.hotbar_size():
+			var st = GameState.slot(s)
+			if st != null and st.id == "rose_hips":
+				at = s
+				break
+		if at >= 0:
+			UI.toast("Rose hips heal a little. Choose them on the hotbar (key %d) and click to eat." % ((at + 1) % 10))
+		else:
+			UI.toast("Rose hips heal a little. Move them to the hotbar in the satchel (Tab), then click to eat.")
 
 
 # -------------------------------------------------------------------- hunt

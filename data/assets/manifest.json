@@ -5,9 +5,9 @@
  "summary": {
   "credits_per_image": 0.75,
   "model": "gpt_image_2_6",
-  "kept_images": 73,
-  "est_generations": 194,
-  "est_credits": 145.5
+  "kept_images": 82,
+  "est_generations": 239,
+  "est_credits": 179.2
  },
  "assets": [
   {
@@ -20,7 +20,7 @@
     960
    ],
    "aspect": "2:3",
-   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, dramatic rim light, cinematic chiaroscuro, muted winter palette for mortal lands, no text, no watermark, no frame. half-length character portrait from the waist up, three-quarter view, facing left. Acolyte of the Children of the Blessed: Pale blue robes, unbound gleaming dark hair, moon-white hands, a bracelet of real silver bells, brown eyes, spotless clean skin. Expression: calm, guarded neutral expression. Plain flat mid-grey background for cutout.",
+   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, dramatic rim light, cinematic chiaroscuro, muted winter palette for mortal lands, no text, no watermark, no frame. half-length character portrait from the waist up, three-quarter view, facing left. Acolyte of the Children of the Blessed: Pale blue robes, unbound gleaming dark hair, moon-white hands, a bracelet of real silver bells, brown eyes, spotless clean skin. Serene, pale, unsettlingly lovely. Expression: calm, guarded neutral expression. Plain flat mid-grey background for cutout.",
    "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
    "status": "placeholder",
    "est_generations": 3,
@@ -36,7 +36,7 @@
     960
    ],
    "aspect": "2:3",
-   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, dramatic rim light, cinematic chiaroscuro, muted winter palette for mortal lands, no text, no watermark, no frame. half-length character portrait from the waist up, three-quarter view, facing left. Acolyte of the Children of the Blessed: Pale blue robes, unbound gleaming dark hair, moon-white hands, a bracelet of real silver bells, brown eyes, spotless clean skin. Expression: furious, brows drawn, teeth showing slightly. Plain flat mid-grey background for cutout.",
+   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, dramatic rim light, cinematic chiaroscuro, muted winter palette for mortal lands, no text, no watermark, no frame. half-length character portrait from the waist up, three-quarter view, facing left. Acolyte of the Children of the Blessed: Pale blue robes, unbound gleaming dark hair, moon-white hands, a bracelet of real silver bells, brown eyes, spotless clean skin. Serene, pale, unsettlingly lovely. Expression: furious, brows drawn, teeth showing slightly. Plain flat mid-grey background for cutout.",
    "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
    "status": "placeholder",
    "est_generations": 3,
@@ -53,7 +53,7 @@
     960
    ],
    "aspect": "2:3",
-   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, dramatic rim light, cinematic chiaroscuro, muted winter palette for mortal lands, no text, no watermark, no frame. full body creature portrait, side three-quarter view. The Beast: Large as a horse, somewhat feline body with golden fur, a distinctly wolfish head, curled elk-like horns, black daggerlike claws, yellow fangs, green eyes flecked with amber. Expression: calm, guarded neutral expression. Plain flat mid-grey background for cutout.",
+   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, dramatic rim light, cinematic chiaroscuro, muted winter palette for mortal lands, no text, no watermark, no frame. full body creature portrait, side three-quarter view. The Beast: Large as a horse, somewhat feline body with golden fur, a distinctly wolfish head, curled elk-like horns, black daggerlike claws, yellow fangs, green eyes flecked with amber. Majestic and terrifying, beautiful in its menace. Expression: calm, guarded neutral expression. Plain flat mid-grey background for cutout.",
    "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
    "status": "placeholder",
    "est_generations": 3,
@@ -69,7 +69,7 @@
     960
    ],
    "aspect": "2:3",
-   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, dramatic rim light, cinematic chiaroscuro, muted winter palette for mortal lands, no text, no watermark, no frame. full body creature portrait, side three-quarter view. The Beast: Large as a horse, somewhat feline body with golden fur, a distinctly wolfish head, curled elk-like horns, black daggerlike claws, yellow fangs, green eyes flecked with amber. Expression: roaring, fur bristling, terrifying. Plain flat mid-grey background for cutout.",
+   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, dramatic rim light, cinematic chiaroscuro, muted winter palette for mortal lands, no text, no watermark, no frame. full body creature portrait, side three-quarter view. The Beast: Large as a horse, somewhat feline body with golden fur, a distinctly wolfish head, curled elk-like horns, black daggerlike claws, yellow fangs, green eyes flecked with amber. Majestic and terrifying, beautiful in its menace. Expression: roaring, fur bristling, terrifying. Plain flat mid-grey background for cutout.",
    "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
    "status": "placeholder",
    "est_generations": 3,
@@ -86,7 +86,7 @@
     960
    ],
    "aspect": "2:3",
-   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, dramatic rim light, cinematic chiaroscuro, muted winter palette for mortal lands, no text, no watermark, no frame. full body creature portrait, side three-quarter view. The Beast: Large as a horse, somewhat feline body with golden fur, a distinctly wolfish head, curled elk-like horns, black daggerlike claws, yellow fangs, green eyes flecked with amber. Expression: lips peeled back over yellow fangs, snarling. Plain flat mid-grey background for cutout.",
+   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, dramatic rim light, cinematic chiaroscuro, muted winter palette for mortal lands, no text, no watermark, no frame. full body creature portrait, side three-quarter view. The Beast: Large as a horse, somewhat feline body with golden fur, a distinctly wolfish head, curled elk-like horns, black daggerlike claws, yellow fangs, green eyes flecked with amber. Majestic and terrifying, beautiful in its menace. Expression: lips peeled back over yellow fangs, snarling. Plain flat mid-grey background for cutout.",
    "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
    "status": "placeholder",
    "est_generations": 3,
@@ -103,7 +103,7 @@
     960
    ],
    "aspect": "2:3",
-   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, dramatic rim light, cinematic chiaroscuro, muted winter palette for mortal lands, no text, no watermark, no frame. half-length character portrait from the waist up, three-quarter view, facing left. Elain Archeron: Gold-brown hair coiled perfectly about her head; brown eyes (her father's); porcelain skin; wrapped in a threadbare blanket; iron bracelet. Expression: calm, guarded neutral expression. Plain flat mid-grey background for cutout.",
+   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, dramatic rim light, cinematic chiaroscuro, muted winter palette for mortal lands, no text, no watermark, no frame. half-length character portrait from the waist up, three-quarter view, facing left. Elain Archeron: Gold-brown hair coiled perfectly about her head; brown eyes (her father's); porcelain skin; wrapped in a threadbare blanket; iron bracelet. Soft, luminous, delicate beauty, gentle eyes. Expression: calm, guarded neutral expression. Plain flat mid-grey background for cutout.",
    "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
    "status": "placeholder",
    "est_generations": 3,
@@ -119,7 +119,7 @@
     960
    ],
    "aspect": "2:3",
-   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, dramatic rim light, cinematic chiaroscuro, muted winter palette for mortal lands, no text, no watermark, no frame. half-length character portrait from the waist up, three-quarter view, facing left. Elain Archeron: Gold-brown hair coiled perfectly about her head; brown eyes (her father's); porcelain skin; wrapped in a threadbare blanket; iron bracelet. Expression: wide eyes, lips parted, fear she is trying to hide. Plain flat mid-grey background for cutout.",
+   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, dramatic rim light, cinematic chiaroscuro, muted winter palette for mortal lands, no text, no watermark, no frame. half-length character portrait from the waist up, three-quarter view, facing left. Elain Archeron: Gold-brown hair coiled perfectly about her head; brown eyes (her father's); porcelain skin; wrapped in a threadbare blanket; iron bracelet. Soft, luminous, delicate beauty, gentle eyes. Expression: wide eyes, lips parted, fear she is trying to hide. Plain flat mid-grey background for cutout.",
    "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
    "status": "placeholder",
    "est_generations": 3,
@@ -136,7 +136,7 @@
     960
    ],
    "aspect": "2:3",
-   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, dramatic rim light, cinematic chiaroscuro, muted winter palette for mortal lands, no text, no watermark, no frame. half-length character portrait from the waist up, three-quarter view, facing left. Elain Archeron: Gold-brown hair coiled perfectly about her head; brown eyes (her father's); porcelain skin; wrapped in a threadbare blanket; iron bracelet. Expression: downcast eyes, quiet grief. Plain flat mid-grey background for cutout.",
+   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, dramatic rim light, cinematic chiaroscuro, muted winter palette for mortal lands, no text, no watermark, no frame. half-length character portrait from the waist up, three-quarter view, facing left. Elain Archeron: Gold-brown hair coiled perfectly about her head; brown eyes (her father's); porcelain skin; wrapped in a threadbare blanket; iron bracelet. Soft, luminous, delicate beauty, gentle eyes. Expression: downcast eyes, quiet grief. Plain flat mid-grey background for cutout.",
    "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
    "status": "placeholder",
    "est_generations": 3,
@@ -153,7 +153,7 @@
     960
    ],
    "aspect": "2:3",
-   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, dramatic rim light, cinematic chiaroscuro, muted winter palette for mortal lands, no text, no watermark, no frame. half-length character portrait from the waist up, three-quarter view, facing left. Elain Archeron: Gold-brown hair coiled perfectly about her head; brown eyes (her father's); porcelain skin; wrapped in a threadbare blanket; iron bracelet. Expression: soft, warm, gentle smile. Plain flat mid-grey background for cutout.",
+   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, dramatic rim light, cinematic chiaroscuro, muted winter palette for mortal lands, no text, no watermark, no frame. half-length character portrait from the waist up, three-quarter view, facing left. Elain Archeron: Gold-brown hair coiled perfectly about her head; brown eyes (her father's); porcelain skin; wrapped in a threadbare blanket; iron bracelet. Soft, luminous, delicate beauty, gentle eyes. Expression: soft, warm, gentle smile. Plain flat mid-grey background for cutout.",
    "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
    "status": "placeholder",
    "est_generations": 3,
@@ -170,7 +170,7 @@
     960
    ],
    "aspect": "2:3",
-   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, dramatic rim light, cinematic chiaroscuro, muted winter palette for mortal lands, no text, no watermark, no frame. half-length character portrait from the waist up, three-quarter view, facing left. Father (Archeron): Dark, neatly trimmed beard; dark eyes; smooth gentlemanly hands; a twisted ruined knee; a simply carved cane. Expression: calm, guarded neutral expression. Plain flat mid-grey background for cutout.",
+   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, dramatic rim light, cinematic chiaroscuro, muted winter palette for mortal lands, no text, no watermark, no frame. half-length character portrait from the waist up, three-quarter view, facing left. Father (Archeron): Dark, neatly trimmed beard; dark eyes; smooth gentlemanly hands; a twisted ruined knee; a simply carved cane. A handsome man worn down by grief, kind eyes. Expression: calm, guarded neutral expression. Plain flat mid-grey background for cutout.",
    "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
    "status": "placeholder",
    "est_generations": 3,
@@ -186,7 +186,7 @@
     960
    ],
    "aspect": "2:3",
-   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, dramatic rim light, cinematic chiaroscuro, muted winter palette for mortal lands, no text, no watermark, no frame. half-length character portrait from the waist up, three-quarter view, facing left. Father (Archeron): Dark, neatly trimmed beard; dark eyes; smooth gentlemanly hands; a twisted ruined knee; a simply carved cane. Expression: wide eyes, lips parted, fear she is trying to hide. Plain flat mid-grey background for cutout.",
+   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, dramatic rim light, cinematic chiaroscuro, muted winter palette for mortal lands, no text, no watermark, no frame. half-length character portrait from the waist up, three-quarter view, facing left. Father (Archeron): Dark, neatly trimmed beard; dark eyes; smooth gentlemanly hands; a twisted ruined knee; a simply carved cane. A handsome man worn down by grief, kind eyes. Expression: wide eyes, lips parted, fear she is trying to hide. Plain flat mid-grey background for cutout.",
    "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
    "status": "placeholder",
    "est_generations": 3,
@@ -203,7 +203,7 @@
     960
    ],
    "aspect": "2:3",
-   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, dramatic rim light, cinematic chiaroscuro, muted winter palette for mortal lands, no text, no watermark, no frame. half-length character portrait from the waist up, three-quarter view, facing left. Father (Archeron): Dark, neatly trimmed beard; dark eyes; smooth gentlemanly hands; a twisted ruined knee; a simply carved cane. Expression: downcast eyes, quiet grief. Plain flat mid-grey background for cutout.",
+   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, dramatic rim light, cinematic chiaroscuro, muted winter palette for mortal lands, no text, no watermark, no frame. half-length character portrait from the waist up, three-quarter view, facing left. Father (Archeron): Dark, neatly trimmed beard; dark eyes; smooth gentlemanly hands; a twisted ruined knee; a simply carved cane. A handsome man worn down by grief, kind eyes. Expression: downcast eyes, quiet grief. Plain flat mid-grey background for cutout.",
    "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
    "status": "placeholder",
    "est_generations": 3,
@@ -220,10 +220,11 @@
     960
    ],
    "aspect": "2:3",
-   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, dramatic rim light, cinematic chiaroscuro, muted winter palette for mortal lands, no text, no watermark, no frame. half-length character portrait from the waist up, three-quarter view, facing right. Feyre Archeron: Gangly and underfed in winter, ribs showing; gold-brown ('brassy') hair shared by all three sisters; weathered hands, dirt and blood under the nails; layered threadbare tunic and cloak, fraying too-small boots; bow and quiver on her back, wooden-hilted hunting knife at her side. Expression: calm, guarded neutral expression. Plain flat mid-grey background for cutout.",
+   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, dramatic rim light, cinematic chiaroscuro, muted winter palette for mortal lands, no text, no watermark, no frame. half-length character portrait from the waist up, three-quarter view, facing right. Feyre Archeron: Gangly and underfed in winter, too thin under her layers; gold-brown ('brassy') hair shared by all three sisters; weathered hands, dirt and blood under the nails; layered threadbare tunic and cloak, fraying too-small boots; bow and quiver on her back, wooden-hilted hunting knife at her side. Strikingly beautiful: fine bone structure, luminous skin, blue-gray eyes, full lips; lean from hunger, with her beauty showing through the hardship. Expression: calm, guarded neutral expression. Plain flat mid-grey background for cutout.",
    "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
    "status": "placeholder",
    "est_generations": 3,
+   "reference": "art_pipeline/refs/feyre_ref.png",
    "notes": "Remove background after generation (transparent PNG). Feyre faces right (left side of screen); others face left."
   },
   {
@@ -236,7 +237,7 @@
     960
    ],
    "aspect": "2:3",
-   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, dramatic rim light, cinematic chiaroscuro, muted winter palette for mortal lands, no text, no watermark, no frame. half-length character portrait from the waist up, three-quarter view, facing right. Feyre Archeron: Gangly and underfed in winter, ribs showing; gold-brown ('brassy') hair shared by all three sisters; weathered hands, dirt and blood under the nails; layered threadbare tunic and cloak, fraying too-small boots; bow and quiver on her back, wooden-hilted hunting knife at her side. Expression: wide eyes, lips parted, fear she is trying to hide. Plain flat mid-grey background for cutout.",
+   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, dramatic rim light, cinematic chiaroscuro, muted winter palette for mortal lands, no text, no watermark, no frame. half-length character portrait from the waist up, three-quarter view, facing right. Feyre Archeron: Gangly and underfed in winter, too thin under her layers; gold-brown ('brassy') hair shared by all three sisters; weathered hands, dirt and blood under the nails; layered threadbare tunic and cloak, fraying too-small boots; bow and quiver on her back, wooden-hilted hunting knife at her side. Strikingly beautiful: fine bone structure, luminous skin, blue-gray eyes, full lips; lean from hunger, with her beauty showing through the hardship. Expression: wide eyes, lips parted, fear she is trying to hide. Plain flat mid-grey background for cutout.",
    "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
    "status": "placeholder",
    "est_generations": 3,
@@ -253,7 +254,7 @@
     960
    ],
    "aspect": "2:3",
-   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, dramatic rim light, cinematic chiaroscuro, muted winter palette for mortal lands, no text, no watermark, no frame. half-length character portrait from the waist up, three-quarter view, facing right. Feyre Archeron: Gangly and underfed in winter, ribs showing; gold-brown ('brassy') hair shared by all three sisters; weathered hands, dirt and blood under the nails; layered threadbare tunic and cloak, fraying too-small boots; bow and quiver on her back, wooden-hilted hunting knife at her side. Expression: furious, brows drawn, teeth showing slightly. Plain flat mid-grey background for cutout.",
+   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, dramatic rim light, cinematic chiaroscuro, muted winter palette for mortal lands, no text, no watermark, no frame. half-length character portrait from the waist up, three-quarter view, facing right. Feyre Archeron: Gangly and underfed in winter, too thin under her layers; gold-brown ('brassy') hair shared by all three sisters; weathered hands, dirt and blood under the nails; layered threadbare tunic and cloak, fraying too-small boots; bow and quiver on her back, wooden-hilted hunting knife at her side. Strikingly beautiful: fine bone structure, luminous skin, blue-gray eyes, full lips; lean from hunger, with her beauty showing through the hardship. Expression: furious, brows drawn, teeth showing slightly. Plain flat mid-grey background for cutout.",
    "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
    "status": "placeholder",
    "est_generations": 3,
@@ -270,7 +271,7 @@
     960
    ],
    "aspect": "2:3",
-   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, dramatic rim light, cinematic chiaroscuro, muted winter palette for mortal lands, no text, no watermark, no frame. half-length character portrait from the waist up, three-quarter view, facing right. Feyre Archeron: Gangly and underfed in winter, ribs showing; gold-brown ('brassy') hair shared by all three sisters; weathered hands, dirt and blood under the nails; layered threadbare tunic and cloak, fraying too-small boots; bow and quiver on her back, wooden-hilted hunting knife at her side. Expression: flat cold stare, jaw set, unimpressed. Plain flat mid-grey background for cutout.",
+   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, dramatic rim light, cinematic chiaroscuro, muted winter palette for mortal lands, no text, no watermark, no frame. half-length character portrait from the waist up, three-quarter view, facing right. Feyre Archeron: Gangly and underfed in winter, too thin under her layers; gold-brown ('brassy') hair shared by all three sisters; weathered hands, dirt and blood under the nails; layered threadbare tunic and cloak, fraying too-small boots; bow and quiver on her back, wooden-hilted hunting knife at her side. Strikingly beautiful: fine bone structure, luminous skin, blue-gray eyes, full lips; lean from hunger, with her beauty showing through the hardship. Expression: flat cold stare, jaw set, unimpressed. Plain flat mid-grey background for cutout.",
    "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
    "status": "placeholder",
    "est_generations": 3,
@@ -287,7 +288,7 @@
     960
    ],
    "aspect": "2:3",
-   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, dramatic rim light, cinematic chiaroscuro, muted winter palette for mortal lands, no text, no watermark, no frame. half-length character portrait from the waist up, three-quarter view, facing right. Feyre Archeron: Gangly and underfed in winter, ribs showing; gold-brown ('brassy') hair shared by all three sisters; weathered hands, dirt and blood under the nails; layered threadbare tunic and cloak, fraying too-small boots; bow and quiver on her back, wooden-hilted hunting knife at her side. Expression: narrowed eyes, focused, ready to act. Plain flat mid-grey background for cutout.",
+   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, dramatic rim light, cinematic chiaroscuro, muted winter palette for mortal lands, no text, no watermark, no frame. half-length character portrait from the waist up, three-quarter view, facing right. Feyre Archeron: Gangly and underfed in winter, too thin under her layers; gold-brown ('brassy') hair shared by all three sisters; weathered hands, dirt and blood under the nails; layered threadbare tunic and cloak, fraying too-small boots; bow and quiver on her back, wooden-hilted hunting knife at her side. Strikingly beautiful: fine bone structure, luminous skin, blue-gray eyes, full lips; lean from hunger, with her beauty showing through the hardship. Expression: narrowed eyes, focused, ready to act. Plain flat mid-grey background for cutout.",
    "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
    "status": "placeholder",
    "est_generations": 3,
@@ -304,7 +305,7 @@
     960
    ],
    "aspect": "2:3",
-   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, dramatic rim light, cinematic chiaroscuro, muted winter palette for mortal lands, no text, no watermark, no frame. half-length character portrait from the waist up, three-quarter view, facing right. Feyre Archeron: Gangly and underfed in winter, ribs showing; gold-brown ('brassy') hair shared by all three sisters; weathered hands, dirt and blood under the nails; layered threadbare tunic and cloak, fraying too-small boots; bow and quiver on her back, wooden-hilted hunting knife at her side. Expression: hollow cheeks, tired eyes, gaunt with winter hunger. Plain flat mid-grey background for cutout.",
+   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, dramatic rim light, cinematic chiaroscuro, muted winter palette for mortal lands, no text, no watermark, no frame. half-length character portrait from the waist up, three-quarter view, facing right. Feyre Archeron: Gangly and underfed in winter, too thin under her layers; gold-brown ('brassy') hair shared by all three sisters; weathered hands, dirt and blood under the nails; layered threadbare tunic and cloak, fraying too-small boots; bow and quiver on her back, wooden-hilted hunting knife at her side. Strikingly beautiful: fine bone structure, luminous skin, blue-gray eyes, full lips; lean from hunger, with her beauty showing through the hardship. Expression: tired eyes, cheeks a little hollow with winter hunger. Plain flat mid-grey background for cutout.",
    "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
    "status": "placeholder",
    "est_generations": 3,
@@ -321,7 +322,7 @@
     960
    ],
    "aspect": "2:3",
-   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, dramatic rim light, cinematic chiaroscuro, muted winter palette for mortal lands, no text, no watermark, no frame. half-length character portrait from the waist up, three-quarter view, facing right. Feyre Archeron: Gangly and underfed in winter, ribs showing; gold-brown ('brassy') hair shared by all three sisters; weathered hands, dirt and blood under the nails; layered threadbare tunic and cloak, fraying too-small boots; bow and quiver on her back, wooden-hilted hunting knife at her side. Expression: downcast eyes, quiet grief. Plain flat mid-grey background for cutout.",
+   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, dramatic rim light, cinematic chiaroscuro, muted winter palette for mortal lands, no text, no watermark, no frame. half-length character portrait from the waist up, three-quarter view, facing right. Feyre Archeron: Gangly and underfed in winter, too thin under her layers; gold-brown ('brassy') hair shared by all three sisters; weathered hands, dirt and blood under the nails; layered threadbare tunic and cloak, fraying too-small boots; bow and quiver on her back, wooden-hilted hunting knife at her side. Strikingly beautiful: fine bone structure, luminous skin, blue-gray eyes, full lips; lean from hunger, with her beauty showing through the hardship. Expression: downcast eyes, quiet grief. Plain flat mid-grey background for cutout.",
    "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
    "status": "placeholder",
    "est_generations": 3,
@@ -338,7 +339,7 @@
     960
    ],
    "aspect": "2:3",
-   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, dramatic rim light, cinematic chiaroscuro, muted winter palette for mortal lands, no text, no watermark, no frame. half-length character portrait from the waist up, three-quarter view, facing right. Feyre Archeron: Gangly and underfed in winter, ribs showing; gold-brown ('brassy') hair shared by all three sisters; weathered hands, dirt and blood under the nails; layered threadbare tunic and cloak, fraying too-small boots; bow and quiver on her back, wooden-hilted hunting knife at her side. Expression: bleeding scratch on the cheek, grimacing in pain, snow in her hair. Plain flat mid-grey background for cutout.",
+   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, dramatic rim light, cinematic chiaroscuro, muted winter palette for mortal lands, no text, no watermark, no frame. half-length character portrait from the waist up, three-quarter view, facing right. Feyre Archeron: Gangly and underfed in winter, too thin under her layers; gold-brown ('brassy') hair shared by all three sisters; weathered hands, dirt and blood under the nails; layered threadbare tunic and cloak, fraying too-small boots; bow and quiver on her back, wooden-hilted hunting knife at her side. Strikingly beautiful: fine bone structure, luminous skin, blue-gray eyes, full lips; lean from hunger, with her beauty showing through the hardship. Expression: a fine bleeding scratch on the cheek, wincing, snow in her hair. Plain flat mid-grey background for cutout.",
    "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
    "status": "placeholder",
    "est_generations": 3,
@@ -355,7 +356,7 @@
     960
    ],
    "aspect": "2:3",
-   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, dramatic rim light, cinematic chiaroscuro, muted winter palette for mortal lands, no text, no watermark, no frame. half-length character portrait from the waist up, three-quarter view, facing left. Isaac Hale: Lean from winter, shaggy brown hair, relatively handsome, soft-spoken, an iron cuff tucked under his sleeve. Expression: calm, guarded neutral expression. Plain flat mid-grey background for cutout.",
+   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, dramatic rim light, cinematic chiaroscuro, muted winter palette for mortal lands, no text, no watermark, no frame. half-length character portrait from the waist up, three-quarter view, facing left. Isaac Hale: Lean from winter, shaggy brown hair, relatively handsome, soft-spoken, an iron cuff tucked under his sleeve. A handsome, good-natured young man. Expression: calm, guarded neutral expression. Plain flat mid-grey background for cutout.",
    "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
    "status": "placeholder",
    "est_generations": 3,
@@ -371,7 +372,7 @@
     960
    ],
    "aspect": "2:3",
-   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, dramatic rim light, cinematic chiaroscuro, muted winter palette for mortal lands, no text, no watermark, no frame. half-length character portrait from the waist up, three-quarter view, facing left. The Mercenary: A mountain of a woman, aged twenty-five to thirty; thick dark hair shorn to the chin; tan, granite-hewn face; black eyes with glimmers of brown; scars and gleaming weapons; heavy coat; poison-blackened veins in one leg. Expression: calm, guarded neutral expression. Plain flat mid-grey background for cutout.",
+   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, dramatic rim light, cinematic chiaroscuro, muted winter palette for mortal lands, no text, no watermark, no frame. half-length character portrait from the waist up, three-quarter view, facing left. The Mercenary: A mountain of a woman, aged twenty-five to thirty; thick dark hair shorn to the chin; tan, granite-hewn face; black eyes with glimmers of brown; scars and gleaming weapons; heavy coat; poison-blackened veins in one leg. Striking and formidable, handsome despite the scars. Expression: calm, guarded neutral expression. Plain flat mid-grey background for cutout.",
    "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
    "status": "placeholder",
    "est_generations": 3,
@@ -387,7 +388,7 @@
     960
    ],
    "aspect": "2:3",
-   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, dramatic rim light, cinematic chiaroscuro, muted winter palette for mortal lands, no text, no watermark, no frame. half-length character portrait from the waist up, three-quarter view, facing left. The Mercenary: A mountain of a woman, aged twenty-five to thirty; thick dark hair shorn to the chin; tan, granite-hewn face; black eyes with glimmers of brown; scars and gleaming weapons; heavy coat; poison-blackened veins in one leg. Expression: dry amusement, one corner of the mouth raised. Plain flat mid-grey background for cutout.",
+   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, dramatic rim light, cinematic chiaroscuro, muted winter palette for mortal lands, no text, no watermark, no frame. half-length character portrait from the waist up, three-quarter view, facing left. The Mercenary: A mountain of a woman, aged twenty-five to thirty; thick dark hair shorn to the chin; tan, granite-hewn face; black eyes with glimmers of brown; scars and gleaming weapons; heavy coat; poison-blackened veins in one leg. Striking and formidable, handsome despite the scars. Expression: dry amusement, one corner of the mouth raised. Plain flat mid-grey background for cutout.",
    "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
    "status": "placeholder",
    "est_generations": 3,
@@ -404,7 +405,7 @@
     960
    ],
    "aspect": "2:3",
-   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, dramatic rim light, cinematic chiaroscuro, muted winter palette for mortal lands, no text, no watermark, no frame. half-length character portrait from the waist up, three-quarter view, facing left. Nesta Archeron: Looks most like their dead mother; gold-brown hair in braided coils; blue-gray eyes; golden cheeks with a delicate flush; long neat nails; iron bracelet on her wrist; still-shiny boots. Expression: calm, guarded neutral expression. Plain flat mid-grey background for cutout.",
+   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, dramatic rim light, cinematic chiaroscuro, muted winter palette for mortal lands, no text, no watermark, no frame. half-length character portrait from the waist up, three-quarter view, facing left. Nesta Archeron: Looks most like their dead mother; gold-brown hair in braided coils; blue-gray eyes; golden cheeks with a delicate flush; long neat nails; iron bracelet on her wrist; still-shiny boots. Coldly, breathtakingly beautiful, regal posture. Expression: calm, guarded neutral expression. Plain flat mid-grey background for cutout.",
    "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
    "status": "placeholder",
    "est_generations": 3,
@@ -420,7 +421,7 @@
     960
    ],
    "aspect": "2:3",
-   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, dramatic rim light, cinematic chiaroscuro, muted winter palette for mortal lands, no text, no watermark, no frame. half-length character portrait from the waist up, three-quarter view, facing left. Nesta Archeron: Looks most like their dead mother; gold-brown hair in braided coils; blue-gray eyes; golden cheeks with a delicate flush; long neat nails; iron bracelet on her wrist; still-shiny boots. Expression: wide eyes, lips parted, fear she is trying to hide. Plain flat mid-grey background for cutout.",
+   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, dramatic rim light, cinematic chiaroscuro, muted winter palette for mortal lands, no text, no watermark, no frame. half-length character portrait from the waist up, three-quarter view, facing left. Nesta Archeron: Looks most like their dead mother; gold-brown hair in braided coils; blue-gray eyes; golden cheeks with a delicate flush; long neat nails; iron bracelet on her wrist; still-shiny boots. Coldly, breathtakingly beautiful, regal posture. Expression: wide eyes, lips parted, fear she is trying to hide. Plain flat mid-grey background for cutout.",
    "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
    "status": "placeholder",
    "est_generations": 3,
@@ -437,7 +438,7 @@
     960
    ],
    "aspect": "2:3",
-   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, dramatic rim light, cinematic chiaroscuro, muted winter palette for mortal lands, no text, no watermark, no frame. half-length character portrait from the waist up, three-quarter view, facing left. Nesta Archeron: Looks most like their dead mother; gold-brown hair in braided coils; blue-gray eyes; golden cheeks with a delicate flush; long neat nails; iron bracelet on her wrist; still-shiny boots. Expression: furious, brows drawn, teeth showing slightly. Plain flat mid-grey background for cutout.",
+   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, dramatic rim light, cinematic chiaroscuro, muted winter palette for mortal lands, no text, no watermark, no frame. half-length character portrait from the waist up, three-quarter view, facing left. Nesta Archeron: Looks most like their dead mother; gold-brown hair in braided coils; blue-gray eyes; golden cheeks with a delicate flush; long neat nails; iron bracelet on her wrist; still-shiny boots. Coldly, breathtakingly beautiful, regal posture. Expression: furious, brows drawn, teeth showing slightly. Plain flat mid-grey background for cutout.",
    "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
    "status": "placeholder",
    "est_generations": 3,
@@ -454,7 +455,7 @@
     960
    ],
    "aspect": "2:3",
-   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, dramatic rim light, cinematic chiaroscuro, muted winter palette for mortal lands, no text, no watermark, no frame. half-length character portrait from the waist up, three-quarter view, facing left. Nesta Archeron: Looks most like their dead mother; gold-brown hair in braided coils; blue-gray eyes; golden cheeks with a delicate flush; long neat nails; iron bracelet on her wrist; still-shiny boots. Expression: a cutting, superior half smile. Plain flat mid-grey background for cutout.",
+   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, dramatic rim light, cinematic chiaroscuro, muted winter palette for mortal lands, no text, no watermark, no frame. half-length character portrait from the waist up, three-quarter view, facing left. Nesta Archeron: Looks most like their dead mother; gold-brown hair in braided coils; blue-gray eyes; golden cheeks with a delicate flush; long neat nails; iron bracelet on her wrist; still-shiny boots. Coldly, breathtakingly beautiful, regal posture. Expression: a cutting, superior half smile. Plain flat mid-grey background for cutout.",
    "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
    "status": "placeholder",
    "est_generations": 3,
@@ -462,376 +463,486 @@
    "notes": "Remove background after generation (transparent PNG). Feyre faces right (left side of screen); others face left."
   },
   {
-   "id": "battle.andras_wolf",
-   "kind": "battle",
-   "placeholder": "assets/placeholder/battle/andras_wolf.png",
-   "final": "assets/final/battle/andras_wolf.png",
+   "id": "actor.acolyte",
+   "kind": "actor",
+   "placeholder": "assets/placeholder/actors/acolyte.png",
+   "final": "assets/final/actors/acolyte.png",
    "size": [
-    900,
-    700
+    192,
+    256
    ],
-   "aspect": "4:3",
-   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, dramatic rim light, cinematic chiaroscuro, muted winter palette for mortal lands, no text, no watermark, no frame. Battle illustration of The Wolf: A wolf the size of a pony; coat of charcoal, obsidian and ivory blending into snow and shadow; yellow eyes; yellow fangs; paws bigger than a hand. Standing in a snowy winter clearing at dusk, facing left toward the viewer's side, low menacing stance, pale cold rim light. Plain background for cutout.",
+   "aspect": "3:4",
+   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, dramatic rim light, cinematic chiaroscuro, muted winter palette for mortal lands, no text, no watermark, no frame. Sprite sheet of one character, 4 rows by 4 columns on a plain flat background: Pale blue robes, unbound gleaming dark hair, moon-white hands, a bracelet of real silver bells, brown eyes, spotless clean skin. Serene, pale, unsettlingly lovely. Seen from a high three-quarter top-down angle. Row 1 walks toward the viewer, row 2 walks left, row 3 walks right, row 4 walks away; each row is four even steps of a walk cycle. Identical proportions, clothes and colours in every frame, feet on the same baseline.",
    "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
    "status": "placeholder",
-   "est_generations": 3,
-   "notes": "Remove background. Faces left."
+   "est_generations": 4,
+   "notes": "Walk sheet: 4 x 4 frames of 48 x 64 px. Frames drift between generations, so expect to align them by hand on the grid (feet on one baseline) before resizing. Run make_normals.py after."
   },
   {
-   "id": "battle.beast",
-   "kind": "battle",
-   "placeholder": "assets/placeholder/battle/beast.png",
-   "final": "assets/final/battle/beast.png",
+   "id": "actor.beast",
+   "kind": "actor",
+   "placeholder": "assets/placeholder/actors/beast.png",
+   "final": "assets/final/actors/beast.png",
    "size": [
-    900,
-    700
-   ],
-   "aspect": "4:3",
-   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, dramatic rim light, cinematic chiaroscuro, muted winter palette for mortal lands, no text, no watermark, no frame. Battle illustration of the Beast: Large as a horse, somewhat feline body with golden fur, a distinctly wolfish head, curled elk-like horns, black daggerlike claws, yellow fangs, green eyes flecked with amber. Snow swirling around it, warm hearth light from one side, cold blue from the other. Plain background for cutout.",
-   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
-   "status": "placeholder",
-   "est_generations": 3,
-   "notes": "Remove background. Faces left."
-  },
-  {
-   "id": "card.ordinary_arrow",
-   "kind": "card",
-   "placeholder": "assets/placeholder/cards/ordinary_arrow.png",
-   "final": "assets/final/cards/ordinary_arrow.png",
-   "size": [
-    300,
-    200
+    240,
+    180
    ],
    "aspect": "3:2",
-   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, dramatic rim light, cinematic chiaroscuro, muted winter palette for mortal lands, no text, no watermark, no frame. Card illustration, landscape, single clear focal subject: a plain fletched arrow nocked on a worn ash-wood bow, snowy pine forest behind.",
+   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, dramatic rim light, cinematic chiaroscuro, muted winter palette for mortal lands, no text, no watermark, no frame. Game sprite of large as a horse, somewhat feline body with golden fur, a distinctly wolfish head, curled elk-like horns, black daggerlike claws, yellow fangs, green eyes flecked with amber. Majestic and terrifying, beautiful in its menace. Seen from a high three-quarter top-down angle, standing side-on facing right, whole body in frame, isolated on a plain flat background, light from the upper left.",
+   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
+   "status": "placeholder",
+   "est_generations": 4,
+   "notes": "Single image, faces right. Remove background, crop to the body, resize to the listed size. Run make_normals.py after."
+  },
+  {
+   "id": "actor.doe",
+   "kind": "actor",
+   "placeholder": "assets/placeholder/actors/doe.png",
+   "final": "assets/final/actors/doe.png",
+   "size": [
+    110,
+    80
+   ],
+   "aspect": "3:2",
+   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, dramatic rim light, cinematic chiaroscuro, muted winter palette for mortal lands, no text, no watermark, no frame. Game sprite of a lean winter doe, tawny coat Seen from a high three-quarter top-down angle, standing side-on facing right, whole body in frame, isolated on a plain flat background, light from the upper left.",
+   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
+   "status": "placeholder",
+   "est_generations": 4,
+   "notes": "Single image, faces right. Remove background, crop to the body, resize to the listed size. Run make_normals.py after."
+  },
+  {
+   "id": "actor.elain",
+   "kind": "actor",
+   "placeholder": "assets/placeholder/actors/elain.png",
+   "final": "assets/final/actors/elain.png",
+   "size": [
+    192,
+    256
+   ],
+   "aspect": "3:4",
+   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, dramatic rim light, cinematic chiaroscuro, muted winter palette for mortal lands, no text, no watermark, no frame. Sprite sheet of one character, 4 rows by 4 columns on a plain flat background: Gold-brown hair coiled perfectly about her head; brown eyes (her father's); porcelain skin; wrapped in a threadbare blanket; iron bracelet. Soft, luminous, delicate beauty, gentle eyes. Seen from a high three-quarter top-down angle. Row 1 walks toward the viewer, row 2 walks left, row 3 walks right, row 4 walks away; each row is four even steps of a walk cycle. Identical proportions, clothes and colours in every frame, feet on the same baseline.",
+   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
+   "status": "placeholder",
+   "est_generations": 4,
+   "notes": "Walk sheet: 4 x 4 frames of 48 x 64 px. Frames drift between generations, so expect to align them by hand on the grid (feet on one baseline) before resizing. Run make_normals.py after."
+  },
+  {
+   "id": "actor.father",
+   "kind": "actor",
+   "placeholder": "assets/placeholder/actors/father.png",
+   "final": "assets/final/actors/father.png",
+   "size": [
+    192,
+    256
+   ],
+   "aspect": "3:4",
+   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, dramatic rim light, cinematic chiaroscuro, muted winter palette for mortal lands, no text, no watermark, no frame. Sprite sheet of one character, 4 rows by 4 columns on a plain flat background: Dark, neatly trimmed beard; dark eyes; smooth gentlemanly hands; a twisted ruined knee; a simply carved cane. A handsome man worn down by grief, kind eyes. Seen from a high three-quarter top-down angle. Row 1 walks toward the viewer, row 2 walks left, row 3 walks right, row 4 walks away; each row is four even steps of a walk cycle. Identical proportions, clothes and colours in every frame, feet on the same baseline.",
+   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
+   "status": "placeholder",
+   "est_generations": 4,
+   "notes": "Walk sheet: 4 x 4 frames of 48 x 64 px. Frames drift between generations, so expect to align them by hand on the grid (feet on one baseline) before resizing. Run make_normals.py after."
+  },
+  {
+   "id": "actor.feyre",
+   "kind": "actor",
+   "placeholder": "assets/placeholder/actors/feyre.png",
+   "final": "assets/final/actors/feyre.png",
+   "size": [
+    192,
+    256
+   ],
+   "aspect": "3:4",
+   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, dramatic rim light, cinematic chiaroscuro, muted winter palette for mortal lands, no text, no watermark, no frame. Sprite sheet of one character, 4 rows by 4 columns on a plain flat background: Gangly and underfed in winter, too thin under her layers; gold-brown ('brassy') hair shared by all three sisters; weathered hands, dirt and blood under the nails; layered threadbare tunic and cloak, fraying too-small boots; bow and quiver on her back, wooden-hilted hunting knife at her side. Strikingly beautiful: fine bone structure, luminous skin, blue-gray eyes, full lips; lean from hunger, with her beauty showing through the hardship. Seen from a high three-quarter top-down angle. Row 1 walks toward the viewer, row 2 walks left, row 3 walks right, row 4 walks away; each row is four even steps of a walk cycle. Identical proportions, clothes and colours in every frame, feet on the same baseline.",
+   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
+   "status": "placeholder",
+   "est_generations": 4,
+   "reference": "art_pipeline/refs/feyre_ref.png",
+   "notes": "Walk sheet: 4 x 4 frames of 48 x 64 px. Frames drift between generations, so expect to align them by hand on the grid (feet on one baseline) before resizing. Run make_normals.py after."
+  },
+  {
+   "id": "actor.hare",
+   "kind": "actor",
+   "placeholder": "assets/placeholder/actors/hare.png",
+   "final": "assets/final/actors/hare.png",
+   "size": [
+    64,
+    48
+   ],
+   "aspect": "3:2",
+   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, dramatic rim light, cinematic chiaroscuro, muted winter palette for mortal lands, no text, no watermark, no frame. Game sprite of a thin white snow hare Seen from a high three-quarter top-down angle, standing side-on facing right, whole body in frame, isolated on a plain flat background, light from the upper left.",
+   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
+   "status": "placeholder",
+   "est_generations": 4,
+   "notes": "Single image, faces right. Remove background, crop to the body, resize to the listed size. Run make_normals.py after."
+  },
+  {
+   "id": "actor.isaac",
+   "kind": "actor",
+   "placeholder": "assets/placeholder/actors/isaac.png",
+   "final": "assets/final/actors/isaac.png",
+   "size": [
+    192,
+    256
+   ],
+   "aspect": "3:4",
+   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, dramatic rim light, cinematic chiaroscuro, muted winter palette for mortal lands, no text, no watermark, no frame. Sprite sheet of one character, 4 rows by 4 columns on a plain flat background: Lean from winter, shaggy brown hair, relatively handsome, soft-spoken, an iron cuff tucked under his sleeve. A handsome, good-natured young man. Seen from a high three-quarter top-down angle. Row 1 walks toward the viewer, row 2 walks left, row 3 walks right, row 4 walks away; each row is four even steps of a walk cycle. Identical proportions, clothes and colours in every frame, feet on the same baseline.",
+   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
+   "status": "placeholder",
+   "est_generations": 4,
+   "notes": "Walk sheet: 4 x 4 frames of 48 x 64 px. Frames drift between generations, so expect to align them by hand on the grid (feet on one baseline) before resizing. Run make_normals.py after."
+  },
+  {
+   "id": "actor.mare",
+   "kind": "actor",
+   "placeholder": "assets/placeholder/actors/mare.png",
+   "final": "assets/final/actors/mare.png",
+   "size": [
+    170,
+    130
+   ],
+   "aspect": "3:2",
+   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, dramatic rim light, cinematic chiaroscuro, muted winter palette for mortal lands, no text, no watermark, no frame. Game sprite of an old swaybacked farm mare, shaggy winter coat Seen from a high three-quarter top-down angle, standing side-on facing right, whole body in frame, isolated on a plain flat background, light from the upper left.",
+   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
+   "status": "placeholder",
+   "est_generations": 4,
+   "notes": "Single image, faces right. Remove background, crop to the body, resize to the listed size. Run make_normals.py after."
+  },
+  {
+   "id": "actor.mercenary",
+   "kind": "actor",
+   "placeholder": "assets/placeholder/actors/mercenary.png",
+   "final": "assets/final/actors/mercenary.png",
+   "size": [
+    192,
+    256
+   ],
+   "aspect": "3:4",
+   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, dramatic rim light, cinematic chiaroscuro, muted winter palette for mortal lands, no text, no watermark, no frame. Sprite sheet of one character, 4 rows by 4 columns on a plain flat background: A mountain of a woman, aged twenty-five to thirty; thick dark hair shorn to the chin; tan, granite-hewn face; black eyes with glimmers of brown; scars and gleaming weapons; heavy coat; poison-blackened veins in one leg. Striking and formidable, handsome despite the scars. Seen from a high three-quarter top-down angle. Row 1 walks toward the viewer, row 2 walks left, row 3 walks right, row 4 walks away; each row is four even steps of a walk cycle. Identical proportions, clothes and colours in every frame, feet on the same baseline.",
+   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
+   "status": "placeholder",
+   "est_generations": 4,
+   "notes": "Walk sheet: 4 x 4 frames of 48 x 64 px. Frames drift between generations, so expect to align them by hand on the grid (feet on one baseline) before resizing. Run make_normals.py after."
+  },
+  {
+   "id": "actor.nesta",
+   "kind": "actor",
+   "placeholder": "assets/placeholder/actors/nesta.png",
+   "final": "assets/final/actors/nesta.png",
+   "size": [
+    192,
+    256
+   ],
+   "aspect": "3:4",
+   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, dramatic rim light, cinematic chiaroscuro, muted winter palette for mortal lands, no text, no watermark, no frame. Sprite sheet of one character, 4 rows by 4 columns on a plain flat background: Looks most like their dead mother; gold-brown hair in braided coils; blue-gray eyes; golden cheeks with a delicate flush; long neat nails; iron bracelet on her wrist; still-shiny boots. Coldly, breathtakingly beautiful, regal posture. Seen from a high three-quarter top-down angle. Row 1 walks toward the viewer, row 2 walks left, row 3 walks right, row 4 walks away; each row is four even steps of a walk cycle. Identical proportions, clothes and colours in every frame, feet on the same baseline.",
+   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
+   "status": "placeholder",
+   "est_generations": 4,
+   "notes": "Walk sheet: 4 x 4 frames of 48 x 64 px. Frames drift between generations, so expect to align them by hand on the grid (feet on one baseline) before resizing. Run make_normals.py after."
+  },
+  {
+   "id": "actor.villager",
+   "kind": "actor",
+   "placeholder": "assets/placeholder/actors/villager.png",
+   "final": "assets/final/actors/villager.png",
+   "size": [
+    192,
+    256
+   ],
+   "aspect": "3:4",
+   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, dramatic rim light, cinematic chiaroscuro, muted winter palette for mortal lands, no text, no watermark, no frame. Sprite sheet of one character, 4 rows by 4 columns on a plain flat background: a mortal villager in plain winter clothes Seen from a high three-quarter top-down angle. Row 1 walks toward the viewer, row 2 walks left, row 3 walks right, row 4 walks away; each row is four even steps of a walk cycle. Identical proportions, clothes and colours in every frame, feet on the same baseline.",
+   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
+   "status": "placeholder",
+   "est_generations": 4,
+   "notes": "Walk sheet: 4 x 4 frames of 48 x 64 px. Frames drift between generations, so expect to align them by hand on the grid (feet on one baseline) before resizing. Run make_normals.py after."
+  },
+  {
+   "id": "actor.wolf",
+   "kind": "actor",
+   "placeholder": "assets/placeholder/actors/wolf.png",
+   "final": "assets/final/actors/wolf.png",
+   "size": [
+    190,
+    120
+   ],
+   "aspect": "3:2",
+   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, dramatic rim light, cinematic chiaroscuro, muted winter palette for mortal lands, no text, no watermark, no frame. Game sprite of a wolf the size of a pony; coat of charcoal, obsidian and ivory blending into snow and shadow; yellow eyes; yellow fangs; paws bigger than a hand. Majestic, beautiful and dangerous. Seen from a high three-quarter top-down angle, standing side-on facing right, whole body in frame, isolated on a plain flat background, light from the upper left.",
+   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
+   "status": "placeholder",
+   "est_generations": 4,
+   "reference": "art_pipeline/refs/wolf_ref.png",
+   "notes": "Single image, faces right. Remove background, crop to the body, resize to the listed size. Run make_normals.py after."
+  },
+  {
+   "id": "fx.arrow",
+   "kind": "fx",
+   "placeholder": "assets/placeholder/fx/arrow.png",
+   "final": "assets/final/fx/arrow.png",
+   "size": [
+    64,
+    12
+   ],
+   "aspect": "1:1",
+   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, dramatic rim light, cinematic chiaroscuro, muted winter palette for mortal lands, no text, no watermark, no frame. Single small game effect sprite, centred, isolated on a plain flat background: a single plain hunting arrow seen from directly above, pointing right, grey fletching.",
    "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
    "status": "placeholder",
    "est_generations": 2,
-   "notes": "Card 'Ordinary Arrow'. Read at 250 px wide in game: keep one bold subject."
+   "notes": "Remove background, crop tight to the object and resize to the listed size."
   },
   {
-   "id": "card.ash_arrow",
-   "kind": "card",
-   "placeholder": "assets/placeholder/cards/ash_arrow.png",
-   "final": "assets/final/cards/ash_arrow.png",
+   "id": "fx.ash_arrow",
+   "kind": "fx",
+   "placeholder": "assets/placeholder/fx/ash_arrow.png",
+   "final": "assets/final/fx/ash_arrow.png",
    "size": [
-    300,
-    200
+    64,
+    12
    ],
-   "aspect": "3:2",
-   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, dramatic rim light, cinematic chiaroscuro, muted winter palette for mortal lands, no text, no watermark, no frame. Card illustration, landscape, single clear focal subject: a single arrow of pale ash wood glowing faintly, ember motes in the cold air.",
+   "aspect": "1:1",
+   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, dramatic rim light, cinematic chiaroscuro, muted winter palette for mortal lands, no text, no watermark, no frame. Single small game effect sprite, centred, isolated on a plain flat background: a single pale mountain-ash arrow seen from directly above, pointing right, faint warm glow along the shaft.",
    "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
    "status": "placeholder",
    "est_generations": 2,
-   "notes": "Card 'Ash Arrow'. Read at 250 px wide in game: keep one bold subject."
+   "notes": "Remove background, crop tight to the object and resize to the listed size."
   },
   {
-   "id": "card.knife_slash",
-   "kind": "card",
-   "placeholder": "assets/placeholder/cards/knife_slash.png",
-   "final": "assets/final/cards/knife_slash.png",
+   "id": "fx.bow",
+   "kind": "fx",
+   "placeholder": "assets/placeholder/fx/bow.png",
+   "final": "assets/final/fx/bow.png",
    "size": [
-    300,
-    200
+    26,
+    80
    ],
-   "aspect": "3:2",
-   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, dramatic rim light, cinematic chiaroscuro, muted winter palette for mortal lands, no text, no watermark, no frame. Card illustration, landscape, single clear focal subject: a wooden-hilted hunting knife slashing, an arc of motion and spray of snow.",
+   "aspect": "1:1",
+   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, dramatic rim light, cinematic chiaroscuro, muted winter palette for mortal lands, no text, no watermark, no frame. Single small game effect sprite, centred, isolated on a plain flat background: a plain ash-wood hunting bow seen from the side, upright, string taut.",
    "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
    "status": "placeholder",
    "est_generations": 2,
-   "notes": "Card 'Knife Slash'. Read at 250 px wide in game: keep one bold subject."
+   "notes": "Remove background, crop tight to the object and resize to the listed size."
   },
   {
-   "id": "card.brace",
-   "kind": "card",
-   "placeholder": "assets/placeholder/cards/brace.png",
-   "final": "assets/final/cards/brace.png",
+   "id": "fx.knife",
+   "kind": "fx",
+   "placeholder": "assets/placeholder/fx/knife.png",
+   "final": "assets/final/fx/knife.png",
    "size": [
-    300,
-    200
+    44,
+    14
    ],
-   "aspect": "3:2",
-   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, dramatic rim light, cinematic chiaroscuro, muted winter palette for mortal lands, no text, no watermark, no frame. Card illustration, landscape, single clear focal subject: a thin cloaked girl bracing behind a snow-covered fallen log.",
+   "aspect": "1:1",
+   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, dramatic rim light, cinematic chiaroscuro, muted winter palette for mortal lands, no text, no watermark, no frame. Single small game effect sprite, centred, isolated on a plain flat background: a wooden-hilted hunting knife seen from above, blade pointing right.",
    "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
    "status": "placeholder",
    "est_generations": 2,
-   "notes": "Card 'Brace'. Read at 250 px wide in game: keep one bold subject."
+   "notes": "Remove background, crop tight to the object and resize to the listed size."
   },
   {
-   "id": "card.sidestep",
-   "kind": "card",
-   "placeholder": "assets/placeholder/cards/sidestep.png",
-   "final": "assets/final/cards/sidestep.png",
-   "size": [
-    300,
-    200
-   ],
-   "aspect": "3:2",
-   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, dramatic rim light, cinematic chiaroscuro, muted winter palette for mortal lands, no text, no watermark, no frame. Card illustration, landscape, single clear focal subject: boots skidding sideways in fresh snow, a blur of motion.",
-   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
-   "status": "placeholder",
-   "est_generations": 2,
-   "notes": "Card 'Sidestep'. Read at 250 px wide in game: keep one bold subject."
-  },
-  {
-   "id": "card.hold_still",
-   "kind": "card",
-   "placeholder": "assets/placeholder/cards/hold_still.png",
-   "final": "assets/final/cards/hold_still.png",
-   "size": [
-    300,
-    200
-   ],
-   "aspect": "3:2",
-   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, dramatic rim light, cinematic chiaroscuro, muted winter palette for mortal lands, no text, no watermark, no frame. Card illustration, landscape, single clear focal subject: a pair of watchful grey-blue eyes peering through bramble thorns.",
-   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
-   "status": "placeholder",
-   "est_generations": 2,
-   "notes": "Card 'Hold Still'. Read at 250 px wide in game: keep one bold subject."
-  },
-  {
-   "id": "card.fall_back",
-   "kind": "card",
-   "placeholder": "assets/placeholder/cards/fall_back.png",
-   "final": "assets/final/cards/fall_back.png",
-   "size": [
-    300,
-    200
-   ],
-   "aspect": "3:2",
-   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, dramatic rim light, cinematic chiaroscuro, muted winter palette for mortal lands, no text, no watermark, no frame. Card illustration, landscape, single clear focal subject: footprints retreating backwards through deep snow between pines.",
-   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
-   "status": "placeholder",
-   "est_generations": 2,
-   "notes": "Card 'Fall Back'. Read at 250 px wide in game: keep one bold subject."
-  },
-  {
-   "id": "card.close_the_gap",
-   "kind": "card",
-   "placeholder": "assets/placeholder/cards/close_the_gap.png",
-   "final": "assets/final/cards/close_the_gap.png",
-   "size": [
-    300,
-    200
-   ],
-   "aspect": "3:2",
-   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, dramatic rim light, cinematic chiaroscuro, muted winter palette for mortal lands, no text, no watermark, no frame. Card illustration, landscape, single clear focal subject: a huntress sprinting low through snow toward a dark shape.",
-   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
-   "status": "placeholder",
-   "est_generations": 2,
-   "notes": "Card 'Close the Gap'. Read at 250 px wide in game: keep one bold subject."
-  },
-  {
-   "id": "card.steady_breath",
-   "kind": "card",
-   "placeholder": "assets/placeholder/cards/steady_breath.png",
-   "final": "assets/final/cards/steady_breath.png",
-   "size": [
-    300,
-    200
-   ],
-   "aspect": "3:2",
-   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, dramatic rim light, cinematic chiaroscuro, muted winter palette for mortal lands, no text, no watermark, no frame. Card illustration, landscape, single clear focal subject: a single plume of breath in freezing air, a bowstring drawn.",
-   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
-   "status": "placeholder",
-   "est_generations": 2,
-   "notes": "Card 'Steady Breath'. Read at 250 px wide in game: keep one bold subject."
-  },
-  {
-   "id": "card.quiet_as_the_wind",
-   "kind": "card",
-   "placeholder": "assets/placeholder/cards/quiet_as_the_wind.png",
-   "final": "assets/final/cards/quiet_as_the_wind.png",
-   "size": [
-    300,
-    200
-   ],
-   "aspect": "3:2",
-   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, dramatic rim light, cinematic chiaroscuro, muted winter palette for mortal lands, no text, no watermark, no frame. Card illustration, landscape, single clear focal subject: wind-blown snow curling around tree trunks, hushed and still.",
-   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
-   "status": "placeholder",
-   "est_generations": 2,
-   "notes": "Card 'Quiet as the Wind'. Read at 250 px wide in game: keep one bold subject."
-  },
-  {
-   "id": "card.skinning_cut",
-   "kind": "card",
-   "placeholder": "assets/placeholder/cards/skinning_cut.png",
-   "final": "assets/final/cards/skinning_cut.png",
-   "size": [
-    300,
-    200
-   ],
-   "aspect": "3:2",
-   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, dramatic rim light, cinematic chiaroscuro, muted winter palette for mortal lands, no text, no watermark, no frame. Card illustration, landscape, single clear focal subject: a hunting knife and a pelt on snow, practical and grim.",
-   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
-   "status": "placeholder",
-   "est_generations": 2,
-   "notes": "Card 'Skinning Cut'. Read at 250 px wide in game: keep one bold subject."
-  },
-  {
-   "id": "card.survivors_resolve",
-   "kind": "card",
-   "placeholder": "assets/placeholder/cards/survivors_resolve.png",
-   "final": "assets/final/cards/survivors_resolve.png",
-   "size": [
-    300,
-    200
-   ],
-   "aspect": "3:2",
-   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, dramatic rim light, cinematic chiaroscuro, muted winter palette for mortal lands, no text, no watermark, no frame. Card illustration, landscape, single clear focal subject: chapped hands tightening on a bow grip, knuckles split by cold.",
-   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
-   "status": "placeholder",
-   "est_generations": 2,
-   "notes": "Card 'Survivor's Resolve'. Read at 250 px wide in game: keep one bold subject."
-  },
-  {
-   "id": "card.painters_eye",
-   "kind": "card",
-   "placeholder": "assets/placeholder/cards/painters_eye.png",
-   "final": "assets/final/cards/painters_eye.png",
-   "size": [
-    300,
-    200
-   ],
-   "aspect": "3:2",
-   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, dramatic rim light, cinematic chiaroscuro, muted winter palette for mortal lands, no text, no watermark, no frame. Card illustration, landscape, single clear focal subject: a mental picture of colour: the wolf's eye rendered as swatches of paint.",
-   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
-   "status": "placeholder",
-   "est_generations": 2,
-   "notes": "Card 'Painter's Eye'. Read at 250 px wide in game: keep one bold subject."
-  },
-  {
-   "id": "card.hurl_the_knife",
-   "kind": "card",
-   "placeholder": "assets/placeholder/cards/hurl_the_knife.png",
-   "final": "assets/final/cards/hurl_the_knife.png",
-   "size": [
-    300,
-    200
-   ],
-   "aspect": "3:2",
-   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, dramatic rim light, cinematic chiaroscuro, muted winter palette for mortal lands, no text, no watermark, no frame. Card illustration, landscape, single clear focal subject: a knife spinning through the air toward a pair of yellow eyes.",
-   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
-   "status": "placeholder",
-   "est_generations": 2,
-   "notes": "Card 'Hurl the Knife'. Read at 250 px wide in game: keep one bold subject."
-  },
-  {
-   "id": "card.dinner_knife",
-   "kind": "card",
-   "placeholder": "assets/placeholder/cards/dinner_knife.png",
-   "final": "assets/final/cards/dinner_knife.png",
-   "size": [
-    300,
-    200
-   ],
-   "aspect": "3:2",
-   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, dramatic rim light, cinematic chiaroscuro, muted winter palette for mortal lands, no text, no watermark, no frame. Card illustration, landscape, single clear focal subject: a battered table knife gripped like a weapon in candlelight.",
-   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
-   "status": "placeholder",
-   "est_generations": 2,
-   "notes": "Card 'Dinner Knife'. Read at 250 px wide in game: keep one bold subject."
-  },
-  {
-   "id": "card.second_arrow",
-   "kind": "card",
-   "placeholder": "assets/placeholder/cards/second_arrow.png",
-   "final": "assets/final/cards/second_arrow.png",
-   "size": [
-    300,
-    200
-   ],
-   "aspect": "3:2",
-   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, dramatic rim light, cinematic chiaroscuro, muted winter palette for mortal lands, no text, no watermark, no frame. Card illustration, landscape, single clear focal subject: a second arrow already on the string, the first one buried in grey fur.",
-   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
-   "status": "placeholder",
-   "est_generations": 2,
-   "notes": "Card 'The Second Arrow'. Read at 250 px wide in game: keep one bold subject."
-  },
-  {
-   "id": "card.winter_hunger",
-   "kind": "card",
-   "placeholder": "assets/placeholder/cards/winter_hunger.png",
-   "final": "assets/final/cards/winter_hunger.png",
-   "size": [
-    300,
-    200
-   ],
-   "aspect": "3:2",
-   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, dramatic rim light, cinematic chiaroscuro, muted winter palette for mortal lands, no text, no watermark, no frame. Card illustration, landscape, single clear focal subject: an empty bowl on a rough table, frost on the window.",
-   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
-   "status": "placeholder",
-   "est_generations": 2,
-   "notes": "Card 'Winter Hunger'. Read at 250 px wide in game: keep one bold subject."
-  },
-  {
-   "id": "card.rough_hands",
-   "kind": "card",
-   "placeholder": "assets/placeholder/cards/rough_hands.png",
-   "final": "assets/final/cards/rough_hands.png",
-   "size": [
-    300,
-    200
-   ],
-   "aspect": "3:2",
-   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, dramatic rim light, cinematic chiaroscuro, muted winter palette for mortal lands, no text, no watermark, no frame. Card illustration, landscape, single clear focal subject: calloused, scarred hands holding a skinning knife.",
-   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
-   "status": "placeholder",
-   "est_generations": 2,
-   "notes": "Card 'Rough Hands'. Read at 250 px wide in game: keep one bold subject."
-  },
-  {
-   "id": "card.the_vow",
-   "kind": "card",
-   "placeholder": "assets/placeholder/cards/the_vow.png",
-   "final": "assets/final/cards/the_vow.png",
-   "size": [
-    300,
-    200
-   ],
-   "aspect": "3:2",
-   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, dramatic rim light, cinematic chiaroscuro, muted winter palette for mortal lands, no text, no watermark, no frame. Card illustration, landscape, single clear focal subject: a young woman by a dying mother's bedside, a promise spoken in candlelight.",
-   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
-   "status": "placeholder",
-   "est_generations": 2,
-   "notes": "Card 'The Vow'. Read at 250 px wide in game: keep one bold subject."
-  },
-  {
-   "id": "relic.elains_paint_tins",
-   "kind": "icon",
-   "placeholder": "assets/placeholder/relics/elains_paint_tins.png",
-   "final": "assets/final/relics/elains_paint_tins.png",
+   "id": "fx.slash",
+   "kind": "fx",
+   "placeholder": "assets/placeholder/fx/slash.png",
+   "final": "assets/final/fx/slash.png",
    "size": [
     128,
-    128
+    160
    ],
    "aspect": "1:1",
-   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, dramatic rim light, cinematic chiaroscuro, muted winter palette for mortal lands, no text, no watermark, no frame. Single object icon, centred, dark vignette background: three small paint tins, red, yellow and blue, on a worn wooden surface.",
+   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, dramatic rim light, cinematic chiaroscuro, muted winter palette for mortal lands, no text, no watermark, no frame. Single small game effect sprite, centred, isolated on a plain flat background: a pale crescent arc of a knife slash, a soft white motion streak fading at both ends, on black.",
+   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
+   "status": "placeholder",
+   "est_generations": 2,
+   "notes": "Remove background, crop tight to the object and resize to the listed size."
+  },
+  {
+   "id": "item.arrow",
+   "kind": "icon",
+   "placeholder": "assets/placeholder/items/arrow.png",
+   "final": "assets/final/items/arrow.png",
+   "size": [
+    96,
+    96
+   ],
+   "aspect": "1:1",
+   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, dramatic rim light, cinematic chiaroscuro, muted winter palette for mortal lands, no text, no watermark, no frame. Single object icon, centred, dark vignette background: a single hunting arrow with plain grey fletching and an iron tip.",
    "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
    "status": "placeholder",
    "est_generations": 2
   },
   {
-   "id": "relic.snare_wire",
+   "id": "item.ash_arrow",
    "kind": "icon",
-   "placeholder": "assets/placeholder/relics/snare_wire.png",
-   "final": "assets/final/relics/snare_wire.png",
-   "size": null,
+   "placeholder": "assets/placeholder/items/ash_arrow.png",
+   "final": "assets/final/items/ash_arrow.png",
+   "size": [
+    96,
+    96
+   ],
+   "aspect": "1:1",
+   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, dramatic rim light, cinematic chiaroscuro, muted winter palette for mortal lands, no text, no watermark, no frame. Single object icon, centred, dark vignette background: a long heavy arrow of pale mountain ash with an iron head, a faint warm sheen in the grain.",
+   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
+   "status": "placeholder",
+   "est_generations": 2
+  },
+  {
+   "id": "item.bow",
+   "kind": "icon",
+   "placeholder": "assets/placeholder/items/bow.png",
+   "final": "assets/final/items/bow.png",
+   "size": [
+    96,
+    96
+   ],
+   "aspect": "1:1",
+   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, dramatic rim light, cinematic chiaroscuro, muted winter palette for mortal lands, no text, no watermark, no frame. Single object icon, centred, dark vignette background: a plain ash-wood hunting bow with a worn leather grip.",
+   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
+   "status": "placeholder",
+   "est_generations": 2
+  },
+  {
+   "id": "item.bread",
+   "kind": "icon",
+   "placeholder": "assets/placeholder/items/bread.png",
+   "final": "assets/final/items/bread.png",
+   "size": [
+    96,
+    96
+   ],
+   "aspect": "1:1",
+   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, dramatic rim light, cinematic chiaroscuro, muted winter palette for mortal lands, no text, no watermark, no frame. Single object icon, centred, dark vignette background: a day-old heel of dark rye bread.",
+   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
+   "status": "placeholder",
+   "est_generations": 2
+  },
+  {
+   "id": "item.coin",
+   "kind": "icon",
+   "placeholder": "assets/placeholder/items/coin.png",
+   "final": "assets/final/items/coin.png",
+   "size": [
+    96,
+    96
+   ],
+   "aspect": "1:1",
+   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, dramatic rim light, cinematic chiaroscuro, muted winter palette for mortal lands, no text, no watermark, no frame. Single object icon, centred, dark vignette background: a single worn copper coin.",
+   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
+   "status": "placeholder",
+   "est_generations": 2
+  },
+  {
+   "id": "item.doe_hide",
+   "kind": "icon",
+   "placeholder": "assets/placeholder/items/doe_hide.png",
+   "final": "assets/final/items/doe_hide.png",
+   "size": [
+    96,
+    96
+   ],
+   "aspect": "1:1",
+   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, dramatic rim light, cinematic chiaroscuro, muted winter palette for mortal lands, no text, no watermark, no frame. Single object icon, centred, dark vignette background: a clean rolled doe hide, tawny brown.",
+   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
+   "status": "placeholder",
+   "est_generations": 2
+  },
+  {
+   "id": "item.doe_hide_torn",
+   "kind": "icon",
+   "placeholder": "assets/placeholder/items/doe_hide_torn.png",
+   "final": "assets/final/items/doe_hide_torn.png",
+   "size": [
+    96,
+    96
+   ],
+   "aspect": "1:1",
+   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, dramatic rim light, cinematic chiaroscuro, muted winter palette for mortal lands, no text, no watermark, no frame. Single object icon, centred, dark vignette background: a doe hide ripped by teeth, ragged edges.",
+   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
+   "status": "placeholder",
+   "est_generations": 2
+  },
+  {
+   "id": "item.hare",
+   "kind": "icon",
+   "placeholder": "assets/placeholder/items/hare.png",
+   "final": "assets/final/items/hare.png",
+   "size": [
+    96,
+    96
+   ],
+   "aspect": "1:1",
+   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, dramatic rim light, cinematic chiaroscuro, muted winter palette for mortal lands, no text, no watermark, no frame. Single object icon, centred, dark vignette background: a thin white snow hare hung by its hind legs.",
+   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
+   "status": "placeholder",
+   "est_generations": 2
+  },
+  {
+   "id": "item.hunting_knife",
+   "kind": "icon",
+   "placeholder": "assets/placeholder/items/hunting_knife.png",
+   "final": "assets/final/items/hunting_knife.png",
+   "size": [
+    96,
+    96
+   ],
+   "aspect": "1:1",
+   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, dramatic rim light, cinematic chiaroscuro, muted winter palette for mortal lands, no text, no watermark, no frame. Single object icon, centred, dark vignette background: a worn hunting knife with a wooden hilt and an old, sharp blade.",
+   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
+   "status": "placeholder",
+   "est_generations": 2
+  },
+  {
+   "id": "item.iron_bracelet",
+   "kind": "icon",
+   "placeholder": "assets/placeholder/items/iron_bracelet.png",
+   "final": "assets/final/items/iron_bracelet.png",
+   "size": [
+    96,
+    96
+   ],
+   "aspect": "1:1",
+   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, dramatic rim light, cinematic chiaroscuro, muted winter palette for mortal lands, no text, no watermark, no frame. Single object icon, centred, dark vignette background: a plain hammered iron bracelet, a mortal charm against the Fae.",
+   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
+   "status": "placeholder",
+   "est_generations": 2
+  },
+  {
+   "id": "item.paint_tins",
+   "kind": "icon",
+   "placeholder": "assets/placeholder/items/paint_tins.png",
+   "final": "assets/final/items/paint_tins.png",
+   "size": [
+    96,
+    96
+   ],
+   "aspect": "1:1",
+   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, dramatic rim light, cinematic chiaroscuro, muted winter palette for mortal lands, no text, no watermark, no frame. Single object icon, centred, dark vignette background: three small nearly empty paint tins, red, yellow and blue, on worn wood.",
+   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
+   "status": "placeholder",
+   "est_generations": 2
+  },
+  {
+   "id": "item.rose_hips",
+   "kind": "icon",
+   "placeholder": "assets/placeholder/items/rose_hips.png",
+   "final": "assets/final/items/rose_hips.png",
+   "size": [
+    96,
+    96
+   ],
+   "aspect": "1:1",
+   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, dramatic rim light, cinematic chiaroscuro, muted winter palette for mortal lands, no text, no watermark, no frame. Single object icon, centred, dark vignette background: a small cluster of wrinkled red rose hips on a thorny twig, touched with frost.",
+   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
+   "status": "placeholder",
+   "est_generations": 2
+  },
+  {
+   "id": "item.snare_wire",
+   "kind": "icon",
+   "placeholder": "assets/placeholder/items/snare_wire.png",
+   "final": "assets/final/items/snare_wire.png",
+   "size": [
+    96,
+    96
+   ],
    "aspect": "1:1",
    "prompt": "Painted illustration in the style of a hand-painted dark-fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, dramatic rim light, cinematic chiaroscuro, muted winter palette for mortal lands, no text, no watermark, no frame. Single object icon, centred, dark vignette background: a neat coil of bright snare wire on snowy creek stones.",
-   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
-   "status": "placeholder",
-   "est_generations": 2
-  },
-  {
-   "id": "relic.iron_bracelet",
-   "kind": "icon",
-   "placeholder": "assets/placeholder/relics/iron_bracelet.png",
-   "final": "assets/final/relics/iron_bracelet.png",
-   "size": null,
-   "aspect": "1:1",
-   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, dramatic rim light, cinematic chiaroscuro, muted winter palette for mortal lands, no text, no watermark, no frame. Single object icon, centred, dark vignette background: a plain hammered iron bracelet, protective charm against the Fae.",
    "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
    "status": "placeholder",
    "est_generations": 2
@@ -846,37 +957,22 @@
     96
    ],
    "aspect": "1:1",
-   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, dramatic rim light, cinematic chiaroscuro, muted winter palette for mortal lands, no text, no watermark, no frame. Single object icon, centred, dark vignette background: a strip of dried venison wrapped in cloth.",
+   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, dramatic rim light, cinematic chiaroscuro, muted winter palette for mortal lands, no text, no watermark, no frame. Single object icon, centred, dark vignette background: a strip of dried salted venison wrapped in cloth.",
    "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
    "status": "placeholder",
    "est_generations": 2
   },
   {
-   "id": "item.hot_water",
+   "id": "item.wolf_pelt",
    "kind": "icon",
-   "placeholder": "assets/placeholder/items/hot_water.png",
-   "final": "assets/final/items/hot_water.png",
+   "placeholder": "assets/placeholder/items/wolf_pelt.png",
+   "final": "assets/final/items/wolf_pelt.png",
    "size": [
     96,
     96
    ],
    "aspect": "1:1",
-   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, dramatic rim light, cinematic chiaroscuro, muted winter palette for mortal lands, no text, no watermark, no frame. Single object icon, centred, dark vignette background: a chipped clay cup of steaming hot water.",
-   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
-   "status": "placeholder",
-   "est_generations": 2
-  },
-  {
-   "id": "item.iron_nail",
-   "kind": "icon",
-   "placeholder": "assets/placeholder/items/iron_nail.png",
-   "final": "assets/final/items/iron_nail.png",
-   "size": [
-    96,
-    96
-   ],
-   "aspect": "1:1",
-   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, dramatic rim light, cinematic chiaroscuro, muted winter palette for mortal lands, no text, no watermark, no frame. Single object icon, centred, dark vignette background: a single old iron nail, rust at the tip.",
+   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, dramatic rim light, cinematic chiaroscuro, muted winter palette for mortal lands, no text, no watermark, no frame. Single object icon, centred, dark vignette background: a huge folded wolf pelt, charcoal, black and ivory fur.",
    "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
    "status": "placeholder",
    "est_generations": 2
@@ -1090,6 +1186,38 @@
    "notes": "Remove background. Base of the object at the bottom centre. Run make_normals.py after."
   },
   {
+   "id": "prop.rose_bush",
+   "kind": "prop",
+   "placeholder": "assets/placeholder/props/rose_bush.png",
+   "final": "assets/final/props/rose_bush.png",
+   "size": [
+    130,
+    104
+   ],
+   "aspect": "1:1",
+   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, dramatic rim light, cinematic chiaroscuro, muted winter palette for mortal lands, no text, no watermark, no frame. Game prop sprite, isolated on a plain background, light from the upper left: a wild rose bush in winter with bright red rose hips among bare thorny canes and snow, top-down three-quarter view.",
+   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
+   "status": "placeholder",
+   "est_generations": 3,
+   "notes": "Remove background. Base of the object at the bottom centre. Run make_normals.py after."
+  },
+  {
+   "id": "prop.rose_bush_bare",
+   "kind": "prop",
+   "placeholder": "assets/placeholder/props/rose_bush_bare.png",
+   "final": "assets/final/props/rose_bush_bare.png",
+   "size": [
+    130,
+    104
+   ],
+   "aspect": "1:1",
+   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, dramatic rim light, cinematic chiaroscuro, muted winter palette for mortal lands, no text, no watermark, no frame. Game prop sprite, isolated on a plain background, light from the upper left: a wild rose bush in winter, bare thorny canes dusted with snow, top-down three-quarter view.",
+   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
+   "status": "placeholder",
+   "est_generations": 3,
+   "notes": "Remove background. Base of the object at the bottom centre. Run make_normals.py after."
+  },
+  {
    "id": "prop.stall_blue",
    "kind": "prop",
    "placeholder": "assets/placeholder/props/stall_blue.png",
@@ -1120,6 +1248,22 @@
    "status": "placeholder",
    "est_generations": 3,
    "notes": "Remove background. Base of the object at the bottom centre. Run make_normals.py after."
+  },
+  {
+   "id": "bg.spring_manor",
+   "kind": "background",
+   "placeholder": null,
+   "final": "assets/final/backgrounds/spring_manor.png",
+   "size": [
+    1920,
+    1080
+   ],
+   "aspect": "16:9",
+   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, dramatic rim light, cinematic chiaroscuro, muted winter palette for mortal lands, no text, no watermark, no frame. Full-screen cinematic painting, wide landscape: The first sight of Prythian after the Wall: a sprawling alabaster manor across rolling green hills in eternal spring, veiled in climbing roses and ivy, balconies and staircases on its sides, a gravel path through a hushed, sleeping garden to its doors, soft golden morning light and mist; lush spring palette, not winter.",
+   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
+   "status": "placeholder",
+   "est_generations": 3,
+   "notes": "End of the Wall cinematic (wall_ride.gd). Shown full screen and cropped to fill wider or taller windows, so keep the subject central."
   },
   {
    "id": "terrain.snow",
@@ -1184,198 +1328,6 @@
    "status": "placeholder",
    "est_generations": 3,
    "notes": "Must tile. Check seams by tiling 2x2; fix with offset + heal if needed. Run make_normals.py --wrap."
-  },
-  {
-   "id": "actor.acolyte",
-   "kind": "actor",
-   "placeholder": "assets/placeholder/actors/acolyte.png",
-   "final": "assets/final/actors/acolyte.png",
-   "size": [
-    192,
-    256
-   ],
-   "aspect": "sheet",
-   "prompt": "",
-   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
-   "status": "placeholder",
-   "est_generations": 0,
-   "notes": "Walk sheet (4 directions x 4 frames). Not suited to image generation: frames drift. Hand-draw, commission, or use a sprite tool; keep the placeholder until then."
-  },
-  {
-   "id": "actor.beast",
-   "kind": "actor",
-   "placeholder": "assets/placeholder/actors/beast.png",
-   "final": "assets/final/actors/beast.png",
-   "size": [
-    240,
-    180
-   ],
-   "aspect": "sheet",
-   "prompt": "",
-   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
-   "status": "placeholder",
-   "est_generations": 0,
-   "notes": "Walk sheet (4 directions x 4 frames). Not suited to image generation: frames drift. Hand-draw, commission, or use a sprite tool; keep the placeholder until then."
-  },
-  {
-   "id": "actor.doe",
-   "kind": "actor",
-   "placeholder": "assets/placeholder/actors/doe.png",
-   "final": "assets/final/actors/doe.png",
-   "size": [
-    110,
-    80
-   ],
-   "aspect": "sheet",
-   "prompt": "",
-   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
-   "status": "placeholder",
-   "est_generations": 0,
-   "notes": "Walk sheet (4 directions x 4 frames). Not suited to image generation: frames drift. Hand-draw, commission, or use a sprite tool; keep the placeholder until then."
-  },
-  {
-   "id": "actor.elain",
-   "kind": "actor",
-   "placeholder": "assets/placeholder/actors/elain.png",
-   "final": "assets/final/actors/elain.png",
-   "size": [
-    192,
-    256
-   ],
-   "aspect": "sheet",
-   "prompt": "",
-   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
-   "status": "placeholder",
-   "est_generations": 0,
-   "notes": "Walk sheet (4 directions x 4 frames). Not suited to image generation: frames drift. Hand-draw, commission, or use a sprite tool; keep the placeholder until then."
-  },
-  {
-   "id": "actor.father",
-   "kind": "actor",
-   "placeholder": "assets/placeholder/actors/father.png",
-   "final": "assets/final/actors/father.png",
-   "size": [
-    192,
-    256
-   ],
-   "aspect": "sheet",
-   "prompt": "",
-   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
-   "status": "placeholder",
-   "est_generations": 0,
-   "notes": "Walk sheet (4 directions x 4 frames). Not suited to image generation: frames drift. Hand-draw, commission, or use a sprite tool; keep the placeholder until then."
-  },
-  {
-   "id": "actor.feyre",
-   "kind": "actor",
-   "placeholder": "assets/placeholder/actors/feyre.png",
-   "final": "assets/final/actors/feyre.png",
-   "size": [
-    192,
-    256
-   ],
-   "aspect": "sheet",
-   "prompt": "",
-   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
-   "status": "placeholder",
-   "est_generations": 0,
-   "notes": "Walk sheet (4 directions x 4 frames). Not suited to image generation: frames drift. Hand-draw, commission, or use a sprite tool; keep the placeholder until then."
-  },
-  {
-   "id": "actor.isaac",
-   "kind": "actor",
-   "placeholder": "assets/placeholder/actors/isaac.png",
-   "final": "assets/final/actors/isaac.png",
-   "size": [
-    192,
-    256
-   ],
-   "aspect": "sheet",
-   "prompt": "",
-   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
-   "status": "placeholder",
-   "est_generations": 0,
-   "notes": "Walk sheet (4 directions x 4 frames). Not suited to image generation: frames drift. Hand-draw, commission, or use a sprite tool; keep the placeholder until then."
-  },
-  {
-   "id": "actor.mare",
-   "kind": "actor",
-   "placeholder": "assets/placeholder/actors/mare.png",
-   "final": "assets/final/actors/mare.png",
-   "size": [
-    170,
-    130
-   ],
-   "aspect": "sheet",
-   "prompt": "",
-   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
-   "status": "placeholder",
-   "est_generations": 0,
-   "notes": "Walk sheet (4 directions x 4 frames). Not suited to image generation: frames drift. Hand-draw, commission, or use a sprite tool; keep the placeholder until then."
-  },
-  {
-   "id": "actor.mercenary",
-   "kind": "actor",
-   "placeholder": "assets/placeholder/actors/mercenary.png",
-   "final": "assets/final/actors/mercenary.png",
-   "size": [
-    192,
-    256
-   ],
-   "aspect": "sheet",
-   "prompt": "",
-   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
-   "status": "placeholder",
-   "est_generations": 0,
-   "notes": "Walk sheet (4 directions x 4 frames). Not suited to image generation: frames drift. Hand-draw, commission, or use a sprite tool; keep the placeholder until then."
-  },
-  {
-   "id": "actor.nesta",
-   "kind": "actor",
-   "placeholder": "assets/placeholder/actors/nesta.png",
-   "final": "assets/final/actors/nesta.png",
-   "size": [
-    192,
-    256
-   ],
-   "aspect": "sheet",
-   "prompt": "",
-   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
-   "status": "placeholder",
-   "est_generations": 0,
-   "notes": "Walk sheet (4 directions x 4 frames). Not suited to image generation: frames drift. Hand-draw, commission, or use a sprite tool; keep the placeholder until then."
-  },
-  {
-   "id": "actor.villager",
-   "kind": "actor",
-   "placeholder": "assets/placeholder/actors/villager.png",
-   "final": "assets/final/actors/villager.png",
-   "size": [
-    192,
-    256
-   ],
-   "aspect": "sheet",
-   "prompt": "",
-   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
-   "status": "placeholder",
-   "est_generations": 0,
-   "notes": "Walk sheet (4 directions x 4 frames). Not suited to image generation: frames drift. Hand-draw, commission, or use a sprite tool; keep the placeholder until then."
-  },
-  {
-   "id": "actor.wolf",
-   "kind": "actor",
-   "placeholder": "assets/placeholder/actors/wolf.png",
-   "final": "assets/final/actors/wolf.png",
-   "size": [
-    190,
-    120
-   ],
-   "aspect": "sheet",
-   "prompt": "",
-   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
-   "status": "placeholder",
-   "est_generations": 0,
-   "notes": "Walk sheet (4 directions x 4 frames). Not suited to image generation: frames drift. Hand-draw, commission, or use a sprite tool; keep the placeholder until then."
   }
  ]
 }

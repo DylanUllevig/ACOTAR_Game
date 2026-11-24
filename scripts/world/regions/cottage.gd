@@ -35,7 +35,7 @@ func build() -> void:
 
 
 func grade_for_hour(_h: float) -> Dictionary:
-	return {"mod": Color(0.36, 0.31, 0.35), "sun": Color.WHITE, "sun_energy": 0.0, "rays": 0.0}
+	return {"mod": Color(0.45, 0.39, 0.42), "sun": Color.WHITE, "sun_energy": 0.0, "rays": 0.0}
 
 
 func _wall_rect(r: Rect2, col := Color(0.32, 0.28, 0.26)) -> void:
@@ -83,7 +83,7 @@ func _hearth() -> void:
 	add_child(fire)
 	hearth_light = add_light(HEARTH + Vector2(0, 60), Color(1.0, 0.62, 0.3), 1.9, 5.5, true)
 	# warm bounce light so the far corners read; no shadows so it never pools oddly
-	add_light(Vector2(700, 480), Color(1.0, 0.7, 0.45), 0.35, 8.0, false)
+	add_light(Vector2(700, 480), Color(1.0, 0.7, 0.45), 0.5, 8.0, false)
 	add_flicker(hearth_light, 0.22, 10.0)
 	var ember = add_light(HEARTH + Vector2(0, 20), Color(1.0, 0.4, 0.15), 0.8, 1.2, false)
 	add_flicker(ember, 0.4, 16.0)

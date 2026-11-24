@@ -3,7 +3,7 @@
   "notes": "Physical descriptions are paraphrased from the book with short quoted fragments. 'expressions' lists the portrait variants the game needs. Used by the asset manifest to build art prompts.",
   "characters": {
     "feyre": {"name": "Feyre Archeron", "pronounce": "Fay-ruh", "role": "Protagonist. Nineteen-year-old mortal huntress, youngest of three sisters.", "first_chapter": 1,
-      "look": "Gangly and underfed in winter, ribs showing; gold-brown ('brassy') hair shared by all three sisters; weathered hands, dirt and blood under the nails; layered threadbare tunic and cloak, fraying too-small boots; bow and quiver on her back, wooden-hilted hunting knife at her side.",
+      "look": "Gangly and underfed in winter, too thin under her layers; gold-brown ('brassy') hair shared by all three sisters; weathered hands, dirt and blood under the nails; layered threadbare tunic and cloak, fraying too-small boots; bow and quiver on her back, wooden-hilted hunting knife at her side.",
       "quotes": ["I'd turned gangly by this time of the year, and could count a good number of my ribs."],
       "expressions": ["neutral", "cold", "determined", "afraid", "angry", "sad", "hungry", "wounded"]},
     "nesta": {"name": "Nesta Archeron", "pronounce": "Ness-tah", "role": "Eldest sister. Proud, cutting, fiercely protective of Elain.", "first_chapter": 1,

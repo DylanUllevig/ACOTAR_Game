@@ -222,6 +222,10 @@
        "flag": "ch01_hunt_tried"
       },
       {
+       "type": "objective",
+       "text": "Bring down the wolf."
+      },
+      {
        "type": "save_checkpoint"
       },
       {

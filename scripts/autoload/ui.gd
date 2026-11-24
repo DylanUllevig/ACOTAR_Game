@@ -130,6 +130,7 @@ func toast(text: String) -> void:
 	toasts.add_child(p)
 	while toasts.get_child_count() > 4:
 		toasts.get_child(0).free()
+	_show_toasts()
 	var tw = create_tween()
 	tw.tween_property(p, "modulate:a", 1.0, 0.2)
 	tw.tween_interval(2.4 + text.length() * 0.02)
@@ -200,7 +201,7 @@ func open_menu(tab := "inventory") -> void:
 	modal_layer.add_child(menu)
 	menu.show_tab(tab)
 	menu.closed.connect(_on_menu_closed)
-	modal_open = true
+	_update_modal()
 	get_tree().paused = true
 	hud.set_prompt("")
 	Audio.ui("open", -6.0)
@@ -296,14 +297,24 @@ func _close_modal(overlay: Control) -> void:
 	_update_modal()
 
 
-## Toasts sit under the HUD normally, and drop to the bottom edge while a
-## window is open so they never cover its title or buttons.
+## Toasts sit under the HUD normally. While a window is open they drop to
+## the strip below it (the HUD steps back to make room) and only the newest
+## shows, so none covers the window's title, tabs or buttons. Older ones come
+## back when it closes if they have not run out.
 func _place_toasts(bottom: bool) -> void:
 	toasts.anchor_top = 1.0 if bottom else 0.0
 	toasts.anchor_bottom = toasts.anchor_top
-	toasts.offset_top = -100 if bottom else 210
-	toasts.offset_bottom = -40 if bottom else 210
+	toasts.offset_top = -8 if bottom else 210
+	toasts.offset_bottom = -8 if bottom else 210
 	toasts.grow_vertical = Control.GROW_DIRECTION_BEGIN if bottom else Control.GROW_DIRECTION_END
+	_show_toasts()
+
+
+func _show_toasts() -> void:
+	var n = toasts.get_child_count()
+	for i in n:
+		var c: Control = toasts.get_child(i)
+		c.visible = not modal_open or i == n - 1
 
 
 func _wait_until(flag: Array, auto_after := 1.4) -> void:
