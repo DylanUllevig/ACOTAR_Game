@@ -15,6 +15,7 @@ const BRAMBLES := Vector2(2640, 1180)
 const WOLF_START := CLEARING + Vector2(-330, -170)
 const DOE_POS := CLEARING + Vector2(40, -30)
 const EXIT := Vector2(760, 2630)
+const APPROACH := Rect2(CLEARING - Vector2(700, 500), Vector2(1400, 1000))
 const HARES := [Vector2(1320, 2180), Vector2(1960, 1820), Vector2(560, 1480), Vector2(2900, 2060), Vector2(3640, 1720)]
 const ROSES := [Vector2(1010, 2040), Vector2(1720, 1690), Vector2(2280, 1430), Vector2(1330, 1330), Vector2(3420, 1530)]
 
@@ -228,8 +229,10 @@ func _build_points_of_interest() -> void:
 	add_interactable(Vector2(2060, 1530), "Rest a moment", func(): await Dialogue.play("ch01_ash_lore"), 90.0, "Fallen log")
 	add_interactable(Vector2(3900, 1180), "Search the creek bank", func(): await Dialogue.play("ch01_wire"), 110.0, "Creek bank")
 	map_exit(EXIT, "Home")
-	# the approach: anywhere near the clearing she sees the doe, and the eyes
-	add_trigger(Rect2(CLEARING - Vector2(1000, 700), Vector2(2000, 1400)), func():
+	# the approach: at the clearing's edge she sees the doe, and the eyes. Kept
+	# clear of the rose bushes, the fallen log and the creek bank, so those can
+	# be found before the hunt without being pulled into it.
+	add_trigger(APPROACH, func():
 		if not GameState.has_flag("wolf_killed") and hunt == null:
 			await Dialogue.play("ch01_brambles"), false)
 	add_trigger(Rect2(Vector2(560, 2560), Vector2(420, 140)), _try_leave, false)

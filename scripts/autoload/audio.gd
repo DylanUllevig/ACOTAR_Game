@@ -23,8 +23,9 @@ var _music_name := ""
 var _amb_a: AudioStreamPlayer
 var _amb_b: AudioStreamPlayer
 var _amb_name := ""
-var _last_play := {}             # name -> msec, to stop the same sound stacking in one frame
+var _last_play := {}             # name -> process frame, to stop the same sound stacking
 var _tweens := {}                # player instance id -> the fade running on it
+var _quitting := false
 
 
 func _ready() -> void:
@@ -52,6 +53,13 @@ func _ready() -> void:
 	_music_b = _loop_player("Music")
 	_amb_a = _loop_player("Ambience")
 	_amb_b = _loop_player("Ambience")
+	# the window's close button goes through quit_game too, so sounds stop first
+	get_tree().auto_accept_quit = false
+
+
+func _notification(what: int) -> void:
+	if what == NOTIFICATION_WM_CLOSE_REQUEST:
+		quit_game()
 
 
 func _loop_player(bus: String) -> AudioStreamPlayer:
@@ -102,9 +110,13 @@ func _pick(kind: String, name: String) -> AudioStream:
 	return list[randi() % list.size()]
 
 
+## The same sound twice within two frames (about 30 ms at 60 fps) plays once.
+## Counted in frames, not wall-clock time, so a run at a fixed frame rate (the
+## automated tests) makes the same calls, and draws the same random numbers,
+## every time.
 func _too_soon(name: String) -> bool:
-	var now = Time.get_ticks_msec()
-	if now - int(_last_play.get(name, -1000)) < 30:
+	var now = Engine.get_process_frames()
+	if now - int(_last_play.get(name, -1000)) < 2:
 		return true
 	_last_play[name] = now
 	return false
@@ -236,3 +248,34 @@ func _set_loop(s: AudioStream) -> void:
 			w.loop_end = int(w.get_length() * w.mix_rate)
 	elif s is AudioStreamMP3:
 		(s as AudioStreamMP3).loop = true
+
+
+# ------------------------------------------------------------------ quitting
+## Stops every player and drops the cache.
+func shutdown() -> void:
+	for p in [_music_a, _music_b, _amb_a, _amb_b]:
+		_kill_fade(p)
+	var all: Array = []
+	all.append_array(_players)
+	all.append_array(_players_2d)
+	all.append_array([_music_a, _music_b, _amb_a, _amb_b])
+	for p in all:
+		p.stop()
+		p.stream = null
+	_streams.clear()
+	_music_name = ""
+	_amb_name = ""
+
+
+## Quitting while sounds play leaves their playbacks alive when the engine frees
+## its resources, which shows up as errors at exit. Stop everything, give the
+## mixer a moment (real time, not game time) to let go, then quit.
+func quit_game(code := 0) -> void:
+	if _quitting:
+		return
+	_quitting = true
+	shutdown()
+	var t0 = Time.get_ticks_msec()
+	while Time.get_ticks_msec() - t0 < 150:
+		await get_tree().process_frame
+	get_tree().quit(code)

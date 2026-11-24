@@ -23,11 +23,11 @@ var _closing := false
 
 
 func _ready() -> void:
-	set_anchors_preset(Control.PRESET_FULL_RECT)
+	set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	mouse_filter = Control.MOUSE_FILTER_STOP
 	var bg = ColorRect.new()
 	bg.color = Color(0.01, 0.01, 0.03, 0.72)
-	bg.set_anchors_preset(Control.PRESET_FULL_RECT)
+	bg.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	add_child(bg)
 	_panel = PanelContainer.new()
 	_panel.add_theme_stylebox_override("panel", Art.panel_style(Color(0.07, 0.055, 0.075, 0.97), Art.GOLD, 16, 3))
@@ -196,7 +196,7 @@ func _game_page() -> Control:
 		UI.quit_to_title())
 	buttons.add_child(title_b)
 	var quit = Art.button("Quit game", 30)
-	quit.pressed.connect(func(): get_tree().quit())
+	quit.pressed.connect(func(): Audio.quit_game())
 	buttons.add_child(quit)
 	v.add_child(status)
 	var note = Art.label("The game also saves itself at every new area and before each fight.", 22, Art.GOLD_DIM, "italic")

@@ -185,7 +185,7 @@ func think(delta: float) -> void:
 			elif dist < float(lunge.get("range", 320)) and _lunge_cd <= 0.0:
 				_start_lunge(p)
 			elif _growl_cd <= 0.0:
-				_growl_cd = randf_range(3.0, 5.0)
+				_growl_cd = rng.randf_range(3.0, 5.0)
 				Audio.sfx_at("wolf_growl", global_position, -8.0)
 		S.WINDUP:
 			# he fixes on where she stood when his eyes flared and only tracks a
@@ -218,7 +218,7 @@ func think(delta: float) -> void:
 				# a rhythm the player can learn
 				if dist < float(bite.get("range", 120)) * 1.2 and _bites_in_row < int(bite.get("max_in_row", 2)):
 					_start_bite(p)
-				elif _bites_in_row > 0 or randf() < 0.5:
+				elif _bites_in_row > 0 or rng.randf() < 0.5:
 					_bites_in_row = 0
 					_start_circle()
 				else:
@@ -276,9 +276,9 @@ static func _track(cur: Vector2, want: Vector2, max_angle: float) -> Vector2:
 
 
 func _start_circle() -> void:
-	_circle_dir = 1.0 if randf() < 0.5 else -1.0
+	_circle_dir = 1.0 if rng.randf() < 0.5 else -1.0
 	var ct: Array = def.get("circle_time", [1.2, 2.4])
-	_circle_time = randf_range(float(ct[0]), float(ct[1]))
+	_circle_time = rng.randf_range(float(ct[0]), float(ct[1]))
 	_go(S.CIRCLE)
 
 

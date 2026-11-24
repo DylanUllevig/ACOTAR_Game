@@ -32,6 +32,11 @@ var flash := 0.0
 var facing_left := false
 var stuck_arrows: Array = []  # [Sprite2D, ammo_id, seconds left, break_chance]
 var ash_struck := false
+## Gameplay randomness (choices, drops, where arrows fall) comes from the
+## creature's own generator. Cosmetic effects (particles, flicker, sound
+## variation) draw from the global one, so they can never change how a fight
+## plays out, and a test can seed this to replay a fight exactly.
+var rng := RandomNumberGenerator.new()
 var _flash_mat: ShaderMaterial
 
 
@@ -173,7 +178,7 @@ func _die(hit: Dictionary) -> void:
 	on_death(hit)
 	drop_arrows()
 	for dr in def.get("drops", []):
-		spawn_pickup(String(dr.id), int(dr.get("n", 1)), global_position + Vector2(randf_range(-30, 30), randf_range(10, 30)))
+		spawn_pickup(String(dr.id), int(dr.get("n", 1)), global_position + Vector2(rng.randf_range(-30, 30), rng.randf_range(10, 30)))
 	died.emit(self)
 
 
@@ -191,7 +196,7 @@ func spawn_pickup(id: String, n: int, at: Vector2) -> void:
 func stick_arrow(ammo_id: String, at: Vector2, angle: float, break_chance: float) -> void:
 	if dead:
 		# a corpse keeps nothing: drop it straight away
-		spawn_pickup(ammo_id, 1, global_position + Vector2(randf_range(-40, 40), randf_range(0, 30)))
+		spawn_pickup(ammo_id, 1, global_position + Vector2(rng.randf_range(-40, 40), rng.randf_range(0, 30)))
 		return
 	var s = Sprite2D.new()
 	s.texture = Art.tex("fx/ash_arrow.png" if ammo_id == "ash_arrow" else "fx/arrow.png")
@@ -202,7 +207,7 @@ func stick_arrow(ammo_id: String, at: Vector2, angle: float, break_chance: float
 	s.z_index = 1
 	body.add_child(s)
 	# ordinary arrows work loose after a few seconds; ash stays in until the end
-	var life = 999.0 if ammo_id == "ash_arrow" else randf_range(3.5, 6.0)
+	var life = 999.0 if ammo_id == "ash_arrow" else rng.randf_range(3.5, 6.0)
 	stuck_arrows.append([s, ammo_id, life, break_chance])
 
 
@@ -215,11 +220,11 @@ func _update_stuck(delta: float) -> void:
 			var at = s.global_position
 			s.queue_free()
 			stuck_arrows.remove_at(i)
-			if randf() < float(e[3]):
+			if rng.randf() < float(e[3]):
 				Fx.burst(self, at, Vector2.ZERO, Color(0.55, 0.42, 0.3), 6, 80.0, 0.5)
 				Audio.sfx_at("arrow_break", at, -6.0)
 			else:
-				spawn_pickup(String(e[1]), 1, global_position + Vector2(randf_range(-50, 50), randf_range(0, 40)))
+				spawn_pickup(String(e[1]), 1, global_position + Vector2(rng.randf_range(-50, 50), rng.randf_range(0, 40)))
 
 
 ## Every arrow still in the hide drops beside the body (used on death).
@@ -227,5 +232,5 @@ func drop_arrows() -> void:
 	for e in stuck_arrows:
 		var s: Sprite2D = e[0]
 		s.queue_free()
-		spawn_pickup(String(e[1]), 1, global_position + Vector2(randf_range(-60, 60), randf_range(5, 45)))
+		spawn_pickup(String(e[1]), 1, global_position + Vector2(rng.randf_range(-60, 60), rng.randf_range(5, 45)))
 	stuck_arrows.clear()

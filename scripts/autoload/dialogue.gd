@@ -49,13 +49,13 @@ func _ready() -> void:
 	layer = 40
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	root = Control.new()
-	root.set_anchors_preset(Control.PRESET_FULL_RECT)
+	root.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	root.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(root)
 
 	dim = ColorRect.new()
 	dim.color = Color(0, 0, 0, 0.0)
-	dim.set_anchors_preset(Control.PRESET_FULL_RECT)
+	dim.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	dim.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	root.add_child(dim)
 
@@ -64,7 +64,7 @@ func _ready() -> void:
 
 	# a click anywhere on screen advances, like the box itself
 	catcher = Control.new()
-	catcher.set_anchors_preset(Control.PRESET_FULL_RECT)
+	catcher.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	catcher.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	catcher.gui_input.connect(_on_box_input)
 	root.add_child(catcher)

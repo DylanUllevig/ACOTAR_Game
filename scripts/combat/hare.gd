@@ -27,7 +27,7 @@ func build_visual() -> void:
 	shadow.scale = Vector2(0.6, 0.35)
 	_home = global_position
 	_target = global_position
-	_wait = randf_range(0.5, 2.5)
+	_wait = rng.randf_range(0.5, 2.5)
 
 
 func spook() -> void:
@@ -47,7 +47,7 @@ func think(delta: float) -> void:
 		_zig_t -= delta
 		if _zig_t <= 0.0:
 			_zig = -_zig
-			_zig_t = randf_range(0.25, 0.5)
+			_zig_t = rng.randf_range(0.25, 0.5)
 		var away = (global_position - p.global_position).normalized() if p else Vector2.RIGHT
 		var dir = (away + away.orthogonal() * 0.6 * _zig).normalized()
 		velocity = dir * float(def.get("flee_speed", 320))
@@ -60,8 +60,8 @@ func think(delta: float) -> void:
 		velocity = Vector2.ZERO
 		_wait -= delta
 		if _wait <= 0.0:
-			_wait = randf_range(1.0, 3.5)
-			_target = _home + Vector2(randf_range(-90, 90), randf_range(-60, 60))
+			_wait = rng.randf_range(1.0, 3.5)
+			_target = _home + Vector2(rng.randf_range(-90, 90), rng.randf_range(-60, 60))
 	else:
 		var to = _target - global_position
 		velocity = to.normalized() * float(def.get("wander_speed", 40)) * 2.2

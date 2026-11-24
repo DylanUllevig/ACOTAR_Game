@@ -332,7 +332,7 @@ func _make_snow(amount: int, size_scale: float, fall: float, wind: Vector2) -> C
 
 func add_rays(color: Color, intensity: float, angle := -0.35) -> void:
 	rays = ColorRect.new()
-	rays.set_anchors_preset(Control.PRESET_FULL_RECT)
+	rays.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	rays.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	var m = ShaderMaterial.new()
 	m.shader = load("res://shaders/god_rays.gdshader")
@@ -348,7 +348,7 @@ func _build_post() -> void:
 	post_layer.layer = 9
 	add_child(post_layer)
 	post = ColorRect.new()
-	post.set_anchors_preset(Control.PRESET_FULL_RECT)
+	post.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	post.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	var m = ShaderMaterial.new()
 	m.shader = load("res://shaders/post.gdshader")

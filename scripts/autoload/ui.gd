@@ -21,13 +21,13 @@ func _ready() -> void:
 	layer = 50
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	root = Control.new()
-	root.set_anchors_preset(Control.PRESET_FULL_RECT)
+	root.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	root.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(root)
 	hud = Hud.new()
 	root.add_child(hud)
 	modal_layer = Control.new()
-	modal_layer.set_anchors_preset(Control.PRESET_FULL_RECT)
+	modal_layer.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	modal_layer.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	root.add_child(modal_layer)
 	toasts = VBoxContainer.new()
@@ -42,7 +42,7 @@ func _ready() -> void:
 	_place_toasts(false)
 	fade = ColorRect.new()
 	fade.color = Color(0, 0, 0, 1)
-	fade.set_anchors_preset(Control.PRESET_FULL_RECT)
+	fade.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	fade.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	root.add_child(fade)
 	GameState.toast.connect(toast)
@@ -140,16 +140,16 @@ func toast(text: String) -> void:
 func chapter_card(n: int) -> void:
 	var ch = DB.chapter(n)
 	var c = Control.new()
-	c.set_anchors_preset(Control.PRESET_FULL_RECT)
+	c.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	c.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	var bg = ColorRect.new()
 	bg.color = Color(0.02, 0.02, 0.04, 0.78)
-	bg.set_anchors_preset(Control.PRESET_FULL_RECT)
+	bg.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	c.add_child(bg)
 	var a = Art.label("CHAPTER %d" % n, 40, Art.GOLD_DIM, "caps")
 	var b = Art.label(ch.get("title", ""), 84, Art.PARCHMENT, "caps")
 	for l in [a, b]:
-		l.set_anchors_preset(Control.PRESET_FULL_RECT)
+		l.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 		l.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 		l.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 		c.add_child(l)
@@ -170,7 +170,7 @@ func chapter_card(n: int) -> void:
 func fade_to_black_card(text: String) -> void:
 	await fade_out(1.0)
 	var l = Art.label(text, 40, Art.PARCHMENT, "italic")
-	l.set_anchors_preset(Control.PRESET_FULL_RECT)
+	l.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	l.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	l.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 	l.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
@@ -253,11 +253,11 @@ func _input(ev: InputEvent) -> void:
 ## Opens a centred window. Returns [overlay, content VBox]. 'cancel' runs on Esc.
 func _modal(title: String, width := 1500, height := 860, cancel := Callable()) -> Array:
 	var overlay = Control.new()
-	overlay.set_anchors_preset(Control.PRESET_FULL_RECT)
+	overlay.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	overlay.mouse_filter = Control.MOUSE_FILTER_STOP
 	var bg = ColorRect.new()
 	bg.color = Color(0.01, 0.01, 0.03, 0.74)
-	bg.set_anchors_preset(Control.PRESET_FULL_RECT)
+	bg.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	overlay.add_child(bg)
 	var p = PanelContainer.new()
 	p.add_theme_stylebox_override("panel", Art.panel_style(Color(0.07, 0.055, 0.08, 0.97), Art.GOLD, 16, 3))

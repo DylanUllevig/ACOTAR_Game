@@ -46,7 +46,7 @@ var _t := 0.0
 
 
 func _ready() -> void:
-	set_anchors_preset(Control.PRESET_FULL_RECT)
+	set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
 	_build_vignette()
 	_build_left()
@@ -55,7 +55,7 @@ func _ready() -> void:
 	_build_hotbar()
 	_build_notices()
 	_reticle = Control.new()
-	_reticle.set_anchors_preset(Control.PRESET_FULL_RECT)
+	_reticle.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	_reticle.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	_reticle.draw.connect(_draw_reticle)
 	add_child(_reticle)
@@ -82,7 +82,7 @@ func _panel(bg := Color(0.06, 0.045, 0.06, 0.8)) -> PanelContainer:
 
 func _build_vignette() -> void:
 	_vignette = ColorRect.new()
-	_vignette.set_anchors_preset(Control.PRESET_FULL_RECT)
+	_vignette.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	_vignette.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	_vig_mat = ShaderMaterial.new()
 	_vig_mat.shader = load("res://shaders/vignette.gdshader")
