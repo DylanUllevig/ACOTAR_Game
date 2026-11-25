@@ -31,7 +31,7 @@ var _snow_far: CPUParticles2D
 var time_scale = 1.0 / 180.0   # game hours per real second (1 hour per 3 minutes)
 var _triggers: Array = []
 var shadow_layer: Node2D
-var _casters: Array = []        # [Sprite2D, scale]
+var _casters: Array = []        # [Sprite2D, scale, the prop it belongs to, whether it has one]
 var surface := "snow"           # footstep sound set: snow, mud, wood
 var combat_allowed := false     # weapons only come out where it makes sense
 var hunt: Node = null           # the running fight, if any
@@ -255,7 +255,7 @@ func add_prop(rel: String, pos: Vector2, scl := 1.0, foot := Vector2(40, 14), so
 	if mk != "":
 		map_marks.append([mk, pos, scl])
 	if foot != Vector2.ZERO and s.texture:
-		_add_caster(rel, pos, scl * k, flip)
+		_add_caster(rel, pos, scl * k, flip, holder)
 	if foot != Vector2.ZERO:
 		var occ = LightOccluder2D.new()
 		var poly = OccluderPolygon2D.new()
@@ -355,7 +355,10 @@ func map_rect(r: Rect2, color: Color) -> void:
 
 ## Projected silhouette shadow: the prop's own image flattened onto the ground
 ## along the sun direction. Length and direction follow the time of day.
-func _add_caster(rel: String, pos: Vector2, scl: float, flip: bool) -> void:
+## A prop's sun shadow lives in the shadow layer, apart from the prop, so it
+## follows its prop: where it stands, how faded it is, and out of the world
+## when the prop is taken away (a carriage that drives off leaves no shadow).
+func _add_caster(rel: String, pos: Vector2, scl: float, flip: bool, owner_prop: Node2D = null) -> void:
 	var sh = Sprite2D.new()
 	sh.texture = Art.tex(rel)
 	sh.centered = true
@@ -365,7 +368,7 @@ func _add_caster(rel: String, pos: Vector2, scl: float, flip: bool) -> void:
 	sh.modulate = Color(0.02, 0.03, 0.1, 0.0)
 	sh.position = pos
 	shadow_layer.add_child(sh)
-	_casters.append([sh, scl])
+	_casters.append([sh, scl, owner_prop, owner_prop != null])
 
 
 ## Override per region: x,y = shadow direction (screen space), z = length factor, w = opacity.
@@ -378,13 +381,27 @@ func _update_casters() -> void:
 		return
 	var s4: Vector4 = sun_shadow(GameState.hour)
 	var d = Vector2(s4.x, s4.y).normalized()
-	for c in _casters:
+	for i in range(_casters.size() - 1, -1, -1):
+		var c = _casters[i]
 		var sp: Sprite2D = c[0]
+		if not is_instance_valid(sp):
+			_casters.remove_at(i)
+			continue
 		var scl: float = c[1]
 		var p = sp.position
+		var a = 1.0
+		var prop = c[2]
+		if c[3]:
+			# (a freed prop reads as null, so ask whether there ever was one)
+			if not is_instance_valid(prop) or prop.is_queued_for_deletion() or not prop.is_inside_tree():
+				sp.queue_free()
+				_casters.remove_at(i)
+				continue
+			p = (prop as Node2D).position
+			a = (prop as Node2D).modulate.a * (1.0 if (prop as Node2D).visible else 0.0)
 		# texture 'up' is local -y, so the y basis is -d: the top of the prop lands along d.
 		sp.transform = Transform2D(Vector2(scl, 0), -d * s4.z * scl, p)
-		sp.modulate.a = s4.w
+		sp.modulate.a = s4.w * a
 
 
 func add_occluder_rect(rect: Rect2) -> void:
