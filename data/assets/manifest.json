@@ -2723,6 +2723,374 @@
    "status": "final",
    "est_generations": 1,
    "notes": "Home across the Wall, 2026-11-25. Generated with a transparent background; fitted with tools/fit_art.py."
+  },
+  {
+   "id": "portrait.amarantha.smirk",
+   "kind": "portrait",
+   "placeholder": "",
+   "final": "assets/final/portraits/amarantha/smirk.png",
+   "size": [
+    640,
+    960
+   ],
+   "aspect": "2:3",
+   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, dramatic rim light, cinematic chiaroscuro, dark underground palette of carved black stone, deep crimson and torchlight gold, no text, no watermark, no frame. Half-length character portrait from the waist up, three-quarter view, facing left. The same character as in the reference image: identical face, hair, clothing and colours, the same framing and painting style; only the expression changes. Expression: a slow, cruel smile, pleased with herself, eyes glittering. Transparent background, the figure cut out cleanly.",
+   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
+   "status": "final",
+   "est_generations": 1,
+   "notes": "Under the Mountain, 2026-11-25. Generated with a transparent background at 2k; fitted with tools/fit_art.py."
+  },
+  {
+   "id": "portrait.amarantha.angry",
+   "kind": "portrait",
+   "placeholder": "",
+   "final": "assets/final/portraits/amarantha/angry.png",
+   "size": [
+    640,
+    960
+   ],
+   "aspect": "2:3",
+   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, dramatic rim light, cinematic chiaroscuro, dark underground palette of carved black stone, deep crimson and torchlight gold, no text, no watermark, no frame. Half-length character portrait from the waist up, three-quarter view, facing left. The same character as in the reference image: identical face, hair, clothing and colours, the same framing and painting style; only the expression changes. Expression: cold fury, nostrils flared, lips pressed thin, eyes hard as gems. Transparent background, the figure cut out cleanly.",
+   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
+   "status": "final",
+   "est_generations": 1,
+   "notes": "Under the Mountain, 2026-11-25. Generated with a transparent background at 2k; fitted with tools/fit_art.py."
+  },
+  {
+   "id": "portrait.amarantha.bored",
+   "kind": "portrait",
+   "placeholder": "",
+   "final": "assets/final/portraits/amarantha/bored.png",
+   "size": [
+    640,
+    960
+   ],
+   "aspect": "2:3",
+   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, dramatic rim light, cinematic chiaroscuro, dark underground palette of carved black stone, deep crimson and torchlight gold, no text, no watermark, no frame. Half-length character portrait from the waist up, three-quarter view, facing left. The same character as in the reference image: identical face, hair, clothing and colours, the same framing and painting style; only the expression changes. Expression: languid boredom, heavy-lidded eyes, chin tilted up, utterly unimpressed. Transparent background, the figure cut out cleanly.",
+   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
+   "status": "final",
+   "est_generations": 1,
+   "notes": "Under the Mountain, 2026-11-25. Generated with a transparent background at 2k; fitted with tools/fit_art.py."
+  },
+  {
+   "id": "portrait.amarantha.afraid",
+   "kind": "portrait",
+   "placeholder": "",
+   "final": "assets/final/portraits/amarantha/afraid.png",
+   "size": [
+    640,
+    960
+   ],
+   "aspect": "2:3",
+   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, dramatic rim light, cinematic chiaroscuro, dark underground palette of carved black stone, deep crimson and torchlight gold, no text, no watermark, no frame. Half-length character portrait from the waist up, three-quarter view, facing left. The same character as in the reference image: identical face, hair, clothing and colours, the same framing and painting style; only the expression changes. Expression: sudden shock and fear, eyes wide, lips parted. Transparent background, the figure cut out cleanly.",
+   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
+   "status": "final",
+   "est_generations": 1,
+   "notes": "Under the Mountain, 2026-11-25. Generated with a transparent background at 2k; fitted with tools/fit_art.py."
+  },
+  {
+   "id": "portrait.tamlin_free.tender",
+   "kind": "portrait",
+   "placeholder": "",
+   "final": "assets/final/portraits/tamlin_free/tender.png",
+   "size": [
+    640,
+    960
+   ],
+   "aspect": "2:3",
+   "prompt": "Painted illustration in the style of a hand-painted fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, warm rim light, cinematic chiaroscuro, lush spring palette of rose, sage green and honey gold, no text, no watermark, no frame. Half-length character portrait from the waist up, three-quarter view, facing left. The same character as in the reference image: identical face, hair, clothing and colours, the same framing and painting style; only the expression changes. Expression: soft tenderness, a small warm smile, eyes gentle. Transparent background, the figure cut out cleanly.",
+   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
+   "status": "final",
+   "est_generations": 1,
+   "notes": "Under the Mountain, 2026-11-25. Generated with a transparent background at 2k; fitted with tools/fit_art.py."
+  },
+  {
+   "id": "portrait.tamlin_free.sad",
+   "kind": "portrait",
+   "placeholder": "",
+   "final": "assets/final/portraits/tamlin_free/sad.png",
+   "size": [
+    640,
+    960
+   ],
+   "aspect": "2:3",
+   "prompt": "Painted illustration in the style of a hand-painted fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, warm rim light, cinematic chiaroscuro, lush spring palette of rose, sage green and honey gold, no text, no watermark, no frame. Half-length character portrait from the waist up, three-quarter view, facing left. The same character as in the reference image: identical face, hair, clothing and colours, the same framing and painting style; only the expression changes. Expression: raw grief, eyes glistening with tears, brow drawn. Transparent background, the figure cut out cleanly.",
+   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
+   "status": "final",
+   "est_generations": 1,
+   "notes": "Under the Mountain, 2026-11-25. Generated with a transparent background at 2k; fitted with tools/fit_art.py."
+  },
+  {
+   "id": "portrait.tamlin_free.angry",
+   "kind": "portrait",
+   "placeholder": "",
+   "final": "assets/final/portraits/tamlin_free/angry.png",
+   "size": [
+    640,
+    960
+   ],
+   "aspect": "2:3",
+   "prompt": "Painted illustration in the style of a hand-painted fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, warm rim light, cinematic chiaroscuro, lush spring palette of rose, sage green and honey gold, no text, no watermark, no frame. Half-length character portrait from the waist up, three-quarter view, facing left. The same character as in the reference image: identical face, hair, clothing and colours, the same framing and painting style; only the expression changes. Expression: blazing fury, teeth bared, eyes burning. Transparent background, the figure cut out cleanly.",
+   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
+   "status": "final",
+   "est_generations": 1,
+   "notes": "Under the Mountain, 2026-11-25. Generated with a transparent background at 2k; fitted with tools/fit_art.py."
+  },
+  {
+   "id": "portrait.attor.snarl",
+   "kind": "portrait",
+   "placeholder": "",
+   "final": "assets/final/portraits/attor/snarl.png",
+   "size": [
+    640,
+    960
+   ],
+   "aspect": "2:3",
+   "prompt": "Painted illustration in the style of a hand-painted fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, warm rim light, cinematic chiaroscuro, lush spring palette of rose, sage green and honey gold, no text, no watermark, no frame. Half-length character portrait from the waist up, three-quarter view, facing left. The same character as in the reference image: identical face, hair, clothing and colours, the same framing and painting style; only the expression changes. Expression: a hissing snarl, needle teeth bared, eyes narrowed. Transparent background, the figure cut out cleanly.",
+   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
+   "status": "final",
+   "est_generations": 1,
+   "notes": "Under the Mountain, 2026-11-25. Generated with a transparent background at 2k; fitted with tools/fit_art.py."
+  },
+  {
+   "id": "portrait.lucien.wounded",
+   "kind": "portrait",
+   "placeholder": "",
+   "final": "assets/final/portraits/lucien/wounded.png",
+   "size": [
+    640,
+    960
+   ],
+   "aspect": "2:3",
+   "prompt": "Painted illustration in the style of a hand-painted fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, warm rim light, cinematic chiaroscuro, lush spring palette of rose, sage green and honey gold, no text, no watermark, no frame. Half-length character portrait from the waist up, three-quarter view, facing left. The same character as in the reference image: identical face, hair, clothing and colours, the same framing and painting style; only the expression changes. Expression: battered and bruised, a split lip and a cut above one brow, but a crooked, stubborn grin. Transparent background, the figure cut out cleanly.",
+   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
+   "status": "final",
+   "est_generations": 1,
+   "notes": "Under the Mountain, 2026-11-25. Generated with a transparent background at 2k; fitted with tools/fit_art.py."
+  },
+  {
+   "id": "portrait.feyre_painted.neutral",
+   "kind": "portrait",
+   "placeholder": "",
+   "final": "assets/final/portraits/feyre_painted/neutral.png",
+   "size": [
+    640,
+    960
+   ],
+   "aspect": "2:3",
+   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, dramatic rim light, cinematic chiaroscuro, dark underground palette of carved black stone, deep crimson and torchlight gold, no text, no watermark, no frame. Half-length character portrait from the waist up, three-quarter view, facing right. The same young woman as in the reference image: identical face, eyes, skin and gold-brown hair, the same framing and painting style. She has been dressed by force for a dark faerie revel: a gauzy, floating gown of layered white silk chiffon with thin straps, her bare arms, shoulders and collarbones painted with fine swirling blue-black patterns of flowers and curling lines like lace, her left forearm and hand covered by an intricate blue-black tattoo like an elbow-length lace glove; her hair loose and brushed to a shine. Expression: calm, guarded neutral expression, her eyes a little glazed and far away. Transparent background, the figure cut out cleanly.",
+   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
+   "status": "final",
+   "est_generations": 1,
+   "notes": "Under the Mountain, 2026-11-25. Generated with a transparent background at 2k; fitted with tools/fit_art.py."
+  },
+  {
+   "id": "portrait.feyre_reborn.neutral",
+   "kind": "portrait",
+   "placeholder": "",
+   "final": "assets/final/portraits/feyre_reborn/neutral.png",
+   "size": [
+    640,
+    960
+   ],
+   "aspect": "2:3",
+   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, dramatic rim light, cinematic chiaroscuro, dark underground palette of carved black stone, deep crimson and torchlight gold, no text, no watermark, no frame. Half-length character portrait from the waist up, three-quarter view, facing right. The same young woman as in the reference image: identical face, eyes and gold-brown hair, the same framing and painting style. She has just been remade immortal: the same face, but subtly perfected, her skin luminous with a faint inner glow of gold light, her ears now delicately pointed, wearing a simple flowing white gown, her hair loose and gleaming. Expression: calm, guarded neutral expression, a little dazed. Transparent background, the figure cut out cleanly.",
+   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
+   "status": "final",
+   "est_generations": 1,
+   "notes": "Under the Mountain, 2026-11-25. Generated with a transparent background at 2k; fitted with tools/fit_art.py."
+  },
+  {
+   "id": "portrait.rhysand.angry",
+   "kind": "portrait",
+   "placeholder": "",
+   "final": "assets/final/portraits/rhysand/angry.png",
+   "size": [
+    640,
+    960
+   ],
+   "aspect": "2:3",
+   "prompt": "Painted illustration in the style of a hand-painted fairytale game, visible brush strokes and soft painterly edges, rich deep colours with silver accents, cool moonlit rim light, cinematic chiaroscuro, palette of midnight blue, black and silver, no text, no watermark, no frame. Half-length character portrait from the waist up, three-quarter view, facing left. The same character as in the reference image: identical face, hair, clothing and colours, the same framing and painting style; only the expression changes. Expression: quiet, dangerous anger, jaw tight, eyes hard and cold. Transparent background, the figure cut out cleanly.",
+   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
+   "status": "final",
+   "est_generations": 1,
+   "notes": "Under the Mountain, 2026-11-25. Generated with a transparent background at 2k; fitted with tools/fit_art.py."
+  },
+  {
+   "id": "portrait.rhysand.sad",
+   "kind": "portrait",
+   "placeholder": "",
+   "final": "assets/final/portraits/rhysand/sad.png",
+   "size": [
+    640,
+    960
+   ],
+   "aspect": "2:3",
+   "prompt": "Painted illustration in the style of a hand-painted fairytale game, visible brush strokes and soft painterly edges, rich deep colours with silver accents, cool moonlit rim light, cinematic chiaroscuro, palette of midnight blue, black and silver, no text, no watermark, no frame. Half-length character portrait from the waist up, three-quarter view, facing left. The same character as in the reference image: identical face, hair, clothing and colours, the same framing and painting style; only the expression changes. Expression: tired sorrow, the mocking smile gone, eyes weary and old. Transparent background, the figure cut out cleanly.",
+   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
+   "status": "final",
+   "est_generations": 1,
+   "notes": "Under the Mountain, 2026-11-25. Generated with a transparent background at 2k; fitted with tools/fit_art.py."
+  },
+  {
+   "id": "portrait.rhysand.wounded",
+   "kind": "portrait",
+   "placeholder": "",
+   "final": "assets/final/portraits/rhysand/wounded.png",
+   "size": [
+    640,
+    960
+   ],
+   "aspect": "2:3",
+   "prompt": "Painted illustration in the style of a hand-painted fairytale game, visible brush strokes and soft painterly edges, rich deep colours with silver accents, cool moonlit rim light, cinematic chiaroscuro, palette of midnight blue, black and silver, no text, no watermark, no frame. Half-length character portrait from the waist up, three-quarter view, facing left. The same character as in the reference image: identical face, hair, clothing and colours, the same framing and painting style; only the expression changes. Expression: in pain but defiant, a fresh cut across one cheekbone and a trickle of blood at the corner of his mouth. Transparent background, the figure cut out cleanly.",
+   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
+   "status": "final",
+   "est_generations": 1,
+   "notes": "Under the Mountain, 2026-11-25. Generated with a transparent background at 2k; fitted with tools/fit_art.py."
+  },
+  {
+   "id": "portrait.lord_summer.neutral",
+   "kind": "portrait",
+   "placeholder": "",
+   "final": "assets/final/portraits/lord_summer/neutral.png",
+   "size": [
+    640,
+    960
+   ],
+   "aspect": "2:3",
+   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, dramatic rim light, cinematic chiaroscuro, dark underground palette of carved black stone, deep crimson and torchlight gold, no text, no watermark, no frame. Half-length character portrait from the waist up, three-quarter view, facing left. A warm, brown-skinned faerie lord with pointed ears and close-cropped silver-white hair, a circlet of tiny white shells and sea-glass, a sleeveless tunic of turquoise and sea-green silk, gold cuffs on bare forearms; easy and sun-warmed, with a sailor's tan. Expression: calm, guarded neutral expression. Transparent background, the figure cut out cleanly.",
+   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
+   "status": "final",
+   "est_generations": 1,
+   "notes": "Under the Mountain, 2026-11-25. Generated with a transparent background at 2k; fitted with tools/fit_art.py."
+  },
+  {
+   "id": "portrait.lord_winter.neutral",
+   "kind": "portrait",
+   "placeholder": "",
+   "final": "assets/final/portraits/lord_winter/neutral.png",
+   "size": [
+    640,
+    960
+   ],
+   "aspect": "2:3",
+   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, dramatic rim light, cinematic chiaroscuro, dark underground palette of carved black stone, deep crimson and torchlight gold, no text, no watermark, no frame. Half-length character portrait from the waist up, three-quarter view, facing left. A tall, pale faerie lord with pointed ears and long hair white as frost, a high-collared coat of ice-blue velvet embroidered with silver snowflakes, a cloak trimmed with white fur, eyes pale as a winter sky; grave and quiet. Expression: calm, guarded neutral expression. Transparent background, the figure cut out cleanly.",
+   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
+   "status": "final",
+   "est_generations": 1,
+   "notes": "Under the Mountain, 2026-11-25. Generated with a transparent background at 2k; fitted with tools/fit_art.py."
+  },
+  {
+   "id": "portrait.lord_dawn.neutral",
+   "kind": "portrait",
+   "placeholder": "",
+   "final": "assets/final/portraits/lord_dawn/neutral.png",
+   "size": [
+    640,
+    960
+   ],
+   "aspect": "2:3",
+   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, dramatic rim light, cinematic chiaroscuro, dark underground palette of carved black stone, deep crimson and torchlight gold, no text, no watermark, no frame. Half-length character portrait from the waist up, three-quarter view, facing left. A slender faerie lord with pointed ears, golden-brown skin and soft rose-gold hair, flowing robes of gold and ruby silk, a thin crown like the rays of a rising sun, a faint warm glow about him; gentle, tired eyes. Expression: calm, guarded neutral expression. Transparent background, the figure cut out cleanly.",
+   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
+   "status": "final",
+   "est_generations": 1,
+   "notes": "Under the Mountain, 2026-11-25. Generated with a transparent background at 2k; fitted with tools/fit_art.py."
+  },
+  {
+   "id": "portrait.lord_day.neutral",
+   "kind": "portrait",
+   "placeholder": "",
+   "final": "assets/final/portraits/lord_day/neutral.png",
+   "size": [
+    640,
+    960
+   ],
+   "aspect": "2:3",
+   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, dramatic rim light, cinematic chiaroscuro, dark underground palette of carved black stone, deep crimson and torchlight gold, no text, no watermark, no frame. Half-length character portrait from the waist up, three-quarter view, facing left. A dark-skinned faerie lord with pointed ears and close-shorn black hair, a robe of white linen and gold, a broad gold collar set with a sunburst, his skin seeming to shine with a faint inner light; wise and wryly amused. Expression: calm, guarded neutral expression. Transparent background, the figure cut out cleanly.",
+   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
+   "status": "final",
+   "est_generations": 1,
+   "notes": "Under the Mountain, 2026-11-25. Generated with a transparent background at 2k; fitted with tools/fit_art.py."
+  },
+  {
+   "id": "portrait.guard_red.neutral",
+   "kind": "portrait",
+   "placeholder": "",
+   "final": "assets/final/portraits/guard_red/neutral.png",
+   "size": [
+    640,
+    960
+   ],
+   "aspect": "2:3",
+   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, dramatic rim light, cinematic chiaroscuro, dark underground palette of carved black stone, deep crimson and torchlight gold, no text, no watermark, no frame. Half-length character portrait from the waist up, three-quarter view, facing left. A squat, broad faerie guard with rough brick-red skin, small yellow eyes tinged with red, a wide grinning mouth crowded with long yellow teeth, a black leather cuirass studded with iron, a spear held upright; brutish and leering. Expression: calm, guarded neutral expression. Transparent background, the figure cut out cleanly.",
+   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
+   "status": "final",
+   "est_generations": 1,
+   "notes": "Under the Mountain, 2026-11-25. Generated with a transparent background at 2k; fitted with tools/fit_art.py."
+  },
+  {
+   "id": "panel.utm_throne",
+   "kind": "background",
+   "placeholder": null,
+   "final": "assets/final/panels/utm_throne.jpg",
+   "size": [
+    1920,
+    1080
+   ],
+   "aspect": "16:9",
+   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale storybook, visible brush strokes and soft painterly edges, rich deep colours with gold accents, cinematic chiaroscuro and dramatic light, a wide cinematic story panel with a clear focal point, no text, no lettering, no watermark, no frame, no border. A vast hall carved out of pale rock, upheld by rows of carved pillars, lit by torches and chandeliers of coloured glass; at the far end a dais with two thrones of black rock: on one lounges a beautiful red-haired queen in crimson with a slender gold crown, on the other sits a tall golden-haired warrior lord in a golden half-mask, unarmed and still; a crowd of faerie courtiers in jewel colours and glittering masks turn to stare at a small, travel-stained young woman in hunting clothes thrown down on the floor before the dais, a winged grey fiend standing over her. Dread and splendour: crimson and gold against pale stone.",
+   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
+   "status": "final",
+   "est_generations": 1,
+   "notes": "Under the Mountain story painting, 2026-11-25, shown full screen behind the dialogue (> panel utm_throne)."
+  },
+  {
+   "id": "panel.utm_wyrm",
+   "kind": "background",
+   "placeholder": null,
+   "final": "assets/final/panels/utm_wyrm.jpg",
+   "size": [
+    1920,
+    1080
+   ],
+   "aspect": "16:9",
+   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale storybook, visible brush strokes and soft painterly edges, rich deep colours with gold accents, cinematic chiaroscuro and dramatic light, a wide cinematic story panel with a clear focal point, no text, no lettering, no watermark, no frame, no border. Deep trenches of glistening mud cut a maze across the floor of a great torchlit cavern; a colossal pinkish-brown worm surges along one of them, its front end a gaping round maw lined with ring after ring of razor teeth; a mud-caked young woman sprints ahead of it, glancing back in terror; far above at the lip of the trench, faerie courtiers lean over the edge laughing, and a red-haired queen in a white gown watches from a raised wooden platform beside a masked golden-haired lord. Filth, torchlight and terror.",
+   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
+   "status": "final",
+   "est_generations": 1,
+   "notes": "Under the Mountain story painting, 2026-11-25, shown full screen behind the dialogue (> panel utm_wyrm)."
+  },
+  {
+   "id": "panel.utm_riddle",
+   "kind": "background",
+   "placeholder": null,
+   "final": "assets/final/panels/utm_riddle.jpg",
+   "size": [
+    1920,
+    1080
+   ],
+   "aspect": "16:9",
+   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale storybook, visible brush strokes and soft painterly edges, rich deep colours with gold accents, cinematic chiaroscuro and dramatic light, a wide cinematic story panel with a clear focal point, no text, no lettering, no watermark, no frame, no border. A deep rectangular pit of smooth pale stone seen from inside; from above, a vast iron grate bristling with red-hot spikes descends, glowing and rippling with heat; on one wall, a long band of strange carved symbols that are not letters, above three stone levers; an iron grate of thick bars splits the pit in two, and beyond it a red-haired faerie man with a gold mask over one eye lies chained to the floor, straining at his chains; a small young woman in a dirty tunic stands at the levers, her tattooed hand reaching out; at the pit's rim high above, a red-haired queen on a carved chair and a masked golden-haired lord look down beside a jeering crowd. Heat and dread.",
+   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
+   "status": "final",
+   "est_generations": 1,
+   "notes": "Under the Mountain story painting, 2026-11-25, shown full screen behind the dialogue (> panel utm_riddle)."
+  },
+  {
+   "id": "panel.utm_three",
+   "kind": "background",
+   "placeholder": null,
+   "final": "assets/final/panels/utm_three.jpg",
+   "size": [
+    1920,
+    1080
+   ],
+   "aspect": "16:9",
+   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale storybook, visible brush strokes and soft painterly edges, rich deep colours with gold accents, cinematic chiaroscuro and dramatic light, a wide cinematic story panel with a clear focal point, no text, no lettering, no watermark, no frame, no border. At the foot of a dais in a grand pale-stone hall under chandeliers of coloured glass, three figures kneel with rough brown sacks tied over their heads, two men and a woman; beside each stands a servant in black holding a velvet cushion on which lies a single polished wooden dagger; a thin young woman in a torn, stained hunting tunic and trousers stands before them, trembling, her tattooed hand reaching for the first dagger; above them on a black throne a red-haired queen in a blood-red gown leans forward, smiling, beside a still, masked golden-haired lord, and a silent crowd of masked courtiers watches. Silence, dread and cold light.",
+   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
+   "status": "final",
+   "est_generations": 1,
+   "notes": "Under the Mountain story painting, 2026-11-25, shown full screen behind the dialogue (> panel utm_three)."
   }
  ]
 }

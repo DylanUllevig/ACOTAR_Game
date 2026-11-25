@@ -937,6 +937,98 @@
   {
    "file": "item.silver_purse__a.png",
    "job_id": "8fb91dcd-7abb-4637-b1de-ee109e635a73"
+  },
+  {
+   "file": "portrait.amarantha.smirk__a.png",
+   "job_id": "7e8c5136-e7fc-4505-9c71-ba6d4e8afe93"
+  },
+  {
+   "file": "portrait.amarantha.angry__a.png",
+   "job_id": "59db8f0a-8c5b-4add-bcd0-9eafd945060c"
+  },
+  {
+   "file": "portrait.amarantha.bored__a.png",
+   "job_id": "c2d3b64e-bfd7-4214-8a5d-ab891ccfa0c4"
+  },
+  {
+   "file": "portrait.amarantha.afraid__a.png",
+   "job_id": "ab4d9de7-4da4-452c-829a-f7817db444fb"
+  },
+  {
+   "file": "portrait.tamlin_free.tender__a.png",
+   "job_id": "4efed878-cc07-46bb-a9bb-8bb34590d0f1"
+  },
+  {
+   "file": "portrait.tamlin_free.sad__a.png",
+   "job_id": "86af47c6-06dd-4f4d-94c5-ad6521fa95a7"
+  },
+  {
+   "file": "portrait.tamlin_free.angry__a.png",
+   "job_id": "6ca7dadb-dca4-43a3-9315-e54920976d9a"
+  },
+  {
+   "file": "portrait.attor.snarl__a.png",
+   "job_id": "aa8ad0fa-7286-4e41-9639-ec5183a610db"
+  },
+  {
+   "file": "portrait.lucien.wounded__a.png",
+   "job_id": "d0f44000-e6ac-4d45-81c0-800dbe9aed99"
+  },
+  {
+   "file": "portrait.feyre_painted.neutral__a.png",
+   "job_id": "f3e26a61-efb3-4a8d-baea-c5de025fcec7"
+  },
+  {
+   "file": "portrait.feyre_reborn.neutral__a.png",
+   "job_id": "5e4a4220-90cf-4a0c-acff-bf7597ddf4c5"
+  },
+  {
+   "file": "portrait.rhysand.angry__b.png",
+   "job_id": "9c617130-b051-44ac-890b-c7112bfd0ec2"
+  },
+  {
+   "file": "portrait.rhysand.sad__b.png",
+   "job_id": "ae586398-7951-44d4-bd03-eb104423c63d"
+  },
+  {
+   "file": "portrait.rhysand.wounded__b.png",
+   "job_id": "010fbac2-0ab2-4dd0-8286-8546df677643"
+  },
+  {
+   "file": "portrait.lord_summer.neutral__a.png",
+   "job_id": "5b5627a6-f3d6-4b68-8b7c-ffa5c324472d"
+  },
+  {
+   "file": "portrait.lord_winter.neutral__a.png",
+   "job_id": "663fcc3f-9a8d-416e-a2a5-27f4c3cab23d"
+  },
+  {
+   "file": "portrait.lord_dawn.neutral__a.png",
+   "job_id": "12dc231e-3aac-4603-a4e6-ae205972543b"
+  },
+  {
+   "file": "portrait.lord_day.neutral__a.png",
+   "job_id": "1a8849ed-75d8-4a76-a706-7be652e100c4"
+  },
+  {
+   "file": "portrait.guard_red.neutral__a.png",
+   "job_id": "9382f920-cb60-4cc1-bc88-7b8e0afce87d"
+  },
+  {
+   "file": "panel.utm_throne__a.png",
+   "job_id": "4b0bbfc0-b2c4-4733-9548-9bcd1193019e"
+  },
+  {
+   "file": "panel.utm_wyrm__a.png",
+   "job_id": "d3541c7b-1cd3-4599-bff2-634fe31f338e"
+  },
+  {
+   "file": "panel.utm_riddle__a.png",
+   "job_id": "51442240-59fe-47ac-9393-f8a4e5e39fed"
+  },
+  {
+   "file": "panel.utm_three__a.png",
+   "job_id": "502213d3-a2d1-4a75-a4ab-5528689f3b3d"
   }
  ]
 }

@@ -33,7 +33,12 @@ PEOPLE = ["feyre", "nesta", "elain", "father", "isaac", "villager", "villager_wo
           # chateau's household and guests, the village in summer
           "feyre_finery", "feyre_ride", "nesta_rich", "elain_rich", "father_rich", "footman", "maid",
           "guest_gent", "guest_lady", "tomas", "isaac_summer", "isaac_wife", "villager_summer",
-          "villager_woman_summer", "feyre_gown", "elain_gown", "feyre_garden"]
+          "villager_woman_summer", "feyre_gown", "elain_gown", "feyre_garden",
+          # Under the Mountain (Chapters 33 to 46): Feyre as a prisoner, painted
+          # for the revels and remade, the queen and her court, the unmasked
+          "feyre_mountain", "feyre_painted", "feyre_reborn", "amarantha", "guard_red",
+          "courtier_masked_lady", "courtier_masked_gent", "shadow_maid", "servant_black",
+          "lord_gold_free", "courtier_red_free"]
 
 # creatures: source, grid of the source (cols x rows, reading order), frames
 # kept, animations (indices into the kept frames)
@@ -368,7 +373,10 @@ PEOPLE_HEIGHT = {"lord_gold": 86, "courtier_red": 84, "lord_night": 86, "houseke
                  "feyre_finery": 76, "feyre_ride": 76, "nesta_rich": 76, "elain_rich": 73, "father_rich": 72,
                  "footman": 76, "maid": 68, "guest_gent": 78, "guest_lady": 74, "tomas": 84, "isaac_summer": 74,
                  "isaac_wife": 66, "villager_summer": 67, "villager_woman_summer": 58,
-                 "feyre_gown": 76, "elain_gown": 73, "feyre_garden": 76}
+                 "feyre_gown": 76, "elain_gown": 73, "feyre_garden": 76,
+                 "feyre_mountain": 76, "feyre_painted": 76, "feyre_reborn": 77, "amarantha": 79, "guard_red": 64,
+                 "courtier_masked_lady": 78, "courtier_masked_gent": 82, "shadow_maid": 76, "servant_black": 82,
+                 "lord_gold_free": 86, "courtier_red_free": 84}
 
 
 def build_people(incoming, names, meta):

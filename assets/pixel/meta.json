@@ -11,6 +11,18 @@
   ],
   "height": 62
  },
+ "actors/amarantha.png": {
+  "block": 3.21,
+  "frame": [
+   48,
+   83
+  ],
+  "grid": [
+   4,
+   4
+  ],
+  "height": 78
+ },
  "actors/attor.png": {
   "anims": {
    "crawl": [
@@ -208,6 +220,30 @@
     8
    ]
   ]
+ },
+ "actors/courtier_masked_gent.png": {
+  "block": 2.97,
+  "frame": [
+   48,
+   88
+  ],
+  "grid": [
+   4,
+   4
+  ],
+  "height": 83
+ },
+ "actors/courtier_masked_lady.png": {
+  "block": 3.1,
+  "frame": [
+   52,
+   85
+  ],
+  "grid": [
+   4,
+   4
+  ],
+  "height": 81
  },
  "actors/courtier_red.png": {
   "block": 3.1,
@@ -469,6 +505,42 @@
   ],
   "height": 76
  },
+ "actors/feyre_mountain.png": {
+  "block": 3.24,
+  "frame": [
+   40,
+   80
+  ],
+  "grid": [
+   4,
+   4
+  ],
+  "height": 76
+ },
+ "actors/feyre_painted.png": {
+  "block": 3.16,
+  "frame": [
+   46,
+   80
+  ],
+  "grid": [
+   4,
+   4
+  ],
+  "height": 76
+ },
+ "actors/feyre_reborn.png": {
+  "block": 3.01,
+  "frame": [
+   42,
+   79
+  ],
+  "grid": [
+   4,
+   4
+  ],
+  "height": 76
+ },
  "actors/feyre_ride.png": {
   "block": 3.22,
   "frame": [
@@ -545,6 +617,18 @@
     18
    ]
   ]
+ },
+ "actors/guard_red.png": {
+  "block": 3.78,
+  "frame": [
+   44,
+   66
+  ],
+  "grid": [
+   4,
+   4
+  ],
+  "height": 63
  },
  "actors/guest_gent.png": {
   "block": 3.12,
@@ -1068,6 +1152,30 @@
    4
   ],
   "height": 78
+ },
+ "actors/servant_black.png": {
+  "block": 2.87,
+  "frame": [
+   44,
+   85
+  ],
+  "grid": [
+   4,
+   4
+  ],
+  "height": 82
+ },
+ "actors/shadow_maid.png": {
+  "block": 3.11,
+  "frame": [
+   56,
+   79
+  ],
+  "grid": [
+   4,
+   4
+  ],
+  "height": 75
  },
  "actors/squirrel.png": {
   "anims": {
