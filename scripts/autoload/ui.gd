@@ -174,8 +174,12 @@ func chapter_card(n: int) -> void:
 	hud.refresh()
 
 
-func fade_to_black_card(text: String) -> void:
+func fade_to_black_card(text: String, hold := false) -> void:
 	await fade_out(1.0)
+	if text == "":
+		if not hold:
+			await fade_in(1.0)
+		return
 	var l = Art.label_lit(text, 40, Art.PARCHMENT, "italic")
 	l.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	l.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
@@ -191,7 +195,8 @@ func fade_to_black_card(text: String) -> void:
 	tw.tween_property(l, "modulate:a", 0.0, 0.6)
 	await tw.finished
 	l.queue_free()
-	await fade_in(1.0)
+	if not hold:
+		await fade_in(1.0)
 
 
 # ------------------------------------------------------------------ menus
@@ -438,16 +443,16 @@ func game_over(title := "", line := "", tip_text := "") -> void:
 
 func end_slice() -> void:
 	SaveSystem.save_slot("slice_complete")
-	var m = _modal("End of Milestone 2", 1300, 720)
+	var m = _modal("End of Milestone 3", 1300, 720)
 	var v: VBoxContainer = m[1]
 	var t = DB.tier(GameState.tier)
 	var lines = [
-		"Summer has come to the Spring Court, and Tamlin is sending her home.",
+		"The Spring Court is empty, and Alis has shown her the way Under the Mountain.",
 		"Power: tier %d, %s  (power %d)" % [GameState.tier, t.get("name", ""), GameState.power_score()],
 		"Coin: %d   ·   Journal: %d of %d entries" % [GameState.coins, GameState.journal.size(), DB.lore.size()],
 		"The doe: %s   ·   Midsummer wine: %s" % ["carried home whole" if GameState.has_flag("doe_saved") else "torn by the wolf",
 			"drunk to the dregs" if GameState.has_flag("ch25_wine") else "handed back"],
-		"Next: Chapter 28, home across the Wall.",
+		"Next: Chapter 33, Under the Mountain.",
 	]
 	for s in lines:
 		var l = Art.label(s, 30)

@@ -1,5 +1,5 @@
 extends Region
-## Chapters 6 to 27: inside the Spring Court manor. One script, seven rooms,
+## Chapters 6 to 32: inside the Spring Court manor. One script, eight rooms,
 ## each its own region (Router.REGIONS maps every manor_* id here, and the
 ## room is the part after "manor_"):
 ##   hall     the entrance hall: checkered marble and the grand staircase
@@ -9,6 +9,13 @@ extends Region
 ##   studio   the empty room Alis gives her to paint in
 ##   landing  the upper hall: her door, Lucien's door, the stairs
 ##   bedroom  her room: the bed, the bath, the window over the garden
+##   kitchen  the great kitchen, burned out (Chapter 32 only: Alis's tale)
+##
+## In Chapters 31 and 32 the house has been sacked: the hall and the dining
+## room are wrecked, and the rest of it is shut.
+##
+## chateau_in.gd extends this for her father's house across the Wall: it
+## overrides rooms(), beats() and prefix(), and builds its own rooms.
 ##
 ## Laid out on the people's pixel density (1.5 world units per art pixel).
 ## The back wall's face runs from the top of the room down to WALL_H, where
@@ -35,6 +42,8 @@ const ROOMS := {
 		"doors": [["w", 330.0, "hall", "Down the stairs"], ["n", 520.0, "bedroom", "Your room"]]},
 	"bedroom": {"w": 1140.0, "end": 640.0, "wall": "wall_manor", "floor": "parquet", "name": "Your Room",
 		"doors": [["s", 570.0, "landing", "Out to the upper hall"]]},
+	"kitchen": {"w": 1200.0, "end": 620.0, "wall": "wall_kitchen_burnt", "floor": "flagstone", "name": "The Kitchens",
+		"doors": [["e", 430.0, "hall", "Up to the hall"]]},
 }
 
 ## The scene waiting in a room: [room, chapter, flag that must be set ("" for
@@ -74,7 +83,16 @@ const BEATS := [
 	["dining", 24, "ch24_wake", "ch24_dining", "ch24_dining"],
 	["dining", 26, "", "ch26_rhys", "ch26_lunch"],
 	["bedroom", 27, "", "ch27_night", "ch27_night"],
+	["bedroom", 28, "", "ch28_dress", "ch28_dress"],
+	["hall", 28, "ch28_dress", "ch28_hall", "ch28_hall"],
+	["hall", 31, "", "ch31_wreck", "ch31_wreck"],
+	["dining", 32, "ch32_clues", "ch32_dining", "ch32_dining"],
+	["kitchen", 32, "", "ch32_kitchen", "ch32_kitchen"],
 ]
+
+## Chapter 32: the signs in the wrecked hall, read in any order.
+const CLUES := [["ch32_clue_blood", Vector2(420, 520), "The blood"], ["ch32_clue_glass", Vector2(990, 600), "The broken glass"],
+	["ch32_clue_doors", Vector2(640, 610), "The front doors"], ["ch32_clue_bodies", Vector2(1180, 360), "The far end of the hall"]]
 
 var room := "hall"
 var W := 1560.0
@@ -84,36 +102,62 @@ var fire_light: PointLight2D
 var _table_ends: Array = []          # the dining table's outer lengths (gone from Ch 22)
 var _table_wall: StaticBody2D
 var _chairs: Array = []
+var _clue_spots := {}                # flag -> its interactable (Ch 32)
+var _worktable: Node2D               # the kitchen's overturned table (Ch 32)
+
+
+## The rooms, the scenes waiting in them, and the region ids' prefix: what a
+## house built on this script overrides.
+func rooms() -> Dictionary:
+	return ROOMS
+
+
+func beats() -> Array:
+	return BEATS
+
+
+func prefix() -> String:
+	return "manor_"
+
+
+## Where the front doors lead: [region, spawn].
+func outside() -> Array:
+	return ["spring_manor", "door"]
+
+
+func house_name() -> String:
+	return "The Manor"
+
+
+## Chapters 31 and 32: the manor after the sack.
+func _wrecked() -> bool:
+	return GameState.chapter == 31 or GameState.chapter == 32
 
 
 func build() -> void:
-	room = String(GameState.region).trim_prefix("manor_")
-	if not ROOMS.has(room):
+	room = String(GameState.region).trim_prefix(prefix())
+	if not rooms().has(room):
 		room = "hall"
-	var r: Dictionary = ROOMS[room]
+	var r: Dictionary = rooms()[room]
 	W = float(r.w)
 	END = float(r.end)
 	interior = true
-	surface = "stone" if r.floor == "marble" else "wood"
+	surface = "stone" if String(r.floor) in ["marble", "flagstone"] else "wood"
 	combat_allowed = false
-	map_title = "The Manor: " + String(r.name).trim_prefix("The ")
+	map_title = house_name() + ": " + String(r.name).trim_prefix("The ")
 	map_base = Color(0.86, 0.82, 0.74)
 	reveal_radius = 3000.0
 	bounds = Rect2(0, -40, W, END + 140)
 	spawns = {}
 	_backdrop()
 	_floor(String(r.floor))
-	_walls(String(r.wall))
+	var wall = String(r.wall)
+	if _wrecked() and room in ["hall", "dining"]:
+		wall = "wall_manor_wreck"
+	_walls(wall)
 	for d in r.doors:
 		_door(d)
-	match room:
-		"hall": _hall()
-		"dining": _dining()
-		"study": _study()
-		"gallery": _gallery()
-		"studio": _studio()
-		"landing": _landing()
-		"bedroom": _bedroom()
+	_build_room()
 	if not spawns.has("start"):
 		spawns.start = spawns[spawns.keys()[0]]
 	enclose_bounds()
@@ -121,10 +165,39 @@ func build() -> void:
 	set_post({"vignette": 0.34, "lift": Vector3(0.012, 0.01, 0.006), "gain": Vector3(1.02, 1.0, 0.97), "saturation": 1.04, "grain": 0.0})
 
 
+func _build_room() -> void:
+	match room:
+		"hall":
+			if _wrecked():
+				_hall_wreck()
+			else:
+				_hall()
+		"dining":
+			if _wrecked():
+				_dining_wreck()
+			else:
+				_dining()
+		"study": _study()
+		"gallery": _gallery()
+		"studio": _studio()
+		"landing": _landing()
+		"bedroom": _bedroom()
+		"kitchen": _kitchen()
+
+
 func _ready() -> void:
 	super._ready()
 	add_light(Vector2(0, -30), Color(1.0, 0.92, 0.82), 0.22, 2.2, false, player)
+	_audio()
+
+
+func _audio() -> void:
 	var night = Region.night_amount(GameState.hour) > 0.5
+	if _wrecked():
+		# no birds, no servants: only the wind through the broken windows
+		Audio.ambience("forest_wind")
+		Audio.music("wreck", 4.0)
+		return
 	Audio.ambience("hearth" if night else "spring_day")
 	if GameState.chapter != 26 or GameState.has_flag("ch26_rhys"):
 		Audio.music("spring_night" if night else "spring_manor", 3.0)
@@ -191,7 +264,7 @@ func _walls(wall_rel: String) -> void:
 	var top = "interior/wall_top_manor.png"
 	_strip(top, Rect2(0, -BAND, W, BAND), ground)
 	var gaps := {"w": [], "e": [], "s": []}
-	for d in ROOMS[room].doors:
+	for d in rooms()[room].doors:
 		if gaps.has(String(d[0])):
 			gaps[String(d[0])].append(float(d[1]))
 	for side in ["w", "e"]:
@@ -270,14 +343,23 @@ func _go_door(to: String) -> void:
 		UI.toast(why)
 		return
 	if to == "out":
-		Router.goto_region("spring_manor", "door")
+		Router.goto_region(String(outside()[0]), String(outside()[1]))
 	else:
-		Router.goto_region("manor_" + to, room)
+		Router.goto_region(prefix() + to, room)
 
 
 ## Why a door won't do just now ("" when it will).
 func _door_shut(to: String) -> String:
 	var ch = GameState.chapter
+	if _wrecked():
+		return _door_shut_wrecked(to)
+	if ch == 28:
+		# the morning she leaves: dressed, down the stairs, out to the carriage
+		if to == "out":
+			return "" if GameState.has_flag("ch28_hall") else "Not now. " + String(GameState.objective)
+		if to in ["dining", "study", "gallery", "studio"]:
+			return "No time for that. The carriage is waiting."
+		return ""
 	if ch == 6 and not GameState.has_flag("ch06_feast"):
 		return "" if to == "dining" else "Food first, then a way out. The smell came from a door on the left."
 	match to:
@@ -299,10 +381,30 @@ func _door_shut(to: String) -> String:
 	return ""
 
 
+## Chapters 31 and 32: only the trail is open.
+func _door_shut_wrecked(to: String) -> String:
+	match to:
+		"out":
+			return "Not yet. Whatever happened here, the answer is inside."
+		"dining":
+			if GameState.chapter == 32 and not GameState.has_flag("ch32_clues"):
+				return "Not yet. " + String(GameState.objective)
+			return ""
+		"hall":
+			if room == "dining" and GameState.has_flag("ch32_prints") and not GameState.has_flag("ch32_hide"):
+				return "Whatever it is, it's coming this way. Hide!"
+			if room == "kitchen":
+				return "Alis hasn't finished. And I needed to hear all of it."
+			return ""
+		"landing":
+			return "Not upstairs. The tracks don't go that way."
+	return "Nothing in there but ashes and broken glass."
+
+
 ## True while the chapter's next scene waits somewhere in the house.
 func _pending_here_or_inside() -> bool:
 	var ch = GameState.chapter
-	for b in BEATS:
+	for b in beats():
 		if int(b[1]) != ch:
 			continue
 		if String(b[2]) != "" and not GameState.has_flag(String(b[2])):
@@ -604,8 +706,15 @@ func _people() -> void:
 				npc.lucien = add_npc("courtier_red", Vector2(880, 520), "", Callable(), 1)
 			elif beat == "ch21_hall":
 				npc.lucien = add_npc("courtier_red", spawns.front + Vector2(80, -30), "", Callable(), 1)
+			elif beat == "ch28_hall":
+				# at the foot of the stairs, with the doors open behind him
+				npc.lucien = add_npc("courtier_red", spawns.landing + Vector2(110, 40), "", Callable(), 1)
+		"kitchen":
+			npc.alis = add_npc("bark_servant", Vector2(760, 440), "", Callable(), 1)
 		"bedroom":
-			if beat in ["ch06_bath", "ch07_morning", "ch16_bath", "ch08_satchel", "ch22_gown"]:
+			if beat == "ch28_dress":
+				npc.alis = add_npc("bark_servant", Vector2(560, 420), "", Callable(), 1)
+			elif beat in ["ch06_bath", "ch07_morning", "ch16_bath", "ch08_satchel", "ch22_gown"]:
 				npc.alis = add_npc("housekeeper", Vector2(560, 420), "", Callable(), 1)
 			elif beat == "ch24_wake":
 				npc.alis = add_npc("bark_servant", Vector2(560, 420), "", Callable(), 1)
@@ -617,7 +726,7 @@ func _people() -> void:
 		"studio":
 			if beat == "ch22_paintings":
 				npc.tamlin = add_npc("lord_gold", Vector2(300, 440), "", Callable(), 2)
-	if ch >= 8 and ch != 17 and room == "hall" and not _night() and beat == "":
+	if ch >= 8 and ch != 17 and ch < 29 and room == "hall" and not _night() and beat == "":
 		var sheet = "bark_servant" if ch >= 24 else "housekeeper"
 		npc.alis = add_npc(sheet, Vector2(1180, 560), "Alis", func(): await _alis(), 1)
 
@@ -625,7 +734,7 @@ func _people() -> void:
 ## The scene waiting in this room for this chapter, if any.
 func _beat() -> String:
 	var ch = GameState.chapter
-	for b in BEATS:
+	for b in beats():
 		if String(b[0]) != room or int(b[1]) != ch:
 			continue
 		if String(b[2]) != "" and not GameState.has_flag(String(b[2])):
@@ -640,6 +749,9 @@ func on_enter() -> void:
 	var s = _beat()
 	if s != "":
 		await Dialogue.play(s)
+	# Chapter 31's last scene runs straight on into 32: the signs to read appear
+	if room == "hall" and _wrecked() and GameState.chapter == 32 and _clue_spots.is_empty():
+		_clues()
 
 
 func _alis() -> void:
@@ -820,3 +932,259 @@ func put_feyre(x: float, y: float, facing := 0) -> void:
 	player.global_position = Vector2(x, y)
 	player.velocity = Vector2.ZERO
 	player.facing = facing
+
+
+# ------------------------------------------------ the sack (Ch 31 and 32)
+## The entrance hall after the attack: the same bones, everything broken.
+func _hall_wreck() -> void:
+	_piece("props/staircase.png", Vector2(780, 398), Vector2(200, 170), false, "stairs")
+	add_interactable(Vector2(780, 424), "Up the stairs", func(): await _go_door("landing"), 70, "Stairs")
+	spawns.landing = Vector2(780, 452)
+	spawns.stairs = spawns.landing
+	# torn hangings and blown-out windows along the back wall
+	_flat_tex("props/wreck_tapestry.png", Vector2(340, 86), 1)
+	_wreck_window(470)
+	_flat_tex("props/wreck_tapestry.png", Vector2(612, 86), 1, true)
+	_flat_tex("props/wreck_tapestry.png", Vector2(948, 86), 1)
+	_wreck_window(1090)
+	_flat_tex("props/wreck_tapestry.png", Vector2(1220, 86), 1, true)
+	_piece("props/wreck_clock.png", Vector2(1350, 252), Vector2(84, 22))
+	_piece("props/palm.png", Vector2(86, 214), Vector2(40, 18))
+	_piece("props/bench_marble.png", Vector2(1220, 238), Vector2(60, 16), true)
+	# the chandeliers where they fell, a statue in pieces, a smashed vase
+	_piece("props/wreck_chandelier.png", Vector2(560, 470), Vector2(46, 16))
+	_piece("props/wreck_chandelier.png", Vector2(1020, 500), Vector2(46, 16), true)
+	_piece("props/wreck_statue.png", Vector2(250, 610), Vector2(96, 28))
+	_piece("props/wreck_vase.png", Vector2(700, 560), Vector2(20, 8))
+	_piece("props/wreck_chair.png", Vector2(1210, 480), Vector2(30, 12), true)
+	_piece("props/wreck_door.png", Vector2(1440, 640), Vector2(60, 20), true)
+	_rug(Vector2(780, 546))
+	_gore(31, true)
+	# boot prints: in at the front, out through the back, everywhere between
+	_print_trail(Vector2(780, 640), Vector2(80, 470), 7)
+	_print_trail(Vector2(760, 640), Vector2(780, 470), 8)
+	_print_trail(Vector2(190, WALL_H + 30), Vector2(700, 600), 9)
+	_print_trail(Vector2(1300, 620), Vector2(190, WALL_H + 40), 10)
+	if GameState.chapter == 32:
+		_clues()
+
+
+## The dining room: the table in pieces, the windows smashed, and no blood.
+func _dining_wreck() -> void:
+	_piece("props/fireplace.png", Vector2(190, WALL_H + 24), Vector2(100, 30), false, "hearth")
+	_wreck_window(480)
+	_flat_tex("props/wreck_tapestry.png", Vector2(630, 86), 1)
+	_wreck_window(780)
+	_painting(5, 1000)
+	_piece("props/palm.png", Vector2(1150, 204), Vector2(40, 18), true)
+	_piece("props/dresser.png", Vector2(900, 198), Vector2(80, 20))
+	_piece("props/wreck_table.png", Vector2(630, 450), Vector2(150, 50))
+	_piece("props/wreck_chair.png", Vector2(460, 396), Vector2(30, 12))
+	_piece("props/wreck_chair.png", Vector2(830, 484), Vector2(30, 12), true)
+	_piece("props/wreck_chair.png", Vector2(540, 566), Vector2(30, 12))
+	_piece("props/wreck_vase.png", Vector2(1010, 236), Vector2(20, 8))
+	_piece("props/harp.png", Vector2(1120, 330), Vector2(40, 16), true)
+	_gore(32, false)
+	# two sets of large prints, side by side, from where the table stood to the door
+	_print_trail(Vector2(610, 500), Vector2(W - 70, 474), 11, 1.25)
+	_print_trail(Vector2(650, 512), Vector2(W - 70, 490), 12, 1.25)
+	for i in 5:
+		_print_trail(Vector2(W - 70, 440 + i * 22), Vector2(W - 260 + i * 30, 380 + i * 40), 20 + i)
+	spawns.seat = Vector2(760, 520)
+	spawns.hide = Vector2(W - BAND - 50, 352)
+	if GameState.chapter == 32 and not GameState.has_flag("ch32_prints"):
+		add_interactable(Vector2(860, 500), "The prints in the glass", func(): await Dialogue.play("ch32_prints"), 80, "Prints")
+	if GameState.chapter == 32 and GameState.has_flag("ch32_prints") and not GameState.has_flag("ch32_hide"):
+		add_interactable(spawns.hide, "Hide behind the door", _hide, 80)
+
+
+## Chapter 32: the burned-out kitchen, where Alis tells her the truth.
+func _kitchen() -> void:
+	_piece("props/wreck_hearth.png", Vector2(600, WALL_H + 26), Vector2(90, 30), false, "hearth")
+	var ember = add_light(Vector2(600, WALL_H - 6), Color(1.0, 0.45, 0.2), 0.55, 1.6, false)
+	add_flicker(ember, 0.3, 4.0)
+	add_smoke(Vector2(600, WALL_H - 40), null, 5)
+	_piece("props/wreck_shelf.png", Vector2(260, WALL_H + 24), Vector2(80, 22))
+	_piece("props/wreck_shelf.png", Vector2(930, WALL_H + 24), Vector2(80, 22), true)
+	_wreck_window(1080)
+	_piece("props/barrels_indoor.png", Vector2(110, 560), Vector2(70, 26))
+	_piece("props/buckets_indoor.png", Vector2(210, 590), Vector2(40, 14))
+	_piece("props/crates_indoor.png", Vector2(1080, 560), Vector2(60, 24), true)
+	_worktable = _piece("props/wreck_worktable.png", Vector2(560, 452), Vector2(130, 40))
+	_scorch()
+	spawns.door = Vector2(W - BAND - 56, 442)
+	add_interactable(Vector2(560, 500), "The worktable", _kitchen_table, 80, "Worktable")
+	add_light(Vector2(W / 2.0, 420), Color(0.9, 0.85, 0.8), 0.25, 3.5, false)
+
+
+func _wreck_window(x: float) -> void:
+	_flat_tex("props/wreck_window.png", Vector2(x, 90), 1)
+	add_light(Vector2(x, WALL_H + 80), Color(1.0, 0.9, 0.74), 0.45, 1.5, false)
+
+
+## Blood, broken glass and splinters on the floor of the sacked house.
+func _gore(seed_v: int, blood: bool) -> void:
+	var rng = RandomNumberGenerator.new()
+	rng.seed = seed_v
+	if blood:
+		for i in 16:
+			var c = Vector2(rng.randf_range(140, W - 140), rng.randf_range(WALL_H + 40, END - 50))
+			_splat(c, rng.randf_range(10, 30), rng, Color(0.36, 0.04, 0.05, 0.82))
+		# spatter up the gouged walls
+		for i in 9:
+			var c2 = Vector2(rng.randf_range(80, W - 80), rng.randf_range(WALL_H - 64, WALL_H - 12))
+			_splat(c2, rng.randf_range(5, 12), rng, Color(0.32, 0.03, 0.04, 0.78))
+	for i in 110:
+		var g = Vector2(rng.randf_range(60, W - 60), rng.randf_range(WALL_H + 16, END - 22))
+		var sz = rng.randf_range(2.0, 4.5)
+		var chip = Polygon2D.new()
+		chip.polygon = PackedVector2Array([g + Vector2(-sz, 0), g + Vector2(0, -sz * 0.6), g + Vector2(sz, 0), g + Vector2(0, sz * 0.6)])
+		var wood = rng.randf() < 0.3
+		chip.color = Color(0.42, 0.28, 0.18, 0.9) if wood else Color(0.86, 0.92, 1.0, rng.randf_range(0.5, 0.9))
+		chip.z_index = 2
+		ground.add_child(chip)
+
+
+## An irregular splash, snapped to the art's pixel grid, with droplets.
+func _splat(c: Vector2, r: float, rng: RandomNumberGenerator, col: Color) -> void:
+	var pts = PackedVector2Array()
+	var n = 11
+	for i in n:
+		var a = TAU * i / n
+		var rr = r * rng.randf_range(0.55, 1.15)
+		pts.append(((c + Vector2(cos(a), sin(a) * 0.62) * rr) / 3.0).round() * 3.0)
+	var p = Polygon2D.new()
+	p.polygon = pts
+	p.color = col
+	p.z_index = 1
+	ground.add_child(p)
+	for k in rng.randi_range(2, 5):
+		var a2 = rng.randf() * TAU
+		var d = r * rng.randf_range(1.2, 2.2)
+		var q = ((c + Vector2(cos(a2), sin(a2) * 0.62) * d) / 3.0).round() * 3.0
+		var dr = Polygon2D.new()
+		dr.polygon = PackedVector2Array([q, q + Vector2(3, 0), q + Vector2(3, 3), q + Vector2(0, 3)])
+		dr.color = col
+		dr.z_index = 1
+		ground.add_child(dr)
+
+
+## A line of boot prints from a to b, left and right in turn.
+func _print_trail(a: Vector2, b: Vector2, seed_v: int, size := 1.0) -> void:
+	var rng = RandomNumberGenerator.new()
+	rng.seed = seed_v
+	var d = b - a
+	var steps = int(d.length() / (34.0 * size))
+	var side = d.normalized().orthogonal()
+	for i in steps:
+		var t = (i + 0.5) / float(steps)
+		var p = a + d * t + side * (7.0 * size if i % 2 == 0 else -7.0 * size) + Vector2(rng.randf_range(-3, 3), rng.randf_range(-3, 3))
+		var boot = Polygon2D.new()
+		var pts = PackedVector2Array()
+		for k in 8:
+			var ang = TAU * k / 8.0
+			pts.append(Vector2(cos(ang) * 4.5, sin(ang) * 8.0) * size)
+		boot.polygon = pts
+		boot.rotation = d.angle() + PI / 2.0
+		boot.position = p
+		boot.color = Color(0.2, 0.12, 0.1, 0.42) if rng.randf() < 0.7 else Color(0.32, 0.05, 0.05, 0.5)
+		boot.z_index = 1
+		ground.add_child(boot)
+
+
+## Soot on the kitchen's walls and floor, ash heaped by the hearth.
+func _scorch() -> void:
+	var rng = RandomNumberGenerator.new()
+	rng.seed = 77
+	for i in 10:
+		var c = Vector2(rng.randf_range(80, W - 80), rng.randf_range(10, WALL_H - 10))
+		_splat(c, rng.randf_range(30, 70), rng, Color(0.06, 0.05, 0.05, 0.55))
+	for i in 18:
+		var c2 = Vector2(rng.randf_range(80, W - 80), rng.randf_range(WALL_H + 20, END - 30))
+		_splat(c2, rng.randf_range(20, 60), rng, Color(0.08, 0.07, 0.07, 0.45))
+	for i in 6:
+		var c3 = Vector2(600 + rng.randf_range(-120, 120), WALL_H + rng.randf_range(40, 90))
+		_splat(c3, rng.randf_range(10, 22), rng, Color(0.5, 0.48, 0.46, 0.7))
+
+
+## The signs left in the hall, each read once.
+func _clues() -> void:
+	if GameState.has_flag("ch32_clues"):
+		return
+	for c in CLUES:
+		var flag = String(c[0])
+		if GameState.has_flag(flag):
+			continue
+		_clue_spots[flag] = add_interactable(c[1], String(c[2]), func(): await _read_clue(flag), 70)
+
+
+func _read_clue(flag: String) -> void:
+	if GameState.has_flag(flag):
+		return
+	await Dialogue.play(flag)
+	if _clue_spots.has(flag) and is_instance_valid(_clue_spots[flag]):
+		_clue_spots[flag].queue_free()
+	var n = 0
+	for c in CLUES:
+		if GameState.has_flag(String(c[0])):
+			n += 1
+	if n < CLUES.size():
+		GameState.set_objective("Read the signs in the hall. (%d/4)" % n)
+		return
+	GameState.set_flag("ch32_clues")
+	await Dialogue.play("ch32_clues_done")
+
+
+func _hide() -> void:
+	if GameState.has_flag("ch32_hide"):
+		return
+	put_feyre(spawns.hide.x, spawns.hide.y, 1)
+	await Dialogue.play("ch32_hide")
+
+
+func _kitchen_table() -> void:
+	if GameState.chapter == 32 and GameState.has_flag("ch32_kitchen") and not GameState.has_flag("ch32_table"):
+		await Dialogue.play("ch32_table")
+		return
+	UI.toast("Scorched oak, and heavy as sin.")
+
+
+## region_call (Ch 32): something moving out in the hall.
+func debris_crunch() -> void:
+	Audio.sfx("clatter", -8.0)
+	UI.shake(2.0)
+	if not GameState.has_flag("ch32_hide") and spawns.has("hide"):
+		add_interactable(spawns.hide, "Hide behind the door", _hide, 80)
+	await get_tree().create_timer(0.4, true, false, true).timeout
+
+
+## region_call (Ch 32): a cloaked figure limps in from the hall, sniffing.
+func limper_enters() -> void:
+	var a = add_npc("bark_servant", Vector2(W - BAND - 56, 482), "", Callable(), 1)
+	npc.alis = a
+	await walk_npc(a, Vector2(880, 470), 60.0)
+	a.set_meta("facing", 1)
+	await get_tree().create_timer(0.5, true, false, true).timeout
+
+
+func limper_turns() -> void:
+	if npc.has("alis") and is_instance_valid(npc.alis):
+		npc.alis.set_meta("facing", 2)
+	await get_tree().create_timer(0.35, true, false, true).timeout
+
+
+## region_call (Ch 32): the two of them heave the worktable back onto its feet.
+func right_table() -> void:
+	var at = Vector2(560, 452)
+	if _worktable != null and is_instance_valid(_worktable):
+		at = _worktable.position
+		var tw = create_tween()
+		tw.tween_property(_worktable, "modulate:a", 0.0, 0.3)
+		await tw.finished
+		_worktable.queue_free()
+	var t = _piece("props/table.png", at, Vector2(110, 36))
+	t.modulate = Color(0.62, 0.52, 0.46)
+	_worktable = t
+	Audio.sfx("door_thud", -10.0)
+	UI.shake(2.0)
+	await get_tree().create_timer(0.3, true, false, true).timeout

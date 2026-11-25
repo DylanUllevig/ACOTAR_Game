@@ -18,7 +18,7 @@ N The beast padded on up the drive without a backward glance. Behind me, the gat
 * Follow him up to the house.
 
 == ch06_run
-N South. All I had to do was go south, and keep going until I reached the wall.
+N South, then. Keep heading south, and sooner or later I'd hit the wall.
 N Three steps, and the world tilted and went white at the edges. Days without a real meal. I caught the bars of the gate and hung there, waiting for the ground to settle.
 @feyre/determined Only a fool runs with no food in her and no strength. I wouldn't make half a mile before he caught me.
 N Food first, then. Then run, the first good chance I got.

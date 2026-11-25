@@ -2,7 +2,7 @@
 
 == ch11_out
 N I dropped the last few feet from the wisteria and winced at the crunch of gravel. No lights in the windows but a few candles in the hall. Tamlin wasn't back.
-N My father was by the hedge, beckoning. Hurry, hurry, every movement of his hand seemed to say.
+N My father stood by the hedge, waving me over. Quickly, quickly, his hand seemed to say.
 @feyre/determined He must have horses hidden somewhere. A ship, maybe. Somewhere far away from all of this.
 > objective Go to your father.
 
@@ -12,7 +12,7 @@ N Not now. Not with him waiting.
 == ch11_puca
 N He reached the gates. They stood open, the dark wood beyond them. He turned and beckoned again, his face drawn and tight, his eyes clear for once.
 N A few more steps. To him, to freedom, to a whole new life.
-N And then he rippled, like a reflection in water. A pale bow and a quiver of pale arrows leaned against the gate. Mountain ash.
+N Then he wavered, like something seen through water. Against the gate leaned a bow and a quiver of arrows, all of the same pale wood. Ash.
 N Another ripple. A pack, stuffed with food. Another. My sisters, huddled together, weeping.
 N Then my father again, hunched and beckoning. Perfect in every detail.
 @feyre/afraid What are you?
@@ -25,7 +25,7 @@ H Watch for it to rear back before it lunges. Step aside, then strike while it r
 N A snarl tore through the night behind me, so savage that the hedges shook. The thing at the gates flared with light and fled into the trees, quick as lightning.
 N A huge hand closed round my arm. Claws pricked through every layer I wore.
 @tamlin/angry Going somewhere?
-N Fangs, long and white in the moonlight. He was going to kill me, here, and then go after my family. No more loopholes, no more mercy.
+N Teeth, long and bright under the moon. He meant to kill me here, and then hunt down my family. The bargain was broken. There'd be no mercy now.
 @feyre/afraid Please. My father-
 @tamlin/angry Your father? Look again. Weren't you told to keep your wits about you? That your own senses would lie to you here?
 
@@ -38,7 +38,7 @@ N His fangs were out, long and white in the moonlight. He looked at the empty gr
 @tamlin/angry Not bad, for a human. It would still have taken its time eating you if it had won. Weren't you told your own senses would lie to you here?
 
 == ch11_walk
-@tamlin/angry Fool. If you're going to run, at least do it by daylight. There are worse things than the Bogge in these woods at night, and that thing at the gates isn't one of them.
+@tamlin/angry Fool. If you must run, run in daylight. These woods hold worse things than the Bogge after dark, and that trick at the gate was the least of them.
 * Shout back at him. -> ch11_shout
 * Say nothing. -> ch11_mute
 

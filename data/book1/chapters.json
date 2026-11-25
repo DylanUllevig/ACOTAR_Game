@@ -352,20 +352,53 @@
   {
    "n": 28,
    "title": "Farewell",
-   "region": "mortal_lands",
-   "summary": "Feyre leaves Prythian. Her promise to her mother is fulfilled; her family is provided for.",
+   "region": "spring_manor",
+   "summary": "Feyre leaves Prythian in a gilded carriage, and wakes at a white chateau: her family, rich again, and the glamour's story of a dead aunt.",
    "characters": [
     "feyre",
-    "alis"
+    "alis",
+    "lucien",
+    "tamlin",
+    "nesta",
+    "elain",
+    "father"
    ],
    "gameplay": "",
    "in_milestone_1": false
   },
   {
    "n": 29,
-   "title": "The Manor",
+   "title": "The Chateau",
    "region": "mortal_lands",
-   "summary": "Her family is wealthy again; the cover story of Aunt Ripleigh.",
+   "summary": "Days in Elain's garden; Father among his gems; a walk to the old cottage, so small now.",
+   "characters": [
+    "feyre",
+    "elain",
+    "nesta",
+    "father"
+   ],
+   "gameplay": "",
+   "in_milestone_1": false
+  },
+  {
+   "n": 30,
+   "title": "What Nesta Knew",
+   "region": "mortal_village",
+   "summary": "Silver for the poor; Tomas and Isaac; Nesta saw through the glamour, and went as far as the Wall.",
+   "characters": [
+    "feyre",
+    "nesta",
+    "isaac",
+    "tomas"
+   ],
+   "gameplay": "",
+   "in_milestone_1": false
+  },
+  {
+   "n": 31,
+   "title": "The Ball",
+   "region": "mortal_lands",
+   "summary": "The ball, the Beddor fire, and the ride back over the Wall to an empty, wrecked manor.",
    "characters": [
     "feyre",
     "nesta",
@@ -376,36 +409,10 @@
    "in_milestone_1": false
   },
   {
-   "n": 30,
-   "title": "The Village Again",
-   "region": "mortal_village",
-   "summary": "Isaac, Clare Beddor's fate, and what Nesta knew.",
-   "characters": [
-    "feyre",
-    "nesta",
-    "isaac"
-   ],
-   "gameplay": "",
-   "in_milestone_1": false
-  },
-  {
-   "n": 31,
-   "title": "The Ball",
-   "region": "mortal_lands",
-   "summary": "A ball, then Feyre returns to a wrecked, empty manor.",
-   "characters": [
-    "feyre",
-    "nesta",
-    "elain"
-   ],
-   "gameplay": "",
-   "in_milestone_1": false
-  },
-  {
    "n": 32,
    "title": "Alis's Tale",
    "region": "spring_manor",
-   "summary": "Alis explains the curse and Amarantha. Feyre decides to go Under the Mountain.",
+   "summary": "Alis tells the truth: Amarantha, the curse, the masks, the wolves. Feyre will go Under the Mountain.",
    "characters": [
     "feyre",
     "alis"

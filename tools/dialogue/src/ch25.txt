@@ -13,7 +13,7 @@ N I sniffed it. It didn't reek of drink at all. It smelled of summers spent lyin
 N He poked me in the neck. I batted his hand away.
 @feyre/neutral I also remember you swearing that witchberries were harmless, right before I spent an afternoon falling over my own feet and seeing things.
 N He'd laughed himself sick. Tamlin had thrown him into the reflecting pool for it.
-@lucien/grim Well, this time I mean it. Tam would gut me if he caught you drinking that.
+@lucien/grim This time I'm serious. If Tam caught you with that cup, he'd have my hide.
 * "Always looking out for your own hide." Drink it down. -> ch25_drink
 * Put the goblet in his hand. -> ch25_sober
 
@@ -21,9 +21,9 @@ N He'd laughed himself sick. Tamlin had thrown him into the reflecting pool for 
 > set_flag ch25_wine
 @feyre/neutral Always looking out for your own hide.
 N I drained the glass.
-N It was like a thousand fireworks going off inside me, filling my veins with starlight. I laughed out loud, and Lucien groaned.
+N It burst through me like a sky full of fireworks, and my blood turned to light. I laughed aloud, and Lucien groaned.
 @lucien/angry Human fool.
-N But his glamour had been torn away. His hair burned like hot metal, and his russet eye smoldered like a forge. That was what I'd paint next.
+N But the glamour on him had been ripped away. His hair glowed like iron in the fire, and his russet eye burned like coals. I'd paint that next.
 @feyre/tender I'm going to paint you.
 N I giggled. I actually giggled. Before he could stop me, I'd downed a second glass.
 @lucien/grim Cauldron boil and fry me.
@@ -51,7 +51,7 @@ N I'd hardly eaten all day. I went to find the food tables first, and something 
 [f:ch25_wine] N I skipped between the dancers, twirling my skirts. No chains, no limits. Only me and the music. I wasn't faerie, but I was part of this earth, and it was part of me.
 [!f:ch25_wine] N This was nothing like the stiff line dances at home. The faeries circled the bonfire as loose as the music, free, and I loved them for it.
 N Then one of the musicians looked up from his fiddle, and I stopped.
-N His sleeves were rolled to the elbow, sweat gleaming at his throat, his chin resting on the dark wood. He'd told me once he might have been a wandering minstrel, if not a warrior or a High Lord. He could have made a fortune.
+N He'd shoved his sleeves to his elbows, and sweat shone at his throat as he tucked the fiddle under his chin. He'd once said he might have played for his supper on the roads, if fate hadn't made him a soldier and a lord. He'd have been rich.
 [f:ch25_wine] @lucien/grim I'm sorry, Tam. I left her for a moment at the food, and when I caught up she was drinking the wine, and...
 [f:ch25_wine] @tamlin/tender I'll look after her. Go and enjoy yourself.
 [f:ch25_wine] N Lucien fled.
@@ -80,7 +80,7 @@ N He only put a finger to his lips. For a few minutes, nothing. Then shapes came
 > region_call wisps true
 N Many voices, male and female, two halves of one song, calling and answering each other. Ghostly, slender slants of moonlight, waltzing across the field.
 @feyre/tender What are they?
-@tamlin/tender Will-o'-the-wisps. Spirits of air and light, come out for the solstice.
+@tamlin/tender Wisps. Little spirits made of light and breeze. They come out for the longest day.
 @feyre/tender They're beautiful.
 @tamlin/tender Dance with me, Feyre.
 @feyre/neutral Really?
@@ -93,7 +93,7 @@ N Not a question. As if he simply liked the sound of it.
 N As suddenly as they'd come, the spirits were gone, and their music with them. The stars were fading. The sky had gone a grayish violet.
 @tamlin/tender It's nearly dawn.
 N I reached up and touched his mask. It was cold, though the skin beyond it was flushed and hot. My hand shook as it grazed his jaw.
-N He drew me in until we were touching. His mouth was caught somewhere between a smile and a wince.
+N He pulled me close until nothing was between us. His mouth couldn't decide between a grin and a grimace.
 @feyre/afraid What?
 @tamlin/tender I'm thinking I might kiss you.
 * "Then do it." -> ch25_kiss
@@ -101,7 +101,7 @@ N He drew me in until we were touching. His mouth was caught somewhere between a
 
 == ch25_kiss
 @feyre/determined Then do it.
-N I blushed at my own boldness. He only gave that soft laugh, and leaned in. His lips brushed mine, testing, warm. Then again, harder, and nothing like the way he'd kissed my neck. Then he drew back to watch me.
+N My face went hot at my own nerve. He just laughed under his breath and bent his head. His mouth touched mine, warm and careful, asking. Then once more, surer, nothing like the night he'd bitten my neck. Then he pulled back to read my face.
 -> ch25_kiss_2
 
 == ch25_kiss_first
@@ -110,7 +110,7 @@ N I didn't give him time to think about it any longer. I rose up on my toes, and
 
 == ch25_kiss_2
 @feyre/neutral That's it?
-N He laughed, and kissed me fiercely. My arms went round his neck. His hands were in my hair, at my back, at my waist, as if he couldn't touch enough of me at once.
+N He laughed and kissed me hard. I wound my arms round his neck. His hands roamed, in my hair, down my back, at my waist, as though no amount of me was enough.
 @tamlin/tender Come. We'll miss it if we don't go now.
 @feyre/tender Better than will-o'-the-wisps?
 N He kissed my cheeks, my neck, my mouth, and led me into the trees, through the low mists, and up a bare hill slick with dew.
@@ -121,9 +121,9 @@ N He kissed my cheeks, my neck, my mouth, and led me into the trees, through the
 > region_call sunrise
 N We sat at the top, his arm round my shoulders, my head against his chest, while he played with the flowers in my garland. Neither of us spoke.
 N The sky turned periwinkle. The clouds filled with pink. Then the sun slipped over the edge of the world and lined everything with gold. It was like watching the world being born, with only the two of us there to see it.
-N He kissed the top of my head. I pulled back to look at him.
+N He pressed a kiss into my hair. I leaned away to see his face.
 @tamlin/tender What?
-@feyre/tender My father told me once that I should let my sisters imagine a better life. A better world. And I told him there was no such thing.
+@feyre/tender Father once said I ought to let my sisters dream of something better. A kinder world. I told him there wasn't one.
 N I ran my thumb along his mouth.
 @feyre/tender I never understood. I couldn't believe it was even possible. Until now.
 N His throat moved. And when he kissed me that time, it was deep, and slow, and sure.

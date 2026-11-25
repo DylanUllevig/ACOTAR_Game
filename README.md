@@ -10,10 +10,12 @@ a chapter index, character descriptions and short quotes only.
 
 ## Status
 
-Milestone 2: Chapters 1 to 27 play through. Milestone 1 is the winter hunt and
+Milestone 3: Chapters 1 to 32 play through. Milestone 1 is the winter hunt and
 the wolf, the cottage, the village, the Beast at the door and the ride to the
 Wall (Chapters 1 to 5); Milestone 2 is the Spring Court, from waking at its gate
-to the night before Tamlin sends her home (Chapters 6 to 27). The world and its
+to the night before Tamlin sends her home (Chapters 6 to 27); Milestone 3 is
+home across the Wall, her family's new house, the ride back to an empty manor
+and Alis's tale (Chapters 28 to 32). The world and its
 people are pixel art; dialogue portraits are painted. Every sound is generated
 in code until final audio replaces it. See `docs/DESIGN.md` for scope,
 decisions and guesses.
@@ -51,12 +53,13 @@ preset exports to `build/web/` and uses the Compatibility renderer.
 
 ## Tests
 
-Headless suite (about 90 seconds):
+Headless suite (about four minutes):
 
 ```
 godot --headless --fixed-fps 60 --path . res://tests/test_runner.tscn
 godot --headless --fixed-fps 60 --path . res://tests/test_runner.tscn -- --only story
 godot --headless --fixed-fps 60 --path . res://tests/test_runner.tscn -- --only spring
+godot --headless --fixed-fps 60 --path . res://tests/test_runner.tscn -- --only home
 ```
 
 Unit tests cover compilation, every data cross-reference, the inventory,
@@ -65,11 +68,21 @@ map discovery and the clock. Scenario tests play Chapter 1 with a bot (stealth,
 the ash arrow, the doe), defeat and retry, the whole slice from the forest to
 the Wall and the carry-over export, all of Chapters 6 to 27 the way a player
 goes (through the doors, to the people and places the objectives name, past the
-Bogge, the puca, the naga and the Attor), and a seeded balance run of 24 fights per
+Bogge, the puca, the naga and the Attor), all of Chapters 28 to 32 the same way
+(the new house, the cottage, the village, the ball, the Wall, the empty manor
+and Alis's tale), and a seeded balance run of 24 fights per
 bot: a careful bot that reads 85% of the wolf's tells must win at least 85% of
 them with about half its health left, and a careless one that reads 25% must
 lose some and finish at least 5 HP worse. Every dialogue line must also show
 in a visible box.
+
+Story text check, which needs your own copy of the book as an EPUB (never
+committed). It lists any story line or lore entry that shares nine or more
+words in a row with the book, and should list none:
+
+```
+python3 -I tools/dialogue/overlap.py <book.epub>
+```
 
 Mouse test, needs a display (`xvfb-run` on Linux). It clicks New Game, clicks
 the hotbar, slashes and shoots with the mouse, drags in the satchel and clicks

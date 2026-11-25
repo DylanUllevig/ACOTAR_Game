@@ -134,9 +134,43 @@ func at(p: Vector2) -> String:
 	return String(layers[best]) if best < layers.size() else String(layers[0])
 
 
+## Trims single-corner spikes off the painted edges before the tiles are
+## laid: a corner that only one of its four neighbours shares draws as a
+## lone triangular tooth along a road or a lawn. Opt in per region
+## (terrain.smooth_edges = true); the older regions keep their exact ground.
+var smooth_edges := false
+
+
+func _trim_spikes() -> void:
+	var out = _c.duplicate()
+	for j in rows:
+		for i in cols:
+			var v = _c[j * cols + i]
+			if v == 0:
+				continue
+			var same = 0
+			var below = 0
+			for d in [Vector2i(1, 0), Vector2i(-1, 0), Vector2i(0, 1), Vector2i(0, -1)]:
+				var x = i + d.x
+				var y = j + d.y
+				if x < 0 or y < 0 or x >= cols or y >= rows:
+					same += 1
+					continue
+				var n = _c[y * cols + x]
+				if n >= v:
+					same += 1
+				else:
+					below = maxi(below, n)
+			if same <= 1:
+				out[j * cols + i] = below
+	_c = out
+
+
 func build() -> void:
 	for ch in get_children():
 		ch.queue_free()
+	if smooth_edges:
+		_trim_spikes()
 	texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 	# base: the base terrain's seamless pattern repeated under everything
 	var base = Sprite2D.new()

@@ -7,12 +7,13 @@ const DATA := "res://data/"
 const BOOK := "res://data/book1/"
 const DIALOGUE_FILES := ["ch01", "ch02", "ch03", "ch04", "ch05", "hunt",
 	"ch06", "ch07", "ch08", "ch09", "ch10", "ch11", "ch12", "ch13", "ch14", "ch15", "ch16", "ch17", "ch18", "ch19",
-	"ch20", "ch21", "ch22", "ch23", "ch24", "ch25", "ch26", "ch27", "spring"]
+	"ch20", "ch21", "ch22", "ch23", "ch24", "ch25", "ch26", "ch27", "spring",
+	"ch28", "ch29", "ch30", "ch31", "ch32", "home"]
 ## Every action a dialogue line may run (see Dialogue._run_action).
 const ACTIONS := ["chapter_card", "objective", "journal", "place", "set_flag", "item", "take_item", "coins",
 	"heal", "heal_full", "unlock_tier", "open_shop", "sell_hides", "leave_coins", "save_checkpoint", "time",
 	"shake", "sfx", "music", "region_call", "door_burst", "fade_to_black", "start_hunt", "goto", "game_over",
-	"wall_cinematic", "end_slice", "outfit", "start_fight"]
+	"wall_cinematic", "end_slice", "outfit", "start_fight", "fade_hold", "panel"]
 
 var enemies = {}
 var encounters = {}

@@ -509,6 +509,434 @@
   {
    "file": "portrait.alis_urisk.kind__a.png",
    "job_id": "20f6873b-e128-41ec-b168-51e2d65d2064"
+  },
+  {
+   "file": "portrait.alis_worn.afraid__a.png",
+   "job_id": "105abd8a-c80d-44af-a64a-fe3818aa1d57"
+  },
+  {
+   "file": "portrait.alis_worn.angry__a.png",
+   "job_id": "53b2ed3b-2ee7-46a3-93f7-d77d344abb97"
+  },
+  {
+   "file": "portrait.alis_worn.neutral__a.png",
+   "job_id": "a91440b1-c3b9-40d5-9e45-08a007c1c113"
+  },
+  {
+   "file": "portrait.alis_worn.sad__a.png",
+   "job_id": "8678a61f-4014-4c29-881b-f69aeb11a6d5"
+  },
+  {
+   "file": "portrait.amarantha.neutral__a.png",
+   "job_id": "676ba35c-060f-4864-a938-21524f745f33"
+  },
+  {
+   "file": "portrait.elain_rich.afraid__a.png",
+   "job_id": "718c5019-e16f-46c4-9d44-06143a1a239c"
+  },
+  {
+   "file": "portrait.elain_rich.neutral__a.png",
+   "job_id": "1a3f5c29-4b41-4e7d-83bb-228f8df100a6"
+  },
+  {
+   "file": "portrait.elain_rich.sad__a.png",
+   "job_id": "7123b121-042f-4286-96d5-85e49f3f479c"
+  },
+  {
+   "file": "portrait.elain_rich.tender__a.png",
+   "job_id": "59ee6152-722e-4d24-8678-72b7f57acfe2"
+  },
+  {
+   "file": "portrait.father_rich.afraid__a.png",
+   "job_id": "dbb31022-70d1-42b3-98de-95ac4bd776f5"
+  },
+  {
+   "file": "portrait.father_rich.happy__a.png",
+   "job_id": "37b4fe13-130a-4c05-b3ad-849d5410f062"
+  },
+  {
+   "file": "portrait.father_rich.neutral__a.png",
+   "job_id": "f334638c-f856-4904-a969-84894837e133"
+  },
+  {
+   "file": "portrait.feyre_finery.afraid__a.png",
+   "job_id": "05c7cb1c-a625-4190-9d25-a0605f258a79"
+  },
+  {
+   "file": "portrait.feyre_finery.angry__a.png",
+   "job_id": "accb1a20-435f-4391-8901-9a1bd6b1bcbc"
+  },
+  {
+   "file": "portrait.feyre_finery.determined__a.png",
+   "job_id": "aa222008-b075-458f-a591-07cf6161a77c"
+  },
+  {
+   "file": "portrait.feyre_finery.neutral__a.png",
+   "job_id": "942e64f5-3c8c-4917-9184-e1b9ccda995e"
+  },
+  {
+   "file": "portrait.feyre_finery.sad__a.png",
+   "job_id": "f434f688-f8d8-4f65-9d20-dba3f34ca16c"
+  },
+  {
+   "file": "portrait.feyre_finery.tender__a.png",
+   "job_id": "cb91a0af-36cf-4431-a3c2-ecd3d1b4ca22"
+  },
+  {
+   "file": "portrait.feyre_mountain.afraid__a.png",
+   "job_id": "617687f1-28da-4be6-8586-61189ccb458d"
+  },
+  {
+   "file": "portrait.feyre_mountain.angry__a.png",
+   "job_id": "5ed1d88d-65a3-4ec4-b1cf-56ca946d81dc"
+  },
+  {
+   "file": "portrait.feyre_mountain.determined__a.png",
+   "job_id": "56992e98-2d3f-4b69-9633-c3b778f704db"
+  },
+  {
+   "file": "portrait.feyre_mountain.neutral__a.png",
+   "job_id": "245ff480-7098-463d-afb5-6142461cefab"
+  },
+  {
+   "file": "portrait.feyre_mountain.sad__a.png",
+   "job_id": "3a87390d-08b8-4279-919d-01a21856d599"
+  },
+  {
+   "file": "portrait.feyre_mountain.wounded__a.png",
+   "job_id": "cfee1551-1d1f-4a8d-bbbe-e7724400c93d"
+  },
+  {
+   "file": "portrait.feyre_ride.afraid__a.png",
+   "job_id": "895daafe-abde-4af2-bf8e-a573c7f2e568"
+  },
+  {
+   "file": "portrait.feyre_ride.angry__a.png",
+   "job_id": "b29c2c28-f036-47b6-be39-bdb527925650"
+  },
+  {
+   "file": "portrait.feyre_ride.determined__a.png",
+   "job_id": "79bc1680-8eb8-4e38-b89b-5cf8db4abf8a"
+  },
+  {
+   "file": "portrait.feyre_ride.neutral__a.png",
+   "job_id": "f564417c-95c4-4751-a2c1-6c6b04dfd306"
+  },
+  {
+   "file": "portrait.feyre_ride.sad__a.png",
+   "job_id": "af94af82-149a-4510-bf97-5963f54502ec"
+  },
+  {
+   "file": "portrait.feyre_ride.wounded__a.png",
+   "job_id": "807bad86-de9a-4df2-8f6f-96e9d2da67ce"
+  },
+  {
+   "file": "portrait.isaac_wed.neutral__a.png",
+   "job_id": "03c29981-1b3a-4655-bd7b-1bb5141525cf"
+  },
+  {
+   "file": "portrait.isaac_wife.neutral__a.png",
+   "job_id": "e1648e74-7fb4-4f36-9bbc-ed6cb5394b75"
+  },
+  {
+   "file": "portrait.nesta_rich.angry__a.png",
+   "job_id": "7b7ff0fe-e10f-457b-b610-1ab41c7720b1"
+  },
+  {
+   "file": "portrait.nesta_rich.neutral__a.png",
+   "job_id": "db76c6ff-a207-4861-92bd-4082b4b933ed"
+  },
+  {
+   "file": "portrait.nesta_rich.sad__a.png",
+   "job_id": "0a043ee6-04c1-4cd9-a290-08edc0377d7e"
+  },
+  {
+   "file": "portrait.nesta_rich.smirk__a.png",
+   "job_id": "6acc1e4e-367b-4689-85e5-e06a2e45a8ce"
+  },
+  {
+   "file": "portrait.tamlin_free.neutral__a.png",
+   "job_id": "e5d20b3c-d196-491a-8a73-3df0511171b5"
+  },
+  {
+   "file": "portrait.tomas.neutral__a.png",
+   "job_id": "568f5604-6577-4a53-a813-92c226bade1a"
+  },
+  {
+   "file": "px.acolyte.png",
+   "job_id": "b54e3b0c-b677-4181-b0c1-5161db64666b"
+  },
+  {
+   "file": "px.barn.png",
+   "job_id": "d9c347c7-6a75-4d76-875c-4cd587f49bf6"
+  },
+  {
+   "file": "px.barn_summer.png",
+   "job_id": "093f059e-a525-4c7f-b9c0-f8c100235c63"
+  },
+  {
+   "file": "px.beast.png",
+   "job_id": "291fea81-9cbe-4e74-91d9-418cf98be4bb"
+  },
+  {
+   "file": "px.carriage.png",
+   "job_id": "4932af46-7e8b-4146-bb09-1fd9222e958d"
+  },
+  {
+   "file": "px.chateau.png",
+   "job_id": "2a922d52-2bdb-4c76-931b-c419a54dc82a"
+  },
+  {
+   "file": "px.chateau_furniture.png",
+   "job_id": "48e925f2-59ae-4673-b7f0-e37a4dee42ab"
+  },
+  {
+   "file": "px.chateau_garden.png",
+   "job_id": "77469f97-d05f-477b-a6e5-54938c1f2658"
+  },
+  {
+   "file": "px.cottage_family.png",
+   "job_id": "a1e03e3f-5181-4745-be8e-0a042341174c"
+  },
+  {
+   "file": "px.cottage_family_summer.png",
+   "job_id": "8f8555be-6106-40e8-aa24-c9bbdc6da508"
+  },
+  {
+   "file": "px.critters.png",
+   "job_id": "ccadd2e4-e055-4f07-ae6b-42b7c293a032"
+  },
+  {
+   "file": "px.doe.png",
+   "job_id": "0d55fe43-8e5d-4bdb-95b7-e2d384242b42"
+  },
+  {
+   "file": "px.elain.png",
+   "job_id": "9fd081bb-a7b0-4bb1-9f8c-dccdd536a667"
+  },
+  {
+   "file": "px.elain_rich.png",
+   "job_id": "ccbf3a02-b456-45ea-a293-1feb90f4af62"
+  },
+  {
+   "file": "px.father.png",
+   "job_id": "da953b6c-067a-4d26-a76d-64f221db2816"
+  },
+  {
+   "file": "px.father_rich.png",
+   "job_id": "c8712029-7603-4a77-aba4-91bad8c9c1b8"
+  },
+  {
+   "file": "px.feyre.png",
+   "job_id": "87e990ec-33cf-45c0-a44c-fb4c44fac630"
+  },
+  {
+   "file": "px.feyre_chunky_a.png",
+   "job_id": "2b5ef50f-d51b-419f-862a-6c4d88994555"
+  },
+  {
+   "file": "px.feyre_chunky_b.png",
+   "job_id": "bd46def5-2de3-4ff9-98b6-ef338cb2a5d8"
+  },
+  {
+   "file": "px.feyre_finery.png",
+   "job_id": "e6d06f0c-02d2-40ea-95a4-f6ff0633c0c3"
+  },
+  {
+   "file": "px.feyre_ride.png",
+   "job_id": "08f6b3c4-970c-4652-9a0b-436dc7235d6d"
+  },
+  {
+   "file": "px.footman.png",
+   "job_id": "f1322fc8-19ad-4c85-be9a-257c08fc610a"
+  },
+  {
+   "file": "px.forest_plants.png",
+   "job_id": "af043d2c-8502-4b81-96c7-594bcb5c37e2"
+  },
+  {
+   "file": "px.guest_gent.png",
+   "job_id": "f9445324-6140-4845-9f7b-49a418e548e7"
+  },
+  {
+   "file": "px.guest_lady.png",
+   "job_id": "1da1911f-2d84-4d30-9a20-b2670fd1280e"
+  },
+  {
+   "file": "px.hare.png",
+   "job_id": "acc5c7bd-a3cd-42fd-bc61-baae7174ac91"
+  },
+  {
+   "file": "px.house_a.png",
+   "job_id": "dbcf122f-bcf7-473d-ab3e-49104f36fa5c"
+  },
+  {
+   "file": "px.house_a_summer.png",
+   "job_id": "7d546529-cb1f-4b7c-9a48-07815618d742"
+  },
+  {
+   "file": "px.house_b.png",
+   "job_id": "558e15bc-137b-4f1a-ae70-7e0c30f5fea0"
+  },
+  {
+   "file": "px.house_b_summer.png",
+   "job_id": "3e939435-3fa4-4d49-be57-df770a59d037"
+  },
+  {
+   "file": "px.interior.png",
+   "job_id": "c258e622-aa5d-4540-b0ae-3d257af8627a"
+  },
+  {
+   "file": "px.isaac.png",
+   "job_id": "9d4a4540-7481-4c98-a531-0de8b4cef6f5"
+  },
+  {
+   "file": "px.isaac_summer.png",
+   "job_id": "65aea339-592b-4695-867d-a4c833457c87"
+  },
+  {
+   "file": "px.isaac_wife.png",
+   "job_id": "021744c9-f62d-41dd-9372-730d76ee3a20"
+  },
+  {
+   "file": "px.maid.png",
+   "job_id": "480a190d-3d6b-4282-8745-4a0faffe4506"
+  },
+  {
+   "file": "px.manor_furniture2.png",
+   "job_id": "cb5f2b29-8e3a-43ca-b041-a2f72cd190a3"
+  },
+  {
+   "file": "px.mare.png",
+   "job_id": "63724f47-f4dc-46a9-aa07-e8b180a176f2"
+  },
+  {
+   "file": "px.mercenary.png",
+   "job_id": "a989bd61-8a06-47eb-bd18-7d2060b8c53a"
+  },
+  {
+   "file": "px.nesta.png",
+   "job_id": "7a9e585b-179e-4eec-b34d-e7216f1c908d"
+  },
+  {
+   "file": "px.nesta_rich.png",
+   "job_id": "f35dce6f-4520-49a5-95dc-15894f8f6045"
+  },
+  {
+   "file": "px.spring_extras.png",
+   "job_id": "ef252eaf-dd43-4df3-a24c-7c53e30df2d0"
+  },
+  {
+   "file": "px.summer_extras.png",
+   "job_id": "4b9b3d1f-edb0-4ba4-92df-dcd661fd4a88"
+  },
+  {
+   "file": "px.tomas.png",
+   "job_id": "cf5cbcce-4a72-4fde-8239-f337ac8ed97c"
+  },
+  {
+   "file": "px.village_details.png",
+   "job_id": "cd40bcac-f4a0-4343-bf69-03463715cfc3"
+  },
+  {
+   "file": "px.village_details_summer.png",
+   "job_id": "9ab6dcac-7406-4d68-8ac5-e309bc05cdb8"
+  },
+  {
+   "file": "px.village_props_summer.png",
+   "job_id": "d979f4a5-8729-4917-ad83-4f9717c04100"
+  },
+  {
+   "file": "px.villager.png",
+   "job_id": "3fa5fa4b-8e42-401c-9304-a4314a35be45"
+  },
+  {
+   "file": "px.villager_summer.png",
+   "job_id": "46f97fba-cd94-45d8-91c7-9367d392fb1a"
+  },
+  {
+   "file": "px.villager_woman.png",
+   "job_id": "7888cc34-882d-4f73-af35-1db9894c9766"
+  },
+  {
+   "file": "px.villager_woman_summer.png",
+   "job_id": "912fbdaf-a4dc-4640-ae94-9f4351f9a19b"
+  },
+  {
+   "file": "px.wolf.png",
+   "job_id": "afade59e-e579-434e-b63a-33ac6cfea1f3"
+  },
+  {
+   "file": "px.wreckage.png",
+   "job_id": "c7ac2ef2-43e1-419d-80a3-d9d2af47d590"
+  },
+  {
+   "file": "px.feyre_gown.png",
+   "job_id": "bd9bba22-7617-47b0-bd8e-989fdf464f53"
+  },
+  {
+   "file": "px.elain_gown.png",
+   "job_id": "0803603c-386a-42fa-b441-227a0707328c"
+  },
+  {
+   "file": "px.feyre_garden.png",
+   "job_id": "a081ccde-e386-4f06-8f64-751e7dfc27e9"
+  },
+  {
+   "file": "portrait.feyre_gown.neutral__a.png",
+   "job_id": "ee828a52-8f4f-4f75-8ed1-f668645111a5"
+  },
+  {
+   "file": "portrait.feyre_garden.neutral__a.png",
+   "job_id": "6b47a61f-177a-43ee-8821-0b6059276d6a"
+  },
+  {
+   "file": "panel.tale_emissary.png",
+   "job_id": "4cb97d06-e0eb-462e-9c68-01e45ec5ae50"
+  },
+  {
+   "file": "panel.tale_poison.png",
+   "job_id": "17c2c79c-64ea-4e6f-8612-5d5f072378d3"
+  },
+  {
+   "file": "panel.tale_masks.png",
+   "job_id": "f1d1f705-63ba-420e-8b06-54e0a359245b"
+  },
+  {
+   "file": "portrait.feyre_gown.sad__a.png",
+   "job_id": "6c337b82-83f7-4d93-a183-723a9d9d0066"
+  },
+  {
+   "file": "portrait.feyre_gown.tender__a.png",
+   "job_id": "535f9f06-bd9f-4291-b09d-3ed62f941d2d"
+  },
+  {
+   "file": "portrait.feyre_garden.sad__a.png",
+   "job_id": "4d1eafc9-6729-441d-8aeb-6e035271894d"
+  },
+  {
+   "file": "portrait.feyre_garden.afraid__a.png",
+   "job_id": "56219795-e83b-4bf9-8ad8-9624d35a96d6"
+  },
+  {
+   "file": "portrait.feyre_garden.tender__a.png",
+   "job_id": "8bd9693a-1be6-455d-9903-88316a51b36e"
+  },
+  {
+   "file": "panel.tale_sister.png",
+   "job_id": "6849dd3d-0702-4dac-bae5-03db46f54894"
+  },
+  {
+   "file": "panel.tale_wolves.png",
+   "job_id": "8d61f6f5-66a9-4d47-8ad6-42fdec8f297a"
+  },
+  {
+   "file": "panel.tale_mountain.png",
+   "job_id": "71fbff12-fcbb-4a28-8a40-7e5a4e3b49a4"
+  },
+  {
+   "file": "item.silver_purse__a.png",
+   "job_id": "8fb91dcd-7abb-4637-b1de-ee109e635a73"
   }
  ]
 }

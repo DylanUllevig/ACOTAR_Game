@@ -1,0 +1,937 @@
+{
+ "schema": 2,
+ "notes": "Line forms: {n} Feyre's narration, first person past tense, shown in italics; {s,e,t} a line spoken aloud (speaker, portrait expression, text); {hint} a game tip on its own card; {choices:[{t,goto,do}]}; {do:[actions]}; {goto}. Any line or choice may carry if_flag, if_not_flag, if_item, if_not_item or if_chapter. Wording is written for the game; the few short book lines kept are listed in quotes.json.",
+ "scenes": {
+  "ch31_ball": {
+   "lines": [
+    {
+     "do": [
+      {
+       "type": "set_flag",
+       "flag": "ch31_ball"
+      },
+      {
+       "type": "chapter_card",
+       "n": 31
+      },
+      {
+       "type": "place",
+       "id": "chateau"
+      }
+     ]
+    },
+    {
+     "n": "The ball was a blur of waltzes and jewels and toasts raised in my honor, by people who wouldn't have crossed the road to spit on me a year ago."
+    },
+    {
+     "n": "For Elain's sake, I smiled. She was everywhere at once, greeting every guest herself and dancing with every important son in the county, as if she'd been born to it. Perhaps she had."
+    },
+    {
+     "n": "But Nesta's words kept circling back. To the ends of the earth. I had gone that far for my family once. I hadn't even tried for him."
+    },
+    {
+     "do": [
+      {
+       "type": "objective",
+       "text": "Find Nesta. She's keeping to the windows."
+      }
+     ]
+    }
+   ]
+  },
+  "ch31_suitor": {
+   "lines": [
+    {
+     "do": [
+      {
+       "type": "set_flag",
+       "flag": "ch31_suitor"
+      }
+     ]
+    },
+    {
+     "n": "I'd barely reached Nesta's side when a young man in a very high collar stepped into our path and bowed far too low."
+    },
+    {
+     "s": "suitor",
+     "e": "neutral",
+     "t": "Miss Archeron. Forgive me, I couldn't help overhearing about your late aunt's estate. Very considerable, I understand..."
+    },
+    {
+     "s": "nesta",
+     "e": "neutral",
+     "t": "Was it you who couldn't help it, or your mother?"
+    },
+    {
+     "n": "He went red to the ears. Nesta simply went on looking at him, the way she'd look at a stain on a tablecloth, until he remembered someone across the room he urgently needed to see."
+    },
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "That's the fourth."
+    },
+    {
+     "s": "nesta",
+     "e": "smirk",
+     "t": "The fifth. You weren't counting the one with the mustache."
+    },
+    {
+     "n": "So I stayed by her, and let her frighten them off one by one, and watched the dancers turn."
+    },
+    {
+     "do": [
+      {
+       "type": "objective",
+       "text": "Last until the small hours, then slip away upstairs."
+      }
+     ]
+    }
+   ]
+  },
+  "ch31_elain_ball": {
+   "lines": [
+    {
+     "n": "Elain spun past in the arms of somebody's son, flushed and laughing. She caught my eye over his shoulder and beamed, as if this whole night were a present she'd wrapped with her own two hands. In a way, it was."
+    }
+   ]
+  },
+  "ch31_father_ball": {
+   "lines": [
+    {
+     "s": "father",
+     "e": "happy",
+     "t": "Gentlemen, my youngest. Home from the far end of the earth, and twice the woman she was when she left us."
+    },
+    {
+     "n": "The merchants around him bowed. I'd been introduced to every one of them, and had already forgotten every name."
+    }
+   ]
+  },
+  "ch31_guests": {
+   "lines": [
+    {
+     "s": "lady",
+     "e": "neutral",
+     "t": "Eight months nursing some dying aunt up north, and look at her. Brown as a dairymaid."
+    },
+    {
+     "s": "gentleman",
+     "e": "neutral",
+     "t": "A dairymaid with a fortune, my dear. I'd forgive a great many freckles for that."
+    },
+    {
+     "n": "I kept my back to them, and my smile on."
+    }
+   ]
+  },
+  "ch31_not_yet": {
+   "lines": [
+    {
+     "n": "Not yet. I'd promised Elain I would last until midnight at least, and the only safe harbor in this room was Nesta."
+    }
+   ]
+  },
+  "ch31_late": {
+   "lines": [
+    {
+     "do": [
+      {
+       "type": "set_flag",
+       "flag": "ch31_late"
+      }
+     ]
+    },
+    {
+     "n": "Two in the morning, and the party showed no sign of ending. Father held court among his merchants. Elain glowed in a ring of pretty friends. Nesta had slipped out at midnight without a word to anyone, and I said no goodbyes either when I finally crept upstairs."
+    },
+    {
+     "n": "I lay awake in the heat with the music still thudding up through the floor, and the thought I'd been outrunning all night finally caught me."
+    },
+    {
+     "n": "I had known something was wrong. Not only the blight: something deadly was gathering against him, and I had stopped asking. It had been such a relief to put down the hunted animal in me, the part that had lived from one hour to the next. I let him send me home. I never pieced together what I'd learned of the blight, or of Amarantha. I never tried to save him."
+    },
+    {
+     "n": "I never even told him that I loved him. Lucien had seen it. That was what had been in his voice on my last morning. Not scorn. Disappointment."
+    },
+    {
+     "do": [
+      {
+       "type": "fade_hold",
+       "text": "The next afternoon."
+      },
+      {
+       "type": "goto",
+       "chapter": 31,
+       "hour": 13,
+       "outfit": "feyre_finery",
+       "region": "chateau_dining",
+       "spawn": "lunch"
+      }
+     ]
+    }
+   ]
+  },
+  "ch31_lunch": {
+   "lines": [
+    {
+     "do": [
+      {
+       "type": "set_flag",
+       "flag": "ch31_lunch"
+      }
+     ]
+    },
+    {
+     "n": "The next afternoon we sat down to lunch, all four of us heavy-eyed and quiet. I thanked Father and Elain for the ball, and dodged Father's hopeful questions about the young men I'd danced with."
+    },
+    {
+     "n": "The heat had arrived all at once overnight. I leaned my chin on one hand and fanned myself with the other. At the manor the air had always been as mild as a May morning."
+    },
+    {
+     "s": "father",
+     "e": "neutral",
+     "t": "I've half a mind to buy the Beddor estate. It will go up for sale before long, now there's no one to inherit it. Good land, too. One of you might want a house of your own there one day."
+    },
+    {
+     "n": "Elain nodded along, the only one of us listening. I looked up."
+    },
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "What happened to the Beddors?"
+    },
+    {
+     "s": "elain",
+     "e": "sad",
+     "t": "Oh, it was horrible. Their house burned down in the night, with everyone inside. The family, the servants, all of them. They never found Clare, but..."
+    },
+    {
+     "n": "She looked down at her plate."
+    },
+    {
+     "s": "elain",
+     "e": "sad",
+     "t": "It happened just the day before you came back to us."
+    },
+    {
+     "s": "feyre",
+     "e": "afraid",
+     "t": "Clare Beddor."
+    },
+    {
+     "s": "elain",
+     "e": "neutral",
+     "t": "Clare. She was a friend of ours, years ago, before we lost everything. You remember."
+    },
+    {
+     "n": "I nodded. I could feel Nesta watching me."
+    },
+    {
+     "n": "It couldn't be. It had to be chance. Because the alternative... In Tamlin's dining room, with Rhysand's mind pressing at mine, I had needed a name. Any name but my own. And I had given him hers."
+    },
+    {
+     "n": "He had not forgotten it."
+    },
+    {
+     "do": [
+      {
+       "type": "shake",
+       "strength": 3
+      }
+     ]
+    },
+    {
+     "n": "My stomach lurched. I pressed a trembling hand to my eyes and made myself breathe."
+    },
+    {
+     "s": "father",
+     "e": "afraid",
+     "t": "Feyre?"
+    },
+    {
+     "n": "What had been done? At the Beddors' house, and beyond the Wall?"
+    },
+    {
+     "s": "father",
+     "e": "afraid",
+     "t": "Feyre, what on earth..."
+    },
+    {
+     "s": "nesta",
+     "e": "angry",
+     "t": "Quiet."
+    },
+    {
+     "n": "I shoved down the guilt, and the disgust, and the terror. I had to know if it was chance, or whether Clare could still be saved. And if something had come here, into the mortal lands, then the Spring Court... the creatures Tamlin had been so afraid of... the blight eating through their magic..."
+    },
+    {
+     "n": "Faeries. They had crossed the Wall, and burned a house full of people, and left no trace behind."
+    },
+    {
+     "n": "I dropped my hand, and met Nesta's eyes."
+    },
+    {
+     "s": "feyre",
+     "e": "determined",
+     "t": "Listen to me very carefully. Everything I told you stays secret. You don't come looking for me. You don't say my name to anyone, ever again."
+    },
+    {
+     "s": "father",
+     "e": "afraid",
+     "t": "What are you talking about?"
+    },
+    {
+     "n": "Elain looked from me to Nesta and back. Nesta didn't look away from me at all."
+    },
+    {
+     "s": "feyre",
+     "e": "determined",
+     "t": "I think something very bad may be happening in Prythian."
+    },
+    {
+     "s": "elain",
+     "e": "afraid",
+     "t": "Prythian!"
+    },
+    {
+     "n": "Nesta raised a hand, and the other two quieted. Whatever orders to flee Tamlin had woven into their glamours, I wouldn't bet my family's lives on them. Not with Clare stolen, and her whole household burned in their beds, all because of a name I'd given."
+    },
+    {
+     "s": "feyre",
+     "e": "determined",
+     "t": "If you won't go, then pay for guards. Pay men to keep watch on the Wall, and the woods, and the village."
+    },
+    {
+     "n": "I got to my feet."
+    },
+    {
+     "s": "feyre",
+     "e": "determined",
+     "t": "And the moment anything seems wrong, any rumour that the Wall has been crossed, anything odd at all, you take a ship and leave. Sail south, as far as the ships go. Somewhere no faerie would bother with."
+    },
+    {
+     "n": "Father and Elain blinked slowly, as if they were coming up out of a deep sleep. Nesta was already out of her chair."
+    },
+    {
+     "do": [
+      {
+       "type": "journal",
+       "id": "lore_beddors"
+      },
+      {
+       "type": "objective",
+       "text": "Go up to your room. Nesta is following."
+      }
+     ]
+    }
+   ]
+  },
+  "ch31_change": {
+   "lines": [
+    {
+     "do": [
+      {
+       "type": "set_flag",
+       "flag": "ch31_change"
+      }
+     ]
+    },
+    {
+     "s": "nesta",
+     "e": "neutral",
+     "t": "The Beddors. It should have been our house that burned. You lied to those creatures, didn't you? The ones who came for your High Lord. You gave them someone else's name."
+    },
+    {
+     "n": "I nodded. I could see her mind working behind her eyes, laying the pieces out in rows."
+    },
+    {
+     "s": "nesta",
+     "e": "neutral",
+     "t": "Are they coming here? To our side of the Wall?"
+    },
+    {
+     "s": "feyre",
+     "e": "afraid",
+     "t": "I don't know. I don't understand any of it. All they'd tell me was that a sickness has spread through their lands. It drains their magic, or drives them mad. It's torn their borders open, and it kills, when it's bad enough."
+    },
+    {
+     "s": "feyre",
+     "e": "afraid",
+     "t": "It was moving again, they said. The last I heard, it was nowhere near us. But if the Spring Court is falling, the blight must be close. And Tamlin was one of the last things holding back the other courts. The deadly ones. I think he's in danger."
+    },
+    {
+     "n": "I began wrenching at my buttons. Nesta came and freed the ones behind me, then fetched a thick tunic, trousers and boots from the wardrobe. I dressed, and I was plaiting my hair out of my face when she spoke."
+    },
+    {
+     "do": [
+      {
+       "type": "outfit",
+       "id": "feyre_ride"
+      }
+     ]
+    },
+    {
+     "s": "nesta",
+     "e": "neutral",
+     "t": "We don't need you here, Feyre. Don't look back."
+    },
+    {
+     "n": "I laced my boots and took up the hunting knives I'd bought in the village without telling anyone."
+    },
+    {
+     "s": "nesta",
+     "e": "neutral",
+     "t": "Father told you once never to come back. Now I'm telling you. We can look after ourselves."
+    },
+    {
+     "n": "Once, I'd have heard an insult in that. Now I understood what she was giving me."
+    },
+    {
+     "do": [
+      {
+       "type": "item",
+       "id": "hunting_knife"
+      }
+     ],
+     "if_not_item": "hunting_knife"
+    },
+    {
+     "do": [
+      {
+       "type": "item",
+       "id": "bow"
+      }
+     ],
+     "if_not_item": "bow"
+    },
+    {
+     "do": [
+      {
+       "type": "item",
+       "id": "arrow",
+       "n": 20
+      }
+     ]
+    },
+    {
+     "n": "I belted on the knives, slung a quiver across my back, and took up my bow. Not one of the arrows was ash."
+    },
+    {
+     "s": "feyre",
+     "e": "determined",
+     "t": "They can lie. Faeries can lie, and iron doesn't trouble them at all. But ash wood works. Take my money and buy a whole grove of it, and let Elain look after it."
+    },
+    {
+     "n": "Nesta shook her head. Her hand had gone to her wrist, to the iron bracelet she still wore."
+    },
+    {
+     "s": "nesta",
+     "e": "neutral",
+     "t": "And what will you do when you get there? He's a High Lord. You're a mortal girl with a bow."
+    },
+    {
+     "n": "It wasn't an insult either. It was a question, from a mind that never stopped weighing things."
+    },
+    {
+     "s": "feyre",
+     "e": "determined",
+     "t": "I don't care. I've got to try."
+    },
+    {
+     "n": "I threw the door open. Nesta didn't move. She wouldn't say goodbye; she had never been any better at partings than I was."
+    },
+    {
+     "n": "But I turned back to her anyway."
+    },
+    {
+     "s": "feyre",
+     "e": "tender",
+     "t": "There's a better world, Nesta. Out there somewhere, waiting for you. And if it's ever safe, if things ever get better, I'll come and find you."
+    },
+    {
+     "n": "It was all I had to give her. Nesta squared her shoulders."
+    },
+    {
+     "s": "nesta",
+     "e": "smirk",
+     "t": "Spare me. I doubt I'd care much for faeries."
+    },
+    {
+     "n": "I raised a brow. She lifted one shoulder."
+    },
+    {
+     "s": "nesta",
+     "e": "neutral",
+     "t": "Write when it's safe. And if that day comes, Father and Elain can have this house. I mean to find out what else the world holds. What a woman might make of herself with money behind her, and a name nobody laughs at."
+    },
+    {
+     "n": "No limits. There would be no limits to what Nesta might become, once she found a place that was her own. I prayed I'd be lucky enough to see it."
+    },
+    {
+     "do": [
+      {
+       "type": "objective",
+       "text": "Go down to the front steps."
+      }
+     ]
+    }
+   ]
+  },
+  "ch31_elain": {
+   "lines": [
+    {
+     "do": [
+      {
+       "type": "set_flag",
+       "flag": "ch31_elain"
+      }
+     ]
+    },
+    {
+     "n": "To my surprise, Elain was waiting at the foot of the steps with a saddled horse and a satchel already packed with food. Father was nowhere to be seen."
+    },
+    {
+     "n": "She threw her arms around me and held on tight."
+    },
+    {
+     "s": "elain",
+     "e": "sad",
+     "t": "It's come back to me. All of it."
+    },
+    {
+     "s": "feyre",
+     "e": "tender",
+     "t": "Keep watch. Every one of you."
+    },
+    {
+     "s": "elain",
+     "e": "sad",
+     "t": "I wanted us to see the tulip fields together."
+    },
+    {
+     "n": "I wiped her tears away with my thumbs, learning her lovely face by heart."
+    },
+    {
+     "s": "feyre",
+     "e": "tender",
+     "t": "Maybe someday."
+    },
+    {
+     "n": "Another promise I'd be lucky to keep."
+    },
+    {
+     "do": [
+      {
+       "type": "item",
+       "id": "bread",
+       "n": 4
+      },
+      {
+       "type": "item",
+       "id": "venison_strip",
+       "n": 3
+      },
+      {
+       "type": "objective",
+       "text": "Mount the horse."
+      }
+     ]
+    }
+   ]
+  },
+  "ch31_away": {
+   "lines": [
+    {
+     "do": [
+      {
+       "type": "set_flag",
+       "flag": "ch31_away"
+      },
+      {
+       "type": "region_call",
+       "method": "ride_off"
+      }
+     ]
+    },
+    {
+     "n": "Elain was still weeping when I kicked the horse into a gallop down the drive, between the burnt-out lanterns from the ball. I couldn't face another goodbye with Father."
+    },
+    {
+     "n": "North. Straight north to the Wall, and then through it, however I could. I needed to see for myself what had happened. I needed him to hear what I felt, while there was still time."
+    },
+    {
+     "do": [
+      {
+       "type": "fade_hold",
+       "text": "North."
+      },
+      {
+       "type": "goto",
+       "chapter": 31,
+       "hour": 9,
+       "region": "summer_wall",
+       "spawn": "south"
+      }
+     ]
+    }
+   ]
+  },
+  "ch31_ride": {
+   "lines": [
+    {
+     "do": [
+      {
+       "type": "set_flag",
+       "flag": "ch31_ride"
+      },
+      {
+       "type": "place",
+       "id": "the_wall"
+      }
+     ]
+    },
+    {
+     "n": "I rode until it was too dark to see, slept in snatches, and was in the saddle again before first light. On through the summer forest, green and thick and humming with life, for two whole days."
+    },
+    {
+     "do": [
+      {
+       "type": "objective",
+       "text": "Ride north to the Wall."
+      }
+     ]
+    }
+   ]
+  },
+  "ch31_wall": {
+   "lines": [
+    {
+     "do": [
+      {
+       "type": "set_flag",
+       "flag": "ch31_wall"
+      },
+      {
+       "type": "region_call",
+       "method": "horse_balks"
+      }
+     ]
+    },
+    {
+     "n": "And then the humming stopped. Every bird, every insect, all at once."
+    },
+    {
+     "n": "I reined back to a walk and scanned the undergrowth for a shimmer, anything at all. Nothing. Nothing, until the mare flung her head up and dug in her hooves, and I nearly went over her neck."
+    },
+    {
+     "n": "She would not take one more step. I slid down, hardly breathing, and reached out."
+    },
+    {
+     "do": [
+      {
+       "type": "region_call",
+       "method": "touch_wall"
+      }
+     ]
+    },
+    {
+     "n": "The air stopped my hand. Smooth, and cool, and utterly unyielding."
+    },
+    {
+     "n": "There it was, cutting clean through the forest. The Wall. Invisible, and absolute."
+    },
+    {
+     "n": "But faeries came and went across it, through holes, the stories said. So I took the reins and set off along it, east, reaching out every so often to make sure it was still there."
+    },
+    {
+     "do": [
+      {
+       "type": "objective",
+       "text": "Lead the horse east along the Wall, and look for a way through."
+      }
+     ]
+    }
+   ]
+  },
+  "ch31_camp": {
+   "lines": [
+    {
+     "do": [
+      {
+       "type": "set_flag",
+       "flag": "ch31_camp"
+      },
+      {
+       "type": "time",
+       "hour": 20.5
+      }
+     ]
+    },
+    {
+     "n": "The light went long and gold, and then gray, and still the Wall ran on. When I couldn't see my own hand against it anymore, I stopped in a little clearing, hobbled the horse, and built a fire."
+    },
+    {
+     "n": "It was the longest night of my life. Longer than any I'd spent at the Spring Court."
+    },
+    {
+     "do": [
+      {
+       "type": "region_call",
+       "method": "eyes_come"
+      }
+     ]
+    },
+    {
+     "n": "Out past the edge of the firelight, the dark had eyes in it."
+    },
+    {
+     "do": [
+      {
+       "type": "objective",
+       "text": "Keep the fire burning until dawn. (0/3)"
+      }
+     ]
+    }
+   ]
+  },
+  "ch31_feed_1": {
+   "lines": [
+    {
+     "n": "I fed the fire another armful of deadfall. The eyes blinked, and drew back a little. Then crept in again."
+    }
+   ]
+  },
+  "ch31_feed_2": {
+   "lines": [
+    {
+     "n": "Something circled the clearing, just beyond the light. It never made a sound. The horse shivered and stamped, and I sat with my back against her legs and an arrow on the string."
+    }
+   ]
+  },
+  "ch31_feed_3": {
+   "lines": [
+    {
+     "n": "Toward the end, a voice called my name from the trees. My father's voice. I had heard that trick before. I put another branch on the fire and didn't answer, and after a long while, it stopped."
+    }
+   ]
+  },
+  "ch31_dawn": {
+   "lines": [
+    {
+     "do": [
+      {
+       "type": "set_flag",
+       "flag": "ch31_dawn"
+      },
+      {
+       "type": "time",
+       "hour": 5.5
+      },
+      {
+       "type": "region_call",
+       "method": "eyes_go"
+      }
+     ]
+    },
+    {
+     "n": "Dawn came gray and slow, and the eyes went with the dark. I kicked earth over the embers and took up the reins again."
+    },
+    {
+     "do": [
+      {
+       "type": "objective",
+       "text": "Follow the Wall east."
+      }
+     ]
+    }
+   ]
+  },
+  "ch31_gate": {
+   "lines": [
+    {
+     "do": [
+      {
+       "type": "set_flag",
+       "flag": "ch31_gate"
+      }
+     ]
+    },
+    {
+     "n": "Late on the second day, I found them. Two mossy standing stones, facing each other across a gap in the trees, each with a faint spiral cut into its face."
+    },
+    {
+     "n": "A gate."
+    },
+    {
+     "do": [
+      {
+       "type": "objective",
+       "text": "Ride between the stones."
+      }
+     ]
+    }
+   ]
+  },
+  "ch31_through": {
+   "lines": [
+    {
+     "do": [
+      {
+       "type": "set_flag",
+       "flag": "ch31_through"
+      }
+     ]
+    },
+    {
+     "n": "This time, when I swung up and turned her head between the stones, the horse went."
+    },
+    {
+     "do": [
+      {
+       "type": "region_call",
+       "method": "ride_through"
+      }
+     ]
+    },
+    {
+     "n": "Magic stung my nose, crackling, and she bucked once, hard. And then we were through."
+    },
+    {
+     "n": "I knew these trees."
+    },
+    {
+     "do": [
+      {
+       "type": "fade_hold",
+       "text": "Prythian."
+      },
+      {
+       "type": "goto",
+       "chapter": 31,
+       "hour": 16,
+       "region": "spring_manor",
+       "spawn": "gate"
+      }
+     ]
+    }
+   ]
+  },
+  "ch31_return": {
+   "lines": [
+    {
+     "do": [
+      {
+       "type": "set_flag",
+       "flag": "ch31_return"
+      }
+     ]
+    },
+    {
+     "n": "I rode the rest of the way with an arrow nocked. Whatever hunted these woods was far worse than anything on the other side of the Wall."
+    },
+    {
+     "n": "He might be angry. He might send me straight back across the Wall. But I would tell him I'd come to help. I would tell him I loved him, and that I'd stand beside him in whatever was coming, even if I had to sit on him until he heard me out."
+    },
+    {
+     "n": "I was so busy planning how to stop him roaring that it was a while before I noticed the quiet."
+    },
+    {
+     "n": "No birds. Not one, even this close to the house. The hedges had gone shaggy, as if no one had touched them in weeks."
+    },
+    {
+     "n": "The gates stood open, but the iron was bent out of shape, as if huge hands had wrenched them apart. I left the horse there and went on foot, with the arrow still on the string."
+    },
+    {
+     "do": [
+      {
+       "type": "objective",
+       "text": "Go up to the house."
+      }
+     ]
+    }
+   ]
+  },
+  "ch31_doors": {
+   "lines": [
+    {
+     "do": [
+      {
+       "type": "set_flag",
+       "flag": "ch31_doors"
+      }
+     ]
+    },
+    {
+     "n": "Every step was far too loud on the gravel. The front doors stood wide open, and one hung crooked, torn off its top hinge."
+    },
+    {
+     "n": "There was no one to shoot. It was empty here. Utterly, perfectly empty, like a tomb."
+    },
+    {
+     "do": [
+      {
+       "type": "objective",
+       "text": "Go inside."
+      }
+     ]
+    }
+   ]
+  },
+  "ch31_wreck": {
+   "lines": [
+    {
+     "do": [
+      {
+       "type": "set_flag",
+       "flag": "ch31_wreck"
+      }
+     ]
+    },
+    {
+     "s": "feyre",
+     "e": "afraid",
+     "t": "Tam?"
+    },
+    {
+     "n": "I ran inside, and skidded on something. Broken porcelain: the remains of a vase."
+    },
+    {
+     "n": "Slowly, I turned in the entrance hall. It looked like the morning after a battle. The tapestries hung in ribbons. The marble banister was cracked through. The chandeliers lay smashed on the floor, in heaps of shattered crystal."
+    },
+    {
+     "s": "feyre",
+     "e": "afraid",
+     "t": "Tamlin?"
+    },
+    {
+     "n": "Nothing. Every window had been blown out."
+    },
+    {
+     "s": "feyre",
+     "e": "afraid",
+     "t": "Lucien?"
+    },
+    {
+     "n": "No one answered."
+    },
+    {
+     "s": "feyre",
+     "e": "sad",
+     "t": "Tam..."
+    },
+    {
+     "n": "My voice rang back at me from the empty house."
+    },
+    {
+     "n": "Alone in the wreckage, I sank to my knees."
+    },
+    {
+     "n": "He was gone."
+    },
+    {
+     "goto": "ch32_hall"
+    }
+   ]
+  }
+ }
+}

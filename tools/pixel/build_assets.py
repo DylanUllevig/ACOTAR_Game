@@ -28,7 +28,12 @@ OUT = os.path.join(ROOT, "assets", "pixel")
 
 PEOPLE = ["feyre", "nesta", "elain", "father", "isaac", "villager", "villager_woman", "acolyte", "mercenary",
           "feyre_spring", "lord_gold", "courtier_red", "housekeeper", "sentry", "lord_night",
-          "fae_reveler", "bark_servant"]
+          "fae_reveler", "bark_servant",
+          # home across the Wall (Chapters 28 to 32): summer clothes, the
+          # chateau's household and guests, the village in summer
+          "feyre_finery", "feyre_ride", "nesta_rich", "elain_rich", "father_rich", "footman", "maid",
+          "guest_gent", "guest_lady", "tomas", "isaac_summer", "isaac_wife", "villager_summer",
+          "villager_woman_summer", "feyre_gown", "elain_gown", "feyre_garden"]
 
 # creatures: source, grid of the source (cols x rows, reading order), frames
 # kept, animations (indices into the kept frames)
@@ -217,6 +222,86 @@ PROPS = {
 }
 
 
+# props sized by height: name -> (source, which shape in reading order,
+# height in art pixels, world density). The block-size guess is unreliable on
+# finely painted sheets, so these are cut at whatever block gives the height.
+PROPS_H = {
+    # the village and the cottage in summer: the winter pieces' heights
+    "house_a_summer": ("px.house_a_summer.png", 0, 169, 2),
+    "house_b_summer": ("px.house_b_summer.png", 0, 162, 2),
+    "barn_summer": ("px.barn_summer.png", 0, 173, 2),
+    "cottage_family_summer": ("px.cottage_family_summer.png", 0, 154, 2),
+    "cottage_small_summer": ("px.village_props_summer.png", 0, 91, 2),
+    "shed_summer": ("px.village_props_summer.png", 1, 83, 2),
+    "stall_red_summer": ("px.village_props_summer.png", 2, 58, 2),
+    "well_summer": ("px.village_props_summer.png", 3, 55, 2),
+    "fountain_summer": ("px.village_props_summer.png", 4, 65, 2),
+    "fence_summer": ("px.village_props_summer.png", 5, 39, 2),
+    "barrels_summer": ("px.village_props_summer.png", 6, 41, 2),
+    "crates_summer": ("px.village_props_summer.png", 7, 42, 2),
+    "cart_summer": ("px.village_props_summer.png", 8, 54, 2),
+    "lamp_post_summer": ("px.village_details_summer.png", 0, 61, 2),
+    "signpost_summer": ("px.village_details_summer.png", 1, 49, 2),
+    "woodshed_summer": ("px.village_details_summer.png", 2, 51, 2),
+    "hay_bales_summer": ("px.village_details_summer.png", 3, 44, 2),
+    "flower_barrel": ("px.village_details_summer.png", 4, 39, 2),
+    "bench_summer": ("px.village_details_summer.png", 5, 30, 2),
+    "rail_fence_summer": ("px.village_details_summer.png", 6, 34, 2),
+    "stone_wall_summer": ("px.village_details_summer.png", 7, 35, 2),
+    "wheelbarrow_summer": ("px.village_details_summer.png", 8, 34, 2),
+    "trough_summer": ("px.village_details_summer.png", 9, 29, 2),
+    "buckets_summer": ("px.village_details_summer.png", 10, 25, 2),
+    "basket_post": ("px.village_details_summer.png", 11, 43, 2),
+    # the chateau and its grounds
+    "chateau": ("px.chateau.png", 0, 196, 2),
+    "carriage": ("px.carriage.png", 0, 60, 2),
+    "carriage_trot": ("px.carriage.png", 1, 60, 2),
+    "topiary_flame": ("px.chateau_garden.png", 0, 50, 2),
+    "irises": ("px.chateau_garden.png", 1, 22, 2),
+    "tulips_elain": ("px.chateau_garden.png", 2, 22, 2),
+    "mulberry": ("px.chateau_garden.png", 3, 132, 2),
+    "glasshouse": ("px.chateau_garden.png", 4, 100, 2),
+    "lantern_post": ("px.chateau_garden.png", 5, 60, 2),
+    "bench_iron": ("px.chateau_garden.png", 6, 30, 2),
+    "dug_plot": ("px.chateau_garden.png", 7, 30, 2),
+    # the road back to the Wall
+    "whorl_stone": ("px.summer_extras.png", 0, 60, 2),
+    "whorl_stone_s": ("px.summer_extras.png", 1, 42, 2),
+    "foxgloves": ("px.summer_extras.png", 2, 32, 2),
+    "bramble_summer": ("px.summer_extras.png", 3, 52, 2),
+    "oak_summer": ("px.summer_extras.png", 4, 170, 2),
+    "mossy_log": ("px.summer_extras.png", 5, 28, 2),
+    "fire_ring": ("px.summer_extras.png", 6, 22, 2),
+    "bedroll": ("px.summer_extras.png", 7, 20, 2),
+    # the chateau's rooms, at the people's density
+    "chandelier": ("px.chateau_furniture.png", 0, 64, 1),
+    "banquet_table": ("px.chateau_furniture.png", 1, 84, 1),
+    "chair_gilded": ("px.chateau_furniture.png", 2, 56, 1),
+    "pianoforte": ("px.chateau_furniture.png", 3, 74, 1),
+    "bed_white": ("px.chateau_furniture.png", 4, 104, 1),
+    "desk_gems": ("px.chateau_furniture.png", 5, 74, 1),
+    "wardrobe_white": ("px.chateau_furniture.png", 6, 96, 1),
+    "flower_arch": ("px.chateau_furniture.png", 7, 104, 1),
+    "mirror_gilded": ("px.chateau_furniture.png", 8, 100, 1),
+    "lunch_table": ("px.chateau_furniture.png", 9, 74, 1),
+    "easel_paints": ("px.chateau_furniture.png", 10, 80, 1),
+    "vase_pedestal": ("px.chateau_furniture.png", 11, 80, 1),
+    # the manor wrecked, at the people's density
+    "wreck_chandelier": ("px.wreckage.png", 0, 46, 1),
+    "wreck_table": ("px.wreckage.png", 1, 66, 1),
+    "wreck_tapestry": ("px.wreckage.png", 2, 96, 1),
+    "wreck_statue": ("px.wreckage.png", 3, 54, 1),
+    "wreck_vase": ("px.wreckage.png", 4, 26, 1),
+    "wreck_door": ("px.wreckage.png", 5, 92, 1),
+    "wreck_chair": ("px.wreckage.png", 6, 48, 1),
+    "wreck_worktable": ("px.wreckage.png", 7, 60, 1),
+    "wreck_hearth": ("px.wreckage.png", 8, 76, 1),
+    "wreck_window": ("px.wreckage.png", 9, 84, 1),
+    "wreck_clock": ("px.wreckage.png", 10, 86, 1),
+    "wreck_shelf": ("px.wreckage.png", 11, 80, 1),
+}
+
+
 # where two pictures on a sheet touch (grass running into grass), a strip
 # cleared between them so they come out as two shapes: x0, y0, x1, y1 in
 # source pixels
@@ -279,7 +364,11 @@ def eye_points(px, kind):
 # gets wrong (it can lock onto twice or four times the real grid). Feyre is
 # 76; Fae lords stand a head taller.
 PEOPLE_HEIGHT = {"lord_gold": 86, "courtier_red": 84, "lord_night": 86, "housekeeper": 66, "sentry": 78, "feyre_spring": 76,
-                 "fae_reveler": 76, "bark_servant": 72}
+                 "fae_reveler": 76, "bark_servant": 72,
+                 "feyre_finery": 76, "feyre_ride": 76, "nesta_rich": 76, "elain_rich": 73, "father_rich": 72,
+                 "footman": 76, "maid": 68, "guest_gent": 78, "guest_lady": 74, "tomas": 84, "isaac_summer": 74,
+                 "isaac_wife": 66, "villager_summer": 67, "villager_woman_summer": 58,
+                 "feyre_gown": 76, "elain_gown": 73, "feyre_garden": 76}
 
 
 def build_people(incoming, names, meta):
@@ -367,7 +456,8 @@ POST = {"blue_awning": blue_awning}
 # props whose lit windows (or flames) get a light at night: the centre and
 # size of each warm-glass patch is recorded in the meta as "windows",
 # [x, y, size] in art pixels from the bottom middle
-GLOW = {"manor", "garden_lamp", "bonfire", "campfire", "candelabra_table"}
+GLOW = {"manor", "garden_lamp", "bonfire", "campfire", "candelabra_table", "chateau", "lantern_post", "lamp_post_summer",
+        "fire_ring", "chandelier", "house_a_summer", "house_b_summer", "cottage_family_summer", "cottage_small_summer"}
 
 
 def glow_points(px, min_area=6):
@@ -422,6 +512,91 @@ def build_props(incoming, names, meta):
         print("prop", n, px.shape[1], px.shape[0], "px", dens)
 
 
+_SHEETS = {}
+
+
+def shape_at_height(path, idx, h):
+    """Shape idx of a sheet (reading order, crumbs left out) pixelized at the
+    block that makes it h art pixels tall."""
+    if path not in _SHEETS:
+        arr = pz.load(path)
+        for x0, y0, x1, y1 in CUTS.get(os.path.basename(path), []):
+            arr[y0:y1, x0:x1, 3] = 0
+        boxes, lab, mask = pz.find_shapes(arr, 128, 5, 150)
+        rows = pz.reading_order(boxes)
+        flat = []
+        for r in rows:
+            areas = [(b[2] - b[0]) * (b[3] - b[1]) for b in r]
+            med = float(np.median(areas))
+            flat += [b for b, a in zip(r, areas) if a >= 0.2 * med]
+        _SHEETS[path] = (arr, lab, mask, flat)
+    arr, lab, mask, flat = _SHEETS[path]
+    if idx >= len(flat):
+        return None
+    b = flat[idx]
+    s = (b[2] - b[0]) / float(h)
+    px, _ = pz.pixelize_shape(arr, lab, mask, b, s, 0)
+    # the grid search settles on slightly smaller cells than asked: correct once
+    if abs(px.shape[0] - h) > max(2, h * 0.03):
+        s *= px.shape[0] / float(h)
+        px, _ = pz.pixelize_shape(arr, lab, mask, b, s, 0)
+    return px
+
+
+def build_props_h(incoming, names, meta):
+    for n in names:
+        src_name, idx, h, dens = PROPS_H[n]
+        src = os.path.join(incoming, src_name)
+        if not os.path.exists(src):
+            print("missing", src)
+            continue
+        px = shape_at_height(src, idx, h)
+        if px is None:
+            print("SKIP", n, "no shape", idx)
+            continue
+        rel = "props/%s.png" % n
+        Image.fromarray(px, "RGBA").save(os.path.join(OUT, rel))
+        m = {"size": [int(px.shape[1]), int(px.shape[0])], "px": dens}
+        if n in GLOW:
+            m["windows"] = glow_points(px)
+        elif "windows" in meta.get(rel, {}):
+            m["windows"] = meta[rel]["windows"]
+        meta[rel] = m
+        print("prop", n, px.shape[1], px.shape[0], "px", dens)
+
+
+# Indoor copies of yard props: the same art with the grass and wild flowers
+# at the foot cleared away, for kitchens and cellars. Only wood-brown and
+# grey-metal pixels are kept in the bottom third.
+INDOOR = ["crates_summer", "barrels_summer", "buckets_summer"]
+
+
+def derive_indoor(meta):
+    import colorsys
+    for n in INDOOR:
+        src = os.path.join(OUT, "props", n + ".png")
+        if not os.path.exists(src):
+            continue
+        im = Image.open(src).convert("RGBA")
+        w, h = im.size
+        px = im.load()
+        for y in range(int(h * 0.68), h):
+            for x in range(w):
+                r, g, b, a = px[x, y]
+                if a == 0:
+                    continue
+                hh, ss, vv = colorsys.rgb_to_hsv(r / 255, g / 255, b / 255)
+                woodish = (hh <= 0.125 or hh >= 0.97) and ss >= 0.12
+                metal = ss < 0.12 and 0.12 < vv < 0.8
+                if not (woodish or metal):
+                    px[x, y] = (0, 0, 0, 0)
+        name = n.replace("_summer", "_indoor")
+        im.save(os.path.join(OUT, "props", name + ".png"))
+        if "props/%s.png" % n in meta:
+            meta["props/%s.png" % name] = dict(meta["props/%s.png" % n])
+        print("indoor", name)
+
+
 def main():
     incoming = sys.argv[1]
     want = set(sys.argv[2:])
@@ -432,6 +607,8 @@ def main():
     build_people(incoming, [n for n in PEOPLE if not want or n in want], meta)
     build_creatures(incoming, [n for n in CREATURES if not want or n in want], meta)
     build_props(incoming, [n for n in PROPS if not want or n in want], meta)
+    build_props_h(incoming, [n for n in PROPS_H if not want or n in want], meta)
+    derive_indoor(meta)
     json.dump(meta, open(mp, "w"), indent=1, sort_keys=True)
 
 

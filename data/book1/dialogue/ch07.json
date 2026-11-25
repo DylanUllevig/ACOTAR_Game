@@ -195,7 +195,7 @@
     {
      "s": "feyre",
      "e": "angry",
-     "t": "My family won't last a month without me. Do you know what it's like to be hungry? Not to know where the next meal is coming from?"
+     "t": "Without me my family will starve inside a month. Have you ever gone hungry? Not known if there'd be anything to eat tomorrow?"
     },
     {
      "s": "tamlin",
@@ -427,7 +427,7 @@
     {
      "s": "alis",
      "e": "kind",
-     "t": "My master gave his word you'd live here. Live, not die. We obey him. But did you have to wreck those lovely curtains?"
+     "t": "The master promised you'd live under this roof. Live, mind, not die. His word is our law. Though you might have spared the good curtains."
     },
     {
      "n": "She threw them open on a sky still periwinkle with dawn. Another servant brought a tray: porridge, eggs, bacon, and tea richer than any I had ever tasted."
@@ -440,7 +440,7 @@
     {
      "s": "alis",
      "e": "neutral",
-     "t": "It's safe, and that's all you need to know. The house is, at least. If you go poking about the grounds, keep your wits about you."
+     "t": "You're safe. That's all you need to know. Safe in the house, anyway. If you go wandering the grounds, keep your eyes open."
     },
     {
      "s": "feyre",
@@ -520,7 +520,7 @@
      "t": "You."
     },
     {
-     "n": "Tamlin, coming down the path behind me in his fighting clothes, three long knives sheathed along his baldric now. You. I wondered if he even remembered my name."
+     "n": "Tamlin was coming down the path behind me, dressed to fight, three long knives belted across his chest. You, he'd called me. Did he even know my name?"
     },
     {
      "s": "feyre",
@@ -550,7 +550,7 @@
     {
      "s": "tamlin",
      "e": "angry",
-     "t": "Do you have some sort of problem with me?"
+     "t": "Have I done something to offend you?"
     },
     {
      "s": "feyre",
@@ -560,7 +560,7 @@
     {
      "s": "tamlin",
      "e": "angry",
-     "t": "I'm not going to kill you, Feyre. I don't break my promises."
+     "t": "I won't kill you, Feyre. I keep my word."
     },
     {
      "s": "feyre",
@@ -580,7 +580,7 @@
     {
      "s": "tamlin",
      "e": "neutral",
-     "t": "The Treaty doesn't keep us from anything but enslaving you. The wall is an inconvenience. If we cared to, we could break it and march through."
+     "t": "The Treaty only stops us from making slaves of you. The wall is a nuisance, nothing more. If we wanted to, we could tear it down and walk across."
     },
     {
      "s": "feyre",

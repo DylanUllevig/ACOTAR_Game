@@ -56,13 +56,21 @@ for sid, sc in scenes.items():
                 probs.append("%s: unknown region method %s" % (sid, a["method"]))
             if t == "start_fight" and a["id"] not in enc["encounters"]:
                 probs.append("%s: unknown fight %s" % (sid, a["id"]))
+        do = ln.get("do", [])
+        for i, a in enumerate(do):
+            if a["type"] == "fade_hold" and not any(b["type"] in ("goto", "end_slice") for b in do[i + 1:]):
+                probs.append("%s: fade_hold not followed by a goto" % sid)
+            if a["type"] == "panel" and a.get("id") != "none" and not os.path.exists(R + "assets/final/panels/%s.jpg" % a.get("id")):
+                probs.append("%s: no panel painting %s" % (sid, a.get("id")))
 # scenes the code asks for
 want = set()
 for f in glob.glob(R + "scripts/**/*.gd", recursive=True):
     src = open(f).read()
     want |= set(re.findall(r'Dialogue\.play\("([a-z0-9_]+)"\)', src))
-for b in re.findall(r'\["\w+", \d+, "\w*", "\w+", "(\w+)"\]', open(R + "scripts/world/regions/manor_in.gd").read()):
-    want.add(b)
+BEAT_FILES = [f for f in [R + "scripts/world/regions/manor_in.gd", R + "scripts/world/regions/chateau_in.gd"] if os.path.exists(f)]
+for bf in BEAT_FILES:
+    for b in re.findall(r'\["\w+", \d+, "\w*", "\w+", "(\w+)"\]', open(bf).read()):
+        want.add(b)
 for l in ["fountain", "pool", "stables", "gate"]:
     want |= {"ch08_" + l, "spring_" + l}
 for e in list(enc["encounters"].values()) + list(enc["enemies"].values()):
@@ -71,7 +79,7 @@ for e in list(enc["encounters"].values()) + list(enc["enemies"].values()):
             want.add(tr["scene"])
 missing = sorted(w for w in want if w not in scenes)
 # BEATS: the must-not flag is set in the scene's first do-line
-mi = open(R + "scripts/world/regions/manor_in.gd").read()
+mi = "".join(open(bf).read() for bf in BEAT_FILES)
 for room, ch, req, mustnot, scene in re.findall(r'\["(\w+)", (\d+), "(\w*)", "(\w+)", "(\w+)"\]', mi):
     sc = scenes.get(scene)
     if not sc:
@@ -97,6 +105,17 @@ for sid, sc in scenes.items():
             continue
         who = info.get("portrait_as", ln["s"])
         sets = ["feyre_spring", "feyre"] if who == "feyre" else [who]
+        # the portrait sets art.gd switches to by chapter
+        m = re.match(r"ch(\d+)_", sid)
+        chn = int(m.group(1)) if m else 0
+        if who == "alis" and chn >= 31:
+            sets = ["alis_worn", "alis_urisk", "alis"]
+        elif who == "alis" and chn >= 24:
+            sets = ["alis_urisk", "alis"]
+        if who in ("nesta", "elain", "father") and chn >= 28:
+            sets = [who + "_rich", who]
+        if who == "isaac" and chn >= 30:
+            sets = ["isaac_wed", who]
         e = ln.get("e", "neutral")
         have = set().union(*[faces.get(w, set()) for w in sets])
         if not have:

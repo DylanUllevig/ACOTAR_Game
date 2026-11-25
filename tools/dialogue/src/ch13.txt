@@ -4,7 +4,7 @@
 > set_flag ch13_study
 N He lifted a hand, and a hundred candles flared to life at once. Whatever the blight had taken from the others, it hadn't taken much from him.
 N Then I saw the room, and my palms went damp. Books, wall to wall, rank on rank, like a silent army. Couches, desks, rugs. All of it useless to me.
-N But it had been more than a week since I left. I could at least let them know I was safe. Warn them about the sickness that might one day cross the wall. And there was only one way to do that.
+N More than a week had gone by since I left. The least I could do was tell them I was alive. Warn them about the sickness that might creep over the wall someday. And there was only one way to get word to them.
 @tamlin/neutral Do you need anything else?
 @feyre/determined No.
 @tamlin/neutral I'll leave you to it, then.
@@ -34,10 +34,10 @@ N At the heart of it all rose one bare, lonely mountain, without snow, without l
 > journal lore_courts
 N I went back to the desk and the book I couldn't read, and the list I couldn't say, and crumpled the whole thing into a ball and threw it in the bin.
 > region_call walk_in lord_gold tamlin 560 470
-@tamlin/neutral I could help you write to them. If that's why you're in here.
+@tamlin/neutral If that's what brought you in here, I could help you with the letter.
 N I nearly knocked the chair over. He stood behind me with a stack of books in his arms.
 @feyre/angry Help? A faerie passing up the chance to laugh at an ignorant mortal?
-@tamlin/angry Why would I laugh at you for a shortcoming that isn't your fault? Let me help. I owe you for the hand.
+@tamlin/angry Why would I mock you for something nobody ever gave you the chance to learn? Let me help. I owe you for the hand.
 N Shortcoming. So it was a shortcoming.
 * Let him help. -> ch13_maybe
 * Tell him you're fine. -> ch13_fine
@@ -49,9 +49,9 @@ N I opened my mouth to say yes. Then I thought of the smear the painter had made
 == ch13_fine
 @feyre/determined I'm fine.
 @tamlin/angry You think I've nothing better to do with my time than think up ways to humiliate you? You'll let Lucien drag you out hunting, but-
-@feyre/determined Lucien doesn't pretend to be anything but what he is.
+@feyre/determined Lucien never hides what he is.
 @tamlin/angry What does that mean?
-@feyre/determined It means I don't know you. I don't know who you are, or what you are, or what you want.
+@feyre/determined It means you're a stranger to me. I can't tell who you are, or what you are, or what you're after.
 @tamlin/angry It means you don't trust me.
 @feyre/angry How could I trust a faerie? Don't you delight in tricking us and killing us?
 N His snarl set every candle guttering.
@@ -70,7 +70,7 @@ N But they never answered what I really asked. The blight, where it came from, w
 > set_flag ch13_lucien
 @lucien/smirk Come in, human.
 N His room was the colors of an autumn wood, orange and red and gold. A battered worktable covered in weapons stood where my breakfast table would be. He sat at it in his shirtsleeves, his red hair loose, cleaning a long, wicked hunting knife.
-@lucien/smirk I've been off settling some hotheads on the northern border. Got back in time to hear your little spat with Tam, and decided I was safer up here.
+@lucien/smirk I've been up north, cooling some tempers along the border. I came home just in time to catch you and Tam at each other's throats, and thought it wiser to keep out of the way up here.
 @lucien/smirk Whatever you said, he came and nearly bit my head off over lunch. Luckily for me there's trouble in the western forest, and he's gone to deal with it the way only he can.
 N Tamlin away. Good.
 @feyre/neutral It's a pity you aren't like the Suriel. Telling me anything I want to know, if I'm clever enough to snare you.
@@ -78,16 +78,16 @@ N His golden eye whirred and narrowed on me.
 @lucien/neutral I don't suppose you'll tell me what you want to know.
 @feyre/determined You have your secrets, and I have mine. But if you were a Suriel, how exactly would I trap you?
 N For a long moment I thought he'd go straight to Tamlin. Then he picked at his nails.
-@lucien/neutral I'd probably have a weakness for groves of young birch in the western woods. And freshly killed chickens. And I'd be so greedy I'd never notice the double-loop snare round the grove, waiting to pin my legs.
+@lucien/neutral If I were one, I'd likely be fond of the young birch groves in the western woods. And of chickens, fresh killed. And I'd be far too greedy to spot a double snare laid round the grove, ready to catch my legs.
 @feyre/neutral I think I prefer you as High Fae.
-@lucien/grim If I were mad enough to go after one, I'd take a bow and a full quiver. And maybe a knife just like this one.
+@lucien/grim Anyone fool enough to hunt one would want a bow, and plenty of arrows. And a knife, perhaps. Something like this.
 N He sheathed the knife and set it at the edge of the table. An offering.
 @lucien/grim And I'd be ready to run like hell once I let it go. To the nearest running water. They hate crossing it.
 @feyre/neutral But you're not mad, so you'll be here, safe and sound?
-@lucien/smirk I'll be conveniently hunting on the grounds. And with my excellent hearing, I might be generous enough to listen for a scream from the western woods. Tam would gut anyone who told you how to catch a Suriel, so it's lucky I told you nothing.
+@lucien/smirk As it happens, I'll be out hunting on the grounds. My hearing's very good, and if I heard screaming from the western woods I might even come and look. Tam would skin anyone who taught you to catch a Suriel. Good thing I've taught you nothing.
 @lucien/grim I hope your secrets are worth it.
 @feyre/determined You have superior hearing. I have a superior talent for keeping my mouth shut.
-@lucien/smirk Cauldron help me. I think I'm starting to like you. For a murdering human.
+@lucien/smirk Cauldron save me. I might be growing fond of you. For a human who kills faeries.
 > item fae_knife
 > item arrow 10
 N The cooks gave me a freshly killed hen with the most baffled looks I'd ever seen on a masked face.

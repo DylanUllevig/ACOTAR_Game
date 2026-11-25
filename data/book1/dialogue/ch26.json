@@ -43,7 +43,7 @@
     {
      "s": "feyre",
      "e": "neutral",
-     "t": "You bit my neck on Fire Night. If I can face you after that, a few kisses are nothing."
+     "t": "You bit me on Fire Night. After that, a few kisses aren't going to frighten me off."
     },
     {
      "s": "tamlin",
@@ -77,7 +77,7 @@
     {
      "s": "lucien",
      "e": "grim",
-     "t": "But now that I have your attention, Tamlin. I hate to bring truly bad news, but my contact in the Winter Court got a letter through. The sickness took two dozen of their younglings. Two dozen. All gone."
+     "t": "Since you're listening now, Tamlin. I'm sorry to be the bearer of this, but my friend in the Winter Court smuggled a letter out. The sickness killed twenty-four of their children. Twenty-four. Every one of them dead."
     },
     {
      "s": "lucien",
@@ -153,7 +153,7 @@
      "n": "Magic stung my nose. A glamour, to hide me inside his shape and his scent. Over his shoulder I watched Tamlin take a long breath, put away his claws and fangs, and set his chair upright. A baldric of knives appeared across his chest out of nothing. He didn't touch them. He only sat, and picked at his nails, as if nothing at all were happening."
     },
     {
-     "n": "Someone was coming. Someone awful enough to frighten them both. Someone who would want to hurt me, if they knew I was here."
+     "n": "A visitor was on the way. One terrible enough to scare both of them. One who would want to harm me, if he learned I was in the house."
     },
     {
      "n": "Footsteps in the hall. Even. Unhurried. Boots on marble."
@@ -173,10 +173,10 @@
      ]
     },
     {
-     "n": "No mask. He belonged to something else, like the Attor. And worse, I knew him. He'd saved me from those three faeries on Fire Night."
+     "n": "He wore no mask. He answered to someone else, the way the Attor did. And worse, I recognised him. He was the stranger who'd rescued me from the three faeries at the Rite."
     },
     {
-     "n": "He moved too gracefully, like a cat, and stopped a few yards from the High Lord. Black and gold and silver, wreathed in tendrils of night. I'd never dared to paint him. I knew now that I never would."
+     "n": "He prowled in with a cat's lazy grace and halted a short way from the High Lord. Black, gold and silver, with darkness curling off him like smoke. I'd never had the nerve to paint him, and now I knew I never would."
     },
     {
      "s": "rhysand",
@@ -194,7 +194,7 @@
     {
      "s": "rhysand",
      "e": "smirk",
-     "t": "Rhysand? Come now. Forty-nine years without a visit, and it's Rhysand? Only my prisoners and my enemies call me that."
+     "t": "Rhysand? Really? Nearly half a century since I last called, and I get Rhysand? That's what my enemies call me. And my prisoners."
     },
     {
      "n": "His grin widened, and something in it turned deadly, worse than anything I'd ever seen in Tamlin. He turned and ran an eye over Lucien. I didn't breathe."
@@ -257,7 +257,7 @@
     {
      "s": "rhysand",
      "e": "smirk",
-     "t": "Is that any way to speak to a High Lord of Prythian?"
+     "t": "Do you always talk to High Lords like that?"
     },
     {
      "n": "My heart stopped. That was why the three faeries had run, on Fire Night. And the darkness that rippled off him, the violet eyes burning like stars..."
@@ -275,7 +275,7 @@
     {
      "s": "lucien",
      "e": "angry",
-     "t": "This isn't the Night Court. You have no power here. So clear out. Amarantha's bed is getting cold."
+     "t": "You're not in the Night Court now, and you've no say here. So go. Amarantha will be missing you in her bed."
     },
     {
      "do": [
@@ -321,7 +321,7 @@
     {
      "s": "rhysand",
      "e": "smirk",
-     "t": "Besides, who do you think taught your beloved Tamlin the finer points of swords and females? You can't believe he learned it all in his father's little war-camps."
+     "t": "And who do you suppose taught your darling Tamlin how to handle a blade, and a lady? Surely you don't think his father's war-camps covered all that."
     },
     {
      "s": "tamlin",
@@ -407,7 +407,7 @@
     {
      "s": "rhysand",
      "e": "cold",
-     "t": "Draw blood from me, Lucien, and you'll learn how fast Amarantha's whore can make the whole Autumn Court bleed. Its darling Lady first of all."
+     "t": "Cut me, Lucien, and see how quickly Amarantha's whore can have the Autumn Court bleeding from every vein. Starting with its precious Lady."
     },
     {
      "n": "The color left Lucien's face, but he held his ground."
@@ -420,7 +420,7 @@
     {
      "s": "rhysand",
      "e": "cold",
-     "t": "I knew you liked your lovers lowly, Lucien. I never thought you'd stoop to mortal trash. If I were you, I'd keep your new pet far away from your father."
+     "t": "I always knew your tastes ran low, Lucien. But a mortal? Take my advice and keep your new pet well out of your father's sight."
     },
     {
      "s": "tamlin",
@@ -514,7 +514,7 @@
     {
      "s": "rhysand",
      "e": "smirk",
-     "t": "She has the most delicious thoughts about you, Tamlin."
+     "t": "Oh, the things she thinks about you, Tamlin. Delightful."
     },
     {
      "n": "And he told him. All of it. Every private thing I had ever imagined Tamlin's hands and mouth doing, said aloud in that lover's purr, while I burned with outrage and shame and still couldn't move a finger."
@@ -571,7 +571,7 @@
      "t": "Beg, and I'll consider it."
     },
     {
-     "n": "Tamlin dropped to his knees and bowed his head."
+     "n": "Tamlin knelt, and bent his head."
     },
     {
      "s": "rhysand",
@@ -579,7 +579,7 @@
      "t": "Lower."
     },
     {
-     "n": "He pressed his forehead to the floor, his hands sliding out toward Rhysand's boots. I could have wept with rage, watching my High Lord brought so low."
+     "n": "He bowed until his brow touched the floor, his hands stretched out toward Rhysand's boots. It made me want to scream, seeing my High Lord humbled like that."
     },
     {
      "s": "rhysand",
@@ -592,7 +592,7 @@
     {
      "s": "rhysand",
      "e": "neutral",
-     "t": "Is this for your sake, or hers? You're far too desperate, Tamlin. It's off-putting. Becoming High Lord made you so boring."
+     "t": "Whose sake is this for, yours or hers? All this desperation, Tamlin. It's unattractive. Being High Lord has made you dull."
     },
     {
      "s": "tamlin",
@@ -660,7 +660,7 @@
     {
      "s": "rhysand",
      "e": "smirk",
-     "t": "Well. That was entertaining. The most fun I've had in ages. I look forward to seeing the three of you Under the Mountain. I'll give Amarantha your regards."
+     "t": "Well. That was a treat. I haven't enjoyed myself this much in years. I'll look forward to seeing the three of you Under the Mountain. Amarantha will be glad to hear you're well."
     },
     {
      "do": [
@@ -696,7 +696,7 @@
      "n": "Tamlin ordered Lucien and me out, and shut the doors of the dining room behind us. I ran to my room like the coward I was. Alis was there, waiting with a cup of molten chocolate."
     },
     {
-     "n": "I tried not to hear the roaring that shook the chandeliers, or the furniture splintering below. I didn't go down to dinner. I didn't want to know if there was still a dining room to eat in. And I couldn't bring myself to paint."
+     "n": "I tried to shut out the roars that set the chandeliers trembling, and the crash of furniture breaking downstairs. I stayed away from dinner. I wasn't sure there was a dining room left to eat it in. And I couldn't face a brush."
     },
     {
      "do": [

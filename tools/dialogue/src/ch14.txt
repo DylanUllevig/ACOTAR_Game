@@ -30,11 +30,11 @@ N Run, said every mortal thing in me. Run and never look back. I kept my arrow n
 @feyre/afraid Are you one of the Suriel?
 N It went rigid. Sniffed. Then it turned, and I saw its face.
 N Dried bone, the skin forgotten or thrown away. No lips. Teeth too long in blackened gums. Slits for a nose. And eyes of swirling milky white, the white of sickness and of clean-picked bones.
-@suriel/neutral Human. Did you set this clever, wicked trap for me?
+@suriel/neutral A human. Was it you who laid this clever, cruel snare?
 @feyre/afraid Are you one of the Suriel?
 @suriel/neutral Indeed I am.
 N Its fingers clicked together, one click for every word.
-@suriel/neutral It has been an age since I looked upon a human woman. Come closer, so I might look upon my captor.
+@suriel/neutral Long ages have passed since I saw a mortal woman. Come nearer. Let me see who has caught me.
 * Step closer. -> ch14_closer
 * Stay where you are. -> ch14_stay
 
@@ -50,19 +50,19 @@ N I did no such thing.
 @suriel/neutral And which of my kin sold my secrets to you?
 @feyre/neutral None of them. My mother told me stories about you.
 @suriel/neutral Lies. I smell them on your breath. Ask your questions, human. Then free me.
-@feyre/sad Is there truly no way for me to go home?
-@suriel/neutral Not unless you wish to be killed, and your family with you. You must stay here.
+@feyre/sad Can I never go home, then?
+@suriel/neutral Not unless you want to die, and bring death to your family as well. Here you must remain.
 N Whatever shred of hope I'd been keeping shriveled up and died. Fine. Then I would learn what I could.
 @feyre/determined What do you know about Tamlin?
-@suriel/neutral Be specific, human. I know a great many things about the High Lord of the Spring Court.
+@suriel/neutral Ask plainly, human. There is much I know of the one who rules the Spring Court.
 N The ground tilted under me.
 @feyre/afraid Tamlin is a High Lord?
-@suriel/neutral You did not know. How interesting. Spring, Summer, Autumn, Winter, Dawn, Day and Night: the seven Courts, each ruled by a High Lord, each deadly in its own way. They are not merely powerful. They are Power.
+@suriel/neutral You did not know. How curious. Spring, Summer, Autumn, Winter, Dawn, Day and Night: seven Courts, and over each a High Lord, each dangerous in a different way. Their power is not a thing they carry. It is what they are.
 N That was how he'd faced the Bogge and lived. High Lord.
 @feyre/determined This blight on your magic. Where did it come from? What can be done?
 @suriel/neutral Stay with the High Lord, human. That is all you can do. Do not meddle. Do not come seeking answers after today, or the shadow over Prythian will devour you. Stay close to him, and all will be put right.
 @feyre/determined Where did it come from?
-@suriel/neutral He does not know you came, does he? His human woman, out trapping a Suriel because he cannot give her the answers she wants. But it is late, human. For the High Lord, for you, perhaps for your realm too.
+@suriel/neutral He has no idea you are here. His mortal, setting snares for a Suriel because he will not answer her. But the hour grows late, human. Late for the High Lord, late for you, and late, perhaps, for your lands.
 N His human woman. It made my teeth clench.
 @suriel/neutral Across the violent western sea lies another faerie kingdom. Hybern. Its king rules alone, with no courts beneath him. No humans live there now, though his throne is made of their bones.
 @suriel/neutral He has always hated the Treaty, hated being made to free his mortal slaves and keep to his damp green island. So a hundred years ago he sent out his deadliest commanders, as spies and courtiers and lovers, into every court in the world. And nearly fifty years ago, one of them disobeyed him. The Deceiver. And-
@@ -74,9 +74,9 @@ N It straightened.
 
 == ch14_naga
 N Everything had already gone quiet. I drew my bow back farther and scanned the trees.
-@suriel/neutral The naga. Made of shadow and hate and rot. They heard me scream, and they smell you. Free me, human, and run for the High Lord's house. Remember what I told you. Stay with him.
-N Four shapes slid out between the birches, so dark they might have been cut from a starless night. Scales, and men's bodies, and polished black talons. Here were the creatures of the bloody old stories, the ones that slipped through the wall to torment us.
-@naga/neutral The Dark Mother has sent us a gift today, brothers. And a meal.
+@suriel/neutral Naga. Things of darkness and spite and decay. My cries have drawn them, and they have your scent. Cut me loose and run for his house, human. And remember my words. Keep to his side.
+N Four figures slipped from between the birches, so black they might have been carved out of a moonless sky. Scaled hides on the shapes of men, and claws like polished jet. These were the monsters from the old bloody tales, the ones that crept over the wall to prey on us.
+@naga/neutral Look, brothers. The Dark Mother has been generous. A present, and supper besides.
 @naga/neutral Not much meat on it.
 * Scream for Lucien, and shoot the Suriel's tether. -> ch14_free
 * Back away toward the brook. -> ch14_back

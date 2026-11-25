@@ -1,0 +1,102 @@
+# Chapter 29: Days at the chateau. Elain's garden under Father's window; Nesta under the mulberry tree;
+# the purses; the walk to the old cottage, so small now, and the forest that is only a forest.
+
+== ch29_garden
+> set_flag ch29_garden
+> chapter_card 29
+N The tale of my years with Aunt Ripleigh almost told itself. I read to her every day. She taught me how a lady sits and walks and speaks, from her pillows. I nursed her until she slipped away in her sleep, a fortnight ago, and left me everything she had.
+N Everything turned out to be a great deal. The trunks that came with me held more than dresses: gold, and gems so raw and huge they could have bought a thousand estates.
+N Father had shut himself away with them in his study, the room whose window looks over Elain's garden. I could see him at his desk, weighing a rough red stone as big as a hen's egg on a little brass scale.
+N His eyes were clear again, and he moved like a man with somewhere to be. Even his limp had eased, thanks to a tonic and a salve that a passing healer had pressed on him and refused payment for. I would have loved Tamlin for that kindness alone.
+> objective Sit with Elain in her garden.
+
+== ch29_elain
+> set_flag ch29_elain
+@elain/tender These bulbs crossed the sea in a crate, from the flower farms over the water. Father says he'll take me to see them in the spring. He says the fields run on for miles, and every one of them is flowers.
+N This little garden under the window was hers alone. She'd chosen and planted every bulb and shrub, and she pulled her own weeds, though she admitted the servants carried the heavy watering cans. She'd have cried to see the gardens I'd grown used to.
+@elain/tender Come with us! Nesta won't. She says the crossing frightens her. But you and I would have such fun.
+@feyre/tender I'd like that. To see what's on the other side of the sea.
+N It surprised me how much I meant it. There was a whole world out there I had never been able to want.
+@feyre/neutral Won't next spring be the height of the season? I thought there'd be suitors lined up to the gate.
+@elain/sad There'll be other seasons. This one was... odd. Nesta won't tell you that.
+@feyre/neutral Odd how?
+@elain/sad Everyone behaved as if we'd been sick for eight years, or living abroad. As if we hadn't been three villages away, in that cottage. Not one person mentioned it. Not one.
+@elain/sad Sometimes I almost miss those years. Even being hungry, and cold. This house is so large, and Father is never free, and Nesta...
+> region_call look_at_nesta
+N She glanced over her shoulder. Nesta stood under a gnarled old mulberry tree at the edge of the lawn, looking out across the flat green fields, the summer wind tugging at her skirts. She had barely spoken to me since I came.
+@elain/neutral She didn't finish the season. She refuses every invitation now, and when my friends call she just stares at them until they make excuses and go. Maybe you could talk to her?
+N Nesta and I hadn't managed a civil conversation in years. Before I could say so:
+@elain/neutral Nesta tried to reach you, once.
+@feyre/afraid What?
+@elain/neutral She was only gone a week. Her carriage broke down halfway there, she said, so she turned back. You wouldn't know, if you never got our letters.
+N I looked across at her, so still under the branches. Had she tried to reach me, and been turned around by whatever spell Tamlin had laid on this family?
+N When I looked back, Elain was studying me.
+@elain/neutral You look so different. You sound different, too.
+N I knew. I'd caught myself in a hall mirror last night and stopped: the same face, but with a faint shimmer on it, as if all that magic had rubbed off on my skin. I dreaded the day it wore away.
+@elain/tender Did something happen, at Aunt Ripleigh's? Did you... meet someone?
+* "Just good food, and rest." -> ch29_elain_end
+* Shrug, and pull up a weed. -> ch29_elain_shrug
+
+== ch29_elain_shrug
+N I shrugged and tugged a weed out by the root.
+@feyre/neutral Just good food, and rest.
+-> ch29_elain_end2
+
+== ch29_elain_end
+@feyre/neutral Just good food, and rest.
+-> ch29_elain_end2
+
+== ch29_elain_end2
+N Elain smiled down at her tulips as if she didn't believe a word.
+> objective Pass the days. Father is in his study.
+
+== ch29_nesta_tree
+N Nesta didn't turn as I came near. She was watching the fields as if she expected something to come across them.
+N I stood beside her for a while. Neither of us said anything. Then I went back to Elain.
+
+== ch29_window
+N Through the glass, Father lifted a sapphire to the light, squinted, and wrote something in his ledger. He was humming.
+
+== ch29_study
+> set_flag ch29_study
+N One day blurred into the next. The darkness in me stayed put, and I couldn't stomach the idea of picking up a brush. So I spent my hours in Elain's garden while she chattered about each new bud, and about the vegetable bed she meant to dig beside the glasshouse.
+N She had come alive in this place. There wasn't a gardener or maid who didn't smile at her; even the fierce old cook kept finding reasons to bring her plates of tarts. The lean years had buried her light, but they hadn't put it out. She was generous, and loving, and kind, and I was proud to call her my sister.
+@father/neutral There. Every stone weighed twice and written down. You are a very wealthy young woman, Feyre.
+@feyre/neutral Put a little of it into your business. And draw me up some small purses of silver, would you? Four of them.
+@father/neutral Purses? Whatever for?
+@feyre/neutral A walk.
+> item silver_purse 4
+N It was only three miles to the old cottage, and I knew every step of the road.
+> objective Walk the west road to the old cottage.
+
+== ch29_cottage
+> set_flag ch29_cottage
+N Mud crept up my hem and I didn't care. The wind moved in the trees, the long grass hissed and sighed, and if I let my thoughts drift I could almost believe I was walking beside Tamlin in his woods.
+N No word had come. Every night I went to bed hoping to wake in his house, or to find a message calling me back. Worse than the waiting was the fear that crept in under it: that whoever this Amarantha was, she would find a way to hurt him.
+N I came round a bend I could have walked in my sleep, and there it was.
+N So small. Had it always been so small? Elain's old flower bed had grown into a wild snarl of weeds and blossom. The ward-marks were still cut into the doorstep. Someone had hung a new door where the beast had smashed the old one, but one of the little round window panes had cracked, and inside, it was dark.
+> objective Look around the old cottage.
+
+== ch29_door
+N I put my hand on the new door, and didn't open it. There was nothing in there I needed.
+
+== ch29_threshold
+N The ward-marks. Father had cut them into the stone the first winter, to keep out things we couldn't name. They hadn't kept out anything at all.
+
+== ch29_flowers
+N Elain's flowers had gone feral without her. Foxglove and poppies, choked in bindweed, still blooming anyway.
+
+== ch29_window_crack
+N A crack ran across the little round pane, like ice on a pond. I could just make out the shape of the table inside, and the hearth, cold.
+
+== ch29_forest
+> set_flag ch29_forest
+N From the door, my old path crossed the road and the long hump of the field to the edge of the trees. I'd walked it every morning, snow or rain. My forest.
+N It had seemed so terrible, once. Hungry, and cruel, and full of death. Now it only looked like trees. Plain. Ordinary.
+-> ch29_cottage_end
+
+== ch29_cottage_end
+> set_flag ch29_cottage_end
+N Elain said she missed this place. What did she see in it? Not the cage I'd always seen. A refuge, maybe, in a hard world. She had kept hunting for the good in it all the same, while I thought her a fool for trying.
+N She had looked at this house with hope, and I had looked at it with hate. I knew now which of us had been the stronger.
+> objective Take the purses to the village, east along the road.

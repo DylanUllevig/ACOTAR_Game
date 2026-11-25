@@ -40,7 +40,7 @@
     {
      "s": "alis",
      "e": "stern",
-     "t": "Don't ask such questions. You'll call down bad luck."
+     "t": "Hush. Questions like that bring ill luck down on a house."
     },
     {
      "s": "feyre",
@@ -83,7 +83,7 @@
     {
      "s": "alis",
      "e": "neutral",
-     "t": "My sister and her mate were murdered, near fifty years ago. They left two little ones behind. Everything I do, everything I work for, is for those boys. So don't you look at me like that and ask what I'd do, girl."
+     "t": "My sister and her mate were killed, nearly fifty years back. They left two babes behind. Every hour I work, I work for those boys. So don't you stand there and ask me what I'd do, girl."
     },
     {
      "s": "feyre",
@@ -116,7 +116,7 @@
     {
      "s": "alis",
      "e": "kind",
-     "t": "Next time that fool Lucien tells you how to catch a Suriel, you come to me. Dead chickens, my sagging backside. Offer it a new robe, and it would have groveled at your feet."
+     "t": "The next time that fool Lucien teaches you to trap a Suriel, you come and ask me first. Dead chickens, my aching old backside. Hold up a fine new cloak and it would have crawled to you on its belly."
     },
     {
      "do": [
@@ -170,7 +170,7 @@
     {
      "s": "lucien",
      "e": "smirk",
-     "t": "Who told you that? Of course we can lie. We think of it as an art. We lied when we told your ancestors we couldn't. How else would we get them to trust us?"
+     "t": "Who told you that? Of course we lie. We've made an art of it. Telling your ancestors we couldn't was the first lie. How else would they ever have trusted us?"
     },
     {
      "s": "feyre",
@@ -284,7 +284,7 @@
     {
      "s": "tamlin",
      "e": "neutral",
-     "t": "And did it tell you what you wanted to know?"
+     "t": "Did you get your answers, at least?"
     },
     {
      "s": "feyre",
@@ -294,7 +294,7 @@
     {
      "s": "tamlin",
      "e": "weary",
-     "t": "I'd start shouting, but I think today was punishment enough. A human girl, snaring the Suriel."
+     "t": "I ought to shout, but I think the day has punished you enough. A mortal girl, trapping the Suriel."
     },
     {
      "s": "feyre",
@@ -371,7 +371,7 @@
     {
      "s": "tamlin",
      "e": "neutral",
-     "t": "I was a child. Too young to be told what was happening. But if I'd been old enough, I would have. Against slavery, against tyranny, I'd go gladly to my death, whoever's freedom it was."
+     "t": "I was a boy, too young for anyone to tell me what was going on. But if I'd been grown, I'd have fought. For anyone's freedom, against chains and tyrants, I'd have given my life and not regretted it."
     },
     {
      "n": "I wasn't sure I would. I'd have chosen whichever side kept my family safest. I had never thought of that as a weakness before."
@@ -408,7 +408,7 @@
      "n": "But fed, and comfortable, and safe. Warned, even. He had done more for them than I ever could have. My vow was kept, my task was done. What was left for me?"
     },
     {
-     "n": "The firelight played across his mask, warming the gold, setting the emeralds glinting. Colors I didn't have names for. Colors I had no reason, now, not to learn."
+     "n": "Firelight moved over his mask, turning the gold warm and making the emeralds wink. Colours I couldn't have named. Colours I could learn the names of now, if I wanted."
     },
     {
      "choices": [
@@ -439,7 +439,7 @@
     {
      "s": "feyre",
      "e": "neutral",
-     "t": "Paint. If it isn't too much to ask, I'd like some paint. And brushes."
+     "t": "Paint. I'd like some paint, if that's not asking too much. And brushes."
     },
     {
      "s": "tamlin",
@@ -449,12 +449,12 @@
     {
      "s": "feyre",
      "e": "neutral",
-     "t": "I'm not any good. But if it's no trouble, I'll paint outside, so I don't make a mess-"
+     "t": "I'm not much good. But if you don't mind, I could work outdoors, so I don't spoil anything-"
     },
     {
      "s": "tamlin",
      "e": "tender",
-     "t": "Outside, inside, on the roof. Paint wherever you like. You'll want paper too, and canvas. It may take a few days to find them, but the paint, the brushes, the canvas and the room are yours. This house is too clean anyway."
+     "t": "Indoors, outdoors, up on the roof if you want. Paint anywhere. You'll need paper too, and canvas. They might take a few days to come, but all of it is yours, and a room to work in. This place could do with some mess."
     },
     {
      "s": "feyre",
@@ -477,7 +477,7 @@
      "t": "I had it shut up when I inherited the place. Keeping it clean seemed a waste of the servants' time. I'm busy tomorrow, and it needs airing, but the day after... Let me show it to you then. Please. It would be my pleasure."
     },
     {
-     "n": "He smiled at me then, broadly, without holding anything back. Isaac had never smiled at me like that. Isaac had never made my breath catch."
+     "n": "Then he smiled at me, wide and open, holding nothing back. No one had ever smiled at me that way. Not Isaac. Isaac had never made me forget to breathe."
     },
     {
      "n": "I walked out before he could see the answering smile tugging at my mouth."

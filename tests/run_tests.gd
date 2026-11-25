@@ -47,6 +47,8 @@ func _ready() -> void:
 		await test_story()
 	if only == "" or only == "spring":
 		await test_spring()
+	if only == "" or only == "home":
+		await test_home()
 	if only == "" or only == "balance":
 		await test_balance()
 	check(unreadable.is_empty(), "every dialogue line shows in a visible box (%d did not, first: %s)" % [unreadable.size(), "" if unreadable.is_empty() else unreadable[0]])
@@ -837,16 +839,157 @@ func test_spring() -> void:
 	# --- 25 to 27: Midsummer, Rhysand, thorns
 	check(await _interact_with("Lucien"), "ch 25: Lucien and the wine")
 	check(GameState.has_flag("ch25_wine"), "ch 25: she drinks it")
-	check(await _interact_with("Tamlin"), "ch 25: the fiddler")
 	# from the dance on, everything plays through: the dawn, lunch and
-	# Rhysand (ch 26), and the last night (ch 27), which ends the milestone
-	ok = await wait_until(func(): return region() != null and region().name == "Region_manor_dining" and GameState.chapter == 26, 60 * 240)
-	check(ok and GameState.has_flag("ch25_dawn") and region()._short_table(), "ch 25: dancing, the wisps, the dawn; lunch at the little table")
+	# Rhysand (ch 26), and the last night (ch 27), which wakes her on the
+	# morning she leaves (ch 28). So only press to talk to him here: waiting
+	# for the house to go quiet (as _interact_with does) can sleep through
+	# the whole of it, between one scene and the next.
+	check(await _approach("Tamlin"), "ch 25: the fiddler")
+	_press_action("interact")
+	_release_action("interact")
+	ok = await wait_until(func(): return region() != null and region().name == "Region_manor_dining" and GameState.chapter == 26, 60 * 400)
+	check(ok and GameState.has_flag("ch25_dawn") and region()._short_table(), "ch 25: dancing, the wisps, the dawn; lunch at the little table" + ("" if ok else _where() + " dawn %s" % GameState.has_flag("ch25_dawn")))
 	if not ok:
 		return
-	ok = await wait_until(func(): return SaveSystem.has_slot("slice_complete"), 60 * 300)
+	ok = await _in("manor_bedroom", 28, 60 * 300)
 	check(ok and GameState.has_flag("ch26_rhys") and GameState.journal.has("lore_rhysand") and GameState.journal.has("lore_amarantha"), "ch 26: Rhysand at lunch")
-	check(ok and GameState.chapter == 27 and GameState.has_flag("ch27_night"), "ch 27: thorns and all, and Milestone 2 is complete")
+	check(ok and GameState.has_flag("ch27_night") and GameState.has_flag("ch28_dress") and GameState.outfit == "feyre_finery", "ch 27: thorns and all; ch 28: dressed for the mortal world")
+
+
+## Chapters 28 to 32 the way a player goes: the carriage, the chateau and its
+## days, the cottage, the village, the ball, the ride to the Wall and the
+## night by the fire, the empty manor, and Alis's tale, to the end of the
+## milestone. Choosing the first option every time.
+func test_home() -> void:
+	DirAccess.remove_absolute(ProjectSettings.globalize_path(SaveSystem.slot_path("slice_complete")))
+	GameState.new_game()
+	choice = 0
+	for f in ["ch24_wake", "ch25_dawn", "ch26_rhys", "ch27_night"]:
+		GameState.set_flag(f)
+	GameState.outfit = "feyre_spring"
+	GameState.chapter = 28
+	GameState.hour = 8.0
+	await Router.goto_region("manor_bedroom", "bed")
+	var ok = await _in("manor_bedroom", 28)
+	check(ok and GameState.has_flag("ch28_dress") and GameState.outfit == "feyre_finery", "ch 28: Alis dresses her for the mortal world")
+	if not ok:
+		return
+	check(await _through(["Out to the upper hall", "Down the stairs"]), "ch 28: down to the hall")
+	check(GameState.has_flag("ch28_hall"), "ch 28: Lucien at the foot of the stairs")
+	check(await _through(["Out to the gardens"]), "ch 28: out to the carriage")
+	await _step_on(region().CARRIAGE_AT + Vector2(290, -120))
+	ok = await _in("chateau", 28)
+	check(ok and GameState.has_flag("ch28_carriage") and GameState.has_flag("ch28_arrived"), "ch 28: goodbye, the sleep, and her father's new house")
+	if not ok:
+		return
+	check(await _through(["Go inside"]), "ch 28: inside with Elain")
+	check(GameState.has_flag("ch28_father"), "ch 28: Father in the hall")
+	check(await _through(["Up the stairs", "Your room"]), "ch 28: up to her new room")
+	check(GameState.has_flag("ch28_room"), "ch 28: a room bigger than the cottage")
+	check(await _interact_with("The bed"), "ch 28: rest")
+	ok = await _in("chateau", 29)
+	check(ok and GameState.has_flag("ch29_garden"), "ch 29: days in Elain's garden")
+	if not ok:
+		return
+	check(await _interact_with("Elain"), "ch 29: Elain among her tulips")
+	check(GameState.has_flag("ch29_elain"), "ch 29: what Elain says about Nesta")
+	check(await _interact_with("Nesta"), "ch 29: Nesta under the mulberry")
+	check(await _through(["Go inside", "Father's study"]), "ch 29: to Father's study")
+	check(GameState.has_flag("ch29_study") and GameState.count("silver_purse") == 4, "ch 29: the fortune weighed, four purses of silver")
+	check(await _through(["The front hall", "Out to the front steps"]), "ch 29: out again")
+	await _step_on(Vector2(10, region().DRIVE_Y))
+	ok = await _in("cottage_yard", 29)
+	check(ok and GameState.has_flag("ch29_cottage"), "ch 29: the old cottage, so small now")
+	if not ok:
+		return
+	for l in ["The door", "The doorstep", "Elain's flower bed", "The cracked window"]:
+		check(await _interact_with(l), "ch 29: " + l)
+	check(await _interact_with("The old path"), "ch 29: her forest, only trees")
+	check(GameState.has_flag("ch29_cottage_end"), "ch 29: which of them was stronger")
+	await _step_on(Vector2(2590, region().ROAD_Y))
+	ok = await _in("village_summer", 30)
+	check(ok and GameState.has_flag("ch30_village"), "ch 30: the village stares")
+	if not ok:
+		return
+	for i in 4:
+		check(await _interact_with("Leave a purse"), "ch 30: purse %d" % (i + 1))
+	check(GameState.has_flag("ch30_purses_done") and GameState.count("silver_purse") == 0, "ch 30: four purses left at four doors")
+	await _step_on(region().SQUARE + Vector2(0, 260))
+	check(GameState.has_flag("ch30_tomas"), "ch 30: Tomas Mandray at the fountain")
+	await _step_on(Vector2(2330, 880))
+	check(GameState.has_flag("ch30_isaac"), "ch 30: Isaac and his bride")
+	await _step_on(Vector2(2960, 880))
+	ok = await _in("chateau", 30)
+	check(ok and GameState.has_flag("ch30_home") and GameState.has_flag("ch30_dig") and GameState.outfit == "feyre_garden", "ch 30: home, and a spade by the glasshouse")
+	if not ok:
+		return
+	for i in 4:
+		check(await _interact_with("Dig"), "ch 30: dig %d" % (i + 1))
+	ok = await _in("chateau_studio", 30)
+	check(ok and GameState.has_flag("ch30_nesta") and GameState.outfit == "feyre_finery", "ch 30: what Nesta knew, then painting lessons")
+	if not ok:
+		return
+	for i in 3:
+		check(await _interact_with("Your easel"), "ch 30: lesson %d" % (i + 1))
+	check(GameState.has_flag("ch30_lessons_done"), "ch 30: three days of lessons")
+	check(await _through(["The front hall", "Up the stairs"]), "ch 30: up the stairs")
+	check(GameState.has_flag("ch30_landing"), "ch 30: Nesta on the stairs: yes, I would have")
+	check(await _through(["Your room"]), "ch 30: to dress")
+	ok = await _in("chateau_ballroom", 31)
+	check(ok and GameState.has_flag("ch31_ball") and GameState.outfit == "feyre_gown", "ch 31: the ball")
+	if not ok:
+		return
+	check(await _interact_with("Nesta"), "ch 31: Nesta and the fifth suitor")
+	check(GameState.has_flag("ch31_suitor"), "ch 31: the mustache")
+	check(await _through(["Out to the front hall"]), "ch 31: slip away upstairs")
+	ok = await _in("chateau_dining", 31)
+	check(ok and GameState.has_flag("ch31_late") and GameState.has_flag("ch31_lunch") and GameState.journal.has("lore_beddors"), "ch 31: lunch, and the Beddors")
+	if not ok:
+		return
+	check(await _through(["The front hall", "Up the stairs", "Your room"]), "ch 31: up to her room, Nesta following")
+	check(GameState.has_flag("ch31_change") and GameState.outfit == "feyre_ride" and GameState.has_item("bow"), "ch 31: riding clothes, knives and a bow")
+	check(await _through(["Out to the upstairs hall", "Down the stairs", "Out to the front steps"]), "ch 31: down to the steps")
+	check(GameState.has_flag("ch31_elain"), "ch 31: Elain and a saddled horse")
+	check(await _interact_with("Mount the horse"), "ch 31: mount")
+	ok = await _in("summer_wall", 31)
+	check(ok and GameState.has_flag("ch31_ride"), "ch 31: north through the summer forest")
+	if not ok:
+		return
+	await _step_on(Vector2(900, region().WALL_Y + 150))
+	check(GameState.has_flag("ch31_wall"), "ch 31: the Wall")
+	await _step_on(region().CAMP)
+	check(GameState.has_flag("ch31_camp"), "ch 31: a fire in the clearing")
+	for i in 3:
+		check(await _interact_with("Feed the fire"), "ch 31: feed the fire %d" % (i + 1))
+	check(GameState.has_flag("ch31_dawn"), "ch 31: dawn")
+	await _step_on(region().GATE + Vector2(0, 240))
+	check(GameState.has_flag("ch31_gate"), "ch 31: the standing stones")
+	check(await _interact_with("Ride between the stones"), "ch 31: through")
+	ok = await _in("spring_manor", 31)
+	check(ok and GameState.has_flag("ch31_return"), "ch 31: back in the silent grounds")
+	if not ok:
+		return
+	await _step_on(region().DOOR + Vector2(0, 120))
+	check(GameState.has_flag("ch31_doors"), "ch 31: the doors hang open")
+	check(await _through(["Go inside"]), "ch 31: inside")
+	ok = await _in("manor_hall", 32)
+	check(ok and GameState.has_flag("ch31_wreck"), "ch 31: he was gone")
+	if not ok:
+		return
+	for l in ["The blood", "The broken glass", "The front doors", "The far end of the hall"]:
+		check(await _interact_with(l), "ch 32: " + l)
+	check(GameState.has_flag("ch32_clues"), "ch 32: the signs read")
+	check(await _through(["The dining room"]), "ch 32: follow the tracks")
+	check(await _interact_with("The prints in the glass"), "ch 32: the prints")
+	check(await _interact_with("Hide behind the door"), "ch 32: hide")
+	ok = await _in("manor_kitchen", 32)
+	check(ok and GameState.has_flag("ch32_hide") and GameState.has_flag("ch32_kitchen"), "ch 32: Alis, and the kitchens")
+	if not ok:
+		return
+	check(GameState.journal.has("lore_curse") and GameState.journal.has("lore_clythia"), "ch 32: the tale of the curse")
+	check(await _interact_with("The worktable"), "ch 32: the worktable")
+	ok = await wait_until(func(): return SaveSystem.has_slot("slice_complete"), 60 * 300)
+	check(ok and GameState.has_flag("ch32_table") and GameState.journal.has("lore_under_the_mountain"), "ch 32: as you wish, and Milestone 3 is complete")
 	if not ok:
 		return
 	# close the end window the way its button would, without the return to
@@ -881,6 +1024,9 @@ func _interact_with(label: String) -> bool:
 	_release_action("interact")
 	await frames(3)
 	await wait_until(idle, 3600)
+	# a scene can lead straight into another a frame after it closes (the
+	# last purse, the last clue): wait those out too
+	await _settle()
 	return true
 
 

@@ -29,6 +29,7 @@ func _ready() -> void:
 	GameState.new_game()
 	GameState.chapter = int(_arg(a, "--chapter", "1"))
 	GameState.hour = float(_arg(a, "--hour", "13"))
+	GameState.outfit = _arg(a, "--outfit", GameState.outfit)
 	for f in _arg(a, "--flags", "").split(",", false):
 		GameState.set_flag(f)
 	await UI.fade_in(0.05)
@@ -93,6 +94,10 @@ func _ready() -> void:
 		if Time.get_ticks_msec() - t0 > 60000:
 			break
 	await RenderingServer.frame_post_draw
+	if rg != null and rg.player != null:
+		var cam: Camera2D = rg.player.camera
+		print("SHOT PLAYER ", rg.player.global_position, " visible=", rg.player.visible,
+			" camera=", cam.get_screen_center_position() if cam != null else Vector2.ZERO)
 	get_viewport().get_texture().get_image().save_png(out)
 	print("SCENE SHOT ", out)
 	Audio.quit_game(0)

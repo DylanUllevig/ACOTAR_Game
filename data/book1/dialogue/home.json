@@ -1,0 +1,218 @@
+{
+ "schema": 2,
+ "notes": "Line forms: {n} Feyre's narration, first person past tense, shown in italics; {s,e,t} a line spoken aloud (speaker, portrait expression, text); {hint} a game tip on its own card; {choices:[{t,goto,do}]}; {do:[actions]}; {goto}. Any line or choice may carry if_flag, if_not_flag, if_item, if_not_item or if_chapter. Wording is written for the game; the few short book lines kept are listed in quotes.json.",
+ "scenes": {
+  "home_bed": {
+   "lines": [
+    {
+     "n": "The bed was soft enough to drown in. I lay on top of the covers in my traveling clothes and stared up at the pale blue hangings.",
+     "if_chapter": 28
+    },
+    {
+     "n": "I lay down for an hour in the afternoon heat, like a lady. It didn't take.",
+     "if_chapter": 29
+    },
+    {
+     "n": "I stretched out on the coverlet with my arms aching from the spade, and for once my head was quiet.",
+     "if_chapter": 30
+    },
+    {
+     "n": "No. There was no time to lie down. Not now.",
+     "if_chapter": 31
+    },
+    {
+     "do": [
+      {
+       "type": "region_call",
+       "method": "rest"
+      }
+     ],
+     "if_chapter": 28
+    },
+    {
+     "do": [
+      {
+       "type": "region_call",
+       "method": "rest"
+      }
+     ],
+     "if_chapter": 29
+    },
+    {
+     "do": [
+      {
+       "type": "region_call",
+       "method": "rest"
+      }
+     ],
+     "if_chapter": 30
+    }
+   ]
+  },
+  "home_window": {
+   "lines": [
+    {
+     "n": "Fields and fields, and the blue smudge of a wood. Somewhere beyond them was the Wall, and beyond that, him.",
+     "if_chapter": 28
+    },
+    {
+     "n": "A gardener was clipping the green flames along the drive, one careful snip at a time. Past the gates, the road ran west toward the old cottage.",
+     "if_chapter": 29
+    },
+    {
+     "n": "The drive below was jammed with carts: crates of wine, gilt chairs, ladders, a whole wagon of flowers. Elain darted between them like a bee.",
+     "if_chapter": 30
+    },
+    {
+     "n": "The lanterns from the ball still hung all down the drive, burnt out and turning in the wind. North was that way.",
+     "if_chapter": 31
+    }
+   ]
+  },
+  "home_study_window": {
+   "lines": [
+    {
+     "n": "Right under the window lay Elain's garden: tulips in tidy rows, and Elain herself on her knees among them, a trowel in her fist."
+    }
+   ]
+  },
+  "home_study_window_out": {
+   "lines": [
+    {
+     "n": "Father's study, a footman told me, though nobody sat at the desk yet. Through the glass I could see a ledger, open, and a little brass scale.",
+     "if_not_flag": "ch28_father"
+    },
+    {
+     "n": "Through the glass: stacks of ledgers, the brass scale, a velvet tray of stones. My fortune, written down in columns.",
+     "if_flag": "ch28_father"
+    }
+   ]
+  },
+  "home_father": {
+   "lines": [
+    {
+     "s": "father",
+     "e": "neutral",
+     "t": "Off for your walk? Take one of the footmen with you. No? Well. Mind the mud on the west road, then."
+    }
+   ]
+  },
+  "home_father_busy": {
+   "lines": [
+    {
+     "n": "Father had his nose an inch from a sapphire and didn't hear me come in. I left him to it."
+    }
+   ]
+  },
+  "home_nesta": {
+   "lines": [
+    {
+     "s": "nesta",
+     "e": "neutral",
+     "t": "Well? Are you going to teach me, or stand there admiring the furniture?",
+     "if_chapter": 30
+    },
+    {
+     "s": "nesta",
+     "e": "smirk",
+     "t": "If one more of them tells me my sister has gone very brown, I'll pour the punch down his breeches.",
+     "if_chapter": 31
+    }
+   ]
+  },
+  "home_paint": {
+   "lines": [
+    {
+     "n": "My brushes, rinsed and laid out in a row. Nesta's paper was turned face down on the table. I didn't turn it over.",
+     "if_flag": "ch30_lessons_done"
+    },
+    {
+     "n": "I picked up a brush, and put it down again. Not today.",
+     "if_not_flag": "ch30_lessons_done"
+    }
+   ]
+  },
+  "home_footman": {
+   "lines": [
+    {
+     "n": "The footman bowed so low I worried for his back.",
+     "if_chapter": 28
+    },
+    {
+     "s": "footman",
+     "e": "neutral",
+     "t": "A fine morning for the garden, miss. Miss Elain's been out since dawn.",
+     "if_chapter": 29
+    },
+    {
+     "n": "He didn't quite manage to keep the horror off his face at the sight of a daughter of the house with a spade.",
+     "if_chapter": 30
+    },
+    {
+     "s": "footman",
+     "e": "neutral",
+     "t": "Your horse is saddled, miss. Miss Elain saw to it herself.",
+     "if_chapter": 31
+    }
+   ]
+  },
+  "home_gardener": {
+   "lines": [
+    {
+     "s": "gardener",
+     "e": "neutral",
+     "t": "Miss Elain's tulips, miss. Came across the sea in a crate, they did. We're not to lay a finger on them."
+    }
+   ]
+  },
+  "home_elain": {
+   "lines": [
+    {
+     "n": "Elain was on her knees among the tulips again, humming under her breath. I sat on the low wall and let her talk, and didn't hear half of it, and loved every word."
+    }
+   ]
+  },
+  "home_elain_horse": {
+   "lines": [
+    {
+     "s": "elain",
+     "e": "sad",
+     "t": "Go. Please. Before Father comes down and makes this so much harder."
+    }
+   ]
+  },
+  "home_forest_again": {
+   "lines": [
+    {
+     "n": "Only trees. I didn't need to look again."
+    }
+   ]
+  },
+  "home_fountain": {
+   "lines": [
+    {
+     "n": "The fountain had been dry as long as I could remember. In summer the basin smelled of warm stone and pigeons.",
+     "if_not_flag": "ch30_tomas"
+    },
+    {
+     "n": "Tomas and his friends had drifted off somewhere. It was only a dry basin again.",
+     "if_flag": "ch30_tomas"
+    }
+   ]
+  },
+  "ch31_tap": {
+   "lines": [
+    {
+     "n": "Still there. Cool and smooth as a pane of glass, and not a crack in it anywhere."
+    }
+   ]
+  },
+  "home_fire_out": {
+   "lines": [
+    {
+     "n": "Cold ashes. I'd kicked earth over them myself."
+    }
+   ]
+  }
+ }
+}

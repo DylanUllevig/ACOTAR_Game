@@ -17,25 +17,25 @@ N A roar shook the clearing behind me, and Tamlin burst through the birches, cla
 
 == ch15_found
 @tamlin/angry Feyre.
-N The rage drained out of his eyes. The claws slid back into his hands, though the roar still rang in my ears. There had been nothing in that sound but fury.
+N The fury faded from his eyes, and his claws slid back out of sight. But his roar was still ringing in my head, and there had been nothing in it but rage.
 @feyre/wounded How?
 @tamlin/neutral I was tracking a pack of them. Those four broke away. They must have followed your scent. I heard you scream.
-N So he didn't know about the Suriel. And he had come.
+N He hadn't known about the Suriel. And still he'd come for me.
 N He ran his fingers down my cheek, and the throbbing in my face and arm faded, then vanished. The metal tang of magic, and then only the breeze.
 @tamlin/neutral I found one dead half a mile back with one of my arrows in its throat. I followed the tracks from there.
 N He pulled off his tunic and gave it to me. Mine was torn to ribbons by their talons. High Lord. I should have guessed. Maybe I hadn't wanted to.
-@tamlin/neutral Do I want to know what you were doing out here?
+@tamlin/neutral Should I even ask why you were out here?
 * Tell him the truth. -> ch15_lie_not
 * Say you didn't realize how far you'd come. -> ch15_far
 
 == ch15_lie_not
 @feyre/neutral I...
-N He'd warned me. Over and over. And the Suriel had told me not to go looking for more answers. The words died in my throat.
+N He had warned me, again and again. And the Suriel had told me to stop digging for answers. Whatever I'd meant to say, I swallowed it.
 -> ch15_far
 
 == ch15_far
 @feyre/neutral I thought I wasn't confined to the house. I didn't realize I'd come so far.
-@tamlin/weary On the days I'm called away to deal with trouble, stay close to the house.
+@tamlin/weary When I'm called away to the borders, keep near the house.
 @feyre/sad Thank you. Not only for this. For saving my life.
 @tamlin/weary It was the least I could do. They should never have got this far onto my lands.
 N There was no triumph in him at all. Only a deep, endless kind of shame.
@@ -44,7 +44,7 @@ N I didn't tell him it wasn't my home. That I might not have one anymore.
 
 == ch15_after
 N We walked back in silence, both of us soaked in blood and pale as ghosts.
-N Stay with the High Lord, the Suriel had said. Easy enough. As for wicked kings and their commanders, and what they had to do with the male walking beside me, I didn't know enough to warn anyone. My family would have to make do with what little I had.
+N Keep to his side, the Suriel had said. That, at least, was easy. As for a wicked king and his commander, and whatever they meant for the male beside me, I knew far too little to warn anyone. My family would have to get by on the scraps I had.
 > journal lore_naga
 > journal lore_high_lords
 > unlock_tier 3

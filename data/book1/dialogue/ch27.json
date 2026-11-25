@@ -16,7 +16,7 @@
      "n": "I lay in bed, watching the moonlight shift across the floor. The house had been quiet for hours now, but his rage was still in it, in the wood and the stone and the glass."
     },
     {
-     "n": "I didn't want to think about what Rhysand had said. Or the sickness, or Under the Mountain, wherever that was, and why I might be dragged there. Or Amarantha. A name, at last, for the shadow of a female that stalked their lives. Deadly enough to command the High Lords of Prythian. To hold Rhysand's leash, and make Tamlin beg."
+     "n": "I didn't want to think about anything Rhysand had said. Not the sickness, nor Under the Mountain, wherever that was, nor why anyone would haul me there. Not Amarantha. The shadow that hung over all of them had a name now: a female dangerous enough to give orders to High Lords. To keep Rhysand on a chain, and bring Tamlin to his knees."
     },
     {
      "do": [
@@ -120,7 +120,7 @@
     {
      "s": "tamlin",
      "e": "angry",
-     "t": "If they have a problem with it, they can take it up with me."
+     "t": "Anyone who objects can come and say so to my face."
     },
     {
      "n": "And end up in ribbons."
@@ -156,7 +156,7 @@
     {
      "s": "tamlin",
      "e": "weary",
-     "t": "You can't. Because I can't. I can't even protect myself from them, from what's happening in Prythian. Even if we stood against the sickness, they would hunt you down. She'd find a way to kill you."
+     "t": "You can't. Because I can't. I can't even shield myself from them, or from whatever's coming for Prythian. Even if we held off the sickness, they'd come after you. She would find some way to end you."
     },
     {
      "s": "feyre",
@@ -169,7 +169,7 @@
     {
      "s": "tamlin",
      "e": "neutral",
-     "t": "When you get home, don't tell anyone where you really were. Let them go on believing the glamour. Don't tell them who I am, or where you stayed. Her spies will be looking for you."
+     "t": "Once you're home, tell nobody the truth about where you've been. Leave the glamour be. Don't speak of me, or of this place. She'll have eyes looking for you."
     },
     {
      "s": "feyre",
@@ -189,20 +189,20 @@
     {
      "s": "tamlin",
      "e": "angry",
-     "t": "There's no debate! Rhys was only the start of it. Do you want to be here when the Attor comes back? Do you want to know what it answers to? Things like the Bogge. And worse."
+     "t": "This isn't up for discussion! Rhys was the first of them. Do you want to still be under this roof when the Attor comes back? Do you want to meet the thing it serves? Creatures like the Bogge, and worse than the Bogge."
     },
     {
      "s": "feyre",
      "e": "angry",
-     "t": "So you're sending me away because I'm useless in a fight?"
+     "t": "So that's it? I'm going because I'd be no use to you in a fight?"
     },
     {
      "s": "tamlin",
      "e": "angry",
-     "t": "I'm sending you away because it makes me sick to think of you in their hands!"
+     "t": "You're going because the thought of them getting hold of you turns my stomach!"
     },
     {
-     "n": "Silence, and his ragged breathing. He sank down onto the bed and pressed the heels of his hands into his eyes, and my anger melted away to nothing."
+     "n": "Then quiet, except for his rough breathing. He dropped down on the edge of the bed and ground his palms into his eyes, and all my anger drained away."
     },
     {
      "s": "feyre",
@@ -233,7 +233,7 @@
     {
      "s": "feyre",
      "e": "cold",
-     "t": "I suppose it'll be easier with me gone. Who wants someone around who's so covered in thorns?"
+     "t": "I expect you'll be relieved. Who'd want to keep a girl who's all prickles?"
     },
     {
      "s": "tamlin",
@@ -254,7 +254,7 @@
      "t": "Not forever."
     },
     {
-     "n": "I knew it was a lie. I put my arms round his neck and kissed him anyway."
+     "n": "I could tell he was lying. I wrapped my arms round his neck and kissed him all the same."
     },
     {
      "choices": [
@@ -289,7 +289,7 @@
     {
      "s": "tamlin",
      "e": "tender",
-     "t": "We should sleep. You have a long journey tomorrow."
+     "t": "Sleep now. You've a long way to go in the morning."
     },
     {
      "s": "feyre",
@@ -317,7 +317,7 @@
     {
      "s": "tamlin",
      "e": "tender",
-     "t": "You should sleep. You have a long journey tomorrow."
+     "t": "Get some rest. It's a long road home."
     },
     {
      "s": "feyre",
@@ -340,7 +340,7 @@
   "ch27_sleep": {
    "lines": [
     {
-     "n": "He shifted toward the edge of the bed."
+     "n": "He started to ease away toward the edge of the bed."
     },
     {
      "s": "feyre",
@@ -350,12 +350,12 @@
     {
      "s": "tamlin",
      "e": "tender",
-     "t": "If I stay, you won't get any sleep."
+     "t": "If I stay here, neither of us will sleep."
     },
     {
      "s": "feyre",
      "e": "tender",
-     "t": "Stay. I promise to keep my hands to myself."
+     "t": "Stay. I'll behave. I swear it."
     },
     {
      "n": "A lie. An outright lie. His half smile said he knew it, but he lay down and pulled me into his arms and stroked my hair."
@@ -364,10 +364,10 @@
      "n": "I didn't want to sleep. I didn't want to lose a single minute with him. But exhaustion was dragging me under."
     },
     {
-     "n": "I was leaving. Just when this place had become more than a sanctuary, and he far, far more than a savior or a friend. It might be years before I smelled his roses again, or saw those gold-flecked eyes. Home. This was home."
+     "n": "I was going. Just as this place had turned into more than a refuge, and he into so much more than the one who'd rescued me, or a friend. Years might pass before I breathed in his roses again, or looked into those gold-flecked eyes. This was home now."
     },
     {
-     "n": "As I slipped away at last, I thought I heard him speak, his mouth close to my ear."
+     "n": "As sleep finally took me, I thought I felt his breath at my ear, and heard him whisper."
     },
     {
      "s": "tamlin",
@@ -375,12 +375,20 @@
      "t": "I love you. Thorns and all."
     },
     {
-     "n": "He was gone when I woke. And I was certain I had dreamed it."
+     "n": "When I woke, his side of the bed was cold. I was sure I'd only dreamed it."
     },
     {
      "do": [
       {
-       "type": "end_slice"
+       "type": "fade_hold",
+       "text": "Dawn."
+      },
+      {
+       "type": "goto",
+       "chapter": 28,
+       "hour": 8,
+       "region": "manor_bedroom",
+       "spawn": "bed"
       }
      ]
     }

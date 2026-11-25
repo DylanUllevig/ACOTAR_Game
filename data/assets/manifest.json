@@ -5,10 +5,10 @@
  "summary": {
   "credits_per_image": 2.0,
   "model": "gpt_image_2_6",
-  "kept_images": 87,
-  "est_generations": 254,
-  "est_credits": 508.0,
-  "final": 87,
+  "kept_images": 88,
+  "est_generations": 255,
+  "est_credits": 510.0,
+  "final": 88,
   "still_placeholder": 0,
   "est_credits_left": 0.0
  },
@@ -1943,6 +1943,786 @@
    "status": "final",
    "est_generations": 1,
    "notes": "Spring Court, 2026-11-24. Generated with a transparent background; fitted with tools/fit_art.py."
+  },
+  {
+   "id": "portrait.alis_worn.afraid",
+   "kind": "portrait",
+   "placeholder": "",
+   "final": "assets/final/portraits/alis_worn/afraid.png",
+   "size": [
+    640,
+    960
+   ],
+   "aspect": "2:3",
+   "prompt": "Painted illustration in the style of a hand-painted fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, warm rim light, cinematic chiaroscuro, lush spring palette of rose, sage green and honey gold, no text, no watermark, no frame. Half-length character portrait from the waist up, three-quarter view, facing left. The same character as in the reference image: identical face, hair, clothing and colours, the same framing and painting style; only the expression changes. Expression: frightened, eyes wide, lips parted. Transparent background, the figure cut out cleanly.",
+   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
+   "status": "final",
+   "est_generations": 1,
+   "notes": "Home across the Wall (Chapters 28 to 32), 2026-11-24. Generated with a transparent background at 2k; fitted with tools/fit_art.py. Made with the neutral portrait's job as an image reference."
+  },
+  {
+   "id": "portrait.alis_worn.angry",
+   "kind": "portrait",
+   "placeholder": "",
+   "final": "assets/final/portraits/alis_worn/angry.png",
+   "size": [
+    640,
+    960
+   ],
+   "aspect": "2:3",
+   "prompt": "Painted illustration in the style of a hand-painted fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, warm rim light, cinematic chiaroscuro, lush spring palette of rose, sage green and honey gold, no text, no watermark, no frame. Half-length character portrait from the waist up, three-quarter view, facing left. The same character as in the reference image: identical face, hair, clothing and colours, the same framing and painting style; only the expression changes. Expression: furious, baring sharp teeth, eyes blazing. Transparent background, the figure cut out cleanly.",
+   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
+   "status": "final",
+   "est_generations": 1,
+   "notes": "Home across the Wall (Chapters 28 to 32), 2026-11-24. Generated with a transparent background at 2k; fitted with tools/fit_art.py. Made with the neutral portrait's job as an image reference."
+  },
+  {
+   "id": "portrait.alis_worn.neutral",
+   "kind": "portrait",
+   "placeholder": "",
+   "final": "assets/final/portraits/alis_worn/neutral.png",
+   "size": [
+    640,
+    960
+   ],
+   "aspect": "2:3",
+   "prompt": "Painted illustration in the style of a hand-painted fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, warm rim light, cinematic chiaroscuro, lush spring palette of rose, sage green and honey gold, no text, no watermark, no frame. Half-length character portrait from the waist up, three-quarter view, facing left. The same housekeeper as in the reference image: identical bark-brown skin with fine wood grain, amber eyes, the same small gold mask, the same framing and painting style. After a terrible night of violence: her green dress is torn and smudged with dirt and soot, her white apron is gone, her dark curls have come loose and wild, and a heavy canvas satchel hangs across her chest. Expression: wary, exhausted neutral expression. Transparent background, the figure cut out cleanly.",
+   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
+   "status": "final",
+   "est_generations": 1,
+   "notes": "Home across the Wall (Chapters 28 to 32), 2026-11-24. Generated with a transparent background at 2k; fitted with tools/fit_art.py."
+  },
+  {
+   "id": "portrait.alis_worn.sad",
+   "kind": "portrait",
+   "placeholder": "",
+   "final": "assets/final/portraits/alis_worn/sad.png",
+   "size": [
+    640,
+    960
+   ],
+   "aspect": "2:3",
+   "prompt": "Painted illustration in the style of a hand-painted fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, warm rim light, cinematic chiaroscuro, warm summer palette of cream, dusty rose, lavender and honey gold, no text, no watermark, no frame. Half-length character portrait from the waist up, three-quarter view, facing left. The same character as in the reference image: identical face, hair, clothing and colours, the same framing and painting style; only the expression changes. Expression: sad, eyes glistening, mouth soft. Transparent background, the figure cut out cleanly.",
+   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
+   "status": "final",
+   "est_generations": 1,
+   "notes": "Home across the Wall (Chapters 28 to 32), 2026-11-24. Generated with a transparent background at 2k; fitted with tools/fit_art.py. Made with the neutral portrait's job as an image reference."
+  },
+  {
+   "id": "portrait.amarantha.neutral",
+   "kind": "portrait",
+   "placeholder": "",
+   "final": "assets/final/portraits/amarantha/neutral.png",
+   "size": [
+    640,
+    960
+   ],
+   "aspect": "2:3",
+   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, dramatic rim light, cinematic chiaroscuro, dark underground palette of carved black stone, deep crimson and torchlight gold, no text, no watermark, no frame. Half-length character portrait from the waist up, three-quarter view, facing left. A lovely faerie queen with pointed ears, flawless pale skin and red-gold hair braided in a heavy coronet threaded with tiny gold beads, a slender crown of gold thorns, a deep crimson gown cut low across the shoulders with gold embroidery, and on one finger a heavy gold ring set with what looks like a real human eye, pale blue and staring. Beautiful, but with something cruel and bored in the set of her mouth. Expression: calm, faintly amused neutral expression. Transparent background, the figure cut out cleanly.",
+   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
+   "status": "final",
+   "est_generations": 1,
+   "notes": "Under the Mountain cast, 2026-11-24. Generated with a transparent background at 2k; fitted with tools/fit_art.py."
+  },
+  {
+   "id": "portrait.elain_rich.afraid",
+   "kind": "portrait",
+   "placeholder": "",
+   "final": "assets/final/portraits/elain_rich/afraid.png",
+   "size": [
+    640,
+    960
+   ],
+   "aspect": "2:3",
+   "prompt": "Painted illustration in the style of a hand-painted fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, warm rim light, cinematic chiaroscuro, warm summer palette of cream, dusty rose, lavender and honey gold, no text, no watermark, no frame. Half-length character portrait from the waist up, three-quarter view, facing left. The same character as in the reference image: identical face, hair, clothing and colours, the same framing and painting style; only the expression changes. Expression: frightened, eyes wide, lips parted. Transparent background, the figure cut out cleanly.",
+   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
+   "status": "final",
+   "est_generations": 1,
+   "notes": "Home across the Wall (Chapters 28 to 32), 2026-11-24. Generated with a transparent background at 2k; fitted with tools/fit_art.py. Made with the neutral portrait's job as an image reference."
+  },
+  {
+   "id": "portrait.elain_rich.neutral",
+   "kind": "portrait",
+   "placeholder": "",
+   "final": "assets/final/portraits/elain_rich/neutral.png",
+   "size": [
+    640,
+    960
+   ],
+   "aspect": "2:3",
+   "prompt": "Painted illustration in the style of a hand-painted fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, warm rim light, cinematic chiaroscuro, warm summer palette of cream, dusty rose, lavender and honey gold, no text, no watermark, no frame. Half-length character portrait from the waist up, three-quarter view, facing left. The same young woman as in the reference image: identical face, soft brown eyes and gold-brown hair, the same framing and painting style. Her family is wealthy again and she has come alive: a simple cream muslin gardening dress with the sleeves pushed up, thin cotton gardening gloves, a wide floppy straw sun hat tied with a pink ribbon, a rosy flush in her cheeks. Expression: calm, gentle neutral expression. Transparent background, the figure cut out cleanly.",
+   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
+   "status": "final",
+   "est_generations": 1,
+   "notes": "Home across the Wall (Chapters 28 to 32), 2026-11-24. Generated with a transparent background at 2k; fitted with tools/fit_art.py."
+  },
+  {
+   "id": "portrait.elain_rich.sad",
+   "kind": "portrait",
+   "placeholder": "",
+   "final": "assets/final/portraits/elain_rich/sad.png",
+   "size": [
+    640,
+    960
+   ],
+   "aspect": "2:3",
+   "prompt": "Painted illustration in the style of a hand-painted fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, warm rim light, cinematic chiaroscuro, warm summer palette of cream, dusty rose, lavender and honey gold, no text, no watermark, no frame. Half-length character portrait from the waist up, three-quarter view, facing left. The same character as in the reference image: identical face, hair, clothing and colours, the same framing and painting style; only the expression changes. Expression: sad, eyes glistening, mouth soft. Transparent background, the figure cut out cleanly.",
+   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
+   "status": "final",
+   "est_generations": 1,
+   "notes": "Home across the Wall (Chapters 28 to 32), 2026-11-24. Generated with a transparent background at 2k; fitted with tools/fit_art.py. Made with the neutral portrait's job as an image reference."
+  },
+  {
+   "id": "portrait.elain_rich.tender",
+   "kind": "portrait",
+   "placeholder": "",
+   "final": "assets/final/portraits/elain_rich/tender.png",
+   "size": [
+    640,
+    960
+   ],
+   "aspect": "2:3",
+   "prompt": "Painted illustration in the style of a hand-painted fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, warm rim light, cinematic chiaroscuro, warm summer palette of cream, dusty rose, lavender and honey gold, no text, no watermark, no frame. Half-length character portrait from the waist up, three-quarter view, facing left. The same character as in the reference image: identical face, hair, clothing and colours, the same framing and painting style; only the expression changes. Expression: a shy, soft smile, warm eyes, a faint blush. Transparent background, the figure cut out cleanly.",
+   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
+   "status": "final",
+   "est_generations": 1,
+   "notes": "Home across the Wall (Chapters 28 to 32), 2026-11-24. Generated with a transparent background at 2k; fitted with tools/fit_art.py. Made with the neutral portrait's job as an image reference."
+  },
+  {
+   "id": "portrait.father_rich.afraid",
+   "kind": "portrait",
+   "placeholder": "",
+   "final": "assets/final/portraits/father_rich/afraid.png",
+   "size": [
+    640,
+    960
+   ],
+   "aspect": "2:3",
+   "prompt": "Painted illustration in the style of a hand-painted fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, warm rim light, cinematic chiaroscuro, warm summer palette of cream, dusty rose, lavender and honey gold, no text, no watermark, no frame. Half-length character portrait from the waist up, three-quarter view, facing left. The same character as in the reference image: identical face, hair, clothing and colours, the same framing and painting style; only the expression changes. Expression: frightened and confused, eyes wide, lips parted. Transparent background, the figure cut out cleanly.",
+   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
+   "status": "final",
+   "est_generations": 1,
+   "notes": "Home across the Wall (Chapters 28 to 32), 2026-11-24. Generated with a transparent background at 2k; fitted with tools/fit_art.py. Made with the neutral portrait's job as an image reference."
+  },
+  {
+   "id": "portrait.father_rich.happy",
+   "kind": "portrait",
+   "placeholder": "",
+   "final": "assets/final/portraits/father_rich/happy.png",
+   "size": [
+    640,
+    960
+   ],
+   "aspect": "2:3",
+   "prompt": "Painted illustration in the style of a hand-painted fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, warm rim light, cinematic chiaroscuro, warm summer palette of cream, dusty rose, lavender and honey gold, no text, no watermark, no frame. Half-length character portrait from the waist up, three-quarter view, facing left. The same character as in the reference image: identical face, hair, clothing and colours, the same framing and painting style; only the expression changes. Expression: a broad, warm smile, laughing eyes, tears of joy at the corners. Transparent background, the figure cut out cleanly.",
+   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
+   "status": "final",
+   "est_generations": 1,
+   "notes": "Home across the Wall (Chapters 28 to 32), 2026-11-24. Generated with a transparent background at 2k; fitted with tools/fit_art.py. Made with the neutral portrait's job as an image reference."
+  },
+  {
+   "id": "portrait.father_rich.neutral",
+   "kind": "portrait",
+   "placeholder": "",
+   "final": "assets/final/portraits/father_rich/neutral.png",
+   "size": [
+    640,
+    960
+   ],
+   "aspect": "2:3",
+   "prompt": "Painted illustration in the style of a hand-painted fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, warm rim light, cinematic chiaroscuro, warm summer palette of cream, dusty rose, lavender and honey gold, no text, no watermark, no frame. Half-length character portrait from the waist up, three-quarter view, facing left. The same man as in the reference image: identical face, dark eyes and dark beard, the same framing and painting style. His fortune has returned and so has his vigour: a well-cut deep green frock coat with brass buttons over a cream silk waistcoat and a white cravat, his beard neatly trimmed, standing straighter, clear-eyed, with healthy colour in his face. Expression: calm, pleasant neutral expression. Transparent background, the figure cut out cleanly.",
+   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
+   "status": "final",
+   "est_generations": 1,
+   "notes": "Home across the Wall (Chapters 28 to 32), 2026-11-24. Generated with a transparent background at 2k; fitted with tools/fit_art.py."
+  },
+  {
+   "id": "portrait.feyre_finery.afraid",
+   "kind": "portrait",
+   "placeholder": "",
+   "final": "assets/final/portraits/feyre_finery/afraid.png",
+   "size": [
+    640,
+    960
+   ],
+   "aspect": "2:3",
+   "prompt": "Painted illustration in the style of a hand-painted fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, warm rim light, cinematic chiaroscuro, warm summer palette of cream, dusty rose, lavender and honey gold, no text, no watermark, no frame. Half-length character portrait from the waist up, three-quarter view, facing right. The same character as in the reference image: identical face, hair, clothing and colours, the same framing and painting style; only the expression changes. Expression: frightened, eyes wide, lips parted. Transparent background, the figure cut out cleanly.",
+   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
+   "status": "final",
+   "est_generations": 1,
+   "notes": "Home across the Wall (Chapters 28 to 32), 2026-11-24. Generated with a transparent background at 2k; fitted with tools/fit_art.py. Made with the neutral portrait's job as an image reference."
+  },
+  {
+   "id": "portrait.feyre_finery.angry",
+   "kind": "portrait",
+   "placeholder": "",
+   "final": "assets/final/portraits/feyre_finery/angry.png",
+   "size": [
+    640,
+    960
+   ],
+   "aspect": "2:3",
+   "prompt": "Painted illustration in the style of a hand-painted fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, warm rim light, cinematic chiaroscuro, warm summer palette of cream, dusty rose, lavender and honey gold, no text, no watermark, no frame. Half-length character portrait from the waist up, three-quarter view, facing right. The same character as in the reference image: identical face, hair, clothing and colours, the same framing and painting style; only the expression changes. Expression: angry, glaring, jaw set. Transparent background, the figure cut out cleanly.",
+   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
+   "status": "final",
+   "est_generations": 1,
+   "notes": "Home across the Wall (Chapters 28 to 32), 2026-11-24. Generated with a transparent background at 2k; fitted with tools/fit_art.py. Made with the neutral portrait's job as an image reference."
+  },
+  {
+   "id": "portrait.feyre_finery.determined",
+   "kind": "portrait",
+   "placeholder": "",
+   "final": "assets/final/portraits/feyre_finery/determined.png",
+   "size": [
+    640,
+    960
+   ],
+   "aspect": "2:3",
+   "prompt": "Painted illustration in the style of a hand-painted fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, warm rim light, cinematic chiaroscuro, warm summer palette of cream, dusty rose, lavender and honey gold, no text, no watermark, no frame. Half-length character portrait from the waist up, three-quarter view, facing right. The same character as in the reference image: identical face, hair, clothing and colours, the same framing and painting style; only the expression changes. Expression: determined and focused, chin raised. Transparent background, the figure cut out cleanly.",
+   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
+   "status": "final",
+   "est_generations": 1,
+   "notes": "Home across the Wall (Chapters 28 to 32), 2026-11-24. Generated with a transparent background at 2k; fitted with tools/fit_art.py. Made with the neutral portrait's job as an image reference."
+  },
+  {
+   "id": "portrait.feyre_finery.neutral",
+   "kind": "portrait",
+   "placeholder": "",
+   "final": "assets/final/portraits/feyre_finery/neutral.png",
+   "size": [
+    640,
+    960
+   ],
+   "aspect": "2:3",
+   "prompt": "Painted illustration in the style of a hand-painted fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, warm rim light, cinematic chiaroscuro, warm summer palette of cream, dusty rose, lavender and honey gold, no text, no watermark, no frame. Half-length character portrait from the waist up, three-quarter view, facing right. The same young woman as in the reference image: identical face, eyes, skin and long gold-brown waves, the same framing and painting style. She is now dressed as a wealthy mortal lady: a frilly, confining gown of layered pale pink silk trimmed with white and pale blue lace, a short fitted jacket of white linen, thin white lace gloves, and a small, purely decorative ivory hat pinned at an angle on her hair. Expression: calm, guarded neutral expression. Transparent background, the figure cut out cleanly.",
+   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
+   "status": "final",
+   "est_generations": 1,
+   "notes": "Home across the Wall (Chapters 28 to 32), 2026-11-24. Generated with a transparent background at 2k; fitted with tools/fit_art.py."
+  },
+  {
+   "id": "portrait.feyre_finery.sad",
+   "kind": "portrait",
+   "placeholder": "",
+   "final": "assets/final/portraits/feyre_finery/sad.png",
+   "size": [
+    640,
+    960
+   ],
+   "aspect": "2:3",
+   "prompt": "Painted illustration in the style of a hand-painted fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, warm rim light, cinematic chiaroscuro, warm summer palette of cream, dusty rose, lavender and honey gold, no text, no watermark, no frame. Half-length character portrait from the waist up, three-quarter view, facing right. The same character as in the reference image: identical face, hair, clothing and colours, the same framing and painting style; only the expression changes. Expression: sad, eyes glistening, mouth soft. Transparent background, the figure cut out cleanly.",
+   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
+   "status": "final",
+   "est_generations": 1,
+   "notes": "Home across the Wall (Chapters 28 to 32), 2026-11-24. Generated with a transparent background at 2k; fitted with tools/fit_art.py. Made with the neutral portrait's job as an image reference."
+  },
+  {
+   "id": "portrait.feyre_finery.tender",
+   "kind": "portrait",
+   "placeholder": "",
+   "final": "assets/final/portraits/feyre_finery/tender.png",
+   "size": [
+    640,
+    960
+   ],
+   "aspect": "2:3",
+   "prompt": "Painted illustration in the style of a hand-painted fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, warm rim light, cinematic chiaroscuro, warm summer palette of cream, dusty rose, lavender and honey gold, no text, no watermark, no frame. Half-length character portrait from the waist up, three-quarter view, facing right. The same character as in the reference image: identical face, hair, clothing and colours, the same framing and painting style; only the expression changes. Expression: a shy, soft smile, warm eyes, a faint blush. Transparent background, the figure cut out cleanly.",
+   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
+   "status": "final",
+   "est_generations": 1,
+   "notes": "Home across the Wall (Chapters 28 to 32), 2026-11-24. Generated with a transparent background at 2k; fitted with tools/fit_art.py. Made with the neutral portrait's job as an image reference."
+  },
+  {
+   "id": "portrait.feyre_mountain.afraid",
+   "kind": "portrait",
+   "placeholder": "",
+   "final": "assets/final/portraits/feyre_mountain/afraid.png",
+   "size": [
+    640,
+    960
+   ],
+   "aspect": "2:3",
+   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, dramatic rim light, cinematic chiaroscuro, dark underground palette of carved black stone, deep crimson and torchlight gold, no text, no watermark, no frame. Half-length character portrait from the waist up, three-quarter view, facing right. The same character as in the reference image: identical face, hair, clothing and colours, the same framing and painting style; only the expression changes. Expression: frightened, eyes wide, lips parted. Transparent background, the figure cut out cleanly.",
+   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
+   "status": "final",
+   "est_generations": 1,
+   "notes": "Under the Mountain cast, 2026-11-24. Generated with a transparent background at 2k; fitted with tools/fit_art.py. Made with the neutral portrait's job as an image reference."
+  },
+  {
+   "id": "portrait.feyre_mountain.angry",
+   "kind": "portrait",
+   "placeholder": "",
+   "final": "assets/final/portraits/feyre_mountain/angry.png",
+   "size": [
+    640,
+    960
+   ],
+   "aspect": "2:3",
+   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, dramatic rim light, cinematic chiaroscuro, dark underground palette of carved black stone, deep crimson and torchlight gold, no text, no watermark, no frame. Half-length character portrait from the waist up, three-quarter view, facing right. The same character as in the reference image: identical face, hair, clothing and colours, the same framing and painting style; only the expression changes. Expression: angry, glaring, jaw set. Transparent background, the figure cut out cleanly.",
+   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
+   "status": "final",
+   "est_generations": 1,
+   "notes": "Under the Mountain cast, 2026-11-24. Generated with a transparent background at 2k; fitted with tools/fit_art.py. Made with the neutral portrait's job as an image reference."
+  },
+  {
+   "id": "portrait.feyre_mountain.determined",
+   "kind": "portrait",
+   "placeholder": "",
+   "final": "assets/final/portraits/feyre_mountain/determined.png",
+   "size": [
+    640,
+    960
+   ],
+   "aspect": "2:3",
+   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, dramatic rim light, cinematic chiaroscuro, dark underground palette of carved black stone, deep crimson and torchlight gold, no text, no watermark, no frame. Half-length character portrait from the waist up, three-quarter view, facing right. The same character as in the reference image: identical face, hair, clothing and colours, the same framing and painting style; only the expression changes. Expression: determined and focused, chin raised. Transparent background, the figure cut out cleanly.",
+   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
+   "status": "final",
+   "est_generations": 1,
+   "notes": "Under the Mountain cast, 2026-11-24. Generated with a transparent background at 2k; fitted with tools/fit_art.py. Made with the neutral portrait's job as an image reference."
+  },
+  {
+   "id": "portrait.feyre_mountain.neutral",
+   "kind": "portrait",
+   "placeholder": "",
+   "final": "assets/final/portraits/feyre_mountain/neutral.png",
+   "size": [
+    640,
+    960
+   ],
+   "aspect": "2:3",
+   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, dramatic rim light, cinematic chiaroscuro, dark underground palette of carved black stone, deep crimson and torchlight gold, no text, no watermark, no frame. Half-length character portrait from the waist up, three-quarter view, facing right. The same young woman as in the reference image: identical face, eyes and gold-brown hair, the same framing and painting style. She is now a prisoner deep underground: her hair matted and tangled, smudges of dirt and fading bruises on her face and bare arms, wearing a torn, filthy cream shift. Thin but unbroken. Expression: calm, guarded neutral expression. Transparent background, the figure cut out cleanly.",
+   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
+   "status": "final",
+   "est_generations": 1,
+   "notes": "Under the Mountain cast, 2026-11-24. Generated with a transparent background at 2k; fitted with tools/fit_art.py."
+  },
+  {
+   "id": "portrait.feyre_mountain.sad",
+   "kind": "portrait",
+   "placeholder": "",
+   "final": "assets/final/portraits/feyre_mountain/sad.png",
+   "size": [
+    640,
+    960
+   ],
+   "aspect": "2:3",
+   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, dramatic rim light, cinematic chiaroscuro, dark underground palette of carved black stone, deep crimson and torchlight gold, no text, no watermark, no frame. Half-length character portrait from the waist up, three-quarter view, facing right. The same character as in the reference image: identical face, hair, clothing and colours, the same framing and painting style; only the expression changes. Expression: sad, eyes glistening, mouth soft. Transparent background, the figure cut out cleanly.",
+   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
+   "status": "final",
+   "est_generations": 1,
+   "notes": "Under the Mountain cast, 2026-11-24. Generated with a transparent background at 2k; fitted with tools/fit_art.py. Made with the neutral portrait's job as an image reference."
+  },
+  {
+   "id": "portrait.feyre_mountain.wounded",
+   "kind": "portrait",
+   "placeholder": "",
+   "final": "assets/final/portraits/feyre_mountain/wounded.png",
+   "size": [
+    640,
+    960
+   ],
+   "aspect": "2:3",
+   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, dramatic rim light, cinematic chiaroscuro, dark underground palette of carved black stone, deep crimson and torchlight gold, no text, no watermark, no frame. Half-length character portrait from the waist up, three-quarter view, facing right. The same character as in the reference image: identical face, hair, clothing and colours, the same framing and painting style; only the expression changes. Expression: hurt and in pain, a shallow cut on the cheek, wincing, hair dishevelled. Transparent background, the figure cut out cleanly.",
+   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
+   "status": "final",
+   "est_generations": 1,
+   "notes": "Under the Mountain cast, 2026-11-24. Generated with a transparent background at 2k; fitted with tools/fit_art.py. Made with the neutral portrait's job as an image reference."
+  },
+  {
+   "id": "portrait.feyre_ride.afraid",
+   "kind": "portrait",
+   "placeholder": "",
+   "final": "assets/final/portraits/feyre_ride/afraid.png",
+   "size": [
+    640,
+    960
+   ],
+   "aspect": "2:3",
+   "prompt": "Painted illustration in the style of a hand-painted fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, warm rim light, cinematic chiaroscuro, warm summer palette of cream, dusty rose, lavender and honey gold, no text, no watermark, no frame. Half-length character portrait from the waist up, three-quarter view, facing right. The same character as in the reference image: identical face, hair, clothing and colours, the same framing and painting style; only the expression changes. Expression: frightened, eyes wide, lips parted. Transparent background, the figure cut out cleanly.",
+   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
+   "status": "final",
+   "est_generations": 1,
+   "notes": "Home across the Wall (Chapters 28 to 32), 2026-11-24. Generated with a transparent background at 2k; fitted with tools/fit_art.py. Made with the neutral portrait's job as an image reference."
+  },
+  {
+   "id": "portrait.feyre_ride.angry",
+   "kind": "portrait",
+   "placeholder": "",
+   "final": "assets/final/portraits/feyre_ride/angry.png",
+   "size": [
+    640,
+    960
+   ],
+   "aspect": "2:3",
+   "prompt": "Painted illustration in the style of a hand-painted fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, warm rim light, cinematic chiaroscuro, warm summer palette of cream, dusty rose, lavender and honey gold, no text, no watermark, no frame. Half-length character portrait from the waist up, three-quarter view, facing right. The same character as in the reference image: identical face, hair, clothing and colours, the same framing and painting style; only the expression changes. Expression: angry, glaring, jaw set. Transparent background, the figure cut out cleanly.",
+   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
+   "status": "final",
+   "est_generations": 1,
+   "notes": "Home across the Wall (Chapters 28 to 32), 2026-11-24. Generated with a transparent background at 2k; fitted with tools/fit_art.py. Made with the neutral portrait's job as an image reference."
+  },
+  {
+   "id": "portrait.feyre_ride.determined",
+   "kind": "portrait",
+   "placeholder": "",
+   "final": "assets/final/portraits/feyre_ride/determined.png",
+   "size": [
+    640,
+    960
+   ],
+   "aspect": "2:3",
+   "prompt": "Painted illustration in the style of a hand-painted fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, warm rim light, cinematic chiaroscuro, warm summer palette of cream, dusty rose, lavender and honey gold, no text, no watermark, no frame. Half-length character portrait from the waist up, three-quarter view, facing right. The same character as in the reference image: identical face, hair, clothing and colours, the same framing and painting style; only the expression changes. Expression: determined and focused, chin raised. Transparent background, the figure cut out cleanly.",
+   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
+   "status": "final",
+   "est_generations": 1,
+   "notes": "Home across the Wall (Chapters 28 to 32), 2026-11-24. Generated with a transparent background at 2k; fitted with tools/fit_art.py. Made with the neutral portrait's job as an image reference."
+  },
+  {
+   "id": "portrait.feyre_ride.neutral",
+   "kind": "portrait",
+   "placeholder": "",
+   "final": "assets/final/portraits/feyre_ride/neutral.png",
+   "size": [
+    640,
+    960
+   ],
+   "aspect": "2:3",
+   "prompt": "Painted illustration in the style of a hand-painted fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, warm rim light, cinematic chiaroscuro, warm summer palette of cream, dusty rose, lavender and honey gold, no text, no watermark, no frame. Half-length character portrait from the waist up, three-quarter view, facing right. The same young woman as in the reference image: identical face, eyes, skin and gold-brown hair, the same framing and painting style. She is now dressed for a hard ride into danger: a heavy dark brown riding tunic over a cream shirt, a wide leather belt with two hunting knives in sheaths, a quiver of arrows across her back and a plain wooden bow over one shoulder, her hair pulled back in a thick practical braid. Expression: calm, guarded neutral expression. Transparent background, the figure cut out cleanly.",
+   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
+   "status": "final",
+   "est_generations": 1,
+   "notes": "Home across the Wall (Chapters 28 to 32), 2026-11-24. Generated with a transparent background at 2k; fitted with tools/fit_art.py."
+  },
+  {
+   "id": "portrait.feyre_ride.sad",
+   "kind": "portrait",
+   "placeholder": "",
+   "final": "assets/final/portraits/feyre_ride/sad.png",
+   "size": [
+    640,
+    960
+   ],
+   "aspect": "2:3",
+   "prompt": "Painted illustration in the style of a hand-painted fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, warm rim light, cinematic chiaroscuro, warm summer palette of cream, dusty rose, lavender and honey gold, no text, no watermark, no frame. Half-length character portrait from the waist up, three-quarter view, facing right. The same character as in the reference image: identical face, hair, clothing and colours, the same framing and painting style; only the expression changes. Expression: sad, eyes glistening, mouth soft. Transparent background, the figure cut out cleanly.",
+   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
+   "status": "final",
+   "est_generations": 1,
+   "notes": "Home across the Wall (Chapters 28 to 32), 2026-11-24. Generated with a transparent background at 2k; fitted with tools/fit_art.py. Made with the neutral portrait's job as an image reference."
+  },
+  {
+   "id": "portrait.feyre_ride.wounded",
+   "kind": "portrait",
+   "placeholder": "",
+   "final": "assets/final/portraits/feyre_ride/wounded.png",
+   "size": [
+    640,
+    960
+   ],
+   "aspect": "2:3",
+   "prompt": "Painted illustration in the style of a hand-painted fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, warm rim light, cinematic chiaroscuro, warm summer palette of cream, dusty rose, lavender and honey gold, no text, no watermark, no frame. Half-length character portrait from the waist up, three-quarter view, facing right. The same character as in the reference image: identical face, hair, clothing and colours, the same framing and painting style; only the expression changes. Expression: hurt and in pain, a shallow cut on the cheek, wincing, hair dishevelled. Transparent background, the figure cut out cleanly.",
+   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
+   "status": "final",
+   "est_generations": 1,
+   "notes": "Home across the Wall (Chapters 28 to 32), 2026-11-24. Generated with a transparent background at 2k; fitted with tools/fit_art.py. Made with the neutral portrait's job as an image reference."
+  },
+  {
+   "id": "portrait.isaac_wed.neutral",
+   "kind": "portrait",
+   "placeholder": "",
+   "final": "assets/final/portraits/isaac_wed/neutral.png",
+   "size": [
+    640,
+    960
+   ],
+   "aspect": "2:3",
+   "prompt": "Painted illustration in the style of a hand-painted fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, warm rim light, cinematic chiaroscuro, warm summer palette of cream, dusty rose, lavender and honey gold, no text, no watermark, no frame. Half-length character portrait from the waist up, three-quarter view, facing left. The same young man as in the reference image: identical face, shaggy brown hair and soft eyes, the same framing and painting style. It is summer and he is newly married: a plain white linen shirt with rolled sleeves under a brown waistcoat, no coat and no scarf, looking a little older, steadier and content. Expression: calm, polite neutral expression. Transparent background, the figure cut out cleanly.",
+   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
+   "status": "final",
+   "est_generations": 1,
+   "notes": "Home across the Wall (Chapters 28 to 32), 2026-11-24. Generated with a transparent background at 2k; fitted with tools/fit_art.py."
+  },
+  {
+   "id": "portrait.isaac_wife.neutral",
+   "kind": "portrait",
+   "placeholder": "",
+   "final": "assets/final/portraits/isaac_wife/neutral.png",
+   "size": [
+    640,
+    960
+   ],
+   "aspect": "2:3",
+   "prompt": "Painted illustration in the style of a hand-painted fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, warm rim light, cinematic chiaroscuro, warm summer palette of cream, dusty rose, lavender and honey gold, no text, no watermark, no frame. Half-length character portrait from the waist up, three-quarter view, facing left. A pretty, plump young village bride with rosy cheeks, warm hazel eyes and chestnut hair in a loose braid tucked with a few daisies, a sky-blue cotton dress with a white kerchief collar, a simple copper wedding band. She glows with new happiness and is a little shy. Expression: a warm, slightly nervous smile. Transparent background, the figure cut out cleanly.",
+   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
+   "status": "final",
+   "est_generations": 1,
+   "notes": "Home across the Wall (Chapters 28 to 32), 2026-11-24. Generated with a transparent background at 2k; fitted with tools/fit_art.py."
+  },
+  {
+   "id": "portrait.nesta_rich.angry",
+   "kind": "portrait",
+   "placeholder": "",
+   "final": "assets/final/portraits/nesta_rich/angry.png",
+   "size": [
+    640,
+    960
+   ],
+   "aspect": "2:3",
+   "prompt": "Painted illustration in the style of a hand-painted fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, warm rim light, cinematic chiaroscuro, warm summer palette of cream, dusty rose, lavender and honey gold, no text, no watermark, no frame. Half-length character portrait from the waist up, three-quarter view, facing left. The same character as in the reference image: identical face, hair, clothing and colours, the same framing and painting style; only the expression changes. Expression: angry, glaring, jaw set. Transparent background, the figure cut out cleanly.",
+   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
+   "status": "final",
+   "est_generations": 1,
+   "notes": "Home across the Wall (Chapters 28 to 32), 2026-11-24. Generated with a transparent background at 2k; fitted with tools/fit_art.py. Made with the neutral portrait's job as an image reference."
+  },
+  {
+   "id": "portrait.nesta_rich.neutral",
+   "kind": "portrait",
+   "placeholder": "",
+   "final": "assets/final/portraits/nesta_rich/neutral.png",
+   "size": [
+    640,
+    960
+   ],
+   "aspect": "2:3",
+   "prompt": "Painted illustration in the style of a hand-painted fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, warm rim light, cinematic chiaroscuro, warm summer palette of cream, dusty rose, lavender and honey gold, no text, no watermark, no frame. Half-length character portrait from the waist up, three-quarter view, facing left. The same woman as in the reference image: identical face, blue-grey eyes, gold-brown hair and proud bearing, the same framing and painting style. Her family is wealthy again: she wears a simple, elegant gown of pale lavender muslin, her gold-brown hair half up and falling long down her back with tiny pearls woven through it, and the same plain iron bracelet on her wrist. Coldly, breathtakingly beautiful, still as a statue. Expression: calm, guarded neutral expression. Transparent background, the figure cut out cleanly.",
+   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
+   "status": "final",
+   "est_generations": 1,
+   "notes": "Home across the Wall (Chapters 28 to 32), 2026-11-24. Generated with a transparent background at 2k; fitted with tools/fit_art.py."
+  },
+  {
+   "id": "portrait.nesta_rich.sad",
+   "kind": "portrait",
+   "placeholder": "",
+   "final": "assets/final/portraits/nesta_rich/sad.png",
+   "size": [
+    640,
+    960
+   ],
+   "aspect": "2:3",
+   "prompt": "Painted illustration in the style of a hand-painted fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, warm rim light, cinematic chiaroscuro, warm summer palette of cream, dusty rose, lavender and honey gold, no text, no watermark, no frame. Half-length character portrait from the waist up, three-quarter view, facing left. The same character as in the reference image: identical face, hair, clothing and colours, the same framing and painting style; only the expression changes. Expression: sad, eyes glistening, mouth soft. Transparent background, the figure cut out cleanly.",
+   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
+   "status": "final",
+   "est_generations": 1,
+   "notes": "Home across the Wall (Chapters 28 to 32), 2026-11-24. Generated with a transparent background at 2k; fitted with tools/fit_art.py. Made with the neutral portrait's job as an image reference."
+  },
+  {
+   "id": "portrait.nesta_rich.smirk",
+   "kind": "portrait",
+   "placeholder": "",
+   "final": "assets/final/portraits/nesta_rich/smirk.png",
+   "size": [
+    640,
+    960
+   ],
+   "aspect": "2:3",
+   "prompt": "Painted illustration in the style of a hand-painted fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, warm rim light, cinematic chiaroscuro, warm summer palette of cream, dusty rose, lavender and honey gold, no text, no watermark, no frame. Half-length character portrait from the waist up, three-quarter view, facing left. The same character as in the reference image: identical face, hair, clothing and colours, the same framing and painting style; only the expression changes. Expression: a cool, knowing smirk, one brow raised. Transparent background, the figure cut out cleanly.",
+   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
+   "status": "final",
+   "est_generations": 1,
+   "notes": "Home across the Wall (Chapters 28 to 32), 2026-11-24. Generated with a transparent background at 2k; fitted with tools/fit_art.py. Made with the neutral portrait's job as an image reference."
+  },
+  {
+   "id": "portrait.tamlin_free.neutral",
+   "kind": "portrait",
+   "placeholder": "",
+   "final": "assets/final/portraits/tamlin_free/neutral.png",
+   "size": [
+    640,
+    960
+   ],
+   "aspect": "2:3",
+   "prompt": "Painted illustration in the style of a hand-painted fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, warm rim light, cinematic chiaroscuro, lush spring palette of rose, sage green and honey gold, no text, no watermark, no frame. Half-length character portrait from the waist up, three-quarter view, facing left. The same golden-haired lord as in the reference image, the same framing and painting style, but with no mask at all: his whole face is bare and revealed for the first time, a strong, beautiful face with a straight nose and high cheekbones, green eyes flecked with amber, golden hair, the same green coat embroidered with leaves. Expression: calm, guarded neutral expression. Transparent background, the figure cut out cleanly.",
+   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
+   "status": "final",
+   "est_generations": 1,
+   "notes": "Under the Mountain cast, 2026-11-24. Generated with a transparent background at 2k; fitted with tools/fit_art.py."
+  },
+  {
+   "id": "portrait.tomas.neutral",
+   "kind": "portrait",
+   "placeholder": "",
+   "final": "assets/final/portraits/tomas/neutral.png",
+   "size": [
+    640,
+    960
+   ],
+   "aspect": "2:3",
+   "prompt": "Painted illustration in the style of a hand-painted fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, warm rim light, cinematic chiaroscuro, warm summer palette of cream, dusty rose, lavender and honey gold, no text, no watermark, no frame. Half-length character portrait from the waist up, three-quarter view, facing left. A handsome, broad-shouldered young village man with sandy hair swept back, a strong jaw and a lazy, insolent half smile, a loose open-collared white linen shirt under a brown leather vest, a cheap brass ring on one finger. Idle, charming and a little predatory. Expression: an appraising, too-long look with a smug half smile. Transparent background, the figure cut out cleanly.",
+   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
+   "status": "final",
+   "est_generations": 1,
+   "notes": "Home across the Wall (Chapters 28 to 32), 2026-11-24. Generated with a transparent background at 2k; fitted with tools/fit_art.py."
+  },
+  {
+   "id": "portrait.feyre_gown.neutral",
+   "kind": "portrait",
+   "placeholder": "",
+   "final": "assets/final/portraits/feyre_gown/neutral.png",
+   "size": [
+    640,
+    960
+   ],
+   "aspect": "2:3",
+   "prompt": "Painted illustration in the style of a hand-painted fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, warm rim light, cinematic chiaroscuro, warm summer palette of cream, dusty rose, lavender and honey gold, no text, no watermark, no frame. Half-length character portrait from the waist up, three-quarter view, facing right. The same young woman as in the reference image: identical face, eyes, skin and hair colour, the same framing and painting style; only her clothes and hair change. Now dressed for a grand evening ball: her long honey-brown waves pinned up with loose curls framing her face and a few tiny silver pins, an off-the-shoulder ball gown of pale blue silk embroidered with fine silver thread, long white gloves, a thin silver necklace, a faint shimmer on her skin. No hat. Expression: calm, guarded neutral expression. Transparent background, the figure cut out cleanly."
+  },
+  {
+   "id": "portrait.feyre_garden.neutral",
+   "kind": "portrait",
+   "placeholder": "",
+   "final": "assets/final/portraits/feyre_garden/neutral.png",
+   "size": [
+    640,
+    960
+   ],
+   "aspect": "2:3",
+   "prompt": "Painted illustration in the style of a hand-painted fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, warm rim light, cinematic chiaroscuro, warm summer palette of cream, dusty rose, lavender and honey gold, no text, no watermark, no frame. Half-length character portrait from the waist up, three-quarter view, facing right. The same young woman as in the reference image: identical face, eyes, skin and hair colour, the same framing and painting style; only her clothes and hair change. Now dressed to dig in the garden on a hot summer afternoon: a loose cream linen tunic with the sleeves rolled to the elbow, a plain leather belt, dirt on her hands and forearms, sun-browned freckled skin, her hair in a loose braid under a wide floppy straw sun hat. No lace, no jewellery. Expression: calm, guarded neutral expression. Transparent background, the figure cut out cleanly."
+  },
+  {
+   "id": "panel.tale_emissary",
+   "kind": "background",
+   "placeholder": null,
+   "final": "assets/final/panels/tale_emissary.jpg",
+   "size": [
+    1920,
+    1080
+   ],
+   "aspect": "16:9",
+   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale storybook, visible brush strokes and soft painterly edges, rich deep colours with gold accents, cinematic chiaroscuro and dramatic light, a wide cinematic story panel with a clear focal point, no text, no lettering, no watermark, no frame, no border. An envoy arrives from a sea-girt island kingdom: the beautiful, cold faerie noblewoman from the reference image, in a gown of deep crimson velvet, steps down a gangplank from a tall dark ship onto a green spring shore, where seven faerie lords in very different finery wait in a line to greet her with bows; banners stir in the wind, golden afternoon light, an air of false courtesy and hidden menace."
+  },
+  {
+   "id": "panel.tale_poison",
+   "kind": "background",
+   "placeholder": null,
+   "final": "assets/final/panels/tale_poison.jpg",
+   "size": [
+    1920,
+    1080
+   ],
+   "aspect": "16:9",
+   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale storybook, visible brush strokes and soft painterly edges, rich deep colours with gold accents, cinematic chiaroscuro and dramatic light, a wide cinematic story panel with a clear focal point, no text, no lettering, no watermark, no frame, no border. A grand candlelit ball in a faerie palace: the beautiful faerie noblewoman from the reference image, in deep crimson, raises a jewelled goblet in a smiling toast while seven faerie lords in fine clothes drink from theirs; one by one the lords sway and fall, and threads of shining golden light drain out of them like smoke and curl into her open, waiting hand. A small empty vial glints on the table beside her."
+  },
+  {
+   "id": "panel.tale_masks",
+   "kind": "background",
+   "placeholder": null,
+   "final": "assets/final/panels/tale_masks.jpg",
+   "size": [
+    1920,
+    1080
+   ],
+   "aspect": "16:9",
+   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale storybook, visible brush strokes and soft painterly edges, rich deep colours with gold accents, cinematic chiaroscuro and dramatic light, a wide cinematic story panel with a clear focal point, no text, no lettering, no watermark, no frame, no border. A masquerade in a vast torchlit hall carved from black stone: the golden-haired faerie lord from the second reference image stands defiant in a green coat before the crimson-clad faerie noblewoman from the first reference image, who lounges on a high throne, laughing; around him his whole court, in masks of gold, bronze and carved wood, clutch at their faces in horror as the masks fuse to their skin in a sickly green glow."
+  },
+  {
+   "id": "portrait.feyre_gown.sad",
+   "kind": "portrait",
+   "placeholder": "",
+   "final": "assets/final/portraits/feyre_gown/sad.png",
+   "size": [
+    640,
+    960
+   ],
+   "aspect": "2:3",
+   "prompt": "Painted illustration in the style of a hand-painted fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, warm rim light, cinematic chiaroscuro, warm summer palette of cream, dusty rose, lavender and honey gold, no text, no watermark, no frame. Half-length character portrait from the waist up, three-quarter view, facing right. The same character as in the reference image: identical face, hair, clothing and colours, the same framing and painting style; only the expression changes. Expression: sad, eyes glistening, mouth soft. Transparent background, the figure cut out cleanly."
+  },
+  {
+   "id": "portrait.feyre_gown.tender",
+   "kind": "portrait",
+   "placeholder": "",
+   "final": "assets/final/portraits/feyre_gown/tender.png",
+   "size": [
+    640,
+    960
+   ],
+   "aspect": "2:3",
+   "prompt": "Painted illustration in the style of a hand-painted fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, warm rim light, cinematic chiaroscuro, warm summer palette of cream, dusty rose, lavender and honey gold, no text, no watermark, no frame. Half-length character portrait from the waist up, three-quarter view, facing right. The same character as in the reference image: identical face, hair, clothing and colours, the same framing and painting style; only the expression changes. Expression: a shy, soft smile, warm eyes, a faint blush. Transparent background, the figure cut out cleanly."
+  },
+  {
+   "id": "portrait.feyre_garden.sad",
+   "kind": "portrait",
+   "placeholder": "",
+   "final": "assets/final/portraits/feyre_garden/sad.png",
+   "size": [
+    640,
+    960
+   ],
+   "aspect": "2:3",
+   "prompt": "Painted illustration in the style of a hand-painted fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, warm rim light, cinematic chiaroscuro, warm summer palette of cream, dusty rose, lavender and honey gold, no text, no watermark, no frame. Half-length character portrait from the waist up, three-quarter view, facing right. The same character as in the reference image: identical face, hair, clothing and colours, the same framing and painting style; only the expression changes. Expression: sad, eyes glistening, mouth soft. Transparent background, the figure cut out cleanly."
+  },
+  {
+   "id": "portrait.feyre_garden.afraid",
+   "kind": "portrait",
+   "placeholder": "",
+   "final": "assets/final/portraits/feyre_garden/afraid.png",
+   "size": [
+    640,
+    960
+   ],
+   "aspect": "2:3",
+   "prompt": "Painted illustration in the style of a hand-painted fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, warm rim light, cinematic chiaroscuro, warm summer palette of cream, dusty rose, lavender and honey gold, no text, no watermark, no frame. Half-length character portrait from the waist up, three-quarter view, facing right. The same character as in the reference image: identical face, hair, clothing and colours, the same framing and painting style; only the expression changes. Expression: frightened, eyes wide, lips parted. Transparent background, the figure cut out cleanly."
+  },
+  {
+   "id": "portrait.feyre_garden.tender",
+   "kind": "portrait",
+   "placeholder": "",
+   "final": "assets/final/portraits/feyre_garden/tender.png",
+   "size": [
+    640,
+    960
+   ],
+   "aspect": "2:3",
+   "prompt": "Painted illustration in the style of a hand-painted fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, warm rim light, cinematic chiaroscuro, warm summer palette of cream, dusty rose, lavender and honey gold, no text, no watermark, no frame. Half-length character portrait from the waist up, three-quarter view, facing right. The same character as in the reference image: identical face, hair, clothing and colours, the same framing and painting style; only the expression changes. Expression: a shy, soft smile, warm eyes, a faint blush. Transparent background, the figure cut out cleanly."
+  },
+  {
+   "id": "panel.tale_sister",
+   "kind": "background",
+   "placeholder": null,
+   "final": "assets/final/panels/tale_sister.jpg",
+   "size": [
+    1920,
+    1080
+   ],
+   "aspect": "16:9",
+   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale storybook, visible brush strokes and soft painterly edges, rich deep colours with gold accents, cinematic chiaroscuro and dramatic light, a wide cinematic story panel with a clear focal point, no text, no lettering, no watermark, no frame, no border. Long ago, at the end of a terrible war: on a smoking battlefield at dusk, the faerie noblewoman from the reference image, younger, in dented crimson battle armour, kneels in the churned mud beside a cruel empty frame of pale ash-wood stakes, clutching a torn silk scarf to her chest; her face is twisted with grief turning into hatred. Broken banners, ravens circling, a red sky. No gore."
+  },
+  {
+   "id": "panel.tale_wolves",
+   "kind": "background",
+   "placeholder": null,
+   "final": "assets/final/panels/tale_wolves.jpg",
+   "size": [
+    1920,
+    1080
+   ],
+   "aspect": "16:9",
+   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale storybook, visible brush strokes and soft painterly edges, rich deep colours with gold accents, cinematic chiaroscuro and dramatic light, a wide cinematic story panel with a clear focal point, no text, no lettering, no watermark, no frame, no border. Winter dusk at a great invisible wall of faintly shimmering air that cuts straight through a forest: on one side lush green spring woods, on the other deep snow and bare mortal trees. Grey wolves with intelligent, sorrowful eyes slip through a gap one after another, out into the snow. On the spring side, the golden-haired masked faerie lord from the reference image stands among the trees watching them go, his head bowed in grief."
+  },
+  {
+   "id": "panel.tale_mountain",
+   "kind": "background",
+   "placeholder": null,
+   "final": "assets/final/panels/tale_mountain.jpg",
+   "size": [
+    1920,
+    1080
+   ],
+   "aspect": "16:9",
+   "prompt": "Painted illustration in the style of a hand-painted dark-fairytale storybook, visible brush strokes and soft painterly edges, rich deep colours with gold accents, cinematic chiaroscuro and dramatic light, a wide cinematic story panel with a clear focal point, no text, no lettering, no watermark, no frame, no border. A colossal bald black mountain rising alone from the heart of a dark land under a bruised storm sky, its summit lost in cloud; at its foot a great carved gate glows red like a furnace mouth, and a long, tiny procession of faerie lords, servants and courtiers in masks is led into it in chains by winged and horned guards. Dread and grandeur, cold blue shadows, the only warm light coming from the gate."
+  },
+  {
+   "id": "item.silver_purse",
+   "kind": "icon",
+   "placeholder": "",
+   "final": "assets/final/items/silver_purse.png",
+   "size": [
+    96,
+    96
+   ],
+   "aspect": "1:1",
+   "prompt": "Painted illustration in the style of a hand-painted fairytale game, visible brush strokes and soft painterly edges, rich deep colours with gold accents, warm rim light, no text, no watermark, no frame. Single object icon, centred, transparent background: a small soft leather drawstring purse, plump with silver coins, a few coins spilling out.",
+   "negative": "photo, 3d render, anime, chibi, text, letters, watermark, signature, border, extra fingers, modern clothing",
+   "status": "final",
+   "est_generations": 1,
+   "notes": "Home across the Wall, 2026-11-25. Generated with a transparent background; fitted with tools/fit_art.py."
   }
  ]
 }

@@ -3,7 +3,7 @@
 == ch18_morning
 > set_flag ch18_morning
 N By the time I'd eaten and washed and dressed, it was nearly noon. The blood in the hall would be gone by now. I went to the window anyway, to be sure.
-N I meant to find Tamlin and tell him properly how sorry I was about Andras. If I was to stay here, stay with him, I could at least try to mend what I had broken.
+N I meant to find Tamlin and tell him, properly this time, that I was sorry about Andras. If I was going to live here, beside him, I owed him at least an attempt to repair what I'd broken.
 N From the window I could see clear to the reflecting pool, so still it held every cloud. Two figures stood by it, and horses, already saddled.
 > objective Tamlin and Lucien are waiting by the reflecting pool.
 
@@ -19,7 +19,7 @@ N He only smiled.
 == ch18_glen
 > set_flag ch18_glen
 N I couldn't find words for it. I knew that even if I could paint it, I'd never do it justice. Oaks wide and high as the pillars of some ancient castle. Dandelion fluff drifting through light thick as honey. Crocuses and snowdrops and bluebells nodding over the ground. And somewhere, I could have sworn, singing.
-N It wasn't only the most beautiful place I'd ever been. It felt right. After last night, it was exactly where I needed to be.
+N It was the loveliest place I had ever seen, and more than that, it felt right. After last night, I couldn't have asked for anywhere better.
 @tamlin/neutral We brought a blanket.
 N I shook my head and ran my fingers through the grass instead. Soft as feathers. I wasn't going to waste that on a blanket.
 @feyre/neutral What is this place?
@@ -42,7 +42,7 @@ N He looked as if I'd handed him something precious. I couldn't bear it, so I sa
 @feyre/neutral It also said you like to be brushed. And that if I'm clever, I might train you with treats.
 N He threw back his head and roared with laughter. And I laughed too, softly, before I could stop it.
 @lucien/smirk I may die of shock. You made a joke, Feyre.
-@feyre/neutral You don't want to know what the Suriel said about you.
+@feyre/neutral Trust me, you'd rather not hear what the Suriel said about you.
 @tamlin/tender I'd pay good money to hear it.
 N A cork popped. Lucien drank deep from the bottle and muttered "brushed" to himself, and went on chuckling.
 @tamlin/tender Come on. I want to show you something.
@@ -51,7 +51,7 @@ N He crouched at the edge, scooped up a handful and let it trickle back. Ripples
 @feyre/tender That looks like starlight.
 @tamlin/tender It is starlight.
 @feyre/neutral That's impossible.
-@tamlin/tender This is Prythian. According to your legends, nothing is impossible.
+@tamlin/tender You're in Prythian. Your own stories say anything can happen here.
 N Then he began unbuttoning his tunic.
 @tamlin/tender Jump in.
 N I shook my head and stepped back. His fingers stopped on the second button.
@@ -60,10 +60,10 @@ N I shook my head and stepped back. His fingers stopped on the second button.
 @tamlin/weary A very long time ago.
 @feyre/neutral Is Lucien all right? After last night?
 @tamlin/weary Lucien has been through things that make nights like that one hard. Not only the scar and the eye.
-@tamlin/weary He's the youngest son of the High Lord of the Autumn Court. The youngest of seven brothers. Autumn is beautiful, and cutthroat. The strongest son inherits, not the eldest, so the brothers only ever see each other as rivals.
+@tamlin/weary His father rules the Autumn Court, and Lucien is the last of seven sons. Autumn is lovely, and vicious. The title goes to the strongest son, not the oldest, so those brothers have never seen each other as anything but competition.
 @tamlin/weary Lucien never cared about any of it. He fell in love with a faerie his father thought far beneath their blood, and swore he'd marry her and leave the court to his brothers. His father had her executed. In front of him, while two of his brothers held him and made him watch.
 N My stomach turned. I pressed a hand to my chest.
-@tamlin/neutral He cursed his father and walked out. Without his title to protect him, his brothers went after him. Three went out to kill him. One came back. Lucien killed one. I killed the other. They'd crossed into my lands, and I was High Lord by then.
+@tamlin/neutral He cursed his father to his face and left. With no rank left to shield him, his brothers hunted him. Three came after him and only one went home: Lucien killed one, and I killed the other. They had come onto my land, and by then the land was mine.
 @tamlin/neutral I made him my emissary. He's good with people, and I... am not. He's been here ever since. He hasn't forgotten any of it, whatever he pretends.
 N It didn't excuse everything he'd said to me. But I understood the walls he'd built. I needed to talk about something else.
 @feyre/neutral What would happen if I drank the water?
@@ -99,7 +99,7 @@ N I wouldn't speak of his past. I'd hate pity too. I waited until Tamlin had rid
 @feyre/neutral I'm joking. Part of me would love to wallop you. But I understand. I'm the human who killed your friend, and now you're stuck with me.
 @lucien/grim Tam told me your first shot was to save the Suriel. Not yourself.
 @feyre/neutral It seemed like the right thing to do.
-@lucien/neutral I know far too many of my kind who wouldn't have seen it that way. Or bothered.
+@lucien/neutral Plenty of my kind wouldn't have thought of it that way. Or cared to.
 N He tossed me something. I nearly fell out of the saddle catching it. A hunting knife, its hilt set with jewels, balanced as perfectly as anything I had ever held.
 @lucien/grim I heard you scream. And I hesitated. Only for a moment, but I did, and I broke my word in it. It's yours. Please don't bury it in my back.
 > item jeweled_knife

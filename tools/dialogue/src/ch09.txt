@@ -60,7 +60,7 @@ N Andras had friends here. A place. He hadn't been just some nameless faerie in 
 @lucien/neutral Apologies, Feyre.
 N He couldn't lie. So the apology was real. I didn't know what to make of that.
 @lucien/smirk So. When do you start trying to talk me into begging Tam to let you out of the Treaty? That's why you were at the stables right as I was leaving, isn't it? I'm flattered you think I have the sway.
-@lucien/neutral Let me save you the breath. One: if I had my way, you'd be gone already. Two: I can't have my way. There is no other loophole. You're stuck with us.
+@lucien/neutral Save your breath. First: if it were up to me, you'd have been gone long ago. Second: it isn't up to me. There's no other way out of it. You're ours now.
 N No. There had to be something. Someone.
 @lucien/smirk A valiant effort, though.
 -> ch09_ask
@@ -75,7 +75,7 @@ N No. There had to be something. Someone.
 > set_flag ch09_q_court
 @feyre/neutral Where is the rest of Tamlin's court? Did they all run from the blight?
 @lucien/angry Who told you about the court?
-@feyre/neutral Do ordinary houses have emissaries? And servants talk. Is that why you made them wear bird masks to your party?
+@feyre/neutral Since when does a plain country house keep an emissary? And servants gossip. Was that the reason for the bird masks at your party?
 @lucien/grim We each chose a mask that night to honor Tam's gift for changing shape. The servants too. Now we'd tear them off with our bare hands if we could.
 @feyre/neutral What happened to the magic, to make it do that?
 @lucien/angry Something was sent up from the pits of Hell, that's what. Cauldron, I shouldn't have said that. If it got back to her-
@@ -99,7 +99,7 @@ N A shudder went through me. I didn't dare ask whether Tamlin could change me.
 == ch09_q_scar
 > set_flag ch09_q_scar
 @feyre/neutral How did you get the scar?
-@lucien/grim I didn't keep my mouth shut when I should have. I was punished for it.
+@lucien/grim I said something when I ought to have held my tongue. This was the price.
 @feyre/afraid Tamlin did that?
 @lucien/grim Cauldron, no. He wasn't there. He found me the eye afterward.
 [f:ch09_asked_one] -> ch09_cold
@@ -108,7 +108,7 @@ N A shudder went through me. I didn't dare ask whether Tamlin could change me.
 
 == ch09_cold
 @feyre/neutral Are there faeries who'll answer any question you ask, if you trap them? I heard a story like that once.
-@lucien/grim There are. The Suriel. They're old, and wicked, and not worth the danger of hunting one down. Keep looking so interested and I'll tell Tam to lock you in your room.
+@lucien/grim There's one. The Suriel. Ancient, and nasty, and not worth the risk of tracking it down. Keep that look on your face and I'll have Tam lock your door.
 N They had to live nearby, then, if he was so worried. I tucked the name away.
 N Lucien's head snapped to the right. His golden eye whirred, listening. The hair rose on my neck, and my bow was up and drawn before I'd thought about it.
 @lucien/grim Put the bow down. Put it down, human, and look straight ahead.

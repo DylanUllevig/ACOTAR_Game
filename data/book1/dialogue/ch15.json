@@ -62,7 +62,7 @@
      "t": "Feyre."
     },
     {
-     "n": "The rage drained out of his eyes. The claws slid back into his hands, though the roar still rang in my ears. There had been nothing in that sound but fury."
+     "n": "The fury faded from his eyes, and his claws slid back out of sight. But his roar was still ringing in my head, and there had been nothing in it but rage."
     },
     {
      "s": "feyre",
@@ -75,7 +75,7 @@
      "t": "I was tracking a pack of them. Those four broke away. They must have followed your scent. I heard you scream."
     },
     {
-     "n": "So he didn't know about the Suriel. And he had come."
+     "n": "He hadn't known about the Suriel. And still he'd come for me."
     },
     {
      "n": "He ran his fingers down my cheek, and the throbbing in my face and arm faded, then vanished. The metal tang of magic, and then only the breeze."
@@ -91,7 +91,7 @@
     {
      "s": "tamlin",
      "e": "neutral",
-     "t": "Do I want to know what you were doing out here?"
+     "t": "Should I even ask why you were out here?"
     },
     {
      "choices": [
@@ -115,7 +115,7 @@
      "t": "I..."
     },
     {
-     "n": "He'd warned me. Over and over. And the Suriel had told me not to go looking for more answers. The words died in my throat."
+     "n": "He had warned me, again and again. And the Suriel had told me to stop digging for answers. Whatever I'd meant to say, I swallowed it."
     },
     {
      "goto": "ch15_far"
@@ -132,7 +132,7 @@
     {
      "s": "tamlin",
      "e": "weary",
-     "t": "On the days I'm called away to deal with trouble, stay close to the house."
+     "t": "When I'm called away to the borders, keep near the house."
     },
     {
      "s": "feyre",
@@ -163,7 +163,7 @@
      "n": "We walked back in silence, both of us soaked in blood and pale as ghosts."
     },
     {
-     "n": "Stay with the High Lord, the Suriel had said. Easy enough. As for wicked kings and their commanders, and what they had to do with the male walking beside me, I didn't know enough to warn anyone. My family would have to make do with what little I had."
+     "n": "Keep to his side, the Suriel had said. That, at least, was easy. As for a wicked king and his commander, and whatever they meant for the male beside me, I knew far too little to warn anyone. My family would have to get by on the scraps I had."
     },
     {
      "do": [

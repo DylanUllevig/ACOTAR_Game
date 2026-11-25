@@ -107,12 +107,12 @@
     {
      "s": "lucien",
      "e": "smirk",
-     "t": "And why, pray tell, does Feyre have a bruise on her neck from you?"
+     "t": "And would you care to explain the bite mark on Feyre's neck?"
     },
     {
      "s": "tamlin",
      "e": "neutral",
-     "t": "I bit her. We ran into each other in the hall after the Rite."
+     "t": "It's mine. I came across her in the hall, after the Rite."
     },
     {
      "n": "He didn't even look up from his steak. The claws stayed in, but they were pressing at the skin over his knuckles. He was furious, and keeping it on the shortest of leashes."
@@ -130,7 +130,7 @@
     {
      "s": "tamlin",
      "e": "neutral",
-     "t": "I wasn't myself, perhaps. But Lucien and I both told you to stay in your room."
+     "t": "Maybe I wasn't entirely myself. But we both warned you, Lucien and I. You were meant to stay in your room."
     },
     {
      "n": "He said it so reasonably that I wanted to tear out my hair. Lucien had a hand clamped over his mouth, his russet eye shining."
@@ -176,10 +176,10 @@
      "n": "But I was smiling into the bright light of my painting room when I finished. The Tamlin I knew had come back. And that made me... happy."
     },
     {
-     "n": "We apologized to each other at dinner. He brought me a bouquet of white roses from his parents' garden, and though I waved them off as nothing, I made very sure Alis put them in water in my painting room."
+     "n": "At dinner we both said sorry. He'd cut me an armful of white roses from his parents' old garden, and though I shrugged them off as if they were nothing, I made certain Alis set them in water in my painting room."
     },
     {
-     "n": "That night I slept soundly, for the first time in a long, long while."
+     "n": "That night, for once, I slept straight through until morning."
     },
     {
      "do": [
@@ -282,7 +282,7 @@
     {
      "s": "alis",
      "e": "stern",
-     "t": "I chose to come. My kin thought me mad for it. But my sister and her mate had been killed, and her boys... I came to do what I could."
+     "t": "Nobody made me come. My family said I'd lost my wits. But with my sister and her mate dead, and her little ones left... I came to do what I could."
     },
     {
      "n": "She coughed, as if the words had stuck in her throat, and patted my shoulder."
@@ -382,7 +382,7 @@
      "t": "Between. Think of it as a closet tucked between the pockets of the world."
     },
     {
-     "n": "He flexed his hands and rolled his neck, as if shaking off an ache. There was sweat at his throat."
+     "n": "He stretched his fingers and worked his shoulders, easing some stiffness out of them. Sweat shone at his throat."
     },
     {
      "s": "feyre",
@@ -405,7 +405,7 @@
     {
      "s": "tamlin",
      "e": "tender",
-     "t": "And miss the chance to show off to a beautiful woman? Never."
+     "t": "And waste a chance to impress a beautiful woman? Not likely."
     },
     {
      "n": "I smiled down at my plate."
@@ -473,7 +473,7 @@
      "t": "Everyone snoops in this house. I didn't want either of you in here until I was ready."
     },
     {
-     "n": "I cleared my throat, a hint for him to light the candles. It took him longer than I'd ever seen. Shrinking the table must have cost him more than he'd let on. If this was all a High Lord could manage, something was truly, deeply wrong."
+     "n": "I coughed, hinting at the candles. He was slower lighting them than I'd ever seen him. Shrinking the table must have drained him more than he'd admit. If that was the limit of a High Lord's strength now, something had gone badly wrong."
     },
     {
      "n": "I pushed the worry away and pointed to the easel, and the painting I'd set there."
@@ -484,7 +484,7 @@
      "t": "I know they're strange. And nothing like as good as the ones in your gallery. But this one is for you. A gift. For everything you've done."
     },
     {
-     "n": "A smear of green and gold and silver and blue. An impression, not a likeness."
+     "n": "Swirls of green and gold, silver and blue. The feeling of him, not his face."
     },
     {
      "s": "feyre",
@@ -564,7 +564,7 @@
   "ch22_isaac_2": {
    "lines": [
     {
-     "n": "The truth. I wouldn't apologize for Isaac. Not to someone who had just come back from the Great Rite. I didn't hold that against him. But if he meant to be jealous..."
+     "n": "It was true, and I wasn't sorry for Isaac. Not to someone fresh from the Rite. I didn't blame him for that. But if he thought he could be jealous..."
     },
     {
      "n": "He seemed to realize it too. He let out a long, slow breath and moved on, to tall shadows of men with red dripping from their fists and clubs, and the curled shape on the floor between them, one leg bent the wrong way."
@@ -692,12 +692,12 @@
     {
      "s": "tamlin",
      "e": "tender",
-     "t": "I don't want you anywhere else. I want you here, where I can look after you. Where I can come home and know you're here, painting, and safe."
+     "t": "There's nowhere else I'd want you. Here, where I can keep you safe. Where I can ride home and know you're in that room, painting, and that nothing can touch you."
     },
     {
      "s": "tamlin",
      "e": "neutral",
-     "t": "I thought about sending you away, at the start. Part of me still thinks I should have. Maybe I was selfish. Even when you made it so clear you only wanted out of the Treaty, I couldn't bring myself to let you go."
+     "t": "In the beginning, I thought about sending you off. Some part of me still thinks I ought to have. It was selfish, perhaps. Even when all you wanted was a way out of the Treaty, I couldn't make myself let you leave."
     },
     {
      "s": "feyre",
@@ -718,7 +718,7 @@
     {
      "s": "tamlin",
      "e": "weary",
-     "t": "But none of them understood what it is to care for my people, my lands. What scars are still there. What the bad days feel like."
+     "t": "But not one of them knew what it means to carry a court and its people. Which wounds haven't closed. How the worst days feel."
     },
     {
      "n": "The jealousy burned off like dew as he smiled at my painting."

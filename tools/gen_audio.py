@@ -1568,10 +1568,107 @@ def sfx_all():
 
 AMBIENCE = {"forest_wind": amb_forest_wind, "night_wind": amb_night_wind, "hearth": amb_hearth, "village": amb_village,
             "spring_day": amb_spring_day, "spring_night": amb_spring_night, "bogge": amb_bogge}
+
+def music_chateau():
+    # G major, a summer afternoon at a rich man's house across the Wall: a
+    # pianoforte figure, a warm pad, a flute tune the fiddle answers; a
+    # wistful turn to E minor in the middle that comes home again
+    s = Song("chateau", 84, 4, 24)
+    CH = {"G": (43, [55, 59, 62]), "D/F#": (42, [54, 57, 62]), "Em": (40, [55, 59, 64]), "C": (36, [55, 60, 64]),
+          "Am": (45, [57, 60, 64]), "D": (38, [54, 57, 62]), "Bm": (47, [54, 59, 62]), "D7": (38, [54, 57, 60])}
+    prog = ["G", "D/F#", "Em", "C", "G", "Am", "D", "D7",
+            "G", "D/F#", "Em", "C", "Am", "Bm", "C", "D",
+            "Em", "Bm", "C", "G", "Am", "D", "G", "G"]
+    for bar, name in enumerate(prog):
+        bass, notes = CH[name]
+        s.add(ks(midi(bass + 12), 2.4, s.r, bright=0.4, decay=0.995), s.at(bar), 0.14, p=-0.15)
+        lo, mid, hi = notes
+        for k, m in enumerate([lo, hi, mid, hi] * 2):
+            s.add(ks(midi(m + 12), 1.6, s.r, bright=0.62, decay=0.9955), s.at(bar, k * 0.5), 0.058 * (1.0 if k % 4 == 0 else 0.72), p=(m - 60) / 24.0)
+        if bar % 2 == 0:
+            chord_pad(s, bar, 2, notes, gain=0.03, cutoff=1500, a=1.2)
+        if bar % 8 == 0:
+            s.add(bell(midi(hi + 24), 3.0, amps=(1.0, 0.3, 0.12, 0.05, 0.02)), s.at(bar), 0.025, p=0.45)
+    flute_tune = [(0, 0, 71, 1.5), (0, 1.5, 74, 0.5), (0, 2, 79, 2), (1, 0, 78, 1), (1, 1, 76, 1), (1, 2, 74, 2),
+                  (2, 0, 76, 1.5), (2, 1.5, 79, 0.5), (2, 2, 71, 2), (3, 0, 72, 1), (3, 1, 74, 1), (3, 2, 76, 2),
+                  (4, 0, 74, 2), (4, 2, 71, 1), (4, 3, 67, 1), (5, 0, 72, 1.5), (5, 1.5, 71, 0.5), (5, 2, 69, 2),
+                  (6, 0, 66, 1), (6, 1, 69, 1), (6, 2, 74, 2), (7, 0, 72, 2), (7, 2, 69, 2),
+                  (16, 0, 71, 3), (16, 3, 74, 1), (17, 0, 74, 2), (17, 2, 71, 2), (18, 0, 72, 1), (18, 1, 76, 1), (18, 2, 79, 2),
+                  (19, 0, 78, 2), (19, 2, 74, 2), (20, 0, 76, 1), (20, 1, 74, 1), (20, 2, 72, 1), (20, 3, 71, 1),
+                  (21, 0, 69, 2), (21, 2, 74, 2), (22, 0, 71, 4)]
+    for bar, beat, m, d in flute_tune:
+        s.add(flute(midi(m), d * s.beat * 0.95, s.r, vib=0.003), s.at(bar, beat), 0.07, p=0.12)
+    answer = [(8, 0, 79, 2), (8, 2, 78, 1), (8, 3, 76, 1), (9, 0, 74, 3), (9, 3, 71, 1), (10, 0, 76, 1), (10, 1, 78, 1), (10, 2, 79, 2),
+              (11, 0, 81, 2), (11, 2, 79, 2), (12, 0, 76, 1.5), (12, 1.5, 74, 0.5), (12, 2, 72, 2), (13, 0, 74, 1), (13, 1, 71, 1),
+              (13, 2, 78, 2), (14, 0, 76, 2), (14, 2, 72, 2), (15, 0, 74, 4)]
+    for bar, beat, m, d in answer:
+        s.add(fiddle(midi(m), d * s.beat * 0.96, s.r, vib=0.005, a=0.1, rel=0.28), s.at(bar, beat), 0.048, p=-0.22)
+    return s.finish(-21.5, wet=0.3, rev=2.4)
+
+
+def music_ball():
+    # a waltz in F for the ball: oom-pah-pah from the bass and plucked
+    # strings, a fiddle on the tune and a flute floating over the second half
+    s = Song("ball", 168, 3, 32)
+    CH = {"F": (41, [57, 60, 65]), "C7": (36, [55, 58, 64]), "Bb": (46, [58, 62, 65]), "Gm": (43, [58, 62, 67]),
+          "Dm": (38, [57, 62, 65])}
+    prog = ["F", "F", "C7", "C7", "C7", "C7", "F", "F", "F", "F", "Bb", "Bb", "F", "C7", "F", "F",
+            "Bb", "Bb", "F", "F", "Gm", "C7", "F", "F", "Dm", "Dm", "Gm", "Gm", "C7", "C7", "F", "F"]
+    for bar, name in enumerate(prog):
+        bass, notes = CH[name]
+        s.add(ks(midi(bass), 1.6, s.r, bright=0.35, decay=0.994), s.at(bar, 0), 0.17, p=-0.1)
+        s.add(pad_note(midi(bass + 12), s.beat * 0.9, s.r, cutoff=600, a=0.02, rel=0.3, voices=2), s.at(bar, 0), 0.05)
+        for b in (1, 2):
+            strum(s, s.at(bar, b), notes, 0.045 if b == 1 else 0.038, spread=0.008, bright=0.58, dur=0.7, p=0.2)
+        if bar % 4 == 0:
+            chord_pad(s, bar, 4, notes, gain=0.022, cutoff=1600, a=1.0)
+    tune = [(0, 0, 69, 1), (0, 1, 72, 1), (0, 2, 77, 1), (1, 0, 81, 2), (1, 2, 79, 1),
+            (2, 0, 79, 1), (2, 1, 76, 1), (2, 2, 72, 1), (3, 0, 70, 3),
+            (4, 0, 67, 1), (4, 1, 70, 1), (4, 2, 76, 1), (5, 0, 79, 2), (5, 2, 77, 1),
+            (6, 0, 76, 1), (6, 1, 77, 1), (6, 2, 69, 1), (7, 0, 72, 3),
+            (8, 0, 69, 1), (8, 1, 72, 1), (8, 2, 77, 1), (9, 0, 81, 2), (9, 2, 84, 1),
+            (10, 0, 82, 2), (10, 2, 81, 1), (11, 0, 77, 3), (12, 0, 81, 2), (12, 2, 79, 1),
+            (13, 0, 79, 1), (13, 1, 76, 1), (13, 2, 72, 1), (14, 0, 77, 3), (15, 0, 77, 2),
+            (16, 0, 74, 1), (16, 1, 77, 1), (16, 2, 82, 1), (17, 0, 82, 2), (17, 2, 81, 1),
+            (18, 0, 81, 1), (18, 1, 77, 1), (18, 2, 72, 1), (19, 0, 69, 3),
+            (20, 0, 70, 1), (20, 1, 74, 1), (20, 2, 79, 1), (21, 0, 79, 2), (21, 2, 76, 1),
+            (22, 0, 77, 1), (22, 1, 72, 1), (22, 2, 69, 1), (23, 0, 72, 3),
+            (24, 0, 74, 1), (24, 1, 77, 1), (24, 2, 81, 1), (25, 0, 81, 2), (25, 2, 79, 1),
+            (26, 0, 79, 1), (26, 1, 74, 1), (26, 2, 70, 1), (27, 0, 74, 3),
+            (28, 0, 76, 1), (28, 1, 79, 1), (28, 2, 82, 1), (29, 0, 81, 2), (29, 2, 79, 1),
+            (30, 0, 77, 3), (31, 0, 77, 1)]
+    for bar, beat, m, d in tune:
+        s.add(fiddle(midi(m), d * s.beat * 0.94, s.r, vib=0.005, a=0.03, rel=0.16), s.at(bar, beat), 0.075, p=0.12)
+        if bar >= 16:
+            s.add(flute(midi(m + 12), d * s.beat * 0.9, s.r, vib=0.0025), s.at(bar, beat), 0.026, p=-0.25)
+    return s.finish(-21.0, wet=0.3, rev=2.2)
+
+
+def music_wreck():
+    # the empty manor: slow and sparse, but not grim. A minor turning to F
+    # and C, a lone harp, a flute that hopes a little, a far-off bell
+    s = Song("wreck", 54, 4, 16)
+    prog = [(45, [57, 60, 64]), (41, [57, 60, 65]), (36, [55, 60, 64]), (43, [55, 59, 62]),
+            (45, [57, 60, 64]), (41, [57, 60, 65]), (43, [55, 59, 62]), (40, [56, 59, 64])] * 2
+    for bar, (bass, notes) in enumerate(prog):
+        s.add(pad_note(midi(bass + 12), s.bar, s.r, cutoff=420, a=1.6, rel=2.0), s.at(bar), 0.085)
+        if bar % 2 == 0:
+            chord_pad(s, bar, 2, notes, gain=0.03, cutoff=900, a=2.2)
+        for k, m in enumerate([notes[0] + 12, notes[2] + 12]):
+            s.add(ks(midi(m), 3.2, s.r, bright=0.38, decay=0.998), s.at(bar, 1 + k * 1.5), 0.055 * (1.0 if k == 0 else 0.7), p=(m - 66) / 22.0)
+    melody = [(8, 0, 76, 4), (9, 0, 77, 2), (9, 2, 76, 2), (10, 0, 72, 4), (11, 0, 71, 3), (11, 3, 74, 1),
+              (12, 0, 72, 2), (12, 2, 69, 2), (13, 0, 72, 2), (13, 2, 77, 2), (14, 0, 74, 4), (15, 0, 71, 4)]
+    for bar, beat, m, d in melody:
+        s.add(flute(midi(m), d * s.beat * 0.92, s.r, vib=0.0025), s.at(bar, beat), 0.045, p=0.15)
+    for bar in (3, 7, 11, 15):
+        s.add(bell(midi(88), 4.0, amps=(1.0, 0.25, 0.1, 0.04, 0.02)), s.at(bar, 2), 0.02, p=-0.5)
+    return s.finish(-24.0, wet=0.46, rev=3.8, damp=4200)
+
 MUSIC = {"title": music_title, "forest": music_forest, "hunt": music_hunt, "cottage": music_cottage,
          "village": music_village, "night_ride": music_night_ride,
          "spring_manor": music_spring_manor, "spring_night": music_spring_night, "spring_woods": music_spring_woods,
-         "solstice": music_solstice, "battle_spring": music_battle_spring, "calanmai": music_calanmai}
+         "solstice": music_solstice, "battle_spring": music_battle_spring, "calanmai": music_calanmai,
+         "chateau": music_chateau, "ball": music_ball, "wreck": music_wreck}
 
 
 def main(argv):

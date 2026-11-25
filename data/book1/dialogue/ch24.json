@@ -45,10 +45,10 @@
      "n": "She clucked her tongue, shook her head, and marched off to run my bath."
     },
     {
-     "n": "It wasn't possible. The Alis I knew was fair and plump and looked as High Fae as anyone. Unless... A glamour. The sight he'd given me had stripped away every glamour I'd been seeing."
+     "n": "That couldn't be her. My Alis was fair-skinned and round-cheeked, as High Fae to look at as any of them. Unless... a glamour. Whatever he'd done to my eyes had peeled every glamour away."
     },
     {
-     "n": "But why glamour a whole household? Because I'd been a cowering human, that's why. Because he knew I'd have locked myself in this room and never come out, if I'd seen them all as they truly were."
+     "n": "But why disguise a whole household? Because I had arrived a terrified human, that was why. Because if I'd seen them as they really were, I'd have barred my door and never stepped outside it again."
     },
     {
      "do": [
@@ -105,7 +105,7 @@
     {
      "s": "lucien",
      "e": "smirk",
-     "t": "Of course you didn't. We made sure you couldn't see or hear anyone who wasn't strictly necessary."
+     "t": "Naturally. We made sure you only saw and heard the ones you had to."
     },
     {
      "s": "feyre",
@@ -128,7 +128,7 @@
     {
      "s": "feyre",
      "e": "neutral",
-     "t": "But I saw the naga. And the puca, and the Suriel. And the faerie with her wings torn off. Why didn't the glamour hide them?"
+     "t": "The naga didn't hide from me, though. Or the puca, or the Suriel, or the poor faerie without her wings. Why didn't the glamour cover them?"
     },
     {
      "s": "tamlin",
@@ -151,7 +151,7 @@
     {
      "s": "lucien",
      "e": "smirk",
-     "t": "I've been busy. So have you, I hear. If I offer you the moon on a string, do I get a kiss too?"
+     "t": "Busy. And so, I hear, have you. If I fetch you the moon on a ribbon, is there a kiss in it for me?"
     },
     {
      "s": "tamlin",
@@ -206,7 +206,7 @@
      "t": "If you see one, even if it looks harmless, if it makes you uneasy, pretend you don't. Don't speak to it. If it hurt you... what came after would be ugly. For it, and for me. You remember the naga."
     },
     {
-     "n": "This was for my safety, not his amusement. He didn't want me hurt, and he didn't want to have to punish anyone for it. Had it hurt him, killing the naga?"
+     "n": "He wasn't doing this to amuse himself; he was keeping me safe. He couldn't stand the thought of me harmed, or of having to make someone pay for it. Had it cost him something, killing the naga?"
     },
     {
      "s": "feyre",
@@ -232,7 +232,7 @@
      "n": "His eyes softened, but his mouth went thin. I didn't offer to help. I knew he'd never let me."
     },
     {
-     "n": "But I thought of the painting I'd given him, and what he'd said about it. And I wished he'd let me in anyway."
+     "n": "Still, I remembered the painting I'd given him, and the things he'd said of it. And I wished he would have let me close all the same."
     },
     {
      "n": "I slept badly. In the morning I gathered up my paints and easel, meaning to give the whole day to the irises round the heron fountain."
@@ -368,7 +368,7 @@
     {
      "s": "lucien",
      "e": "grim",
-     "t": "Oh, it's a message. To get through our defenses and out again, with the blood this fresh... It's exactly what the High Lord of the Night Court would find amusing. The bastard."
+     "t": "It's a message, all right. Slipping past our wards and out again, and the blood still wet... That has the Night Court's High Lord written all over it. His idea of fun. The bastard."
     },
     {
      "n": "There was a thick, wet sound of flesh and bone scraping stone as he pulled it free. I'd skinned more animals than I could count. This was nothing like that. Tamlin's other hand settled on my shoulder."
@@ -427,7 +427,7 @@
     {
      "s": "tamlin",
      "e": "neutral",
-     "t": "It's posturing. The Night Court is deadly, but this was only their lord's notion of a joke. Attacking anyone here, attacking you, would cost him more than it's worth. And if the sickness breaks our borders and they come with it, we'll be ready."
+     "t": "It's a show. The Night Court is dangerous, but this was nothing more than its lord amusing himself. Striking at anyone here, at you, would cost him more than he'd gain. And if the sickness tears down the borders and his kind come through with it, we'll be waiting."
     },
     {
      "do": [
@@ -464,7 +464,7 @@
     {
      "s": "tamlin",
      "e": "weary",
-     "t": "Some days I'm very glad I was still a child when my father sent his slaves south of the wall. What I saw then was bad enough."
+     "t": "There are days I'm grateful I was only a boy when my father shipped his slaves back over the wall. What little I saw was enough."
     },
     {
      "s": "feyre",
@@ -474,7 +474,7 @@
     {
      "s": "tamlin",
      "e": "weary",
-     "t": "Yes. They'd never known freedom, or the seasons as you know them. They didn't know what to do with themselves out in the mortal world. But most of them were very, very happy to go. I was happy to see them go. Even if my father wasn't."
+     "t": "Yes. They'd never been free, never seen the seasons turn the way you have. Out in the mortal world they hardly knew what to do with themselves. But nearly all of them went gladly. I was glad, too, to watch them leave. My father wasn't."
     },
     {
      "n": "His claws had slid out above his knuckles, though he hadn't moved at all. No wonder he hadn't known what to do with me, when I first came."
@@ -485,7 +485,7 @@
      "t": "You're not your father, Tamlin. Or your brothers. You never once made me feel like a prisoner. Or like a piece of property."
     },
     {
-     "n": "He nodded his thanks, and the shadows told me there was more. About his family, about the life he'd had before they were killed and the title was forced on him. I wouldn't ask. Not with all this pressing down on him. Not until he was ready. He'd given me space and respect. I could give him no less."
+     "n": "He nodded, grateful, and the shadows in his face told me there was more to it. About his family, about who he'd been before they died and the title was pushed onto him. I wouldn't pry. Not with so much already weighing on him. He would tell me when he wanted to. He'd given me room and patience; I owed him the same."
     },
     {
      "goto": "ch24_after"
@@ -538,7 +538,7 @@
     {
      "s": "alis",
      "e": "kind",
-     "t": "Midsummer. The great revel used to be at the Summer Court, but things are different now, so we keep our own. You're going."
+     "t": "Midsummer. All the courts used to gather for it in the Summer Court, but that's done with, so we hold our own. And you're coming."
     },
     {
      "n": "Alis's people, I'd learned, were called the urisk."
@@ -550,7 +550,7 @@
      "n": "Tamlin was gone nearly all day. It was late afternoon before I heard his voice, and Lucien's braying laugh, echoing down the halls. I ran to find them, and Alis caught me on the stairs and hauled me back up."
     },
     {
-     "n": "Off came my paint-spattered clothes. On went flowing cornflower-blue chiffon, my hair loose, a garland of pink and white and blue wildflowers round my head. I might have felt like a child in it. But my sharp bones had filled out over the months. A woman's body. I'd never thought I would feel anything but muscle and bone."
+     "n": "Off came my paint-spattered clothes, and on went a drift of cornflower-blue chiffon, with my hair left loose and a crown of pink and white and blue wildflowers on top. It could have made me feel like a little girl. But months of good food had filled in the sharp angles of me, and the body in the mirror was a woman's. I'd never expected to be anything but sinew and bone."
     },
     {
      "s": "lucien",

@@ -183,9 +183,18 @@ static func portrait(character: String, expr: String) -> Texture2D:
 	var sets = [character]
 	if character == "feyre" and String(GameState.outfit) != "feyre":
 		sets = [String(GameState.outfit), character]
-	# from Chapter 24 she sees the household without its glamour
-	if character == "alis" and GameState.chapter >= 24:
+	# from Chapter 24 she sees the household without its glamour; from 31 Alis
+	# has been through the sack of the manor
+	if character == "alis" and GameState.chapter >= 31:
+		sets = ["alis_worn", "alis_urisk", character]
+	elif character == "alis" and GameState.chapter >= 24:
 		sets = ["alis_urisk", character]
+	# from Chapter 28 her family is rich again, and dressed for it
+	if character in ["nesta", "elain", "father"] and GameState.chapter >= 28:
+		sets = [character + "_rich", character]
+	# Isaac, married by the summer she comes home
+	if character == "isaac" and GameState.chapter >= 30:
+		sets = ["isaac_wed", character]
 	for who in sets:
 		for e in [expr, String(PORTRAIT_ALIAS.get(expr, "")), "neutral", "snarl"]:
 			if e == "":

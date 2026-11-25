@@ -19,7 +19,7 @@
      "n": "Then I saw the room, and my palms went damp. Books, wall to wall, rank on rank, like a silent army. Couches, desks, rugs. All of it useless to me."
     },
     {
-     "n": "But it had been more than a week since I left. I could at least let them know I was safe. Warn them about the sickness that might one day cross the wall. And there was only one way to do that."
+     "n": "More than a week had gone by since I left. The least I could do was tell them I was alive. Warn them about the sickness that might creep over the wall someday. And there was only one way to get word to them."
     },
     {
      "s": "tamlin",
@@ -158,7 +158,7 @@
     {
      "s": "tamlin",
      "e": "neutral",
-     "t": "I could help you write to them. If that's why you're in here."
+     "t": "If that's what brought you in here, I could help you with the letter."
     },
     {
      "n": "I nearly knocked the chair over. He stood behind me with a stack of books in his arms."
@@ -171,7 +171,7 @@
     {
      "s": "tamlin",
      "e": "angry",
-     "t": "Why would I laugh at you for a shortcoming that isn't your fault? Let me help. I owe you for the hand."
+     "t": "Why would I mock you for something nobody ever gave you the chance to learn? Let me help. I owe you for the hand."
     },
     {
      "n": "Shortcoming. So it was a shortcoming."
@@ -215,7 +215,7 @@
     {
      "s": "feyre",
      "e": "determined",
-     "t": "Lucien doesn't pretend to be anything but what he is."
+     "t": "Lucien never hides what he is."
     },
     {
      "s": "tamlin",
@@ -225,7 +225,7 @@
     {
      "s": "feyre",
      "e": "determined",
-     "t": "It means I don't know you. I don't know who you are, or what you are, or what you want."
+     "t": "It means you're a stranger to me. I can't tell who you are, or what you are, or what you're after."
     },
     {
      "s": "tamlin",
@@ -309,7 +309,7 @@
     {
      "s": "lucien",
      "e": "smirk",
-     "t": "I've been off settling some hotheads on the northern border. Got back in time to hear your little spat with Tam, and decided I was safer up here."
+     "t": "I've been up north, cooling some tempers along the border. I came home just in time to catch you and Tam at each other's throats, and thought it wiser to keep out of the way up here."
     },
     {
      "s": "lucien",
@@ -343,7 +343,7 @@
     {
      "s": "lucien",
      "e": "neutral",
-     "t": "I'd probably have a weakness for groves of young birch in the western woods. And freshly killed chickens. And I'd be so greedy I'd never notice the double-loop snare round the grove, waiting to pin my legs."
+     "t": "If I were one, I'd likely be fond of the young birch groves in the western woods. And of chickens, fresh killed. And I'd be far too greedy to spot a double snare laid round the grove, ready to catch my legs."
     },
     {
      "s": "feyre",
@@ -353,7 +353,7 @@
     {
      "s": "lucien",
      "e": "grim",
-     "t": "If I were mad enough to go after one, I'd take a bow and a full quiver. And maybe a knife just like this one."
+     "t": "Anyone fool enough to hunt one would want a bow, and plenty of arrows. And a knife, perhaps. Something like this."
     },
     {
      "n": "He sheathed the knife and set it at the edge of the table. An offering."
@@ -371,7 +371,7 @@
     {
      "s": "lucien",
      "e": "smirk",
-     "t": "I'll be conveniently hunting on the grounds. And with my excellent hearing, I might be generous enough to listen for a scream from the western woods. Tam would gut anyone who told you how to catch a Suriel, so it's lucky I told you nothing."
+     "t": "As it happens, I'll be out hunting on the grounds. My hearing's very good, and if I heard screaming from the western woods I might even come and look. Tam would skin anyone who taught you to catch a Suriel. Good thing I've taught you nothing."
     },
     {
      "s": "lucien",
@@ -386,7 +386,7 @@
     {
      "s": "lucien",
      "e": "smirk",
-     "t": "Cauldron help me. I think I'm starting to like you. For a murdering human."
+     "t": "Cauldron save me. I might be growing fond of you. For a human who kills faeries."
     },
     {
      "do": [

@@ -3,7 +3,7 @@
 == ch21_rhys
 N Short black hair gleaming like a raven's wing. Pale skin. Eyes of so deep a blue they were violet, even by firelight, dancing with amusement. No mask. Another court, then.
 N He stood utterly still, and the night seemed to lean in close around him. It made me want to run.
-@stranger/smirk What's a mortal woman doing here on Fire Night?
+@stranger/smirk A mortal, here, tonight of all nights?
 N His voice was a lover's purr, and I felt it in every nerve. I stepped back.
 @feyre/determined My friends brought me.
 @stranger/smirk And who are your friends?
@@ -12,12 +12,12 @@ N His voice was a lover's purr, and I felt it in every nerve. I stepped back.
 N I said nothing. Had I traded three monsters for something far worse?
 @stranger/smirk You're welcome. For saving you.
 N He began to circle me, and I could have sworn tendrils of starlit night trailed behind him.
-@stranger/neutral Strange, for a mortal to be friends with two faeries. Aren't you humans usually terrified of us? And aren't you meant to keep to your side of the wall?
-@feyre/determined I've known them all my life. I've never had anything to fear from them.
-@stranger/smirk And yet they brought you to the Great Rite and left you alone.
+@stranger/neutral An odd thing, a human with two faerie friends. Doesn't your kind usually run screaming from mine? And don't you belong on the other side of the wall?
+@feyre/determined They've been my friends since I was small. They've never given me cause to be afraid.
+@stranger/smirk And still they brought you to the Rite and wandered off without you.
 @feyre/determined They've gone for refreshments.
 N His smile widened. Whatever I'd said, it had given me away.
-@stranger/smirk I'm afraid the refreshments are a long way off. May I escort you somewhere in the meantime?
+@stranger/smirk The wine is a long walk from here, I'm afraid. Shall I see you somewhere safer while you wait?
 * Take his arm. -> ch21_arm
 * Refuse. -> ch21_no
 
@@ -27,7 +27,7 @@ N I lifted my hand, and every warning bell in me rang at once. I let it fall.
 
 == ch21_no
 @feyre/neutral No.
-@stranger/neutral Enjoy the Rite, then. Try to stay out of trouble.
+@stranger/neutral Have a pleasant Rite, then. Do keep out of trouble.
 N His eyes said that staying out of trouble meant staying well away from him. It was the stupidest thing I'd ever done, but I couldn't help it.
 @feyre/neutral So you're not of the Spring Court?
 @stranger/smirk Do I look like I belong to the Spring Court? No. And glad of it.
@@ -38,8 +38,8 @@ N His smile had turned cold and cruel.
 @feyre/neutral Enjoy the Rite.
 > region_call stranger_leaves
 N I put my back to him, which might have been the stupidest thing of all, and lost myself in the crowd along the path. When I looked back, he was gone.
-N Across the path, a masked faerie met my eyes. One russet eye. One golden one. He blinked, and vanished, and a heartbeat later someone grabbed my elbow and yanked me out of the crowd.
-@lucien/angry Have you lost your mind? What are you doing here?
+N A masked faerie across the path caught my gaze. One eye russet, the other gold. He blinked and was gone, and in the next breath a hand closed on my elbow and hauled me out of the crush.
+@lucien/angry Are you mad? Why are you out here?
 @feyre/determined I wanted to-
 @lucien/angry Idiot! Useless human fool!
 N He slung me over his shoulder like a sack of grain and ran, faster than anything should run. I shut my eyes so I wouldn't be sick.
@@ -48,7 +48,7 @@ N He slung me over his shoulder like a sack of grain and ran, faster than anythi
 == ch21_hall
 > set_flag ch21_hall
 N He dropped me on the floor of the hall. His face was ghost-pale and slick with sweat, and his eyes kept going to the hills, where the drums were beating like rain.
-@lucien/angry You stupid mortal. Didn't he tell you to stay in your room?
+@lucien/angry You idiot human. He told you to keep to your room!
 @feyre/angry That was hardly anything-
 @lucien/angry That wasn't even the ceremony! Cauldron, if Tam had found you there... Didn't anyone tell you what the Great Rite is?
 N My silence was answer enough.
@@ -63,7 +63,7 @@ N My face went hot.
 N So that was what those three had thought I was there for.
 @lucien/grim You're lucky I found you first. He'd have smelled you and taken you, and it wouldn't have been Tamlin who carried you into that cave. You wouldn't have liked it. Tonight isn't for lovemaking.
 N I swallowed down the sickness. And yet under it, to hear that some wild part of him wanted me...
-@lucien/grim I have to go back. I need to be there when he smells you and can't find you, to try to hold him. Stay in your room, Feyre. Whoever comes knocking, keep the door locked. Don't come out until morning.
+@lucien/grim I have to get back. When he catches your scent and can't find you, someone has to be there to hold him back. Go to your room, Feyre. Lock it, and don't open it for anyone who knocks. Not until dawn.
 > region_call walk_out lucien
 > objective Go up to your room and lock the door.
 
@@ -81,7 +81,7 @@ N I looked at the snare I'd rigged across my door. As if rope and wood could kee
 > music ""
 N The kitchens had given me half a loaf, an apple and a lemon tart, and I was nibbling a chocolate biscuit on my way back when a tall figure stepped out in front of me.
 > region_call walk_in lord_gold tamlin 640 330
-N Moonlight turned his mask silver. His golden hair was loose and crowned with laurel leaves, and his bare chest was painted with whorls of dark blue woad, smudged where he'd been touched. I tried not to notice that the smudges went lower than his waist.
+N The moon silvered his mask. His golden hair hung loose under a wreath of laurel, and his bare chest was painted with swirls of deep blue woad, blurred wherever hands had touched him. I tried very hard not to see how far below his waist the blurring went.
 @tamlin/angry Going somewhere?
 N His voice wasn't wholly of this world.
 @feyre/neutral A midnight snack.
@@ -90,9 +90,9 @@ N I made to walk past him. He moved faster than I could see, and I was against t
 N He reeked of magic. There was nothing in his eyes of the Tamlin I knew. No kindness, no wry humor. Only what was left of the power.
 @feyre/determined Let go.
 N His claws punched into the paneling above my hands.
-@tamlin/angry You drove me mad. When I couldn't find you, it made me choose another. She asked me not to be gentle with her.
+@tamlin/angry You made me wild. When I couldn't find you, I had to pick someone else. She wanted it rough.
 N He brought his mouth to my ear.
-@tamlin/tender I would have been gentle with you. I'd have had you moaning my name the whole time. And I would have taken a very, very long time, Feyre.
+@tamlin/tender With you I'd have been gentle. I'd have had you saying my name all night. And I would have taken my time, Feyre. All of it.
 N He pulled his claws out of the wall and let go, and my knees buckled. I didn't know if I wanted to hit him or pull him closer.
 * Push him away. -> ch21_push
 * Say nothing. -> ch21_still

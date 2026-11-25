@@ -1,8 +1,59 @@
 # Design notes
 
 What each milestone contains, how the systems work, where the build differs
-from the original spec and why, and every guess made along the way. Milestone
-2 comes first; Milestone 1's notes follow it unchanged except where marked.
+from the original spec and why, and every guess made along the way. The newest
+milestone comes first; the older notes follow unchanged except where marked.
+
+## Milestone 3: home across the Wall (Chapters 28 to 32)
+
+Chapter 27 no longer ends the game: she wakes on the morning Tamlin sends her
+home, crosses the Wall asleep in his carriage, and plays on through her
+family's new life, the ride back and the empty manor, to Alis's tale in the
+burned kitchen. The end window closes Milestone 3 at "As you wish". Next is
+Chapter 33, Under the Mountain.
+
+| Ch | Where | What happens |
+|---|---|---|
+| 28 | her room, the hall, the grounds, the new house | Alis dresses her for the mortal world; Lucien at the foot of the stairs; goodbye at the gilded carriage; she wakes at her father's new house, and the glamour's story of a rich dead aunt |
+| 29 | the garden and lawn, Father's study, the old cottage | Elain among her tulips, Nesta under the mulberry tree, four purses of silver; the cottage, so small now, and the forest that is only trees |
+| 30 | the village, the glasshouse, the morning room, the stairs | four purses left at four doors in the poor lane; Tomas Mandray at the fountain; Isaac and his bride; digging Elain's new bed, and what Nesta knew; three painting lessons; Nesta on the stairs: "Yes. I would have." |
+| 31 | the ballroom, the dining room, the forest, the Wall, the grounds | the ball and the fifth suitor; lunch, and the Beddor fire; riding clothes, knives and a bow; Elain's saddled horse; the ride north, the night by the fire, the standing stones; the manor's doors hang open |
+| 32 | the wrecked hall, the dining room, the kitchens | the signs read; the prints in the glass; hiding behind the door; Alis, and the whole truth told over paintings (the curse, the masks, the wolves); "As you wish" |
+
+### How it is built
+
+| Part | Where | Notes |
+|---|---|---|
+| The new house, outside | `regions/chateau.gd` | White house, green roofs, a long gravel drive between hedges clipped into green flames; Elain's walled garden under the study window, the glasshouse, the lawn down to the mulberry tree, the road west to the cottage. |
+| The new house, inside | `regions/chateau_in.gd` | Runs on the manor's machinery (`manor_in.gd`): every `chateau_*` region id is a room (hall, ballroom, dining, study, studio, landing, bedroom), with its own beat table (`C_BEATS`). |
+| The old cottage | `regions/cottage_yard.gd` | Mossy thatch with a hole in it, Elain's bed run wild, the ward-marks still on the doorstep, a new door; her old path south to the tree line. |
+| The village in summer | `regions/village_summer.gd` | The winter village's square and roads, green now, with the poor lane at the bottom where the purses go. |
+| The Wall | `regions/summer_wall.gd` | The ride north until the horse refuses; the Wall is an invisible band that stops a hand like glass and shimmers where she touches it. She leads the horse east along it, camps by a fire (feed it three times to reach dawn), and finds the stones. |
+| The empty manor | `spring_manor.gd`, `manor_in.gd` | From the end of Chapter 31: silent grounds, the doors open, the wrecked hall and dining room, and the burned kitchen (`manor_kitchen`). |
+| Tale paintings | `> panel <id>` in the dialogue script | A painting fills the screen behind the speakers while a story is told, and cross-fades to the next (`assets/final/panels/`). `> panel none` clears it. |
+| Clothes | `GameState.outfit` | Mortal finery, garden clothes, the ball gown and riding clothes, each with its own walking sheet and portraits. A `goto` can change them (`outfit=`) so the next room builds her dressed. |
+| Music | `tools/gen_audio.py` | Kept light, in line with the ask for less dark music: the house in G major with a pianoforte, flute and fiddle; a waltz in F for the ball; the empty manor sparse but not grim. |
+| Own words | `tools/dialogue/overlap.py` | Lists every story line or lore entry that shares nine or more words in a row with the book (read from the user's own EPUB, never committed). About 260 lines from Chapters 6 to 32 were rewritten until it listed none. |
+
+Drawing fixes that came with it, for every region: a tall prop (a tree, a
+hedge, a house) now fades by its painted shape when Feyre or a horse is behind
+it, not by a rough box; ground edges can trim one-tile spikes
+(`terrain.smooth_edges`, on in the Milestone 3 regions) so roads read as
+smooth curves; and indoor rooms use barrels, buckets and crates without the
+snow or grass of the outdoor ones.
+
+### Guesses and pushback (Milestone 3)
+
+- The way through the Wall is two mossy standing stones with spirals cut in
+  them, so the player has something to look for on the ride east.
+- Six moments offer a choice (the carriage, Elain's garden, Tomas, Isaac,
+  Nesta's confession, the worktable); as before, choices change lines, not
+  the story. The ball, the lunch and the painting lessons play straight
+  through.
+- Alis's tale is told in the game's own words over six paintings, rather than
+  as a long block of text.
+- The horse is hobbled at the camp so it stays by the fire if the game is
+  saved and loaded there.
 
 ## Milestone 2: the Spring Court (Chapters 6 to 27)
 

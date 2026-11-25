@@ -26,12 +26,12 @@ N I gave the High Lord my sweetest smile and took the seat across from Lucien in
 N His eye drifted down to my neck, and stayed there.
 @lucien/neutral What is that?
 @feyre/angry Ask him. It's his work.
-@lucien/smirk And why, pray tell, does Feyre have a bruise on her neck from you?
-@tamlin/neutral I bit her. We ran into each other in the hall after the Rite.
+@lucien/smirk And would you care to explain the bite mark on Feyre's neck?
+@tamlin/neutral It's mine. I came across her in the hall, after the Rite.
 N He didn't even look up from his steak. The claws stayed in, but they were pressing at the skin over his knuckles. He was furious, and keeping it on the shortest of leashes.
 @tamlin/neutral She seems determined to get herself killed. If Feyre can't be bothered to follow orders, I can't be blamed for what happens.
 @feyre/angry Blamed? You cornered me in that hall like a wolf with a rabbit!
-@tamlin/neutral I wasn't myself, perhaps. But Lucien and I both told you to stay in your room.
+@tamlin/neutral Maybe I wasn't entirely myself. But we both warned you, Lucien and I. You were meant to stay in your room.
 N He said it so reasonably that I wanted to tear out my hair. Lucien had a hand clamped over his mouth, his russet eye shining.
 * Tell him exactly what he is. -> ch22_pig
 * Get up and leave without a word. -> ch22_storm
@@ -45,8 +45,8 @@ N I stood so fast my chair screeched on the floor. My temper caught up with me b
 N Lucien howled, and very nearly went over backward in his chair. And Tamlin began to smile. I left before it could get any wider.
 N It took me a good two hours to stop painting little portraits of the pair of them with snouts. I called the last one, privately, Two Faerie Pigs Wallowing in Their Own Filth.
 N But I was smiling into the bright light of my painting room when I finished. The Tamlin I knew had come back. And that made me... happy.
-N We apologized to each other at dinner. He brought me a bouquet of white roses from his parents' garden, and though I waved them off as nothing, I made very sure Alis put them in water in my painting room.
-N That night I slept soundly, for the first time in a long, long while.
+N At dinner we both said sorry. He'd cut me an armful of white roses from his parents' old garden, and though I shrugged them off as if they were nothing, I made certain Alis set them in water in my painting room.
+N That night, for once, I slept straight through until morning.
 > goto manor_bedroom bed chapter=22 hour=18.5
 
 == ch22_gown
@@ -68,7 +68,7 @@ N She sat me at the vanity and set to work on my hair. I couldn't bring myself t
 @alis/neutral No. My people are from the Summer Court. My kin live there still.
 @feyre/neutral Then how did you end up here?
 N Her mouth went tight in the mirror.
-@alis/stern I chose to come. My kin thought me mad for it. But my sister and her mate had been killed, and her boys... I came to do what I could.
+@alis/stern Nobody made me come. My family said I'd lost my wits. But with my sister and her mate dead, and her little ones left... I came to do what I could.
 N She coughed, as if the words had stuck in her throat, and patted my shoulder.
 -> ch22_mirror
 
@@ -91,12 +91,12 @@ N The ends of the table were simply gone. He sat not two feet from me across a s
 @tamlin/tender Better?
 @feyre/afraid How did you do that? Where did it all go?
 @tamlin/neutral Between. Think of it as a closet tucked between the pockets of the world.
-N He flexed his hands and rolled his neck, as if shaking off an ache. There was sweat at his throat.
+N He stretched his fingers and worked his shoulders, easing some stiffness out of them. Sweat shone at his throat.
 @feyre/neutral Does it cost you?
 @tamlin/weary Once, it was as easy as breathing. Now it takes concentration.
 N Because of the sickness, and what it had taken from him.
 @feyre/neutral You could just have moved to a closer chair.
-@tamlin/tender And miss the chance to show off to a beautiful woman? Never.
+@tamlin/tender And waste a chance to impress a beautiful woman? Not likely.
 N I smiled down at my plate.
 @tamlin/tender You do look beautiful. I mean it. Didn't you look in the mirror?
 N I had. The bruise was still on my neck, but I had looked pretty. Not a beauty, I wouldn't go so far, but I hadn't cringed. The sharp, starved angles of my face had softened, and there was a light in my eyes. My own eyes. Not my mother's, not Nesta's. Mine.
@@ -111,10 +111,10 @@ N He rose. When I tried to let go of his hand, he wouldn't let me. I led him out
 > set_flag ch22_paintings
 @tamlin/neutral I knew you'd asked Alis for a key. I didn't think you actually locked it.
 @feyre/neutral Everyone snoops in this house. I didn't want either of you in here until I was ready.
-N I cleared my throat, a hint for him to light the candles. It took him longer than I'd ever seen. Shrinking the table must have cost him more than he'd let on. If this was all a High Lord could manage, something was truly, deeply wrong.
+N I coughed, hinting at the candles. He was slower lighting them than I'd ever seen him. Shrinking the table must have drained him more than he'd admit. If that was the limit of a High Lord's strength now, something had gone badly wrong.
 N I pushed the worry away and pointed to the easel, and the painting I'd set there.
 @feyre/afraid I know they're strange. And nothing like as good as the ones in your gallery. But this one is for you. A gift. For everything you've done.
-N A smear of green and gold and silver and blue. An impression, not a likeness.
+N Swirls of green and gold, silver and blue. The feeling of him, not his face.
 @feyre/afraid It's the glen. The pool of starlight.
 @tamlin/tender I know what it is.
 N He looked at it for a miserable eternity. Then his eyes moved on, to the canvases I'd left leaning against the walls. My stomach dropped.
@@ -136,7 +136,7 @@ N I reached for it. He'd already seen it, though, and I let my hand fall.
 -> ch22_isaac_2
 
 == ch22_isaac_2
-N The truth. I wouldn't apologize for Isaac. Not to someone who had just come back from the Great Rite. I didn't hold that against him. But if he meant to be jealous...
+N It was true, and I wasn't sorry for Isaac. Not to someone fresh from the Rite. I didn't blame him for that. But if he thought he could be jealous...
 N He seemed to realize it too. He let out a long, slow breath and moved on, to tall shadows of men with red dripping from their fists and clubs, and the curled shape on the floor between them, one leg bent the wrong way.
 @tamlin/angry You were there. When they broke your father's leg.
 @feyre/sad Someone had to beg them to stop.
@@ -168,13 +168,13 @@ N He didn't answer at first. He only looked at it, then at me, as if deciding ho
 -> ch22_stay
 
 == ch22_stay
-@tamlin/tender I don't want you anywhere else. I want you here, where I can look after you. Where I can come home and know you're here, painting, and safe.
-@tamlin/neutral I thought about sending you away, at the start. Part of me still thinks I should have. Maybe I was selfish. Even when you made it so clear you only wanted out of the Treaty, I couldn't bring myself to let you go.
+@tamlin/tender There's nowhere else I'd want you. Here, where I can keep you safe. Where I can ride home and know you're in that room, painting, and that nothing can touch you.
+@tamlin/neutral In the beginning, I thought about sending you off. Some part of me still thinks I ought to have. It was selfish, perhaps. Even when all you wanted was a way out of the Treaty, I couldn't make myself let you leave.
 @feyre/neutral Why?
 N He picked up the little painting of the frozen forest.
 @tamlin/neutral I've had many lovers. Noblewomen, warriors, princesses.
 N Rage hit me low in the gut, at their titles, their certain beauty, their nearness to him.
-@tamlin/weary But none of them understood what it is to care for my people, my lands. What scars are still there. What the bad days feel like.
+@tamlin/weary But not one of them knew what it means to carry a court and its people. Which wounds haven't closed. How the worst days feel.
 N The jealousy burned off like dew as he smiled at my painting.
 @tamlin/tender This reminds me of it.
 @feyre/tender Of what?

@@ -38,10 +38,10 @@ N He didn't say good night. Neither did I.
 > time 9
 > music spring_manor
 N By morning the marble had been washed clean. I meant to spend the quiet hour looking at the paintings at last, but voices came from the dining room, low and tense. I slid into the shadow behind the door.
-@lucien/angry I just want to know what you think you're doing. There isn't much time, Tam, and you're sulking. You're not even pretending anymore.
-@tamlin/angry It was a mistake from the start. I can't stomach it. Not after what my father did to their kind. I won't walk in his footsteps.
-@lucien/angry While you seal our fates? I stayed with you out of hope, not to watch you stumble. For someone with a heart of stone, yours has gone soft. The Bogge was on our lands, Tam! The borders between the courts are gone, and our own woods are crawling with vermin like the puca.
-@tamlin/angry Mind your mouth. You think I don't know what's happening on my own lands? What I stand to lose? What's already lost?
+@lucien/angry Tell me what you're playing at. Time's running out, Tam, and you're brooding. You've stopped even trying.
+@tamlin/angry It was wrong from the beginning. I can't do it. Not after the way my father treated humans. I won't become him.
+@lucien/angry And doom the rest of us? I stayed because I had hope, not to watch you trip over your own conscience. You, of all people, gone soft. The Bogge walked our lands, Tam! The borders between the courts have fallen, and our woods are filling up with filth like the puca.
+@tamlin/angry Careful. Do you think I can't see what's happening in my own court? What I could lose? What's gone already?
 N The air throbbed, and the metal tang of magic filled my nose. I leaned closer. My finger knocked softly against the door.
 N A human wouldn't have heard it. Both of them whirled.
 @feyre/neutral Morning. Going for a ride, Lucien?
@@ -54,18 +54,18 @@ N He patted my shoulder on his way out, looking far too pleased with himself.
 N He walked me through the sunlit halls. The roses outside the open windows scented everything.
 @tamlin/neutral You've been riding out to hunt, and you don't even like it. No wonder the two of you never catch anything.
 @feyre/neutral How's your hand?
-@tamlin/tender I never thanked you. The Bogge's bite was made to slow our healing long enough to kill us. You have my gratitude. And I can still use the hand.
+@tamlin/tender I never said thank you. A wound from the Bogge heals too slowly to save us; that's how it kills. So, thank you. The hand still works.
 @feyre/neutral I had to be able to draw a bowstring the next day. You learn.
 @tamlin/tender Has anyone ever looked after you?
 @feyre/neutral No.
 N I'd stopped feeling sorry for myself about that a long time ago.
-@tamlin/neutral I'm curious. Are you ever going to use that knife you stole from my table?
+@tamlin/neutral Tell me something. Do you plan to use that knife you took from my table, or just carry it around?
 @feyre/afraid How did you know?
 @tamlin/neutral I was trained to notice. But mostly I could smell the fear on you. If you want to stand a chance of escaping my kind, you'll need better ideas than dinner knives. Though with your gift for listening at doors, you may learn something useful yet.
 N My ears burned. But there was no point pretending.
 @feyre/neutral Lucien said there wasn't much time. Time for what? Will more things like the Bogge come here?
 @tamlin/neutral I'm immortal, Feyre. Time is all I have. Whatever's plaguing our lands will pass someday, if the Cauldron's kind. But yes. Now that the Bogge got in, I'd expect others to follow.
-N He opened a pair of double doors at the end of the hall.
+N At the end of the hall, he pushed open two tall doors.
 @tamlin/neutral As requested. The library.
 > chapter_card 13
 > goto manor_study hall chapter=13 hour=10

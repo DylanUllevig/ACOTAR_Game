@@ -16,7 +16,7 @@ N We rode for an hour without much talk. When I'd stopped shaking, I couldn't he
 @lucien/angry Cauldron, Feyre, I'm not that old.
 @feyre/neutral Are you a warrior, though?
 @lucien/smirk Not as good as Tam. But I know which end of a blade to hold. Shall I teach you, mighty mortal huntress? Or do you only need to know where to aim?
-@feyre/determined I don't know how to use a sword. I only know how to hunt.
+@feyre/determined I've never held a sword. Hunting's all I know.
 @lucien/smirk Isn't that the same thing?
 @feyre/determined Not to me.
 @lucien/angry I suppose you'd have wet yourself and curled up to die, if you'd known what Andras really was. Do you ever stop being so serious? So dull?
@@ -46,7 +46,7 @@ N Lucien left the answer to me. Coward.
 @feyre/neutral No.
 N He looked at me for a long moment, then turned to his food. Lucien cleared his throat.
 @lucien/grim Tam. The Bogge was in the woods today.
-N The fork in Tamlin's hand folded in on itself.
+N Tamlin's fork bent double in his fist.
 @tamlin/angry You met it?
 @lucien/grim It passed us. Close. It must have slipped over the border.
 N Metal shrieked as his claws punched out and shredded what was left of the fork. He rose, and his teeth seemed longer than before.

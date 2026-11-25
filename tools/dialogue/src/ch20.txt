@@ -7,7 +7,7 @@ N I didn't go outside the next day. When I sat down to paint, what came out was 
 > time 18.6
 > music ""
 > sfx drum
-N Fire Night dawned, and I didn't see Tamlin or Lucien all day. By dusk the kitchens were empty, the servants gone, and the food they had spent two days making gone with them. And from far beyond the gardens came the drums.
+N Fire Night came, and neither Tamlin nor Lucien showed his face all day. By sunset the kitchens stood empty, the servants vanished, and two days' worth of cooking had vanished with them. And somewhere far past the gardens, drums began to beat.
 N One deep beat, and two answering. Calling. On the hills toward the woods, fires flickered against a ruby sky, and the tang of magic was stronger than I had ever smelled it. Something tugged at my gut, pulling me toward those hills.
 > region_call walk_in lord_gold tamlin 860 470
 N Tamlin came down the hall, shirtless but for his baldric, a sword at his hip and a bow in his hand, the arrows in his quiver fletched with red. The warrior, whole.
@@ -64,12 +64,12 @@ N Three of them, without masks. Like High Fae, but taller and leaner, and someth
 @faerie/neutral A human woman. We haven't seen one of you in an age.
 @feyre/determined What do you want?
 @faerie/neutral Only a little Fire Night fun.
-N One reached out a long, pale hand and brushed back my hair. Another seized my other arm just as I went for my knife.
+N One of them reached out a long white hand and stroked my hair from my face. As I grabbed for my knife, another caught my free arm.
 * Wrench free and go for your knives. -> ch20_knife
 * Shout for help. -> ch20_shout
 
 == ch20_knife
-N I yanked with everything I had. Their grip only tightened until it hurt, and they kept my hands well away from my blades.
+N I wrenched against them with all my strength. Their fingers only dug in harder, and they held my hands far from my knives.
 -> ch20_bonfire_2
 
 == ch20_shout

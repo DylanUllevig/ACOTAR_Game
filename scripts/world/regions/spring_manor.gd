@@ -8,6 +8,8 @@ extends Region
 ## stable yard. Past the birches on the west edge, the woods.
 ##
 ## What happens here depends on the chapter: see _story() and on_enter().
+## Chapter 28: a gilded carriage at the steps, and goodbye. Chapter 31: she
+## comes back to silent grounds, bent gates and a door torn off its hinge.
 
 const Attor := preload("res://scripts/world/regions/attor_watch.gd")
 
@@ -32,6 +34,13 @@ var cover: Array = []                       # Rect2s behind the north hedges, wh
 var _attor: Node = null
 var _solstice := false
 var _wisps: Array = []
+var _carriage: Node2D = null                  # Ch 28: the carriage at the steps
+const CARRIAGE_AT := Vector2(1960, 1236)
+
+
+## Chapters 31 and 32: the court is gone, the house sacked.
+func _empty() -> bool:
+	return GameState.chapter == 31 or GameState.chapter == 32
 
 
 func build() -> void:
@@ -62,7 +71,8 @@ func build() -> void:
 	_borders()
 	_trees()
 	_flowers()
-	_critters()
+	if not _empty():
+		_critters()
 	if _solstice:
 		_solstice_dressing()
 	terrain.build()
@@ -78,6 +88,12 @@ func _ready() -> void:
 	map_exit(GATE, "The gate")
 	_story()
 	var night = Region.night_amount(GameState.hour) > 0.5
+	if _empty():
+		# no birdsong, no servants, no music from the house: wind in the hedges
+		Audio.ambience("forest_wind")
+		Audio.music("wreck", 4.0)
+		set_post({"vignette": 0.34, "lift": Vector3(0.01, 0.01, 0.02), "gain": Vector3(0.98, 0.98, 1.0), "saturation": 0.82, "grain": 0.0})
+		return
 	Audio.ambience("spring_night" if night else "spring_day")
 	Audio.music("solstice" if _solstice else ("spring_night" if night else "spring_manor"), 3.0)
 
@@ -292,7 +308,11 @@ func _borders() -> void:
 		add_prop("props/hedge.png", Vector2(x, 3250), 1.0, Vector2(80, 16), Vector2(210, 46), (x / 210) % 2 == 1)
 	for x in range(2410, 4300, 210):
 		add_prop("props/hedge.png", Vector2(x, 3250), 1.0, Vector2(80, 16), Vector2(210, 46), (x / 210) % 2 == 0)
-	add_prop("props/gate_iron.png", GATE + Vector2(0, 10), 1.0, Vector2(80, 14), Vector2(230, 40))
+	var gate = add_prop("props/gate_iron.png", GATE + Vector2(0, 10), 1.0, Vector2(80, 14), Vector2(230, 40))
+	if _empty():
+		# wrenched open by something with enormous hands
+		gate.skew = 0.22
+		gate.rotation = -0.05
 	add_interactable(GATE + Vector2(0, -70), "The gate", func(): await _landmark("gate"), 110, "Gate")
 	map_line(PackedVector2Array([Vector2(100, 3250), Vector2(4300, 3250)]), Color(0.3, 0.5, 0.28), 40.0)
 
@@ -415,11 +435,19 @@ func _solstice_dressing() -> void:
 		add_prop("props/table.png", POOL + p, 1.0, Vector2(40, 12), Vector2(90, 30))
 		var lt = add_light(POOL + p + Vector2(0, -90), Color(1.0, 0.8, 0.55), 0.45, 0.8, false)
 		add_flicker(lt, 0.1, 5.0)
-	add_prop("props/barrels.png", POOL + Vector2(930, 470), 1.0, Vector2(30, 10), Vector2(60, 24))
+	add_prop("props/barrels_summer.png", POOL + Vector2(930, 470), 1.0, Vector2(30, 10), Vector2(60, 24))
 
 
 # ------------------------------------------------------------------ actions
 func _go_inside() -> void:
+	if GameState.chapter == 28:
+		UI.toast("The carriage is waiting.")
+		return
+	if _empty():
+		if not GameState.has_flag("ch31_doors"):
+			await Dialogue.play("ch31_doors")
+		Router.goto_region("manor_hall", "front")
+		return
 	if GameState.chapter == 6 and not GameState.has_flag("ch06_inside"):
 		await Dialogue.play("ch06_door")
 		return
@@ -475,6 +503,10 @@ func _heron_action() -> void:
 
 
 func _to_woods() -> void:
+	if GameState.chapter >= 28:
+		UI.toast("Not the woods. Not now.")
+		player.position.x = maxf(player.position.x, 200.0)
+		return
 	if GameState.chapter < 11 or (GameState.chapter == 11 and not GameState.has_flag("ch11_follow")):
 		await Dialogue.play("spring_woods_closed")
 		player.position.x = maxf(player.position.x, 200.0)
@@ -491,10 +523,13 @@ func _to_woods() -> void:
 func _story() -> void:
 	add_trigger(Rect2(-120, WOODS_Y - 300, 190, 600), _to_woods, false)
 	var ch = GameState.chapter
+	if _empty():
+		_ch31_ruin()
+		return
 	if ch >= 7 and ch != 11 and not (ch == 20 and GameState.has_flag("ch20_sneak")):
 		npc.sentry_a = add_npc("sentry", GATE + Vector2(-190, -90), "Sentry", func(): await Dialogue.play("spring_sentry"), 0)
 		npc.sentry_b = add_npc("sentry", GATE + Vector2(190, -90), "Sentry", func(): await Dialogue.play("spring_sentry"), 0)
-	if ch >= 8 and Region.night_amount(GameState.hour) < 0.5 and not _solstice:
+	if ch >= 8 and ch != 28 and Region.night_amount(GameState.hour) < 0.5 and not _solstice:
 		# from Chapter 24 she sees Alis as she is: bark-brown skin under the mask
 		npc.alis = add_npc("bark_servant" if ch >= 24 else "housekeeper", MANOR + Vector2(-200, 110), "Alis", _alis, 0)
 	if ch >= 24 and Region.night_amount(GameState.hour) < 0.5:
@@ -532,6 +567,8 @@ func _story() -> void:
 		25:
 			if _solstice:
 				_ch25_party()
+		28:
+			_ch28_carriage()
 
 
 func on_enter() -> void:
@@ -556,6 +593,8 @@ func on_enter() -> void:
 	elif ch == 24 and GameState.has_flag("ch24_morning") and not GameState.has_flag("ch24_head") and not GameState.has_flag("ch24_out"):
 		GameState.set_flag("ch24_out")
 		await Dialogue.play("ch24_out")
+	elif ch == 31 and not GameState.has_flag("ch31_return"):
+		await Dialogue.play("ch31_return")
 
 
 ## Chapter 6: the beast pads up the drive ahead of her, seen from behind,
@@ -841,3 +880,87 @@ func pass_time(hour: float, spawn_name := "") -> void:
 		place_player(spawn_name)
 	await get_tree().create_timer(0.4, true, false, true).timeout
 	await UI.fade_in(0.8)
+
+
+# --------------------------------------------------------- Ch 28: farewell
+## The gilded carriage pulled up before the steps, six white horses facing
+## the road, and Tamlin waiting at its door.
+func _ch28_carriage() -> void:
+	if GameState.has_flag("ch28_carriage"):
+		return
+	_carriage = add_prop("props/carriage.png", CARRIAGE_AT, 1.0, Vector2(200, 20), Vector2(640, 60))
+	npc.tamlin = add_npc("lord_gold", CARRIAGE_AT + Vector2(250, 40), "", Callable(), 1)
+	add_trigger(Rect2(CARRIAGE_AT + Vector2(80, -260), Vector2(420, 250)), func(): await Dialogue.play("ch28_carriage"))
+	GameState.set_objective("Go out to the carriage.")
+
+
+## region_call (ch28_carriage): Lucien comes out after her and shoulders past
+## down the steps, to have it out with Tamlin.
+func lucien_storms_past() -> void:
+	var l = add_npc("courtier_red", DOOR + Vector2(0, 30), "", Callable(), 0)
+	npc.lucien = l
+	await walk_npc(l, CARRIAGE_AT + Vector2(150, 30), 230.0)
+	l.set_meta("facing", 2)
+
+
+## region_call (ch28_carriage): handed up into the carriage.
+func board_carriage() -> void:
+	var tw = create_tween()
+	tw.tween_property(player, "modulate:a", 0.0, 0.4)
+	await tw.finished
+	player.visible = false
+	player.locked = true
+	player.global_position = CARRIAGE_AT + Vector2(240, -20)
+
+
+## region_call (ch28_unsaid): the horses lean into the traces and the carriage
+## rolls away west, toward the gate road, and is gone.
+func carriage_leaves() -> void:
+	if player.visible:
+		await board_carriage()
+	var from = CARRIAGE_AT
+	if _carriage != null and is_instance_valid(_carriage):
+		from = _carriage.position
+		_carriage.queue_free()
+	var trot = add_prop("props/carriage_trot.png", from, 1.0, Vector2.ZERO, Vector2.ZERO)
+	_carriage = trot
+	Audio.sfx("door_thud", -14.0)
+	var tw = create_tween()
+	tw.tween_property(trot, "position", from + Vector2(-1100, 40), 4.0).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
+	tw.parallel().tween_method(func(v): player.global_position = v, player.global_position, player.global_position + Vector2(-1100, 40), 4.0).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
+	tw.parallel().tween_property(trot, "modulate:a", 0.0, 1.2).set_delay(2.8)
+	if npc.has("tamlin") and is_instance_valid(npc.tamlin):
+		npc.tamlin.set_meta("facing", 1)
+	await tw.finished
+
+
+# ----------------------------------------------------- Ch 31: the silence
+## The grounds after the court was taken: nobody at the gate, nobody in the
+## gardens, the front doors wide, debris on the terrace. Her horse waits
+## inside the bent gates.
+func _ch31_ruin() -> void:
+	_horse(GATE + Vector2(-250, -130), false)
+	add_prop("props/wreck_door.png", DOOR + Vector2(96, 30), 1.0, Vector2(30, 10), Vector2(60, 20), true)
+	add_prop("props/wreck_vase.png", MANOR + Vector2(-260, 150), 1.0, Vector2.ZERO, Vector2.ZERO)
+	add_prop("props/wreck_chair.png", MANOR + Vector2(310, 120), 1.0, Vector2(16, 6), Vector2(30, 12), true)
+	add_prop("props/wreck_vase.png", MANOR + Vector2(420, 190), 1.0, Vector2.ZERO, Vector2.ZERO, true)
+	var rng = RandomNumberGenerator.new()
+	rng.seed = 3131
+	# the hedges have gone shaggy: brambles and long grass pushing up along them
+	for i in 26:
+		var p = Vector2(rng.randf_range(240, 4200), 3190 + rng.randf_range(-30, 20))
+		if absf(p.x - GATE.x) < 260:
+			continue
+		add_prop(["props/bramble.png", "props/tall_grass.png", "props/tall_grass.png"][rng.randi_range(0, 2)], p, 1.0, Vector2.ZERO, Vector2.ZERO, rng.randf() < 0.5)
+	# glass and splinters out on the terrace, from the windows blown outward
+	for i in 70:
+		var g = MANOR + Vector2(rng.randf_range(-600, 600), rng.randf_range(-20, 190))
+		var chip = Polygon2D.new()
+		var sz = rng.randf_range(2.0, 4.0)
+		chip.polygon = PackedVector2Array([g + Vector2(-sz, 0), g + Vector2(0, -sz * 0.6), g + Vector2(sz, 0), g + Vector2(0, sz * 0.6)])
+		chip.color = Color(0.86, 0.92, 1.0, 0.8) if rng.randf() < 0.7 else Color(0.42, 0.28, 0.18, 0.9)
+		chip.z_index = 1
+		ground.add_child(chip)
+	add_trigger(Rect2(DOOR + Vector2(-260, 30), Vector2(520, 220)), func():
+		if not GameState.has_flag("ch31_doors"):
+			await Dialogue.play("ch31_doors"))

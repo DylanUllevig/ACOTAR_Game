@@ -58,6 +58,7 @@ var _kb_aim := false
 var _look := Vector2.ZERO
 var _held_k := 1.0              # density of the held weapon's art
 var _shake := 0.0
+var look_extra := Vector2.ZERO  # a scene can turn the camera toward something (Region.look_toward)
 
 var _near: Node = null
 var _left_foot = false
@@ -655,7 +656,7 @@ func _update_camera(delta: float) -> void:
 	_look = _look.lerp(want, 1.0 - exp(-6.0 * delta))
 	_shake = UI.take_shake(delta)
 	var jitter = Vector2(randf_range(-1, 1), randf_range(-1, 1)) * _shake
-	camera.offset = _look + jitter
+	camera.offset = _look + jitter + look_extra
 
 
 # ------------------------------------------------------------- footprints

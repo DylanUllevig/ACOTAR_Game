@@ -44,7 +44,7 @@ N Lucien's jaw worked. I gave him the truth anyway, if only to be done with it.
 @feyre/determined An ash arrow. Then an ordinary one, through the eye. He didn't fight. After the first one, he only looked at me.
 @lucien/angry And still you killed him. And then you skinned him.
 @tamlin/angry Enough. I don't want to hear it.
-@feyre/angry My family won't last a month without me. Do you know what it's like to be hungry? Not to know where the next meal is coming from?
+@feyre/angry Without me my family will starve inside a month. Have you ever gone hungry? Not known if there'd be anything to eat tomorrow?
 @tamlin/angry Your family is alive and well fed. Do you think I'd take away the one who kept them and leave them nothing?
 @feyre/determined Swear it.
 @tamlin/neutral On everything I am, and everything I own.
@@ -99,10 +99,10 @@ N The lock clicked. A screech, a thud, and Alis was in a heap on the floor with 
 @alis/stern You can't outrun us either, girl.
 @feyre/determined I know. But at least I wouldn't meet my death asleep.
 N Alis barked a laugh.
-@alis/kind My master gave his word you'd live here. Live, not die. We obey him. But did you have to wreck those lovely curtains?
+@alis/kind The master promised you'd live under this roof. Live, mind, not die. His word is our law. Though you might have spared the good curtains.
 N She threw them open on a sky still periwinkle with dawn. Another servant brought a tray: porridge, eggs, bacon, and tea richer than any I had ever tasted.
 @feyre/neutral What is this place? Where is it?
-@alis/neutral It's safe, and that's all you need to know. The house is, at least. If you go poking about the grounds, keep your wits about you.
+@alis/neutral You're safe. That's all you need to know. Safe in the house, anyway. If you go wandering the grounds, keep your eyes open.
 @feyre/neutral Which of you should I look out for?
 @alis/stern All of them. My master's protection only reaches so far. Plenty would hunt you just for being human, never mind what you did to Andras.
 @feyre/neutral And what am I meant to do? With the whole rest of my life?
@@ -121,19 +121,19 @@ N Gardens. Plans. I made myself walk on.
 == ch07_garden
 > set_flag ch07_garden
 @tamlin/neutral You.
-N Tamlin, coming down the path behind me in his fighting clothes, three long knives sheathed along his baldric now. You. I wondered if he even remembered my name.
+N Tamlin was coming down the path behind me, dressed to fight, three long knives belted across his chest. You, he'd called me. Did he even know my name?
 @feyre/determined Good morning. You said my days were my own. I didn't know I was under house arrest.
 @tamlin/angry Of course you're not. Do you want a tour?
 @feyre/neutral No, thank you.
 @tamlin/neutral I've been stuck inside all morning. I could use the air.
 @feyre/neutral You've been generous enough already.
-@tamlin/angry Do you have some sort of problem with me?
+@tamlin/angry Have I done something to offend you?
 @feyre/neutral No.
-@tamlin/angry I'm not going to kill you, Feyre. I don't break my promises.
+@tamlin/angry I won't kill you, Feyre. I keep my word.
 @feyre/determined Not kill me. Is harm another matter? Is that a loophole Lucien gets to use?
 @tamlin/angry They're under orders not to touch you.
 @feyre/determined And still I'm stuck in your lands, for breaking a rule I'd never heard of. Why was your friend across the wall at all? I thought the Treaty kept you out.
-@tamlin/neutral The Treaty doesn't keep us from anything but enslaving you. The wall is an inconvenience. If we cared to, we could break it and march through.
+@tamlin/neutral The Treaty only stops us from making slaves of you. The wall is a nuisance, nothing more. If we wanted to, we could tear it down and walk across.
 @feyre/afraid And do you care to?
 @tamlin/neutral I've no interest in the mortal lands. I can't speak for the rest of my kind.
 @feyre/determined Then what was Andras doing there?

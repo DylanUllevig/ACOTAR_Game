@@ -22,9 +22,9 @@ POS = {
     "chapter_card": ["n"], "journal": ["id"], "place": ["id"], "set_flag": ["flag"], "item": ["id", "n"],
     "take_item": ["id", "n"], "coins": ["n"], "heal": ["amount"], "unlock_tier": ["tier"], "open_shop": ["shop"],
     "time": ["hour"], "shake": ["strength"], "sfx": ["name", "db"], "music": ["name", "fade"], "outfit": ["id"],
-    "start_fight": ["id"], "goto": ["region", "spawn"], "game_over": ["title", "line", "tip"],
+    "start_fight": ["id"], "goto": ["region", "spawn"], "game_over": ["title", "line", "tip"], "panel": ["id"],
 }
-RAW = {"objective": "text", "fade_to_black": "text"}
+RAW = {"objective": "text", "fade_to_black": "text", "fade_hold": "text"}
 COND = {"f": "if_flag", "!f": "if_not_flag", "i": "if_item", "!i": "if_not_item", "c": "if_chapter"}
 NOTES = ("Line forms: {n} Feyre's narration, first person past tense, shown in italics; {s,e,t} a line spoken aloud "
          "(speaker, portrait expression, text); {hint} a game tip on its own card; {choices:[{t,goto,do}]}; {do:[actions]}; "

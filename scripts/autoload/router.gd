@@ -19,6 +19,18 @@ const REGIONS := {
 	"manor_studio": "res://scripts/world/regions/manor_in.gd",
 	"manor_landing": "res://scripts/world/regions/manor_in.gd",
 	"manor_bedroom": "res://scripts/world/regions/manor_in.gd",
+	"manor_kitchen": "res://scripts/world/regions/manor_in.gd",
+	"chateau": "res://scripts/world/regions/chateau.gd",
+	"chateau_hall": "res://scripts/world/regions/chateau_in.gd",
+	"chateau_ballroom": "res://scripts/world/regions/chateau_in.gd",
+	"chateau_dining": "res://scripts/world/regions/chateau_in.gd",
+	"chateau_study": "res://scripts/world/regions/chateau_in.gd",
+	"chateau_studio": "res://scripts/world/regions/chateau_in.gd",
+	"chateau_landing": "res://scripts/world/regions/chateau_in.gd",
+	"chateau_bedroom": "res://scripts/world/regions/chateau_in.gd",
+	"cottage_yard": "res://scripts/world/regions/cottage_yard.gd",
+	"village_summer": "res://scripts/world/regions/village_summer.gd",
+	"summer_wall": "res://scripts/world/regions/summer_wall.gd",
 }
 
 var root: Node = null          # set by main.gd

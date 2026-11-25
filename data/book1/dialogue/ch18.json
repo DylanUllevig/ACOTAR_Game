@@ -16,7 +16,7 @@
      "n": "By the time I'd eaten and washed and dressed, it was nearly noon. The blood in the hall would be gone by now. I went to the window anyway, to be sure."
     },
     {
-     "n": "I meant to find Tamlin and tell him properly how sorry I was about Andras. If I was to stay here, stay with him, I could at least try to mend what I had broken."
+     "n": "I meant to find Tamlin and tell him, properly this time, that I was sorry about Andras. If I was going to live here, beside him, I owed him at least an attempt to repair what I'd broken."
     },
     {
      "n": "From the window I could see clear to the reflecting pool, so still it held every cloud. Two figures stood by it, and horses, already saddled."
@@ -84,7 +84,7 @@
      "n": "I couldn't find words for it. I knew that even if I could paint it, I'd never do it justice. Oaks wide and high as the pillars of some ancient castle. Dandelion fluff drifting through light thick as honey. Crocuses and snowdrops and bluebells nodding over the ground. And somewhere, I could have sworn, singing."
     },
     {
-     "n": "It wasn't only the most beautiful place I'd ever been. It felt right. After last night, it was exactly where I needed to be."
+     "n": "It was the loveliest place I had ever seen, and more than that, it felt right. After last night, I couldn't have asked for anywhere better."
     },
     {
      "s": "tamlin",
@@ -179,7 +179,7 @@
     {
      "s": "feyre",
      "e": "neutral",
-     "t": "You don't want to know what the Suriel said about you."
+     "t": "Trust me, you'd rather not hear what the Suriel said about you."
     },
     {
      "s": "tamlin",
@@ -218,7 +218,7 @@
     {
      "s": "tamlin",
      "e": "tender",
-     "t": "This is Prythian. According to your legends, nothing is impossible."
+     "t": "You're in Prythian. Your own stories say anything can happen here."
     },
     {
      "n": "Then he began unbuttoning his tunic."
@@ -259,7 +259,7 @@
     {
      "s": "tamlin",
      "e": "weary",
-     "t": "He's the youngest son of the High Lord of the Autumn Court. The youngest of seven brothers. Autumn is beautiful, and cutthroat. The strongest son inherits, not the eldest, so the brothers only ever see each other as rivals."
+     "t": "His father rules the Autumn Court, and Lucien is the last of seven sons. Autumn is lovely, and vicious. The title goes to the strongest son, not the oldest, so those brothers have never seen each other as anything but competition."
     },
     {
      "s": "tamlin",
@@ -272,7 +272,7 @@
     {
      "s": "tamlin",
      "e": "neutral",
-     "t": "He cursed his father and walked out. Without his title to protect him, his brothers went after him. Three went out to kill him. One came back. Lucien killed one. I killed the other. They'd crossed into my lands, and I was High Lord by then."
+     "t": "He cursed his father to his face and left. With no rank left to shield him, his brothers hunted him. Three came after him and only one went home: Lucien killed one, and I killed the other. They had come onto my land, and by then the land was mine."
     },
     {
      "s": "tamlin",
@@ -424,7 +424,7 @@
     {
      "s": "lucien",
      "e": "neutral",
-     "t": "I know far too many of my kind who wouldn't have seen it that way. Or bothered."
+     "t": "Plenty of my kind wouldn't have thought of it that way. Or cared to."
     },
     {
      "n": "He tossed me something. I nearly fell out of the saddle catching it. A hunting knife, its hilt set with jewels, balanced as perfectly as anything I had ever held."

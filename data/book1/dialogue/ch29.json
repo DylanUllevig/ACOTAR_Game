@@ -1,0 +1,389 @@
+{
+ "schema": 2,
+ "notes": "Line forms: {n} Feyre's narration, first person past tense, shown in italics; {s,e,t} a line spoken aloud (speaker, portrait expression, text); {hint} a game tip on its own card; {choices:[{t,goto,do}]}; {do:[actions]}; {goto}. Any line or choice may carry if_flag, if_not_flag, if_item, if_not_item or if_chapter. Wording is written for the game; the few short book lines kept are listed in quotes.json.",
+ "scenes": {
+  "ch29_garden": {
+   "lines": [
+    {
+     "do": [
+      {
+       "type": "set_flag",
+       "flag": "ch29_garden"
+      },
+      {
+       "type": "chapter_card",
+       "n": 29
+      }
+     ]
+    },
+    {
+     "n": "The tale of my years with Aunt Ripleigh almost told itself. I read to her every day. She taught me how a lady sits and walks and speaks, from her pillows. I nursed her until she slipped away in her sleep, a fortnight ago, and left me everything she had."
+    },
+    {
+     "n": "Everything turned out to be a great deal. The trunks that came with me held more than dresses: gold, and gems so raw and huge they could have bought a thousand estates."
+    },
+    {
+     "n": "Father had shut himself away with them in his study, the room whose window looks over Elain's garden. I could see him at his desk, weighing a rough red stone as big as a hen's egg on a little brass scale."
+    },
+    {
+     "n": "His eyes were clear again, and he moved like a man with somewhere to be. Even his limp had eased, thanks to a tonic and a salve that a passing healer had pressed on him and refused payment for. I would have loved Tamlin for that kindness alone."
+    },
+    {
+     "do": [
+      {
+       "type": "objective",
+       "text": "Sit with Elain in her garden."
+      }
+     ]
+    }
+   ]
+  },
+  "ch29_elain": {
+   "lines": [
+    {
+     "do": [
+      {
+       "type": "set_flag",
+       "flag": "ch29_elain"
+      }
+     ]
+    },
+    {
+     "s": "elain",
+     "e": "tender",
+     "t": "These bulbs crossed the sea in a crate, from the flower farms over the water. Father says he'll take me to see them in the spring. He says the fields run on for miles, and every one of them is flowers."
+    },
+    {
+     "n": "This little garden under the window was hers alone. She'd chosen and planted every bulb and shrub, and she pulled her own weeds, though she admitted the servants carried the heavy watering cans. She'd have cried to see the gardens I'd grown used to."
+    },
+    {
+     "s": "elain",
+     "e": "tender",
+     "t": "Come with us! Nesta won't. She says the crossing frightens her. But you and I would have such fun."
+    },
+    {
+     "s": "feyre",
+     "e": "tender",
+     "t": "I'd like that. To see what's on the other side of the sea."
+    },
+    {
+     "n": "It surprised me how much I meant it. There was a whole world out there I had never been able to want."
+    },
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "Won't next spring be the height of the season? I thought there'd be suitors lined up to the gate."
+    },
+    {
+     "s": "elain",
+     "e": "sad",
+     "t": "There'll be other seasons. This one was... odd. Nesta won't tell you that."
+    },
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "Odd how?"
+    },
+    {
+     "s": "elain",
+     "e": "sad",
+     "t": "Everyone behaved as if we'd been sick for eight years, or living abroad. As if we hadn't been three villages away, in that cottage. Not one person mentioned it. Not one."
+    },
+    {
+     "s": "elain",
+     "e": "sad",
+     "t": "Sometimes I almost miss those years. Even being hungry, and cold. This house is so large, and Father is never free, and Nesta..."
+    },
+    {
+     "do": [
+      {
+       "type": "region_call",
+       "method": "look_at_nesta"
+      }
+     ]
+    },
+    {
+     "n": "She glanced over her shoulder. Nesta stood under a gnarled old mulberry tree at the edge of the lawn, looking out across the flat green fields, the summer wind tugging at her skirts. She had barely spoken to me since I came."
+    },
+    {
+     "s": "elain",
+     "e": "neutral",
+     "t": "She didn't finish the season. She refuses every invitation now, and when my friends call she just stares at them until they make excuses and go. Maybe you could talk to her?"
+    },
+    {
+     "n": "Nesta and I hadn't managed a civil conversation in years. Before I could say so:"
+    },
+    {
+     "s": "elain",
+     "e": "neutral",
+     "t": "Nesta tried to reach you, once."
+    },
+    {
+     "s": "feyre",
+     "e": "afraid",
+     "t": "What?"
+    },
+    {
+     "s": "elain",
+     "e": "neutral",
+     "t": "She was only gone a week. Her carriage broke down halfway there, she said, so she turned back. You wouldn't know, if you never got our letters."
+    },
+    {
+     "n": "I looked across at her, so still under the branches. Had she tried to reach me, and been turned around by whatever spell Tamlin had laid on this family?"
+    },
+    {
+     "n": "When I looked back, Elain was studying me."
+    },
+    {
+     "s": "elain",
+     "e": "neutral",
+     "t": "You look so different. You sound different, too."
+    },
+    {
+     "n": "I knew. I'd caught myself in a hall mirror last night and stopped: the same face, but with a faint shimmer on it, as if all that magic had rubbed off on my skin. I dreaded the day it wore away."
+    },
+    {
+     "s": "elain",
+     "e": "tender",
+     "t": "Did something happen, at Aunt Ripleigh's? Did you... meet someone?"
+    },
+    {
+     "choices": [
+      {
+       "t": "\"Just good food, and rest.\"",
+       "goto": "ch29_elain_end"
+      },
+      {
+       "t": "Shrug, and pull up a weed.",
+       "goto": "ch29_elain_shrug"
+      }
+     ]
+    }
+   ]
+  },
+  "ch29_elain_shrug": {
+   "lines": [
+    {
+     "n": "I shrugged and tugged a weed out by the root."
+    },
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "Just good food, and rest."
+    },
+    {
+     "goto": "ch29_elain_end2"
+    }
+   ]
+  },
+  "ch29_elain_end": {
+   "lines": [
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "Just good food, and rest."
+    },
+    {
+     "goto": "ch29_elain_end2"
+    }
+   ]
+  },
+  "ch29_elain_end2": {
+   "lines": [
+    {
+     "n": "Elain smiled down at her tulips as if she didn't believe a word."
+    },
+    {
+     "do": [
+      {
+       "type": "objective",
+       "text": "Pass the days. Father is in his study."
+      }
+     ]
+    }
+   ]
+  },
+  "ch29_nesta_tree": {
+   "lines": [
+    {
+     "n": "Nesta didn't turn as I came near. She was watching the fields as if she expected something to come across them."
+    },
+    {
+     "n": "I stood beside her for a while. Neither of us said anything. Then I went back to Elain."
+    }
+   ]
+  },
+  "ch29_window": {
+   "lines": [
+    {
+     "n": "Through the glass, Father lifted a sapphire to the light, squinted, and wrote something in his ledger. He was humming."
+    }
+   ]
+  },
+  "ch29_study": {
+   "lines": [
+    {
+     "do": [
+      {
+       "type": "set_flag",
+       "flag": "ch29_study"
+      }
+     ]
+    },
+    {
+     "n": "One day blurred into the next. The darkness in me stayed put, and I couldn't stomach the idea of picking up a brush. So I spent my hours in Elain's garden while she chattered about each new bud, and about the vegetable bed she meant to dig beside the glasshouse."
+    },
+    {
+     "n": "She had come alive in this place. There wasn't a gardener or maid who didn't smile at her; even the fierce old cook kept finding reasons to bring her plates of tarts. The lean years had buried her light, but they hadn't put it out. She was generous, and loving, and kind, and I was proud to call her my sister."
+    },
+    {
+     "s": "father",
+     "e": "neutral",
+     "t": "There. Every stone weighed twice and written down. You are a very wealthy young woman, Feyre."
+    },
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "Put a little of it into your business. And draw me up some small purses of silver, would you? Four of them."
+    },
+    {
+     "s": "father",
+     "e": "neutral",
+     "t": "Purses? Whatever for?"
+    },
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "A walk."
+    },
+    {
+     "do": [
+      {
+       "type": "item",
+       "id": "silver_purse",
+       "n": 4
+      }
+     ]
+    },
+    {
+     "n": "It was only three miles to the old cottage, and I knew every step of the road."
+    },
+    {
+     "do": [
+      {
+       "type": "objective",
+       "text": "Walk the west road to the old cottage."
+      }
+     ]
+    }
+   ]
+  },
+  "ch29_cottage": {
+   "lines": [
+    {
+     "do": [
+      {
+       "type": "set_flag",
+       "flag": "ch29_cottage"
+      }
+     ]
+    },
+    {
+     "n": "Mud crept up my hem and I didn't care. The wind moved in the trees, the long grass hissed and sighed, and if I let my thoughts drift I could almost believe I was walking beside Tamlin in his woods."
+    },
+    {
+     "n": "No word had come. Every night I went to bed hoping to wake in his house, or to find a message calling me back. Worse than the waiting was the fear that crept in under it: that whoever this Amarantha was, she would find a way to hurt him."
+    },
+    {
+     "n": "I came round a bend I could have walked in my sleep, and there it was."
+    },
+    {
+     "n": "So small. Had it always been so small? Elain's old flower bed had grown into a wild snarl of weeds and blossom. The ward-marks were still cut into the doorstep. Someone had hung a new door where the beast had smashed the old one, but one of the little round window panes had cracked, and inside, it was dark."
+    },
+    {
+     "do": [
+      {
+       "type": "objective",
+       "text": "Look around the old cottage."
+      }
+     ]
+    }
+   ]
+  },
+  "ch29_door": {
+   "lines": [
+    {
+     "n": "I put my hand on the new door, and didn't open it. There was nothing in there I needed."
+    }
+   ]
+  },
+  "ch29_threshold": {
+   "lines": [
+    {
+     "n": "The ward-marks. Father had cut them into the stone the first winter, to keep out things we couldn't name. They hadn't kept out anything at all."
+    }
+   ]
+  },
+  "ch29_flowers": {
+   "lines": [
+    {
+     "n": "Elain's flowers had gone feral without her. Foxglove and poppies, choked in bindweed, still blooming anyway."
+    }
+   ]
+  },
+  "ch29_window_crack": {
+   "lines": [
+    {
+     "n": "A crack ran across the little round pane, like ice on a pond. I could just make out the shape of the table inside, and the hearth, cold."
+    }
+   ]
+  },
+  "ch29_forest": {
+   "lines": [
+    {
+     "do": [
+      {
+       "type": "set_flag",
+       "flag": "ch29_forest"
+      }
+     ]
+    },
+    {
+     "n": "From the door, my old path crossed the road and the long hump of the field to the edge of the trees. I'd walked it every morning, snow or rain. My forest."
+    },
+    {
+     "n": "It had seemed so terrible, once. Hungry, and cruel, and full of death. Now it only looked like trees. Plain. Ordinary."
+    },
+    {
+     "goto": "ch29_cottage_end"
+    }
+   ]
+  },
+  "ch29_cottage_end": {
+   "lines": [
+    {
+     "do": [
+      {
+       "type": "set_flag",
+       "flag": "ch29_cottage_end"
+      }
+     ]
+    },
+    {
+     "n": "Elain said she missed this place. What did she see in it? Not the cage I'd always seen. A refuge, maybe, in a hard world. She had kept hunting for the good in it all the same, while I thought her a fool for trying."
+    },
+    {
+     "n": "She had looked at this house with hope, and I had looked at it with hate. I knew now which of us had been the stronger."
+    },
+    {
+     "do": [
+      {
+       "type": "objective",
+       "text": "Take the purses to the village, east along the road."
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

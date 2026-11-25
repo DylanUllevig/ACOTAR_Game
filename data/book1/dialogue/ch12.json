@@ -170,22 +170,22 @@
     {
      "s": "lucien",
      "e": "angry",
-     "t": "I just want to know what you think you're doing. There isn't much time, Tam, and you're sulking. You're not even pretending anymore."
+     "t": "Tell me what you're playing at. Time's running out, Tam, and you're brooding. You've stopped even trying."
     },
     {
      "s": "tamlin",
      "e": "angry",
-     "t": "It was a mistake from the start. I can't stomach it. Not after what my father did to their kind. I won't walk in his footsteps."
+     "t": "It was wrong from the beginning. I can't do it. Not after the way my father treated humans. I won't become him."
     },
     {
      "s": "lucien",
      "e": "angry",
-     "t": "While you seal our fates? I stayed with you out of hope, not to watch you stumble. For someone with a heart of stone, yours has gone soft. The Bogge was on our lands, Tam! The borders between the courts are gone, and our own woods are crawling with vermin like the puca."
+     "t": "And doom the rest of us? I stayed because I had hope, not to watch you trip over your own conscience. You, of all people, gone soft. The Bogge walked our lands, Tam! The borders between the courts have fallen, and our woods are filling up with filth like the puca."
     },
     {
      "s": "tamlin",
      "e": "angry",
-     "t": "Mind your mouth. You think I don't know what's happening on my own lands? What I stand to lose? What's already lost?"
+     "t": "Careful. Do you think I can't see what's happening in my own court? What I could lose? What's gone already?"
     },
     {
      "n": "The air throbbed, and the metal tang of magic filled my nose. I leaned closer. My finger knocked softly against the door."
@@ -242,7 +242,7 @@
     {
      "s": "tamlin",
      "e": "tender",
-     "t": "I never thanked you. The Bogge's bite was made to slow our healing long enough to kill us. You have my gratitude. And I can still use the hand."
+     "t": "I never said thank you. A wound from the Bogge heals too slowly to save us; that's how it kills. So, thank you. The hand still works."
     },
     {
      "s": "feyre",
@@ -265,7 +265,7 @@
     {
      "s": "tamlin",
      "e": "neutral",
-     "t": "I'm curious. Are you ever going to use that knife you stole from my table?"
+     "t": "Tell me something. Do you plan to use that knife you took from my table, or just carry it around?"
     },
     {
      "s": "feyre",
@@ -291,7 +291,7 @@
      "t": "I'm immortal, Feyre. Time is all I have. Whatever's plaguing our lands will pass someday, if the Cauldron's kind. But yes. Now that the Bogge got in, I'd expect others to follow."
     },
     {
-     "n": "He opened a pair of double doors at the end of the hall."
+     "n": "At the end of the hall, he pushed open two tall doors."
     },
     {
      "s": "tamlin",

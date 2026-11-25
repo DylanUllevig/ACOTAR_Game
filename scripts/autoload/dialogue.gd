@@ -35,6 +35,8 @@ var right_portrait: TextureRect
 var _left_char = ""
 var _right_char = ""
 var dim: ColorRect
+var panel: TextureRect          # a painting behind the portraits (> panel id)
+var _panel_tw: Tween
 var _box_sb: StyleBox
 var _tip_sb: StyleBox
 
@@ -61,6 +63,15 @@ func _ready() -> void:
 	dim.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	dim.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	root.add_child(dim)
+
+	panel = TextureRect.new()
+	panel.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	panel.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	panel.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
+	panel.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	panel.modulate.a = 0.0
+	panel.visible = false
+	root.add_child(panel)
 
 	left_portrait = _make_portrait(true)
 	right_portrait = _make_portrait(false)
@@ -241,6 +252,7 @@ func _close() -> void:
 	name_plate.visible = false
 	tip_plate.visible = false
 	more.visible = false
+	show_panel("")
 	var tw = create_tween()
 	tw.tween_property(dim, "color:a", 0.0, 0.25)
 	_fade_box(0.0, 0.18)
@@ -635,6 +647,12 @@ func _run_action(a: Dictionary) -> bool:
 			_set_box_hidden(true)
 			await UI.fade_to_black_card(String(a.get("text", "")))
 			_set_box_hidden(false)
+		"fade_hold":
+			# fades to black and stays there: the goto after it fades in elsewhere
+			_set_box_hidden(true)
+			await UI.fade_to_black_card(String(a.get("text", "")), true)
+		"panel":
+			show_panel(String(a.get("id", "none")))
 		"start_hunt":
 			_queue_after.append(func():
 				if Router.current_region and Router.current_region.has_method("start_hunt"):
@@ -643,6 +661,9 @@ func _run_action(a: Dictionary) -> bool:
 		"goto":
 			if a.has("chapter"):
 				GameState.chapter = int(a.chapter)
+			if a.has("outfit"):
+				# the next region builds her in these clothes
+				GameState.outfit = String(a.outfit)
 			if a.has("hour"):
 				GameState.hour = float(a.hour)
 			var rg: String = a.region
@@ -667,6 +688,35 @@ func _run_action(a: Dictionary) -> bool:
 		_:
 			push_warning("Unknown action " + str(a.type))
 	return false
+
+
+## A painting that fills the screen behind the speakers while a tale is told.
+## "none" (or "") fades it away. Paintings live in assets/final/panels/<id>.jpg.
+func show_panel(id: String) -> void:
+	if _panel_tw != null and _panel_tw.is_valid():
+		_panel_tw.kill()
+	if id == "" or id == "none":
+		if not panel.visible:
+			return
+		_panel_tw = create_tween()
+		_panel_tw.tween_property(panel, "modulate:a", 0.0, 0.6)
+		_panel_tw.tween_callback(func(): panel.visible = false)
+		return
+	var tex = Art.tex("panels/%s.jpg" % id)
+	if tex == null:
+		push_warning("No panel painting " + id)
+		return
+	if panel.visible and panel.modulate.a > 0.5 and panel.texture != tex:
+		# cross-fade through a dip, so one painting gives way to the next
+		_panel_tw = create_tween()
+		_panel_tw.tween_property(panel, "modulate:a", 0.0, 0.35)
+		_panel_tw.tween_callback(func(): panel.texture = tex)
+		_panel_tw.tween_property(panel, "modulate:a", 1.0, 0.6)
+		return
+	panel.texture = tex
+	panel.visible = true
+	_panel_tw = create_tween()
+	_panel_tw.tween_property(panel, "modulate:a", 1.0, 0.8)
 
 
 func _set_box_hidden(h: bool) -> void:

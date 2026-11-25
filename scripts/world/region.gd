@@ -250,7 +250,7 @@ func add_prop(rel: String, pos: Vector2, scl := 1.0, foot := Vector2(40, 14), so
 		# the opaque middle of the picture: crowns and roofs taper, so leave the edges
 		var w = s.texture.get_width() * s.scale.x
 		var h = s.texture.get_height() * s.scale.y
-		_tall.append([s, Rect2(pos.x - w * 0.3, pos.y - h * 0.96, w * 0.6, h * 0.96), pos.y])
+		_tall.append([s, Rect2(pos.x - w * 0.3, pos.y - h * 0.96, w * 0.6, h * 0.96), pos.y, _alpha_mask(s.texture), w, h])
 	var mk = _map_kind(rel)
 	if mk != "":
 		map_marks.append([mk, pos, scl])
@@ -728,7 +728,8 @@ func _update_npcs() -> void:
 			continue
 		var d = p - h.global_position
 		var f = int(h.get_meta("facing", 0))
-		if d.length() < 220.0:
+		# meta "aloof": someone too wrapped up in their own thoughts to turn
+		if d.length() < 220.0 and not h.get_meta("aloof", false):
 			f = 2 if d.x > 0 else 1
 			if absf(d.y) > absf(d.x):
 				f = 0 if d.y > 0 else 3
@@ -786,20 +787,75 @@ func _update_see_through(delta: float) -> void:
 		if is_instance_valid(h) and (h as Node2D).visible:
 			var f = world.to_local((h as Node2D).global_position)
 			figures.append([f, f + Vector2(0, -50)])
+	# anything else worth keeping in sight (a led horse)
+	for c in get_tree().get_nodes_in_group("see_through_figures"):
+		if c is Node2D and (c as Node2D).visible and (c as Node2D).is_inside_tree():
+			var f = world.to_local((c as Node2D).global_position)
+			figures.append([f, f + Vector2(0, -50)])
 	var step = delta * 3.0
 	for t in _tall:
 		var s = t[0]
 		if not is_instance_valid(s):
 			continue
 		var crown: Rect2 = t[1]
+		var mask: Image = t[3]
 		var behind = false
 		for fig in figures:
-			if fig[0].y < t[2] - 6.0 and (crown.has_point(fig[1]) or crown.has_point(fig[0])):
+			if fig[0].y >= t[2] - 6.0:
+				continue
+			if mask != null:
+				# the painted pixels themselves: a broad crown hides her well off
+				# its middle, and the empty air beside a trunk hides nobody
+				if _covers(s, mask, t[4], t[5], fig[1]) or _covers(s, mask, t[4], t[5], fig[0] + Vector2(0, -18)) \
+						or _covers(s, mask, t[4], t[5], fig[0] + Vector2(0, -88)):
+					behind = true
+					break
+			elif crown.has_point(fig[1]) or crown.has_point(fig[0]):
 				behind = true
 				break
 		var a = SEE_THROUGH_ALPHA if behind else 1.0
 		if s.modulate.a != a:
 			s.modulate.a = move_toward(s.modulate.a, a, step)
+
+
+## The alpha of a prop's picture, kept small, for _update_see_through.
+static var _masks := {}
+
+
+static func _alpha_mask(tex: Texture2D) -> Image:
+	var d: Texture2D = tex
+	if tex is CanvasTexture:
+		d = (tex as CanvasTexture).diffuse_texture
+	if d == null:
+		return null
+	var key = d.resource_path if d.resource_path != "" else str(d.get_rid())
+	if _masks.has(key):
+		return _masks[key]
+	var img: Image = d.get_image()
+	if img != null:
+		img = img.duplicate()
+		if img.is_compressed():
+			img.decompress()
+		var big = maxi(img.get_width(), img.get_height())
+		if big > 320:
+			var f = 320.0 / big
+			img.resize(maxi(1, int(img.get_width() * f)), maxi(1, int(img.get_height() * f)), Image.INTERPOLATE_BILINEAR)
+	_masks[key] = img
+	return img
+
+
+## True when point p (world layer space) falls on a solid pixel of prop sprite s.
+func _covers(s: Sprite2D, mask: Image, w: float, h: float, p: Vector2) -> bool:
+	var base: Vector2 = (s.get_parent() as Node2D).position
+	var u = (p.x - (base.x - w * 0.5)) / w
+	var v = (p.y - (base.y - h)) / h
+	if u < 0.0 or u >= 1.0 or v < 0.0 or v >= 1.0:
+		return false
+	if s.flip_h:
+		u = 1.0 - u
+	var x = clampi(int(u * mask.get_width()), 0, mask.get_width() - 1)
+	var y = clampi(int(v * mask.get_height()), 0, mask.get_height() - 1)
+	return mask.get_pixel(x, y).a > 0.5
 
 
 func _apply_time() -> void:
@@ -896,6 +952,21 @@ func lead_npc(h: Node2D, pts: Array, speed := 110.0, wait := 340.0) -> void:
 			if not (Dialogue.active or UI.modal_open or Router.busy) and player.global_position.distance_to(h.position) <= wait:
 				h.position = h.position.move_toward(p, speed * dt)
 			await get_tree().process_frame
+
+
+## Turns the camera part of the way toward a world point while the current
+## scene plays, and back to Feyre when it closes.
+func look_toward(at: Vector2, amount := 0.6, secs := 1.4) -> void:
+	if player == null:
+		return
+	var want = (at - player.global_position) * amount
+	var tw = create_tween()
+	tw.tween_property(player, "look_extra", want, secs).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	if Dialogue.active:
+		Dialogue.scene_finished.connect(func(_id):
+			if is_instance_valid(player):
+				player.create_tween().tween_property(player, "look_extra", Vector2.ZERO, 1.0).set_trans(Tween.TRANS_SINE), CONNECT_ONE_SHOT)
+	await tw.finished
 
 
 ## Puts Feyre at a named spawn point (cutscenes use this behind a fade).

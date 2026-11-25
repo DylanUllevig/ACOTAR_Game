@@ -1,0 +1,118 @@
+# Chapter 28: Farewell. Alis dresses her for the mortal world; Lucien's scorn; Tamlin at the gilded carriage.
+# She wakes at a white chateau she has never seen: her family, rich again, and the glamour's story of a dead aunt.
+
+== ch28_dress
+> set_flag ch28_dress
+> chapter_card 28
+> time 8
+> outfit feyre_finery
+N Packing took no time at all. I owned almost nothing. What I hadn't expected were the clothes Alis had laid out: a mortal lady's day dress, all pale pink silk and frills, edged with white and blue lace.
+N She buttoned me into a short white linen jacket and pinned a tiny ivory hat to my hair at an angle. It kept off neither sun nor rain. As far as I could tell it was there to be looked at.
+@feyre/neutral All I'm missing is a parasol.
+@alis/stern It's what they'll expect to see, over there. Hold still.
+@feyre/neutral Aren't you meant to weep, and tell me how you'll miss me?
+@alis/neutral I've never had much stomach for goodbyes.
+@feyre/sad Nor have I. If I could, I'd walk out the door and not say a word.
+N She studied me for a long moment.
+@alis/neutral Then we understand each other.
+N I got as far as the door before it came out of me anyway.
+@feyre/tender I hope you're with your nephews again soon.
+@alis/kind Make the most of your freedom, girl.
+N That was all. It was enough.
+> objective Go down to the entrance hall.
+
+== ch28_hall
+> set_flag ch28_hall
+N Lucien was at the foot of the stairs. He took in the frills, the gloves, the little hat, and snorted.
+@lucien/smirk If that's the fashion over the wall, I'm never setting foot there.
+@feyre/neutral I'm not sure the mortal lands would survive you.
+N His smile had a blade in it. He glanced past me, out through the open doors, to where Tamlin waited by a gilded carriage. When he looked back, the metal eye had narrowed to a slit.
+@lucien/grim I thought you had more sense than this.
+@feyre/angry And goodbye to you too.
+N Friend, I'd called him. Leaving wasn't my choice. And it wasn't my fault they had kept the worst of their war from me.
+> objective Go out to the carriage.
+
+== ch28_carriage
+> set_flag ch28_carriage
+> region_call lucien_storms_past
+N Lucien shouldered past me down the steps, ignoring the warning rumble in Tamlin's chest.
+@lucien/angry Not even a few more days? You'd ship her back to that sty without so much as a week?
+@tamlin/angry This is not up for debate. I'll see you at lunch.
+N Lucien held his ground a moment longer. Then he spat on the gravel and took the steps back into the house two at a time. Tamlin didn't call him back.
+> region_call npc_leave lucien
+N And then there was only the two of us, and six white horses stamping in the sun, and my hands sweating inside the lace.
+@tamlin/neutral Remember what I told you.
+N I nodded. I was busy learning his face by heart. Had I really heard what I thought I'd heard, last night, half asleep?
+@tamlin/weary The mortal lands are safe. You'll be safe, and so will your family.
+@feyre/sad My paintings. They're yours.
+N It was nothing like what I meant. It was all I could find.
+@tamlin/tender I'll see you again.
+N He lifted my chin and kissed me, and drew back far too soon. Then he handed me up into the carriage and stood at the open door with his face as calm as a mask.
+> region_call board_carriage
+@tamlin/neutral Ready?
+N I wanted to say no. After last night, after everything since the winter, how could he ask it of me? I nodded anyway.
+> sfx door_thud -8
+N The door shut with a small, final click. He reached in through the window and laid his hand along my cheek, and I felt something in my chest give way.
+@tamlin/tender I love you.
+N The words I owed him climbed up my throat.
+* Say it back. -> ch28_unsaid
+* Hold your tongue. -> ch28_unsaid
+
+== ch28_unsaid
+N And caught there. Because of whatever he was about to face, and because he might never find his way back to me. Because he would live for centuries, and I would wrinkle and die. I would not be one more weight on his shoulders.
+N So I said nothing at all. The horses leaned into the traces, and I didn't look back as we rolled through the gates and into the trees.
+> region_call carriage_leaves
+N The moment the woods closed around us, magic glittered in my nose, sweet and sharp, and pulled me down into the dark.
+> goto chateau drive chapter=28 hour=15
+
+== ch28_arrive
+> set_flag ch28_arrived
+> place chateau
+N I woke angry, to hooves ringing on flagstones. Why put me to sleep at all? So I wouldn't see the way back?
+N Outside the window, a long drive sloped up between clipped hedges shaped like green flames, with irises crowded along its edges. At its head stood a house of white marble under emerald roofs, nearly as large as the manor I'd left. I had never seen it in my life.
+N The footman who handed me down had round ears and a ruddy, sunburned face. Human. Every servant on those steps was human: fidgeting, blinking, breathing loudly, so restless after the stillness of the High Fae. They shrank from me as if I were someone grand.
+> region_call sisters_come
+N Then the front doors burst open in a rustle of silk, and I knew my sisters before they knew me.
+@nesta/neutral Welcome to our home, my lady.
+N They dropped into curtsies with their eyes on the gravel, and a laugh broke out of me.
+@feyre/neutral Nesta. Don't you know your own sister?
+N Nesta went rigid.
+@elain/afraid Feyre? But... what of Aunt Ripleigh? Is she...?
+N The story. The glamour's story: a long-lost aunt, rich and dying, somewhere far away. I nodded slowly.
+@nesta/neutral She left you her fortune.
+N It wasn't a question. Pearls glinted in her hair.
+@elain/sad Oh, you should have written! You poor thing, nursing her all alone, and losing her all alone. Father will be heartbroken he never paid his respects.
+N Inheritances and funerals and paying one's respects. Such small, ordinary worries. Something I'd been carrying for months began, very slowly, to set itself down.
+@nesta/neutral You're very quiet.
+N She kept her distance. I'd forgotten how sharp her eyes were. She'd been made from something harder than the rest of us, and she was as much a stranger among these people as I had become.
+@feyre/neutral Your fortunes have changed. What happened?
+@elain/tender Didn't you get our letters? Only a week after you'd gone, a stranger knocked and asked Father to handle his money in the trade. The terms were too good to be true and Father almost said no, but the man insisted, and left a chest of gold on the table as a first payment. Father had doubled it within the month!
+@elain/tender And then the ships! All the ships we lost turned up in a harbor in Bharat, cargo and all.
+N Tamlin. He had done all of this. I let the hollow open in my chest and kept my face still.
+@elain/tender Come and see the house! We haven't a room ready for you, we thought you'd be with Aunt Ripleigh for months yet, but there are so many bedrooms you could sleep somewhere new every night.
+N Over my shoulder, Nesta watched me with a face like a shut door. Her hands were bare of rings. Whatever had been between her and Tomas Mandray, it had come to nothing.
+@elain/tender Father will faint dead away. Oh, perhaps he'll give a ball for you!
+> region_call carriage_goes
+N Behind us, wheels crunched on gravel. The carriage was turning, rolling away down the drive. Back toward the wall. Back to him. It took every scrap of will I had not to run after it.
+N He loved me. That was why he'd sent me away: to put me somewhere the danger couldn't reach. Whatever was rising in Prythian, even a High Lord feared he couldn't hold it back.
+N Staying here was the sensible choice. Yet something dark had begun to gather in my chest, and it whispered that I had chosen wrong. The Suriel had told me to keep to his side. Of everything it said, that was the one thing it gave me as an order.
+> objective Go inside with Elain.
+
+== ch28_father
+> set_flag ch28_father
+N My father was waiting in the hall. He walked straighter than I remembered, his beard trimmed, a polished cane in his hand that he hardly seemed to need.
+@father/happy Feyre? Oh, my girl. My girl.
+N He wept, there in front of the servants, with his arms around me. I let him.
+@father/happy A ball. We'll give a ball in your honor, and the whole county will come.
+N And, of course, he did.
+> objective Find your room upstairs and rest.
+
+== ch28_room
+> set_flag ch28_room
+N A bedroom bigger than our whole cottage. A canopy bed with pale blue hangings, and a window full of flat green fields running to the horizon.
+N Somewhere beyond them was the wall, and beyond that, him.
+> objective Rest a while.
+
+== ch28_sleep
+N I lay awake a long while, listening to the house breathe. Human sounds: a door, a cough, the creak of a servant on the stairs. No birdsong at midnight. No roses.
+> goto chateau garden chapter=29 hour=11
