@@ -1,0 +1,98 @@
+# Chapter 13: the library, learning to read, the mural, the quarrel, Lucien's room and the Suriel.
+
+== ch13_study
+> set_flag ch13_study
+N He lifted a hand, and a hundred candles flared to life at once. Whatever the blight had taken from the others, it hadn't taken much from him.
+N Then I saw the room, and my palms went damp. Books, wall to wall, rank on rank, like a silent army. Couches, desks, rugs. All of it useless to me.
+N More than a week had gone by since I left. The least I could do was tell them I was alive. Warn them about the sickness that might creep over the wall someday. And there was only one way to get word to them.
+@tamlin/neutral Do you need anything else?
+@feyre/determined No.
+@tamlin/neutral I'll leave you to it, then.
+N I didn't move until the doors had closed. My sisters could read. They had never bothered to teach me. And I would not ask him or Lucien to write it for me, and hear what they thought of a human who couldn't.
+> objective Sit at the writing desk and teach yourself to read.
+
+== ch13_read
+> set_flag ch13_read
+N A small book with pictures in it. A children's book. I found the first line with my finger and whispered it.
+@feyre/determined She grab... grabbed. Her shoe. Stand... standing. From her po... pos...
+N I pressed the heels of my hands into my eyes until I'd stopped wanting to tear my hair out. Then I underlined the word and copied it, letter by crooked letter, onto my list. Forty words, and I knew how to say none of them.
+> time 13
+N By the afternoon my neck ached and my face hadn't stopped burning. I needed to get up. To get away from that list.
+> objective Stretch your legs. Look around the library.
+
+== ch13_mural
+> set_flag ch13_mural
+N Not a painting. A mural. The word came back to me from somewhere half forgotten.
+N It began with a cauldron: a great black cauldron held by slender, glowing hands in an endless starry night, tipped so that something golden spilled from it into the dark and pooled into our world.
+N Then a map of everything, the seas and the far continents, all of it theirs. No sign of humans anywhere. We'd been as low as pigs to them.
+N Then a battlefield. Rows of mortal soldiers in bloody mud, facing the faerie hordes about to break over them. The next panel was only a smear of black, flecked with red. It said enough.
+N Then a smaller faerie realm, and a dark, ugly smear across the bottom of our island. The wall. South of it, the painter hadn't bothered with anything at all.
+N Just above the wall, the court that had given up the most land to us: painted with crocuses and lambs and roses. Spring.
+N Above it, six more. Autumn, Summer, Winter. Dawn in soft reds, Day in gold and blue. And at the top, sprawling over frozen mountains, darkness and stars. The Night Court. Things lived in the shadows between those peaks. Little eyes. Gleaming teeth.
+N At the heart of it all rose one bare, lonely mountain, without snow, without life, as if the very weather wouldn't touch it.
+@feyre/afraid Never go north. Whatever happens, never go north.
+> journal lore_courts
+N I went back to the desk and the book I couldn't read, and the list I couldn't say, and crumpled the whole thing into a ball and threw it in the bin.
+> region_call walk_in lord_gold tamlin 560 470
+@tamlin/neutral If that's what brought you in here, I could help you with the letter.
+N I nearly knocked the chair over. He stood behind me with a stack of books in his arms.
+@feyre/angry Help? A faerie passing up the chance to laugh at an ignorant mortal?
+@tamlin/angry Why would I mock you for something nobody ever gave you the chance to learn? Let me help. I owe you for the hand.
+N Shortcoming. So it was a shortcoming.
+* Let him help. -> ch13_maybe
+* Tell him you're fine. -> ch13_fine
+
+== ch13_maybe
+N I opened my mouth to say yes. Then I thought of the smear the painter had made of the human lands, as if we weren't worth the paint, and what came out was something else.
+-> ch13_fine
+
+== ch13_fine
+@feyre/determined I'm fine.
+@tamlin/angry You think I've nothing better to do with my time than think up ways to humiliate you? You'll let Lucien drag you out hunting, but-
+@feyre/determined Lucien never hides what he is.
+@tamlin/angry What does that mean?
+@feyre/determined It means you're a stranger to me. I can't tell who you are, or what you are, or what you're after.
+@tamlin/angry It means you don't trust me.
+@feyre/angry How could I trust a faerie? Don't you delight in tricking us and killing us?
+N His snarl set every candle guttering.
+@tamlin/angry Believe me. You are not what I had in mind for a human.
+N Something deep in my chest tore open, and all of Nesta's words came pouring out of it. Ignorant. Unremarkable. Proud. Cold.
+@tamlin/tender Feyre-
+N I shook my head and turned back to the mural, and stared at it until I heard him go.
+> time 15
+N That afternoon my crumpled list was gone from the bin, and the books on my desk had been moved about. A servant tidying, I told myself.
+N Maybe I'd been a fool to refuse. Maybe I'd been a fool to feel sorry for him at all.
+N But they never answered what I really asked. The blight, where it came from, what it could do to humans. And if there was some forgotten loophole in the Treaty, something that could send me home to warn them myself...
+@feyre/determined Lucien said there's a faerie that answers any question, if you're clever enough to trap it.
+> objective Find Lucien. His room is in the far wing, along the upper hall.
+
+== ch13_lucien
+> set_flag ch13_lucien
+@lucien/smirk Come in, human.
+N His room was the colors of an autumn wood, orange and red and gold. A battered worktable covered in weapons stood where my breakfast table would be. He sat at it in his shirtsleeves, his red hair loose, cleaning a long, wicked hunting knife.
+@lucien/smirk I've been up north, cooling some tempers along the border. I came home just in time to catch you and Tam at each other's throats, and thought it wiser to keep out of the way up here.
+@lucien/smirk Whatever you said, he came and nearly bit my head off over lunch. Luckily for me there's trouble in the western forest, and he's gone to deal with it the way only he can.
+N Tamlin away. Good.
+@feyre/neutral It's a pity you aren't like the Suriel. Telling me anything I want to know, if I'm clever enough to snare you.
+N His golden eye whirred and narrowed on me.
+@lucien/neutral I don't suppose you'll tell me what you want to know.
+@feyre/determined You have your secrets, and I have mine. But if you were a Suriel, how exactly would I trap you?
+N For a long moment I thought he'd go straight to Tamlin. Then he picked at his nails.
+@lucien/neutral If I were one, I'd likely be fond of the young birch groves in the western woods. And of chickens, fresh killed. And I'd be far too greedy to spot a double snare laid round the grove, ready to catch my legs.
+@feyre/neutral I think I prefer you as High Fae.
+@lucien/grim Anyone fool enough to hunt one would want a bow, and plenty of arrows. And a knife, perhaps. Something like this.
+N He sheathed the knife and set it at the edge of the table. An offering.
+@lucien/grim And I'd be ready to run like hell once I let it go. To the nearest running water. They hate crossing it.
+@feyre/neutral But you're not mad, so you'll be here, safe and sound?
+@lucien/smirk As it happens, I'll be out hunting on the grounds. My hearing's very good, and if I heard screaming from the western woods I might even come and look. Tam would skin anyone who taught you to catch a Suriel. Good thing I've taught you nothing.
+@lucien/grim I hope your secrets are worth it.
+@feyre/determined You have superior hearing. I have a superior talent for keeping my mouth shut.
+@lucien/smirk Cauldron save me. I might be growing fond of you. For a human who kills faeries.
+> item fae_knife
+> item arrow 10
+N The cooks gave me a freshly killed hen with the most baffled looks I'd ever seen on a masked face.
+> item chicken
+> chapter_card 14
+@feyre/determined Western woods. A ring of young birches. A dead hen, a double-loop snare. Running water close by.
+> objective Go to the western woods and find the ring of young birches. Set the snare there.
+> goto spring_manor door chapter=14 hour=13.5

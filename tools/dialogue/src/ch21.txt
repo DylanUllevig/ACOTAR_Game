@@ -1,0 +1,119 @@
+# Chapter 21: the stranger, Lucien drags her home, the Great Rite explained, the bite in the hall.
+
+== ch21_rhys
+N Short black hair gleaming like a raven's wing. Pale skin. Eyes of so deep a blue they were violet, even by firelight, dancing with amusement. No mask. Another court, then.
+N He stood utterly still, and the night seemed to lean in close around him. It made me want to run.
+@stranger/smirk A mortal, here, tonight of all nights?
+N His voice was a lover's purr, and I felt it in every nerve. I stepped back.
+@feyre/determined My friends brought me.
+@stranger/smirk And who are your friends?
+@feyre/determined Two ladies.
+@stranger/smirk Their names?
+N I said nothing. Had I traded three monsters for something far worse?
+@stranger/smirk You're welcome. For saving you.
+N He began to circle me, and I could have sworn tendrils of starlit night trailed behind him.
+@stranger/neutral An odd thing, a human with two faerie friends. Doesn't your kind usually run screaming from mine? And don't you belong on the other side of the wall?
+@feyre/determined They've been my friends since I was small. They've never given me cause to be afraid.
+@stranger/smirk And still they brought you to the Rite and wandered off without you.
+@feyre/determined They've gone for refreshments.
+N His smile widened. Whatever I'd said, it had given me away.
+@stranger/smirk The wine is a long walk from here, I'm afraid. Shall I see you somewhere safer while you wait?
+* Take his arm. -> ch21_arm
+* Refuse. -> ch21_no
+
+== ch21_arm
+N I lifted my hand, and every warning bell in me rang at once. I let it fall.
+-> ch21_no
+
+== ch21_no
+@feyre/neutral No.
+@stranger/neutral Have a pleasant Rite, then. Do keep out of trouble.
+N His eyes said that staying out of trouble meant staying well away from him. It was the stupidest thing I'd ever done, but I couldn't help it.
+@feyre/neutral So you're not of the Spring Court?
+@stranger/smirk Do I look like I belong to the Spring Court? No. And glad of it.
+N He gestured at his face, where a mask would be.
+@feyre/neutral Then why are you here?
+@stranger/cold Because every monster is let out of its cage tonight, whatever court it calls home. So I may roam wherever I like until the dawn.
+N His smile had turned cold and cruel.
+@feyre/neutral Enjoy the Rite.
+> region_call stranger_leaves
+N I put my back to him, which might have been the stupidest thing of all, and lost myself in the crowd along the path. When I looked back, he was gone.
+N A masked faerie across the path caught my gaze. One eye russet, the other gold. He blinked and was gone, and in the next breath a hand closed on my elbow and hauled me out of the crush.
+@lucien/angry Are you mad? Why are you out here?
+@feyre/determined I wanted to-
+@lucien/angry Idiot! Useless human fool!
+N He slung me over his shoulder like a sack of grain and ran, faster than anything should run. I shut my eyes so I wouldn't be sick.
+> goto manor_hall front chapter=21 hour=23
+
+== ch21_hall
+> set_flag ch21_hall
+N He dropped me on the floor of the hall. His face was ghost-pale and slick with sweat, and his eyes kept going to the hills, where the drums were beating like rain.
+@lucien/angry You idiot human. He told you to keep to your room!
+@feyre/angry That was hardly anything-
+@lucien/angry That wasn't even the ceremony! Cauldron, if Tam had found you there... Didn't anyone tell you what the Great Rite is?
+N My silence was answer enough.
+@lucien/grim Fire Night is the start of spring, here and in your lands. Our crops depend on the magic made tonight. Every High Lord does this every year. Their power comes from the earth and goes back to it.
+@lucien/grim Tonight, Tam lets a great and terrible magic into himself. It takes his mind, his body, his soul, and makes him the Hunter. And the Hunter has one purpose: to find the Maiden. From their joining, the magic goes back into the earth, and the land lives another year.
+N My face went hot.
+@lucien/grim He won't be the Tam you know tonight. He won't even know his own name.
+@feyre/afraid Who is the Maiden?
+@lucien/smirk No one knows until it's time. He hunts the white stag, kills it as an offering, and then comes to the cave, along that path lined with females hoping to be picked. His instincts do the choosing. It's an honor.
+@feyre/afraid But there were males there too. You were there.
+@lucien/smirk Tam isn't the only one who gets to celebrate. Once he's chosen, the rest of us are free to mingle. It helps the land too.
+N So that was what those three had thought I was there for.
+@lucien/grim You're lucky I found you first. He'd have smelled you and taken you, and it wouldn't have been Tamlin who carried you into that cave. You wouldn't have liked it. Tonight isn't for lovemaking.
+N I swallowed down the sickness. And yet under it, to hear that some wild part of him wanted me...
+@lucien/grim I have to get back. When he catches your scent and can't find you, someone has to be there to hold him back. Go to your room, Feyre. Lock it, and don't open it for anyone who knocks. Not until dawn.
+> region_call walk_out lucien
+> objective Go up to your room and lock the door.
+
+== ch21_wait
+> set_flag ch21_wait
+N I fell asleep at my vanity, and woke the moment the drums stopped. A shudder went through the house. Magic rippled past me, raising every hair on my arms.
+N I knew what it meant, and my face burned, and my chest went tight. Past two in the morning. He'd taken his time. She was probably beautiful. She'd gone to that hill of her own free will. And he was handsome. Terribly handsome. His mouth, and his body, which was... was...
+@feyre/angry Ridiculous.
+N I looked at the snare I'd rigged across my door. As if rope and wood could keep out what lived in this land. I took it apart, unlocked the door, and went out.
+> time 2.3
+> objective You need something to eat. And then the painting room, to get this out of your head.
+
+== ch21_bite
+> set_flag ch21_bite
+> music ""
+N The kitchens had given me half a loaf, an apple and a lemon tart, and I was nibbling a chocolate biscuit on my way back when a tall figure stepped out in front of me.
+> region_call walk_in lord_gold tamlin 640 330
+N The moon silvered his mask. His golden hair hung loose under a wreath of laurel, and his bare chest was painted with swirls of deep blue woad, blurred wherever hands had touched him. I tried very hard not to see how far below his waist the blurring went.
+@tamlin/angry Going somewhere?
+N His voice wasn't wholly of this world.
+@feyre/neutral A midnight snack.
+N I made to walk past him. He moved faster than I could see, and I was against the wall with my wrists pinned over my head. The biscuit fell.
+@tamlin/angry I smelled you. I searched for you, and you weren't there.
+N He reeked of magic. There was nothing in his eyes of the Tamlin I knew. No kindness, no wry humor. Only what was left of the power.
+@feyre/determined Let go.
+N His claws punched into the paneling above my hands.
+@tamlin/angry You made me wild. When I couldn't find you, I had to pick someone else. She wanted it rough.
+N He brought his mouth to my ear.
+@tamlin/tender With you I'd have been gentle. I'd have had you saying my name all night. And I would have taken my time, Feyre. All of it.
+N He pulled his claws out of the wall and let go, and my knees buckled. I didn't know if I wanted to hit him or pull him closer.
+* Push him away. -> ch21_push
+* Say nothing. -> ch21_still
+
+== ch21_still
+N I said nothing. I didn't trust my voice. He only smiled, like an animal, and that smile was what loosened my tongue.
+-> ch21_push
+
+== ch21_push
+@feyre/angry Why would I want someone's leftovers?
+N I shoved at him. He caught my hands again, and bit my neck.
+N His teeth closed on the place where my neck met my shoulder. Not breaking the skin. Holding me there. The world shrank to his mouth on me, the press of his body against mine, and I saw red, saw lightning. I should have hated him. For the Rite, for her.
+N His bite eased, and his tongue soothed where his teeth had been, and he stayed there, kissing my neck, slow and possessive. A moan slipped out of me.
+N He jerked away.
+@tamlin/angry Don't ever disobey me again.
+N My hand cracked across his face before I knew I'd moved.
+@feyre/angry Don't tell me what to do. And don't bite me like some rabid beast.
+N He laughed, bitterly. His nostrils flared as he scented everything I was feeling, every wild, burning thing. His breath went out of him all at once.
+N He growled, once, low and frustrated and vicious, and prowled away into the dark.
+> region_call walk_out tamlin
+N I stood against the wall with my hand stinging and my neck throbbing and my whole body awake, alive, in a way it had never been in my life.
+> unlock_tier 4
+> chapter_card 22
+> goto manor_bedroom bed chapter=22 hour=13

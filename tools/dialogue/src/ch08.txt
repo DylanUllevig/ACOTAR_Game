@@ -1,0 +1,99 @@
+# Chapter 8: mapping the grounds, the giggling things, the stolen knife, the satchel.
+
+== ch08_fountain
+N The rose garden: a fountain in a ring of gravel, hedges on the north and south sides, gaps where the paths ran through. Clipped trees down either side, thick enough to hide behind.
+N He had taken my weapons. There had to be an armory somewhere, with all those knives on his chest. And if not, I would steal something. Just in case.
+
+== ch08_pool
+N A long reflecting pool under blossom trees, lily pads drifting on it. Open lawn all around. Nowhere to hide here, and anyone at the windows could see me.
+N Last night I'd found there was no lock on my window, and wisteria thick as rope climbing the wall beneath it. Not that I meant to run. But it was good to know how I could.
+
+== ch08_stables
+N Stables, painted and pretty, the stable hands in horse masks. Not one of them looked at me. Maybe they blamed me for Andras. I didn't blame them.
+N Horses meant a way to cover ground. If I ever had to.
+
+== ch08_gate
+N The iron gate in the high hedge, where the mare had brought me in. Sentries stood at it now, masked and silent, and it stood open as if to say that no one here needed it shut.
+N South, beyond it, lay the wall. And my family. I made myself turn around.
+
+== ch08_not_yet
+N Not yet. I wanted the whole lay of the land first.
+[!f:ch08_seen_fountain] N The rose garden, west of the house.
+[!f:ch08_seen_pool] N The long pool, east of the drive.
+[!f:ch08_seen_stables] N The stables, past the east wing.
+[!f:ch08_seen_gate] N The gate at the bottom of the drive.
+
+== ch08_mapped
+> set_flag ch08_mapped
+N Gravel crunched behind me. Two pairs of light, quick feet. I turned. The path was empty.
+N A breeze shook loose a drift of white petals. Then a faint sniff, and a giggle, far too close behind me.
+N Silvery light flickered at the edge of my eye, splitting into two small shapes no taller than my waist. My hands curled into fists.
+* Turn and face them. -> ch08_mapped_turn
+* Stand still and listen. -> ch08_mapped_still
+
+== ch08_mapped_turn
+N I spun round, fists raised, for all the good fists would do.
+-> ch08_mapped_2
+
+== ch08_mapped_still
+N I stood still the way I would in the woods, listening for which way they'd move. They only giggled again, delighted. Curious. Wanting to play.
+-> ch08_mapped_2
+
+== ch08_mapped_2
+@alis/stern Feyre! Feyre, lunch!
+N Alis's voice cut across the garden, and the shining things were simply gone. Nothing behind me but hedge and petals.
+@feyre/afraid Alis said the house was safe. She never said a thing about the gardens.
+N I went in for lunch, and couldn't shake the feeling that something still watched me all the way to the door.
+> time 19
+> objective Dinner, in the dining room. Behave. Be docile. Be unremarkable.
+
+== ch08_dinner
+> set_flag ch08_dinner
+N Dinner was the only meal I was asked to, which suited me. An hour at their table, playing tame, was a price I could pay.
+N Lucien was ranting to Tamlin about his golden eye. It had seized up again, something to do with the blight. Neither of them was looking at me.
+* Slip your knife up your sleeve. -> ch08_steal
+* Leave the knife where it is. -> ch08_leave
+
+== ch08_leave
+N I left it. Then thought of the shimmering things in the garden, and their giggling, and picked it up again.
+-> ch08_steal
+
+== ch08_steal
+N I slid the knife into my sleeve. My heart beat so hard I was sure they'd hear it. Lucien kept talking. Tamlin's eyes stayed on him.
+> item table_knife
+@lucien/smirk Admiring my sword, Feyre? Or working out where to put it?
+@feyre/neutral Neither.
+N Tamlin's eyes glowed gold from the other end of the table. Had he heard the knife slide off the wood?
+@tamlin/neutral Feyre likes to hunt.
+@feyre/determined I don't like it. I hunted because otherwise we starved. How did you know?
+@tamlin/neutral Why else would you be in the woods in that weather? There was a bow in your house, and one look at your father's hands told me he wasn't the one using it. Faeries are many things, but we aren't stupid.
+@lucien/neutral How old are you, anyway?
+@feyre/neutral Nineteen.
+@lucien/smirk So young, and so grave. And already an accomplished killer.
+N Docile. Tame. Win him over. I tried.
+@feyre/neutral Is that all you do here? Let the odd human live, and sit down to grand dinners?
+@lucien/smirk Oh, we also dance with spirits under the full moon, and swap your babies for changelings, and-
+@tamlin/tender Didn't your mother ever tell you anything about us?
+@feyre/determined My mother didn't have time for stories.
+@tamlin/tender How did she die? I saw no sign of an older woman in your house.
+@feyre/neutral Typhus. When I was eight.
+N I stood to go. He said my name, and a muscle feathered in his cheek.
+@tamlin/tender I'm sorry for your loss.
+N I didn't want his sympathy. Not for a woman I hadn't missed in years. I left before he could see it on my face.
+N But three good meals a day were doing what eight years of winter never had. My arms were stronger. My hands had stopped shaking.
+> unlock_tier 2
+> goto manor_bedroom landing chapter=8
+
+== ch08_satchel
+> set_flag ch08_satchel
+N In the armoire I found a small satchel. A spare shirt, a pair of trousers, the stolen knife. A pitiful blade. Better than none.
+@feyre/determined In case I'm ever allowed to go. In case I have to leave at a moment's notice.
+N Lucien, then. He wanted me gone more than anyone. Maybe he could be persuaded to plead my case to Tamlin.
+> chapter_card 9
+> time 8
+N In the morning, while Alis and another servant drew my bath, I asked my question as idly as I could manage.
+@feyre/neutral Is Lucien about today?
+@alis/neutral Border patrol. He'll be at the stables by now, getting ready to ride out. Why?
+@feyre/neutral No reason.
+N Alis's mouth said nothing at all. Her eyes said a great deal.
+> objective Catch Lucien alone at the stables, east of the house, before he rides out.

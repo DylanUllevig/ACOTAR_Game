@@ -1,0 +1,71 @@
+# Chapter 12: the map in the dark, the wounded beast, the bandage, the overheard quarrel, the study.
+
+== ch12_night
+> set_flag ch12_night
+> music ""
+N Paper in one hand and a pen in the other, I crept through the sleeping house, marking doors and windows and stairs with crosses and circles. I couldn't write more than my letters. My map would mean nothing to anyone else.
+N If I was going to live here, I would learn this house so well I could find my way out of it blind.
+N A breeze stirred the moonlight in the hall. The garden doors opened, and he came in.
+> region_call beast_arrives 900 470
+N I'd forgotten how huge he was like this. Curled horns, a wolf's face, a bear's bulk moving like a cat. He was limping. Dark, shining stains followed him across the marble.
+> region_call beast_shifts
+N A blinding flash, and he stood before me. His clothes hung in long, vicious slashes, though the skin beneath was smooth. But his hand dripped blood onto the floor. That wound wasn't closing.
+@feyre/afraid Did you kill it? The Bogge?
+@tamlin/weary Yes.
+N Flat. Empty. As if he'd had to go somewhere very deep inside himself to do it, and hadn't come all the way back.
+@feyre/afraid You're hurt.
+N He looked down at his hand as if he'd forgotten he had one. Then at the paper on the table.
+@tamlin/weary What's that?
+@feyre/neutral I thought I should learn my way around.
+@tamlin/weary You can't write, can you.
+N I didn't answer. Drip. Drip.
+@tamlin/weary No wonder you got so good at other things.
+* Offer to see to his hand. -> ch12_bind
+* Leave him to it. -> ch12_go
+
+== ch12_go
+N I picked up my map and made it as far as the stairs. Drip. Drip. I turned back.
+-> ch12_bind
+
+== ch12_bind
+@feyre/neutral Where can we clean that hand?
+@tamlin/weary There's a small infirmary.
+N It was more cupboard than sickroom. Immortals didn't need much more. His skin burned against my cold fingers. I braced for the claws to come out the whole time I cleaned and bound the cuts. They never did.
+@tamlin/neutral You can't write. And yet you taught yourself to hunt, to survive. How?
+@feyre/determined That's what happens when other lives depend on yours. You do what you have to.
+@tamlin/tender You aren't what I expected. For a human.
+N He didn't say good night. Neither did I.
+> time 9
+> music spring_manor
+N By morning the marble had been washed clean. I meant to spend the quiet hour looking at the paintings at last, but voices came from the dining room, low and tense. I slid into the shadow behind the door.
+@lucien/angry Tell me what you're playing at. Time's running out, Tam, and you're brooding. You've stopped even trying.
+@tamlin/angry It was wrong from the beginning. I can't do it. Not after the way my father treated humans. I won't become him.
+@lucien/angry And doom the rest of us? I stayed because I had hope, not to watch you trip over your own conscience. That lump of stone you carry where a heart should be has gone very soft lately. The Bogge walked our lands, Tam! The borders between the courts have fallen, and our woods are filling up with filth like the puca.
+@tamlin/angry Careful. Do you think I can't see what's happening in my own court? What I could lose? What's gone already?
+N The air throbbed, and the metal tang of magic filled my nose. I leaned closer. My finger knocked softly against the door.
+N A human wouldn't have heard it. Both of them whirled.
+@feyre/neutral Morning. Going for a ride, Lucien?
+@lucien/smirk Not today. Tam will go with you.
+N He patted my shoulder on his way out, looking far too pleased with himself.
+@lucien/smirk Another time, human.
+@tamlin/neutral Whenever you want to go, say so.
+@feyre/determined I don't want to go hunting. I hate hunting.
+@tamlin/neutral Then what do you want to do?
+N He walked me through the sunlit halls. The roses outside the open windows scented everything.
+@tamlin/neutral You've been riding out to hunt, and you don't even like it. No wonder the two of you never catch anything.
+@feyre/neutral How's your hand?
+@tamlin/tender I never said thank you. A wound from the Bogge heals too slowly to save us; that's how it kills. So, thank you. The hand still works.
+@feyre/neutral I had to be able to draw a bowstring the next day. You learn.
+@tamlin/tender Has anyone ever looked after you?
+@feyre/neutral No.
+N I'd stopped feeling sorry for myself about that a long time ago.
+@tamlin/neutral Tell me something. Do you plan to use that knife you took from my table, or just carry it around?
+@feyre/afraid How did you know?
+@tamlin/neutral I was trained to notice. But mostly I could smell the fear on you. If you want to stand a chance of escaping my kind, you'll need better ideas than dinner knives. Though with your gift for listening at doors, you may learn something useful yet.
+N My ears burned. But there was no point pretending.
+@feyre/neutral Lucien said there wasn't much time. Time for what? Will more things like the Bogge come here?
+@tamlin/neutral I'm immortal, Feyre. Time is all I have. Whatever's plaguing our lands will pass someday, if the Cauldron's kind. But yes. Now that the Bogge got in, I'd expect others to follow.
+N At the end of the hall, he pushed open two tall doors.
+@tamlin/neutral As requested. The library.
+> chapter_card 13
+> goto manor_study hall chapter=13 hour=10

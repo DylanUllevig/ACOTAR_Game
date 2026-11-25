@@ -1,0 +1,706 @@
+{
+ "schema": 2,
+ "notes": "Line forms: {n} Feyre's narration, first person past tense, shown in italics; {s,e,t} a line spoken aloud (speaker, portrait expression, text); {hint} a game tip on its own card; {choices:[{t,goto,do}]}; {do:[actions]}; {goto}. Any line or choice may carry if_flag, if_not_flag, if_item, if_not_item or if_chapter. Wording is written for the game; the few short book lines kept are listed in quotes.json.",
+ "scenes": {
+  "ch07_dinner": {
+   "lines": [
+    {
+     "do": [
+      {
+       "type": "set_flag",
+       "flag": "ch07_dined"
+      }
+     ]
+    },
+    {
+     "n": "They were still at the table when Alis brought me back, lounging over golden goblets. Real gold. I thought of our chipped, mismatched spoons."
+    },
+    {
+     "s": "tamlin",
+     "e": "neutral",
+     "t": "Before you ask again: the food is safe. Sit."
+    },
+    {
+     "s": "lucien",
+     "e": "smirk",
+     "t": "Told you so, Tamlin. You've grown rusty with females these last few decades."
+    },
+    {
+     "n": "Tamlin. So the beast had a name. And decades. He looked hardly older than I was, but his kind didn't die. He could be centuries old."
+    },
+    {
+     "s": "lucien",
+     "e": "smirk",
+     "t": "Well, you look less like something the cat dragged in. A pity about the trousers, though. A dress would be prettier."
+    },
+    {
+     "s": "feyre",
+     "e": "determined",
+     "t": "I'd rather not wear one."
+    },
+    {
+     "s": "tamlin",
+     "e": "neutral",
+     "t": "Because it's easier to kill us in trousers."
+    },
+    {
+     "n": "I didn't answer that. He rose, walked the length of the table with a predator's ease and heaped a plate for me himself: meat, sauce, bread, a glass of pale sparkling wine."
+    },
+    {
+     "s": "tamlin",
+     "e": "neutral",
+     "t": "It's an honor, for a mortal to be served by one of us."
+    },
+    {
+     "n": "I sat on my hands rather than fall on the food like a dog. They watched me. Tamlin cleared his throat."
+    },
+    {
+     "s": "tamlin",
+     "e": "weary",
+     "t": "You look... better. Than before. And your hair is... clean."
+    },
+    {
+     "n": "Lucien gave him what might have been an encouraging nod. It was the worst compliment I had ever been paid."
+    },
+    {
+     "s": "feyre",
+     "e": "determined",
+     "t": "What do you mean to do with me? Am I to be your slave?"
+    },
+    {
+     "s": "tamlin",
+     "e": "angry",
+     "t": "I don't keep slaves."
+    },
+    {
+     "s": "feyre",
+     "e": "determined",
+     "t": "Then what am I supposed to do here? Work? Earn my keep?"
+    },
+    {
+     "s": "tamlin",
+     "e": "neutral",
+     "t": "What you do with your days is your own affair. Don't you have any... interests?"
+    },
+    {
+     "s": "feyre",
+     "e": "determined",
+     "t": "No."
+    },
+    {
+     "s": "lucien",
+     "e": "smirk",
+     "t": "How very human."
+    },
+    {
+     "s": "tamlin",
+     "e": "neutral",
+     "t": "Spend your time however you like. Just stay out of trouble."
+    },
+    {
+     "choices": [
+      {
+       "t": "Beg him to let you go home.",
+       "goto": "ch07_beg"
+      },
+      {
+       "t": "Ask if there's another way to pay the debt.",
+       "goto": "ch07_beg"
+      }
+     ]
+    }
+   ]
+  },
+  "ch07_beg": {
+   "lines": [
+    {
+     "s": "feyre",
+     "e": "sad",
+     "t": "My family is starving. Please. There has to be some other way out of the Treaty. Some other way to make it right."
+    },
+    {
+     "s": "lucien",
+     "e": "angry",
+     "t": "Make it right? Have you even said you're sorry?"
+    },
+    {
+     "n": "I looked him straight in his one russet eye."
+    },
+    {
+     "s": "feyre",
+     "e": "determined",
+     "t": "I'm sorry."
+    },
+    {
+     "s": "lucien",
+     "e": "angry",
+     "t": "How did you do it? A fair fight, or cold murder?"
+    },
+    {
+     "choices": [
+      {
+       "t": "Tell him the truth.",
+       "goto": "ch07_truth"
+      },
+      {
+       "t": "Tell him it's none of his business.",
+       "goto": "ch07_refuse"
+      }
+     ]
+    }
+   ]
+  },
+  "ch07_refuse": {
+   "lines": [
+    {
+     "s": "feyre",
+     "e": "angry",
+     "t": "That's between me and the wolf."
+    },
+    {
+     "s": "lucien",
+     "e": "angry",
+     "t": "The wolf had a name."
+    },
+    {
+     "s": "tamlin",
+     "e": "angry",
+     "t": "Lucien."
+    },
+    {
+     "n": "Lucien's jaw worked. I gave him the truth anyway, if only to be done with it."
+    },
+    {
+     "goto": "ch07_truth"
+    }
+   ]
+  },
+  "ch07_truth": {
+   "lines": [
+    {
+     "s": "feyre",
+     "e": "determined",
+     "t": "An ash arrow. Then an ordinary one, through the eye. He didn't fight. After the first one, he only looked at me."
+    },
+    {
+     "s": "lucien",
+     "e": "angry",
+     "t": "And still you killed him. And then you skinned him."
+    },
+    {
+     "s": "tamlin",
+     "e": "angry",
+     "t": "Enough. I don't want to hear it."
+    },
+    {
+     "s": "feyre",
+     "e": "angry",
+     "t": "Without me my family will starve inside a month. Have you ever gone hungry? Not known if there'd be anything to eat tomorrow?"
+    },
+    {
+     "s": "tamlin",
+     "e": "angry",
+     "t": "Your family is alive and well fed. Do you think I'd take away the one who kept them and leave them nothing?"
+    },
+    {
+     "s": "feyre",
+     "e": "determined",
+     "t": "Swear it."
+    },
+    {
+     "s": "tamlin",
+     "e": "neutral",
+     "t": "On everything I am, and everything I own."
+    },
+    {
+     "n": "Faeries can't lie. I knew that. It didn't stop me from shooting to my feet. Invisible hands clapped onto my arms and shoved me back into the chair."
+    },
+    {
+     "s": "tamlin",
+     "e": "angry",
+     "t": "Whatever you were thinking of doing, don't. I'll warn you once, human. Live wherever you like in Prythian. But cross the wall, run home, and your family will no longer be looked after."
+    },
+    {
+     "n": "A stone to the skull. If I ran, I might doom them. And if I reached them, where would I take them? We had nowhere to go."
+    },
+    {
+     "s": "tamlin",
+     "e": "angry",
+     "t": "The food isn't drugged. If you faint, it'll be your own fault. So you'll sit here and eat, Feyre. And Lucien will try to be polite."
+    },
+    {
+     "n": "The bonds on my arms loosened. The ones round my legs did not."
+    },
+    {
+     "do": [
+      {
+       "type": "journal",
+       "id": "lore_cross_wall"
+      }
+     ]
+    },
+    {
+     "n": "I sniffed the plate. No metal tang of magic. I ate. I hadn't tasted anything so good in eight years. Even the meals before our ruin were ashes next to it."
+    },
+    {
+     "do": [
+      {
+       "type": "heal_full"
+      }
+     ]
+    },
+    {
+     "n": "I reached for a second slice of chocolate torte, and every dish on the table simply vanished."
+    },
+    {
+     "s": "tamlin",
+     "e": "neutral",
+     "t": "One more bite and you'll bring it all back up."
+    },
+    {
+     "n": "The last of the bonds slid away. Permission to leave."
+    },
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "Thank you for the meal."
+    },
+    {
+     "s": "lucien",
+     "e": "smirk",
+     "t": "Leaving so soon? A mortal woman, and you'd rather swallow hot coals than sit with us a moment longer. Ignore the eye, and we're not so hard to look at. Unless there's a line of suitors at your door back home."
+    },
+    {
+     "choices": [
+      {
+       "t": "Mention Isaac.",
+       "goto": "ch07_isaac"
+      },
+      {
+       "t": "Say there's no one.",
+       "goto": "ch07_noone"
+      }
+     ]
+    }
+   ]
+  },
+  "ch07_isaac": {
+   "lines": [
+    {
+     "s": "feyre",
+     "e": "determined",
+     "t": "There was a man in my village."
+    },
+    {
+     "n": "Tamlin and Lucien traded a look I couldn't read."
+    },
+    {
+     "s": "tamlin",
+     "e": "neutral",
+     "t": "Do you love him?"
+    },
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "No."
+    },
+    {
+     "s": "tamlin",
+     "e": "angry",
+     "t": "And is there anyone else you love?"
+    },
+    {
+     "n": "A laugh burst out of me, thin and wild. Immortal killers, and this was what they wanted to know."
+    },
+    {
+     "goto": "ch07_why"
+    }
+   ]
+  },
+  "ch07_noone": {
+   "lines": [
+    {
+     "s": "feyre",
+     "e": "determined",
+     "t": "There's no one."
+    },
+    {
+     "n": "It was true, near enough. Isaac had never been mine, nor I his. And the fewer people back home these creatures knew about, the better."
+    },
+    {
+     "s": "tamlin",
+     "e": "neutral",
+     "t": "No one at all? No one you love?"
+    },
+    {
+     "n": "A laugh burst out of me, thin and wild. Immortal killers, and this was what they wanted to know."
+    },
+    {
+     "goto": "ch07_why"
+    }
+   ]
+  },
+  "ch07_why": {
+   "lines": [
+    {
+     "s": "tamlin",
+     "e": "weary",
+     "t": "We wanted to know something about you, since you'll be here a good long while. Lucien's pride gets in the way of his manners. Go and rest. We're both busy most days. If you need anything, ask the servants."
+    },
+    {
+     "s": "feyre",
+     "e": "determined",
+     "t": "Why be so generous? I killed your friend."
+    },
+    {
+     "s": "tamlin",
+     "e": "weary",
+     "t": "I kill often enough as it is. And you're too small a thing to trouble this house. Unless you start killing us."
+    },
+    {
+     "n": "Insignificant. As small and faded as the patterns I had painted round our cottage walls."
+    },
+    {
+     "n": "I backed out of the room without turning, the way you'd back away from a wolf. Lucien's laugh barked down the hall behind me, cut short by a growl."
+    },
+    {
+     "n": "I slept badly. The lock on my door felt like a joke, so I made a better one: a length of rope braided from the curtain trimmings, strung where anyone opening the door would catch it in the face."
+    },
+    {
+     "do": [
+      {
+       "type": "goto",
+       "chapter": 7,
+       "hour": 6.5,
+       "region": "manor_bedroom",
+       "spawn": "bed"
+      }
+     ]
+    }
+   ]
+  },
+  "ch07_morning": {
+   "lines": [
+    {
+     "do": [
+      {
+       "type": "set_flag",
+       "flag": "ch07_morning"
+      },
+      {
+       "type": "sfx",
+       "name": "door_thud"
+      }
+     ]
+    },
+    {
+     "n": "The lock clicked. A screech, a thud, and Alis was in a heap on the floor with my rope swinging over her head."
+    },
+    {
+     "s": "feyre",
+     "e": "afraid",
+     "t": "I'm sorry! I meant to take it down before anyone came in."
+    },
+    {
+     "s": "alis",
+     "e": "stern",
+     "t": "A bit of rope in the face, to stop me breaking your bones? You think that will do a thing against one of us?"
+    },
+    {
+     "s": "feyre",
+     "e": "determined",
+     "t": "It wasn't a trap. It was a warning bell. Time enough to run."
+    },
+    {
+     "s": "alis",
+     "e": "stern",
+     "t": "You can't outrun us either, girl."
+    },
+    {
+     "s": "feyre",
+     "e": "determined",
+     "t": "I know. But at least I wouldn't meet my death asleep."
+    },
+    {
+     "n": "Alis barked a laugh."
+    },
+    {
+     "s": "alis",
+     "e": "kind",
+     "t": "The master promised you'd live under this roof. Live, mind, not die. His word is our law. Though you might have spared the good curtains."
+    },
+    {
+     "n": "She threw them open on a sky still periwinkle with dawn. Another servant brought a tray: porridge, eggs, bacon, and tea richer than any I had ever tasted."
+    },
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "What is this place? Where is it?"
+    },
+    {
+     "s": "alis",
+     "e": "neutral",
+     "t": "You're safe. That's all you need to know. Safe in the house, anyway. If you go wandering the grounds, keep your eyes open."
+    },
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "Which of you should I look out for?"
+    },
+    {
+     "s": "alis",
+     "e": "stern",
+     "t": "All of them. My master's protection only reaches so far. Plenty would hunt you just for being human, never mind what you did to Andras."
+    },
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "And what am I meant to do? With the whole rest of my life?"
+    },
+    {
+     "s": "alis",
+     "e": "kind",
+     "t": "Take a walk in the gardens."
+    },
+    {
+     "n": "I nearly laughed. But a walk would let me learn the lay of the land. And whether there was anyone here who might plead my case."
+    },
+    {
+     "do": [
+      {
+       "type": "objective",
+       "text": "Take a walk in the gardens."
+      }
+     ]
+    }
+   ]
+  },
+  "ch07_painting": {
+   "lines": [
+    {
+     "do": [
+      {
+       "type": "set_flag",
+       "flag": "ch07_painting"
+      }
+     ]
+    },
+    {
+     "n": "A flash of color among the shadowed frames stopped me."
+    },
+    {
+     "n": "Only a still life. A green glass vase, flowers spilling over its lip: roses, tulips, peonies, morning glory. But the blossoms seemed to glow with their own light, defying the dark gathered round them, and the glass held that light and bent it through the water inside as if the vase truly had weight."
+    },
+    {
+     "n": "I had never seen anything like it. I could have stood there for hours."
+    },
+    {
+     "s": "feyre",
+     "e": "sad",
+     "t": "Elain would have loved the flowers. I loved the light."
+    },
+    {
+     "n": "Gardens. Plans. I made myself walk on."
+    }
+   ]
+  },
+  "ch07_garden": {
+   "lines": [
+    {
+     "do": [
+      {
+       "type": "set_flag",
+       "flag": "ch07_garden"
+      }
+     ]
+    },
+    {
+     "s": "tamlin",
+     "e": "neutral",
+     "t": "You."
+    },
+    {
+     "n": "Tamlin was coming down the path behind me, dressed to fight, three long knives belted across his chest. You, he'd called me. Did he even know my name?"
+    },
+    {
+     "s": "feyre",
+     "e": "determined",
+     "t": "Good morning. You said my days were my own. I didn't know I was under house arrest."
+    },
+    {
+     "s": "tamlin",
+     "e": "angry",
+     "t": "Of course you're not. Do you want a tour?"
+    },
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "No, thank you."
+    },
+    {
+     "s": "tamlin",
+     "e": "neutral",
+     "t": "I've been stuck inside all morning. I could use the air."
+    },
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "You've been generous enough already."
+    },
+    {
+     "s": "tamlin",
+     "e": "angry",
+     "t": "Have I done something to offend you?"
+    },
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "No."
+    },
+    {
+     "s": "tamlin",
+     "e": "angry",
+     "t": "I won't kill you, Feyre. I keep my word."
+    },
+    {
+     "s": "feyre",
+     "e": "determined",
+     "t": "Not kill me. Is harm another matter? Is that a loophole Lucien gets to use?"
+    },
+    {
+     "s": "tamlin",
+     "e": "angry",
+     "t": "They're under orders not to touch you."
+    },
+    {
+     "s": "feyre",
+     "e": "determined",
+     "t": "And still I'm stuck in your lands, for breaking a rule I'd never heard of. Why was your friend across the wall at all? I thought the Treaty kept you out."
+    },
+    {
+     "s": "tamlin",
+     "e": "neutral",
+     "t": "The Treaty only stops us from making slaves of you. The wall is a nuisance, nothing more. If we wanted to, we could tear it down and walk across."
+    },
+    {
+     "s": "feyre",
+     "e": "afraid",
+     "t": "And do you care to?"
+    },
+    {
+     "s": "tamlin",
+     "e": "neutral",
+     "t": "I've no interest in the mortal lands. I can't speak for the rest of my kind."
+    },
+    {
+     "s": "feyre",
+     "e": "determined",
+     "t": "Then what was Andras doing there?"
+    },
+    {
+     "n": "He went very still."
+    },
+    {
+     "s": "tamlin",
+     "e": "weary",
+     "t": "There's a sickness in these lands. All over Prythian. It started almost fifty years ago. It's why this house is so empty. Most have left."
+    },
+    {
+     "s": "tamlin",
+     "e": "weary",
+     "t": "It isn't a plague. It feeds on magic, and makes it act strangely. My own power is less than it was. These masks came of a surge of it, at a masquerade, forty-nine years ago. We still can't take them off."
+    },
+    {
+     "n": "Fifty years in a mask. I would have clawed my own face off."
+    },
+    {
+     "s": "tamlin",
+     "e": "neutral",
+     "t": "I sent Andras across the wall to look for a cure."
+    },
+    {
+     "s": "feyre",
+     "e": "afraid",
+     "t": "Can it hurt humans? Will it cross the wall?"
+    },
+    {
+     "s": "tamlin",
+     "e": "weary",
+     "t": "There's a chance. More than that, I don't know. It's been quiet for decades. You're safe, for now."
+    },
+    {
+     "s": "feyre",
+     "e": "determined",
+     "t": "A mercenary told me she thought your kind might be planning to attack."
+    },
+    {
+     "s": "tamlin",
+     "e": "neutral",
+     "t": "Do you often talk to mercenaries?"
+    },
+    {
+     "s": "feyre",
+     "e": "determined",
+     "t": "I talk to anyone who tells me something useful."
+    },
+    {
+     "s": "tamlin",
+     "e": "neutral",
+     "t": "Was that tripwire in your room meant for me?"
+    },
+    {
+     "s": "feyre",
+     "e": "determined",
+     "t": "Can you blame me if it was?"
+    },
+    {
+     "s": "tamlin",
+     "e": "angry",
+     "t": "I may wear a beast's shape now and then, Feyre, but I'm civilized."
+    },
+    {
+     "n": "I looked pointedly at his hands, at the curved tips of claws pushing through his golden skin. He put them behind his back."
+    },
+    {
+     "s": "tamlin",
+     "e": "neutral",
+     "t": "I'll see you at dinner."
+    },
+    {
+     "n": "It wasn't a request. A blight on their magic, that might one day spread to us, who had no magic at all to fight it. I wondered whether any of the High Fae would bother to warn us."
+    },
+    {
+     "n": "I didn't have to wonder long."
+    },
+    {
+     "do": [
+      {
+       "type": "journal",
+       "id": "lore_blight"
+      },
+      {
+       "type": "chapter_card",
+       "n": 8
+      }
+     ]
+    },
+    {
+     "s": "feyre",
+     "e": "determined",
+     "t": "If I'm going to run one day, I need to know this place. Every path, every door, every way out."
+    },
+    {
+     "do": [
+      {
+       "type": "objective",
+       "text": "Map the grounds: the rose garden fountain, the reflecting pool, the stables and the gate."
+      }
+     ]
+    },
+    {
+     "hint": "The four places are marked as you find them. Press M for the map."
+    }
+   ]
+  }
+ }
+}

@@ -1,0 +1,324 @@
+{
+ "schema": 2,
+ "notes": "Line forms: {n} Feyre's narration, first person past tense, shown in italics; {s,e,t} a line spoken aloud (speaker, portrait expression, text); {hint} a game tip on its own card; {choices:[{t,goto,do}]}; {do:[actions]}; {goto}. Any line or choice may carry if_flag, if_not_flag, if_item, if_not_item or if_chapter. Wording is written for the game; the few short book lines kept are listed in quotes.json.",
+ "scenes": {
+  "ch11_out": {
+   "lines": [
+    {
+     "n": "I dropped the last few feet from the wisteria and winced at the crunch of gravel. No lights in the windows but a few candles in the hall. Tamlin wasn't back."
+    },
+    {
+     "n": "My father stood by the hedge, waving me over. Quickly, quickly, his hand seemed to say."
+    },
+    {
+     "s": "feyre",
+     "e": "determined",
+     "t": "He must have horses hidden somewhere. A ship, maybe. Somewhere far away from all of this."
+    },
+    {
+     "do": [
+      {
+       "type": "objective",
+       "text": "Go to your father."
+      }
+     ]
+    }
+   ]
+  },
+  "ch11_not_inside": {
+   "lines": [
+    {
+     "n": "Not now. Not with him waiting."
+    }
+   ]
+  },
+  "ch11_puca": {
+   "lines": [
+    {
+     "n": "He reached the gates. They stood open, the dark wood beyond them. He turned and beckoned again, his face drawn and tight, his eyes clear for once."
+    },
+    {
+     "n": "A few more steps. To him, to freedom, to a whole new life."
+    },
+    {
+     "n": "Then he wavered, like something seen through water. Against the gate leaned a bow and a quiver of arrows, all of the same pale wood. Ash."
+    },
+    {
+     "n": "Another ripple. A pack, stuffed with food. Another. My sisters, huddled together, weeping."
+    },
+    {
+     "n": "Then my father again, hunched and beckoning. Perfect in every detail."
+    },
+    {
+     "s": "feyre",
+     "e": "afraid",
+     "t": "What are you?"
+    },
+    {
+     "n": "It smiled with my father's mouth. Then it stopped pretending, and came for me."
+    },
+    {
+     "hint": "Watch for it to rear back before it lunges. Step aside, then strike while it recovers. Arrows will hurt it before it reaches you."
+    }
+   ]
+  },
+  "ch11_rescue": {
+   "lines": [
+    {
+     "do": [
+      {
+       "type": "sfx",
+       "name": "beast_roar"
+      },
+      {
+       "type": "shake",
+       "strength": 10
+      }
+     ]
+    },
+    {
+     "n": "A snarl tore through the night behind me, so savage that the hedges shook. The thing at the gates flared with light and fled into the trees, quick as lightning."
+    },
+    {
+     "n": "A huge hand closed round my arm. Claws pricked through every layer I wore."
+    },
+    {
+     "s": "tamlin",
+     "e": "angry",
+     "t": "Going somewhere?"
+    },
+    {
+     "n": "Teeth, long and bright under the moon. He meant to kill me here, and then hunt down my family. The bargain was broken. There'd be no mercy now."
+    },
+    {
+     "s": "feyre",
+     "e": "afraid",
+     "t": "Please. My father-"
+    },
+    {
+     "s": "tamlin",
+     "e": "angry",
+     "t": "Your father? Look again. Weren't you told to keep your wits about you? That your own senses would lie to you here?"
+    }
+   ]
+  },
+  "ch11_victory": {
+   "lines": [
+    {
+     "n": "It shrieked with my sisters' voices as it went down, and shriveled into something small and gray and many-legged, and then into nothing at all."
+    },
+    {
+     "n": "I stood over the place where it had been, shaking, the knife slick in my hand."
+    },
+    {
+     "n": "A huge hand closed round my arm. Claws pricked through every layer I wore."
+    },
+    {
+     "s": "tamlin",
+     "e": "angry",
+     "t": "Going somewhere?"
+    },
+    {
+     "n": "His fangs were out, long and white in the moonlight. He looked at the empty gravel, then at me."
+    },
+    {
+     "s": "tamlin",
+     "e": "angry",
+     "t": "Not bad, for a human. It would still have taken its time eating you if it had won. Weren't you told your own senses would lie to you here?"
+    }
+   ]
+  },
+  "ch11_walk": {
+   "lines": [
+    {
+     "s": "tamlin",
+     "e": "angry",
+     "t": "Fool. If you must run, run in daylight. These woods hold worse things than the Bogge after dark, and that trick at the gate was the least of them."
+    },
+    {
+     "choices": [
+      {
+       "t": "Shout back at him.",
+       "goto": "ch11_shout"
+      },
+      {
+       "t": "Say nothing.",
+       "goto": "ch11_mute"
+      }
+     ]
+    }
+   ]
+  },
+  "ch11_mute": {
+   "lines": [
+    {
+     "n": "I said nothing. He let go of my arm and turned for the house, and the silence was worse than his anger. I found my voice before we'd gone ten steps."
+    },
+    {
+     "goto": "ch11_shout"
+    }
+   ]
+  },
+  "ch11_shout": {
+   "lines": [
+    {
+     "s": "feyre",
+     "e": "angry",
+     "t": "Can you blame me? My crippled father turns up under my window, and you think I wouldn't run to him? Did you really think I'd happily stay here forever, for a Treaty that had nothing to do with me?"
+    },
+    {
+     "s": "tamlin",
+     "e": "angry",
+     "t": "What do you want, Feyre?"
+    },
+    {
+     "s": "feyre",
+     "e": "angry",
+     "t": "I want to go home!"
+    },
+    {
+     "s": "tamlin",
+     "e": "neutral",
+     "t": "Home to what, exactly? You'd choose that wretched life over this?"
+    },
+    {
+     "s": "feyre",
+     "e": "sad",
+     "t": "I made a promise. To my mother, when she was dying. That I'd look after them. Everything I've done, every day for years, has been for that promise. And because I hunted to keep them alive, I'm made to break it."
+    },
+    {
+     "s": "tamlin",
+     "e": "tender",
+     "t": "You aren't breaking it. You're keeping it, and then some, by staying here. They're better looked after now than when you were with them."
+    },
+    {
+     "s": "feyre",
+     "e": "sad",
+     "t": "I can't just give up on them. Whatever you say."
+    },
+    {
+     "s": "tamlin",
+     "e": "tender",
+     "t": "You're not giving up on them. They're fed. They're comfortable."
+    },
+    {
+     "n": "He couldn't lie. Fed and comfortable. More than I'd ever dared hope for."
+    },
+    {
+     "n": "Then my vow was kept. My life belonged to the Treaty now, but maybe I'd been set free in some other way."
+    },
+    {
+     "n": "It should have felt like relief. Without that promise to carry, I was only hollow."
+    },
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "What was that thing?"
+    },
+    {
+     "s": "tamlin",
+     "e": "neutral",
+     "t": "A puca. It wears whatever you want most, to lead you somewhere quiet. Then it eats you, slowly. It must have caught your scent in the woods and followed it here."
+    },
+    {
+     "s": "tamlin",
+     "e": "weary",
+     "t": "These lands were well guarded once. The worst things kept to their own territories, or hid. Nothing like a puca would have dared come here. But the sickness has worn the wards thin. It isn't safe out at night. Least of all for a human."
+    },
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "What else has changed?"
+    },
+    {
+     "s": "tamlin",
+     "e": "weary",
+     "t": "Everything."
+    },
+    {
+     "do": [
+      {
+       "type": "journal",
+       "id": "lore_puca"
+      }
+     ]
+    },
+    {
+     "n": "For three days after that, I rode Andras's patrol with Lucien while Tamlin hunted the Bogge alone. Lucien did most of the talking. I did most of the brooding, about what one arrow had cost."
+    },
+    {
+     "n": "On the last morning I spotted a red doe in a glen and had an arrow nocked before I knew it. She was fat and healthy and content. I let the string go slack and watched her wander off."
+    },
+    {
+     "n": "At dinner on the third night, Tamlin was up and gone before I'd even sat down. Lucien stared after him."
+    },
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "You worry about him."
+    },
+    {
+     "s": "lucien",
+     "e": "grim",
+     "t": "Tam gets into... moods. Even once he's torn the Bogge to pieces, he'll brood over it for days. He won't take help. He'd shred anyone who disobeyed his order to stay away."
+    },
+    {
+     "s": "feyre",
+     "e": "afraid",
+     "t": "He'd be that brutal?"
+    },
+    {
+     "s": "lucien",
+     "e": "grim",
+     "t": "You don't keep power by being everyone's friend. Among faeries, a hard hand is needed. We're too strong, and too bored with forever, to be held back by anything else."
+    },
+    {
+     "n": "A cold, lonely thing to be, especially when you'd never wanted it. I didn't know why that bothered me."
+    },
+    {
+     "do": [
+      {
+       "type": "music",
+       "name": ""
+      }
+     ]
+    },
+    {
+     "n": "That night, I dreamed of the wolf."
+    },
+    {
+     "n": "Snow to my knees. My bow drawn until my arm shook. He stared at me across the clearing, waiting, daring me. I didn't want to loose. My fingers did it anyway."
+    },
+    {
+     "n": "One arrow, straight through the eye. But it wasn't a wolf that fell. It was a male, tall and well made, with pointed ears."
+    },
+    {
+     "n": "And then my hands were warm and sticky, and his body was red and skinless and steaming in the snow, and it was his skin I held."
+    },
+    {
+     "s": "feyre",
+     "e": "afraid",
+     "t": "Not real. It's not real. Just a dream."
+    },
+    {
+     "n": "But it was shame on my tongue, and in my bones. I kicked back the sheets. I couldn't go back to sleep. Not after that."
+    },
+    {
+     "do": [
+      {
+       "type": "chapter_card",
+       "n": 12
+      },
+      {
+       "type": "goto",
+       "chapter": 12,
+       "hour": 2,
+       "region": "manor_hall",
+       "spawn": "stairs"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

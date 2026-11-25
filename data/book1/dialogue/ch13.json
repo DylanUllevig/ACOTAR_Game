@@ -1,0 +1,442 @@
+{
+ "schema": 2,
+ "notes": "Line forms: {n} Feyre's narration, first person past tense, shown in italics; {s,e,t} a line spoken aloud (speaker, portrait expression, text); {hint} a game tip on its own card; {choices:[{t,goto,do}]}; {do:[actions]}; {goto}. Any line or choice may carry if_flag, if_not_flag, if_item, if_not_item or if_chapter. Wording is written for the game; the few short book lines kept are listed in quotes.json.",
+ "scenes": {
+  "ch13_study": {
+   "lines": [
+    {
+     "do": [
+      {
+       "type": "set_flag",
+       "flag": "ch13_study"
+      }
+     ]
+    },
+    {
+     "n": "He lifted a hand, and a hundred candles flared to life at once. Whatever the blight had taken from the others, it hadn't taken much from him."
+    },
+    {
+     "n": "Then I saw the room, and my palms went damp. Books, wall to wall, rank on rank, like a silent army. Couches, desks, rugs. All of it useless to me."
+    },
+    {
+     "n": "More than a week had gone by since I left. The least I could do was tell them I was alive. Warn them about the sickness that might creep over the wall someday. And there was only one way to get word to them."
+    },
+    {
+     "s": "tamlin",
+     "e": "neutral",
+     "t": "Do you need anything else?"
+    },
+    {
+     "s": "feyre",
+     "e": "determined",
+     "t": "No."
+    },
+    {
+     "s": "tamlin",
+     "e": "neutral",
+     "t": "I'll leave you to it, then."
+    },
+    {
+     "n": "I didn't move until the doors had closed. My sisters could read. They had never bothered to teach me. And I would not ask him or Lucien to write it for me, and hear what they thought of a human who couldn't."
+    },
+    {
+     "do": [
+      {
+       "type": "objective",
+       "text": "Sit at the writing desk and teach yourself to read."
+      }
+     ]
+    }
+   ]
+  },
+  "ch13_read": {
+   "lines": [
+    {
+     "do": [
+      {
+       "type": "set_flag",
+       "flag": "ch13_read"
+      }
+     ]
+    },
+    {
+     "n": "A small book with pictures in it. A children's book. I found the first line with my finger and whispered it."
+    },
+    {
+     "s": "feyre",
+     "e": "determined",
+     "t": "She grab... grabbed. Her shoe. Stand... standing. From her po... pos..."
+    },
+    {
+     "n": "I pressed the heels of my hands into my eyes until I'd stopped wanting to tear my hair out. Then I underlined the word and copied it, letter by crooked letter, onto my list. Forty words, and I knew how to say none of them."
+    },
+    {
+     "do": [
+      {
+       "type": "time",
+       "hour": 13
+      }
+     ]
+    },
+    {
+     "n": "By the afternoon my neck ached and my face hadn't stopped burning. I needed to get up. To get away from that list."
+    },
+    {
+     "do": [
+      {
+       "type": "objective",
+       "text": "Stretch your legs. Look around the library."
+      }
+     ]
+    }
+   ]
+  },
+  "ch13_mural": {
+   "lines": [
+    {
+     "do": [
+      {
+       "type": "set_flag",
+       "flag": "ch13_mural"
+      }
+     ]
+    },
+    {
+     "n": "Not a painting. A mural. The word came back to me from somewhere half forgotten."
+    },
+    {
+     "n": "It began with a cauldron: a great black cauldron held by slender, glowing hands in an endless starry night, tipped so that something golden spilled from it into the dark and pooled into our world."
+    },
+    {
+     "n": "Then a map of everything, the seas and the far continents, all of it theirs. No sign of humans anywhere. We'd been as low as pigs to them."
+    },
+    {
+     "n": "Then a battlefield. Rows of mortal soldiers in bloody mud, facing the faerie hordes about to break over them. The next panel was only a smear of black, flecked with red. It said enough."
+    },
+    {
+     "n": "Then a smaller faerie realm, and a dark, ugly smear across the bottom of our island. The wall. South of it, the painter hadn't bothered with anything at all."
+    },
+    {
+     "n": "Just above the wall, the court that had given up the most land to us: painted with crocuses and lambs and roses. Spring."
+    },
+    {
+     "n": "Above it, six more. Autumn, Summer, Winter. Dawn in soft reds, Day in gold and blue. And at the top, sprawling over frozen mountains, darkness and stars. The Night Court. Things lived in the shadows between those peaks. Little eyes. Gleaming teeth."
+    },
+    {
+     "n": "At the heart of it all rose one bare, lonely mountain, without snow, without life, as if the very weather wouldn't touch it."
+    },
+    {
+     "s": "feyre",
+     "e": "afraid",
+     "t": "Never go north. Whatever happens, never go north."
+    },
+    {
+     "do": [
+      {
+       "type": "journal",
+       "id": "lore_courts"
+      }
+     ]
+    },
+    {
+     "n": "I went back to the desk and the book I couldn't read, and the list I couldn't say, and crumpled the whole thing into a ball and threw it in the bin."
+    },
+    {
+     "do": [
+      {
+       "type": "region_call",
+       "method": "walk_in",
+       "args": [
+        "lord_gold",
+        "tamlin",
+        560,
+        470
+       ]
+      }
+     ]
+    },
+    {
+     "s": "tamlin",
+     "e": "neutral",
+     "t": "If that's what brought you in here, I could help you with the letter."
+    },
+    {
+     "n": "I nearly knocked the chair over. He stood behind me with a stack of books in his arms."
+    },
+    {
+     "s": "feyre",
+     "e": "angry",
+     "t": "Help? A faerie passing up the chance to laugh at an ignorant mortal?"
+    },
+    {
+     "s": "tamlin",
+     "e": "angry",
+     "t": "Why would I mock you for something nobody ever gave you the chance to learn? Let me help. I owe you for the hand."
+    },
+    {
+     "n": "Shortcoming. So it was a shortcoming."
+    },
+    {
+     "choices": [
+      {
+       "t": "Let him help.",
+       "goto": "ch13_maybe"
+      },
+      {
+       "t": "Tell him you're fine.",
+       "goto": "ch13_fine"
+      }
+     ]
+    }
+   ]
+  },
+  "ch13_maybe": {
+   "lines": [
+    {
+     "n": "I opened my mouth to say yes. Then I thought of the smear the painter had made of the human lands, as if we weren't worth the paint, and what came out was something else."
+    },
+    {
+     "goto": "ch13_fine"
+    }
+   ]
+  },
+  "ch13_fine": {
+   "lines": [
+    {
+     "s": "feyre",
+     "e": "determined",
+     "t": "I'm fine."
+    },
+    {
+     "s": "tamlin",
+     "e": "angry",
+     "t": "You think I've nothing better to do with my time than think up ways to humiliate you? You'll let Lucien drag you out hunting, but-"
+    },
+    {
+     "s": "feyre",
+     "e": "determined",
+     "t": "Lucien never hides what he is."
+    },
+    {
+     "s": "tamlin",
+     "e": "angry",
+     "t": "What does that mean?"
+    },
+    {
+     "s": "feyre",
+     "e": "determined",
+     "t": "It means you're a stranger to me. I can't tell who you are, or what you are, or what you're after."
+    },
+    {
+     "s": "tamlin",
+     "e": "angry",
+     "t": "It means you don't trust me."
+    },
+    {
+     "s": "feyre",
+     "e": "angry",
+     "t": "How could I trust a faerie? Don't you delight in tricking us and killing us?"
+    },
+    {
+     "n": "His snarl set every candle guttering."
+    },
+    {
+     "s": "tamlin",
+     "e": "angry",
+     "t": "Believe me. You are not what I had in mind for a human."
+    },
+    {
+     "n": "Something deep in my chest tore open, and all of Nesta's words came pouring out of it. Ignorant. Unremarkable. Proud. Cold."
+    },
+    {
+     "s": "tamlin",
+     "e": "tender",
+     "t": "Feyre-"
+    },
+    {
+     "n": "I shook my head and turned back to the mural, and stared at it until I heard him go."
+    },
+    {
+     "do": [
+      {
+       "type": "time",
+       "hour": 15
+      }
+     ]
+    },
+    {
+     "n": "That afternoon my crumpled list was gone from the bin, and the books on my desk had been moved about. A servant tidying, I told myself."
+    },
+    {
+     "n": "Maybe I'd been a fool to refuse. Maybe I'd been a fool to feel sorry for him at all."
+    },
+    {
+     "n": "But they never answered what I really asked. The blight, where it came from, what it could do to humans. And if there was some forgotten loophole in the Treaty, something that could send me home to warn them myself..."
+    },
+    {
+     "s": "feyre",
+     "e": "determined",
+     "t": "Lucien said there's a faerie that answers any question, if you're clever enough to trap it."
+    },
+    {
+     "do": [
+      {
+       "type": "objective",
+       "text": "Find Lucien. His room is in the far wing, along the upper hall."
+      }
+     ]
+    }
+   ]
+  },
+  "ch13_lucien": {
+   "lines": [
+    {
+     "do": [
+      {
+       "type": "set_flag",
+       "flag": "ch13_lucien"
+      }
+     ]
+    },
+    {
+     "s": "lucien",
+     "e": "smirk",
+     "t": "Come in, human."
+    },
+    {
+     "n": "His room was the colors of an autumn wood, orange and red and gold. A battered worktable covered in weapons stood where my breakfast table would be. He sat at it in his shirtsleeves, his red hair loose, cleaning a long, wicked hunting knife."
+    },
+    {
+     "s": "lucien",
+     "e": "smirk",
+     "t": "I've been up north, cooling some tempers along the border. I came home just in time to catch you and Tam at each other's throats, and thought it wiser to keep out of the way up here."
+    },
+    {
+     "s": "lucien",
+     "e": "smirk",
+     "t": "Whatever you said, he came and nearly bit my head off over lunch. Luckily for me there's trouble in the western forest, and he's gone to deal with it the way only he can."
+    },
+    {
+     "n": "Tamlin away. Good."
+    },
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "It's a pity you aren't like the Suriel. Telling me anything I want to know, if I'm clever enough to snare you."
+    },
+    {
+     "n": "His golden eye whirred and narrowed on me."
+    },
+    {
+     "s": "lucien",
+     "e": "neutral",
+     "t": "I don't suppose you'll tell me what you want to know."
+    },
+    {
+     "s": "feyre",
+     "e": "determined",
+     "t": "You have your secrets, and I have mine. But if you were a Suriel, how exactly would I trap you?"
+    },
+    {
+     "n": "For a long moment I thought he'd go straight to Tamlin. Then he picked at his nails."
+    },
+    {
+     "s": "lucien",
+     "e": "neutral",
+     "t": "If I were one, I'd likely be fond of the young birch groves in the western woods. And of chickens, fresh killed. And I'd be far too greedy to spot a double snare laid round the grove, ready to catch my legs."
+    },
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "I think I prefer you as High Fae."
+    },
+    {
+     "s": "lucien",
+     "e": "grim",
+     "t": "Anyone fool enough to hunt one would want a bow, and plenty of arrows. And a knife, perhaps. Something like this."
+    },
+    {
+     "n": "He sheathed the knife and set it at the edge of the table. An offering."
+    },
+    {
+     "s": "lucien",
+     "e": "grim",
+     "t": "And I'd be ready to run like hell once I let it go. To the nearest running water. They hate crossing it."
+    },
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "But you're not mad, so you'll be here, safe and sound?"
+    },
+    {
+     "s": "lucien",
+     "e": "smirk",
+     "t": "As it happens, I'll be out hunting on the grounds. My hearing's very good, and if I heard screaming from the western woods I might even come and look. Tam would skin anyone who taught you to catch a Suriel. Good thing I've taught you nothing."
+    },
+    {
+     "s": "lucien",
+     "e": "grim",
+     "t": "I hope your secrets are worth it."
+    },
+    {
+     "s": "feyre",
+     "e": "determined",
+     "t": "You have superior hearing. I have a superior talent for keeping my mouth shut."
+    },
+    {
+     "s": "lucien",
+     "e": "smirk",
+     "t": "Cauldron save me. I might be growing fond of you. For a human who kills faeries."
+    },
+    {
+     "do": [
+      {
+       "type": "item",
+       "id": "fae_knife"
+      },
+      {
+       "type": "item",
+       "id": "arrow",
+       "n": 10
+      }
+     ]
+    },
+    {
+     "n": "The cooks gave me a freshly killed hen with the most baffled looks I'd ever seen on a masked face."
+    },
+    {
+     "do": [
+      {
+       "type": "item",
+       "id": "chicken"
+      },
+      {
+       "type": "chapter_card",
+       "n": 14
+      }
+     ]
+    },
+    {
+     "s": "feyre",
+     "e": "determined",
+     "t": "Western woods. A ring of young birches. A dead hen, a double-loop snare. Running water close by."
+    },
+    {
+     "do": [
+      {
+       "type": "objective",
+       "text": "Go to the western woods and find the ring of young birches. Set the snare there."
+      },
+      {
+       "type": "goto",
+       "chapter": 14,
+       "hour": 13.5,
+       "region": "spring_manor",
+       "spawn": "door"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

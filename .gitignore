@@ -1,0 +1,8 @@
+.godot/
+/build/
+*.tmp
+export_credentials.cfg
+# never commit the source book or the reference map
+*.epub
+reference/
+__pycache__/

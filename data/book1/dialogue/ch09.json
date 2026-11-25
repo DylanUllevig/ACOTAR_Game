@@ -1,0 +1,499 @@
+{
+ "schema": 2,
+ "notes": "Line forms: {n} Feyre's narration, first person past tense, shown in italics; {s,e,t} a line spoken aloud (speaker, portrait expression, text); {hint} a game tip on its own card; {choices:[{t,goto,do}]}; {do:[actions]}; {goto}. Any line or choice may carry if_flag, if_not_flag, if_item, if_not_item or if_chapter. Wording is written for the game; the few short book lines kept are listed in quotes.json.",
+ "scenes": {
+  "ch09_morning": {
+   "lines": [
+    {
+     "hint": "The stables are east of the house, along the gravel walk past the terrace."
+    }
+   ]
+  },
+  "ch09_not_inside": {
+   "lines": [
+    {
+     "n": "Lucien would be gone if I dawdled. The stables first."
+    }
+   ]
+  },
+  "ch09_tamlin": {
+   "lines": [
+    {
+     "do": [
+      {
+       "type": "set_flag",
+       "flag": "ch09_tamlin"
+      }
+     ]
+    },
+    {
+     "s": "tamlin",
+     "e": "neutral",
+     "t": "No tripwires today?"
+    },
+    {
+     "n": "How had he crept up on gravel without a sound? Faerie stealth. His knives were off this morning, his sleeves rolled to the elbow."
+    },
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "You told me I was safe here. So I listened."
+    },
+    {
+     "s": "tamlin",
+     "e": "neutral",
+     "t": "My morning's work was put off. If you'd like a ride round the grounds, I could take you. See where you're living now."
+    },
+    {
+     "n": "He was trying, and every word seemed to cost him. I needed Lucien alone."
+    },
+    {
+     "choices": [
+      {
+       "t": "Turn him down politely.",
+       "goto": "ch09_tamlin_no"
+      },
+      {
+       "t": "Turn him down flat.",
+       "goto": "ch09_tamlin_flat"
+      }
+     ]
+    }
+   ]
+  },
+  "ch09_tamlin_no": {
+   "lines": [
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "I'd rather spend today alone, I think. But thank you."
+    },
+    {
+     "s": "tamlin",
+     "e": "neutral",
+     "t": "What about-"
+    },
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "No. Thank you."
+    },
+    {
+     "goto": "ch09_tamlin_2"
+    }
+   ]
+  },
+  "ch09_tamlin_flat": {
+   "lines": [
+    {
+     "s": "feyre",
+     "e": "determined",
+     "t": "No."
+    },
+    {
+     "n": "His eyes narrowed. I added a thank you, a little late."
+    },
+    {
+     "goto": "ch09_tamlin_2"
+    }
+   ]
+  },
+  "ch09_tamlin_2": {
+   "lines": [
+    {
+     "n": "His hands curled into fists, as if he were holding his claws in. But he didn't scold me. He only turned and went back into the house without another word."
+    },
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "Soon, if I'm lucky, he won't be my problem anymore."
+    }
+   ]
+  },
+  "ch09_lucien_early": {
+   "lines": [
+    {
+     "n": "No sign of Tamlin. Good."
+    },
+    {
+     "goto": "ch09_lucien"
+    }
+   ]
+  },
+  "ch09_lucien": {
+   "lines": [
+    {
+     "s": "lucien",
+     "e": "smirk",
+     "t": "Morning, Feyre. Out for a ride? Or come to thank Tam for the lovely accommodation?"
+    },
+    {
+     "n": "So much for the speech I'd rehearsed. He laughed, not kindly."
+    },
+    {
+     "s": "lucien",
+     "e": "smirk",
+     "t": "I'm patrolling the southern woods today. And I'll admit I'm curious how a human brought down my friend. It's been a long while since I met a mortal, never mind one who kills Fae. Come hunting with me."
+    },
+    {
+     "n": "A stable hand brought him a quiver. Another led out a white mare and handed me a bow, longer than mine at home, the arrows heavier."
+    },
+    {
+     "s": "lucien",
+     "e": "smirk",
+     "t": "No ash arrows today, I'm afraid."
+    },
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "Well. I'm already dressed for it."
+    },
+    {
+     "do": [
+      {
+       "type": "item",
+       "id": "bow"
+      },
+      {
+       "type": "item",
+       "id": "arrow",
+       "n": 12
+      },
+      {
+       "type": "set_flag",
+       "flag": "ch09_ride"
+      },
+      {
+       "type": "goto",
+       "chapter": 9,
+       "hour": 10,
+       "region": "spring_woods",
+       "spawn": "trail"
+      }
+     ]
+    }
+   ]
+  },
+  "ch09_ride": {
+   "lines": [
+    {
+     "n": "We rode out under trees shot through with sunlight, crocuses purple against the brown leaves. I made myself notice only what mattered. The shape of the path. Which trees could be climbed. The sound of water."
+    },
+    {
+     "s": "lucien",
+     "e": "smirk",
+     "t": "You've got the quiet part of hunting down, at least. We've passed a dozen squirrels. None good enough for you?"
+    },
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "There's always food left over on your table. I don't need to add to it."
+    },
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "Do emissaries usually ride patrol?"
+    },
+    {
+     "s": "lucien",
+     "e": "grim",
+     "t": "Not usually. This was Andras's shift. Someone has to take it. It's an honor."
+    },
+    {
+     "n": "Andras had friends here. A place. He hadn't been just some nameless faerie in the snow."
+    },
+    {
+     "s": "feyre",
+     "e": "sad",
+     "t": "I'm sorry. I didn't know what he was to you."
+    },
+    {
+     "s": "lucien",
+     "e": "smirk",
+     "t": "So Tam said. I expect that's why he brought you here. Or you looked so pitiful in those rags that he felt sorry for you."
+    },
+    {
+     "s": "feyre",
+     "e": "angry",
+     "t": "If I'd known you'd spend the ride insulting me, I'd have stayed home."
+    },
+    {
+     "s": "lucien",
+     "e": "neutral",
+     "t": "Apologies, Feyre."
+    },
+    {
+     "n": "He couldn't lie. So the apology was real. I didn't know what to make of that."
+    },
+    {
+     "s": "lucien",
+     "e": "smirk",
+     "t": "So. When do you start trying to talk me into begging Tam to let you out of the Treaty? That's why you were at the stables right as I was leaving, isn't it? I'm flattered you think I have the sway."
+    },
+    {
+     "s": "lucien",
+     "e": "neutral",
+     "t": "Save your breath. First: if it were up to me, you'd have been gone long ago. Second: it isn't up to me. There's no other way out of it. You're ours now."
+    },
+    {
+     "n": "No. There had to be something. Someone."
+    },
+    {
+     "s": "lucien",
+     "e": "smirk",
+     "t": "A valiant effort, though."
+    },
+    {
+     "goto": "ch09_ask"
+    }
+   ]
+  },
+  "ch09_ask": {
+   "lines": [
+    {
+     "choices": [
+      {
+       "t": "Ask where the rest of his court went.",
+       "goto": "ch09_q_court",
+       "if_not_flag": "ch09_q_court"
+      },
+      {
+       "t": "Ask whether he can change shape like Tamlin.",
+       "goto": "ch09_q_shift",
+       "if_not_flag": "ch09_q_shift"
+      },
+      {
+       "t": "Ask how he got the scar.",
+       "goto": "ch09_q_scar",
+       "if_not_flag": "ch09_q_scar"
+      },
+      {
+       "t": "Ride on in silence.",
+       "goto": "ch09_cold"
+      }
+     ]
+    }
+   ]
+  },
+  "ch09_q_court": {
+   "lines": [
+    {
+     "do": [
+      {
+       "type": "set_flag",
+       "flag": "ch09_q_court"
+      }
+     ]
+    },
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "Where is the rest of Tamlin's court? Did they all run from the blight?"
+    },
+    {
+     "s": "lucien",
+     "e": "angry",
+     "t": "Who told you about the court?"
+    },
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "Since when does a plain country house keep an emissary? And servants gossip. Was that the reason for the bird masks at your party?"
+    },
+    {
+     "s": "lucien",
+     "e": "grim",
+     "t": "We each chose a mask that night to honor Tam's gift for changing shape. The servants too. Now we'd tear them off with our bare hands if we could."
+    },
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "What happened to the magic, to make it do that?"
+    },
+    {
+     "s": "lucien",
+     "e": "angry",
+     "t": "Something was sent up from the pits of Hell, that's what. Cauldron, I shouldn't have said that. If it got back to her-"
+    },
+    {
+     "s": "feyre",
+     "e": "afraid",
+     "t": "Her? Who?"
+    },
+    {
+     "s": "lucien",
+     "e": "grim",
+     "t": "Never mind. The less you know, the better."
+    },
+    {
+     "n": "A her who frightened him, even out here, enough to make him glance at the shadows between the trees."
+    },
+    {
+     "goto": "ch09_cold",
+     "if_flag": "ch09_asked_one"
+    },
+    {
+     "do": [
+      {
+       "type": "set_flag",
+       "flag": "ch09_asked_one"
+      }
+     ]
+    },
+    {
+     "goto": "ch09_ask"
+    }
+   ]
+  },
+  "ch09_q_shift": {
+   "lines": [
+    {
+     "do": [
+      {
+       "type": "set_flag",
+       "flag": "ch09_q_shift"
+      }
+     ]
+    },
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "Can you change shape, like Tamlin?"
+    },
+    {
+     "s": "lucien",
+     "e": "smirk",
+     "t": "Looking for my weak spots? No. Only Tam can. He can change others too, when he needs to. His sentries. Andras was High Fae like us. Tam made him a wolf to cross the wall unseen. Though his size might have given him away."
+    },
+    {
+     "n": "A shudder went through me. I didn't dare ask whether Tamlin could change me."
+    },
+    {
+     "s": "lucien",
+     "e": "neutral",
+     "t": "And the High Fae don't come with gifts the way the lesser faeries do. I don't scrub floors by magic or drown mortals in ponds. We just exist. To rule."
+    },
+    {
+     "goto": "ch09_cold",
+     "if_flag": "ch09_asked_one"
+    },
+    {
+     "do": [
+      {
+       "type": "set_flag",
+       "flag": "ch09_asked_one"
+      }
+     ]
+    },
+    {
+     "goto": "ch09_ask"
+    }
+   ]
+  },
+  "ch09_q_scar": {
+   "lines": [
+    {
+     "do": [
+      {
+       "type": "set_flag",
+       "flag": "ch09_q_scar"
+      }
+     ]
+    },
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "How did you get the scar?"
+    },
+    {
+     "s": "lucien",
+     "e": "grim",
+     "t": "I said something when I ought to have held my tongue. This was the price."
+    },
+    {
+     "s": "feyre",
+     "e": "afraid",
+     "t": "Tamlin did that?"
+    },
+    {
+     "s": "lucien",
+     "e": "grim",
+     "t": "Cauldron, no. He wasn't there. He found me the eye afterward."
+    },
+    {
+     "goto": "ch09_cold",
+     "if_flag": "ch09_asked_one"
+    },
+    {
+     "do": [
+      {
+       "type": "set_flag",
+       "flag": "ch09_asked_one"
+      }
+     ]
+    },
+    {
+     "goto": "ch09_ask"
+    }
+   ]
+  },
+  "ch09_cold": {
+   "lines": [
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "Are there faeries who'll answer any question you ask, if you trap them? I heard a story like that once."
+    },
+    {
+     "s": "lucien",
+     "e": "grim",
+     "t": "There's one. The Suriel. Ancient, and nasty, and not worth the risk of tracking it down. Keep that look on your face and I'll have Tam lock your door."
+    },
+    {
+     "n": "They had to live nearby, then, if he was so worried. I tucked the name away."
+    },
+    {
+     "n": "Lucien's head snapped to the right. His golden eye whirred, listening. The hair rose on my neck, and my bow was up and drawn before I'd thought about it."
+    },
+    {
+     "s": "lucien",
+     "e": "grim",
+     "t": "Put the bow down. Put it down, human, and look straight ahead."
+    },
+    {
+     "s": "lucien",
+     "e": "grim",
+     "t": "Whatever you feel, whatever you see, don't react. Don't look at it. Eyes ahead."
+    },
+    {
+     "n": "The horses' ears went flat. And then I felt it."
+    },
+    {
+     "do": [
+      {
+       "type": "chapter_card",
+       "n": 10
+      }
+     ]
+    },
+    {
+     "n": "A creeping, leeching cold slid past us through the brush. My mare went rigid. Even the spring woods seemed to shrink from it."
+    },
+    {
+     "n": "Something whispered in the back of my mind, old and hollow. Look at me."
+    },
+    {
+     "hint": "Keep your eyes ahead. When it drags your gaze to one side, press the other way (A or D) before you turn to look."
+    },
+    {
+     "do": [
+      {
+       "type": "region_call",
+       "method": "start_bogge"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

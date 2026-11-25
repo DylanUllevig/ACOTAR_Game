@@ -1,0 +1,62 @@
+# Chapter 17: the faerie whose wings were taken.
+
+== ch17_wake
+> set_flag ch17_wake
+> music ""
+N I woke panting. The Suriel's clicking fingers. Grinning naga. A pale, faceless woman dragging blood-red nails across my throat, asking my name, and every time I tried to answer, my own blood choked me.
+N And then a different sound, creeping under my door from the front hall. Shouts, giving orders. And screaming.
+N I knew that kind of screaming from the woods back home: the sound of a kill gone wrong. I couldn't stand to hear it. And I had to see.
+> objective Go down to the entrance hall.
+
+== ch17_screams
+> set_flag ch17_done
+N Tamlin had carried in a faerie, a blue-skinned male nearly as big as he was, long-limbed, with long black hair. Blood poured down his back from two black stumps between his shoulder blades, and soaked into Tamlin's tunic.
+N Lucien had swept the vase off the hall table. Glass lay everywhere. The faerie was face-down on the table, screaming.
+@tamlin/angry The scouts found him dumped just over the border. He's Summer Court.
+@lucien/grim Cauldron.
+@faerie/neutral My wings. She took my wings.
+N That nameless she again. Tamlin flicked his hand, and steaming water and bandages appeared on the table. I made myself walk down the rest of the stairs, and across the hall, toward the death hovering over that table.
+N She hadn't simply taken his wings. She had torn them off. The stumps were ragged, as though she'd sawed at them a little at a time.
+@faerie/neutral She took my wings.
+@tamlin/neutral Keep still. You'll bleed out faster.
+N He began to twist away from the rag. I didn't think. I took him by the upper arms and pinned him down, as gently as I could. His skin was velvet, slippery, shimmering with veins of gold like a blue butterfly's wing.
+@feyre/afraid Please. Please hold still.
+@tamlin/neutral Lucien.
+N Lucien was staring at those stumps, his golden eye narrowing and widening. He backed away a step. Another. Then he was sick into a potted plant and ran from the hall.
+> region_call walk_out lucien
+N Tamlin touched the rag to the wound, and the faerie's scream made my senses gutter. Blood gushed, faster and brighter than before.
+@tamlin/weary It isn't clotting.
+@feyre/afraid Can't you use your magic?
+@tamlin/weary Not for wounds like this. Once. Not anymore.
+N His eyes flickered, and I knew. Death wasn't only hovering in this hall. It was counting the faerie's heartbeats.
+* Take his hand. -> ch17_hand
+* Step back from the table. -> ch17_back
+
+== ch17_back
+N I took one step back. Then I heard him whimper, and took the step forward again.
+-> ch17_hand
+
+== ch17_hand
+N I took his hand. His long fingers wrapped round mine and covered them completely. I brushed the damp hair off his face. Black, pleading eyes found mine.
+@faerie/neutral My wings.
+@feyre/sad It will be all right. You'll get them back.
+@faerie/neutral You swear?
+@feyre/sad Yes.
+N He smiled a little, and closed his eyes. The first false vow I had ever sworn.
+N Tamlin took his other hand and began to pray, in words older than the mortal lands.
+@tamlin/weary Cauldron keep you. Mother hold you. Go through the gates, into the deathless land of milk and honey. Fear nothing there. Feel no pain. Go on, into forever.
+N The faerie sighed once, and his hand went slack in mine.
+N I held on. I had no idea how long a soul took to slip free. I knelt in his blood until it cooled, smoothing his hair, wondering if he had guessed I was lying. Hoping that wherever he was now, he could fly again.
+@tamlin/tender He's gone. Let him go.
+N I smoothed his hair back from his pointed ear. I never learned his name. Then I let him go.
+N Tamlin led me to the foot of the stairs. Bloody footprints followed us.
+@feyre/sad We can't leave him there.
+@tamlin/weary I know. I'll see to him. Alone.
+N No claws, no fangs. There was nothing here for him to fight.
+@tamlin/tender Feyre. Why? You don't like my kind on a good day. And after Andras... Why?
+@feyre/sad Because I wouldn't want to die alone. I'd want someone holding my hand until the end, and a while after. Everyone deserves that, human or faerie.
+@feyre/sad I regret what I did to Andras. I regret that there was so much hate in me. I wish I could undo it. I'm sorry. I'm so sorry.
+N I couldn't remember the last time I had said anything like that to anyone. He only nodded, and turned away.
+N From the window at the top of the stairs, I watched him carry the broken body out through the moonlit garden and into the fields beyond. He never once looked back.
+> chapter_card 18
+> goto manor_bedroom bed chapter=18 hour=9

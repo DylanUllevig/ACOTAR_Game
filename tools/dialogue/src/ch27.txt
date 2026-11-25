@@ -1,0 +1,90 @@
+# Chapter 27: he sends her home. Thorns. Their night together (fades to black). "I love you. Thorns and all."
+
+== ch27_night
+> set_flag ch27_night
+N I lay in bed, watching the moonlight shift across the floor. The house had been quiet for hours now, but his rage was still in it, in the wood and the stone and the glass.
+N I didn't want to think about anything Rhysand had said. Not the sickness, nor Under the Mountain, wherever that was, nor why anyone would haul me there. Not Amarantha. The shadow that hung over all of them had a name now: a female dangerous enough to give orders to High Lords. To keep Rhysand on a chain, and bring Tamlin to his knees.
+> sfx door_thud -10
+N The door creaked, and I jerked upright. Moonlight on gold. My heart didn't settle as he shut the door and crossed to the bed, his steps slow and heavy.
+> region_call npc_walk tamlin 856 400
+> region_call put_feyre 930 384 1
+N He sat on the edge of the mattress, and for a long moment said nothing at all.
+@tamlin/weary I'm sorry.
+@feyre/sad It's fine.
+N A lie. If I let myself, I could still feel those claws of power raking across my mind.
+@tamlin/angry It isn't fine.
+N He pulled one of my hands free of the sheets and held it, and hung his head.
+@tamlin/weary Feyre... I wish...
+N He shook his head and cleared his throat.
+@tamlin/weary I'm sending you home.
+N Something inside me splintered.
+@feyre/afraid What?
+@tamlin/weary I'm sending you home.
+@feyre/afraid But the Treaty...
+@tamlin/neutral I've taken on your debt. If anyone comes asking about the broken law, I'll answer for Andras's death myself.
+@feyre/afraid You said there was no other way out. The Suriel said...
+@tamlin/angry Anyone who objects can come and say so to my face.
+N And end up in ribbons.
+@feyre/sad Did I do something wrong?
+N He pressed my hand to his cheek, so warm, and turned his face to kiss my palm.
+@tamlin/tender You did nothing wrong. You were perfect.
+@feyre/angry Then why do I have to go?
+@tamlin/weary Because there are people who would hurt you for what you are to me. I thought I could shield you from it. After today, I know I can't. So you have to go home, far away from here. You'll be safe there.
+@feyre/determined I can hold my own.
+@tamlin/weary You can't. Because I can't. I can't even shield myself from them, or from whatever's coming for Prythian. Even if we held off the sickness, they'd come after you. She would find some way to end you.
+@feyre/afraid Amarantha.
+N He bristled at the name, but nodded.
+@tamlin/neutral Once you're home, tell nobody the truth about where you've been. Leave the glamour be. Don't speak of me, or of this place. She'll have eyes looking for you.
+@feyre/sad I want to stay with you. Treaty or no Treaty. Sickness or no sickness.
+@tamlin/weary I know.
+@feyre/angry Then let me-
+@tamlin/angry This isn't up for discussion! Rhys was the first of them. Do you want to still be under this roof when the Attor comes back? Do you want to meet the thing it serves? Creatures like the Bogge, and worse than the Bogge.
+@feyre/angry So that's it? I'm going because I'd be no use to you in a fight?
+@tamlin/angry You're going because the thought of them getting hold of you turns my stomach!
+N Then quiet, except for his rough breathing. He dropped down on the edge of the bed and ground his palms into his eyes, and all my anger drained away.
+@feyre/sad How long? A week? A month?
+N He shook his head, slowly.
+@feyre/sad A year?
+@tamlin/weary I don't know.
+@feyre/sad But not forever.
+N Even if the sickness came here, even if it tore me apart, I would come back.
+@feyre/cold I expect you'll be relieved. Who'd want to keep a girl who's all prickles?
+@tamlin/neutral Thorns?
+@feyre/neutral Thorny. Prickly. Sour. Contrary.
+N He leaned in and kissed me, lightly.
+@tamlin/tender Not forever.
+N I could tell he was lying. I wrapped my arms round his neck and kissed him all the same.
+* Pull him down to you. -> ch27_stay
+* Hold him, and only hold him. -> ch27_hold
+
+== ch27_stay
+N Rhysand's touch still clawed at the edges of my mind. I pushed it away, and pushed him down onto the bed, as if holding him there could stop the night from ending.
+> fade_to_black The rest of that night belonged to the two of them.
+N Afterward we lay tangled in the moonlight, and I breathed him in. Earth, and something crisp. I would never be able to paint the feel of him, however many colors I tried.
+@tamlin/tender Sleep now. You've a long way to go in the morning.
+@feyre/afraid Tomorrow?
+@tamlin/weary At dawn. Please, Feyre.
+N Please. He had knelt to Rhysand for my sake.
+-> ch27_sleep
+
+== ch27_hold
+N I didn't want anything but this. I lay with my head on his chest, his heart under my ear, and held on as if I could stop the night from ending.
+@tamlin/tender Get some rest. It's a long road home.
+@feyre/afraid Tomorrow?
+@tamlin/weary At dawn. Please, Feyre.
+N Please. He had knelt to Rhysand for my sake.
+-> ch27_sleep
+
+== ch27_sleep
+N He started to ease away toward the edge of the bed.
+@feyre/sad Where are you going?
+@tamlin/tender If I stay here, neither of us will sleep.
+@feyre/tender Stay. I'll behave. I swear it.
+N A lie. An outright lie. His half smile said he knew it, but he lay down and pulled me into his arms and stroked my hair.
+N I didn't want to sleep. I didn't want to lose a single minute with him. But exhaustion was dragging me under.
+N I was going. Just as this place had turned into more than a refuge, and he into so much more than the one who'd rescued me, or a friend. Years might pass before I breathed in his roses again, or looked into those gold-flecked eyes. This was home now.
+N As sleep finally took me, I thought I felt his breath at my ear, and heard him whisper.
+@tamlin/tender I love you. Thorns and all.
+N When I woke, his side of the bed was cold. I was sure I'd only dreamed it.
+> fade_hold Dawn.
+> goto manor_bedroom bed chapter=28 hour=8

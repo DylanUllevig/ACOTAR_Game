@@ -1,0 +1,283 @@
+{
+ "schema": 2,
+ "notes": "Line forms: {n} Feyre's narration, first person past tense, shown in italics; {s,e,t} a line spoken aloud (speaker, portrait expression, text); {hint} a game tip on its own card; {choices:[{t,goto,do}]}; {do:[actions]}; {goto}. Any line or choice may carry if_flag, if_not_flag, if_item, if_not_item or if_chapter. Wording is written for the game; the few short book lines kept are listed in quotes.json.",
+ "scenes": {
+  "ch01_intro": {
+   "lines": [
+    {
+     "do": [
+      {
+       "type": "chapter_card",
+       "n": 1
+      }
+     ]
+    },
+    {
+     "n": "The forest had become a labyrinth of snow and ice."
+    },
+    {
+     "n": "I'd been out since before dawn. We finished the last loaf yesterday, and the dried meat the day before that."
+    },
+    {
+     "n": "The hunters in town said the wolves were bold this winter, and hungry. So was I."
+    },
+    {
+     "s": "feyre",
+     "e": "determined",
+     "t": "A few hours of light left. Two arrows, a third I never use, and my knife. It'll have to do."
+    },
+    {
+     "hint": "Move with WASD. Your knife and bow sit on the hotbar at the bottom of the screen. Pick a slot with the mouse wheel or the number keys, then left click to use it."
+    },
+    {
+     "hint": "With the bow selected, hold left click to draw and let go to loose. A full draw flies farther and hits harder. Spent arrows can be picked up again."
+    },
+    {
+     "hint": "Press E or right click to look at things. Tab opens your satchel, M the map, Esc the menu."
+    },
+    {
+     "do": [
+      {
+       "type": "objective",
+       "text": "Find quarry before dark. The trodden path leads north-east."
+      },
+      {
+       "type": "journal",
+       "id": "lore_hunt"
+      }
+     ]
+    }
+   ]
+  },
+  "ch01_tracks": {
+   "lines": [
+    {
+     "n": "Bark stripped from the trunks here, and not long ago. The deer hadn't moved on yet."
+    },
+    {
+     "n": "When the bark runs out they drift north, past the wolves' country, toward the Wall."
+    },
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "And nobody follows them there. Not if they want to come back."
+    },
+    {
+     "do": [
+      {
+       "type": "place",
+       "id": "the_wall"
+      }
+     ]
+    }
+   ]
+  },
+  "ch01_snare": {
+   "lines": [
+    {
+     "n": "Just the empty loop now, filling with snow.",
+     "if_flag": "ch01_snare_taken"
+    },
+    {
+     "n": "One of my old snares, half buried. A hare had frozen in the loop days ago.",
+     "if_not_flag": "ch01_snare_taken"
+    },
+    {
+     "n": "Thin as a rail. Still, it would stretch a soup.",
+     "if_not_flag": "ch01_snare_taken"
+    },
+    {
+     "do": [
+      {
+       "type": "item",
+       "id": "hare",
+       "n": 1
+      },
+      {
+       "type": "set_flag",
+       "flag": "ch01_snare_taken"
+      }
+     ],
+     "if_not_flag": "ch01_snare_taken"
+    }
+   ]
+  },
+  "ch01_ash_lore": {
+   "lines": [
+    {
+     "n": "I sat on the fallen log long enough to catch my breath and count what I had."
+    },
+    {
+     "n": "Two plain arrows. And the third: long, heavy, ash wood with an iron head. I'd carried it for three years and never once loosed it."
+    },
+    {
+     "s": "feyre",
+     "e": "cold",
+     "t": "A trader swore it would kill a faerie. More likely he swore whatever sold."
+    },
+    {
+     "hint": "The ash arrow sits in hotbar slot 3. Select it and draw, and the bow fires it instead of a plain arrow. There is only one.",
+     "if_not_flag": "ch01_ash_seen"
+    },
+    {
+     "do": [
+      {
+       "type": "journal",
+       "id": "lore_ash"
+      },
+      {
+       "type": "set_flag",
+       "flag": "ch01_ash_seen"
+      }
+     ]
+    }
+   ]
+  },
+  "ch01_wire": {
+   "lines": [
+    {
+     "n": "Only my own tracks, already softening under the snow.",
+     "if_flag": "ch01_wire_taken"
+    },
+    {
+     "n": "Under the lip of the frozen bank something caught the light: a coil of good snare wire, left by a hunter who never came back for it.",
+     "if_not_flag": "ch01_wire_taken"
+    },
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "Their loss.",
+     "if_not_flag": "ch01_wire_taken"
+    },
+    {
+     "do": [
+      {
+       "type": "item",
+       "id": "snare_wire",
+       "n": 1
+      },
+      {
+       "type": "journal",
+       "id": "lore_silverspring"
+      },
+      {
+       "type": "set_flag",
+       "flag": "ch01_wire_taken"
+      }
+     ],
+     "if_not_flag": "ch01_wire_taken"
+    }
+   ]
+  },
+  "ch01_brambles": {
+   "lines": [
+    {
+     "do": [
+      {
+       "type": "region_call",
+       "method": "crouch_in_brambles"
+      }
+     ]
+    },
+    {
+     "n": "Back in the thorns. The doe was still there, and so were the eyes.",
+     "if_flag": "ch01_hunt_tried"
+    },
+    {
+     "n": "I crept into a thicket of brambles at the edge of a clearing and went still.",
+     "if_not_flag": "ch01_hunt_tried"
+    },
+    {
+     "n": "Across the clearing a doe was worrying bark from a birch. Small and ribby. Starving, like me.",
+     "if_not_flag": "ch01_hunt_tried"
+    },
+    {
+     "s": "feyre",
+     "e": "hungry",
+     "t": "Meat for a week, and a hide to sell. If I'm careful.",
+     "if_not_flag": "ch01_hunt_tried"
+    },
+    {
+     "n": "Then I saw the eyes. Gold, low in the brush beside her, and fixed on the doe.",
+     "if_not_flag": "ch01_hunt_tried"
+    },
+    {
+     "s": "feyre",
+     "e": "afraid",
+     "t": "A wolf. A huge one. Nothing that size should move that quietly.",
+     "if_not_flag": "ch01_hunt_tried"
+    },
+    {
+     "hint": "You're hidden while you stay in the brambles. A hit from hiding does double damage. Sprinting and loosing arrows make noise; too much and he'll find you.",
+     "if_not_flag": "ch01_hunt_tried"
+    },
+    {
+     "hint": "If he reaches the doe first, the meat and the hide are ruined. And they say ash makes a faerie's wounds stay open.",
+     "if_not_flag": "ch01_hunt_tried"
+    },
+    {
+     "do": [
+      {
+       "type": "set_flag",
+       "flag": "ch01_hunt_tried"
+      },
+      {
+       "type": "objective",
+       "text": "Bring down the wolf."
+      },
+      {
+       "type": "save_checkpoint"
+      },
+      {
+       "type": "start_hunt"
+      }
+     ]
+    }
+   ]
+  },
+  "ch01_exit_locked": {
+   "lines": [
+    {
+     "s": "feyre",
+     "e": "hungry",
+     "t": "Not empty-handed. Not again."
+    }
+   ]
+  },
+  "ch01_exit_unfinished": {
+   "lines": [
+    {
+     "s": "feyre",
+     "e": "determined",
+     "t": "Not without that pelt. It's worth more than the meat.",
+     "if_not_flag": "wolf_skinned"
+    },
+    {
+     "s": "feyre",
+     "e": "determined",
+     "t": "I'm not leaving the doe for the crows.",
+     "if_flag": "wolf_skinned",
+     "if_not_flag": "doe_taken"
+    }
+   ]
+  },
+  "ch01_exit": {
+   "lines": [
+    {
+     "n": "Miles of numb hands and shaking knees, the doe across my shoulders. The sun was down before I cleared the trees."
+    },
+    {
+     "do": [
+      {
+       "type": "goto",
+       "region": "cottage",
+       "spawn": "door",
+       "hour": 17.4,
+       "chapter": 2
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

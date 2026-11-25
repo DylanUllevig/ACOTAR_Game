@@ -1,0 +1,503 @@
+{
+ "schema": 2,
+ "notes": "Line forms: {n} Feyre's narration, first person past tense, shown in italics; {s,e,t} a line spoken aloud (speaker, portrait expression, text); {hint} a game tip on its own card; {choices:[{t,goto,do}]}; {do:[actions]}; {goto}. Any line or choice may carry if_flag, if_not_flag, if_item, if_not_item or if_chapter. Wording is written for the game; the few short book lines kept are listed in quotes.json.",
+ "scenes": {
+  "ch16_bath": {
+   "lines": [
+    {
+     "do": [
+      {
+       "type": "set_flag",
+       "flag": "ch16_bath"
+      }
+     ]
+    },
+    {
+     "n": "An hour in the bath, and then a low chair before a roaring fire while Alis brushed out my hair. She had a mug of molten chocolate sent up and wouldn't lift the brush until I'd drunk some."
+    },
+    {
+     "n": "It was the best thing I had ever tasted."
+    },
+    {
+     "do": [
+      {
+       "type": "heal_full"
+      },
+      {
+       "type": "item",
+       "id": "chocolate"
+      }
+     ]
+    },
+    {
+     "n": "When the other maids had gone down to help with dinner, I set the mug in my lap."
+    },
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "If more of those things keep crossing the borders, will there be a war?"
+    },
+    {
+     "s": "alis",
+     "e": "stern",
+     "t": "Hush. Questions like that bring ill luck down on a house."
+    },
+    {
+     "s": "feyre",
+     "e": "determined",
+     "t": "Why don't the other High Lords keep their creatures in line? Someone started to tell me about a king in Hybern-"
+    },
+    {
+     "s": "alis",
+     "e": "stern",
+     "t": "It's none of your concern."
+    },
+    {
+     "s": "feyre",
+     "e": "angry",
+     "t": "I think it is. If this spills over the wall, if the blight poisons our lands-"
+    },
+    {
+     "s": "alis",
+     "e": "stern",
+     "t": "The less you know, the better. Leave it to Lord Tamlin. He's the only one who can deal with it."
+    },
+    {
+     "s": "alis",
+     "e": "stern",
+     "t": "And don't think no one told me what you asked the kitchens for today, or guessed what you went to trap. Foolish girl. If the Suriel hadn't been feeling kind, you'd have earned the death it gave you. I can't decide which was stupider, this or the puca."
+    },
+    {
+     "s": "feyre",
+     "e": "angry",
+     "t": "Would you have done any different? If you had a family-"
+    },
+    {
+     "s": "alis",
+     "e": "stern",
+     "t": "I do have a family."
+    },
+    {
+     "n": "I glanced at her hand. No ring."
+    },
+    {
+     "s": "alis",
+     "e": "neutral",
+     "t": "My sister and her mate were killed, nearly fifty years back. They left two babes behind. Every hour I work, I work for those boys. So don't you stand there and ask me what I'd do, girl."
+    },
+    {
+     "s": "feyre",
+     "e": "sad",
+     "t": "Where are they? Do they live here?"
+    },
+    {
+     "s": "alis",
+     "e": "stern",
+     "t": "No. They're somewhere else. Far away."
+    },
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "Boys? After fifty years?"
+    },
+    {
+     "s": "alis",
+     "e": "neutral",
+     "t": "Some kinds of faerie breed like rabbits and grow like you. Mine, and the High Fae, hardly ever have young at all, and the ones who come grow slow. The eldest won't be grown for another twenty-odd years. Our children are rare, all of them. More precious than gold."
+    },
+    {
+     "n": "Her jaw set. That was all I would get."
+    },
+    {
+     "s": "feyre",
+     "e": "sad",
+     "t": "I didn't mean to doubt you. I know what it is. To do everything for them."
+    },
+    {
+     "s": "alis",
+     "e": "kind",
+     "t": "The next time that fool Lucien teaches you to trap a Suriel, you come and ask me first. Dead chickens, my aching old backside. Hold up a fine new cloak and it would have crawled to you on its belly."
+    },
+    {
+     "do": [
+      {
+       "type": "objective",
+       "text": "Go down to dinner."
+      }
+     ]
+    }
+   ]
+  },
+  "ch16_dinner": {
+   "lines": [
+    {
+     "do": [
+      {
+       "type": "set_flag",
+       "flag": "ch16_dinner"
+      }
+     ]
+    },
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "Good evening."
+    },
+    {
+     "n": "Lucien cocked his head at me, a silent question. I gave him the smallest nod. His secret was safe, though he deserved a good walloping for sending me out so unprepared."
+    },
+    {
+     "s": "lucien",
+     "e": "grim",
+     "t": "I hear you two had a lively afternoon. I wish I'd been there to help."
+    },
+    {
+     "n": "As apologies went, it was half-hearted. I nodded anyway."
+    },
+    {
+     "s": "lucien",
+     "e": "smirk",
+     "t": "Well. You still look lovely, despite it all."
+    },
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "I thought faeries couldn't lie."
+    },
+    {
+     "n": "Tamlin choked on his wine. Lucien's grin stretched his scar."
+    },
+    {
+     "s": "lucien",
+     "e": "smirk",
+     "t": "Who told you that? Of course we lie. We've made an art of it. Telling your ancestors we couldn't was the first lie. How else would they ever have trusted us?"
+    },
+    {
+     "s": "feyre",
+     "e": "afraid",
+     "t": "Iron?"
+    },
+    {
+     "s": "lucien",
+     "e": "smirk",
+     "t": "Does us no harm at all. Only ash, as you know better than anyone."
+    },
+    {
+     "n": "My face burned. I had taken every word they said as truth. Maybe the Suriel had lied to me today as well."
+    },
+    {
+     "s": "tamlin",
+     "e": "neutral",
+     "t": "Whatever Lucien's just given away, we've never used what you believed against you. We have never knowingly lied to you."
+    },
+    {
+     "do": [
+      {
+       "type": "journal",
+       "id": "lore_lies"
+      }
+     ]
+    },
+    {
+     "n": "Lucien excused himself before dessert, and I was left alone with the most dangerous creature I had ever met."
+    },
+    {
+     "do": [
+      {
+       "type": "region_call",
+       "method": "walk_out",
+       "args": [
+        "lucien"
+       ]
+      }
+     ]
+    },
+    {
+     "s": "tamlin",
+     "e": "tender",
+     "t": "Are you feeling... better?"
+    },
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "If I never meet another naga, I'll count myself lucky."
+    },
+    {
+     "s": "tamlin",
+     "e": "neutral",
+     "t": "What were you doing in the western woods?"
+    },
+    {
+     "choices": [
+      {
+       "t": "Tell him the truth.",
+       "goto": "ch16_truth"
+      },
+      {
+       "t": "Make something up.",
+       "goto": "ch16_lie"
+      }
+     ]
+    }
+   ]
+  },
+  "ch16_lie": {
+   "lines": [
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "Walking. I lost track of how far I'd gone."
+    },
+    {
+     "s": "tamlin",
+     "e": "neutral",
+     "t": "You're a bad liar, Feyre. For a human."
+    },
+    {
+     "n": "I gave up."
+    },
+    {
+     "goto": "ch16_truth"
+    }
+   ]
+  },
+  "ch16_truth": {
+   "lines": [
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "I heard a story once, about a creature that answers your questions if you can catch it."
+    },
+    {
+     "n": "His claws shot out so fast they cut his own face. The wounds closed as soon as they opened. He wiped away the blood with his sleeve."
+    },
+    {
+     "s": "tamlin",
+     "e": "angry",
+     "t": "You went to catch the Suriel."
+    },
+    {
+     "s": "feyre",
+     "e": "determined",
+     "t": "I caught the Suriel."
+    },
+    {
+     "s": "tamlin",
+     "e": "neutral",
+     "t": "Did you get your answers, at least?"
+    },
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "The naga interrupted before it told me anything worth hearing."
+    },
+    {
+     "s": "tamlin",
+     "e": "weary",
+     "t": "I ought to shout, but I think the day has punished you enough. A mortal girl, trapping the Suriel."
+    },
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "Is it supposed to be hard?"
+    },
+    {
+     "n": "He laughed. Then he took something out of his pocket. My crumpled list."
+    },
+    {
+     "s": "tamlin",
+     "e": "neutral",
+     "t": "Unusual. Queue. Slaying. Conflagration. Is this a poem about murdering me and burning the body?"
+    },
+    {
+     "n": "I wanted to curl up and die. I said good night and made it almost to the door."
+    },
+    {
+     "s": "tamlin",
+     "e": "tender",
+     "t": "You love them very much, don't you? I wonder if they know it. That none of it was for the promise, or for yourself. All of it was for them."
+    },
+    {
+     "s": "tamlin",
+     "e": "tender",
+     "t": "I know it came out badly before. But I could help you write-"
+    },
+    {
+     "s": "feyre",
+     "e": "angry",
+     "t": "Leave me alone."
+    },
+    {
+     "n": "I walked straight into him. I'd forgotten how fast he was."
+    },
+    {
+     "s": "tamlin",
+     "e": "tender",
+     "t": "I'm not insulting you. A human who brought down a faerie in a wolf's skin, who snared the Suriel and killed naga on her own... They're fools, not to see it."
+    },
+    {
+     "n": "He gave me the list. I shoved it in my pocket. He caught my arm, gently, and lifted his other hand as if to touch my cheek, and didn't."
+    },
+    {
+     "s": "tamlin",
+     "e": "tender",
+     "t": "You gave up so much for them. Do you even know how to laugh?"
+    },
+    {
+     "s": "feyre",
+     "e": "angry",
+     "t": "I don't want your pity."
+    },
+    {
+     "s": "tamlin",
+     "e": "tender",
+     "t": "What about a friend?"
+    },
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "Can faeries be friends with mortals?"
+    },
+    {
+     "s": "tamlin",
+     "e": "neutral",
+     "t": "Five hundred years ago, enough of us were friends with mortals that we went to war for them. How do you think your armies lasted as long as they did? There were faeries who fought and died beside humans for their freedom, and grieved when the only answer was to part our peoples."
+    },
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "Were you one of them?"
+    },
+    {
+     "s": "tamlin",
+     "e": "neutral",
+     "t": "I was a boy, too young for anyone to tell me what was going on. But if I'd been grown, I'd have fought. For anyone's freedom, against chains and tyrants, I'd have given my life and not regretted it."
+    },
+    {
+     "n": "I wasn't sure I would. I'd have chosen whichever side kept my family safest. I had never thought of that as a weakness before."
+    },
+    {
+     "s": "tamlin",
+     "e": "neutral",
+     "t": "For what it's worth, your family knows you're safe. They don't remember a beast in their cottage. They believe a long-lost, very rich aunt called you to her deathbed. And they know there are rumors of a threat in Prythian, and they're ready to run if the wall ever starts to fail."
+    },
+    {
+     "s": "feyre",
+     "e": "angry",
+     "t": "You changed their memories?"
+    },
+    {
+     "s": "tamlin",
+     "e": "neutral",
+     "t": "Glamoured them. A veil over what happened. I was afraid your father would come after you, or talk men from the village into crossing the wall with him."
+    },
+    {
+     "s": "feyre",
+     "e": "sad",
+     "t": "You don't know him. My father would never have bothered."
+    },
+    {
+     "s": "tamlin",
+     "e": "tender",
+     "t": "Yes. He would have."
+    },
+    {
+     "n": "He wouldn't. Not with that knee to hide behind. I'd known it the moment the puca's lie was torn away."
+    },
+    {
+     "n": "But fed, and comfortable, and safe. Warned, even. He had done more for them than I ever could have. My vow was kept, my task was done. What was left for me?"
+    },
+    {
+     "n": "Firelight moved over his mask, turning the gold warm and making the emeralds wink. Colours I couldn't have named. Colours I could learn the names of now, if I wanted."
+    },
+    {
+     "choices": [
+      {
+       "t": "Ask for paint.",
+       "goto": "ch16_paint"
+      },
+      {
+       "t": "Say good night.",
+       "goto": "ch16_night"
+      }
+     ]
+    }
+   ]
+  },
+  "ch16_night": {
+   "lines": [
+    {
+     "n": "I opened my mouth to say good night, and something else came out."
+    },
+    {
+     "goto": "ch16_paint"
+    }
+   ]
+  },
+  "ch16_paint": {
+   "lines": [
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "Paint. I'd like some paint, if that's not asking too much. And brushes."
+    },
+    {
+     "s": "tamlin",
+     "e": "neutral",
+     "t": "You like to paint?"
+    },
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "I'm not much good. But if you don't mind, I could work outdoors, so I don't spoil anything-"
+    },
+    {
+     "s": "tamlin",
+     "e": "tender",
+     "t": "Indoors, outdoors, up on the roof if you want. Paint anywhere. You'll need paper too, and canvas. They might take a few days to come, but all of it is yours, and a room to work in. This place could do with some mess."
+    },
+    {
+     "s": "feyre",
+     "e": "tender",
+     "t": "Thank you. I mean it. Thank you."
+    },
+    {
+     "s": "tamlin",
+     "e": "neutral",
+     "t": "Have you seen the gallery?"
+    },
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "There's a gallery in this house?"
+    },
+    {
+     "s": "tamlin",
+     "e": "tender",
+     "t": "I had it shut up when I inherited the place. Keeping it clean seemed a waste of the servants' time. I'm busy tomorrow, and it needs airing, but the day after... Let me show it to you then. Please. It would be my pleasure."
+    },
+    {
+     "n": "Then he smiled at me, wide and open, holding nothing back. No one had ever smiled at me that way. Not Isaac. Isaac had never made me forget to breathe."
+    },
+    {
+     "n": "I walked out before he could see the answering smile tugging at my mouth."
+    },
+    {
+     "do": [
+      {
+       "type": "chapter_card",
+       "n": 17
+      },
+      {
+       "type": "goto",
+       "chapter": 17,
+       "hour": 2,
+       "region": "manor_bedroom",
+       "spawn": "bed"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

@@ -1,0 +1,503 @@
+{
+ "schema": 2,
+ "notes": "Line forms: {n} Feyre's narration, first person past tense, shown in italics; {s,e,t} a line spoken aloud (speaker, portrait expression, text); {hint} a game tip on its own card; {choices:[{t,goto,do}]}; {do:[actions]}; {goto}. Any line or choice may carry if_flag, if_not_flag, if_item, if_not_item or if_chapter. Wording is written for the game; the few short book lines kept are listed in quotes.json.",
+ "scenes": {
+  "ch06_arrive": {
+   "lines": [
+    {
+     "do": [
+      {
+       "type": "chapter_card",
+       "n": 6
+      },
+      {
+       "type": "music",
+       "name": "spring_manor"
+      }
+     ]
+    },
+    {
+     "n": "The mare carried me through the gate and stopped dead on the gravel, and nothing I did would move her another step."
+    },
+    {
+     "n": "Beyond the hedge the estate rolled away over green lawns, the house at the top of them veiled in roses and ivy, its pale walls sprouting balconies and stairs."
+    },
+    {
+     "n": "After the winter I had left behind, the color almost hurt. Irises, snowdrops, daffodils nodding in a warm breeze. Under their scent, the faint sting of metal. Magic. It was spring here because they made it spring."
+    },
+    {
+     "n": "The bonds that had held me in the saddle were gone. I slid down, and my knees buckled."
+    },
+    {
+     "n": "I felt for my knife. Nothing but frayed wool. My bow and quiver were gone as well, lifted off me somewhere between the wall and here."
+    },
+    {
+     "do": [
+      {
+       "type": "take_item",
+       "id": "hunting_knife",
+       "n": "all"
+      },
+      {
+       "type": "take_item",
+       "toast": "Your knife, your bow and your arrows are gone.",
+       "id": "bow",
+       "n": "all"
+      },
+      {
+       "type": "take_item",
+       "id": "arrow",
+       "n": "all"
+      },
+      {
+       "type": "take_item",
+       "id": "ash_arrow",
+       "n": "all"
+      }
+     ]
+    },
+    {
+     "s": "feyre",
+     "e": "afraid",
+     "t": "Those claws, picking through my cloak while I slept."
+    },
+    {
+     "n": "The beast padded on up the drive without a backward glance. Behind me, the gate hadn't locked."
+    },
+    {
+     "choices": [
+      {
+       "t": "Run for the gate.",
+       "goto": "ch06_run"
+      },
+      {
+       "t": "Follow him up to the house."
+      }
+     ]
+    }
+   ]
+  },
+  "ch06_run": {
+   "lines": [
+    {
+     "n": "South, then. Keep heading south, and sooner or later I'd hit the wall."
+    },
+    {
+     "n": "Three steps, and the world tilted and went white at the edges. Days without a real meal. I caught the bars of the gate and hung there, waiting for the ground to settle."
+    },
+    {
+     "s": "feyre",
+     "e": "determined",
+     "t": "Only a fool runs with no food in her and no strength. I wouldn't make half a mile before he caught me."
+    },
+    {
+     "n": "Food first, then. Then run, the first good chance I got."
+    }
+   ]
+  },
+  "ch06_door": {
+   "lines": [
+    {
+     "do": [
+      {
+       "type": "set_flag",
+       "flag": "ch06_inside"
+      }
+     ]
+    },
+    {
+     "n": "The great oak doors stood open. The whole house seemed to be watching, waiting to see what I would do."
+    },
+    {
+     "n": "No screams rising from cellars. No chains. Only cool shadows inside, and the smell of roasting meat."
+    },
+    {
+     "do": [
+      {
+       "type": "goto",
+       "chapter": 6,
+       "region": "manor_hall",
+       "spawn": "front"
+      }
+     ]
+    }
+   ]
+  },
+  "ch06_hall": {
+   "lines": [
+    {
+     "do": [
+      {
+       "type": "set_flag",
+       "flag": "ch06_hall"
+      }
+     ]
+    },
+    {
+     "n": "Inside it was richer still. Black and white marble polished like water, a staircase sweeping up into the light, vases spilling hydrangeas over every table."
+    },
+    {
+     "n": "We had owned a fine house once, before my father's ruin. Next to this, it had been a shed."
+    },
+    {
+     "n": "A growl rolled out of a room to my left, so deep the vases chattered on their tables. A pair of polished doors swung wider on their own."
+    },
+    {
+     "s": "feyre",
+     "e": "afraid",
+     "t": "An invitation. Or an order."
+    },
+    {
+     "do": [
+      {
+       "type": "objective",
+       "text": "Follow the growl to the room on the left."
+      }
+     ]
+    }
+   ]
+  },
+  "ch06_feast": {
+   "lines": [
+    {
+     "do": [
+      {
+       "type": "set_flag",
+       "flag": "ch06_feast"
+      }
+     ]
+    },
+    {
+     "n": "A table longer than any we had ever owned filled the room, heaped with food. Roast chicken, bread, fish, lamb, steam still curling off the dishes."
+    },
+    {
+     "n": "My mouth flooded. But every mortal child learns the rule in nursery songs: never eat their food, never drink their wine, or you belong to them, mind and soul."
+    },
+    {
+     "do": [
+      {
+       "type": "region_call",
+       "method": "beast_arrives",
+       "args": [
+        372,
+        470
+       ]
+      }
+     ]
+    },
+    {
+     "n": "The beast padded past me to the great chair at the head of the table. The wood groaned under his weight."
+    },
+    {
+     "do": [
+      {
+       "type": "region_call",
+       "method": "beast_shifts"
+      }
+     ]
+    },
+    {
+     "n": "A flash of white light, and where the beast had been sat a male with hair like poured gold."
+    },
+    {
+     "n": "High Fae. One of their ruling kind: beautiful, deadly, merciless. A golden mask set with emerald leaves covered the top of his face, but the eyes were the same. Green, flecked with amber."
+    },
+    {
+     "s": "tamlin",
+     "e": "neutral",
+     "t": "There's food. You should eat."
+    },
+    {
+     "s": "feyre",
+     "e": "afraid",
+     "t": "Who are you?"
+    },
+    {
+     "s": "tamlin",
+     "e": "neutral",
+     "t": "Sit down. Eat something."
+    },
+    {
+     "choices": [
+      {
+       "t": "Take a seat at the table.",
+       "goto": "ch06_feast_sit"
+      },
+      {
+       "t": "Stay pressed against the wall by the door.",
+       "goto": "ch06_feast_wall"
+      }
+     ]
+    }
+   ]
+  },
+  "ch06_feast_sit": {
+   "lines": [
+    {
+     "n": "I took one step toward the nearest chair, and the old chant rang in my head. Never their food. Never their wine."
+    },
+    {
+     "n": "I stopped where I was."
+    },
+    {
+     "goto": "ch06_feast_2"
+    }
+   ]
+  },
+  "ch06_feast_wall": {
+   "lines": [
+    {
+     "n": "I flattened my back to the paneling beside the door and worked out how many steps it was to the gates."
+    },
+    {
+     "goto": "ch06_feast_2"
+    }
+   ]
+  },
+  "ch06_feast_2": {
+   "lines": [
+    {
+     "s": "tamlin",
+     "e": "angry",
+     "t": "Or would you rather fall over?"
+    },
+    {
+     "s": "feyre",
+     "e": "determined",
+     "t": "Your food isn't safe. Not for us."
+    },
+    {
+     "s": "tamlin",
+     "e": "neutral",
+     "t": "It won't hurt you, human. And go, if you want. No one's going to chain you. The gates are open, and Prythian is wide."
+    },
+    {
+     "n": "Wide, and full of things that would eat me. I didn't move toward the food."
+    },
+    {
+     "s": "tamlin",
+     "e": "angry",
+     "t": "Suit yourself."
+    },
+    {
+     "do": [
+      {
+       "type": "region_call",
+       "method": "walk_in",
+       "args": [
+        "courtier_red",
+        "lucien",
+        690,
+        306
+       ]
+      }
+     ]
+    },
+    {
+     "n": "Someone strode in past me as though I were part of the furniture. Another High Fae, red-haired and finely dressed, a bronze mask shaped like a fox over the top of his face."
+    },
+    {
+     "s": "lucien",
+     "e": "grim",
+     "t": "Well? Andras. Is he dead?"
+    },
+    {
+     "s": "tamlin",
+     "e": "weary",
+     "t": "He is. I'm sorry. A single ash arrow. The Treaty's summons led me to the one who loosed it, and I gave her shelter."
+    },
+    {
+     "s": "lucien",
+     "e": "angry",
+     "t": "A mortal girl killed Andras?"
+    },
+    {
+     "n": "He turned. A brutal scar ran from his brow to his jaw, and where one eye should have been, a carved golden eye whirred and fixed on me."
+    },
+    {
+     "s": "lucien",
+     "e": "smirk",
+     "t": "That? That half-starved scrap brought him down? You're joking."
+    },
+    {
+     "s": "lucien",
+     "e": "angry",
+     "t": "Tell me, human, did it feel good? Did you stop to think at all, or was the hate enough?"
+    },
+    {
+     "s": "tamlin",
+     "e": "angry",
+     "t": "Lucien. Manners."
+    },
+    {
+     "n": "Lucien went rigid. Then he swept me a bow so low it could only be mockery."
+    },
+    {
+     "s": "lucien",
+     "e": "smirk",
+     "t": "Forgive me, lady. Lucien: courtier, emissary, your humble servant. Your eyes outshine the stars, your hair puts gold to shame, and so forth."
+    },
+    {
+     "s": "tamlin",
+     "e": "neutral",
+     "t": "She's called Feyre. Alis will show you to a room. A bath and clean clothes wouldn't hurt."
+    },
+    {
+     "n": "A firm hand closed on my elbow. A round, brown-haired woman in a plain brass mask shaped like a bird. A servant. Even the servants wore masks here."
+    },
+    {
+     "n": "As she led me out, Lucien's voice followed us into the hall."
+    },
+    {
+     "s": "lucien",
+     "e": "angry",
+     "t": "This is what the Cauldron sends us? Leave her in the woods. Kill her, for all I care. She'd put a knife in your back before she'd say good morning."
+    },
+    {
+     "s": "tamlin",
+     "e": "angry",
+     "t": "No. She stays, and no one lays a hand on her. Whatever she had in that hovel, it was punishment enough."
+    },
+    {
+     "s": "lucien",
+     "e": "smirk",
+     "t": "Then good luck to you, old friend. You'll need it."
+    },
+    {
+     "do": [
+      {
+       "type": "journal",
+       "id": "lore_high_fae"
+      },
+      {
+       "type": "goto",
+       "chapter": 6,
+       "region": "manor_bedroom",
+       "spawn": "bath"
+      }
+     ]
+    }
+   ]
+  },
+  "ch06_bath": {
+   "lines": [
+    {
+     "do": [
+      {
+       "type": "set_flag",
+       "flag": "ch06_bath"
+      }
+     ]
+    },
+    {
+     "n": "Alis and two other masked servants scrubbed me raw, cut my hair and plucked me until I felt like a hen dressed for the oven. For all I knew, I was one."
+    },
+    {
+     "n": "Then Alis laid a gown on the bed. Turquoise velvet, soft as a hare's belly."
+    },
+    {
+     "choices": [
+      {
+       "t": "Put on the gown.",
+       "goto": "ch06_gown"
+      },
+      {
+       "t": "Ask for your own clothes back.",
+       "goto": "ch06_clothes"
+      }
+     ]
+    }
+   ]
+  },
+  "ch06_gown": {
+   "lines": [
+    {
+     "n": "I touched the velvet. Lovely. And useless to anyone who might have to run."
+    },
+    {
+     "n": "I put it down and asked for my own clothes instead."
+    },
+    {
+     "goto": "ch06_clothes"
+    }
+   ]
+  },
+  "ch06_clothes": {
+   "lines": [
+    {
+     "s": "alis",
+     "e": "stern",
+     "t": "These?"
+    },
+    {
+     "n": "She held up a gray rag that was more hole than shirt, and a few strips of brown that had once been my trousers."
+    },
+    {
+     "s": "alis",
+     "e": "stern",
+     "t": "They came apart the moment the laundresses put them in water."
+    },
+    {
+     "n": "I sank into a chair and refused to budge. She glared at me, stalked out, and came back with trousers, a white shirt and a dark blue tunic stitched with gold. It fit. The thread alone was probably worth more than our cottage."
+    },
+    {
+     "do": [
+      {
+       "type": "outfit",
+       "id": "feyre_spring"
+      }
+     ]
+    },
+    {
+     "n": "She sat me before the cold fireplace and began to braid my hair."
+    },
+    {
+     "s": "alis",
+     "e": "neutral",
+     "t": "You're nothing but skin and bone."
+    },
+    {
+     "s": "feyre",
+     "e": "determined",
+     "t": "That's what winter does to poor mortals."
+    },
+    {
+     "s": "alis",
+     "e": "kind",
+     "t": "Then take some advice, free of charge. Keep your mouth shut and your ears open. And don't trust your own senses too far. Even they'll play tricks on you here."
+    },
+    {
+     "s": "alis",
+     "e": "neutral",
+     "t": "Some folk will grieve for Andras. But he was a sentry, and he knew what waited across the wall. The rest know the Treaty's terms, even if they don't like you being here. Keep your head down, and they'll leave you be."
+    },
+    {
+     "s": "alis",
+     "e": "kind",
+     "t": "As for Lucien, someone ought to snap back at him now and then. If you've the nerve."
+    },
+    {
+     "n": "I didn't. Not yet."
+    },
+    {
+     "n": "The room alone was bigger than our whole cottage. Days had passed since I left. The venison would be running low by now."
+    },
+    {
+     "do": [
+      {
+       "type": "chapter_card",
+       "n": 7
+      },
+      {
+       "type": "goto",
+       "chapter": 7,
+       "hour": 17.5,
+       "region": "manor_dining",
+       "spawn": "hall"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

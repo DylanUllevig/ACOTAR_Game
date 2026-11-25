@@ -1,0 +1,96 @@
+# Chapter 14: the snare, the Suriel, the naga.
+
+== ch14_not_inside
+N Not until I'd done what I came out to do.
+
+== ch14_no_bait
+N No bait. Lucien had said a freshly killed hen, and I'd come without one.
+N I trudged all the way back to the kitchens. They gave me a second hen, with the same baffled looks as the first.
+> item chicken
+H If your satchel is full, make room in it (I) and try the grove again.
+
+== ch14_snare
+> set_flag ch14_snare
+N No path, no tameness here. Oak and elm and beech woven so thick they nearly strangled the light. The moss swallowed every sound I made. An old forest, and alive in a way I could feel in my bones.
+N I walked circles round the birches until I found the brook, then walked every way to it twice, and twice again, until I knew every root and stone between.
+N Then I laid the snare, and arranged the hen as if it had wandered in and snapped its own neck on a fallen branch.
+> take_item chicken 1
+N Then I climbed a broad oak whose leaves hid me completely, nocked an arrow loosely, and waited.
+> region_call snare_and_wait
+N Hours. Cheese from the kitchens, a swig of water, the sun creeping across the canopy. Then a hush came toward me through the trees, as if the thrushes and squirrels and moths were all holding their breath while something went by.
+N The branches seemed to lock tighter overhead, a living cage. A sound like cloth dragged over roots. Hungry, wheezing sniffs.
+> sfx suriel_scream
+> shake 5
+N A snap, a whoosh, and a hollow, wicked scream that locked every muscle I had.
+N The snares groaned. And held. And held.
+N I climbed down to meet the Suriel.
+> region_call suriel_speaks
+N Tall and thin and veiled, in tattered dark robes. The knobs of its spine pushed through the cloth. Long gray fingers with cracked yellow nails clawed at the snare.
+N Run, said every mortal thing in me. Run and never look back. I kept my arrow nocked.
+@feyre/afraid Are you one of the Suriel?
+N It went rigid. Sniffed. Then it turned, and I saw its face.
+N Dried bone, the skin forgotten or thrown away. No lips. Teeth too long in blackened gums. Slits for a nose. And eyes of swirling milky white, the white of sickness and of clean-picked bones.
+@suriel/neutral A human. Was it you who laid this clever, cruel snare?
+@feyre/afraid Are you one of the Suriel?
+@suriel/neutral Indeed I am.
+N Its fingers clicked together, one click for every word.
+@suriel/neutral Long ages have passed since I saw a mortal woman. Come nearer. Let me see who has caught me.
+* Step closer. -> ch14_closer
+* Stay where you are. -> ch14_stay
+
+== ch14_closer
+N I took one step, and its fingers clicked faster, and the smell of it reached me, dust and old graves. I took two steps back.
+-> ch14_ask
+
+== ch14_stay
+N I did no such thing.
+-> ch14_ask
+
+== ch14_ask
+@suriel/neutral And which of my kin sold my secrets to you?
+@feyre/neutral None of them. My mother told me stories about you.
+@suriel/neutral Lies. I smell them on your breath. Ask your questions, human. Then free me.
+@feyre/sad Can I never go home, then?
+@suriel/neutral Not unless you want to die, and bring death to your family as well. Here you must remain.
+N Whatever shred of hope I'd been keeping shriveled up and died. Fine. Then I would learn what I could.
+@feyre/determined What do you know about Tamlin?
+@suriel/neutral Ask plainly, human. There is much I know of the one who rules the Spring Court.
+N The ground tilted under me.
+@feyre/afraid Tamlin is a High Lord?
+@suriel/neutral You did not know. How curious. Spring, Summer, Autumn, Winter, Dawn, Day and Night: seven Courts, and over each a High Lord, each dangerous in a different way. Their power is not a thing they carry. It is what they are.
+N That was how he'd faced the Bogge and lived. High Lord.
+@feyre/determined This blight on your magic. Where did it come from? What can be done?
+@suriel/neutral Stay with the High Lord, human. That is all you can do. Do not meddle. Do not come seeking answers after today, or the shadow over Prythian will devour you. Stay close to him, and all will be put right.
+@feyre/determined Where did it come from?
+@suriel/neutral He has no idea you are here. His mortal, setting snares for a Suriel because he will not answer her. But the hour grows late, human. Late for the High Lord, late for you, and late, perhaps, for your lands.
+N His human woman. It made my teeth clench.
+@suriel/neutral Across the violent western sea lies another faerie kingdom. Hybern. Its king rules alone, with no courts beneath him. No humans live there now, though his throne is made of their bones.
+@suriel/neutral He has always hated the Treaty, hated being made to free his mortal slaves and keep to his damp green island. So a hundred years ago he sent out his deadliest commanders, as spies and courtiers and lovers, into every court in the world. And nearly fifty years ago, one of them disobeyed him. The Deceiver. And-
+N It straightened.
+@suriel/neutral We are not alone.
+> journal lore_suriel
+> journal lore_hybern
+-> ch14_naga
+
+== ch14_naga
+N Everything had already gone quiet. I drew my bow back farther and scanned the trees.
+@suriel/neutral Naga. Things of darkness and spite and decay. My cries have drawn them, and they have your scent. Cut me loose and run for his house, human. And remember my words. Keep to his side.
+N Four figures slipped from between the birches, so black they might have been carved out of a moonless sky. Scaled hides on the shapes of men, and claws like polished jet. These were the monsters from the old bloody tales, the ones that crept over the wall to prey on us.
+@naga/neutral Look, brothers. The Dark Mother has been generous. A present, and supper besides.
+@naga/neutral Not much meat on it.
+* Scream for Lucien, and shoot the Suriel's tether. -> ch14_free
+* Back away toward the brook. -> ch14_back
+
+== ch14_back
+N I backed away a step. They crept after me, savoring it, as if they already knew how I would taste.
+@suriel/neutral Human.
+N Three heartbeats. That was all I had.
+-> ch14_free
+
+== ch14_free
+N I screamed, loud and sharp, with every bit of breath I had. And with every eye in the clearing on me, I shot through the tether.
+> region_call suriel_flees
+N The snare burst. The Suriel was gone like a shadow on the wind, in a blast of dark that sent the naga staggering.
+N They stopped staggering, and turned to me.
+> chapter_card 15
+> start_fight naga_snare

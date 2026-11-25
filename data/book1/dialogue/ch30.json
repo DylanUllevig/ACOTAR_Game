@@ -1,0 +1,736 @@
+{
+ "schema": 2,
+ "notes": "Line forms: {n} Feyre's narration, first person past tense, shown in italics; {s,e,t} a line spoken aloud (speaker, portrait expression, text); {hint} a game tip on its own card; {choices:[{t,goto,do}]}; {do:[actions]}; {goto}. Any line or choice may carry if_flag, if_not_flag, if_item, if_not_item or if_chapter. Wording is written for the game; the few short book lines kept are listed in quotes.json.",
+ "scenes": {
+  "ch30_village": {
+   "lines": [
+    {
+     "do": [
+      {
+       "type": "set_flag",
+       "flag": "ch30_village"
+      },
+      {
+       "type": "chapter_card",
+       "n": 30
+      },
+      {
+       "type": "place",
+       "id": "mortal_village"
+      }
+     ]
+    },
+    {
+     "n": "One more errand before I went back to my father's house."
+    },
+    {
+     "n": "The village that had once looked straight through me now stopped in the road to stare. People I'd sold pelts to for half their worth stepped into my path to ask after my poor aunt, my inheritance, my plans."
+    },
+    {
+     "n": "I gave them nothing to chew on. Polite, and brief, and walking. By the time I reached the poor lane at the bottom of the village, where the roofs sagged and the mud never quite dried, I felt as if I'd been skinned."
+    },
+    {
+     "do": [
+      {
+       "type": "objective",
+       "text": "Leave a purse of silver at each poor door. (0/4)"
+      }
+     ]
+    }
+   ]
+  },
+  "ch30_purse_a": {
+   "lines": [
+    {
+     "n": "The woman who opened the door had four children behind her skirts and none of them had shoes. She tried to give the purse back. I left it on the step and walked on before she could."
+    }
+   ]
+  },
+  "ch30_purse_b": {
+   "lines": [
+    {
+     "n": "An old man, nearly blind. He didn't know me, and he didn't ask. He held the purse in both hands as if it might fly away."
+    }
+   ]
+  },
+  "ch30_purse_c": {
+   "lines": [
+    {
+     "n": "No one answered. I could hear someone coughing inside, the deep, wet cough of a winter that had never quite ended. I tucked the purse through the gap under the door."
+    }
+   ]
+  },
+  "ch30_purse_d": {
+   "lines": [
+    {
+     "n": "A girl of nine or ten, thin as a rake handle, minding a baby. The look on her face when she felt the weight of it. I knew that look. I had worn it."
+    }
+   ]
+  },
+  "ch30_purses_done": {
+   "lines": [
+    {
+     "n": "It wasn't enough, and nothing ever would be. But it was something, and it was more than anyone had done for us when we were the ones going hungry."
+    },
+    {
+     "do": [
+      {
+       "type": "objective",
+       "text": "Go home to the chateau, past the fountain."
+      }
+     ]
+    }
+   ]
+  },
+  "ch30_tomas": {
+   "lines": [
+    {
+     "do": [
+      {
+       "type": "set_flag",
+       "flag": "ch30_tomas"
+      }
+     ]
+    },
+    {
+     "n": "Tomas Mandray was holding court at the fountain with his usual hangers-on, lounging against the dry basin in the sun."
+    },
+    {
+     "s": "crony",
+     "e": "neutral",
+     "t": "Burned to the ground, I heard. Whole family still in their beds."
+    },
+    {
+     "s": "crony",
+     "e": "neutral",
+     "t": "A week back now. Anything left in the cinders worth taking, d'you think?"
+    },
+    {
+     "s": "tomas",
+     "e": "neutral",
+     "t": "Silver melts, it doesn't burn. Might be worth a walk out there."
+    },
+    {
+     "n": "He saw me then, and his gaze took its time on the way down and its time on the way back up, with the half smile I'd watched him use on every girl in the village."
+    },
+    {
+     "n": "What had Nesta seen in him? More to the point, what had she stopped seeing?"
+    },
+    {
+     "choices": [
+      {
+       "t": "Stare him down.",
+       "goto": "ch30_tomas_end"
+      },
+      {
+       "t": "Keep walking.",
+       "goto": "ch30_tomas_walk"
+      }
+     ]
+    }
+   ]
+  },
+  "ch30_tomas_end": {
+   "lines": [
+    {
+     "n": "I held his eyes until the smile faltered, and then I walked on. Behind me one of his friends laughed, and it wasn't at me."
+    }
+   ]
+  },
+  "ch30_tomas_walk": {
+   "lines": [
+    {
+     "n": "I didn't give him so much as a glance. I'd faced down worse than Tomas Mandray across a dinner table."
+    }
+   ]
+  },
+  "ch30_isaac": {
+   "lines": [
+    {
+     "do": [
+      {
+       "type": "set_flag",
+       "flag": "ch30_isaac"
+      }
+     ]
+    },
+    {
+     "n": "A woman's laugh rang off the stones ahead, and I came round the corner face to face with Isaac Hale."
+    },
+    {
+     "n": "He wasn't alone. A pretty, round-cheeked girl hung on his arm, and the two of them were smiling at nothing, at each other, at the whole summer morning."
+    },
+    {
+     "s": "isaac_wife",
+     "e": "neutral",
+     "t": "Oh!"
+    },
+    {
+     "n": "His smile faltered when he saw me. She looked from him to me and back, and held his arm a little tighter, as if what she'd found was so new she was still afraid it might be taken."
+    },
+    {
+     "n": "When I'd left, he was still a boy. Something between the two of them had grown him up. He bowed his head to me, careful and correct."
+    },
+    {
+     "n": "I searched my heart for anything at all. There was nothing there for him but a faint, warm gratitude."
+    },
+    {
+     "choices": [
+      {
+       "t": "Smile, and wish them well.",
+       "goto": "ch30_isaac_end"
+      },
+      {
+       "t": "Bow your head, and pass.",
+       "goto": "ch30_isaac_end"
+      }
+     ]
+    }
+   ]
+  },
+  "ch30_isaac_end": {
+   "lines": [
+    {
+     "n": "I smiled at them both, as broadly as I knew how, and bowed my head as I passed. I hoped with my whole heart they'd be happy. It was easy. That surprised me most of all."
+    },
+    {
+     "do": [
+      {
+       "type": "objective",
+       "text": "Go home to the chateau."
+      }
+     ]
+    }
+   ]
+  },
+  "ch30_home": {
+   "lines": [
+    {
+     "do": [
+      {
+       "type": "set_flag",
+       "flag": "ch30_home"
+      }
+     ]
+    },
+    {
+     "n": "The ball in my honor was two days away, and the house had come down with a fever of preparation. Elain had taken over the planning, and somewhere in the chaos she was hunting me down a dress."
+    },
+    {
+     "n": "So much money, thrown at a single night. I'd have begged Father not to bother. But it was one evening. One evening smiling at the people who had let us starve."
+    },
+    {
+     "do": [
+      {
+       "type": "goto",
+       "chapter": 30,
+       "hour": 17.5,
+       "outfit": "feyre_garden",
+       "region": "chateau",
+       "spawn": "plot"
+      }
+     ]
+    }
+   ]
+  },
+  "ch30_dig": {
+   "lines": [
+    {
+     "do": [
+      {
+       "type": "set_flag",
+       "flag": "ch30_dig"
+      }
+     ]
+    },
+    {
+     "n": "I needed something to do with my hands, so I took a spade to the lawn by the glasshouse and started cutting a new bed for Elain's next garden."
+    },
+    {
+     "n": "The gardeners were horrified. Another daughter of the house, out doing their work. I promised them I had no gift for growing things. I only wanted to dig."
+    },
+    {
+     "s": "gardener",
+     "e": "neutral",
+     "t": "Miss. You'll burn, miss. Here. Begging your pardon."
+    },
+    {
+     "n": "He pressed one of Elain's big, floppy straw hats on me and fled. I wore it for his sake. Months in the Spring Court had already turned me brown and freckled."
+    },
+    {
+     "do": [
+      {
+       "type": "objective",
+       "text": "Dig out the new bed by the glasshouse. (0/4)"
+      }
+     ]
+    }
+   ]
+  },
+  "ch30_dig_1": {
+   "lines": [
+    {
+     "n": "The turf came up in thick, sweet-smelling clods. Good, dark earth underneath."
+    }
+   ]
+  },
+  "ch30_dig_2": {
+   "lines": [
+    {
+     "n": "My shoulders burned. It felt wonderful. Nothing in my life now asked anything of my body at all."
+    }
+   ]
+  },
+  "ch30_dig_3": {
+   "lines": [
+    {
+     "n": "What would I do with my week? My month? With any of it? I hadn't painted since I came home. The place colors used to come from had gone dull and quiet."
+    }
+   ]
+  },
+  "ch30_dig_4": {
+   "lines": [
+    {
+     "n": "If the sickness was spreading over the Wall, if that Amarantha was loosing her creatures into it... I leaned on the spade and looked at my hands. Calluses. Scars. Dirt packed under every nail."
+    }
+   ]
+  },
+  "ch30_nesta": {
+   "lines": [
+    {
+     "do": [
+      {
+       "type": "set_flag",
+       "flag": "ch30_nesta"
+      }
+     ]
+    },
+    {
+     "s": "nesta",
+     "e": "smirk",
+     "t": "Scrub them all you like. You'll never get them clean enough. You'd have to wear gloves for the rest of your life."
+    },
+    {
+     "n": "She had crossed from her tree without making a sound. Pale lavender muslin, her hair pinned half up, the rest loose down her back. She stood as still as any faerie lord."
+    },
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "Maybe I don't want to fit into your circles."
+    },
+    {
+     "s": "nesta",
+     "e": "neutral",
+     "t": "Then why stay?"
+    },
+    {
+     "n": "I drove the spade in deeper."
+    },
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "It's my home, isn't it?"
+    },
+    {
+     "s": "nesta",
+     "e": "neutral",
+     "t": "No. I think your home is a very long way from here."
+    },
+    {
+     "n": "I let go of the spade and turned around, very slowly."
+    },
+    {
+     "s": "feyre",
+     "e": "afraid",
+     "t": "Aunt Ripleigh's house..."
+    },
+    {
+     "s": "nesta",
+     "e": "angry",
+     "t": "There is no Aunt Ripleigh."
+    },
+    {
+     "do": [
+      {
+       "type": "region_call",
+       "method": "drop_chip"
+      }
+     ]
+    },
+    {
+     "n": "She took something from her pocket and tossed it on the turned earth at my feet. A splinter of wood, torn from something bigger. On it, a tangle of painted vines, and foxgloves, in the wrong shade of blue."
+    },
+    {
+     "n": "The table. My table, from the cottage."
+    },
+    {
+     "s": "nesta",
+     "e": "angry",
+     "t": "Your beast's spell never took with me. It turns out a glamour can't get in if your mind is stubborn enough."
+    },
+    {
+     "s": "nesta",
+     "e": "angry",
+     "t": "So I got to watch Father and Elain go from screaming to nothing at all. I listened to them chatter about how lucky you were, carried off to some aunt who never existed, about the winter wind that broke our door."
+    },
+    {
+     "s": "nesta",
+     "e": "sad",
+     "t": "I thought I was going mad. Every time, I'd look at that painted corner of the table, and then at the claw marks further down, and I'd know I wasn't."
+    },
+    {
+     "n": "I had never heard of a glamour failing. But I'd never known a mind as walled up as Nesta's."
+    },
+    {
+     "s": "feyre",
+     "e": "sad",
+     "t": "Elain said you came to visit me. That you tried."
+    },
+    {
+     "s": "nesta",
+     "e": "angry",
+     "t": "He dragged you off in the dark, muttering about the Treaty, and the next morning the others went about their day as if you'd never existed. It was wrong. All of it."
+    },
+    {
+     "s": "feyre",
+     "e": "afraid",
+     "t": "You came after me. Into Prythian."
+    },
+    {
+     "s": "nesta",
+     "e": "neutral",
+     "t": "To the Wall. I walked along it for hours, and there was no gap anywhere."
+    },
+    {
+     "s": "feyre",
+     "e": "afraid",
+     "t": "Alone? That's two days' walk each way. Through the woods, in the dead of winter."
+    },
+    {
+     "s": "nesta",
+     "e": "neutral",
+     "t": "Not alone. The week after he took you, I spent what your wolf pelt fetched on the mercenary woman from the village. She was the only one who didn't look at me as if I'd gone mad."
+    },
+    {
+     "s": "feyre",
+     "e": "sad",
+     "t": "You did that. For me."
+    },
+    {
+     "s": "nesta",
+     "e": "neutral",
+     "t": "It wasn't right."
+    },
+    {
+     "n": "Father would never have come. Tamlin had been sure of that, and he was right; Father would have paid someone else to go. But Nesta had gone herself. My cold, hateful sister had walked into the wolf country to bring me home."
+    },
+    {
+     "s": "feyre",
+     "e": "sad",
+     "t": "What happened with Tomas Mandray?"
+    },
+    {
+     "s": "nesta",
+     "e": "neutral",
+     "t": "I realized he would never have gone with me. Not into Prythian. Not for you."
+    },
+    {
+     "n": "And for a heart like hers, that was a line in the sand."
+    },
+    {
+     "n": "I looked at her properly, for the first time in years. Anger had been her rope out of the dark, all this time. Cruelty, her one release. Underneath it, she had cared. Maybe more fiercely than I could understand."
+    },
+    {
+     "choices": [
+      {
+       "t": "\"Tomas never deserved you.\"",
+       "goto": "ch30_nesta_end"
+      },
+      {
+       "t": "Pick up the splinter, and hold it.",
+       "goto": "ch30_nesta_chip"
+      }
+     ]
+    }
+   ]
+  },
+  "ch30_nesta_chip": {
+   "lines": [
+    {
+     "n": "I picked the splinter out of the dirt and turned it over in my fingers. The wrong blue. I'd been so ashamed of that blue."
+    },
+    {
+     "goto": "ch30_nesta_end"
+    }
+   ]
+  },
+  "ch30_nesta_end": {
+   "lines": [
+    {
+     "s": "feyre",
+     "e": "tender",
+     "t": "He never deserved you anyway."
+    },
+    {
+     "n": "She didn't smile. But something lit behind those blue-gray eyes, our mother's eyes."
+    },
+    {
+     "s": "nesta",
+     "e": "neutral",
+     "t": "Tell me everything. All of it."
+    },
+    {
+     "n": "It wasn't a request. So I told her everything. When I finished, she looked at me for a very long time. Then she asked if I would teach her to paint."
+    },
+    {
+     "do": [
+      {
+       "type": "fade_hold",
+       "text": "The next three days."
+      },
+      {
+       "type": "goto",
+       "chapter": 30,
+       "hour": 11,
+       "outfit": "feyre_finery",
+       "region": "chateau_studio",
+       "spawn": "easel"
+      }
+     ]
+    }
+   ]
+  },
+  "ch30_lesson": {
+   "lines": [
+    {
+     "do": [
+      {
+       "type": "set_flag",
+       "flag": "ch30_lesson"
+      }
+     ]
+    },
+    {
+     "n": "Teaching Nesta to paint was every bit as pleasant as I'd expected. But it gave us a quiet room to hide in, while the rest of the house went mad over the ball."
+    },
+    {
+     "n": "Getting her to put down on paper what was in her head was a war. Copying my brushstrokes was not. Her hand was steady and precise, and she never once made the same mistake twice."
+    },
+    {
+     "do": [
+      {
+       "type": "objective",
+       "text": "Show Nesta how to paint."
+      }
+     ]
+    }
+   ]
+  },
+  "ch30_lesson_1": {
+   "lines": [
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "Don't paint the tree. Paint the light on it."
+    },
+    {
+     "s": "nesta",
+     "e": "angry",
+     "t": "The light is on the tree."
+    },
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "Then paint the part that isn't."
+    },
+    {
+     "n": "She looked at me as if I'd gone simple. Then she tried it, and it was better, and she was furious about it."
+    }
+   ]
+  },
+  "ch30_lesson_2": {
+   "lines": [
+    {
+     "s": "nesta",
+     "e": "neutral",
+     "t": "What color was it? The house. His house."
+    },
+    {
+     "n": "I mixed it for her: the warm cream of the stone at noon, and the pink the roses threw on it."
+    },
+    {
+     "s": "nesta",
+     "e": "neutral",
+     "t": "Hm."
+    },
+    {
+     "n": "She painted it into the corner of her paper, very small, and wouldn't let me see the rest."
+    }
+   ]
+  },
+  "ch30_lesson_3": {
+   "lines": [
+    {
+     "n": "By the third day we were both splattered to the elbows and smeared with charcoal, and she had stopped holding the brush as if it might bite her."
+    },
+    {
+     "s": "nesta",
+     "e": "smirk",
+     "t": "You've a smear on your nose."
+    },
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "So have you."
+    },
+    {
+     "s": "nesta",
+     "e": "smirk",
+     "t": "I know. I put it there on purpose, so you wouldn't feel alone."
+    },
+    {
+     "n": "It was the nearest thing to a joke I'd heard from her in eight years."
+    },
+    {
+     "do": [
+      {
+       "type": "set_flag",
+       "flag": "ch30_lessons_done"
+      }
+     ]
+    },
+    {
+     "n": "When we came out at last, the chateau was ready for the ball. Colored glass lanterns lined the whole length of the drive. Inside, every rail and archway was wound with garlands of every flower there was. Elain had chosen each one herself."
+    },
+    {
+     "do": [
+      {
+       "type": "objective",
+       "text": "Go up to your room to dress."
+      }
+     ]
+    }
+   ]
+  },
+  "ch30_landing": {
+   "lines": [
+    {
+     "do": [
+      {
+       "type": "set_flag",
+       "flag": "ch30_landing"
+      }
+     ]
+    },
+    {
+     "n": "We were nearly at the top of the stairs when Father and Elain came into the hall below us, arm in arm. He murmured something, and she laughed and leaned her head on his shoulder."
+    },
+    {
+     "n": "Nesta's face closed like a fist."
+    },
+    {
+     "n": "I was glad for them, truly. For their ease, and the comfort they'd found in all this. They had their small sorrows. But they were content."
+    },
+    {
+     "s": "nesta",
+     "e": "angry",
+     "t": "Some days I want to shake him and ask whether he remembers any of it. All those years we went hungry while he sat by the fire."
+    },
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "You spent every copper I brought home too."
+    },
+    {
+     "s": "nesta",
+     "e": "neutral",
+     "t": "You always found more somehow. And if one day you didn't, I wanted to see if he'd finally get up and hunt for us himself. If he'd ever fight for his daughters, instead of whittling by the hearth."
+    },
+    {
+     "s": "nesta",
+     "e": "sad",
+     "t": "I couldn't keep us alive the way you could. I hated you for it. Him, I hated worse. I haven't stopped."
+    },
+    {
+     "s": "feyre",
+     "e": "sad",
+     "t": "Does he know?"
+    },
+    {
+     "s": "nesta",
+     "e": "angry",
+     "t": "He's always known. Long before we were poor. He had a fleet of ships that could have sailed the world for a cure for Mother. He could have paid someone to go over the Wall and beg them for help. He let her waste away instead."
+    },
+    {
+     "s": "feyre",
+     "e": "sad",
+     "t": "He loved her. He grieved."
+    },
+    {
+     "n": "I didn't know which was true. Maybe both."
+    },
+    {
+     "s": "nesta",
+     "e": "neutral",
+     "t": "He let her die. And you? You'd have walked through fire for your High Lord."
+    },
+    {
+     "n": "The hollow in my chest yawned wide. I didn't let it show."
+    },
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "Yes. I would have."
+    },
+    {
+     "n": "And I went into my room to dress for the ball."
+    },
+    {
+     "do": [
+      {
+       "type": "objective",
+       "text": "Dress for the ball."
+      }
+     ]
+    }
+   ]
+  },
+  "ch30_dress": {
+   "lines": [
+    {
+     "do": [
+      {
+       "type": "set_flag",
+       "flag": "ch30_dress"
+      }
+     ]
+    },
+    {
+     "n": "The dress Elain had found me was pale blue silk, stitched with silver, and the maid pinned my hair up so the curls fell round my face."
+    },
+    {
+     "n": "In the mirror, a stranger with my eyes and that faint, faerie shimmer still on her skin."
+    },
+    {
+     "do": [
+      {
+       "type": "outfit",
+       "id": "feyre_gown"
+      },
+      {
+       "type": "fade_hold",
+       "text": "The ball."
+      },
+      {
+       "type": "goto",
+       "chapter": 31,
+       "hour": 21.5,
+       "region": "chateau_ballroom",
+       "spawn": "floor"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

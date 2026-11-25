@@ -1,0 +1,262 @@
+{
+ "schema": 2,
+ "notes": "Line forms: {n} Feyre's narration, first person past tense, shown in italics; {s,e,t} a line spoken aloud (speaker, portrait expression, text); {hint} a game tip on its own card; {choices:[{t,goto,do}]}; {do:[actions]}; {goto}. Any line or choice may carry if_flag, if_not_flag, if_item, if_not_item or if_chapter. Wording is written for the game; the few short book lines kept are listed in quotes.json.",
+ "scenes": {
+  "ch17_wake": {
+   "lines": [
+    {
+     "do": [
+      {
+       "type": "set_flag",
+       "flag": "ch17_wake"
+      },
+      {
+       "type": "music",
+       "name": ""
+      }
+     ]
+    },
+    {
+     "n": "I woke panting. The Suriel's clicking fingers. Grinning naga. A pale, faceless woman dragging blood-red nails across my throat, asking my name, and every time I tried to answer, my own blood choked me."
+    },
+    {
+     "n": "And then a different sound, creeping under my door from the front hall. Shouts, giving orders. And screaming."
+    },
+    {
+     "n": "I knew that kind of screaming from the woods back home: the sound of a kill gone wrong. I couldn't stand to hear it. And I had to see."
+    },
+    {
+     "do": [
+      {
+       "type": "objective",
+       "text": "Go down to the entrance hall."
+      }
+     ]
+    }
+   ]
+  },
+  "ch17_screams": {
+   "lines": [
+    {
+     "do": [
+      {
+       "type": "set_flag",
+       "flag": "ch17_done"
+      }
+     ]
+    },
+    {
+     "n": "Tamlin had carried in a faerie, a blue-skinned male nearly as big as he was, long-limbed, with long black hair. Blood poured down his back from two black stumps between his shoulder blades, and soaked into Tamlin's tunic."
+    },
+    {
+     "n": "Lucien had swept the vase off the hall table. Glass lay everywhere. The faerie was face-down on the table, screaming."
+    },
+    {
+     "s": "tamlin",
+     "e": "angry",
+     "t": "The scouts found him dumped just over the border. He's Summer Court."
+    },
+    {
+     "s": "lucien",
+     "e": "grim",
+     "t": "Cauldron."
+    },
+    {
+     "s": "faerie",
+     "e": "neutral",
+     "t": "My wings. She took my wings."
+    },
+    {
+     "n": "That nameless she again. Tamlin flicked his hand, and steaming water and bandages appeared on the table. I made myself walk down the rest of the stairs, and across the hall, toward the death hovering over that table."
+    },
+    {
+     "n": "She hadn't simply taken his wings. She had torn them off. The stumps were ragged, as though she'd sawed at them a little at a time."
+    },
+    {
+     "s": "faerie",
+     "e": "neutral",
+     "t": "She took my wings."
+    },
+    {
+     "s": "tamlin",
+     "e": "neutral",
+     "t": "Keep still. You'll bleed out faster."
+    },
+    {
+     "n": "He began to twist away from the rag. I didn't think. I took him by the upper arms and pinned him down, as gently as I could. His skin was velvet, slippery, shimmering with veins of gold like a blue butterfly's wing."
+    },
+    {
+     "s": "feyre",
+     "e": "afraid",
+     "t": "Please. Please hold still."
+    },
+    {
+     "s": "tamlin",
+     "e": "neutral",
+     "t": "Lucien."
+    },
+    {
+     "n": "Lucien was staring at those stumps, his golden eye narrowing and widening. He backed away a step. Another. Then he was sick into a potted plant and ran from the hall."
+    },
+    {
+     "do": [
+      {
+       "type": "region_call",
+       "method": "walk_out",
+       "args": [
+        "lucien"
+       ]
+      }
+     ]
+    },
+    {
+     "n": "Tamlin touched the rag to the wound, and the faerie's scream made my senses gutter. Blood gushed, faster and brighter than before."
+    },
+    {
+     "s": "tamlin",
+     "e": "weary",
+     "t": "It isn't clotting."
+    },
+    {
+     "s": "feyre",
+     "e": "afraid",
+     "t": "Can't you use your magic?"
+    },
+    {
+     "s": "tamlin",
+     "e": "weary",
+     "t": "Not for wounds like this. Once. Not anymore."
+    },
+    {
+     "n": "His eyes flickered, and I knew. Death wasn't only hovering in this hall. It was counting the faerie's heartbeats."
+    },
+    {
+     "choices": [
+      {
+       "t": "Take his hand.",
+       "goto": "ch17_hand"
+      },
+      {
+       "t": "Step back from the table.",
+       "goto": "ch17_back"
+      }
+     ]
+    }
+   ]
+  },
+  "ch17_back": {
+   "lines": [
+    {
+     "n": "I took one step back. Then I heard him whimper, and took the step forward again."
+    },
+    {
+     "goto": "ch17_hand"
+    }
+   ]
+  },
+  "ch17_hand": {
+   "lines": [
+    {
+     "n": "I took his hand. His long fingers wrapped round mine and covered them completely. I brushed the damp hair off his face. Black, pleading eyes found mine."
+    },
+    {
+     "s": "faerie",
+     "e": "neutral",
+     "t": "My wings."
+    },
+    {
+     "s": "feyre",
+     "e": "sad",
+     "t": "It will be all right. You'll get them back."
+    },
+    {
+     "s": "faerie",
+     "e": "neutral",
+     "t": "You swear?"
+    },
+    {
+     "s": "feyre",
+     "e": "sad",
+     "t": "Yes."
+    },
+    {
+     "n": "He smiled a little, and closed his eyes. The first false vow I had ever sworn."
+    },
+    {
+     "n": "Tamlin took his other hand and began to pray, in words older than the mortal lands."
+    },
+    {
+     "s": "tamlin",
+     "e": "weary",
+     "t": "Cauldron keep you. Mother hold you. Go through the gates, into the deathless land of milk and honey. Fear nothing there. Feel no pain. Go on, into forever."
+    },
+    {
+     "n": "The faerie sighed once, and his hand went slack in mine."
+    },
+    {
+     "n": "I held on. I had no idea how long a soul took to slip free. I knelt in his blood until it cooled, smoothing his hair, wondering if he had guessed I was lying. Hoping that wherever he was now, he could fly again."
+    },
+    {
+     "s": "tamlin",
+     "e": "tender",
+     "t": "He's gone. Let him go."
+    },
+    {
+     "n": "I smoothed his hair back from his pointed ear. I never learned his name. Then I let him go."
+    },
+    {
+     "n": "Tamlin led me to the foot of the stairs. Bloody footprints followed us."
+    },
+    {
+     "s": "feyre",
+     "e": "sad",
+     "t": "We can't leave him there."
+    },
+    {
+     "s": "tamlin",
+     "e": "weary",
+     "t": "I know. I'll see to him. Alone."
+    },
+    {
+     "n": "No claws, no fangs. There was nothing here for him to fight."
+    },
+    {
+     "s": "tamlin",
+     "e": "tender",
+     "t": "Feyre. Why? You don't like my kind on a good day. And after Andras... Why?"
+    },
+    {
+     "s": "feyre",
+     "e": "sad",
+     "t": "Because I wouldn't want to die alone. I'd want someone holding my hand until the end, and a while after. Everyone deserves that, human or faerie."
+    },
+    {
+     "s": "feyre",
+     "e": "sad",
+     "t": "I regret what I did to Andras. I regret that there was so much hate in me. I wish I could undo it. I'm sorry. I'm so sorry."
+    },
+    {
+     "n": "I couldn't remember the last time I had said anything like that to anyone. He only nodded, and turned away."
+    },
+    {
+     "n": "From the window at the top of the stairs, I watched him carry the broken body out through the moonlit garden and into the fields beyond. He never once looked back."
+    },
+    {
+     "do": [
+      {
+       "type": "chapter_card",
+       "n": 18
+      },
+      {
+       "type": "goto",
+       "chapter": 18,
+       "hour": 9,
+       "region": "manor_bedroom",
+       "spawn": "bed"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

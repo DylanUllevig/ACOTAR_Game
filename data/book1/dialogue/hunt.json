@@ -1,0 +1,164 @@
+{
+ "schema": 2,
+ "notes": "Line forms: {n} Feyre's narration, first person past tense, shown in italics; {s,e,t} a line spoken aloud (speaker, portrait expression, text); {hint} a game tip on its own card; {choices:[{t,goto,do}]}; {do:[actions]}; {goto}. Any line or choice may carry if_flag, if_not_flag, if_item, if_not_item or if_chapter. Wording is written for the game; the few short book lines kept are listed in quotes.json.",
+ "scenes": {
+  "hunt_alerted": {
+   "lines": [
+    {
+     "n": "His head snapped round. Yellow eyes found mine through the thorns."
+    },
+    {
+     "s": "feyre",
+     "e": "afraid",
+     "t": "He's seen me."
+    },
+    {
+     "hint": "Watch his eyes. When they flare and he crouches low, he's about to lunge. Step out of the way, then hit back while he recovers.",
+     "if_not_flag": "hint_lunge"
+    },
+    {
+     "do": [
+      {
+       "type": "set_flag",
+       "flag": "hint_lunge"
+      }
+     ]
+    }
+   ]
+  },
+  "hunt_doe": {
+   "lines": [
+    {
+     "n": "He came out of the brush in a blur of grey and black and white. The doe never stood a chance."
+    },
+    {
+     "s": "feyre",
+     "e": "angry",
+     "t": "No. That was a week of food."
+    }
+   ]
+  },
+  "hunt_ash": {
+   "lines": [
+    {
+     "n": "The ash arrow struck deep in his side, and I'd have sworn the ground shuddered under me."
+    },
+    {
+     "n": "He whirled toward the thicket with a snarl that rattled my teeth.",
+     "if_flag": "ash_from_hiding"
+    },
+    {
+     "n": "He stumbled mid-stride, and snarled at the shaft in his flank.",
+     "if_not_flag": "ash_from_hiding"
+    },
+    {
+     "n": "Where the arrow had gone in, the wound wasn't closing."
+    },
+    {
+     "s": "feyre",
+     "e": "determined",
+     "t": "So the stories were true. Ash."
+    }
+   ]
+  },
+  "hunt_victory": {
+   "lines": [
+    {
+     "n": "His legs twitched once. A low whine, and then nothing."
+    },
+    {
+     "n": "I waited until that great coat of charcoal and ivory had stopped rising and falling."
+    },
+    {
+     "s": "feyre",
+     "e": "cold",
+     "t": "Just a wolf. A very large one."
+    },
+    {
+     "do": [
+      {
+       "type": "music",
+       "name": "forest",
+       "fade": 4.0
+      }
+     ]
+    }
+   ]
+  },
+  "hunt_skin": {
+   "lines": [
+    {
+     "n": "It took a long time with a hunting knife and fingers I could barely feel. I worked the pelt free, rolled it tight and lashed it to my pack.",
+     "if_not_flag": "wolf_skinned"
+    },
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "Far too big for a wolf. Far too heavy.",
+     "if_not_flag": "wolf_skinned"
+    },
+    {
+     "do": [
+      {
+       "type": "item",
+       "id": "wolf_pelt",
+       "n": 1
+      },
+      {
+       "type": "set_flag",
+       "flag": "wolf_skinned"
+      }
+     ],
+     "if_not_flag": "wolf_skinned"
+    }
+   ]
+  },
+  "hunt_take_doe": {
+   "lines": [
+    {
+     "n": "The doe hadn't run. Fear had rooted her where she stood.",
+     "if_flag": "doe_saved"
+    },
+    {
+     "n": "I made it quick. She deserved that much.",
+     "if_flag": "doe_saved"
+    },
+    {
+     "do": [
+      {
+       "type": "item",
+       "id": "doe_hide",
+       "n": 1
+      }
+     ],
+     "if_flag": "doe_saved"
+    },
+    {
+     "n": "What the wolf had left of her was torn and ruined. Still meat. Still a hide, of a sort.",
+     "if_not_flag": "doe_saved"
+    },
+    {
+     "do": [
+      {
+       "type": "item",
+       "id": "doe_hide_torn",
+       "n": 1
+      }
+     ],
+     "if_not_flag": "doe_saved"
+    },
+    {
+     "n": "I hoisted her across my shoulders. She weighed more than she looked, and she looked like nothing at all."
+    },
+    {
+     "do": [
+      {
+       "type": "set_flag",
+       "flag": "doe_taken"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

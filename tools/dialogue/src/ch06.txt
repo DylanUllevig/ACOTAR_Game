@@ -1,0 +1,117 @@
+# Chapter 6: the estate. Arrival, the beast becomes a High Fae, Lucien, Alis.
+
+== ch06_arrive
+> chapter_card 6
+> music spring_manor
+N The mare carried me through the gate and stopped dead on the gravel, and nothing I did would move her another step.
+N Beyond the hedge the estate rolled away over green lawns, the house at the top of them veiled in roses and ivy, its pale walls sprouting balconies and stairs.
+N After the winter I had left behind, the color almost hurt. Irises, snowdrops, daffodils nodding in a warm breeze. Under their scent, the faint sting of metal. Magic. It was spring here because they made it spring.
+N The bonds that had held me in the saddle were gone. I slid down, and my knees buckled.
+N I felt for my knife. Nothing but frayed wool. My bow and quiver were gone as well, lifted off me somewhere between the wall and here.
+> take_item hunting_knife all
+> take_item bow all toast="Your knife, your bow and your arrows are gone."
+> take_item arrow all
+> take_item ash_arrow all
+@feyre/afraid Those claws, picking through my cloak while I slept.
+N The beast padded on up the drive without a backward glance. Behind me, the gate hadn't locked.
+* Run for the gate. -> ch06_run
+* Follow him up to the house.
+
+== ch06_run
+N South, then. Keep heading south, and sooner or later I'd hit the wall.
+N Three steps, and the world tilted and went white at the edges. Days without a real meal. I caught the bars of the gate and hung there, waiting for the ground to settle.
+@feyre/determined Only a fool runs with no food in her and no strength. I wouldn't make half a mile before he caught me.
+N Food first, then. Then run, the first good chance I got.
+
+== ch06_door
+> set_flag ch06_inside
+N The great oak doors stood open. The whole house seemed to be watching, waiting to see what I would do.
+N No screams rising from cellars. No chains. Only cool shadows inside, and the smell of roasting meat.
+> goto manor_hall front chapter=6
+
+== ch06_hall
+> set_flag ch06_hall
+N Inside it was richer still. Black and white marble polished like water, a staircase sweeping up into the light, vases spilling hydrangeas over every table.
+N We had owned a fine house once, before my father's ruin. Next to this, it had been a shed.
+N A growl rolled out of a room to my left, so deep the vases chattered on their tables. A pair of polished doors swung wider on their own.
+@feyre/afraid An invitation. Or an order.
+> objective Follow the growl to the room on the left.
+
+== ch06_feast
+> set_flag ch06_feast
+N A table longer than any we had ever owned filled the room, heaped with food. Roast chicken, bread, fish, lamb, steam still curling off the dishes.
+N My mouth flooded. But every mortal child learns the rule in nursery songs: never eat their food, never drink their wine, or you belong to them, mind and soul.
+> region_call beast_arrives 372 470
+N The beast padded past me to the great chair at the head of the table. The wood groaned under his weight.
+> region_call beast_shifts
+N A flash of white light, and where the beast had been sat a male with hair like poured gold.
+N High Fae. One of their ruling kind: beautiful, deadly, merciless. A golden mask set with emerald leaves covered the top of his face, but the eyes were the same. Green, flecked with amber.
+@tamlin/neutral There's food. You should eat.
+@feyre/afraid Who are you?
+@tamlin/neutral Sit down. Eat something.
+* Take a seat at the table. -> ch06_feast_sit
+* Stay pressed against the wall by the door. -> ch06_feast_wall
+
+== ch06_feast_sit
+N I took one step toward the nearest chair, and the old chant rang in my head. Never their food. Never their wine.
+N I stopped where I was.
+-> ch06_feast_2
+
+== ch06_feast_wall
+N I flattened my back to the paneling beside the door and worked out how many steps it was to the gates.
+-> ch06_feast_2
+
+== ch06_feast_2
+@tamlin/angry Or would you rather fall over?
+@feyre/determined Your food isn't safe. Not for us.
+@tamlin/neutral It won't hurt you, human. And go, if you want. No one's going to chain you. The gates are open, and Prythian is wide.
+N Wide, and full of things that would eat me. I didn't move toward the food.
+@tamlin/angry Suit yourself.
+> region_call walk_in courtier_red lucien 690 306
+N Someone strode in past me as though I were part of the furniture. Another High Fae, red-haired and finely dressed, a bronze mask shaped like a fox over the top of his face.
+@lucien/grim Well? Andras. Is he dead?
+@tamlin/weary He is. I'm sorry. A single ash arrow. The Treaty's summons led me to the one who loosed it, and I gave her shelter.
+@lucien/angry A mortal girl killed Andras?
+N He turned. A brutal scar ran from his brow to his jaw, and where one eye should have been, a carved golden eye whirred and fixed on me.
+@lucien/smirk That? That half-starved scrap brought him down? You're joking.
+@lucien/angry Tell me, human, did it feel good? Did you stop to think at all, or was the hate enough?
+@tamlin/angry Lucien. Manners.
+N Lucien went rigid. Then he swept me a bow so low it could only be mockery.
+@lucien/smirk Forgive me, lady. Lucien: courtier, emissary, your humble servant. Your eyes outshine the stars, your hair puts gold to shame, and so forth.
+@tamlin/neutral She's called Feyre. Alis will show you to a room. A bath and clean clothes wouldn't hurt.
+N A firm hand closed on my elbow. A round, brown-haired woman in a plain brass mask shaped like a bird. A servant. Even the servants wore masks here.
+N As she led me out, Lucien's voice followed us into the hall.
+@lucien/angry This is what the Cauldron sends us? Leave her in the woods. Kill her, for all I care. She'd put a knife in your back before she'd say good morning.
+@tamlin/angry No. She stays, and no one lays a hand on her. Whatever she had in that hovel, it was punishment enough.
+@lucien/smirk Then good luck to you, old friend. You'll need it.
+> journal lore_high_fae
+> goto manor_bedroom bath chapter=6
+
+== ch06_bath
+> set_flag ch06_bath
+N Alis and two other masked servants scrubbed me raw, cut my hair and plucked me until I felt like a hen dressed for the oven. For all I knew, I was one.
+N Then Alis laid a gown on the bed. Turquoise velvet, soft as a hare's belly.
+* Put on the gown. -> ch06_gown
+* Ask for your own clothes back. -> ch06_clothes
+
+== ch06_gown
+N I touched the velvet. Lovely. And useless to anyone who might have to run.
+N I put it down and asked for my own clothes instead.
+-> ch06_clothes
+
+== ch06_clothes
+@alis/stern These?
+N She held up a gray rag that was more hole than shirt, and a few strips of brown that had once been my trousers.
+@alis/stern They came apart the moment the laundresses put them in water.
+N I sank into a chair and refused to budge. She glared at me, stalked out, and came back with trousers, a white shirt and a dark blue tunic stitched with gold. It fit. The thread alone was probably worth more than our cottage.
+> outfit feyre_spring
+N She sat me before the cold fireplace and began to braid my hair.
+@alis/neutral You're nothing but skin and bone.
+@feyre/determined That's what winter does to poor mortals.
+@alis/kind Then take some advice, free of charge. Keep your mouth shut and your ears open. And don't trust your own senses too far. Even they'll play tricks on you here.
+@alis/neutral Some folk will grieve for Andras. But he was a sentry, and he knew what waited across the wall. The rest know the Treaty's terms, even if they don't like you being here. Keep your head down, and they'll leave you be.
+@alis/kind As for Lucien, someone ought to snap back at him now and then. If you've the nerve.
+N I didn't. Not yet.
+N The room alone was bigger than our whole cottage. Days had passed since I left. The venison would be running low by now.
+> chapter_card 7
+> goto manor_dining hall chapter=7 hour=17.5

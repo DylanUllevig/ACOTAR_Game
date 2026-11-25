@@ -1,0 +1,915 @@
+{
+ "schema": 2,
+ "notes": "Line forms: {n} Feyre's narration, first person past tense, shown in italics; {s,e,t} a line spoken aloud (speaker, portrait expression, text); {hint} a game tip on its own card; {choices:[{t,goto,do}]}; {do:[actions]}; {goto}. Any line or choice may carry if_flag, if_not_flag, if_item, if_not_item or if_chapter. Wording is written for the game; the few short book lines kept are listed in quotes.json.",
+ "scenes": {
+  "ch32_hall": {
+   "lines": [
+    {
+     "do": [
+      {
+       "type": "chapter_card",
+       "n": 32
+      }
+     ]
+    },
+    {
+     "n": "I gave myself one minute. Just one, on my knees in the ruin of the hall."
+    },
+    {
+     "n": "Then I got up, carefully, so as not to disturb the broken glass, or the splintered wood, or the blood. There was blood. Spattered up the gouged walls, smeared across the floor, pooled in the corners."
+    },
+    {
+     "n": "Just another forest, I told myself. Just another trail to read."
+    },
+    {
+     "do": [
+      {
+       "type": "objective",
+       "text": "Read the signs in the hall. (0/4)"
+      }
+     ]
+    }
+   ]
+  },
+  "ch32_clue_blood": {
+   "lines": [
+    {
+     "do": [
+      {
+       "type": "set_flag",
+       "flag": "ch32_clue_blood"
+      }
+     ]
+    },
+    {
+     "n": "The blood told it plainly. A vicious fight, and most of the damage done during it, not after. Whoever did this hadn't stayed to loot."
+    }
+   ]
+  },
+  "ch32_clue_glass": {
+   "lines": [
+    {
+     "do": [
+      {
+       "type": "set_flag",
+       "flag": "ch32_clue_glass"
+      }
+     ]
+    },
+    {
+     "n": "Crushed glass and boot prints, coming and going through the front of the house and the back. They'd had the whole place surrounded."
+    }
+   ]
+  },
+  "ch32_clue_doors": {
+   "lines": [
+    {
+     "do": [
+      {
+       "type": "set_flag",
+       "flag": "ch32_clue_doors"
+      }
+     ]
+    },
+    {
+     "n": "They'd had to force the front doors. The doors to the garden, they hadn't bothered with. They'd simply smashed them to splinters."
+    }
+   ]
+  },
+  "ch32_clue_bodies": {
+   "lines": [
+    {
+     "do": [
+      {
+       "type": "set_flag",
+       "flag": "ch32_clue_bodies"
+      }
+     ]
+    },
+    {
+     "n": "No bodies anywhere. Hardly any blood, for all that ruin. So they were alive. He was alive. He had to be. Because if he wasn't..."
+    },
+    {
+     "n": "I rubbed my face and dragged in a breath. I wouldn't let myself go there."
+    }
+   ]
+  },
+  "ch32_clues_done": {
+   "lines": [
+    {
+     "n": "Every trail in the hall ran the same way in the end: toward the dining room, whose doors hung by a thread."
+    },
+    {
+     "do": [
+      {
+       "type": "objective",
+       "text": "Follow the tracks into the dining room."
+      }
+     ]
+    }
+   ]
+  },
+  "ch32_dining": {
+   "lines": [
+    {
+     "do": [
+      {
+       "type": "set_flag",
+       "flag": "ch32_dining"
+      }
+     ]
+    },
+    {
+     "n": "I couldn't tell whether this was Tamlin's doing, from the night Rhysand came, or someone else's. The great table lay in pieces. The windows were smashed, the curtains in tatters."
+    },
+    {
+     "n": "But no blood. Not a drop of it, in here."
+    },
+    {
+     "do": [
+      {
+       "type": "objective",
+       "text": "Read the prints in the broken glass."
+      }
+     ]
+    }
+   ]
+  },
+  "ch32_prints": {
+   "lines": [
+    {
+     "do": [
+      {
+       "type": "set_flag",
+       "flag": "ch32_prints"
+      }
+     ]
+    },
+    {
+     "n": "The floor was churned with tracks, but two sets stood out: big prints, side by side, going away from where the table had been. Tamlin and Lucien, I'd have bet my life on it. They'd been at dinner when it came, and they had stood up and walked out with it. They hadn't fought."
+    },
+    {
+     "n": "If I was right, they were alive."
+    },
+    {
+     "n": "I followed the prints to the doorway and crouched to pick through the churned-up glass and dirt and blood. Here, they'd been met. Many feet, all around them. And then all of it turned toward the garden..."
+    },
+    {
+     "do": [
+      {
+       "type": "region_call",
+       "method": "debris_crunch"
+      }
+     ]
+    },
+    {
+     "n": "Something crunched, out in the hall."
+    },
+    {
+     "do": [
+      {
+       "type": "objective",
+       "text": "Hide behind the dining room door!"
+      }
+     ]
+    }
+   ]
+  },
+  "ch32_hide": {
+   "lines": [
+    {
+     "do": [
+      {
+       "type": "set_flag",
+       "flag": "ch32_hide"
+      }
+     ]
+    },
+    {
+     "n": "I drew my knife and pressed myself into the gap behind the open door, one hand over my mouth to quiet my breathing, and watched through the crack at the hinge."
+    },
+    {
+     "do": [
+      {
+       "type": "region_call",
+       "method": "limper_enters"
+      }
+     ]
+    },
+    {
+     "n": "Something came limping in, and sniffed the air. I could only see its back: a drab cloak over a body no bigger than mine. If it swung the door shut, it would find me crouched behind it."
+    },
+    {
+     "n": "It sniffed again, and my stomach knotted. It could smell me. I looked harder, searching for a weak spot, somewhere for the knife if it came to that."
+    },
+    {
+     "do": [
+      {
+       "type": "region_call",
+       "method": "limper_turns"
+      }
+     ]
+    },
+    {
+     "n": "It turned toward me."
+    },
+    {
+     "s": "feyre",
+     "e": "afraid",
+     "t": "Alis!"
+    },
+    {
+     "n": "We both screamed. Alis pressed a hand to her chest. Her brown dress was ripped and filthy and her apron gone, but I couldn't see any blood, only a hitch in her step as she rushed at me. Her bark skin had faded to the grey of old birch."
+    },
+    {
+     "s": "alis",
+     "e": "afraid",
+     "t": "You can't be here. You were told to stay away."
+    },
+    {
+     "n": "Her eyes went to my knife, my bow, the quiver on my back."
+    },
+    {
+     "s": "feyre",
+     "e": "afraid",
+     "t": "Is he alive?"
+    },
+    {
+     "s": "alis",
+     "e": "neutral",
+     "t": "Yes, but..."
+    },
+    {
+     "n": "My knees nearly gave way."
+    },
+    {
+     "s": "feyre",
+     "e": "afraid",
+     "t": "And Lucien?"
+    },
+    {
+     "s": "alis",
+     "e": "neutral",
+     "t": "Alive as well. But..."
+    },
+    {
+     "s": "feyre",
+     "e": "determined",
+     "t": "What happened here? I need all of it."
+    },
+    {
+     "n": "She grabbed my arm and hauled me out of the room, and didn't say a word as we hurried through the silent, ruined halls. Blood everywhere, and no bodies. Either they'd been carried off, or... I didn't let myself finish the thought."
+    },
+    {
+     "do": [
+      {
+       "type": "fade_hold",
+       "text": "Down to the kitchens."
+      },
+      {
+       "type": "goto",
+       "chapter": 32,
+       "hour": 17,
+       "region": "manor_kitchen",
+       "spawn": "door"
+      }
+     ]
+    }
+   ]
+  },
+  "ch32_kitchen": {
+   "lines": [
+    {
+     "do": [
+      {
+       "type": "set_flag",
+       "flag": "ch32_kitchen"
+      }
+     ]
+    },
+    {
+     "n": "Fire had gutted the great kitchen. It was all cinders and blackened stone. Alis sniffed the air and listened for a long while before she let go of my arm."
+    },
+    {
+     "s": "alis",
+     "e": "stern",
+     "t": "What are you doing here?"
+    },
+    {
+     "s": "feyre",
+     "e": "determined",
+     "t": "I had to. I could feel that something had gone wrong, and I couldn't sit in my father's house and do nothing."
+    },
+    {
+     "s": "alis",
+     "e": "angry",
+     "t": "He sent you home so you'd stay there."
+    },
+    {
+     "s": "feyre",
+     "e": "afraid",
+     "t": "Where is he?"
+    },
+    {
+     "n": "Alis hid her face in her long, gnarled hands, her fingers prying at the rim of her mask as though she could rip it free. It held fast. She let out a breath and dropped her hands."
+    },
+    {
+     "s": "alis",
+     "e": "sad",
+     "t": "She has him. She's carried him off to her court, Under the Mountain."
+    },
+    {
+     "n": "My blood ran cold."
+    },
+    {
+     "s": "feyre",
+     "e": "afraid",
+     "t": "Who?"
+    },
+    {
+     "n": "But I already knew."
+    },
+    {
+     "s": "alis",
+     "e": "afraid",
+     "t": "Amarantha."
+    },
+    {
+     "n": "She whispered it, and glanced around the kitchen as if the name alone might call her."
+    },
+    {
+     "s": "feyre",
+     "e": "determined",
+     "t": "Why? Who is she, and what? Please, Alis. No more half answers."
+    },
+    {
+     "s": "alis",
+     "e": "sad",
+     "t": "You want it all? Then hear it. She took him because of the curse. His forty-nine years ran out, and the curse still held. Now she's summoned every High Lord to her court, so they can watch while she breaks him."
+    },
+    {
+     "s": "feyre",
+     "e": "afraid",
+     "t": "What curse?"
+    },
+    {
+     "n": "A curse. On this place. And I had never even seen it."
+    },
+    {
+     "s": "alis",
+     "e": "neutral",
+     "t": "Amarantha is High Queen of Prythian."
+    },
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "But Prythian has seven High Lords, sharing the land between them. Nobody rules over all of them."
+    },
+    {
+     "s": "alis",
+     "e": "neutral",
+     "t": "That's how it always was. Until she came."
+    },
+    {
+     "n": "She snatched up a big satchel she'd left by the door, already half full of clothes, and began picking through the ruined kitchen for anything worth taking. A knife. An apple, turned over and judged good enough. A jar that hadn't cracked."
+    },
+    {
+     "do": [
+      {
+       "type": "objective",
+       "text": "Listen to Alis."
+      }
+     ]
+    },
+    {
+     "goto": "ch32_tale"
+    }
+   ]
+  },
+  "ch32_tale": {
+   "lines": [
+    {
+     "do": [
+      {
+       "type": "panel",
+       "id": "tale_emissary"
+      }
+     ]
+    },
+    {
+     "s": "alis",
+     "e": "neutral",
+     "t": "A hundred years ago, she came to us as an envoy from Hybern. She went from court to court charming every High Lord she met, with talk of trade and friendship between our lands. The flower that never fades, they called her."
+    },
+    {
+     "s": "alis",
+     "e": "neutral",
+     "t": "For fifty years she lived among us, a courtier of no court at all. Making amends, she said, for what Hybern did in the War."
+    },
+    {
+     "n": "The Suriel had told me of a king across the sea who had never forgiven the Treaty, and who sent his deadliest servants into the other courts to learn who might share his hunger for the human lands."
+    },
+    {
+     "s": "feyre",
+     "e": "afraid",
+     "t": "She fought in the War? Against us?"
+    },
+    {
+     "do": [
+      {
+       "type": "panel",
+       "id": "tale_sister"
+      }
+     ]
+    },
+    {
+     "s": "alis",
+     "e": "neutral",
+     "t": "In the war she was the King of Hybern's finest general. She led from the front, and butchered humans and every faerie who stood with them. Her little sister, Clythia, rode at her side, and was no gentler."
+    },
+    {
+     "s": "alis",
+     "e": "neutral",
+     "t": "Then Clythia lost her heart to a mortal. Jurian, the general of the human armies. She slipped away to meet him again and again, too lovesick to see what he was doing: wringing her sister's battle plans out of her, one secret at a time."
+    },
+    {
+     "s": "alis",
+     "e": "sad",
+     "t": "Amarantha had her suspicions. But she wouldn't have him killed while it would shatter her sister. She, who liked killing better than anything, held back. Out of love."
+    },
+    {
+     "s": "feyre",
+     "e": "afraid",
+     "t": "What happened?"
+    },
+    {
+     "s": "alis",
+     "e": "angry",
+     "t": "Once he'd taken all he needed from Clythia, he killed her slowly. He staked her with ash so she couldn't fight him, and left what remained where her sister would find it."
+    },
+    {
+     "s": "alis",
+     "e": "neutral",
+     "t": "She's hated humans ever since, with a fury you can't imagine. When the Treaty freed the slaves, she butchered hers sooner than let them go."
+    },
+    {
+     "do": [
+      {
+       "type": "journal",
+       "id": "lore_clythia"
+      },
+      {
+       "type": "panel",
+       "id": "none"
+      }
+     ]
+    },
+    {
+     "n": "My knees wanted somewhere to sit, and there was nowhere left. Alis banged the last drawer closed and limped away into the pantry."
+    },
+    {
+     "s": "alis",
+     "e": "neutral",
+     "t": "Hundreds of years on, she swore to the High Lords that grief had softened her, and they took her at her word. More so when she brought them trade with Hybern. But her soldiers came over on those same trading ships. Not even her own king knew."
+    },
+    {
+     "s": "alis",
+     "e": "angry",
+     "t": "In those fifty years, she'd decided she wanted Prythian for herself. A place to gather her strength, and one day destroy your world for good, with her king's blessing or without it."
+    },
+    {
+     "do": [
+      {
+       "type": "panel",
+       "id": "tale_poison"
+      }
+     ]
+    },
+    {
+     "s": "alis",
+     "e": "neutral",
+     "t": "Forty-nine years ago, she made her move. Not with soldiers; no army of hers could beat seven High Lords. She bided her time until they had no doubts left about her. Then she threw a grand party, invited every one of them, and put a potion in their cups that she'd stolen from her king's own books of spells."
+    },
+    {
+     "s": "alis",
+     "e": "sad",
+     "t": "Once they drank, their magic lay open. She reached in and plucked it out of them, like apples off a branch, and left them only the dregs."
+    },
+    {
+     "s": "alis",
+     "e": "sad",
+     "t": "The Tamlin you knew was a scrap of what he'd been. With their powers gone, Prythian fell to her within days. We've served her ever since, and all the while she's been waiting for her chance to tear up the Treaty and come for your lands too."
+    },
+    {
+     "do": [
+      {
+       "type": "panel",
+       "id": "tale_mountain"
+      }
+     ]
+    },
+    {
+     "s": "alis",
+     "e": "neutral",
+     "t": "The Deceiver, she's called now. She caught seven High Lords in one night, and made her palace inside the holy Mountain at the very center of Prythian."
+    },
+    {
+     "n": "The bare, monstrous peak in the library mural. I'd seen it in my very first week here."
+    },
+    {
+     "s": "feyre",
+     "e": "afraid",
+     "t": "But the blight. Tamlin said the blight was eating their power..."
+    },
+    {
+     "do": [
+      {
+       "type": "panel",
+       "id": "none"
+      }
+     ]
+    },
+    {
+     "s": "alis",
+     "e": "angry",
+     "t": "She is the blight. There's no sickness in this land but her. Our borders crumbled because she knocked them down, and she sent her creatures to test how much strength he had left. For her amusement."
+    },
+    {
+     "do": [
+      {
+       "type": "journal",
+       "id": "lore_curse"
+      }
+     ]
+    },
+    {
+     "n": "The blight was Amarantha. The danger creeping toward the mortal lands was her."
+    },
+    {
+     "n": "Alis came out of the pantry with her arms full of turnips and beets, and her eyes were hard. She bared her teeth at me. They were startlingly sharp."
+    },
+    {
+     "s": "alis",
+     "e": "angry",
+     "t": "It could have been you that stopped her. You'd have set him free, and his power with him, if you'd only seen your own heart. Humans."
+    },
+    {
+     "s": "feyre",
+     "e": "afraid",
+     "t": "I... I didn't know."
+    },
+    {
+     "s": "alis",
+     "e": "sad",
+     "t": "You couldn't have known. That was part of the curse."
+    },
+    {
+     "s": "feyre",
+     "e": "afraid",
+     "t": "A curse? What has she done to him?"
+    },
+    {
+     "goto": "ch32_curse"
+    }
+   ]
+  },
+  "ch32_curse": {
+   "lines": [
+    {
+     "s": "alis",
+     "e": "neutral",
+     "t": "They knew each other long before. His family was tied to Hybern. In the War, the Spring Court fought on Hybern's side to keep the humans enslaved. His father was a fickle, vicious lord, close to their king, and to Amarantha. Tamlin often went with him to Hybern, as a boy."
+    },
+    {
+     "n": "He had told me once that he would fight for anyone's freedom. That he'd never stand for slavery. Was that shame over his family? Or had he learned, somehow, what it was to be a slave?"
+    },
+    {
+     "s": "alis",
+     "e": "neutral",
+     "t": "She came to want him, with her whole wicked heart. But he knew the stories. What she'd done in the War. What she did to Jurian. He kept his distance and kept out of her bed, right up until she stole his power."
+    },
+    {
+     "s": "alis",
+     "e": "sad",
+     "t": "So he sent Lucien to speak for him and ask for terms. She turned them down, and Lucien told her exactly where she could go. For that she took his eye. Dug it out with one fingernail, tore up his face, and sent him back so bloodied that Tamlin retched when he saw him."
+    },
+    {
+     "n": "I couldn't let myself picture what Lucien must have looked like, to turn a High Lord's stomach."
+    },
+    {
+     "do": [
+      {
+       "type": "panel",
+       "id": "tale_masks"
+      }
+     ]
+    },
+    {
+     "s": "alis",
+     "e": "neutral",
+     "t": "After that, she held a masquerade Under the Mountain. All the courts came. A peace offering, she said, and masks, so Lucien needn't show his ruined face. The whole Spring Court was to come, even the servants, and wear masks in honor of Tamlin's gift for changing his shape."
+    },
+    {
+     "s": "alis",
+     "e": "neutral",
+     "t": "He wanted to end it without bloodshed. So he took us. All of us."
+    },
+    {
+     "s": "alis",
+     "e": "angry",
+     "t": "In front of the whole court, she offered him peace if he'd be her lover and sit at her side. He refused to let her lay a finger on him. Not after Lucien. He told her he'd rather bed a mortal than her, since even her sister had chosen a mortal over her."
+    },
+    {
+     "n": "I winced."
+    },
+    {
+     "s": "alis",
+     "e": "neutral",
+     "t": "You can imagine how she took that. Still, she said she'd be kind, and leave him a way out of the curse she put on him. He spat at her. She only laughed."
+    },
+    {
+     "s": "alis",
+     "e": "neutral",
+     "t": "Forty-nine years, she allowed him, and then she would come to collect. To end the curse he needed a mortal girl who would take him as her husband. Not any girl. One whose heart was cold toward our kind and full of hate for us. One who would kill a faerie."
+    },
+    {
+     "n": "The floor tilted under me. I was glad of the wall at my back."
+    },
+    {
+     "s": "alis",
+     "e": "angry",
+     "t": "And the faerie had to be one of his own, sent across the Wall by his own order, to die. She could only be brought here if she killed one of them for no reason but hate. The way Jurian killed Clythia. So he'd feel what she had felt."
+    },
+    {
+     "s": "feyre",
+     "e": "afraid",
+     "t": "The Treaty..."
+    },
+    {
+     "s": "alis",
+     "e": "neutral",
+     "t": "A lie. There's nothing in the Treaty about it. You can kill as many of us as you please and never pay for it. You killed Andras. That day's sacrifice, sent over by Tamlin himself."
+    },
+    {
+     "n": "Tamlin had said Andras went searching for a cure. Not for any blight, then. For this."
+    },
+    {
+     "n": "The wolf had just watched me, before my arrow found him. He had allowed it, so that all of this could start, so Tamlin would have his chance. And Tamlin had sent him knowing he might not come back. Oh, Tamlin."
+    },
+    {
+     "s": "alis",
+     "e": "neutral",
+     "t": "To her it was a joke, and a cruel one. You mortals hate and fear us so deeply that no girl who'd killed one of us out of hate could ever love one of us. Yet that was the only way to end it. She had to tell him she loved him, to his face, and mean every word, before his forty-nine years ran out."
+    },
+    {
+     "s": "alis",
+     "e": "sad",
+     "t": "She knows how much you mortals care for a pretty face, so she bound the masks to our faces, and to his, to make it harder still. Then she bound our tongues, so not one of us could say a word about the curse. The lies about the blight were the best any of us could manage."
+    },
+    {
+     "s": "alis",
+     "e": "neutral",
+     "t": "That my tongue's free to tell you means she thinks her game is won."
+    },
+    {
+     "do": [
+      {
+       "type": "panel",
+       "id": "tale_wolves"
+      }
+     ]
+    },
+    {
+     "s": "alis",
+     "e": "sad",
+     "t": "At first he sent a man over the Wall every day, all in the shape of wolves, so one of you might be likelier to want to kill them. The ones who came back told of girls who screamed and ran and begged, and never raised a hand. The ones who didn't come back, he felt die. Killed by hunters, or old women. Never the right girl."
+    },
+    {
+     "s": "alis",
+     "e": "sad",
+     "t": "Two years of that. Choosing, every day, who went over. When there were only a dozen of them left, it broke him, and he stopped."
+    },
+    {
+     "do": [
+      {
+       "type": "panel",
+       "id": "none"
+      }
+     ]
+    },
+    {
+     "s": "alis",
+     "e": "neutral",
+     "t": "Here. Make yourself useful."
+    },
+    {
+     "do": [
+      {
+       "type": "objective",
+       "text": "Help Alis set the worktable upright."
+      }
+     ]
+    }
+   ]
+  },
+  "ch32_table": {
+   "lines": [
+    {
+     "do": [
+      {
+       "type": "set_flag",
+       "flag": "ch32_table"
+      }
+     ]
+    },
+    {
+     "n": "She set her shoulder to the overturned worktable, and I took the other end. It was heavy as sin. We both grunted with it."
+    },
+    {
+     "do": [
+      {
+       "type": "region_call",
+       "method": "right_table"
+      }
+     ]
+    },
+    {
+     "s": "alis",
+     "e": "neutral",
+     "t": "My sister and I were in service at the Summer Court. She and her mate were killed when Amarantha first seized the land, for no reason but spite. I took the boys and fled, before the rest were herded Under the Mountain."
+    },
+    {
+     "s": "alis",
+     "e": "neutral",
+     "t": "I came here because there was nowhere else to go. I begged Tamlin to hide my boys, and he did. When I begged to help, however I could, he took me in. Days later came the masquerade, and this wretched thing on my face. Near fifty years I've been here, watching her noose pull tighter around his neck."
+    },
+    {
+     "s": "feyre",
+     "e": "sad",
+     "t": "That's why you keep your nephews hidden."
+    },
+    {
+     "s": "alis",
+     "e": "neutral",
+     "t": "He tried, girl. Even with her spies everywhere, he tried. He thought bringing a human girl here to free him, even one who truly loved him, was only another kind of slavery. And if he loved her back, Amarantha would destroy her, the way her sister was destroyed. So for decades he wouldn't even risk it."
+    },
+    {
+     "s": "alis",
+     "e": "sad",
+     "t": "But this winter, with only months to go, something in him gave way. He sent out the last of his sentries, one after another. They were glad to go; they'd been pleading with him for years. Three days later, Andras came upon a mortal girl in a clearing."
+    },
+    {
+     "s": "alis",
+     "e": "angry",
+     "t": "And you shot him dead, hating him."
+    },
+    {
+     "n": "I had failed them. Every soul on this estate. All of Prythian. I gripped the edge of the table, or I'd have slid to the floor."
+    },
+    {
+     "s": "alis",
+     "e": "angry",
+     "t": "You could have ended it. Three words, said and meant with that fragile mortal heart of yours, and his power would have come back to him. You foolish, foolish girl."
+    },
+    {
+     "n": "That was why Lucien had resented me and still kept me close. Why he'd pleaded with Tamlin to keep me there longer."
+    },
+    {
+     "s": "feyre",
+     "e": "sad",
+     "t": "I'm sorry."
+    },
+    {
+     "s": "alis",
+     "e": "angry",
+     "t": "Say that to Tamlin. When you left, he had three days remaining. Three days, and he sent you away. She arrived the hour his time was up, with her beasts at her back, and took him and most of the court Under the Mountain. The likes of me she doesn't bother with, though she'll kill us now and then for amusement."
+    },
+    {
+     "n": "He had known. Even if I'd freed him, Amarantha would have come for me. So he had put me first. Before his whole court. Before all of Prythian."
+    },
+    {
+     "s": "feyre",
+     "e": "determined",
+     "t": "If he were free, with all his power back. Could he destroy her?"
+    },
+    {
+     "s": "alis",
+     "e": "neutral",
+     "t": "I can't say. She defeated the High Lords by trickery, not by force. Magic has its laws, and she twists them to suit her. She holds their stolen powers within herself. He's still a High Lord, in name. It makes no difference now. He belongs to her, and we wear these masks until he gives in and takes her to bed. Even then, she won't free him."
+    },
+    {
+     "n": "I pushed off from the table, and squared my shoulders."
+    },
+    {
+     "s": "feyre",
+     "e": "determined",
+     "t": "Then tell me the way to her Mountain."
+    },
+    {
+     "s": "alis",
+     "e": "stern",
+     "t": "There isn't one. Not for you. Mortals who go in there don't walk out again."
+    },
+    {
+     "s": "feyre",
+     "e": "angry",
+     "t": "How. Do. I. Get. There."
+    },
+    {
+     "s": "alis",
+     "e": "stern",
+     "t": "You'd be throwing your life away. She'll have you killed before you're near enough to look at her. Your skin's as thin as a petal, girl. You couldn't see the curse in front of your own eyes; what hope have you against her? You'll make it worse for all of us."
+    },
+    {
+     "n": "She had taken all of it. Every single thing I had only just let myself want."
+    },
+    {
+     "choices": [
+      {
+       "t": "\"Show me the way.\"",
+       "goto": "ch32_show"
+      },
+      {
+       "t": "\"Take me to her.\"",
+       "goto": "ch32_take"
+      }
+     ]
+    }
+   ]
+  },
+  "ch32_show": {
+   "lines": [
+    {
+     "s": "feyre",
+     "e": "determined",
+     "t": "Show me the way."
+    },
+    {
+     "n": "My voice shook. Not with tears."
+    },
+    {
+     "goto": "ch32_way"
+    }
+   ]
+  },
+  "ch32_take": {
+   "lines": [
+    {
+     "s": "feyre",
+     "e": "determined",
+     "t": "Take me to her."
+    },
+    {
+     "n": "My voice shook. Not with tears."
+    },
+    {
+     "goto": "ch32_way"
+    }
+   ]
+  },
+  "ch32_way": {
+   "lines": [
+    {
+     "s": "alis",
+     "e": "stern",
+     "t": "No. Go back to your family. I'll walk you to the Wall myself. Nothing can be done. Tamlin belongs to her for good, and Prythian stays under her heel. That's the hand Fate dealt us."
+    },
+    {
+     "s": "feyre",
+     "e": "determined",
+     "t": "I don't believe in Fate."
+    },
+    {
+     "n": "She shook her head, her wild brown hair dull as river mud in the dim light."
+    },
+    {
+     "s": "feyre",
+     "e": "determined",
+     "t": "Show me the way to her."
+    },
+    {
+     "n": "If she ripped my throat out, I'd at least die trying to do something for him: to repair what I hadn't stopped, and save the people I'd condemned. He'd know I had come for him. He'd know I loved him."
+    },
+    {
+     "n": "Alis studied me for a long moment. Then something in her eyes softened."
+    },
+    {
+     "s": "alis",
+     "e": "neutral",
+     "t": "As you wish."
+    },
+    {
+     "do": [
+      {
+       "type": "journal",
+       "id": "lore_under_the_mountain"
+      },
+      {
+       "type": "end_slice"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

@@ -1,0 +1,52 @@
+# Chapter 15: the fight's end, Tamlin, the walk home.
+
+== ch15_rescue
+> sfx beast_roar
+> shake 12
+N A roar shook the clearing, and it hadn't come from any naga's throat.
+N The one over me went flying into a tree so hard the trunk cracked. Gold mask, gold hair, long black claws. Tamlin tore into it.
+N The others shrieked. One ran. He caught it before it had gone three strides, pinned it, and opened it from throat to belly in one long stroke.
+N I stayed where I was, face half in the moss, knife still in my fist. I was shaking too hard to get up.
+-> ch15_found
+
+== ch15_victory
+N The last of them went down and didn't get up. I stood among the bodies, gasping, blood in my mouth that wasn't mine.
+> sfx beast_roar
+N A roar shook the clearing behind me, and Tamlin burst through the birches, claws out, fangs bared. He stopped short and looked at what was left of them. Then at me.
+-> ch15_found
+
+== ch15_found
+@tamlin/angry Feyre.
+N The fury faded from his eyes, and his claws slid back out of sight. But his roar was still ringing in my head, and there had been nothing in it but rage.
+@feyre/wounded How?
+@tamlin/neutral I was tracking a pack of them. Those four broke away. They must have followed your scent. I heard you scream.
+N He hadn't known about the Suriel. And still he'd come for me.
+N He ran his fingers down my cheek, and the throbbing in my face and arm faded, then vanished. The metal tang of magic, and then only the breeze.
+@tamlin/neutral I found one dead half a mile back with one of my arrows in its throat. I followed the tracks from there.
+N He pulled off his tunic and gave it to me. Mine was torn to ribbons by their talons. High Lord. I should have guessed. Maybe I hadn't wanted to.
+@tamlin/neutral Should I even ask why you were out here?
+* Tell him the truth. -> ch15_lie_not
+* Say you didn't realize how far you'd come. -> ch15_far
+
+== ch15_lie_not
+@feyre/neutral I...
+N He had warned me, again and again. And the Suriel had told me to stop digging for answers. Whatever I'd meant to say, I swallowed it.
+-> ch15_far
+
+== ch15_far
+@feyre/neutral I thought I wasn't confined to the house. I didn't realize I'd come so far.
+@tamlin/weary When I'm called away to the borders, keep near the house.
+@feyre/sad Thank you. Not only for this. For saving my life.
+@tamlin/weary It was the least I could do. They should never have got this far onto my lands.
+N There was no triumph in him at all. Only a deep, endless kind of shame.
+@tamlin/tender Let's go home.
+N I didn't tell him it wasn't my home. That I might not have one anymore.
+
+== ch15_after
+N We walked back in silence, both of us soaked in blood and pale as ghosts.
+N Keep to his side, the Suriel had said. That, at least, was easy. As for a wicked king and his commander, and whatever they meant for the male beside me, I knew far too little to warn anyone. My family would have to get by on the scraps I had.
+> journal lore_naga
+> journal lore_high_lords
+> unlock_tier 3
+> chapter_card 16
+> goto manor_bedroom bath chapter=16 hour=18

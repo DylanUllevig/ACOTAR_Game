@@ -1,0 +1,306 @@
+{
+ "schema": 2,
+ "notes": "Line forms: {n} Feyre's narration, first person past tense, shown in italics; {s,e,t} a line spoken aloud (speaker, portrait expression, text); {hint} a game tip on its own card; {choices:[{t,goto,do}]}; {do:[actions]}; {goto}. Any line or choice may carry if_flag, if_not_flag, if_item, if_not_item or if_chapter. Wording is written for the game; the few short book lines kept are listed in quotes.json.",
+ "scenes": {
+  "ch04_beast": {
+   "lines": [
+    {
+     "do": [
+      {
+       "type": "chapter_card",
+       "n": 4
+      },
+      {
+       "type": "objective",
+       "text": "Something is at the door."
+      },
+      {
+       "type": "music",
+       "name": ""
+      },
+      {
+       "type": "sfx",
+       "name": "beast_roar"
+      },
+      {
+       "type": "shake",
+       "strength": 18
+      },
+      {
+       "type": "door_burst"
+      }
+     ]
+    },
+    {
+     "n": "A roar split the night. My sisters screamed as snow burst across the floor and something enormous filled the doorway."
+    },
+    {
+     "s": "beast",
+     "e": "furious",
+     "t": "MURDERERS!"
+    },
+    {
+     "n": "Big as a horse. Golden fur, a wolf's head, horns curling like an elk's, claws like black daggers. Not a martax. Faerie."
+    },
+    {
+     "choices": [
+      {
+       "t": "Step in front of your sisters, knife raised.",
+       "goto": "ch04_stand"
+      },
+      {
+       "t": "Go for the bow by the door.",
+       "goto": "ch04_bow"
+      }
+     ]
+    }
+   ]
+  },
+  "ch04_bow": {
+   "lines": [
+    {
+     "n": "The bow was across the room, past him. He shifted his bulk into my way without so much as a glance."
+    },
+    {
+     "s": "feyre",
+     "e": "afraid",
+     "t": "Too far. He'd be on me before I drew."
+    },
+    {
+     "goto": "ch04_stand"
+    }
+   ]
+  },
+  "ch04_stand": {
+   "lines": [
+    {
+     "s": "feyre",
+     "e": "determined",
+     "t": "Get out. Get out of our house."
+    },
+    {
+     "n": "He bellowed, and the plates rattled on their shelf. His throat was bare."
+    },
+    {
+     "choices": [
+      {
+       "t": "Throw the knife at his throat.",
+       "goto": "ch04_throw"
+      },
+      {
+       "t": "Hold your ground.",
+       "goto": "ch04_hold"
+      }
+     ]
+    }
+   ]
+  },
+  "ch04_throw": {
+   "lines": [
+    {
+     "n": "He swatted the knife out of the air, faster than I could follow, and snapped at my face. A warning. He could have taken my head off."
+    },
+    {
+     "do": [
+      {
+       "type": "shake",
+       "strength": 10
+      }
+     ]
+    },
+    {
+     "goto": "ch04_hold"
+    }
+   ]
+  },
+  "ch04_hold": {
+   "lines": [
+    {
+     "s": "beast",
+     "e": "snarl",
+     "t": "Who killed him?"
+    },
+    {
+     "s": "feyre",
+     "e": "cold",
+     "t": "Killed who?"
+    },
+    {
+     "s": "beast",
+     "e": "snarl",
+     "t": "The wolf. A great grey wolf."
+    },
+    {
+     "choices": [
+      {
+       "t": "\"I did.\"",
+       "goto": "ch04_confess"
+      },
+      {
+       "t": "Play for time.",
+       "goto": "ch04_stall"
+      }
+     ]
+    }
+   ]
+  },
+  "ch04_stall": {
+   "lines": [
+    {
+     "s": "feyre",
+     "e": "cold",
+     "t": "If a wolf was killed by mistake, what would you take in payment?"
+    },
+    {
+     "s": "beast",
+     "e": "snarl",
+     "t": "What the Treaty demands."
+    },
+    {
+     "n": "He sniffed at my sisters. Elain's sob climbed to a shriek, and Nesta pulled her behind her own body."
+    },
+    {
+     "goto": "ch04_confess"
+    }
+   ]
+  },
+  "ch04_confess": {
+   "lines": [
+    {
+     "s": "feyre",
+     "e": "determined",
+     "t": "I killed it. I sold the hide at market today."
+    },
+    {
+     "s": "beast",
+     "e": "snarl",
+     "t": "Did it attack you? Were you provoked?"
+    },
+    {
+     "s": "feyre",
+     "e": "angry",
+     "t": "No. But after everything your kind has done to us, it was owed."
+    },
+    {
+     "s": "beast",
+     "e": "neutral",
+     "t": "A life for a life. A human who kills one of us unprovoked pays with a human life. That is the Treaty."
+    },
+    {
+     "do": [
+      {
+       "type": "journal",
+       "id": "lore_life_for_life"
+      }
+     ]
+    },
+    {
+     "s": "beast",
+     "e": "neutral",
+     "t": "I can gut you here, or you can cross the Wall and live out your days in Prythian. I have lands."
+    },
+    {
+     "s": "father",
+     "e": "afraid",
+     "t": "Go with him, Feyre. Please."
+    },
+    {
+     "choices": [
+      {
+       "t": "\"When do we leave?\"",
+       "goto": "ch04_go"
+      },
+      {
+       "t": "Reach for the knife.",
+       "goto": "ch04_fight"
+      }
+     ]
+    }
+   ]
+  },
+  "ch04_fight": {
+   "lines": [
+    {
+     "n": "My hand hadn't moved an inch before his teeth were a breath from my throat. A fight here meant my family's blood on the hearthstones."
+    },
+    {
+     "s": "feyre",
+     "e": "afraid",
+     "t": "Not here. Not in front of them."
+    },
+    {
+     "goto": "ch04_go"
+    }
+   ]
+  },
+  "ch04_go": {
+   "lines": [
+    {
+     "s": "feyre",
+     "e": "cold",
+     "t": "When do we leave?"
+    },
+    {
+     "n": "He went to the quiver behind the door, drew out the ash arrow and sniffed it, and snarled. He snapped it in two and threw it on the fire.",
+     "if_item": "ash_arrow"
+    },
+    {
+     "do": [
+      {
+       "type": "take_item",
+       "id": "ash_arrow",
+       "n": "all",
+       "toast": "The ash arrow burns."
+      }
+     ],
+     "if_item": "ash_arrow"
+    },
+    {
+     "n": "He went to the quiver behind the door and nosed through it, as if hunting for something. Whatever it was, it wasn't there.",
+     "if_not_item": "ash_arrow"
+    },
+    {
+     "s": "beast",
+     "e": "snarl",
+     "t": "Now."
+    },
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "The venison will last two weeks if you're careful. The coin from the hides is on the dresser. In spring, hunt the grove south of the big bend in Silverspring Creek. Ask Isaac Hale to show you the snares."
+    },
+    {
+     "s": "feyre",
+     "e": "cold",
+     "t": "Nesta. Don't marry Tomas Mandray. His father beats his wife. Bruises are harder to hide than poverty."
+    },
+    {
+     "s": "father",
+     "e": "sad",
+     "t": "You were always too good for this place. If you get free, don't come back. Go somewhere new and make a name for yourself."
+    },
+    {
+     "n": "I'd never told him about my promise to our mother. There was no use explaining now."
+    },
+    {
+     "do": [
+      {
+       "type": "leave_coins"
+      },
+      {
+       "type": "set_flag",
+       "flag": "ch04_done"
+      },
+      {
+       "type": "goto",
+       "region": "wall_ride",
+       "spawn": "start",
+       "hour": 23.0,
+       "chapter": 5
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

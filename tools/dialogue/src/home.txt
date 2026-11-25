@@ -1,0 +1,67 @@
+# Across the Wall, between story beats (Chapters 28 to 31): the chateau's rooms and grounds, the old cottage,
+# the village in summer, and the long walk along the Wall.
+# Chapter variants use [c:N] for one chapter, or [f:a !f:b] for "after a, before b".
+
+== home_bed
+[c:28] N The bed was soft enough to drown in. I lay on top of the covers in my traveling clothes and stared up at the pale blue hangings.
+[c:29] N I lay down for an hour in the afternoon heat, like a lady. It didn't take.
+[c:30] N I stretched out on the coverlet with my arms aching from the spade, and for once my head was quiet.
+[c:31] N No. There was no time to lie down. Not now.
+[c:28] > region_call rest
+[c:29] > region_call rest
+[c:30] > region_call rest
+
+== home_window
+[c:28] N Fields and fields, and the blue smudge of a wood. Somewhere beyond them was the Wall, and beyond that, him.
+[c:29] N A gardener was clipping the green flames along the drive, one careful snip at a time. Past the gates, the road ran west toward the old cottage.
+[c:30] N The drive below was jammed with carts: crates of wine, gilt chairs, ladders, a whole wagon of flowers. Elain darted between them like a bee.
+[c:31] N The lanterns from the ball still hung all down the drive, burnt out and turning in the wind. North was that way.
+
+== home_study_window
+N Right under the window lay Elain's garden: tulips in tidy rows, and Elain herself on her knees among them, a trowel in her fist.
+
+== home_study_window_out
+[!f:ch28_father] N Father's study, a footman told me, though nobody sat at the desk yet. Through the glass I could see a ledger, open, and a little brass scale.
+[f:ch28_father] N Through the glass: stacks of ledgers, the brass scale, a velvet tray of stones. My fortune, written down in columns.
+
+== home_father
+@father/neutral Off for your walk? Take one of the footmen with you. No? Well. Mind the mud on the west road, then.
+
+== home_father_busy
+N Father had his nose an inch from a sapphire and didn't hear me come in. I left him to it.
+
+== home_nesta
+[c:30] @nesta/neutral Well? Are you going to teach me, or stand there admiring the furniture?
+[c:31] @nesta/smirk If one more of them tells me my sister has gone very brown, I'll pour the punch down his breeches.
+
+== home_paint
+[f:ch30_lessons_done] N My brushes, rinsed and laid out in a row. Nesta's paper was turned face down on the table. I didn't turn it over.
+[!f:ch30_lessons_done] N I picked up a brush, and put it down again. Not today.
+
+== home_footman
+[c:28] N The footman bowed so low I worried for his back.
+[c:29] @footman/neutral A fine morning for the garden, miss. Miss Elain's been out since dawn.
+[c:30] N He didn't quite manage to keep the horror off his face at the sight of a daughter of the house with a spade.
+[c:31] @footman/neutral Your horse is saddled, miss. Miss Elain saw to it herself.
+
+== home_gardener
+@gardener/neutral Miss Elain's tulips, miss. Came across the sea in a crate, they did. We're not to lay a finger on them.
+
+== home_elain
+N Elain was on her knees among the tulips again, humming under her breath. I sat on the low wall and let her talk, and didn't hear half of it, and loved every word.
+
+== home_elain_horse
+@elain/sad Go. Please. Before Father comes down and makes this so much harder.
+
+== home_forest_again
+N Only trees. I didn't need to look again.
+
+== home_fountain
+[!f:ch30_tomas] N The fountain had been dry as long as I could remember. In summer the basin smelled of warm stone and pigeons.
+[f:ch30_tomas] N Tomas and his friends had drifted off somewhere. It was only a dry basin again.
+
+== ch31_tap
+N Still there. Cool and smooth as a pane of glass, and not a crack in it anywhere.
+
+== home_fire_out
+N Cold ashes. I'd kicked earth over them myself.

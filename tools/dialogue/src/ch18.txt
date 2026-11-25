@@ -1,0 +1,107 @@
+# Chapter 18: the glen, the pool of starlight, Lucien's story, the jeweled knife.
+
+== ch18_morning
+> set_flag ch18_morning
+N By the time I'd eaten and washed and dressed, it was nearly noon. The blood in the hall would be gone by now. I went to the window anyway, to be sure.
+N I meant to find Tamlin and tell him, properly this time, that I was sorry about Andras. If I was going to live here, beside him, I owed him at least an attempt to repair what I'd broken.
+N From the window I could see clear to the reflecting pool, so still it held every cloud. Two figures stood by it, and horses, already saddled.
+> objective Tamlin and Lucien are waiting by the reflecting pool.
+
+== ch18_pool
+@tamlin/neutral Your paints won't come until tomorrow, the gallery's still being cleaned, and my... meeting was put off.
+N Was he rambling? The High Lord of the Spring Court?
+@tamlin/tender So I thought we'd ride. No killing. No naga.
+N There was sorrow in his eyes even as he smiled. I wondered where he had buried the faerie. A High Lord digging a stranger's grave.
+@feyre/neutral Where to?
+N He only smiled.
+> goto spring_woods glen chapter=18 hour=14
+
+== ch18_glen
+> set_flag ch18_glen
+N I couldn't find words for it. I knew that even if I could paint it, I'd never do it justice. Oaks wide and high as the pillars of some ancient castle. Dandelion fluff drifting through light thick as honey. Crocuses and snowdrops and bluebells nodding over the ground. And somewhere, I could have sworn, singing.
+N It was the loveliest place I had ever seen, and more than that, it felt right. After last night, I couldn't have asked for anywhere better.
+@tamlin/neutral We brought a blanket.
+N I shook my head and ran my fingers through the grass instead. Soft as feathers. I wasn't going to waste that on a blanket.
+@feyre/neutral What is this place?
+@tamlin/neutral Just a glen.
+N Lucien snorted behind us.
+@tamlin/tender Do you like it?
+@feyre/neutral Yes.
+@tamlin/tender That's all? Yes?
+* Tease him. -> ch18_tease
+* Tell him how beautiful it is. -> ch18_honest
+
+== ch18_honest
+@feyre/tender It's the most beautiful place I've ever seen.
+N He looked as if I'd handed him something precious. I couldn't bear it, so I said something else before I could stop myself.
+-> ch18_tease
+
+== ch18_tease
+@feyre/neutral Would you like me to grovel with gratitude, High Lord?
+@tamlin/neutral Ah. So the Suriel told you nothing important.
+@feyre/neutral It also said you like to be brushed. And that if I'm clever, I might train you with treats.
+N He threw back his head and roared with laughter. And I laughed too, softly, before I could stop it.
+@lucien/smirk I may die of shock. You made a joke, Feyre.
+@feyre/neutral Trust me, you'd rather not hear what the Suriel said about you.
+@tamlin/tender I'd pay good money to hear it.
+N A cork popped. Lucien drank deep from the bottle and muttered "brushed" to himself, and went on chuckling.
+@tamlin/tender Come on. I want to show you something.
+N He led me over little brooks and up steep knolls to a clearing ringed with tall trees. In it lay a pool that wasn't water. Silver, glittering, shot through with blue and red and pink and gold.
+N He crouched at the edge, scooped up a handful and let it trickle back. Ripples of light danced across the surface.
+@feyre/tender That looks like starlight.
+@tamlin/tender It is starlight.
+@feyre/neutral That's impossible.
+@tamlin/tender You're in Prythian. Your own stories say anything can happen here.
+N Then he began unbuttoning his tunic.
+@tamlin/tender Jump in.
+N I shook my head and stepped back. His fingers stopped on the second button.
+@tamlin/tender This was my favorite place when I was a boy.
+@feyre/neutral When was that?
+@tamlin/weary A very long time ago.
+@feyre/neutral Is Lucien all right? After last night?
+@tamlin/weary Lucien has been through things that make nights like that one hard. Not only the scar and the eye.
+@tamlin/weary His father rules the Autumn Court, and Lucien is the last of seven sons. Autumn is lovely, and vicious. The title goes to the strongest son, not the oldest, so those brothers have never seen each other as anything but competition.
+@tamlin/weary Lucien never cared about any of it. He fell in love with a faerie his father thought far beneath their blood, and swore he'd marry her and leave the court to his brothers. His father had her executed. In front of him, while two of his brothers held him and made him watch.
+N My stomach turned. I pressed a hand to my chest.
+@tamlin/neutral He cursed his father to his face and left. With no rank left to shield him, his brothers hunted him. Three came after him and only one went home: Lucien killed one, and I killed the other. They had come onto my land, and by then the land was mine.
+@tamlin/neutral I made him my emissary. He's good with people, and I... am not. He's been here ever since. He hasn't forgotten any of it, whatever he pretends.
+N It didn't excuse everything he'd said to me. But I understood the walls he'd built. I needed to talk about something else.
+@feyre/neutral What would happen if I drank the water?
+@tamlin/tender The legends say you'd be happy until your last breath. Maybe we both need a glass.
+@feyre/neutral I doubt the whole pool would be enough for me.
+@tamlin/tender Two jokes in one day. A miracle. And what would be enough to make you happy? The ringing of bluebells? A ribbon of sunlight? A garland of moonlight?
+N He was teasing me. He knew I'd squirm and say no. I was tired of being that girl, locked up in ice.
+* Take the dare. -> ch18_swim
+* Laugh it off. -> ch18_laugh
+
+== ch18_laugh
+N I laughed and shook my head, and he grinned as though he'd won something. And that, more than anything, made me change my mind.
+-> ch18_swim
+
+== ch18_swim
+@feyre/neutral A swim sounds delightful.
+N I didn't let myself think twice. My boots, my tunic, my trousers, onto the grass, and I looked straight at him in my plain ivory underthings while his eyes moved over every inch of me.
+N Then he undressed too, button by button, with a lazy smile and a gleam in his eye that turned hungry. I walked straight into the pool rather than keep looking.
+N It was warm. Thicker than water and lighter than oil, like being wrapped in silk. Every ache in my body drained away.
+@tamlin/tender Who taught you to swim?
+@feyre/neutral No one. I watched the village children in a pond when I was twelve, and worked it out. I swallowed half the pond doing it.
+@tamlin/neutral How did your father lose his fortune? Born peasants don't talk the way you do.
+@feyre/sad They called him the Prince of Merchants. The title was a lie. Three generations of debt under a good name. Eight years ago he put everything we had on three ships bound straight for Bharat, the short way, because the creditors couldn't wait.
+@feyre/sad The ships sank. The creditors tore him apart. I was eleven. He just stopped trying after that. The money lasted three years, and then I started hunting.
+@tamlin/tender And here you are. What else did you teach yourself?
+N Maybe it was the pool. Maybe it was that he truly wanted to know. I smiled, and told him about my years in the woods.
+> heal_full
+N Riding home that afternoon across a meadow of new grass, I caught myself looking at Lucien for the tenth time. He dropped back to ride beside me.
+@lucien/neutral Yes?
+N I wouldn't speak of his past. I'd hate pity too. I waited until Tamlin had ridden well ahead.
+@feyre/neutral I never thanked you for your advice about the Suriel. If you still want me dead, you'll have to try harder.
+@lucien/grim That isn't what I meant to happen. I wouldn't have wept. But-
+@feyre/neutral I'm joking. Part of me would love to wallop you. But I understand. I'm the human who killed your friend, and now you're stuck with me.
+@lucien/grim Tam told me your first shot was to save the Suriel. Not yourself.
+@feyre/neutral It seemed like the right thing to do.
+@lucien/neutral Plenty of my kind wouldn't have thought of it that way. Or cared to.
+N He tossed me something. I nearly fell out of the saddle catching it. A hunting knife, its hilt set with jewels, balanced as perfectly as anything I had ever held.
+@lucien/grim I heard you scream. And I hesitated. Only for a moment, but I did, and I broke my word in it. It's yours. Please don't bury it in my back.
+> item jeweled_knife
+> chapter_card 19
+> goto manor_gallery hall chapter=19 hour=10

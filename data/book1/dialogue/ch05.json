@@ -1,0 +1,138 @@
+{
+ "schema": 2,
+ "notes": "Line forms: {n} Feyre's narration, first person past tense, shown in italics; {s,e,t} a line spoken aloud (speaker, portrait expression, text); {hint} a game tip on its own card; {choices:[{t,goto,do}]}; {do:[actions]}; {goto}. Any line or choice may carry if_flag, if_not_flag, if_item, if_not_item or if_chapter. Wording is written for the game; the few short book lines kept are listed in quotes.json.",
+ "scenes": {
+  "ch05_ride": {
+   "lines": [
+    {
+     "do": [
+      {
+       "type": "chapter_card",
+       "n": 5
+      }
+     ]
+    },
+    {
+     "n": "A white mare waited at the tree line, unbridled, pale as new snow under the moon. She lowered her head as the beast went by."
+    },
+    {
+     "s": "feyre",
+     "e": "cold",
+     "t": "North, then. Toward them. To live with him, not die. Live."
+    },
+    {
+     "hint": "Hold W to ride north behind him. Press E when you're close to speak to him."
+    },
+    {
+     "do": [
+      {
+       "type": "objective",
+       "text": "Ride north behind the beast."
+      }
+     ]
+    }
+   ]
+  },
+  "ch05_ask": {
+   "lines": [
+    {
+     "s": "feyre",
+     "e": "cold",
+     "t": "What are you?",
+     "if_not_flag": "ch05_asked_1"
+    },
+    {
+     "n": "He didn't turn around. Fair enough. I'd killed his friend.",
+     "if_not_flag": "ch05_asked_1"
+    },
+    {
+     "do": [
+      {
+       "type": "set_flag",
+       "flag": "ch05_asked_1"
+      }
+     ],
+     "if_not_flag": "ch05_asked_1"
+    },
+    {
+     "n": "He hadn't answered the first time either.",
+     "if_flag": "ch05_asked_2"
+    },
+    {
+     "s": "feyre",
+     "e": "cold",
+     "t": "Do you have a name?",
+     "if_flag": "ch05_asked_1",
+     "if_not_flag": "ch05_asked_2"
+    },
+    {
+     "s": "beast",
+     "e": "neutral",
+     "t": "Would it matter to you, human?",
+     "if_flag": "ch05_asked_1",
+     "if_not_flag": "ch05_asked_2"
+    },
+    {
+     "do": [
+      {
+       "type": "set_flag",
+       "flag": "ch05_asked_2"
+      }
+     ],
+     "if_flag": "ch05_asked_1"
+    }
+   ]
+  },
+  "ch05_sleep": {
+   "lines": [
+    {
+     "n": "I opened my mouth to ask something else. He growled, and a sharp, metallic tang filled my nose."
+    },
+    {
+     "n": "Exhaustion slammed into me. Then nothing."
+    },
+    {
+     "do": [
+      {
+       "type": "wall_cinematic"
+      }
+     ]
+    }
+   ]
+  },
+  "ch05_wake": {
+   "lines": [
+    {
+     "n": "I woke with a jolt, still on the mare, held there by bonds I couldn't see. The sun was high. Birds darted past, and the air was mild as spring."
+    },
+    {
+     "n": "Ahead stood a gate of iron, set into a high green hedge."
+    },
+    {
+     "s": "feyre",
+     "e": "cold",
+     "t": "My prison or my salvation. I couldn't decide which."
+    },
+    {
+     "do": [
+      {
+       "type": "journal",
+       "id": "lore_wall"
+      },
+      {
+       "type": "place",
+       "id": "spring_manor"
+      },
+      {
+       "type": "goto",
+       "region": "spring_manor",
+       "spawn": "gate",
+       "chapter": 6,
+       "hour": 13
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

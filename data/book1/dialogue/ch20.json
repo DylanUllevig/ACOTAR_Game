@@ -1,0 +1,370 @@
+{
+ "schema": 2,
+ "notes": "Line forms: {n} Feyre's narration, first person past tense, shown in italics; {s,e,t} a line spoken aloud (speaker, portrait expression, text); {hint} a game tip on its own card; {choices:[{t,goto,do}]}; {do:[actions]}; {goto}. Any line or choice may carry if_flag, if_not_flag, if_item, if_not_item or if_chapter. Wording is written for the game; the few short book lines kept are listed in quotes.json.",
+ "scenes": {
+  "ch20_tamlin": {
+   "lines": [
+    {
+     "do": [
+      {
+       "type": "set_flag",
+       "flag": "ch20_tamlin"
+      }
+     ]
+    },
+    {
+     "n": "Tamlin hardly spoke at dinner. That night I lit every candle in my room to keep the shadows back."
+    },
+    {
+     "n": "I didn't go outside the next day. When I sat down to paint, what came out was a tall, skeletal gray thing with bat's ears and great membranous wings, its jaws open on row after row of fangs. I could almost smell carrion on its breath. I turned it to face the wall and went to beg Alis for work in the kitchens. Anything to keep out of the garden."
+    },
+    {
+     "do": [
+      {
+       "type": "time",
+       "hour": 18.6
+      },
+      {
+       "type": "music",
+       "name": ""
+      },
+      {
+       "type": "sfx",
+       "name": "drum"
+      }
+     ]
+    },
+    {
+     "n": "Fire Night came, and neither Tamlin nor Lucien showed his face all day. By sunset the kitchens stood empty, the servants vanished, and two days' worth of cooking had vanished with them. And somewhere far past the gardens, drums began to beat."
+    },
+    {
+     "n": "One deep beat, and two answering. Calling. On the hills toward the woods, fires flickered against a ruby sky, and the tang of magic was stronger than I had ever smelled it. Something tugged at my gut, pulling me toward those hills."
+    },
+    {
+     "do": [
+      {
+       "type": "region_call",
+       "method": "walk_in",
+       "args": [
+        "lord_gold",
+        "tamlin",
+        860,
+        470
+       ]
+      }
+     ]
+    },
+    {
+     "n": "Tamlin came down the hall, shirtless but for his baldric, a sword at his hip and a bow in his hand, the arrows in his quiver fletched with red. The warrior, whole."
+    },
+    {
+     "s": "feyre",
+     "e": "afraid",
+     "t": "Where are you going?"
+    },
+    {
+     "s": "tamlin",
+     "e": "neutral",
+     "t": "It's Calanmai. I have to go."
+    },
+    {
+     "s": "feyre",
+     "e": "afraid",
+     "t": "To do what?"
+    },
+    {
+     "s": "tamlin",
+     "e": "weary",
+     "t": "As High Lord, I take part in the Great Rite."
+    },
+    {
+     "s": "feyre",
+     "e": "neutral",
+     "t": "What's the Great-"
+    },
+    {
+     "s": "tamlin",
+     "e": "angry",
+     "t": "Go to your room. Lock the doors. Set a snare, do whatever you like. Don't come out until morning."
+    },
+    {
+     "n": "His canines were lengthening. The cords of his neck trembled, as if standing still hurt him."
+    },
+    {
+     "s": "feyre",
+     "e": "afraid",
+     "t": "Are you going into battle?"
+    },
+    {
+     "n": "He laughed under his breath. He lifted a hand toward my arm, and lowered it again."
+    },
+    {
+     "s": "tamlin",
+     "e": "tender",
+     "t": "Stay in your room, Feyre. Please."
+    },
+    {
+     "do": [
+      {
+       "type": "region_call",
+       "method": "walk_out",
+       "args": [
+        "tamlin"
+       ]
+      }
+     ]
+    },
+    {
+     "n": "And he was gone, bounding into the garden like a stag."
+    },
+    {
+     "do": [
+      {
+       "type": "objective",
+       "text": "Go to your room, and stay there until morning."
+      }
+     ]
+    }
+   ]
+  },
+  "ch20_room": {
+   "lines": [
+    {
+     "do": [
+      {
+       "type": "set_flag",
+       "flag": "ch20_sneak"
+      },
+      {
+       "type": "time",
+       "hour": 22
+      }
+     ]
+    },
+    {
+     "n": "I locked myself in, and realized too late that I'd had no dinner. The drums went on and on, and more fires sprang up along the hills."
+    },
+    {
+     "n": "Stay in your room. But a wild voice wove in and out of the drumming, and it said otherwise. Go. Go and see."
+    },
+    {
+     "n": "By ten o'clock, I couldn't stand it anymore."
+    },
+    {
+     "choices": [
+      {
+       "t": "Follow the drums.",
+       "goto": "ch20_go"
+      },
+      {
+       "t": "Stay where you are.",
+       "goto": "ch20_stay"
+      }
+     ]
+    }
+   ]
+  },
+  "ch20_stay": {
+   "lines": [
+    {
+     "n": "I sat on the bed with my hands clamped between my knees. I lasted until the clock struck the quarter hour."
+    },
+    {
+     "goto": "ch20_go"
+    }
+   ]
+  },
+  "ch20_go": {
+   "lines": [
+    {
+     "n": "I pulled my hood up, checked both knives at my sides, and slipped out."
+    },
+    {
+     "do": [
+      {
+       "type": "objective",
+       "text": "Follow the drums into the western woods."
+      }
+     ]
+    }
+   ]
+  },
+  "ch20_not_inside": {
+   "lines": [
+    {
+     "n": "The drums were calling. I wasn't going back in. Not yet."
+    }
+   ]
+  },
+  "ch20_out": {
+   "lines": [
+    {
+     "n": "The stables were empty. Every servant, every guard, gone to the fires. The drums came from the west, beyond the birches, where the woods began."
+    },
+    {
+     "hint": "The woods are past the rose garden, on the west edge of the grounds."
+    }
+   ]
+  },
+  "ch20_woods": {
+   "lines": [
+    {
+     "n": "Smoke and magic hung thick under the trees. Hundreds of High Fae milled about in masks, and whenever I tried to look straight at one, the face slid into a blur of color. Only from the corner of my eye were they solid. A glamour, laid over me, the way my family had been glamoured."
+    },
+    {
+     "n": "I should have been furious. But the drums were in my bones now."
+    },
+    {
+     "s": "feyre",
+     "e": "determined",
+     "t": "Whatever this Great Rite is, I want to see it."
+    },
+    {
+     "do": [
+      {
+       "type": "objective",
+       "text": "Follow the drums to the bonfire in the hollow, south-west through the woods."
+      }
+     ]
+    }
+   ]
+  },
+  "ch20_bonfire": {
+   "lines": [
+    {
+     "do": [
+      {
+       "type": "set_flag",
+       "flag": "ch20_bonfire"
+      }
+     ]
+    },
+    {
+     "n": "In the hollow, a cave mouth opened into the hillside, hung with flowers and branches, its floor spread with furs. Firelight danced inside where the passage bent out of sight. Faeries lined the path to it on either side, swaying to the drums, waiting for something."
+    },
+    {
+     "n": "I'd been banned from this? I was about to ask a bird-masked servant what was going to happen when someone caught my arm and spun me round."
+    },
+    {
+     "do": [
+      {
+       "type": "region_call",
+       "method": "faeries_close_in"
+      }
+     ]
+    },
+    {
+     "n": "Three of them, without masks. Like High Fae, but taller and leaner, and something crueler in their eyes, black and bottomless. The fire didn't reflect in them at all."
+    },
+    {
+     "s": "faerie",
+     "e": "neutral",
+     "t": "A human woman. We haven't seen one of you in an age."
+    },
+    {
+     "s": "feyre",
+     "e": "determined",
+     "t": "What do you want?"
+    },
+    {
+     "s": "faerie",
+     "e": "neutral",
+     "t": "Only a little Fire Night fun."
+    },
+    {
+     "n": "One of them reached out a long white hand and stroked my hair from my face. As I grabbed for my knife, another caught my free arm."
+    },
+    {
+     "choices": [
+      {
+       "t": "Wrench free and go for your knives.",
+       "goto": "ch20_knife"
+      },
+      {
+       "t": "Shout for help.",
+       "goto": "ch20_shout"
+      }
+     ]
+    }
+   ]
+  },
+  "ch20_knife": {
+   "lines": [
+    {
+     "n": "I wrenched against them with all my strength. Their fingers only dug in harder, and they held my hands far from my knives."
+    },
+    {
+     "goto": "ch20_bonfire_2"
+    }
+   ]
+  },
+  "ch20_shout": {
+   "lines": [
+    {
+     "s": "feyre",
+     "e": "angry",
+     "t": "Get your hands off me!"
+    },
+    {
+     "n": "Loud enough for anyone to hear. No one looked. No one cared."
+    },
+    {
+     "goto": "ch20_bonfire_2"
+    }
+   ]
+  },
+  "ch20_bonfire_2": {
+   "lines": [
+    {
+     "s": "faerie",
+     "e": "neutral",
+     "t": "Brave words from a human, on Calanmai. Once the Rite is done, we'll have our fun. What a treat."
+    },
+    {
+     "n": "Bony fingers dug along my ribs, my hips. They were herding me toward the dark of the trees. One shoved me, and I stumbled out of their grip, and the ground came up at me."
+    },
+    {
+     "do": [
+      {
+       "type": "region_call",
+       "method": "stranger_arrives"
+      }
+     ]
+    },
+    {
+     "n": "Strong hands caught me under the shoulders and set me on my feet. Warm and broad. Nothing like theirs. The three of them went very still."
+    },
+    {
+     "s": "stranger",
+     "e": "smirk",
+     "t": "There you are. I've been looking for you."
+    },
+    {
+     "n": "He slipped a careless arm round my shoulders. The three faeries paled."
+    },
+    {
+     "s": "stranger",
+     "e": "cold",
+     "t": "Thank you for finding her for me. Enjoy the Rite."
+    },
+    {
+     "n": "There was enough bite under those last words that they scuttled back to the fires without a word. I stepped out from under his arm and turned to thank him."
+    },
+    {
+     "n": "He was the most beautiful man I had ever seen."
+    },
+    {
+     "do": [
+      {
+       "type": "chapter_card",
+       "n": 21
+      }
+     ]
+    },
+    {
+     "goto": "ch21_rhys"
+    }
+   ]
+  }
+ }
+}

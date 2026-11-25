@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "notes": "Book objects that the game turns into cards, relics, items or set dressing.",
+  "objects": {
+    "ash_arrow": {"name": "Ash arrow", "chapter": 1, "use": "card:ash_arrow", "desc": "Long, heavy, mountain-ash shaft, iron head; unused in her quiver for three years. Burned by the beast in Chapter 4."},
+    "ordinary_arrows": {"name": "Two ordinary arrows", "chapter": 1, "use": "card:ordinary_arrow"},
+    "hunting_knife": {"name": "Wooden-hilted hunting knife", "chapter": 1, "use": "card:knife_slash"},
+    "wolf_pelt": {"name": "Wolf pelt", "chapter": 1, "use": "quest item, sold in Chapter 3", "desc": "Charcoal, obsidian and ivory."},
+    "doe_hide": {"name": "Doe hide", "chapter": 1, "use": "quest item, sold in Chapter 3"},
+    "paint_tins": {"name": "Three tins of paint (red, yellow, blue)", "chapter": 2, "use": "relic:elains_paint_tins"},
+    "ward_markings": {"name": "Fake ward-markings on the threshold", "chapter": 2, "use": "set dressing"},
+    "ironwood_bed": {"name": "The ironwood bed", "chapter": 2, "use": "set dressing; save point", "desc": "The sole remnant of their wealth; the one thing Feyre never painted."},
+    "foxglove_painting": {"name": "Painted foxglove on the table", "chapter": 2, "use": "interactable; lore", "desc": "Too dark, too blue, no white freckling."},
+    "iron_bracelets": {"name": "Iron bracelets", "chapter": 3, "use": "relic:iron_bracelet"},
+    "silver_bells": {"name": "Silver bells of the Children of the Blessed", "chapter": 3, "use": "set dressing"},
+    "father_cane": {"name": "Father's carved cane", "chapter": 2, "use": "set dressing"},
+    "chisel": {"name": "New chisel for Father's carving", "chapter": 3, "use": "card upgrade service flavor"},
+    "white_mare": {"name": "The white mare", "chapter": 5, "use": "cutscene"}
+  }
+}
